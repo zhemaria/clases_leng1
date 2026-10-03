@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 7.5 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 5: Escribir sobre información visual</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 7.5 · Escribir sobre información visual</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -122,15 +128,78 @@
   .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
   .retro-quiz.visible{display:block}
   .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 5: Escribir sobre información visual</h1>
-<p class="subtitulo">Tema 7 · Lección 7.3 · Nivel 1 · Semana 14 · 50 minutos</p>
+<h1>Lección 7.5 · Escribir sobre información visual</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 7 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Aplicar la técnica de las tres listas (sustantivos, verbos y adjetivos) antes de escribir sobre una imagen.</li>
     <li>Describir por escrito la información de una <strong>gráfica</strong>, <strong>mapa</strong> o <strong>tabla</strong> siguiendo tres pasos ordenados.</li>
@@ -138,21 +207,37 @@
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-listas">Antes de escribir: las tres listas</a></li>
+    <li><a href="#s-2-describir">Describir gráficas, mapas y tablas</a></li>
+    <li><a href="#s-3-practica">Práctica: describe una segunda gráfica</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En las lecciones anteriores aprendimos a construir párrafos con buena estructura (Lección 7.1) y a elegir el tipo de texto según el propósito (Lección 7.2). En esta lección final del tema combinaremos todo lo aprendido para enfrentar una situación muy común en el examen GED: <strong>escribir un texto a partir de información visual</strong> (una gráfica, un mapa, una imagen o una tabla).</p>
+<h2>📚 Para empezar</h2>
 
-<p>El reto es doble. Por un lado, debemos <strong>observar</strong> bien la imagen para extraer la información correcta. Por otro lado, debemos <strong>organizar</strong> esa información en oraciones claras y completas. Una técnica sencilla nos ayudará: hacer tres listas antes de escribir.</p>
+<p>Ya sabes construir párrafos bien estructurados (lecciones 7.1 y 7.2) y elegir el tipo de texto según el propósito (lecciones 7.3 y 7.4). Ahora vas a combinar todo para enfrentar una situación muy común: <strong>escribir un texto a partir de información visual</strong>, como una imagen, una gráfica, un mapa o una tabla.</p>
 
-<details open>
+<p>El reto es doble. Por un lado, tienes que <strong>observar</strong> bien la imagen para sacar la información correcta. Por otro, tienes que <strong>organizar</strong> esa información en oraciones claras y completas. Una técnica sencilla te ayudará: hacer tres listas antes de escribir.</p>
+
+<details open id="s-1-listas">
 <summary>1. Antes de escribir: las tres listas <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El error común: empezar a escribir sin observar</h3>
 
-<p>Cuando un estudiante ve una imagen y le piden que escriba sobre ella, suele cometer un error: empieza a escribir de inmediato. El resultado es un párrafo confuso, con oraciones incompletas y detalles dispersos.</p>
+<p>Cuando nos piden escribir sobre una imagen, es fácil cometer un error: empezar a escribir de inmediato. El resultado suele ser un párrafo confuso, con oraciones incompletas y detalles sueltos.</p>
 
-<p>La técnica de las <span class="palabra-clave">tres listas</span> resuelve este problema. Antes de redactar, dedicamos unos minutos a anotar tres tipos de palabras que vemos en la imagen:</p>
+<p>La técnica de las <span class="palabra-clave">tres listas</span> resuelve este problema. Antes de redactar, dedica unos minutos a anotar tres tipos de palabras, que ya conoces del Tema 3:</p>
 
 <div class="triada-cont">
   <div class="triada-col sust">
@@ -178,12 +263,12 @@
   </div>
 </div>
 
-<h3>Veamos un ejemplo con una imagen</h3>
+<h3>Un ejemplo con una imagen</h3>
 
-<p>Observemos la siguiente escena: un parque por la mañana.</p>
+<p>Observa esta escena: un parque por la mañana.</p>
 
 <div class="imagen-cont">
-  <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Un parque por la mañana: cielo azul con sol y nubes, césped verde, un camino, dos árboles, un banco, una persona que camina con su perro y algunas flores.">
     <!-- Cielo -->
     <rect x="0" y="0" width="500" height="160" fill="#bfe4ff"/>
     <!-- Sol -->
@@ -239,7 +324,7 @@
   <p class="pie-img">Escena: un parque por la mañana</p>
 </div>
 
-<p>Antes de escribir, recorremos la imagen con la mirada y completamos las tres listas:</p>
+<p>Antes de escribir, recorre la imagen con la mirada y completa las tres listas:</p>
 
 <div class="triada-cont">
   <div class="triada-col sust">
@@ -283,7 +368,7 @@
 
 <h3>Con las tres listas, las oraciones se construyen solas</h3>
 
-<p>Una vez que tenemos las tres listas, escribir oraciones completas es mucho más fácil. Combinamos un sustantivo con un verbo y le añadimos uno o dos adjetivos:</p>
+<p>Con las tres listas, escribir oraciones completas es mucho más fácil: combina un sustantivo con un verbo y añade uno o dos adjetivos:</p>
 
 <div class="resultado-oraciones">
   <h5>📝 Oraciones construidas a partir de las listas</h5>
@@ -294,41 +379,41 @@
 </div>
 
 <div class="clave-pedagogica">
-  <strong>💡 Idea central:</strong> Las tres listas funcionan como un <strong>mapa de la imagen</strong>. Anotamos primero lo que vemos por categorías y, después, las oraciones aparecen casi solas. Es la diferencia entre escribir con dirección y escribir a ciegas.
+  <strong>💡 Idea central:</strong> Las tres listas funcionan como un <strong>mapa de la imagen</strong>. Primero anotas lo que ves, por categorías; después, las oraciones aparecen casi solas. Es la diferencia entre escribir con dirección y escribir a ciegas.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>2. Describir datos visuales: gráficas, mapas y tablas <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-describir">
+<summary>2. Describir gráficas, mapas y tablas <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Tres pasos para describir un dato visual</h3>
 
-<p>Cuando la imagen es una gráfica, un mapa o una tabla, la descripción sigue un orden específico. Los tres pasos son:</p>
+<p>Cuando la imagen es una gráfica, un mapa o una tabla, la descripción sigue un orden. Ya lo practicaste en la Lección 6.6; estos son los tres pasos:</p>
 
 <div class="pasos-describir">
   <div class="paso-describ">
     <span class="num-pd">1</span>
     <h5>Tema general</h5>
-    <p>Diga qué muestra la gráfica (el título y el tema).</p>
+    <p>Di qué muestra la gráfica (el título y el tema).</p>
   </div>
   <div class="paso-describ">
     <span class="num-pd">2</span>
     <h5>Datos principales</h5>
-    <p>Nombre al menos dos cifras o valores importantes.</p>
+    <p>Nombra al menos dos cifras o valores importantes.</p>
   </div>
   <div class="paso-describ">
     <span class="num-pd">3</span>
     <h5>Comparación o conclusión</h5>
-    <p>Explique qué se puede deducir (cuál es mayor, cuál es menor).</p>
+    <p>Explica qué se puede deducir (cuál es mayor, cuál es menor).</p>
   </div>
 </div>
 
 <h3>Vocabulario específico para describir cantidades</h3>
 
-<p>Para que la descripción sea precisa, conviene usar palabras propias del lenguaje de los datos:</p>
+<p>Para que tu descripción sea precisa, usa palabras propias del lenguaje de los datos:</p>
 
 <div class="frases-describir">
   <h4>🗣️ Frases plantilla útiles</h4>
@@ -356,164 +441,136 @@
 
 <h3>Ejemplo aplicado: una gráfica de barras</h3>
 
-<p>Observemos la siguiente gráfica sobre la temperatura promedio en cuatro ciudades durante el mes de julio:</p>
+<p>Observa esta gráfica sobre la temperatura promedio de julio en cuatro ciudades:</p>
 
 <div class="grafica-describir">
-  <h4>Temperatura promedio en julio (°F)</h4>
   <div class="grafica-svg-wrap">
-    <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
-      <!-- Título -->
-      <text x="250" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2332">Temperatura promedio en julio (°F)</text>
-      <!-- Ejes -->
-      <line x1="70" y1="50" x2="70" y2="230" stroke="#1a2332" stroke-width="2"/>
-      <line x1="70" y1="230" x2="470" y2="230" stroke="#1a2332" stroke-width="2"/>
-      <!-- Marcas eje Y -->
-      <text x="60" y="234" text-anchor="end" font-size="11" fill="#1a2332">0</text>
-      <line x1="66" y1="212" x2="70" y2="212" stroke="#1a2332"/>
-      <text x="60" y="216" text-anchor="end" font-size="11" fill="#1a2332">20</text>
-      <line x1="66" y1="194" x2="70" y2="194" stroke="#1a2332"/>
-      <text x="60" y="198" text-anchor="end" font-size="11" fill="#1a2332">40</text>
-      <line x1="66" y1="176" x2="70" y2="176" stroke="#1a2332"/>
-      <text x="60" y="180" text-anchor="end" font-size="11" fill="#1a2332">60</text>
-      <line x1="66" y1="140" x2="70" y2="140" stroke="#1a2332"/>
-      <text x="60" y="144" text-anchor="end" font-size="11" fill="#1a2332">80</text>
-      <line x1="66" y1="104" x2="70" y2="104" stroke="#1a2332"/>
-      <text x="60" y="108" text-anchor="end" font-size="11" fill="#1a2332">100</text>
-      <!-- Barras: Chicago 75, Miami 88, Phoenix 95, Seattle 65 -->
-      <rect x="105" y="140" width="60" height="90" fill="#0277bd"/>
-      <text x="135" y="134" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">75°</text>
-      <text x="135" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Chicago</text>
-
-      <rect x="195" y="116" width="60" height="114" fill="#ef6c00"/>
-      <text x="225" y="110" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">88°</text>
-      <text x="225" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Miami</text>
-
-      <rect x="285" y="104" width="60" height="126" fill="#c62828"/>
-      <text x="315" y="98" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">95°</text>
-      <text x="315" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Phoenix</text>
-
-      <rect x="375" y="158" width="60" height="72" fill="#2e7d32"/>
-      <text x="405" y="152" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">65°</text>
-      <text x="405" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Seattle</text>
-
-      <!-- Etiquetas ejes -->
-      <text x="270" y="268" text-anchor="middle" font-size="11" fill="#2e7d32" font-style="italic">Ciudad</text>
-      <text x="25" y="140" text-anchor="middle" font-size="11" fill="#c62828" font-style="italic" transform="rotate(-90 25 140)">Temperatura (°F)</text>
-    </svg>
+    <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras: Temperatura promedio en julio (°F). Chicago: 75°; Miami: 84°; Phoenix: 96°; Seattle: 67°. Fuente: NOAA, normales 1991-2020 (valores redondeados)" style="width:100%;height:auto;display:block;max-width:520px;margin:0 auto"><text x="260.0" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a2332">Temperatura promedio en julio (°F)</text><line x1="70" y1="230.0" x2="500" y2="230.0" stroke="#eceff1"/><text x="64" y="234.0" text-anchor="end" font-size="11" fill="#1a2332">0</text><line x1="70" y1="194.0" x2="500" y2="194.0" stroke="#eceff1"/><text x="64" y="198.0" text-anchor="end" font-size="11" fill="#1a2332">20</text><line x1="70" y1="158.0" x2="500" y2="158.0" stroke="#eceff1"/><text x="64" y="162.0" text-anchor="end" font-size="11" fill="#1a2332">40</text><line x1="70" y1="122.0" x2="500" y2="122.0" stroke="#eceff1"/><text x="64" y="126.0" text-anchor="end" font-size="11" fill="#1a2332">60</text><line x1="70" y1="86.0" x2="500" y2="86.0" stroke="#eceff1"/><text x="64" y="90.0" text-anchor="end" font-size="11" fill="#1a2332">80</text><line x1="70" y1="50.0" x2="500" y2="50.0" stroke="#eceff1"/><text x="64" y="54.0" text-anchor="end" font-size="11" fill="#1a2332">100</text><rect x="93.8" y="95.0" width="60.0" height="135.0" fill="#e65100"/><text x="123.8" y="89.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">75°</text><text x="123.8" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Chicago</text><rect x="201.2" y="78.8" width="60.0" height="151.2" fill="#e65100"/><text x="231.2" y="72.8" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">84°</text><text x="231.2" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Miami</text><rect x="308.8" y="57.2" width="60.0" height="172.8" fill="#e65100"/><text x="338.8" y="51.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">96°</text><text x="338.8" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Phoenix</text><rect x="416.2" y="109.4" width="60.0" height="120.6" fill="#e65100"/><text x="446.2" y="103.4" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">67°</text><text x="446.2" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Seattle</text><line x1="70" y1="44" x2="70" y2="230" stroke="#1a2332" stroke-width="2"/><line x1="70" y1="230" x2="500" y2="230" stroke="#1a2332" stroke-width="2"/><text x="285.0" y="270" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#1a2332">Ciudad</text><text x="18" y="140.0" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#1a2332" transform="rotate(-90 18 140.0)">Temperatura (°F)</text><text x="500" y="292" text-anchor="end" font-size="10" fill="#4f5b66" font-style="italic">Fuente: NOAA, normales 1991-2020 (valores redondeados)</text></svg>
   </div>
 </div>
 
-<p>Aplicando los tres pasos, podemos escribir esta descripción:</p>
+<p>Con los tres pasos, se puede escribir esta descripción:</p>
 
 <div class="descrip-modelo">
   <span class="etiq-mod">✅ Descripción modelo</span>
-  <p style="margin:8px 0 0 0"><strong>(1)</strong> La gráfica muestra la temperatura promedio en cuatro ciudades de Estados Unidos durante el mes de julio. <strong>(2)</strong> Phoenix alcanza los 95 grados, Miami llega a 88 grados, Chicago registra 75 grados y Seattle tiene 65 grados. <strong>(3)</strong> Por lo tanto, Phoenix es la ciudad más caliente y Seattle la más fresca. La diferencia entre ambas es de 30 grados.</p>
+  <p style="margin:8px 0 0 0"><strong>(1)</strong> La gráfica muestra la temperatura promedio en cuatro ciudades de Estados Unidos durante el mes de julio. <strong>(2)</strong> Phoenix alcanza los 96 grados, Miami llega a 84, Chicago registra 75 y Seattle tiene 67. <strong>(3)</strong> Por lo tanto, Phoenix es la ciudad más calurosa y Seattle la más fresca. La diferencia entre ambas es de 29 grados.</p>
 </div>
 
 <div class="tip">
-  <strong>📝 Importante:</strong> Al describir un dato visual, evite la opinión. <em>"Phoenix es la ciudad más caliente"</em> es un hecho que se ve en la gráfica. <em>"En Phoenix se vive mal por el calor"</em> es una opinión y no corresponde a esta tarea.
+  <strong>📝 Importante:</strong> al describir un dato visual, evita la opinión. <em>"Phoenix es la ciudad más caliente"</em> es un hecho que se ve en la gráfica. <em>"En Phoenix se vive mal por el calor"</em> es una opinión y no corresponde a esta tarea.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>3. Aplicación: describamos una segunda gráfica <span class="caja-tiempo">12 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: describe una segunda gráfica <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Su turno: describa esta gráfica</h3>
+<h3>Tu turno: describe esta gráfica</h3>
 
-<p>Observe la siguiente gráfica sobre las horas de luz solar promedio al día en cuatro meses del año en Chicago. Después, aplique los tres pasos para construir mentalmente una descripción.</p>
+<p>Esta gráfica muestra cuántas horas de luz hay en Chicago el día 15 de cuatro meses del año. Aplica los tres pasos y escribe en tu cuaderno una descripción de tres o cuatro oraciones.</p>
 
 <div class="grafica-describir">
-  <h4>Horas de luz solar al día en Chicago</h4>
   <div class="grafica-svg-wrap">
-    <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
-      <!-- Título -->
-      <text x="250" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2332">Horas de luz solar al día (Chicago)</text>
-      <!-- Ejes -->
-      <line x1="70" y1="50" x2="70" y2="230" stroke="#1a2332" stroke-width="2"/>
-      <line x1="70" y1="230" x2="470" y2="230" stroke="#1a2332" stroke-width="2"/>
-      <!-- Marcas eje Y -->
-      <text x="60" y="234" text-anchor="end" font-size="11" fill="#1a2332">0</text>
-      <line x1="66" y1="208" x2="70" y2="208" stroke="#1a2332"/>
-      <text x="60" y="212" text-anchor="end" font-size="11" fill="#1a2332">4</text>
-      <line x1="66" y1="186" x2="70" y2="186" stroke="#1a2332"/>
-      <text x="60" y="190" text-anchor="end" font-size="11" fill="#1a2332">6</text>
-      <line x1="66" y1="164" x2="70" y2="164" stroke="#1a2332"/>
-      <text x="60" y="168" text-anchor="end" font-size="11" fill="#1a2332">8</text>
-      <line x1="66" y1="142" x2="70" y2="142" stroke="#1a2332"/>
-      <text x="60" y="146" text-anchor="end" font-size="11" fill="#1a2332">10</text>
-      <line x1="66" y1="120" x2="70" y2="120" stroke="#1a2332"/>
-      <text x="60" y="124" text-anchor="end" font-size="11" fill="#1a2332">12</text>
-      <line x1="66" y1="98" x2="70" y2="98" stroke="#1a2332"/>
-      <text x="60" y="102" text-anchor="end" font-size="11" fill="#1a2332">14</text>
-      <line x1="66" y1="76" x2="70" y2="76" stroke="#1a2332"/>
-      <text x="60" y="80" text-anchor="end" font-size="11" fill="#1a2332">16</text>
-
-      <!-- Barras: Enero 9 (y=131), Abril 13 (y=87), Julio 15 (y=65), Octubre 11 (y=109) -->
-      <rect x="105" y="131" width="60" height="99" fill="#0277bd"/>
-      <text x="135" y="125" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">9 h</text>
-      <text x="135" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Enero</text>
-
-      <rect x="195" y="87" width="60" height="143" fill="#43a047"/>
-      <text x="225" y="81" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">13 h</text>
-      <text x="225" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Abril</text>
-
-      <rect x="285" y="65" width="60" height="165" fill="#fdd835"/>
-      <text x="315" y="59" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">15 h</text>
-      <text x="315" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Julio</text>
-
-      <rect x="375" y="109" width="60" height="121" fill="#ef6c00"/>
-      <text x="405" y="103" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">11 h</text>
-      <text x="405" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Octubre</text>
-
-      <!-- Etiquetas ejes -->
-      <text x="270" y="268" text-anchor="middle" font-size="11" fill="#2e7d32" font-style="italic">Mes</text>
-      <text x="25" y="140" text-anchor="middle" font-size="11" fill="#c62828" font-style="italic" transform="rotate(-90 25 140)">Horas</text>
-    </svg>
+    <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras: Horas de luz del día en Chicago (día 15 de cada mes). Enero: 10 h; Abril: 13 h; Julio: 15 h; Octubre: 11 h. Valores aproximados, redondeados a la hora" style="width:100%;height:auto;display:block;max-width:520px;margin:0 auto"><text x="260.0" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a2332">Horas de luz del día en Chicago (día 15 de cada mes)</text><line x1="70" y1="230.0" x2="500" y2="230.0" stroke="#eceff1"/><text x="64" y="234.0" text-anchor="end" font-size="11" fill="#1a2332">0</text><line x1="70" y1="207.5" x2="500" y2="207.5" stroke="#eceff1"/><text x="64" y="211.5" text-anchor="end" font-size="11" fill="#1a2332">2</text><line x1="70" y1="185.0" x2="500" y2="185.0" stroke="#eceff1"/><text x="64" y="189.0" text-anchor="end" font-size="11" fill="#1a2332">4</text><line x1="70" y1="162.5" x2="500" y2="162.5" stroke="#eceff1"/><text x="64" y="166.5" text-anchor="end" font-size="11" fill="#1a2332">6</text><line x1="70" y1="140.0" x2="500" y2="140.0" stroke="#eceff1"/><text x="64" y="144.0" text-anchor="end" font-size="11" fill="#1a2332">8</text><line x1="70" y1="117.5" x2="500" y2="117.5" stroke="#eceff1"/><text x="64" y="121.5" text-anchor="end" font-size="11" fill="#1a2332">10</text><line x1="70" y1="95.0" x2="500" y2="95.0" stroke="#eceff1"/><text x="64" y="99.0" text-anchor="end" font-size="11" fill="#1a2332">12</text><line x1="70" y1="72.5" x2="500" y2="72.5" stroke="#eceff1"/><text x="64" y="76.5" text-anchor="end" font-size="11" fill="#1a2332">14</text><line x1="70" y1="50.0" x2="500" y2="50.0" stroke="#eceff1"/><text x="64" y="54.0" text-anchor="end" font-size="11" fill="#1a2332">16</text><rect x="93.8" y="117.5" width="60.0" height="112.5" fill="#f9a825"/><text x="123.8" y="111.5" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">10 h</text><text x="123.8" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Enero</text><rect x="201.2" y="83.8" width="60.0" height="146.2" fill="#f9a825"/><text x="231.2" y="77.8" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">13 h</text><text x="231.2" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Abril</text><rect x="308.8" y="61.2" width="60.0" height="168.8" fill="#f9a825"/><text x="338.8" y="55.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">15 h</text><text x="338.8" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Julio</text><rect x="416.2" y="106.2" width="60.0" height="123.8" fill="#f9a825"/><text x="446.2" y="100.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">11 h</text><text x="446.2" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Octubre</text><line x1="70" y1="44" x2="70" y2="230" stroke="#1a2332" stroke-width="2"/><line x1="70" y1="230" x2="500" y2="230" stroke="#1a2332" stroke-width="2"/><text x="285.0" y="270" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#1a2332">Mes</text><text x="18" y="140.0" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#1a2332" transform="rotate(-90 18 140.0)">Horas de luz</text><text x="500" y="292" text-anchor="end" font-size="10" fill="#4f5b66" font-style="italic">Valores aproximados, redondeados a la hora</text></svg>
   </div>
 </div>
 
-<h3>El quiz de hoy lo guiará paso a paso</h3>
+<h3>Paso a paso</h3>
 
-<p>El quiz a continuación está organizado para que usted construya la descripción de la gráfica oración por oración. Cada pregunta apunta a un paso distinto: identificar el tema, leer los datos y formular la conclusión.</p>
+<p>Estas preguntas te guían para construir la descripción oración por oración: el tema, los datos y la conclusión. Compáralas con lo que escribiste.</p>
 
 <div class="quiz-cont">
-  <h4>📝 Describamos la gráfica paso a paso</h4>
+  <h4>📝 La descripción, paso a paso</h4>
   <div class="preguntas-quiz" id="preguntas-quiz5"></div>
-  <div class="puntaje" id="puntaje-quiz5">Aciertos: 0 / 6</div>
+  <div class="puntaje" id="puntaje-quiz5" role="status">Aciertos: 0 / 6</div>
 </div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l6-6.html#describir" target="_blank" rel="noopener">
+  ✍️ Práctica: Elige la mejor descripción ↗
+  <span>Más gráficas para practicar las oraciones que las describen. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre y conexión con la próxima clase <span class="caja-tiempo">8 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">40 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Lo que aprendimos hoy</h3>
-
+<p><strong>Describo una imagen y una gráfica.</strong> Esta tarea tiene dos partes:</p>
 <ul class="lista-bonita">
-  <li>Antes de escribir sobre una imagen, conviene hacer <strong>tres listas</strong>: sustantivos, verbos y adjetivos.</li>
-  <li>Las listas funcionan como un mapa de la imagen y facilitan la construcción de oraciones completas.</li>
-  <li>Para describir una gráfica, mapa o tabla, seguimos <strong>tres pasos</strong>: tema, datos, comparación o conclusión.</li>
-  <li>Existe un <strong>vocabulario específico</strong> (mayor, menor, alcanza, registra, por lo tanto) que da precisión a la descripción.</li>
-  <li>En la descripción de datos no se incluye opinión: solo lo que la imagen muestra.</li>
+  <li><strong>Una imagen:</strong> elige una foto (de tu familia, de tu barrio, de una revista) o mira por la ventana. Haz en tu cuaderno las <strong>tres listas</strong> (sustantivos, verbos y adjetivos) y escribe un párrafo de cuatro o cinco oraciones que la describa.</li>
+  <li><strong>Una gráfica:</strong> escribe en limpio la descripción de la gráfica de las horas de luz (sección 3), con los <strong>tres pasos</strong>: tema, datos y comparación o conclusión.</li>
 </ul>
-
-<div class="clave-pedagogica">
-  <strong>🎯 Conexión con el examen:</strong> El examen GED de Razonamiento a través de las Artes del Lenguaje, así como los de Ciencias y Estudios Sociales, presenta múltiples gráficas y tablas. Saber describirlas por escrito con orden y precisión es una destreza transversal que se evalúa de manera constante.
+<p>Si alguien de tu casa quiere participar, léele tu descripción de la imagen sin mostrársela y pídele que la dibuje. ¿Se parece a la foto?</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Describo una imagen y una gráfica»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Tres listas</td><td class="nivel-4">Hice las tres listas antes de escribir</td><td class="nivel-1">Escribí sin hacer las listas</td></tr>
+      <tr><td>Imagen</td><td class="nivel-4">Mi párrafo usa palabras de las tres listas</td><td class="nivel-1">Solo nombré objetos sueltos</td></tr>
+      <tr><td>Gráfica</td><td class="nivel-4">Tiene tema, al menos dos datos y una comparación</td><td class="nivel-1">Falta el tema o los datos</td></tr>
+      <tr><td>Sin opinión</td><td class="nivel-4">Solo describo lo que se ve</td><td class="nivel-1">Mezclé opiniones («me gusta el verano»)</td></tr>
+    </tbody>
+  </table>
 </div>
-
-<h3>Próxima clase</h3>
-
-<p>En la <strong>Clase 6</strong>, la última del Tema 7, aprenderemos el <strong>proceso de revisión</strong> de un texto: cómo detectar errores, cómo entender por qué algo "no suena bien" y cómo reescribir para mejorar la claridad. También trabajaremos la <strong>retroalimentación entre pares</strong> con frases plantilla y aplicaremos la lista de verificación final a nuestro propio párrafo descriptivo.</p>
-
 </div>
 </details>
 
-<p class="firma">Prof. José M. Fernández · Truman College · Tema 7, Clase 5</p>
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>Antes de escribir sobre una imagen, haz <strong>tres listas</strong>: sustantivos, verbos y adjetivos.</li>
+  <li>Las listas funcionan como un mapa de la imagen y facilitan escribir oraciones completas.</li>
+  <li>Para describir una gráfica, un mapa o una tabla, sigue <strong>tres pasos</strong>: tema, datos y comparación o conclusión.</li>
+  <li>Palabras como <em>mayor, menor, alcanza, registra, por lo tanto</em> dan precisión a la descripción.</li>
+  <li>Al describir datos no se opina: solo se dice lo que la imagen muestra.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuáles son las tres listas?</li>
+    <li>¿Cuáles son los tres pasos para describir una gráfica?</li>
+    <li>¿Por qué no conviene opinar al describir datos?</li>
+  </ul>
+</div>
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> En Razonamiento a través del lenguaje, en Ciencias y en Estudios Sociales aparecen muchas gráficas y tablas. Saber describirlas con orden y precisión te ayuda en todas esas materias.
+</div>
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_7-6.html" style="color:var(--cp-oscuro);font-weight:700">Lección 7.6 · El proceso de revisión</a>. La última lección del tema: cómo <strong>revisar</strong> un texto para encontrar errores y mejorarlo.
+</div>
+</div>
+</details>
+
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 7 · Lección 7.5</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -524,47 +581,47 @@
       texto:'Paso 1: ¿Cuál sería una buena oración para presentar el tema de la gráfica?',
       opciones:[
         {t:'En Chicago hace mucho frío en enero.',ok:false},
-        {t:'La gráfica muestra las horas de luz solar al día en Chicago durante cuatro meses.',ok:true},
+        {t:'La gráfica muestra las horas de luz del día en Chicago durante cuatro meses.',ok:true},
         {t:'Me gusta el verano porque hay más luz.',ok:false},
         {t:'Julio es mi mes favorito del año.',ok:false}
       ],
       explica:'La opción correcta presenta el tema de la gráfica (qué muestra) sin opiniones ni narraciones. Es la forma adecuada de comenzar una descripción.'
     },
     {
-      texto:'Paso 2: Según la gráfica, ¿cuántas horas de luz solar al día hay en Chicago en el mes de julio?',
+      texto:'Paso 2: Según la gráfica, ¿cuántas horas de luz del día hay en Chicago en el mes de julio?',
       opciones:[
-        {t:'9 horas',ok:false},
+        {t:'10 horas',ok:false},
         {t:'11 horas',ok:false},
         {t:'13 horas',ok:false},
         {t:'15 horas',ok:true}
       ],
-      explica:'La barra de julio alcanza el valor 15 en el eje vertical. Es el mes con más horas de luz solar en la gráfica.'
+      explica:'La barra de julio alcanza el valor 15 en el eje vertical. Es el mes con más horas de luz en la gráfica.'
     },
     {
-      texto:'Paso 2: ¿En qué mes hay MENOS horas de luz solar?',
+      texto:'Paso 2: ¿En qué mes hay MENOS horas de luz?',
       opciones:[
         {t:'Enero',ok:true},
         {t:'Abril',ok:false},
         {t:'Julio',ok:false},
         {t:'Octubre',ok:false}
       ],
-      explica:'La barra de enero (9 horas) es la más baja de las cuatro. Es el mes con menos horas de luz solar.'
+      explica:'La barra de enero (10 horas) es la más baja de las cuatro. Es el mes con menos horas de luz.'
     },
     {
       texto:'Paso 3: ¿Cuál es la diferencia entre el mes de más luz y el mes de menos luz?',
       opciones:[
         {t:'2 horas',ok:false},
-        {t:'4 horas',ok:false},
-        {t:'6 horas',ok:true},
-        {t:'9 horas',ok:false}
+        {t:'5 horas',ok:true},
+        {t:'7 horas',ok:false},
+        {t:'10 horas',ok:false}
       ],
-      explica:'Julio tiene 15 horas y enero tiene 9 horas. La diferencia es 15 − 9 = 6 horas.'
+      explica:'Julio tiene 15 horas y enero tiene 10. La diferencia es 15 − 10 = 5 horas.'
     },
     {
       texto:'¿Cuál oración describe correctamente la gráfica usando vocabulario de comparación?',
       opciones:[
-        {t:'En julio el sol calienta mucho más que en enero.',ok:false},
-        {t:'Julio tiene 15 horas de luz al día, que es mayor que las 9 horas de enero.',ok:true},
+        {t:'En julio hace mucho más calor que en enero.',ok:false},
+        {t:'Julio tiene 15 horas de luz al día, más que las 10 horas de enero.',ok:true},
         {t:'Yo creo que en julio el día se hace eterno.',ok:false},
         {t:'Cuando yo era niño, los veranos en Chicago eran muy largos.',ok:false}
       ],
@@ -574,7 +631,7 @@
       texto:'¿Cuál oración sería un buen CIERRE para la descripción de esta gráfica?',
       opciones:[
         {t:'Por eso me gusta tanto el verano.',ok:false},
-        {t:'En conclusión, las horas de luz solar varían con las estaciones del año y son mayores en verano.',ok:true},
+        {t:'En conclusión, las horas de luz cambian con las estaciones: hay más en verano y menos en invierno.',ok:true},
         {t:'Algún día me gustaría mudarme a un lugar con más luz.',ok:false},
         {t:'Los meses se cuentan de enero a diciembre.',ok:false}
       ],
@@ -599,7 +656,7 @@
       '<div><span class="num-preg">'+(idx+1)+'</span>'+
       '<span class="texto-preg">'+item.texto+'</span></div>'+
       '<div class="opciones-quiz">'+opcHtml+'</div>'+
-      '<div class="retro-quiz" id="retro-q5-'+idx+'"></div>';
+      '<div class="retro-quiz" id="retro-q5-'+idx+'" role="status"></div>';
 
     cont.appendChild(div);
 
@@ -617,6 +674,7 @@
           retro.textContent='✅ '+item.explica;
           retro.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-q5-'+idx); r2.textContent='❌ Mira otra vez la gráfica: el título, los valores y la altura de las barras.'; r2.classList.add('visible');
           b.classList.add('incorrecta');
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
@@ -632,6 +690,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuáles son las tres listas que conviene hacer antes de describir una imagen?", "o": ["Sustantivos, verbos y adjetivos", "Títulos, ejes y barras", "Hechos, opiniones y razones"], "c": 0}, {"t": "En la lista de <strong>sustantivos</strong> anotas…", "o": ["las cosas, personas y lugares que ves", "las acciones que pasan", "cómo son las cosas"], "c": 0}, {"t": "En la lista de <strong>verbos</strong> anotas…", "o": ["las acciones que pasan", "los colores", "los nombres de las personas"], "c": 0}, {"t": "«verde, tranquilo, soleado» son palabras para la lista de…", "o": ["adjetivos", "verbos", "sustantivos"], "c": 0}, {"t": "¿Cuál es el <strong>primer</strong> paso para describir una gráfica?", "o": ["Decir qué muestra: su tema", "Dar tu opinión", "Sumar todos los valores"], "c": 0}, {"t": "En la gráfica de julio, ¿qué ciudad tiene la temperatura más alta?", "o": ["Phoenix", "Miami", "Chicago"], "c": 0}, {"t": "En la gráfica de julio, ¿cuántos grados más tiene Miami que Chicago?", "o": ["9", "84", "17"], "c": 0}, {"t": "¿Qué oración describe la gráfica <strong>sin opinar</strong>?", "o": ["Seattle es la ciudad más fresca, con 67 grados.", "Seattle es la ciudad más agradable para vivir.", "Me encantaría visitar Seattle."], "c": 0}, {"t": "En la gráfica de las horas de luz, ¿qué mes tiene menos horas de luz?", "o": ["Enero", "Abril", "Octubre"], "c": 0}, {"t": "¿Qué frase sirve para <strong>concluir</strong> la descripción de una gráfica?", "o": ["Por lo tanto…", "Había una vez…", "Me gusta…"], "c": 0}, {"t": "«La tabla presenta…», «El mapa indica…» son frases para…", "o": ["presentar el tema de la imagen", "cerrar un cuento", "dar una opinión"], "c": 0}, {"t": "¿Qué palabra sirve para <strong>comparar</strong> datos?", "o": ["mayor que", "primero", "había"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes escribir sobre información visual. Puedes continuar con la Lección 7.6.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

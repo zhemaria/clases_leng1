@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 7.4 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 4: El texto de opinión y la comparación de los tres tipos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 7.4 · El texto de opinión y la comparación de los tres tipos</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -165,15 +171,78 @@
   .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
   .badge-discusion{background:#f3e5f5;color:#6a1b9a}
   .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 4: El texto de opinión y la comparación de los tres tipos</h1>
-<p class="subtitulo">Tema 7 · Lección 7.2 · Nivel 1 · Semana 14 · 50 minutos</p>
+<h1>Lección 7.4 · El texto de opinión y la comparación de los tres tipos</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 7 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Reconocer la estructura del <strong>texto de opinión</strong>: tema, opinión, razón y conclusión.</li>
     <li>Comparar los tres tipos de texto (narrativo, informativo y de opinión) en una tabla resumen.</li>
@@ -181,14 +250,31 @@
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-opinion">El texto de opinión</a></li>
+    <li><a href="#s-2-comparar">Los tres tipos lado a lado</a></li>
+    <li><a href="#s-3-clasificar">Actividad: clasifica cada texto</a></li>
+    <li><a href="#s-4-plantilla">Plantilla: escribo el tipo que elija</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En la clase anterior estudiamos los dos primeros tipos de texto: el <strong>narrativo</strong> (cuenta lo que pasó) y el <strong>informativo</strong> (presenta hechos sobre un tema). Hoy completamos el panorama con el tercer tipo: el <span class="palabra-clave">texto de opinión</span>, que es probablemente el más exigente de los tres porque no basta con decir lo que pensamos: debemos <strong>defenderlo con una razón</strong>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Al final de la clase compararemos los tres tipos lado a lado y escribiremos nuestro propio párrafo eligiendo el tipo que más nos atraiga.</p>
+<p>En la lección anterior estudiaste los dos primeros tipos de texto: el <strong>narrativo</strong> (cuenta lo que pasó) y el <strong>informativo</strong> (presenta hechos sobre un tema). Ahora completas el panorama con el tercer tipo: el <span class="palabra-clave">texto de opinión</span>. Es el más exigente de los tres, porque no basta con decir lo que piensas: tienes que <strong>defenderlo con razones</strong>.</p>
 
-<details open>
-<summary>1. El texto de opinión: expresar un punto de vista <span class="caja-tiempo">15 min</span></summary>
+<p>Al final compararás los tres tipos lado a lado y escribirás tu propio párrafo, del tipo que prefieras.</p>
+
+<details open id="s-1-opinion">
+<summary>1. El texto de opinión <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué es un texto de opinión?</h3>
@@ -197,7 +283,7 @@
 
 <h3>La estructura del texto de opinión: cuatro escalones</h3>
 
-<p>En este nivel, un texto de opinión se construye con cuatro elementos en orden. Cada uno cumple una función específica:</p>
+<p>En este nivel, un texto de opinión se construye con cuatro elementos, en orden. Cada uno cumple una función:</p>
 
 <div class="escalones-opinion">
   <div class="escalon">
@@ -221,7 +307,7 @@
     <div class="contenido-esc">
       <span class="nombre-esc">🔗 Dar una razón que la apoye</span>
       <span class="preg-esc">¿Por qué pienso eso?</span>
-      <span class="ej-esc"><em>"Funciona casi las 24 horas y conecta los barrios con el centro."</em></span>
+      <span class="ej-esc"><em>"Algunas líneas funcionan las 24 horas y conectan los barrios con el centro."</em></span>
     </div>
   </div>
   <div class="escalon">
@@ -236,16 +322,16 @@
 
 <h3>Un texto de opinión modelo</h3>
 
-<p>Veamos cómo se juntan los cuatro elementos en un párrafo real. Los colores señalan a qué parte corresponde cada oración:</p>
+<p>Mira cómo se juntan los cuatro elementos en un párrafo. Los colores señalan a qué parte corresponde cada oración:</p>
 
 <div class="texto-modelo t-opin">
   <span class="etiq-modelo e-opin">💭 El transporte público</span>
-  <p style="margin:8px 0 0 0"><span class="anot-opin tema">El transporte público de Chicago</span> <span class="anot-opin opinion-marca">me parece muy útil para los trabajadores</span>. <span class="anot-opin razon">Esto se debe a que funciona casi las veinticuatro horas y conecta los barrios con el centro de la ciudad</span>. Además, los precios son más bajos que los de un automóvil propio. <span class="anot-opin cierre">Por estas razones, considero que es un servicio indispensable para la vida cotidiana</span>.</p>
+  <p style="margin:8px 0 0 0"><span class="anot-opin tema">El transporte público de Chicago</span> <span class="anot-opin opinion-marca">me parece muy útil para los trabajadores</span>. <span class="anot-opin razon">Esto se debe a que algunas líneas funcionan las veinticuatro horas y conectan los barrios con el centro de la ciudad</span>. Además, los precios son más bajos que los de un automóvil propio. <span class="anot-opin cierre">Por estas razones, considero que es un servicio indispensable para la vida cotidiana</span>.</p>
 </div>
 
 <h3>Frases típicas para expresar una opinión</h3>
 
-<p>Cuando expresamos una opinión, conviene usar palabras que dejen claro al lector que estamos diciendo lo que pensamos, no lo que es un hecho. Aquí algunas frases útiles, organizadas por función:</p>
+<p>Cuando expresas una opinión, conviene usar palabras que dejen claro que dices lo que piensas, no un hecho. Aquí tienes frases útiles, organizadas por función:</p>
 
 <div class="frases-opinion-grid">
   <div class="frase-op">
@@ -273,21 +359,21 @@
 </div>
 </details>
 
-<details>
-<summary>2. Los tres tipos lado a lado: tabla resumen <span class="caja-tiempo">8 min</span></summary>
+<details id="s-2-comparar">
+<summary>2. Los tres tipos lado a lado <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Comparación de los tres tipos de texto</h3>
 
-<p>La siguiente tabla resume las características de los tres tipos. Conviene tenerla a mano cuando estemos por escribir un texto y necesitemos decidir cuál corresponde:</p>
+<p>Esta tabla resume las características de los tres tipos. Tenla a mano cuando vayas a escribir y necesites decidir cuál corresponde:</p>
 
 <table class="tabla-comp">
   <thead>
     <tr>
-      <th class="h-fila">Característica</th>
-      <th class="h-narr">📖 Narrativo</th>
-      <th class="h-info">📊 Informativo</th>
-      <th class="h-opin">💭 De opinión</th>
+      <th scope="col" class="h-fila">Característica</th>
+      <th scope="col" class="h-narr">📖 Narrativo</th>
+      <th scope="col" class="h-info">📊 Informativo</th>
+      <th scope="col" class="h-opin">💭 De opinión</th>
     </tr>
   </thead>
   <tbody>
@@ -332,7 +418,7 @@
 
 <h3>Un mismo tema, tres textos: la familia</h3>
 
-<p>Para fijar bien la idea, veamos cómo el tema <strong>"la familia"</strong> se desarrolla de tres maneras distintas según el propósito:</p>
+<p>Para fijar la idea, mira cómo el tema <strong>«la familia»</strong> se desarrolla de tres maneras distintas según el propósito:</p>
 
 <div class="texto-modelo t-narr">
   <span class="etiq-modelo e-narr">📖 Narrativo</span>
@@ -356,35 +442,40 @@
 </div>
 </details>
 
-<details>
-<summary>3. Actividad: clasifique cada texto <span class="caja-tiempo">8 min</span></summary>
+<details id="s-3-clasificar">
+<summary>3. Actividad: clasifica cada texto <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
-<p>A continuación tiene seis textos cortos. Para cada uno, elija el tipo correcto. Recuerde las pistas: las palabras de secuencia y los verbos en pasado indican narrativo; los hechos verificables indican informativo; las frases con <em>"creo que"</em>, <em>"me parece"</em> o <em>"en mi opinión"</em> indican opinión.</p>
+<p>Aquí tienes seis textos cortos. Para cada uno, elige el tipo correcto. Recuerda las pistas: las palabras de secuencia y los verbos en pasado indican narrativo; los hechos verificables indican informativo; las frases con <em>"creo que"</em>, <em>"me parece"</em> o <em>"en mi opinión"</em> indican opinión.</p>
 
 <div class="clasif-cont">
-  <h4>🗂️ Clasifique cada texto en su tipo</h4>
+  <h4>🗂️ Clasifica cada texto</h4>
   <div id="items-clasif"></div>
-  <div class="puntaje-clasif" id="puntaje-clasif">Aciertos: 0 / 6</div>
+  <div class="puntaje-clasif" id="puntaje-clasif" role="status">Aciertos: 0 / 6</div>
 </div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l7-4.html#tipo-de-texto" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Narrativo, informativo o de opinión? ↗
+  <span>Veinte textos más para clasificar. En la misma página practicas también <strong>hecho u opinión</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Plantilla guiada: escribo el tipo que elija <span class="caja-tiempo">10 min</span></summary>
+<details id="s-4-plantilla">
+<summary>4. Plantilla: escribo el tipo que elija <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Mi turno: elijo un tipo y escribo</h3>
 
-<p>Ahora le toca a usted. Elija uno de los tres tipos de texto y escriba un párrafo corto (5 o 6 oraciones) siguiendo la plantilla guiada correspondiente. Puede elegir el tema (su familia, su trabajo, su barrio, una comida favorita, una experiencia reciente) y el tipo que prefiera.</p>
+<p>Ahora te toca a ti. Elige uno de los tres tipos de texto y escribe en tu cuaderno un párrafo corto (5 o 6 oraciones) con la plantilla que corresponde. Tú eliges el tema (tu familia, tu trabajo, tu barrio, una comida favorita, algo que te pasó) y el tipo.</p>
 
 <div class="plantilla-elec">
-  <h4>👇 Elija el tipo de texto que quiere practicar</h4>
+  <h4>👇 Elige el tipo de texto que quieres practicar</h4>
   <div class="botones-tipo">
-    <button type="button" class="btn-elegir bnarr" data-tipo="narr">📖 Narrativo</button>
-    <button type="button" class="btn-elegir binfo" data-tipo="info">📊 Informativo</button>
-    <button type="button" class="btn-elegir bopin" data-tipo="opin">💭 De opinión</button>
+    <button type="button" class="btn-elegir bnarr" data-tipo="narr" aria-controls="plantilla-narr" aria-pressed="false">📖 Narrativo</button>
+    <button type="button" class="btn-elegir binfo" data-tipo="info" aria-controls="plantilla-info" aria-pressed="false">📊 Informativo</button>
+    <button type="button" class="btn-elegir bopin" data-tipo="opin" aria-controls="plantilla-opin" aria-pressed="false">💭 De opinión</button>
   </div>
 </div>
 
@@ -393,28 +484,28 @@
   <h4>📖 Plantilla del texto narrativo</h4>
 
   <div class="paso-plantilla">
-    <h5>1. Oración inicial — Anuncie el suceso</h5>
-    <span class="indicacion">Diga qué pasó y cuándo. Use tiempo pasado.</span>
+    <h5>1. Oración inicial — Anuncia el suceso</h5>
+    <span class="indicacion">Di qué pasó y cuándo. Usa el tiempo pasado.</span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>2. Primer suceso</h5>
-    <span class="indicacion">Use <em>"Primero..."</em></span>
+    <span class="indicacion">Usa <em>«Primero…»</em></span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>3. Segundo suceso</h5>
-    <span class="indicacion">Use <em>"Luego..."</em> o <em>"Después..."</em></span>
+    <span class="indicacion">Usa <em>«Luego…»</em> o <em>«Después…»</em></span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>4. Tercer suceso</h5>
-    <span class="indicacion">Use <em>"Después..."</em></span>
+    <span class="indicacion">Usa <em>«Después…»</em></span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>5. Oración de cierre</h5>
-    <span class="indicacion">Use <em>"Finalmente..."</em> o <em>"Al final..."</em></span>
+    <span class="indicacion">Usa <em>«Finalmente…»</em> o <em>«Al final…»</em></span>
     <span class="linea-escritura"></span>
   </div>
 </div>
@@ -424,18 +515,18 @@
   <h4>📊 Plantilla del texto informativo</h4>
 
   <div class="paso-plantilla">
-    <h5>1. Oración principal — Anuncie el tema</h5>
-    <span class="indicacion">Diga de qué va a hablar. Use tiempo presente.</span>
+    <h5>1. Oración principal — Anuncia el tema</h5>
+    <span class="indicacion">Di de qué vas a hablar. Usa el tiempo presente.</span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>2. Primer hecho</h5>
-    <span class="indicacion">Un dato verificable sobre el tema.</span>
+    <span class="indicacion">Un dato comprobable sobre el tema.</span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>3. Segundo hecho</h5>
-    <span class="indicacion">Otro dato verificable. Use <em>"También..."</em> o <em>"Además..."</em></span>
+    <span class="indicacion">Otro dato comprobable. Usa <em>«También…»</em> o <em>«Además…»</em></span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
@@ -456,33 +547,33 @@
 
   <div class="paso-plantilla">
     <h5>1. Presentar el tema</h5>
-    <span class="indicacion">Diga sobre qué va a opinar.</span>
+    <span class="indicacion">Di sobre qué vas a opinar.</span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>2. Expresar la opinión</h5>
-    <span class="indicacion">Use <em>"Creo que..."</em>, <em>"Me parece..."</em> o <em>"En mi opinión..."</em></span>
+    <span class="indicacion">Usa <em>«Creo que…»</em>, <em>«Me parece…»</em> o <em>«En mi opinión…»</em></span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>3. Dar una razón</h5>
-    <span class="indicacion">Use <em>"Porque..."</em> o <em>"Esto se debe a..."</em></span>
+    <span class="indicacion">Usa <em>«porque…»</em> o <em>«Esto se debe a…»</em></span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>4. Añadir otra razón (opcional)</h5>
-    <span class="indicacion">Use <em>"Además..."</em> o <em>"También..."</em></span>
+    <span class="indicacion">Usa <em>«Además…»</em> o <em>«También…»</em></span>
     <span class="linea-escritura"></span>
   </div>
   <div class="paso-plantilla">
     <h5>5. Conclusión</h5>
-    <span class="indicacion">Use <em>"Por eso..."</em>, <em>"Por estas razones..."</em> o <em>"En conclusión..."</em></span>
+    <span class="indicacion">Usa <em>«Por eso…»</em>, <em>«Por estas razones…»</em> o <em>«En conclusión…»</em></span>
     <span class="linea-escritura"></span>
   </div>
 </div>
 
 <div class="tip">
-  <strong>📝 Antes de entregar, verifique:</strong>
+  <strong>📝 Antes de terminar, revisa:</strong>
   <ul style="margin:8px 0 0 0;padding-left:22px">
     <li>¿El tipo de texto cumple con su propósito (contar, informar u opinar)?</li>
     <li>¿Usé las palabras clave del tipo elegido (secuencia, hechos o marcas de opinión)?</li>
@@ -494,70 +585,82 @@
 </div>
 </details>
 
-<details>
-<summary>5. Actividades de la lección y quiz final <span class="caja-tiempo">7 min</span></summary>
+<details id="s-tarea">
+<summary>5. Tarea <span class="caja-tiempo">40 min</span></summary>
 <div class="contenido-detalle">
-
-<p>Las actividades de la Lección 7.2 se reparten entre las Clases 3 y 4. El quiz final de 6 preguntas se entrega al cerrar esta clase.</p>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">Tres maneras de hablar de lo mismo</span></p>
-    <p>El profesor asigna a cada grupo un tema sencillo (la lluvia, el café, el fin de semana, el barrio) y cada grupo debe producir oralmente las <strong>tres versiones</strong>: una narración (qué pasó), una informativa (qué es) y una de opinión (qué pienso). Al final, cada grupo presenta sus tres textos al resto de la clase y se identifica cuál cumple mejor con cada propósito.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (asincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Mi tipo de texto</span></p>
-    <p>Cada estudiante elige <strong>uno</strong> de los tres tipos y publica en el foro un párrafo corto (5 o 6 oraciones) siguiendo la plantilla guiada. El párrafo debe:</p>
-    <ul style="padding-left:20px;font-size:0.92rem">
-      <li>Indicar al inicio el tipo elegido (narrativo, informativo o de opinión).</li>
-      <li>Cumplir con las características del tipo.</li>
-      <li>Tener una oración principal y una oración de cierre.</li>
-    </ul>
-    <p>Cada estudiante comenta el texto de un compañero indicando si reconoce el tipo y por qué.</p>
-  </div>
-</div>
-
-<h3>Quiz final de la lección 7.2</h3>
-
-<p>El siguiente quiz combina los aprendizajes de las clases 3 y 4: clasificar un texto, identificar la opinión, identificar la palabra temporal y elegir un buen cierre.</p>
-
-<div class="quiz-cont">
-  <h4>📝 Quiz: los tres tipos de texto</h4>
-  <div class="preguntas-quiz" id="preguntas-quiz4"></div>
-  <div class="puntaje" id="puntaje-quiz4">Aciertos: 0 / 6</div>
-</div>
-
-</div>
-</details>
-
-<details>
-<summary>6. Cierre y conexión con la próxima lección <span class="caja-tiempo">2 min</span></summary>
-<div class="contenido-detalle">
-
-<h3>Lo que aprendimos en esta lección</h3>
-
+<p><strong>Tres maneras de hablar de lo mismo.</strong> Elige un tema sencillo: la lluvia, el café, el fin de semana o tu barrio. Escribe en tu cuaderno <strong>tres párrafos cortos</strong> sobre ese tema, uno de cada tipo:</p>
 <ul class="lista-bonita">
-  <li>Un <strong>texto de opinión</strong> presenta lo que pensamos y lo justifica con una razón.</li>
-  <li>Su estructura tiene cuatro partes: tema, opinión, razón y conclusión.</li>
-  <li>Los tres tipos de texto (narrativo, informativo, de opinión) se distinguen por su <strong>propósito</strong>.</li>
-  <li>Un mismo tema puede tratarse de tres maneras diferentes.</li>
-  <li>Antes de escribir, conviene decidir el tipo y seguir una <strong>plantilla guiada</strong>.</li>
+  <li><strong>Narrativo:</strong> algo que te pasó, con palabras de secuencia.</li>
+  <li><strong>Informativo:</strong> tres hechos que se puedan comprobar.</li>
+  <li><strong>De opinión:</strong> tu opinión con los cuatro escalones: tema, opinión, razón y conclusión.</li>
 </ul>
-
-<div class="clave-pedagogica">
-  <strong>🎯 Conexión con el examen:</strong> La <strong>respuesta extendida</strong> del examen GED de Razonamiento a través de las Artes del Lenguaje exige escribir un texto argumentativo (opinión bien fundamentada). Dominar la estructura de cuatro partes (tema, opinión, razón, conclusión) es el primer paso hacia esa meta.
+<p>Encima de cada párrafo, escribe qué tipo es. Si alguien de tu casa quiere participar, tapa esos títulos, léele los tres párrafos y pídele que adivine cuál es cuál.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Tres maneras de hablar de lo mismo»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Narrativo</td><td class="nivel-4">Cuenta sucesos en orden, con palabras de secuencia</td><td class="nivel-1">Los sucesos no tienen orden</td></tr>
+      <tr><td>Informativo</td><td class="nivel-4">Solo tiene hechos comprobables</td><td class="nivel-1">Se colaron opiniones</td></tr>
+      <tr><td>De opinión</td><td class="nivel-4">Tiene opinión clara, al menos una razón y conclusión</td><td class="nivel-1">Solo dice «me gusta», sin razones</td></tr>
+      <tr><td>Mismo tema</td><td class="nivel-4">Los tres párrafos hablan del mismo tema</td><td class="nivel-1">Cada uno habla de algo distinto</td></tr>
+    </tbody>
+  </table>
 </div>
-
-<h3>Próxima lección</h3>
-
-<p>En la <strong>Lección 7.3</strong> (Clases 5 y 6) daremos el paso final: aprenderemos a <strong>describir información visual</strong> (gráficas, mapas, tablas) por escrito, y conoceremos el <strong>proceso de revisión</strong> de un texto (escribir, leer en voz alta, recibir comentarios, mejorar). Será la culminación del Tema 7 y nos preparará para los temas más avanzados del curso.</p>
-
 </div>
 </details>
 
-<p class="firma">Prof. José M. Fernández · Truman College · Tema 7, Clase 4</p>
+<details id="s-quiz">
+<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>7. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>Un <strong>texto de opinión</strong> presenta lo que piensas y lo justifica con razones.</li>
+  <li>Su estructura tiene cuatro escalones: <strong>tema, opinión, razón y conclusión</strong>.</li>
+  <li>Los tres tipos de texto (narrativo, informativo y de opinión) se distinguen por su <strong>propósito</strong>.</li>
+  <li>Antes de escribir, decide el tipo y usa su plantilla.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuáles son los cuatro escalones del texto de opinión?</li>
+    <li>¿Qué diferencia hay entre «me gusta» y una opinión con razones?</li>
+    <li>¿Qué frases avisan que viene una opinión?</li>
+  </ul>
+</div>
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> La <strong>respuesta extendida</strong> del GED de Razonamiento a través del lenguaje pide escribir un texto argumentativo: una opinión bien fundamentada con evidencia de los textos. Dominar los cuatro escalones (tema, opinión, razón y conclusión) es el primer paso hacia esa meta.
+</div>
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_7-5.html" style="color:var(--cp-oscuro);font-weight:700">Lección 7.5 · Escribir sobre información visual</a>. Aprenderás a <strong>describir por escrito</strong> imágenes, gráficas, mapas y tablas.
+</div>
+</div>
+</details>
+
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 7 · Lección 7.4</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -612,7 +715,7 @@
         '<button type="button" class="btn-clasif binfo" data-tipo="info">📊 Informativo</button>'+
         '<button type="button" class="btn-clasif bopin" data-tipo="opin">💭 De opinión</button>'+
       '</div>'+
-      '<div class="retro-clasif" id="retro-cl-'+idx+'"></div>';
+      '<div class="retro-clasif" id="retro-cl-'+idx+'" role="status"></div>';
     contItems.appendChild(div);
 
     var resuelto=false;
@@ -629,6 +732,7 @@
           retro.textContent='✅ '+item.explica;
           retro.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-cl-'+idx); r2.textContent='❌ Busca las pistas: palabras de secuencia, hechos comprobables o frases como «creo que».'; r2.classList.add('visible');
           b.classList.add('incorrecto');
           setTimeout(function(){b.classList.remove('incorrecto')},500);
         }
@@ -659,8 +763,8 @@
     btn.addEventListener('click',function(){
       var tipo=btn.getAttribute('data-tipo');
       // Actualizar estado de botones
-      btnsTipo.forEach(function(b){b.classList.remove('activo');});
-      btn.classList.add('activo');
+      btnsTipo.forEach(function(b){b.classList.remove('activo');b.setAttribute('aria-pressed','false');});
+      btn.classList.add('activo');btn.setAttribute('aria-pressed','true');
       // Mostrar la plantilla correspondiente
       Object.keys(plantillas).forEach(function(k){
         plantillas[k].classList.remove('activa');
@@ -669,129 +773,73 @@
     });
   });
 
-  /* =========================================================
-     QUIZ FINAL DE LA LECCIÓN 7.2
-     ========================================================= */
-  var preguntas=[
-    {
-      contexto:'"El reciclaje es una práctica importante para proteger el medio ambiente. Permite reutilizar materiales como vidrio, papel y plástico. Reduce la cantidad de basura que llega a los vertederos."',
-      texto:'¿Qué tipo de texto es?',
-      opciones:[
-        {t:'Narrativo',ok:false},
-        {t:'Informativo',ok:true},
-        {t:'De opinión',ok:false}
-      ],
-      explica:'Es informativo: presenta hechos verificables sobre el reciclaje en tiempo presente, sin opiniones personales ni secuencias temporales.'
-    },
-    {
-      contexto:'"Me parece que todas las escuelas deberían enseñar dos idiomas desde el primer grado. Los niños aprenden con facilidad cuando son pequeños. Además, hablar otro idioma abre muchas oportunidades en el futuro. Por eso, esta debería ser una prioridad educativa."',
-      texto:'¿Cuál oración expresa la opinión principal del autor?',
-      opciones:[
-        {t:'Me parece que todas las escuelas deberían enseñar dos idiomas desde el primer grado.',ok:true},
-        {t:'Los niños aprenden con facilidad cuando son pequeños.',ok:false},
-        {t:'Hablar otro idioma abre muchas oportunidades en el futuro.',ok:false},
-        {t:'Esta debería ser una prioridad educativa.',ok:false}
-      ],
-      explica:'La primera oración es la opinión central ("Me parece que..."). Las otras dos del medio son razones que apoyan la opinión, y la última es el cierre.'
-    },
-    {
-      contexto:'"El verano pasado viajé a Miami por primera vez. ___ visité la playa con mi familia. Luego recorrimos el centro histórico. Después comimos en un restaurante cubano. Finalmente regresamos a Chicago con muchas fotos."',
-      texto:'¿Qué palabra temporal completa mejor el espacio en blanco?',
-      opciones:[
-        {t:'Porque',ok:false},
-        {t:'Primero',ok:true},
-        {t:'Aunque',ok:false},
-        {t:'Pero',ok:false}
-      ],
-      explica:'"Primero" es una palabra de secuencia que indica el primer suceso de la narración. Encaja perfectamente antes de "luego", "después" y "finalmente".'
-    },
-    {
-      contexto:'"El parque del barrio tiene árboles grandes, bancos para descansar y un área de juegos para los niños. Es un lugar muy frecuentado los fines de semana."',
-      texto:'¿Cuál sería un buen cierre INFORMATIVO para este párrafo?',
-      opciones:[
-        {t:'¡Me encanta ir al parque los domingos por la tarde!',ok:false},
-        {t:'Ayer salí al parque con mi hija y nos divertimos mucho.',ok:false},
-        {t:'En total, el parque ofrece varios espacios para distintas actividades.',ok:true},
-        {t:'Creo que es el mejor parque de toda la ciudad.',ok:false}
-      ],
-      explica:'La opción correcta es un cierre informativo: mantiene el tono neutro y resume los hechos. Las otras opciones introducen opinión personal (1, 4) o narración (2).'
-    },
-    {
-      texto:'¿Cuál de las siguientes oraciones es claramente una OPINIÓN?',
-      opciones:[
-        {t:'Chicago se encuentra a orillas del lago Michigan.',ok:false},
-        {t:'El verano pasado visité Chicago con mi familia.',ok:false},
-        {t:'Considero que Chicago es la mejor ciudad para vivir en el medio oeste.',ok:true},
-        {t:'Chicago tiene más de 2 millones de habitantes.',ok:false}
-      ],
-      explica:'La tercera oración expresa una opinión personal ("Considero que... la mejor ciudad"). Las otras tres son hechos verificables o narración de experiencia.'
-    },
-    {
-      contexto:'"Considero que el desayuno es la comida más importante del día. Después de muchas horas de sueño, el cuerpo necesita energía. ___ una persona que desayuna bien rinde más en el trabajo o el estudio. Por eso recomiendo no saltarse nunca el desayuno."',
-      texto:'¿Qué conector completa mejor el espacio para añadir otra razón?',
-      opciones:[
-        {t:'Pero',ok:false},
-        {t:'Además',ok:true},
-        {t:'Primero',ok:false},
-        {t:'Sin embargo',ok:false}
-      ],
-      explica:'"Además" es el conector adecuado para añadir una segunda razón en un texto de opinión. "Pero" y "Sin embargo" indican contraste; "Primero" indica secuencia temporal.'
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué hace un texto de opinión?", "o": ["Presenta lo que alguien piensa y lo justifica con razones", "Cuenta sucesos en orden", "Solo da datos comprobables"], "c": 0}, {"t": "¿Cuáles son los cuatro escalones del texto de opinión?", "o": ["Tema, opinión, razón y conclusión", "Primero, luego, después y finalmente", "Título, subtítulo, foto y pie"], "c": 0}, {"t": "«El reciclaje es importante para el medio ambiente. Permite reutilizar vidrio, papel y plástico. Reduce la basura de los vertederos.» ¿Qué tipo de texto es?", "o": ["Narrativo", "Informativo", "De opinión"], "c": 1, "fijo": true}, {"t": "«Me parece que todas las escuelas deberían enseñar dos idiomas. Los niños aprenden con facilidad. Además, otro idioma abre oportunidades. Por eso, debería ser una prioridad.» ¿Cuál es la opinión principal?", "o": ["Todas las escuelas deberían enseñar dos idiomas.", "Los niños aprenden con facilidad.", "Otro idioma abre oportunidades."], "c": 0}, {"t": "«El verano pasado viajé a Miami. ___ visité la playa. Luego recorrimos el centro. Finalmente regresamos a Chicago.» ¿Qué palabra va en el espacio?", "o": ["Primero", "Porque", "Aunque", "Pero"], "c": 0}, {"t": "«El parque tiene árboles, bancos y juegos para niños.» ¿Cuál sería un buen cierre <strong>informativo</strong>?", "o": ["En total, el parque ofrece espacios para distintas actividades.", "¡Me encanta ir al parque los domingos!", "Creo que es el mejor parque de la ciudad."], "c": 0}, {"t": "¿Cuál es claramente una <strong>opinión</strong>?", "o": ["Considero que Chicago es la mejor ciudad para vivir.", "Chicago está a orillas del lago Michigan.", "El verano pasado visité Chicago."], "c": 0}, {"t": "«Considero que el desayuno es muy importante. El cuerpo necesita energía por la mañana. ___ quien desayuna bien rinde más.» ¿Qué conector añade otra razón?", "o": ["Además,", "Pero", "Primero,", "Sin embargo,"], "c": 0}, {"t": "¿Qué le falta a esta opinión? «Me gusta el invierno.»", "o": ["Una razón que la apoye", "Palabras de secuencia", "Un dato con números"], "c": 0}, {"t": "¿Qué frase sirve para <strong>cerrar</strong> un texto de opinión?", "o": ["Por estas razones…", "Primero…", "Había una vez…"], "c": 0}, {"t": "¿Qué tipo de texto suele usar el tiempo pasado?", "o": ["El narrativo", "El informativo", "El de opinión"], "c": 0}, {"t": "Una editorial de periódico que pide más parques para el barrio es un texto…", "o": ["de opinión", "narrativo", "informativo"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
-  ];
-
-  var resueltas={};
-  var aciertos=0;
-  var cont=document.getElementById('preguntas-quiz4');
-
-  preguntas.forEach(function(item,idx){
-    var div=document.createElement('div');
-    div.className='preg-quiz';
-
-    var opcHtml='';
-    item.opciones.forEach(function(op){
-      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
-    });
-
-    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
-
-    div.innerHTML=
-      '<div><span class="num-preg">'+(idx+1)+'</span>'+
-      '<span class="texto-preg">'+item.texto+'</span></div>'+
-      contextoHtml+
-      '<div class="opciones-quiz">'+opcHtml+'</div>'+
-      '<div class="retro-quiz" id="retro-q4-'+idx+'"></div>';
-
-    cont.appendChild(div);
-
-    var botones=div.querySelectorAll('.opt-quiz');
-    botones.forEach(function(b){
-      b.addEventListener('click',function(){
-        if(resueltas[idx])return;
-        var correcto=(b.getAttribute('data-correcto')==='1');
-        if(correcto){
-          b.classList.add('correcta');
-          resueltas[idx]=true;
-          aciertos++;
-          actualizarPuntaje();
-          var retro=document.getElementById('retro-q4-'+idx);
-          retro.textContent='✅ '+item.explica;
-          retro.classList.add('visible');
-        }else{
-          b.classList.add('incorrecta');
-          setTimeout(function(){b.classList.remove('incorrecta')},500);
-        }
-      });
-    });
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
   });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya distingues los tres tipos de texto. Puedes continuar con la Lección 7.5.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
 
-  function actualizarPuntaje(){
-    var el=document.getElementById('puntaje-quiz4');
-    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
-    if(aciertos===preguntas.length){
-      el.innerHTML='🎉 ¡Lección 7.2 dominada! Aciertos: '+aciertos+' / '+preguntas.length;
-      el.style.color='var(--exito)';
-    }
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

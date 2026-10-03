@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 7.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 1: El párrafo y la técnica de la hamburguesa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 7.1 · El párrafo y la técnica de la hamburguesa</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -124,15 +130,78 @@
   .preg-guia h4{margin-top:0;color:#8a6d00}
   .preg-guia ul{margin:8px 0 0 0;padding-left:22px}
   .preg-guia li{margin-bottom:5px;font-size:0.93rem}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 1: El párrafo y la técnica de la hamburguesa</h1>
-<p class="subtitulo">Tema 7 · Lección 7.1 · Nivel 1 · Semana 13 · 50 minutos</p>
+<h1>Lección 7.1 · El párrafo y la técnica de la hamburguesa</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 7 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Reconocer que un <strong>párrafo</strong> es una unidad temática que desarrolla una sola idea.</li>
     <li>Identificar las <strong>tres partes</strong> del párrafo: oración principal, oraciones de apoyo y oración de cierre.</li>
@@ -140,19 +209,36 @@
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-parrafo">¿Qué es un párrafo?</a></li>
+    <li><a href="#s-2-hamburguesa">La técnica de la hamburguesa</a></li>
+    <li><a href="#s-3-modelos">Párrafos modelo</a></li>
+    <li><a href="#s-4-practica">Práctica: encuentra la oración principal</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Hasta este punto del curso, hemos aprendido a leer oraciones, textos cortos e información visual. Ahora damos un paso decisivo: comenzamos a <strong>escribir nuestras propias ideas</strong> de forma organizada. El primer destino de este viaje es el <span class="palabra-clave">párrafo</span>, la unidad básica de la escritura.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Un párrafo no es un conjunto cualquiera de oraciones; es un grupo de oraciones que hablan de <strong>un solo tema</strong> y están ordenadas de tal modo que el lector pueda seguir la idea sin confundirse. Para visualizarlo, usaremos una imagen muy útil: la <strong>técnica de la hamburguesa</strong>.</p>
+<p>Hasta ahora aprendiste a leer oraciones, textos cortos e información visual. Ahora vas a dar un paso decisivo: empezar a <strong>escribir tus propias ideas</strong> de forma organizada. El primer destino de este viaje es el <span class="palabra-clave">párrafo</span>, la unidad básica de la escritura.</p>
 
-<details open>
-<summary>1. Introducción: ¿qué es un párrafo? <span class="caja-tiempo">10 min</span></summary>
+<p>Un párrafo no es un montón cualquiera de oraciones: es un grupo de oraciones que hablan de <strong>un solo tema</strong> y están ordenadas para que quien lee siga la idea sin confundirse. Para recordarlo, vas a usar una imagen muy útil: la <strong>técnica de la hamburguesa</strong>.</p>
+
+<details open id="s-1-parrafo">
+<summary>1. ¿Qué es un párrafo? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Una definición sencilla</h3>
 
-<p>Un <span class="palabra-clave">párrafo</span> es un conjunto de oraciones conectadas entre sí que desarrollan una sola idea principal. Visualmente, todo párrafo comienza con <strong>mayúscula</strong> y termina con un <strong>punto y aparte</strong>, lo que indica al lector que ahí concluye una idea y, si hay otro párrafo, comenzará una idea distinta.</p>
+<p>Un <span class="palabra-clave">párrafo</span> es un conjunto de oraciones conectadas entre sí que desarrollan una sola idea principal. Todo párrafo empieza con <strong>mayúscula</strong> y termina con un <strong>punto y aparte</strong>, que le indica a quien lee que ahí termina una idea y, si hay otro párrafo, empieza una idea distinta.</p>
 
 <div class="clave-pedagogica">
   <strong>💡 Idea central:</strong> Un párrafo no se mide por su longitud, sino por su <strong>unidad temática</strong>. Puede tener tres oraciones o diez; lo importante es que todas hablen del mismo asunto.
@@ -160,7 +246,7 @@
 
 <h3>¿Cómo reconocer un párrafo en un texto?</h3>
 
-<p>En un texto bien escrito, los párrafos se distinguen visualmente por tres señales:</p>
+<p>En un texto bien escrito, los párrafos se reconocen a simple vista por tres señales:</p>
 
 <ul class="lista-bonita">
   <li>La <strong>primera línea</strong> suele tener una sangría (espacio en blanco) o estar precedida de una línea en blanco.</li>
@@ -175,18 +261,18 @@
 </div>
 </details>
 
-<details>
-<summary>2. La técnica de la hamburguesa: las tres partes <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-hamburguesa">
+<summary>2. La técnica de la hamburguesa <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Una analogía útil para nunca olvidar la estructura</h3>
 
-<p>Imaginemos una hamburguesa: tiene un pan arriba, un relleno en el medio y un pan abajo. Un párrafo bien construido funciona exactamente igual. Cada parte tiene una función específica y, si falta alguna, la hamburguesa (o el párrafo) se desarma.</p>
+<p>Imagina una hamburguesa: tiene un pan arriba, un relleno en el medio y un pan abajo. Un párrafo bien construido funciona igual. Cada parte tiene una función y, si falta alguna, la hamburguesa (o el párrafo) se desarma.</p>
 
 <div class="hamburguesa">
   <h4>🍔 El párrafo como hamburguesa</h4>
   <div class="hamburguesa-svg-wrap">
-    <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dibujo de una hamburguesa. El pan de arriba es la oración principal; el relleno, las oraciones de apoyo con detalles, ejemplos y explicaciones; el pan de abajo, la oración de cierre.">
       <!-- Pan superior con semillas -->
       <ellipse cx="180" cy="60" rx="140" ry="42" fill="#d4a056" stroke="#8a5a00" stroke-width="2"/>
       <path d="M 40 60 Q 180 10 320 60" fill="#d4a056" stroke="#8a5a00" stroke-width="2"/>
@@ -228,14 +314,14 @@
       <span class="icono-parte">🍞</span>
       <div class="desc-parte">
         <span class="nombre-parte">1. El pan de arriba — Oración principal (o temática)</span>
-        <span class="texto-parte">Es la <strong>primera oración</strong> del párrafo y anuncia el tema. Le dice al lector de qué va a tratar todo lo que viene a continuación.</span>
+        <span class="texto-parte">Anuncia el tema: le dice a quien lee de qué va a tratar todo lo que viene después. Cuando escribas, <strong>ponla al principio</strong>. Al leer textos de otros, a veces la encontrarás en el medio o al final, como viste en la Lección 4.3.</span>
       </div>
     </div>
     <div class="parte-hamb relleno-parte">
       <span class="icono-parte">🥩</span>
       <div class="desc-parte">
         <span class="nombre-parte">2. El relleno — Oraciones de apoyo</span>
-        <span class="texto-parte">Son <strong>dos o tres oraciones</strong> que explican, dan detalles o ejemplos sobre la idea principal. Sin el relleno, la hamburguesa es solo pan: el lector se queda con hambre de información.</span>
+        <span class="texto-parte">Son <strong>dos o tres oraciones</strong> que explican, dan detalles o ejemplos sobre la idea principal. Sin el relleno, la hamburguesa es solo pan: quien lee se queda con hambre de información.</span>
       </div>
     </div>
     <div class="parte-hamb pan-inf">
@@ -266,19 +352,19 @@
 </div>
 
 <div class="tip">
-  <strong>📝 Importante:</strong> En el nivel principiante, recomendamos que el párrafo tenga entre <strong>4 y 6 oraciones</strong>: una principal, dos o tres de apoyo y una de cierre. Más adelante se podrá ampliar.
+  <strong>📝 Importante:</strong> En este nivel, conviene que tus párrafos tengan entre <strong>4 y 6 oraciones</strong>: una principal, dos o tres de apoyo y una de cierre. Más adelante podrás escribir párrafos más largos.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>3. Párrafos modelo: ver las tres partes en acción <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-modelos">
+<summary>3. Párrafos modelo <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Modelo 1: Mi familia</h3>
 
-<p>Observemos cómo aparecen las tres partes en un párrafo real. Los colores señalan a qué parte corresponde cada oración:</p>
+<p>Observa cómo aparecen las tres partes en un párrafo real. Los colores (y la leyenda de abajo) señalan a qué parte corresponde cada oración:</p>
 
 <div class="parrafo-modelo">
   <span class="principal">Mi familia es pequeña pero muy unida.</span>
@@ -297,8 +383,8 @@
 <table class="tabla-qa">
   <thead>
     <tr>
-      <th style="width:35%">Pregunta</th>
-      <th>Respuesta del párrafo</th>
+      <th scope="col" style="width:35%">Pregunta</th>
+      <th scope="col">Respuesta del párrafo</th>
     </tr>
   </thead>
   <tbody>
@@ -343,7 +429,7 @@
 
 <div class="preg-guia">
   <h4>🔍 Preguntas guía para identificar la oración principal</h4>
-  <p>Cuando lea un párrafo y quiera encontrar la oración principal, pregúntese:</p>
+  <p>Cuando leas un párrafo y quieras encontrar la oración principal, pregúntate:</p>
   <ul>
     <li>¿Cuál es la oración más <strong>general</strong> (la que dice menos detalles)?</li>
     <li>¿Qué oración <strong>resume</strong> de qué trata todo el párrafo?</li>
@@ -355,47 +441,103 @@
 </div>
 </details>
 
-<details>
-<summary>4. Quiz: identificar la oración principal <span class="caja-tiempo">10 min</span></summary>
+<details id="s-4-practica">
+<summary>4. Práctica: encuentra la oración principal <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
-<p>A continuación, se presentan cuatro párrafos cortos. En cada caso, identifique cuál es la oración principal. Recuerde: la oración principal es la más general, la que anuncia el tema del párrafo.</p>
+<p>Aquí tienes cuatro párrafos cortos. En cada uno, encuentra la oración principal. Recuerda: es la más general, la que anuncia el tema del párrafo.</p>
 
 <div class="quiz-cont">
-  <h4>📝 Encuentre el pan de arriba</h4>
+  <h4>📝 Encuentra el pan de arriba</h4>
   <div class="preguntas-quiz" id="preguntas-quiz1"></div>
-  <div class="puntaje" id="puntaje-quiz1">Aciertos: 0 / 4</div>
+  <div class="puntaje" id="puntaje-quiz1" role="status">Aciertos: 0 / 4</div>
 </div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l7-1.html#oracion-principal" target="_blank" rel="noopener">
+  ✍️ Práctica: Encuentra la oración principal ↗
+  <span>Más párrafos para practicar. En la misma página practicas también <strong>las tres partes del párrafo</strong> y <strong>la oración que no encaja</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>5. Cierre y conexión con la próxima clase <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>5. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p><strong>Mi hamburguesa.</strong> Elige un tema que conozcas bien: tu familia, tu barrio, tu trabajo o una comida que te guste. Antes de escribir, dibuja en tu cuaderno una hamburguesa con tres partes y anota en cada una la idea que irá allí.</p>
+<p>Después escribe un párrafo de <strong>cuatro a seis oraciones</strong>:</p>
+<ul class="lista-bonita">
+  <li>Una <strong>oración principal</strong> al comienzo, que anuncie el tema.</li>
+  <li><strong>Dos o tres oraciones de apoyo</strong>, con detalles o ejemplos.</li>
+  <li>Una <strong>oración de cierre</strong>, que redondee la idea.</li>
+</ul>
+<p>Al final, subraya con un color la oración principal, con otro las de apoyo y con un tercero la de cierre. Si alguien de tu casa quiere participar, léele tu párrafo y pregúntale de qué trata: si te responde con tu oración principal, ¡lo lograste!</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Mi hamburguesa»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Oración principal</td><td class="nivel-4">Está al comienzo y anuncia el tema</td><td class="nivel-1">No se sabe de qué trata el párrafo</td></tr>
+      <tr><td>Apoyo</td><td class="nivel-4">Hay dos o tres oraciones con detalles del mismo tema</td><td class="nivel-1">Hay menos de dos, o hablan de otra cosa</td></tr>
+      <tr><td>Cierre</td><td class="nivel-4">La última oración redondea la idea</td><td class="nivel-1">El párrafo termina de golpe</td></tr>
+      <tr><td>Oraciones</td><td class="nivel-4">Cada una empieza con mayúscula y termina con punto</td><td class="nivel-1">Faltan mayúsculas o puntos</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
 
-<h3>Lo que aprendimos hoy</h3>
+<details id="s-quiz">
+<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
 
+<details id="s-cierre">
+<summary>7. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
 <ul class="lista-bonita">
   <li>Un <strong>párrafo</strong> es un conjunto de oraciones que desarrollan una sola idea.</li>
-  <li>Todo párrafo bien construido tiene <strong>tres partes</strong>: oración principal, oraciones de apoyo y oración de cierre.</li>
-  <li>La <strong>técnica de la hamburguesa</strong> nos ayuda a recordar la estructura visualmente.</li>
-  <li>La <strong>oración principal</strong> es la más general y anuncia el tema del párrafo.</li>
-  <li>Para identificarla, podemos preguntarnos: <em>¿qué oración resume todo el párrafo?</em></li>
+  <li>Un párrafo bien construido tiene <strong>tres partes</strong>: oración principal, oraciones de apoyo y oración de cierre.</li>
+  <li>La <strong>técnica de la hamburguesa</strong> te ayuda a recordar la estructura.</li>
+  <li>La <strong>oración principal</strong> es la más general y anuncia el tema. En tus párrafos, ponla al principio.</li>
 </ul>
-
-<div class="clave-pedagogica">
-  <strong>🎯 Conexión con el examen:</strong> En el GED de Razonamiento a través de las Artes del Lenguaje (RLA), tanto en lectura como en escritura, se evalúa la capacidad de reconocer y construir párrafos bien estructurados. La técnica de la hamburguesa es un punto de partida sólido para responder con éxito.
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuáles son las tres partes de un párrafo?</li>
+    <li>¿Qué hace la oración de cierre?</li>
+    <li>¿Cómo reconoces la oración principal en un párrafo ajeno?</li>
+  </ul>
 </div>
-
-<h3>Próxima clase</h3>
-
-<p>En la <strong>Clase 2</strong> avanzaremos del reconocimiento a la <strong>producción</strong>: aprenderemos las cualidades de un buen párrafo (unidad, cohesión y coherencia), conoceremos los conectores básicos (<em>y, pero, porque, entonces</em>) y escribiremos nuestro primer párrafo informativo siguiendo una plantilla guiada.</p>
-
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> En el GED de Razonamiento a través del lenguaje se evalúa, en la lectura y en la escritura, la capacidad de reconocer y construir párrafos bien organizados. La técnica de la hamburguesa es un buen punto de partida.
+</div>
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_7-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 7.2 · Cualidades del párrafo y conectores básicos</a>. Pasarás del reconocimiento a la <strong>escritura</strong>: las cualidades de un buen párrafo y los conectores básicos <em>y, pero, porque, entonces</em>.
+</div>
 </div>
 </details>
 
-<p class="firma">Prof. José M. Fernández · Truman College · Tema 7, Clase 1</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 7 · Lección 7.1</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -425,11 +567,11 @@
       explica:'Aunque la oración (3) está en el medio, es la que resume el tema: el viaje al trabajo. Las otras tres son las etapas (apoyos). La oración principal no siempre está al inicio.'
     },
     {
-      contexto:'(1) El verano en Chicago puede ser muy caluroso. (2) Las temperaturas suelen pasar de los 90 grados Fahrenheit. (3) La humedad hace que el calor se sienta aún peor. (4) Por eso muchas personas buscan refugio en el lago Michigan durante esos meses.',
+      contexto:'(1) El verano en Chicago puede ser muy caluroso. (2) Algunos días, la temperatura pasa de los 90 grados Fahrenheit. (3) La humedad hace que el calor se sienta aún peor. (4) Por eso muchas personas buscan refugio en el lago Michigan durante esos meses.',
       texto:'¿Cuál es la oración principal?',
       opciones:[
         {t:'(1) El verano en Chicago puede ser muy caluroso.',ok:true},
-        {t:'(2) Las temperaturas suelen pasar de los 90 grados Fahrenheit.',ok:false},
+        {t:'(2) Algunos días, la temperatura pasa de los 90 grados Fahrenheit.',ok:false},
         {t:'(3) La humedad hace que el calor se sienta aún peor.',ok:false},
         {t:'(4) Por eso muchas personas buscan refugio en el lago Michigan durante esos meses.',ok:false}
       ],
@@ -466,7 +608,7 @@
       '<span class="texto-preg">'+item.texto+'</span></div>'+
       '<div class="contexto-preg">'+item.contexto+'</div>'+
       '<div class="opciones-quiz">'+opcHtml+'</div>'+
-      '<div class="retro-quiz" id="retro-q1-'+idx+'"></div>';
+      '<div class="retro-quiz" id="retro-q1-'+idx+'" role="status"></div>';
 
     cont.appendChild(div);
 
@@ -484,6 +626,7 @@
           retro.textContent='✅ '+item.explica;
           retro.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-q1-'+idx); r2.textContent='❌ Busca la oración más general: la que abarca a todas las demás.'; r2.classList.add('visible');
           b.classList.add('incorrecta');
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
@@ -499,6 +642,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué es un párrafo?", "o": ["Un grupo de oraciones que desarrollan una sola idea", "Cualquier grupo de oraciones", "Una oración muy larga"], "c": 0}, {"t": "¿Cómo termina un párrafo?", "o": ["Con punto y aparte", "Con una coma", "Con punto y coma"], "c": 0}, {"t": "En la técnica de la hamburguesa, el pan de arriba es…", "o": ["la oración principal", "la oración de cierre", "una oración de apoyo"], "c": 0}, {"t": "En la técnica de la hamburguesa, el relleno son…", "o": ["las oraciones de apoyo", "la oración principal", "el título"], "c": 0}, {"t": "¿Qué hace la oración de cierre?", "o": ["Redondea o resume la idea", "Presenta un tema nuevo", "Da el primer detalle"], "c": 0}, {"t": "¿Cuántas oraciones conviene que tenga un párrafo en este nivel?", "o": ["Entre 4 y 6", "Solo 1", "Más de 15"], "c": 0}, {"t": "«Mi barrio es tranquilo y agradable. Las calles tienen árboles. Hay una panadería en la esquina. Por eso me siento a gusto aquí.» ¿Cuál es la oración principal?", "o": ["Mi barrio es tranquilo y agradable.", "Las calles tienen árboles.", "Por eso me siento a gusto aquí."], "c": 0}, {"t": "En el mismo párrafo, «Por eso me siento a gusto aquí» es…", "o": ["la oración de cierre", "la oración principal", "una oración de apoyo"], "c": 0}, {"t": "«Hay una panadería en la esquina» es…", "o": ["una oración de apoyo", "la oración principal", "la oración de cierre"], "c": 0}, {"t": "¿Qué pregunta te ayuda a encontrar la oración principal?", "o": ["¿Qué oración resume de qué trata todo el párrafo?", "¿Qué oración es la más larga?", "¿Qué oración tiene más comas?"], "c": 0}, {"t": "En un texto que lees, ¿la oración principal está siempre al comienzo?", "o": ["No: a veces está en el medio o al final", "Sí, siempre", "Nunca está al comienzo"], "c": 0}, {"t": "Un párrafo habla del mercado del barrio y de repente dice: «Mi primo vive en Texas». ¿Qué problema hay?", "o": ["Esa oración se sale del tema", "Le falta un título", "Tiene demasiados detalles"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya conoces la estructura del párrafo. Puedes continuar con la Lección 7.2.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 2 y 3, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 
