@@ -302,6 +302,10 @@
   <strong>💡 Cómo se llaman las letras:</strong> Cada letra tiene su <em>nombre</em> (cómo la pronuncias cuando deletreas) y su <em>sonido</em> (cómo suena dentro de una palabra). Por ejemplo, la letra <strong>B</strong> se llama "be" pero suena "bbb" dentro de "barco". La letra <strong>H</strong> se llama "hache" pero en español <em>no suena</em> dentro de las palabras: "hola" se pronuncia "ola".
 </div>
 
+<div class="tip">
+  <strong>📌 Una letra con dos nombres:</strong> la <strong>Y</strong> se llama <strong>ye</strong>. También se le dice <em>i griega</em>, y vas a oír los dos nombres.
+</div>
+
 </div>
 </details>
 
@@ -493,8 +497,13 @@
     'A':'a','B':'be','C':'ce','D':'de','E':'e','F':'efe','G':'ge','H':'hache',
     'I':'i','J':'jota','K':'ka','L':'ele','M':'eme','N':'ene','Ñ':'eñe','O':'o',
     'P':'pe','Q':'cu','R':'erre','S':'ese','T':'te','U':'u','V':'uve','W':'doble uve',
-    'X':'equis','Y':'i griega','Z':'zeta'
+    'X':'equis','Y':'ye','Z':'zeta'
   };
+
+  // Cómo debe decirlas la voz: «cu» con tilde para que no la lea como sigla
+  var vozLetras={};
+  Object.keys(nombresLetras).forEach(function(k){vozLetras[k]=nombresLetras[k];});
+  vozLetras['Q']='cú';
 
   // Web Speech API
   var hablando=false;
@@ -533,7 +542,7 @@
       if(leyendoTodo)return;
       detenerAudio();
       card.classList.add('sonando');
-      hablar(nombresLetras[L.mayus]+'. '+L.mayus+' de '+L.palabra,function(){
+      hablar(vozLetras[L.mayus]+'. '+vozLetras[L.mayus]+' de '+L.palabra,function(){
         card.classList.remove('sonando');
       });
     });
@@ -556,7 +565,7 @@
       document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
       card.classList.add('sonando');
       card.scrollIntoView({behavior:'smooth',block:'center'});
-      hablar(nombresLetras[L.mayus]+'. '+L.mayus+' de '+L.palabra,function(){
+      hablar(vozLetras[L.mayus]+'. '+vozLetras[L.mayus]+' de '+L.palabra,function(){
         i++;
         setTimeout(siguiente,300);
       });
@@ -699,7 +708,7 @@
           actualizarPuntajeImg();
           // Audio de confirmación con la letra y palabra
           detenerAudio();
-          hablar(item.correcta+' de '+item.palabra);
+          hablar(vozLetras[item.correcta]+' de '+item.palabra);
         }else{
           b.classList.add('incorrecta');
           setTimeout(function(){b.classList.remove('incorrecta')},500);
