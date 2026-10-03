@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 5.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 3: El orden de los eventos — Palabras de secuencia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5.3 · El orden de los eventos: palabras de secuencia</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -130,37 +136,119 @@
   .leyenda-colores{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.9rem}
   .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
   .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  button.hueco{font:inherit;font-weight:700;cursor:pointer}
+  button.hueco:focus-visible,.ctrl:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
 </style>
 </head>
 <body>
 
-<h1>Clase 3: El orden de los eventos</h1>
-<p class="subtitulo">Palabras de secuencia (conectores temporales) · Nivel 1 · Tema 5, semana 10</p>
+<h1>Lección 5.3 · El orden de los eventos: palabras de secuencia</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 5 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Identificar y utilizar los <strong>conectores de secuencia</strong> (<em>primero, luego, después, mientras tanto, finalmente</em>) para comprender y producir textos organizados en <strong>orden cronológico</strong>.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-conectores">¿Qué son los conectores de secuencia?</a></li>
+    <li><a href="#s-2-cinco">Los cinco conectores principales</a></li>
+    <li><a href="#s-3-practica">Práctica: ordenar y completar</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En las clases anteriores estudiamos quiénes son los personajes (Clase 1) y dónde viven (Clase 2). Pero una historia no es solo personajes y escenario: es una <strong>sucesión de hechos</strong>. Y los hechos siempre ocurren en un orden.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Cuando un autor escribe una historia, una receta o un instructivo, debe ayudarnos a entender <strong>qué ocurrió antes, qué ocurrió después y qué pasó al final</strong>. Para lograrlo emplea unas palabras especiales: los <span class="palabra-clave">conectores de secuencia</span>. Hoy aprenderemos a reconocerlos y a usarlos.</p>
+<p>En las lecciones anteriores estudiaste quiénes son los personajes (Lección 5.1) y dónde viven (Lección 5.2). Pero una historia no es solo personajes y escenario: es una <strong>sucesión de hechos</strong>. Y los hechos siempre ocurren en un orden.</p>
 
-<details open>
-<summary>1. Introducción a los conectores temporales <span class="caja-tiempo">10 min</span></summary>
+<p>Quien escribe una historia, una receta o unas instrucciones tiene que ayudarte a entender <strong>qué ocurrió antes, qué ocurrió después y qué pasó al final</strong>. Para lograrlo usa unas palabras especiales: los <span class="palabra-clave">conectores de secuencia</span>. En esta lección vas a aprender a reconocerlos y a usarlos.</p>
+
+<details open id="s-1-conectores">
+<summary>1. ¿Qué son los conectores de secuencia? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué son los conectores de secuencia?</h3>
 
 <p>Los <span class="palabra-clave">conectores de secuencia</span> (también llamados <strong>conectores temporales</strong>) son palabras o expresiones que organizan los eventos en orden cronológico. Le indican al lector si una acción ocurre <em>antes</em>, <em>durante</em> o <em>después</em> de otra.</p>
 
-<p>Sin estos conectores, las ideas resultan confusas o abruptas. Comparemos dos versiones del mismo párrafo:</p>
+<p>Sin estos conectores, las ideas resultan confusas o bruscas. Compara dos versiones del mismo párrafo:</p>
 
 <table class="tabla-conec">
   <thead>
-    <tr><th>Sin conectores</th><th>Con conectores</th></tr>
+    <tr><th scope="col">Sin conectores</th><th scope="col">Con conectores</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -170,7 +258,7 @@
   </tbody>
 </table>
 
-<p>Ambos párrafos cuentan los mismos hechos, pero la versión con conectores <strong>fluye mejor</strong> y le indica al lector el orden exacto.</p>
+<p>Los dos párrafos cuentan los mismos hechos, pero la versión con conectores <strong>fluye mejor</strong> y te indica el orden exacto.</p>
 
 <div class="tip">
   <strong>💡 Idea central:</strong> Los conectores de secuencia son las señales que el autor coloca para que el lector no se pierda en el tiempo de la historia.
@@ -179,13 +267,13 @@
 </div>
 </details>
 
-<details>
-<summary>2. Los cinco conectores principales <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-cinco">
+<summary>2. Los cinco conectores principales <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>La línea del tiempo de los conectores</h3>
 
-<p>Los cinco conectores temporales más utilizados pueden ordenarse en una línea del tiempo de izquierda a derecha.</p>
+<p>Los cinco conectores temporales más usados se pueden ordenar en una línea del tiempo, de izquierda a derecha. <em>Mientras tanto</em> lleva el signo ~ porque no ocupa un lugar propio en la fila: se usa para algo que pasa <strong>al mismo tiempo</strong> que otra acción.</p>
 
 <div class="leyenda-colores">
   <span><span class="punto" style="background:var(--primero)"></span> Inicio</span>
@@ -217,7 +305,7 @@
     <p>Otra acción que ocurre <em>al mismo tiempo</em>.</p>
   </div>
   <div class="paso-tiempo pt-5">
-    <span class="num">5</span>
+    <span class="num">4</span>
     <h4>Finalmente</h4>
     <p>La última acción o el resultado final.</p>
   </div>
@@ -228,9 +316,9 @@
 <table class="tabla-conec">
   <thead>
     <tr>
-      <th>Conector</th>
-      <th>Función</th>
-      <th>Ejemplo</th>
+      <th scope="col">Conector</th>
+      <th scope="col">Función</th>
+      <th scope="col">Ejemplo</th>
     </tr>
   </thead>
   <tbody>
@@ -241,7 +329,7 @@
     </tr>
     <tr>
       <td style="color:var(--luego)">Luego</td>
-      <td>Indica la acción que sigue inmediatamente.</td>
+      <td>Indica la acción que sigue.</td>
       <td><span class="conector c-luego">Luego</span> agregamos el café.</td>
     </tr>
     <tr>
@@ -263,7 +351,7 @@
 </table>
 
 <div class="tip">
-  <strong>⚠️ Atención:</strong> Los conectores casi siempre van al <strong>inicio de la oración</strong> y se separan con una coma cuando son de más de una palabra: <em>"Mientras tanto, calentamos la leche."</em>
+  <strong>⚠️ Atención:</strong> Los conectores casi siempre van al <strong>inicio de la oración</strong> y suelen ir seguidos de una coma: <em>«Primero, hervimos el agua.»</em> Con los cortos (<em>primero, luego, después</em>) la coma se puede omitir; con los de varias palabras (<em>mientras tanto, por último</em>) conviene ponerla siempre: <em>«Mientras tanto, calentamos la leche.»</em><br><br><strong>Luego</strong> y <strong>después</strong> significan casi lo mismo, así que puedes usar uno u otro. Cuidado con <em>después de</em>: si va seguido de un verbo (<em>después de bañarse</em>), no lleva coma.
 </div>
 
 <h3>Texto modelo: una mañana cualquiera</h3>
@@ -276,18 +364,18 @@
 <p><span class="conector c-finalmente">Finalmente</span>, Roberto besó a su esposa, tomó las llaves del auto y salió rumbo al trabajo. Eran las siete en punto.</p>
 </div>
 
-<p>Observe cómo los conectores le permiten al lector seguir el orden exacto de la mañana de Roberto sin esfuerzo. <strong>Sin esos conectores</strong>, el texto sería una lista de hechos sueltos.</p>
+<p>Observa cómo los conectores te permiten seguir sin esfuerzo el orden exacto de la mañana de Roberto. <strong>Sin esos conectores</strong>, el texto sería una lista de hechos sueltos.</p>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: ordenar y completar <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: ordenar y completar <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Actividad 1: ordene los pasos en orden cronológico</h3>
+<h3>Actividad 1: ordena los pasos</h3>
 
-<p>Los siguientes cinco pasos describen cómo preparar un café. Aparecen <strong>desordenados</strong>. Utilice los botones ↑ y ↓ para colocarlos en el orden correcto. Luego presione "Verificar".</p>
+<p>Los siguientes cinco pasos describen cómo preparar un café. Aparecen <strong>desordenados</strong>. Usa los botones ▲ y ▼ para colocarlos en el orden correcto. Fíjate en los conectores: son tu mejor pista. Después pulsa «Verificar orden».</p>
 
 <div class="ordenador">
   <h4>☕ Cómo preparar un café</h4>
@@ -296,16 +384,16 @@
     <button type="button" class="btn btn-primario" id="btn-verificar-orden">Verificar orden</button>
     <button type="button" class="btn btn-secundario" id="btn-reset-orden">Reiniciar</button>
   </div>
-  <div class="puntaje" id="puntaje-orden"></div>
+  <div class="puntaje" id="puntaje-orden" role="status"></div>
 </div>
 
-<h3>Actividad 2: complete con el conector correcto</h3>
+<h3>Actividad 2: completa con el conector correcto</h3>
 
-<p>Lea cada oración y arrastre (con un clic) el conector adecuado del banco al hueco. Cada conector se usa <strong>una sola vez</strong>.</p>
+<p>Lee las oraciones y coloca en cada hueco el conector adecuado del banco. Cada conector se usa <strong>una sola vez</strong>.</p>
 
 <div class="cloze">
   <h4 style="color:var(--cp-oscuro);margin-top:0;text-align:center">📝 Cómo enviar un correo electrónico</h4>
-  <p style="text-align:center;color:var(--gris);font-size:0.9rem;margin:0 0 12px 0">1. Haga clic en el conector del banco. 2. Haga clic en el hueco donde desea colocarlo.</p>
+  <p style="text-align:center;color:var(--gris);font-size:0.9rem;margin:0 0 12px 0">1. Toca un conector del banco. 2. Toca el hueco donde lo quieres colocar.</p>
 
   <div class="banco-conectores" id="banco-conec">
     <button type="button" class="ficha-conec f-primero" data-conec="primero">Primero</button>
@@ -317,27 +405,27 @@
 
   <div class="item-cloze">
     <div class="frase-cloze">
-      <span class="hueco" data-correcta="primero">[ ? ]</span>, abro mi navegador y entro a la página de mi correo.
+      <button type="button" class="hueco" data-correcta="primero" aria-label="Hueco: elige un conector">[ ? ]</button>, abro el navegador y entro a la página de mi correo.
     </div>
   </div>
   <div class="item-cloze">
     <div class="frase-cloze">
-      <span class="hueco" data-correcta="luego">[ ? ]</span>, escribo mi contraseña y hago clic en "iniciar sesión".
+      <button type="button" class="hueco" data-correcta="luego" aria-label="Hueco: elige un conector">[ ? ]</button>, escribo mi contraseña y hago clic en «Iniciar sesión».
     </div>
   </div>
   <div class="item-cloze">
     <div class="frase-cloze">
-      <span class="hueco" data-correcta="después">[ ? ]</span> de revisar mi bandeja, hago clic en el botón "Redactar".
+      <button type="button" class="hueco" data-correcta="después" aria-label="Hueco: elige un conector">[ ? ]</button> de revisar la bandeja de entrada, hago clic en «Redactar» y escribo mi mensaje.
     </div>
   </div>
   <div class="item-cloze">
     <div class="frase-cloze">
-      <span class="hueco" data-correcta="mientras tanto">[ ? ]</span>, escribo el correo del destinatario en la línea "Para".
+      Yo sigo escribiendo y, <button type="button" class="hueco" data-correcta="mientras tanto" data-min="1" aria-label="Hueco: elige un conector">[ ? ]</button>, el programa va guardando una copia del borrador.
     </div>
   </div>
   <div class="item-cloze">
     <div class="frase-cloze">
-      <span class="hueco" data-correcta="finalmente">[ ? ]</span>, redacto el mensaje y presiono "Enviar".
+      <button type="button" class="hueco" data-correcta="finalmente" aria-label="Hueco: elige un conector">[ ? ]</button>, reviso lo que escribí y presiono «Enviar».
     </div>
   </div>
 
@@ -345,46 +433,96 @@
     <button type="button" class="btn btn-primario" id="btn-verificar-cloze">Verificar</button>
     <button type="button" class="btn btn-secundario" id="btn-reset-cloze">Limpiar</button>
   </div>
-  <div class="puntaje" id="puntaje-cloze"></div>
+  <div class="puntaje" id="puntaje-cloze" role="status"></div>
 </div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-3.html#conectores" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Qué conector va? ↗
+  <span>Veinte oraciones más para completar. En la misma página practicas también <strong>a encontrar los conectores</strong> y <strong>a descubrir el orden de los hechos</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>Mi rutina en orden.</strong> Escribe en tu cuaderno un párrafo de seis a ocho oraciones que cuente algo que haces casi todos los días, paso a paso: tu mañana antes de salir, cómo preparas tu comida favorita o cómo llegas al trabajo.</p>
+<ul class="lista-bonita">
+  <li>Usa al menos <strong>cuatro conectores de secuencia</strong> diferentes, y que uno de ellos sea <em>mientras tanto</em>.</li>
+  <li>Subraya o encierra en un círculo cada conector.</li>
+  <li>Pon coma después de los conectores de varias palabras.</li>
+</ul>
+<p>Después, copia en otra hoja tus oraciones <strong>sin los conectores y en desorden</strong>. Si alguien de tu casa quiere participar, pídele que las ordene. ¿Pudo hacerlo? Si no, quizás falta un conector o una pista.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Mi rutina en orden»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Orden</td><td class="nivel-4">Los hechos están en el orden en que ocurren</td><td class="nivel-1">Hay pasos fuera de lugar</td></tr>
+      <tr><td>Conectores</td><td class="nivel-4">Usé al menos cuatro conectores distintos</td><td class="nivel-1">Repetí el mismo conector o usé menos de cuatro</td></tr>
+      <tr><td>Mientras tanto</td><td class="nivel-4">Lo usé para dos acciones que pasan al mismo tiempo</td><td class="nivel-1">Lo usé para una acción que va después</td></tr>
+      <tr><td>Puntuación</td><td class="nivel-4">Hay coma después de los conectores largos</td><td class="nivel-1">Faltan comas</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste</h3>
 
 <ul class="lista-bonita">
   <li>Los <strong>conectores de secuencia</strong> organizan los eventos en orden cronológico.</li>
   <li>Los cinco conectores principales son: <em>primero, luego, después, mientras tanto, finalmente</em>.</li>
   <li><em>Mientras tanto</em> indica acciones <strong>simultáneas</strong>; los demás indican <strong>sucesión</strong>.</li>
-  <li>Los conectores se colocan al inicio de la oración y, si son de más de una palabra, se separan con coma.</li>
+  <li>Los conectores suelen ir al inicio de la oración, seguidos de coma; con los de varias palabras, la coma no debe faltar.</li>
   <li>Sin conectores, las ideas se vuelven una lista de hechos sueltos; con conectores, se transforman en una narración fluida.</li>
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irse, revísese</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Puede nombrar los cinco conectores temporales principales?</li>
+    <li>¿Puedes nombrar los cinco conectores de secuencia principales?</li>
     <li>¿Cuál es el conector que indica que dos acciones ocurren al mismo tiempo?</li>
-    <li>¿Puede contar su rutina de la mañana usando al menos tres conectores diferentes?</li>
+    <li>¿Puedes contar tu rutina de la mañana usando al menos tres conectores diferentes?</li>
   </ul>
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Aplicaremos los conectores de secuencia a un tipo de texto muy práctico: las <strong>instrucciones</strong>. Aprenderemos un método para leer instrucciones con cuidado y no equivocarnos en el examen GED ni en la vida diaria.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_5-4.html" style="color:var(--cp-oscuro);font-weight:700">Lección 5.4 · Seguir instrucciones paso a paso</a>. Vas a aplicar los conectores de secuencia a un tipo de texto muy práctico: las <strong>instrucciones</strong>. Aprenderás un método para leerlas con cuidado y no equivocarte, ni en el examen GED ni en la vida diaria.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 5 · Lección 5.3</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -412,8 +550,8 @@
         '<span class="num-paso">'+(pos+1)+'</span>'+
         '<span class="texto-paso">'+pasosCorrectos[idx]+'</span>'+
         '<div class="controles-mover">'+
-          '<button type="button" class="ctrl ctrl-up" '+(pos===0?'disabled style="opacity:0.3"':'')+'>▲</button>'+
-          '<button type="button" class="ctrl ctrl-down" '+(pos===ordenActual.length-1?'disabled style="opacity:0.3"':'')+'>▼</button>'+
+          '<button type="button" class="ctrl ctrl-up" aria-label="Subir el paso "+(pos+1)+"" '+(pos===0?'disabled style="opacity:0.3"':'')+'>▲</button>'+
+          '<button type="button" class="ctrl ctrl-down" aria-label="Bajar el paso "+(pos+1)+"" '+(pos===ordenActual.length-1?'disabled style="opacity:0.3"':'')+'>▼</button>'+
         '</div>';
       lista.appendChild(div);
     });
@@ -463,7 +601,7 @@
       el.innerHTML='🎉 ¡Perfecto! Los cinco pasos están en el orden correcto.';
       el.style.color='var(--exito)';
     }else{
-      el.innerHTML='Tiene '+correctos+' de '+pasosCorrectos.length+' pasos en el lugar correcto. Revise los que aparecen en rojo.';
+      el.innerHTML='Tienes '+correctos+' de '+pasosCorrectos.length+' pasos en el lugar correcto. Revisa los que aparecen en rojo.';
       el.style.color='var(--acento)';
     }
   });
@@ -500,7 +638,8 @@
         if(fichaPrev)fichaPrev.classList.remove('usada');
       }
       var c=fichaActiva.getAttribute('data-conec');
-      h.textContent=fichaActiva.textContent;
+      h.textContent=h.dataset.min?fichaActiva.textContent.toLowerCase():fichaActiva.textContent;
+      h.setAttribute('aria-label','Hueco con: '+fichaActiva.textContent);
       h.classList.add('lleno');
       h.classList.remove('correcta','incorrecta');
       h.setAttribute('data-ficha-id',c);
@@ -532,7 +671,7 @@
       el.innerHTML='🎉 ¡Excelente! Todos los conectores en su lugar correcto.';
       el.style.color='var(--exito)';
     }else{
-      el.innerHTML='Aciertos: '+correctos+' de '+huecos.length+'. Revise las oraciones marcadas en rojo.';
+      el.innerHTML='Aciertos: '+correctos+' de '+huecos.length+'. Revisa las oraciones marcadas en rojo.';
       el.style.color='var(--acento)';
     }
   });
@@ -540,6 +679,7 @@
   document.getElementById('btn-reset-cloze').addEventListener('click',function(){
     document.querySelectorAll('.hueco').forEach(function(h){
       h.textContent='[ ? ]';
+      h.setAttribute('aria-label','Hueco: elige un conector');
       h.classList.remove('lleno','correcta','incorrecta');
       h.removeAttribute('data-ficha-id');
     });
@@ -549,6 +689,73 @@
     fichaActiva=null;
     document.getElementById('puntaje-cloze').textContent='';
   });
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Para qué sirven los conectores de secuencia?", "o": ["Para ordenar los hechos en el tiempo", "Para comparar dos cosas", "Para explicar por qué pasó algo"], "c": 0}, {"t": "¿Qué conector marca el <strong>inicio</strong> de una serie de acciones?", "o": ["Primero", "Finalmente", "Mientras tanto"], "c": 0}, {"t": "¿Qué conector marca la <strong>última</strong> acción?", "o": ["Finalmente", "Luego", "Primero"], "c": 0}, {"t": "¿Qué indica <strong>mientras tanto</strong>?", "o": ["Que dos acciones ocurren al mismo tiempo", "Que una acción ocurre mucho después", "Que la historia terminó"], "c": 0}, {"t": "«Puse el agua a hervir. ____, corté las verduras.» Las dos cosas pasan a la vez. ¿Qué conector va?", "o": ["Mientras tanto", "Primero", "Finalmente"], "c": 0}, {"t": "¿Cuál de estos conectores significa casi lo mismo que <strong>luego</strong>?", "o": ["Después", "Primero", "Mientras tanto"], "c": 0}, {"t": "¿Cuál está bien puntuada?", "o": ["Mientras tanto, mi hermano lavaba los platos.", "Mientras tanto mi hermano, lavaba los platos.", "Mientras, tanto mi hermano lavaba los platos."], "c": 0}, {"t": "«____, apagué las luces y me acosté.» Es lo último que hice en el día. ¿Qué conector va?", "o": ["Por último", "Primero", "Mientras tanto"], "c": 0}, {"t": "Lee: «Luego, sirvió el arroz. Primero, lavó el arroz. Después, lo cocinó.» ¿Qué pasó en <strong>segundo</strong> lugar?", "o": ["Lo cocinó", "Lavó el arroz", "Sirvió el arroz"], "c": 0}, {"t": "¿Cuál de estos textos suele usar conectores de secuencia?", "o": ["Una receta de cocina", "Una lista de compras", "Un letrero de «Prohibido fumar»"], "c": 0}, {"t": "«Me levanté. Me bañé. Desayuné.» ¿Qué le falta a este texto?", "o": ["Conectores que unan y ordenen los hechos", "Verbos", "Puntos al final"], "c": 0}, {"t": "¿Dónde suelen ir los conectores de secuencia?", "o": ["Al inicio de la oración", "Siempre al final de la oración", "Solo en el título"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes seguir y contar hechos en orden. Puedes continuar con la Lección 5.4.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

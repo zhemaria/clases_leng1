@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 5.5 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 5: La relación de causa y efecto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5.5 · La relación de causa y efecto</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -104,26 +110,112 @@
   .leyenda-colores{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.9rem}
   .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
   .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  button.item-empareja,button.item-ce{display:block;width:100%;text-align:left;font:inherit;color:inherit}
+  button.item-ce{font-family:'Georgia',serif}
+  button.item-empareja:focus-visible,button.item-ce:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
+
+  button.hueco-c{font:inherit;font-weight:700;font-style:italic;cursor:pointer}
+  button.hueco-c:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
 </style>
 </head>
 <body>
 
-<h1>Clase 5: La relación de causa y efecto</h1>
-<p class="subtitulo">Identificar por qué ocurren las cosas en un texto · Nivel 1 · Tema 5, semana 10</p>
+<h1>Lección 5.5 · La relación de causa y efecto</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 5 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Identificar el <strong>motivo</strong> por el cual ocurre un hecho (<strong>causa</strong>) y el <strong>resultado</strong> que produce (<strong>efecto</strong>) en textos informativos. Reconocer las palabras conectoras que señalan estas relaciones lógicas.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-causa">¿Qué son la causa y el efecto?</a></li>
+    <li><a href="#s-2-conectores">Las palabras indicadoras</a></li>
+    <li><a href="#s-3-practica">Práctica: emparejar y completar</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En las clases anteriores aprendimos a organizar los hechos en el tiempo (qué pasó antes, qué pasó después). Hoy damos un paso más profundo: vamos a estudiar la <strong>lógica</strong> que conecta esos hechos, es decir, no solo <em>cuándo</em> ocurren, sino <strong>por qué</strong> ocurren.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Las relaciones de <span class="palabra-clave">causa y efecto</span> son la columna vertebral de los textos informativos: noticias, artículos científicos, lecturas de estudios sociales, problemas de razonamiento. En el examen GED, especialmente en las secciones de Ciencias y Estudios Sociales, identificar correctamente qué <em>causó</em> qué es la diferencia entre acertar o fallar una pregunta.</p>
+<p>En las lecciones anteriores aprendiste a ordenar los hechos en el tiempo: qué pasó antes y qué pasó después. Ahora vas a dar un paso más: vas a estudiar la <strong>lógica</strong> que une esos hechos. No solo <em>cuándo</em> ocurren, sino <strong>por qué</strong> ocurren.</p>
 
-<details open>
-<summary>1. Introducción a causa y efecto <span class="caja-tiempo">15 min</span></summary>
+<p>Las relaciones de <span class="palabra-clave">causa y efecto</span> son la columna vertebral de los textos informativos: noticias, artículos de ciencia, lecturas de historia. En el examen GED aparecen en todas las materias, y muchas preguntas consisten justamente en reconocer qué <em>causó</em> qué.</p>
+
+<details open id="s-1-causa">
+<summary>1. ¿Qué son la causa y el efecto? <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Las dos preguntas fundamentales</h3>
@@ -190,33 +282,34 @@
 </div>
 
 <div class="tip">
-  <strong>💡 Idea central:</strong> No confunda <em>secuencia</em> con <em>causa</em>. Dos hechos pueden ocurrir uno después del otro sin que el primero haya causado el segundo. Para que exista relación de causa-efecto, el primero debe <strong>producir</strong> el segundo.
+  <strong>💡 Idea central:</strong> No confundas <em>secuencia</em> con <em>causa</em>. Dos hechos pueden ocurrir uno después del otro sin que el primero haya causado el segundo. Para que exista relación de causa y efecto, el primero debe <strong>producir</strong> el segundo. Ejemplo: «Me puse la camisa azul y después empezó a llover». La camisa no causó la lluvia.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>2. Las palabras indicadoras (conectores causales) <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-conectores">
+<summary>2. Las palabras indicadoras (conectores causales) <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Conectores que introducen la causa</h3>
 
-<p>Los autores no siempre nos dicen directamente "esta es la causa y este es el efecto". En lugar de eso, utilizan <span class="palabra-clave">conectores causales</span>: palabras que señalan la relación lógica entre dos hechos. Aprender a detectarlos es la clave para leer textos informativos con precisión.</p>
+<p>Los autores no siempre dicen directamente «esta es la causa y este es el efecto». En lugar de eso, usan <span class="palabra-clave">conectores causales</span>: palabras que señalan la relación lógica entre dos hechos. Aprender a reconocerlos es la clave para leer textos informativos con precisión.</p>
 
 <table class="tabla-conec-c">
+  <caption class="sr-solo">Conectores causales: función y ejemplo. En los ejemplos, el efecto, el conector y la causa van marcados con colores.</caption>
   <thead>
     <tr>
-      <th>Conector</th>
-      <th>Función</th>
-      <th>Ejemplo</th>
+      <th scope="col">Conector</th>
+      <th scope="col">Función</th>
+      <th scope="col">Ejemplo</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>porque</td>
-      <td>Introduce la causa después del efecto.</td>
-      <td><span class="marca-efecto">No fui a clase</span> <span class="marca-conec">porque</span> <span class="marca-causa">estaba enfermo</span>.</td>
+      <td>Introduce la causa (suele ir después del efecto).</td>
+      <td><span class="marca-efecto">No fui a trabajar</span> <span class="marca-conec">porque</span> <span class="marca-causa">estaba enfermo</span>.</td>
     </tr>
     <tr>
       <td>ya que</td>
@@ -257,12 +350,12 @@
 </table>
 
 <div class="tip">
-  <strong>⚠️ Cuidado con el orden:</strong> Algunos conectores introducen la <em>causa</em> (porque, ya que, debido a, puesto que); otros introducen el <em>efecto</em> (como resultado, por esta razón, en consecuencia, así que). Identifique qué viene después del conector para saber qué está señalando.
+  <strong>⚠️ Cuidado con el orden:</strong> Algunos conectores introducen la <em>causa</em> (porque, ya que, debido a, puesto que); otros introducen el <em>efecto</em> (como resultado, por esta razón, en consecuencia, por lo tanto, así que, por eso). Fíjate en qué viene <strong>después</strong> del conector para saber qué está señalando.
 </div>
 
 <h3>Texto informativo con causas y efectos marcados</h3>
 
-<p>Lea el siguiente párrafo. Observe cómo el autor encadena hechos mediante conectores causales. Las causas aparecen en azul, los efectos en rojo, y los conectores en púrpura.</p>
+<p>Lee el siguiente texto. Observa cómo el autor encadena los hechos con conectores causales. Las causas aparecen en azul, los efectos en rojo y los conectores en morado. Fíjate en algo importante: un efecto puede convertirse en la causa del hecho siguiente, como en una cadena.</p>
 
 <div class="texto-info">
 <h4>📖 El cambio en el barrio</h4>
@@ -271,18 +364,18 @@
 <p><span class="marca-causa">La presión comunitaria fue constante</span>, <span class="marca-conec">así que</span> <span class="marca-efecto">la alcaldía aprobó un programa de protección del alquiler para las familias de bajos ingresos</span>.</p>
 </div>
 
-<p>Sin los conectores causales, este párrafo se leería como una lista de hechos sueltos: "subió la renta, las familias se mudaron, cerraron negocios". Con los conectores, el lector entiende la <strong>lógica</strong> que une esos hechos.</p>
+<p>Sin los conectores causales, este texto se leería como una lista de hechos sueltos: «subió la renta, las familias se mudaron, cerraron negocios». Con los conectores, entiendes la <strong>lógica</strong> que une esos hechos.</p>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: emparejar y completar <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: emparejar y completar <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Actividad 1: empareje cada causa con su efecto</h3>
+<h3>Actividad 1: empareja cada causa con su efecto</h3>
 
-<p>Haga clic en una causa de la columna izquierda y luego en el efecto que mejor le corresponde a la derecha. Si la pareja es correcta, ambos quedarán marcados en verde.</p>
+<p>Toca una causa de la columna izquierda y luego el efecto que le corresponde a la derecha. Si la pareja es correcta, las dos quedan marcadas en verde.</p>
 
 <div class="empareja-ce">
   <div class="col-empareja-ce col-c">
@@ -294,14 +387,19 @@
     <div id="col-efectos"></div>
   </div>
 </div>
-<div class="puntaje" id="puntaje-empareja-ce">Parejas correctas: 0 / 6</div>
+<div class="puntaje" id="puntaje-empareja-ce" role="status">Parejas correctas: 0 / 6</div>
 
-<h3>Actividad 2: complete con el conector causal correcto</h3>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-5.html#causa-efecto" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Cuál es la causa? ¿Cuál es el efecto? ↗
+  <span>Veinte oraciones más para separar la causa del efecto, aunque vengan en orden inverso. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
-<p>Lea cada oración y elija el conector que mejor exprese la relación de causa y efecto. Cada conector se usa <strong>una sola vez</strong>.</p>
+<h3>Actividad 2: completa con el conector causal correcto</h3>
+
+<p>Lee cada oración y elige el conector que exprese la relación de causa y efecto. Cada conector se usa <strong>una sola vez</strong>. Algunos significan lo mismo (<em>porque</em> y <em>ya que</em>, por ejemplo): en esos casos se acepta cualquiera de los dos.</p>
 
 <div class="cloze-c">
-  <p style="text-align:center;color:var(--gris);font-size:0.9rem;margin:0 0 12px 0">1. Haga clic en un conector del banco. 2. Haga clic en el hueco donde lo quiere colocar.</p>
+  <p style="text-align:center;color:var(--gris);font-size:0.9rem;margin:0 0 12px 0">1. Toca un conector del banco. 2. Toca el hueco donde lo quieres colocar.</p>
 
   <div class="banco-conec-c" id="banco-c">
     <button type="button" class="ficha-c" data-conec="porque">porque</button>
@@ -314,32 +412,32 @@
 
   <div class="item-cloze-c">
     <div class="frase-cloze-c">
-      No pude asistir a la reunión <span class="hueco-c" data-correcta="porque">[ ? ]</span> mi hijo estaba enfermo en casa.
+      No pude asistir a la reunión <button type="button" class="hueco-c" data-correcta="porque|ya que" aria-label="Hueco: elige un conector">[ ? ]</button> mi hijo estaba enfermo en casa.
     </div>
   </div>
   <div class="item-cloze-c">
     <div class="frase-cloze-c">
-      Las clases se suspendieron <span class="hueco-c" data-correcta="debido a">[ ? ]</span> la tormenta de nieve.
+      Las clases se suspendieron <button type="button" class="hueco-c" data-correcta="debido a" aria-label="Hueco: elige un conector">[ ? ]</button> la tormenta de nieve.
     </div>
   </div>
   <div class="item-cloze-c">
     <div class="frase-cloze-c">
-      Estudió todas las tardes durante seis meses; <span class="hueco-c" data-correcta="como resultado">[ ? ]</span>, obtuvo su diploma de GED.
+      Estudió todas las tardes durante seis meses; <button type="button" class="hueco-c" data-correcta="como resultado|por esta razón" aria-label="Hueco: elige un conector">[ ? ]</button>, obtuvo su diploma de GED.
     </div>
   </div>
   <div class="item-cloze-c">
     <div class="frase-cloze-c">
-      Decidimos quedarnos en casa <span class="hueco-c" data-correcta="ya que">[ ? ]</span> el clima estaba demasiado frío para salir.
+      Decidimos quedarnos en casa <button type="button" class="hueco-c" data-correcta="porque|ya que" aria-label="Hueco: elige un conector">[ ? ]</button> el clima estaba demasiado frío para salir.
     </div>
   </div>
   <div class="item-cloze-c">
     <div class="frase-cloze-c">
-      El autobús no llegó a tiempo. <span class="hueco-c" data-correcta="por esta razón">[ ? ]</span>, muchos pasajeros llegaron tarde al trabajo.
+      El autobús no llegó a tiempo. <button type="button" class="hueco-c" data-correcta="como resultado|por esta razón" aria-label="Hueco: elige un conector">[ ? ]</button>, muchos pasajeros llegaron tarde al trabajo.
     </div>
   </div>
   <div class="item-cloze-c">
     <div class="frase-cloze-c">
-      Tenía mucho sueño, <span class="hueco-c" data-correcta="así que">[ ? ]</span> me acosté temprano.
+      Tenía mucho sueño, <button type="button" class="hueco-c" data-correcta="así que" aria-label="Hueco: elige un conector">[ ? ]</button> me acosté temprano.
     </div>
   </div>
 
@@ -347,53 +445,103 @@
     <button type="button" class="btn btn-primario" id="btn-verificar-cloze-c">Verificar</button>
     <button type="button" class="btn btn-secundario" id="btn-reset-cloze-c">Limpiar</button>
   </div>
-  <div class="puntaje" id="puntaje-cloze-c"></div>
+  <div class="puntaje" id="puntaje-cloze-c" role="status"></div>
+</div>
+
+<div class="enlace-practica" style="cursor:default"><a  href="https://zhemaria.github.io/gramatica/n1-l5-5.html#conectores-causales" target="_blank" rel="noopener" style="color:inherit">
+  ✍️ Práctica: ¿Introduce la causa o el efecto? ↗</a>
+  <span>Practica con los conectores causales. En la misma página puedes también <a href="https://zhemaria.github.io/gramatica/n1-l5-5.html#completar" target="_blank" rel="noopener">completar oraciones</a>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>Cadena de causas y efectos.</strong> Elige un hecho de tu vida o de tu comunidad: por qué decidiste estudiar para el GED, un cambio en tu barrio, una tormenta, la subida de un precio. Escribe en tu cuaderno:</p>
+<ul class="lista-bonita">
+  <li>Una <strong>cadena de al menos cuatro eslabones</strong>, con flechas: causa → efecto → efecto → efecto. Cada efecto se convierte en la causa del siguiente, como en «El cambio en el barrio».</li>
+  <li>Un párrafo de cinco a siete oraciones que cuente esa cadena.</li>
+  <li>Usa al menos <strong>dos conectores que introducen la causa</strong> (porque, ya que, debido a…) y <strong>dos que introducen el efecto</strong> (por eso, como resultado, así que…). Enciérralos en un círculo.</li>
+</ul>
+<p>Si alguien de tu casa quiere participar, léele tu párrafo y pídele que te diga cuál fue la primera causa de todo. ¿Coincide con lo que tú escribiste?</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Cadena de causas y efectos»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Cadena</td><td class="nivel-4">Tiene al menos cuatro eslabones y cada uno produce el siguiente</td><td class="nivel-1">Algunos hechos solo van uno después de otro, sin causarse</td></tr>
+      <tr><td>Conectores de causa</td><td class="nivel-4">Usé al menos dos</td><td class="nivel-1">Usé uno o ninguno</td></tr>
+      <tr><td>Conectores de efecto</td><td class="nivel-4">Usé al menos dos</td><td class="nivel-1">Usé uno o ninguno</td></tr>
+      <tr><td>Claridad</td><td class="nivel-4">Se entiende qué causó qué</td><td class="nivel-1">No queda claro qué causó qué</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste</h3>
 
 <ul class="lista-bonita">
   <li>La <strong>causa</strong> es la razón por la que algo sucede; el <strong>efecto</strong> es su resultado o consecuencia.</li>
   <li>La causa siempre ocurre <strong>antes</strong> que el efecto, aunque el autor a veces los mencione en orden inverso.</li>
   <li>Los conectores causales que introducen la <strong>causa</strong>: <em>porque, ya que, debido a, puesto que</em>.</li>
   <li>Los conectores causales que introducen el <strong>efecto</strong>: <em>como resultado, por esta razón, en consecuencia, por lo tanto, así que</em>.</li>
-  <li>Estas palabras revelan la <strong>lógica</strong> del autor en textos de ciencias, estudios sociales y noticias.</li>
+  <li>Estas palabras muestran la <strong>lógica</strong> del autor en textos de ciencias, de estudios sociales y en las noticias.</li>
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irse, revísese</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Cuál es la diferencia entre causa y efecto?</li>
-    <li>¿Puede nombrar tres conectores que introducen la causa y tres que introducen el efecto?</li>
-    <li>Piense en algo que le ocurrió esta semana. ¿Cuál fue la causa y cuál fue el efecto?</li>
+    <li>¿Puedes nombrar tres conectores que introducen la causa y tres que introducen el efecto?</li>
+    <li>Piensa en algo que te pasó esta semana. ¿Cuál fue la causa y cuál fue el efecto?</li>
   </ul>
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Cerraremos el tema con la última destreza de lectura crítica: <strong>comparar y contrastar</strong> dos textos sobre el mismo asunto. Aprenderemos a usar el <em>diagrama de Venn</em> y a reconocer los conectores de similitud y diferencia.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_5-6.html" style="color:var(--cp-oscuro);font-weight:700">Lección 5.6 · Comparar y contrastar información</a>. Cerrarás el tema con otra destreza de lectura crítica: <strong>comparar y contrastar</strong> dos textos sobre el mismo asunto, con la ayuda del <em>diagrama de Venn</em>.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 5 · Lección 5.5</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
   // ===== Actividad 1: Emparejar causa-efecto =====
   var parejasCE=[
     {c:'Una helada destruyó las cosechas de tomate.',e:'El precio del tomate en el supermercado subió drásticamente.'},
-    {c:'María estudió durante seis meses sin faltar a una sola clase.',e:'Aprobó el examen GED con una calificación excelente.'},
+    {c:'María estudió todos los días durante seis meses.',e:'Aprobó el examen GED con una calificación excelente.'},
     {c:'El despertador de Roberto no sonó esa mañana.',e:'Roberto llegó una hora tarde a su trabajo.'},
     {c:'La fábrica del barrio cerró por mudanza al exterior.',e:'Doscientos trabajadores quedaron desempleados.'},
     {c:'Una tubería se rompió durante la noche en el edificio.',e:'Tres apartamentos amanecieron inundados.'},
@@ -402,13 +550,14 @@
 
   // Mezclar orden visual de los efectos
   var efectosOrden=parejasCE.map(function(p,i){return {texto:p.e,id:i}});
-  efectosOrden=efectosOrden.sort(function(a,b){return (a.texto.length%5)-(b.texto.length%5)});
+  for(var _i=efectosOrden.length-1;_i>0;_i--){var _j=Math.floor(Math.random()*(_i+1));var _t=efectosOrden[_i];efectosOrden[_i]=efectosOrden[_j];efectosOrden[_j]=_t;}
 
   var colC=document.getElementById('col-causas');
   var colE=document.getElementById('col-efectos');
 
   parejasCE.forEach(function(p,i){
-    var d=document.createElement('div');
+    var d=document.createElement('button');
+    d.type='button';
     d.className='item-ce col-c-it';
     d.setAttribute('data-id',i);
     d.textContent=p.c;
@@ -416,7 +565,8 @@
   });
 
   efectosOrden.forEach(function(e){
-    var d=document.createElement('div');
+    var d=document.createElement('button');
+    d.type='button';
     d.className='item-ce col-e-it';
     d.setAttribute('data-id',e.id);
     d.textContent=e.texto;
@@ -436,13 +586,13 @@
       selE.classList.remove('seleccionado');
       selC.classList.add('unido');
       selE.classList.add('unido');
-      selC.style.pointerEvents='none';
-      selE.style.pointerEvents='none';
+      selC.disabled=true;
+      selE.disabled=true;
       unidos++;
       var el=document.getElementById('puntaje-empareja-ce');
       el.textContent='Parejas correctas: '+unidos+' / '+parejasCE.length;
       if(unidos===parejasCE.length){
-        el.innerHTML='🎉 ¡Excelente! Identificó las '+parejasCE.length+' relaciones de causa y efecto.';
+        el.innerHTML='🎉 ¡Excelente! Identificaste las '+parejasCE.length+' relaciones de causa y efecto.';
         el.style.color='var(--exito)';
       }
       selC=null;
@@ -506,6 +656,7 @@
       }
       var c=fichaActivaC.getAttribute('data-conec');
       h.textContent=fichaActivaC.textContent;
+      h.setAttribute('aria-label','Hueco con: '+fichaActivaC.textContent);
       h.classList.add('lleno');
       h.classList.remove('correcta','incorrecta');
       h.setAttribute('data-ficha-id',c);
@@ -525,7 +676,7 @@
       h.classList.remove('correcta','incorrecta');
       if(!puesta){
         h.classList.add('incorrecta');
-      }else if(puesta===esperada){
+      }else if(esperada.split('|').indexOf(puesta)!==-1){
         h.classList.add('correcta');
         correctos++;
       }else{
@@ -537,7 +688,7 @@
       el.innerHTML='🎉 ¡Excelente! Todos los conectores causales en su lugar correcto.';
       el.style.color='var(--exito)';
     }else{
-      el.innerHTML='Aciertos: '+correctos+' de '+huecos.length+'. Revise las oraciones marcadas en rojo.';
+      el.innerHTML='Aciertos: '+correctos+' de '+huecos.length+'. Revisa las oraciones marcadas en rojo.';
       el.style.color='var(--acento)';
     }
   });
@@ -545,6 +696,7 @@
   document.getElementById('btn-reset-cloze-c').addEventListener('click',function(){
     document.querySelectorAll('.hueco-c').forEach(function(h){
       h.textContent='[ ? ]';
+      h.setAttribute('aria-label','Hueco: elige un conector');
       h.classList.remove('lleno','correcta','incorrecta');
       h.removeAttribute('data-ficha-id');
     });
@@ -554,6 +706,73 @@
     fichaActivaC=null;
     document.getElementById('puntaje-cloze-c').textContent='';
   });
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué es la <strong>causa</strong>?", "o": ["La razón por la que algo sucede", "El resultado de algo", "El final de la historia"], "c": 0}, {"t": "¿Qué es el <strong>efecto</strong>?", "o": ["El resultado o la consecuencia", "La razón por la que algo sucede", "El título del texto"], "c": 0}, {"t": "«Las calles se inundaron porque llovió toda la noche.» ¿Cuál es la causa?", "o": ["Llovió toda la noche", "Las calles se inundaron"], "c": 0, "fijo": true}, {"t": "«Como no puso el despertador, Pedro llegó tarde.» ¿Cuál es el efecto?", "o": ["Pedro llegó tarde", "No puso el despertador"], "c": 0, "fijo": true}, {"t": "¿Qué conector introduce la <strong>causa</strong>?", "o": ["ya que", "por eso", "como resultado"], "c": 0}, {"t": "¿Qué conector introduce el <strong>efecto</strong>?", "o": ["por lo tanto", "porque", "debido a"], "c": 0}, {"t": "«El vuelo se retrasó ____ la niebla.» ¿Qué conector va antes de un sustantivo como «la niebla»?", "o": ["debido a", "así que", "por eso"], "c": 0}, {"t": "«Tenía mucha hambre, ____ preparé un sándwich.»", "o": ["así que", "porque", "debido a"], "c": 0}, {"t": "En la realidad, ¿qué ocurre primero?", "o": ["La causa", "El efecto", "Depende de cómo lo escriba el autor"], "c": 0}, {"t": "«Me puse la camisa azul. Después ganó mi equipo.» ¿Hay una relación de causa y efecto?", "o": ["No: un hecho va después del otro, pero no lo produce", "Sí: la camisa hizo ganar al equipo"], "c": 0}, {"t": "«Subió el precio de la gasolina; en consecuencia, subieron los pasajes de autobús.» ¿Qué introduce «en consecuencia»?", "o": ["El efecto", "La causa"], "c": 0, "fijo": true}, {"t": "«Muchas familias se mudaron. Por eso, los negocios perdieron clientes y cerraron.» ¿Qué fue la causa de que los negocios cerraran?", "o": ["Que perdieron clientes", "Que subió el precio del pan", "Que abrieron otros negocios"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes reconocer causas y efectos. Puedes continuar con la Lección 5.6.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 5.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 1: Conociendo a los personajes y sus conflictos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5.1 · Los personajes y sus conflictos</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -105,26 +111,105 @@
   .leyenda-colores{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.95rem}
   .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
   .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 1: Conociendo a los personajes y sus conflictos</h1>
-<p class="subtitulo">Personajes, roles y conflictos · Nivel 1 · Tema 5, semana 9</p>
+<h1>Lección 5.1 · Los personajes y sus conflictos</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 5 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Analizar el <strong>papel</strong> (rol), los <strong>rasgos</strong> y los <strong>conflictos</strong> de los personajes en un texto literario, distinguiendo entre <strong>protagonista</strong>, <strong>antagonista</strong> y <strong>mentor</strong>, y entre <strong>conflicto interno</strong> y <strong>conflicto externo</strong>.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-personajes">El papel de los personajes</a></li>
+    <li><a href="#s-2-roles">Roles, rasgos y conflictos</a></li>
+    <li><a href="#s-3-practica">Práctica: el mapa de personaje</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En clases anteriores estudiamos las oraciones, los sustantivos y los verbos. Ahora damos un paso más: vamos a aplicar todas esas herramientas a la lectura de <strong>historias</strong>. Y toda historia comienza con un elemento esencial: <span class="palabra-clave">los personajes</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Sin personajes no hay historia. Sin conflicto, los personajes no cambian. Por eso, comprender a quién le pasan las cosas y qué problemas enfrenta es la base para entender cualquier cuento, novela o relato. Esta clase nos prepara para identificar y describir personajes con precisión.</p>
+<p>En el Tema 3 estudiaste las oraciones, los sustantivos y los verbos, y en el Tema 4 aprendiste estrategias para entender lo que lees. Ahora vas a usar todas esas herramientas para leer <strong>historias</strong>. Y toda historia empieza con un elemento esencial: <span class="palabra-clave">los personajes</span>.</p>
 
-<details open>
-<summary>1. Introducción: el papel de los personajes <span class="caja-tiempo">10 min</span></summary>
+<p>Sin personajes no hay historia. Sin conflicto, los personajes no cambian. Por eso, entender a quién le pasan las cosas y qué problemas enfrenta es la base para comprender cualquier cuento, novela o relato. En esta lección vas a aprender a identificar y describir personajes con precisión.</p>
+
+<details open id="s-1-personajes">
+<summary>1. El papel de los personajes <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Por qué importan los personajes?</h3>
@@ -140,8 +225,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. Roles, rasgos y conflictos <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-roles">
+<summary>2. Roles, rasgos y conflictos <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El rol del personaje</h3>
@@ -165,7 +250,7 @@
   <div class="tarjeta-rol rol-ment">
     <h4>🦉 Mentor</h4>
     <p>Es el personaje que guía, aconseja o ayuda al protagonista. Le entrega información, herramientas o sabiduría para enfrentar el conflicto.</p>
-    <div class="ejemplo">Ejemplo: la abuela en muchos cuentos tradicionales actúa como mentora.</div>
+    <div class="ejemplo">Ejemplo: en <em>Cenicienta</em>, el hada madrina es la mentora: le da a Cenicienta lo que necesita para ir al baile.</div>
   </div>
 
 </div>
@@ -175,11 +260,12 @@
 <p>Los <strong>rasgos</strong> son las características que definen al personaje. Para analizarlos, observamos tres dimensiones.</p>
 
 <table class="tabla-rasgos">
+  <caption class="sr-solo">Las tres dimensiones de los rasgos de un personaje</caption>
   <thead>
     <tr>
-      <th>Dimensión</th>
-      <th>Pregunta clave</th>
-      <th>Ejemplo</th>
+      <th scope="col">Dimensión</th>
+      <th scope="col">Pregunta clave</th>
+      <th scope="col">Ejemplo</th>
     </tr>
   </thead>
   <tbody>
@@ -228,8 +314,8 @@
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: el mapa de personaje <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: el mapa de personaje <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Lectura: "El día que Marta se atrevió"</h3>
@@ -243,26 +329,26 @@
 
 <h3>Completa el mapa de personaje de Marta</h3>
 
-<p>Lee de nuevo el cuento y llena los cuatro cuadros del mapa. Escribe con tus propias palabras.</p>
+<p>Lee de nuevo el cuento y llena los cuatro cuadros del mapa. Escribe con tus propias palabras. Lo que escribas aquí no se guarda: cópialo después en tu cuaderno.</p>
 
 <div class="mapa-personaje">
   <h4>🗺️ Mapa de personaje: Marta</h4>
   <div class="mapa-grid">
     <div class="cuadro-mapa">
-      <span class="etiq">👤 Rasgos físicos y datos</span>
-      <textarea placeholder="Edad, oficio, descripción física..."></textarea>
+      <label class="etiq" for="mapa-1">👤 Rasgos físicos y datos</label>
+      <textarea id="mapa-1" placeholder="Edad, oficio, descripción física..."></textarea>
     </div>
     <div class="cuadro-mapa">
-      <span class="etiq">💭 Rasgos de personalidad</span>
-      <textarea placeholder="¿Cómo es por dentro?"></textarea>
+      <label class="etiq" for="mapa-2">💭 Rasgos de personalidad</label>
+      <textarea id="mapa-2" placeholder="¿Cómo es por dentro?"></textarea>
     </div>
     <div class="cuadro-mapa">
-      <span class="etiq">⚔️ Conflicto que enfrenta</span>
-      <textarea placeholder="¿Qué problema tiene? ¿Es interno o externo?"></textarea>
+      <label class="etiq" for="mapa-3">⚔️ Conflicto que enfrenta</label>
+      <textarea id="mapa-3" placeholder="¿Qué problema tiene? ¿Es interno o externo?"></textarea>
     </div>
     <div class="cuadro-mapa">
-      <span class="etiq">🌱 Cambio o resolución</span>
-      <textarea placeholder="¿Qué hizo Marta? ¿Cómo cambió al final?"></textarea>
+      <label class="etiq" for="mapa-4">🌱 Cambio o resolución</label>
+      <textarea id="mapa-4" placeholder="¿Qué hizo Marta? ¿Cómo cambió al final?"></textarea>
     </div>
   </div>
 </div>
@@ -271,9 +357,16 @@
   <button type="button" class="btn btn-secundario" id="btn-limpiar-mapa">Limpiar mapa</button>
 </div>
 
-<div class="tip">
-  <strong>💡 Pista:</strong> El conflicto de Marta es <em>principalmente interno</em> (el miedo a equivocarse), aunque también enfrenta un obstáculo externo (vivir en un lugar donde nadie habla inglés).
-</div>
+<details class="ver-modelo">
+  <summary>Ya llené mi mapa: ver un modelo</summary>
+  <ul class="lista-bonita">
+    <li><strong>Rasgos físicos y datos:</strong> tiene cuarenta años, trabaja limpiando casas y vive en un pueblo pequeño. El cuento no describe cómo es su cara ni su cuerpo.</li>
+    <li><strong>Personalidad:</strong> callada, trabajadora, educada; quiere aprender, pero es insegura.</li>
+    <li><strong>Conflicto:</strong> principalmente <em>interno</em>, el miedo a equivocarse. También hay un obstáculo <em>externo</em>: en su pueblo nadie habla inglés.</li>
+    <li><strong>Cambio:</strong> se inscribe en la clase de inglés y se presenta en voz alta. Vence su miedo, aunque sea con tres palabras.</li>
+  </ul>
+  <p style="margin-bottom:0">Tus palabras pueden ser distintas. Lo importante es que cada idea se pueda <strong>comprobar en el cuento</strong>. ¿Te fijaste en el papel de doña Elena? Es la <strong>mentora</strong> de Marta.</p>
+</details>
 
 <h3>Clasifica el conflicto: ¿interno o externo?</h3>
 
@@ -285,16 +378,65 @@
 </div>
 
 <div class="clasificador-conf" id="clasif-conf"></div>
-<div class="puntaje" id="puntaje-clasif-conf">Aciertos: 0 / 8</div>
+<div class="puntaje" id="puntaje-clasif-conf" role="status">Aciertos: 0 / 8</div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-1.html#conflicto" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Conflicto interno o externo? ↗
+  <span>Veinte situaciones más para clasificar. En la misma página practicas también <strong>los roles</strong> y <strong>los rasgos</strong> de los personajes. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>El mapa de un personaje que conoces.</strong> Piensa en una película, una serie, una telenovela o un cuento que te guste. Elige a su <strong>protagonista</strong> y haz en tu cuaderno su mapa de personaje, con los mismos cuatro cuadros de la sección 3:</p>
+<ul class="lista-bonita">
+  <li><strong>Rasgos físicos y datos:</strong> cómo es, qué edad tiene, a qué se dedica.</li>
+  <li><strong>Rasgos de personalidad:</strong> al menos tres adjetivos, y una acción del personaje que demuestre cada uno.</li>
+  <li><strong>Conflicto:</strong> qué problema enfrenta y si es interno, externo o los dos.</li>
+  <li><strong>Cambio o resolución:</strong> qué hace al final y en qué cambió.</li>
+</ul>
+<p>Al final, escribe una oración que diga quién es el <strong>antagonista</strong> o qué fuerza se opone al protagonista.</p>
+<p>Si alguien de tu casa conoce la misma historia, cuéntale tu mapa y pregúntale si está de acuerdo con los rasgos que elegiste.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo del mapa de personaje</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Rasgos con pruebas</td><td class="nivel-4">Cada rasgo de personalidad tiene una acción que lo demuestra</td><td class="nivel-1">Solo puse adjetivos, sin ejemplos</td></tr>
+      <tr><td>Tipo de conflicto</td><td class="nivel-4">Dije si el conflicto es interno o externo y por qué</td><td class="nivel-1">Describí el problema sin clasificarlo</td></tr>
+      <tr><td>Cambio</td><td class="nivel-4">Expliqué qué hizo el personaje y en qué cambió</td><td class="nivel-1">No escribí cómo termina</td></tr>
+      <tr><td>Antagonista</td><td class="nivel-4">Nombré a la persona o fuerza que se opone</td><td class="nivel-1">No lo identifiqué</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste</h3>
 
 <ul class="lista-bonita">
   <li>Los <strong>personajes</strong> se analizan según su <strong>rol</strong>, sus <strong>rasgos</strong> y sus <strong>conflictos</strong>.</li>
@@ -305,7 +447,7 @@
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Puedes nombrar tres roles que cumplen los personajes en una historia?</li>
     <li>¿Cuál es la diferencia entre un conflicto interno y uno externo?</li>
@@ -314,16 +456,19 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Los personajes no flotan en el aire: viven en un <strong>escenario</strong>. Aprenderemos cómo el lugar, el tiempo y los detalles sensoriales afectan la historia y las emociones del lector.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_5-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 5.2 · El escenario y su impacto en la historia</a>. Los personajes no flotan en el aire: viven en un <strong>escenario</strong>. Verás cómo el lugar, el tiempo y los detalles de los sentidos afectan la historia y las emociones de quien lee.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 5 · Lección 5.1</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -391,6 +536,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué tres cosas se observan al analizar a un personaje?", "o": ["Su rol, sus rasgos y sus conflictos", "Su nombre, su edad y su ciudad", "El título, el autor y el final"], "c": 0}, {"t": "¿Quién es el <strong>protagonista</strong> de una historia?", "o": ["El personaje principal, el que enfrenta el conflicto", "El personaje que se opone al principal", "El personaje que da consejos"], "c": 0}, {"t": "¿Quién es el <strong>antagonista</strong>?", "o": ["El personaje o la fuerza que se opone al protagonista", "El personaje más bueno", "El que narra la historia"], "c": 0}, {"t": "¿Quién es el <strong>mentor</strong>?", "o": ["El personaje que guía y aconseja al protagonista", "El personaje más joven", "El enemigo del protagonista"], "c": 0}, {"t": "¿El antagonista tiene que ser una persona mala?", "o": ["No: puede ser un rival, una autoridad o incluso la naturaleza", "Sí, siempre es malvado", "Sí, y siempre es un animal"], "c": 0}, {"t": "«Honesto, tímido y generoso» son rasgos…", "o": ["de personalidad", "físicos", "de la forma de hablar"], "c": 0}, {"t": "«Alto, de cabello cano y con anteojos» son rasgos…", "o": ["físicos", "de personalidad", "del escenario"], "c": 0}, {"t": "Un <strong>conflicto interno</strong> ocurre…", "o": ["dentro del personaje: miedo, duda, culpa", "entre dos países", "siempre contra la naturaleza"], "c": 0}, {"t": "«Un huracán destruye la casa de la familia Pérez.» ¿Qué tipo de conflicto es?", "o": ["Externo", "Interno"], "c": 0, "fijo": true}, {"t": "«Rosa no sabe si aceptar un trabajo nuevo o quedarse donde está.» ¿Qué tipo de conflicto es?", "o": ["Externo", "Interno"], "c": 1, "fijo": true}, {"t": "En el cuento de Marta, ¿qué papel cumple doña Elena?", "o": ["Mentora", "Antagonista", "Protagonista"], "c": 0}, {"t": "¿Por qué es importante el conflicto en una historia?", "o": ["Porque pone en marcha la historia y hace que el personaje cambie", "Porque hace la historia más corta", "Porque presenta a todos los personajes"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes analizar a los personajes. Puedes continuar con la Lección 5.2.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

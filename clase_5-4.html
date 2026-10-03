@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 5.4 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 4: Seguir instrucciones paso a paso</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5.4 · Seguir instrucciones paso a paso</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -121,25 +127,120 @@
   .resultado-test.mostrar{display:block}
   .resultado-test.bien{background:#d4edda;color:#155724;border:2px solid var(--exito)}
   .resultado-test.regular{background:#fff3cd;color:#8a6d00;border:2px solid #f4c430}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  /* ── Tocar palabras: todas las palabras son botones; solo algunas son la respuesta ── */
+  .marcable{font-family:Georgia,serif;font-size:1.15rem;line-height:2.3;background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0}
+  .marcable p{margin:0 0 8px}
+  .pal-m{font:inherit;background:none;border:2px solid transparent;border-radius:6px;padding:0 3px;color:inherit;cursor:pointer}
+  .pal-m:hover{border-color:#b6dcf3}
+  .marcable .punt{margin-left:-4px}
+  .pal-m[aria-pressed="true"]{background:#fff3cd;border-color:#b35316}
+  .pal-m.bien{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .pal-m.mal{background:#f8d7da;border-color:#c62828;color:#721c24;text-decoration:line-through}
+  .pal-m.falto{border-color:#b35316;border-style:dashed}
+  .resultado-marcar:not(:empty){margin:10px 0;padding:10px 14px;border-radius:8px;font-weight:600}
+  .resultado-marcar.correcto{background:#d4edda;color:#155724}
+  .resultado-marcar.incorrecto{background:#fff3cd;color:#5c3900}
+
+  .btn-reintentar-test{margin-top:10px}
 </style>
 </head>
 <body>
 
-<h1>Clase 4: Seguir instrucciones paso a paso</h1>
-<p class="subtitulo">Comprensión lectora aplicada a textos de instrucciones · Nivel 1 · Tema 5, semana 10</p>
+<h1>Lección 5.4 · Seguir instrucciones paso a paso</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 5 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aplicar la comprensión lectora <strong>secuencial</strong> a textos informativos y de instrucciones paso a paso. Identificar los <strong>verbos de acción</strong> que marcan lo que el lector debe hacer, y aplicar un método de cuatro pasos para no equivocarse al ejecutar una instrucción.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-fallamos">¿Por qué fallamos al seguir instrucciones?</a></li>
+    <li><a href="#s-2-metodo">El método de los cuatro pasos</a></li>
+    <li><a href="#s-3-practica">Práctica: aplicar el método</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En la clase anterior estudiamos los conectores que organizan los eventos en orden. Hoy llevamos esa destreza al terreno más práctico que existe: <span class="palabra-clave">seguir instrucciones escritas</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>En la vida diaria nos enfrentamos constantemente a instrucciones: una receta, un manual del médico, un formulario, una etiqueta de medicamento, un examen. En el <strong>examen GED</strong>, una parte importante del puntaje depende simplemente de leer bien la consigna antes de responder. Saber leer instrucciones no es opcional: es una habilidad que protege nuestro tiempo, nuestra salud y nuestros resultados.</p>
+<p>En la lección anterior estudiaste los conectores que ordenan los hechos. Ahora vas a llevar esa destreza al terreno más práctico que existe: <span class="palabra-clave">seguir instrucciones escritas</span>.</p>
 
-<details open>
+<p>Todos los días leemos instrucciones: una receta, las indicaciones del médico, un formulario, la etiqueta de un medicamento, un examen. En el <strong>examen GED</strong>, leer bien lo que pide cada pregunta es tan importante como saber la respuesta. Saber leer instrucciones protege tu tiempo, tu salud y tus resultados.</p>
+
+<details open id="s-1-fallamos">
 <summary>1. ¿Por qué fallamos al seguir instrucciones? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
@@ -148,7 +249,7 @@
 <p>La mayoría de las personas no fallan al seguir instrucciones por falta de inteligencia, sino por <strong>tres razones</strong> muy concretas:</p>
 
 <ul class="lista-bonita">
-  <li><strong>No leen toda la instrucción</strong> antes de empezar. Comienzan a actuar después de la primera línea.</li>
+  <li><strong>No leen toda la instrucción</strong> antes de empezar. Empiezan a actuar después de la primera línea.</li>
   <li><strong>No identifican los verbos clave</strong>: las palabras que indican exactamente qué hay que hacer.</li>
   <li><strong>No verifican al final</strong> si cumplieron con todo lo que la instrucción pedía.</li>
 </ul>
@@ -162,8 +263,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. El método de los cuatro pasos <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-metodo">
+<summary>2. El método de los cuatro pasos <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Cuatro pasos para no equivocarse</h3>
@@ -175,43 +276,48 @@
   <div class="paso-metodo pm-leer">
     <span class="num-circ">1</span>
     <h4>Leer todo</h4>
-    <p>Lea la instrucción <strong>completa</strong> antes de hacer nada. No empiece por la primera línea.</p>
+    <p>Lee la instrucción <strong>completa</strong> antes de hacer nada. No empieces a actuar después de la primera línea.</p>
   </div>
 
   <div class="paso-metodo pm-pensar">
     <span class="num-circ">2</span>
     <h4>Pensar</h4>
-    <p>Pregúntese: <em>¿Qué es exactamente lo que tengo que hacer?</em> ¿Una cosa o varias?</p>
+    <p>Pregúntate: <em>¿qué es exactamente lo que tengo que hacer?</em> ¿Una cosa o varias?</p>
   </div>
 
   <div class="paso-metodo pm-subrayar">
     <span class="num-circ">3</span>
     <h4>Subrayar los verbos</h4>
-    <p>Identifique los verbos de acción: <em>lea, escriba, marque, seleccione, complete</em>.</p>
+    <p>Encuentra los verbos de acción: <em>lea, escriba, marque, seleccione, complete</em>. En papel, subráyalos.</p>
   </div>
 
   <div class="paso-metodo pm-comprobar">
     <span class="num-circ">4</span>
     <h4>Comprobar</h4>
-    <p>Al terminar, revise si hizo <strong>todo</strong> lo que se pedía. Nada de menos, nada de más.</p>
+    <p>Al terminar, revisa si hiciste <strong>todo</strong> lo que se pedía. Ni menos, ni más.</p>
   </div>
 
 </div>
 
 <h3>Los verbos de instrucción más frecuentes</h3>
 
-<p>Las instrucciones escritas, sobre todo en exámenes y formularios, utilizan un grupo reducido de verbos en modo imperativo. Aprenderlos facilita la lectura.</p>
+<p>Las instrucciones escritas, sobre todo en exámenes y formularios, usan un grupo pequeño de verbos en forma de orden (el <strong>imperativo</strong>). Conocerlos facilita la lectura.</p>
+
+<div class="tip">
+  <strong>💡 Usted o tú:</strong> las instrucciones formales (formularios, medicinas, exámenes) suelen hablar de <strong>usted</strong>: <em>lea, escriba, marque</em>. Otras hablan de <strong>tú</strong>: <em>lee, escribe, marca</em>. Significan lo mismo. En esta lección verás las dos formas.
+</div>
 
 <table class="tabla-verbos">
+  <caption class="sr-solo">Verbos de instrucción frecuentes y lo que piden</caption>
   <thead>
     <tr>
-      <th>Verbo</th>
-      <th>Qué se espera del lector</th>
+      <th scope="col">Verbo</th>
+      <th scope="col">Qué tienes que hacer</th>
     </tr>
   </thead>
   <tbody>
     <tr><td>Lea</td><td>Mirar y comprender el texto completo.</td></tr>
-    <tr><td>Escriba</td><td>Producir un texto con sus propias palabras.</td></tr>
+    <tr><td>Escriba</td><td>Producir un texto con palabras propias.</td></tr>
     <tr><td>Marque / Seleccione</td><td>Elegir una opción entre varias dadas.</td></tr>
     <tr><td>Complete</td><td>Rellenar un espacio en blanco.</td></tr>
     <tr><td>Identifique</td><td>Reconocer y señalar algo dentro del texto.</td></tr>
@@ -223,153 +329,178 @@
 
 <h3>Una instrucción real, paso a paso</h3>
 
-<p>Observe cómo se aplica el método a una instrucción típica del GED.</p>
+<p>Observa cómo se aplica el método a una instrucción como las del GED.</p>
 
 <div class="instruccion-real">
-  <h4>📋 Instrucción modelo (GED Razonamiento a través de las Artes del Lenguaje)</h4>
-  <p style="margin:0"><span class="v-resaltado">Lea</span> el siguiente párrafo. <span class="v-resaltado">Identifique</span> el argumento principal del autor y <span class="v-resaltado">seleccione</span> la opción que mejor lo resume. <span class="v-resaltado">Marque</span> su respuesta en la hoja de respuestas.</p>
+  <h4>📋 Instrucción modelo (estilo GED, Razonamiento a través del lenguaje)</h4>
+  <p style="margin:0"><span class="v-resaltado">Lea</span> el siguiente párrafo. <span class="v-resaltado">Identifique</span> el argumento principal del autor y <span class="v-resaltado">seleccione</span> la opción que mejor lo resume.</p>
 </div>
 
 <p>Aplicando el método de cuatro pasos:</p>
 
 <ul class="lista-bonita">
-  <li><strong>Paso 1 (leer todo):</strong> la instrucción pide <em>cuatro</em> acciones, no una sola.</li>
-  <li><strong>Paso 2 (pensar):</strong> primero leer, después identificar, después seleccionar, y por último marcar.</li>
-  <li><strong>Paso 3 (subrayar verbos):</strong> <em>lea, identifique, seleccione, marque</em>.</li>
-  <li><strong>Paso 4 (comprobar):</strong> al terminar, revisar que la respuesta esté marcada en la hoja correcta.</li>
+  <li><strong>Paso 1 (leer todo):</strong> la instrucción pide <em>tres</em> acciones, no una sola.</li>
+  <li><strong>Paso 2 (pensar):</strong> primero leer, después identificar el argumento principal y, por último, seleccionar la opción.</li>
+  <li><strong>Paso 3 (subrayar verbos):</strong> <em>lea, identifique, seleccione</em>.</li>
+  <li><strong>Paso 4 (comprobar):</strong> antes de pasar a la siguiente pregunta, revisa que la opción elegida resuma el <em>argumento principal</em> y no un simple detalle.</li>
 </ul>
 
 <div class="tip">
-  <strong>⚠️ Cuidado:</strong> Muchos estudiantes pierden puntos en el GED por seleccionar la respuesta correcta… pero olvidar <em>marcarla</em> en la hoja. La instrucción se cumple solo cuando se hacen <strong>todas</strong> las acciones que pide.
+  <strong>⚠️ Cuidado:</strong> Muchas personas pierden puntos en un examen no porque no sepan, sino porque responden lo que <em>creen</em> que se pregunta. Si la pregunta dice «¿Qué idea <strong>no</strong> menciona el autor?» y eliges una que sí menciona, fallaste por leer de prisa. La instrucción se cumple solo cuando haces <strong>exactamente</strong> lo que pide.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: aplicar el método <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: aplicar el método <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Actividad 1: subraye los verbos de acción</h3>
+<h3>Actividad 1: encuentra las órdenes</h3>
 
-<p>Las siguientes son instrucciones reales (recetas, formularios, exámenes). Haga clic sobre los <strong>verbos de acción</strong> en cada instrucción. Cuando termine, presione "Verificar".</p>
+<p>Estas instrucciones vienen de recetas, formularios, exámenes y etiquetas. Toca los <strong>verbos de acción</strong>: los que le dicen al lector <strong>qué tiene que hacer</strong>. Ojo: no todos los verbos son órdenes. En «hasta que el agua hierva», <em>hierva</em> dice lo que hace el agua, no lo que haces tú. Cuando termines, pulsa «Verificar».</p>
 
-<div class="texto-subrayar-verbo" id="texto-verbos">
-<p style="margin:0 0 12px 0;color:var(--gris);font-size:0.9rem;text-align:center">Haga clic en los verbos de acción (los que indican qué debe hacer el lector).</p>
-<p><strong>1.</strong> <span class="palabra-clic" data-tipo="verbo">Caliente</span> el agua hasta que hierva y <span class="palabra-clic" data-tipo="verbo">agregue</span> el arroz.</p>
-<p><strong>2.</strong> <span class="palabra-clic" data-tipo="verbo">Complete</span> el formulario con letra de imprenta y <span class="palabra-clic" data-tipo="verbo">firme</span> al final.</p>
-<p><strong>3.</strong> <span class="palabra-clic" data-tipo="verbo">Lea</span> el pasaje y <span class="palabra-clic" data-tipo="verbo">seleccione</span> la mejor opción.</p>
-<p><strong>4.</strong> <span class="palabra-clic" data-tipo="verbo">Tome</span> una pastilla cada ocho horas y <span class="palabra-clic" data-tipo="verbo">beba</span> abundante agua.</p>
-<p><strong>5.</strong> <span class="palabra-clic" data-tipo="verbo">Marque</span> la casilla correcta y <span class="palabra-clic" data-tipo="verbo">escriba</span> su nombre completo.</p>
-</div>
+<div class="marcable" id="texto-verbos" data-texto="[Caliente] el agua hasta que hierva y [agregue] el arroz.|[Complete] el formulario con letra de molde y [firme] al final.|[Lea] el texto y [seleccione] la opción que mejor responde a la pregunta.|[Tome] una pastilla cada ocho horas y [beba] mucha agua.|Si el campo tiene un asterisco, [escriba] su nombre completo.|[Guarde] el medicamento donde los niños no lo alcancen."></div>
 
 <div class="botones">
   <button type="button" class="btn btn-primario" id="btn-verificar-verbos">Verificar</button>
   <button type="button" class="btn btn-secundario" id="btn-reset-verbos">Limpiar</button>
 </div>
-<div class="puntaje" id="puntaje-verbos"></div>
+<div class="resultado-marcar" id="puntaje-verbos" role="status"></div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-4.html#verbos-orden" target="_blank" rel="noopener">
+  ✍️ Práctica: Encuentra las órdenes ↗
+  <span>Más instrucciones para practicar. En la misma página practicas también <strong>a contar cuántas acciones pide una instrucción</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 <h3>Actividad 2: el desafío de las instrucciones</h3>
 
-<p>Esta es una versión adaptada de un ejercicio clásico de atención lectora. <strong>Antes de tocar cualquier botón o campo</strong>, lea las cinco instrucciones <strong>completas</strong>. Después decida qué hacer.</p>
+<p>Esta es una versión adaptada de un ejercicio clásico de atención. <strong>Antes de tocar cualquier botón o campo</strong>, lee las cinco instrucciones <strong>completas</strong>. Después decide qué hacer.</p>
 
 <div class="test-instrucciones">
-  <h4>📝 Lea todas las instrucciones antes de actuar</h4>
+  <h4>📝 Lee todas las instrucciones antes de actuar</h4>
   <ol>
-    <li>Lea todas las instrucciones de este recuadro antes de hacer nada.</li>
-    <li>Escriba su nombre en el campo "Nombre".</li>
-    <li>Presione el botón "Aplaudir".</li>
-    <li>Presione el botón "Saltar".</li>
-    <li>Después de leer las cinco instrucciones, <strong>solo presione el botón "He leído todo" y no haga ninguna otra cosa</strong>.</li>
+    <li>Lee todas las instrucciones de este recuadro antes de hacer nada.</li>
+    <li>Escribe tu nombre en el campo «Nombre».</li>
+    <li>Pulsa el botón «Aplaudir».</li>
+    <li>Pulsa el botón «Saltar».</li>
+    <li>Después de leer las cinco instrucciones, <strong>pulsa solo el botón «He leído todo» y no hagas nada más</strong>.</li>
   </ol>
 
   <div class="area-test">
     <h5>Área de respuesta</h5>
-    <span style="font-size:0.9rem;color:var(--gris);display:block;margin-bottom:4px">Nombre:</span>
-    <input type="text" id="nombre-test" placeholder="(no escriba nada hasta haber leído todo)">
+    <label for="nombre-test" style="font-size:0.9rem;color:var(--gris);display:block;margin-bottom:4px">Nombre:</label>
+    <input type="text" id="nombre-test" placeholder="(no escribas nada hasta haber leído todo)">
     <div class="botones-test">
       <button type="button" class="btn-test" id="btn-aplaudir">👏 Aplaudir</button>
       <button type="button" class="btn-test" id="btn-saltar">🦘 Saltar</button>
       <button type="button" class="btn-test" id="btn-todo-leido" style="border-color:var(--exito);color:var(--exito);font-weight:700">✅ He leído todo</button>
     </div>
-    <div class="resultado-test" id="resultado-test"></div>
+    <div class="resultado-test" id="resultado-test" role="status"></div>
+    <button type="button" class="btn btn-secundario btn-reintentar-test" id="btn-reintentar-test" hidden>Volver a empezar</button>
   </div>
 </div>
 
-<h3>Actividad 3: quiz de comprensión de instrucciones</h3>
+<h3>Actividad 3: ¿qué pide la instrucción?</h3>
 
-<p>Para cada instrucción, seleccione la respuesta correcta.</p>
+<p>Para cada instrucción, elige la respuesta correcta.</p>
 
 <div class="quiz-comp" id="quiz-comp"></div>
-<div class="puntaje" id="puntaje-quiz">Aciertos: 0 / 5</div>
+<div class="puntaje" id="puntaje-quiz" role="status">Aciertos: 0 / 5</div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-4.html#cuantas-acciones" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Cuántas acciones pide? ↗
+  <span>Veinte instrucciones para contar las acciones y no dejar ninguna sin hacer. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>Instrucciones de la vida real.</strong> Busca en tu casa <strong>tres textos con instrucciones</strong>: la caja de un medicamento, una receta, el reverso de un producto de limpieza, un formulario o el manual de un aparato. Para cada uno, escribe en tu cuaderno:</p>
+<ul class="lista-bonita">
+  <li>Qué texto es y para qué sirve.</li>
+  <li>Una instrucción copiada tal como aparece.</li>
+  <li>Los <strong>verbos de acción</strong> de esa instrucción, subrayados.</li>
+  <li><strong>Cuántas acciones</strong> pide y en qué orden hay que hacerlas.</li>
+  <li>Qué podría salir mal si alguien no la lee completa.</li>
+</ul>
+<p>Después, escribe tú unas instrucciones de <strong>cuatro pasos</strong> para algo que sabes hacer bien (preparar un café, cambiar un foco, enviar un mensaje de voz). Usa un verbo de acción al inicio de cada paso y al menos dos conectores de secuencia. Si alguien de tu casa quiere participar, pídele que siga tus instrucciones al pie de la letra: ¿pudo hacerlo sin preguntarte nada?</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Instrucciones de la vida real»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Verbos de acción</td><td class="nivel-4">Subrayé todos los verbos que son órdenes</td><td class="nivel-1">Subrayé verbos que no son órdenes o me faltaron</td></tr>
+      <tr><td>Número de acciones</td><td class="nivel-4">Conté bien cuántas acciones pide cada instrucción</td><td class="nivel-1">Conté solo la primera acción</td></tr>
+      <tr><td>Mis instrucciones</td><td class="nivel-4">Cada paso empieza con un verbo de acción y están en orden</td><td class="nivel-1">Faltan pasos o están desordenados</td></tr>
+      <tr><td>Conectores</td><td class="nivel-4">Usé al menos dos conectores de secuencia</td><td class="nivel-1">No usé conectores</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste</h3>
 
 <ul class="lista-bonita">
   <li>Las <strong>instrucciones escritas</strong> exigen un tipo de lectura distinto: precisa y completa.</li>
   <li>El <strong>método de cuatro pasos</strong> consiste en: leer todo, pensar qué piden, subrayar los verbos y comprobar al final.</li>
   <li>Los <strong>verbos de acción</strong> son la clave de toda instrucción: <em>lea, escriba, marque, seleccione, complete</em>.</li>
   <li>Una instrucción se cumple solo cuando se ejecutan <strong>todas</strong> las acciones que pide, ni una menos.</li>
-  <li>Esta destreza es decisiva en el examen GED, en formularios, recetas médicas y la vida diaria.</li>
+  <li>Esta destreza es decisiva en el examen GED, en los formularios, en las recetas médicas y en la vida diaria.</li>
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irse, revísese</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Puede nombrar los cuatro pasos del método para seguir instrucciones?</li>
+    <li>¿Puedes nombrar los cuatro pasos del método para seguir instrucciones?</li>
     <li>¿Cuál es la diferencia entre los verbos <em>"marque"</em> y <em>"complete"</em>?</li>
     <li>¿Por qué es importante leer la instrucción <strong>completa</strong> antes de empezar a actuar?</li>
   </ul>
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Pasaremos del orden cronológico a la <strong>lógica del texto</strong>. Estudiaremos las relaciones de <em>causa y efecto</em>: cómo identificar por qué ocurren las cosas en un texto informativo.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_5-5.html" style="color:var(--cp-oscuro);font-weight:700">Lección 5.5 · La relación de causa y efecto</a>. Pasarás del orden en el tiempo a la <strong>lógica del texto</strong>: las relaciones de <em>causa y efecto</em>, es decir, por qué ocurren las cosas.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 5 · Lección 5.4</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
-  // ===== Actividad 1: Subrayar verbos =====
-  var palabras=document.querySelectorAll('#texto-verbos .palabra-clic');
-  var totalVerbos=palabras.length;
-
-  palabras.forEach(function(p){
-    p.addEventListener('click',function(){
-      p.classList.toggle('subrayado');
-      document.getElementById('puntaje-verbos').textContent='';
-    });
-  });
-
-  document.getElementById('btn-verificar-verbos').addEventListener('click',function(){
-    var marcadas=document.querySelectorAll('#texto-verbos .palabra-clic.subrayado').length;
-    var el=document.getElementById('puntaje-verbos');
-    if(marcadas===totalVerbos){
-      el.innerHTML='🎉 ¡Perfecto! Identificó los '+totalVerbos+' verbos de acción.';
-      el.style.color='var(--exito)';
-    }else{
-      el.innerHTML='Subrayó '+marcadas+' de '+totalVerbos+'. Recuerde: el verbo es la palabra que dice <em>qué debe hacer el lector</em>.';
-      el.style.color='var(--acento)';
-    }
-  });
-
-  document.getElementById('btn-reset-verbos').addEventListener('click',function(){
-    palabras.forEach(function(p){p.classList.remove('subrayado')});
-    document.getElementById('puntaje-verbos').textContent='';
-  });
+  prepararMarcable('texto-verbos','btn-verificar-verbos','btn-reset-verbos','puntaje-verbos',['verbo de acción','verbos de acción']);
 
   // ===== Actividad 2: Test del desafío =====
   var estadoTest={
@@ -398,18 +529,28 @@
     var res=document.getElementById('resultado-test');
     if(!estadoTest.nombreEscrito && !estadoTest.aplaudio && !estadoTest.salto){
       res.className='resultado-test bien mostrar';
-      res.innerHTML='🎉 ¡Excelente! Leyó las cinco instrucciones antes de actuar y solo presionó este botón, tal como pedía la consigna número 5. Esa es la lectura cuidadosa que necesita en el examen GED.';
+      res.innerHTML='🎉 ¡Excelente! Leíste las cinco instrucciones antes de actuar y solo pulsaste este botón, tal como pedía la instrucción número 5. Esa es la lectura cuidadosa que necesitas en el examen GED.';
     }else{
       var hizo=[];
-      if(estadoTest.nombreEscrito)hizo.push('escribió su nombre');
-      if(estadoTest.aplaudio)hizo.push('presionó "Aplaudir"');
-      if(estadoTest.salto)hizo.push('presionó "Saltar"');
+      if(estadoTest.nombreEscrito)hizo.push('escribiste tu nombre');
+      if(estadoTest.aplaudio)hizo.push('pulsaste «Aplaudir»');
+      if(estadoTest.salto)hizo.push('pulsaste «Saltar»');
       res.className='resultado-test regular mostrar';
-      res.innerHTML='⚠️ Buen intento, pero observe: actuó antes de leer todo. Hizo lo siguiente sin necesidad: <strong>'+hizo.join(', ')+'</strong>. La instrucción 5 pedía que <em>solo</em> presionara este botón. Es un buen recordatorio: <strong>siempre lea todas las instrucciones primero</strong>.';
+      res.innerHTML='⚠️ Buen intento, pero fíjate: actuaste antes de leer todo. Hiciste esto sin necesidad: <strong>'+hizo.join(', ')+'</strong>. La instrucción 5 pedía que pulsaras <em>solo</em> este botón. Es un buen recordatorio: <strong>lee siempre todas las instrucciones primero</strong>.';
     }
   });
 
-  // ===== Actividad 3: Quiz de comprensión =====
+  document.getElementById('btn-todo-leido').addEventListener('click',function(){document.getElementById('btn-reintentar-test').hidden=false;});
+  document.getElementById('btn-reintentar-test').addEventListener('click',function(){
+    estadoTest={nombreEscrito:false,aplaudio:false,salto:false,todoLeido:false};
+    document.getElementById('nombre-test').value='';
+    document.getElementById('btn-aplaudir').classList.remove('presionado');
+    document.getElementById('btn-saltar').classList.remove('presionado');
+    var r=document.getElementById('resultado-test'); r.className='resultado-test'; r.innerHTML='';
+    this.hidden=true;
+  });
+
+  // ===== Actividad 3: ¿qué pide la instrucción? =====
   var preguntas=[
     {
       pregunta:'La instrucción dice: "Lea el pasaje y subraye la idea principal con un solo trazo."  ¿Cuántas acciones debe hacer el estudiante?',
@@ -421,17 +562,17 @@
       pregunta:'Una etiqueta de medicamento indica: "Tome una pastilla cada ocho horas con abundante agua." ¿Qué significa "cada ocho horas"?',
       opciones:['Una pastilla por día.','Tres pastillas por día, espaciadas cada ocho horas.','Una pastilla cuando sienta dolor.'],
       correcta:1,
-      explicacion:'24 horas dividido entre 8 da tres tomas al día. Leer mal esta instrucción puede ser peligroso.'
+      explicacion:'24 horas entre 8 da tres tomas al día. Leer mal esta instrucción puede ser peligroso.'
     },
     {
-      pregunta:'Un formulario dice: "Complete los campos marcados con asterisco (*) y firme al pie del documento." Si usted llena solo los campos con asterisco pero no firma…',
-      opciones:['Cumplió la instrucción.','No cumplió la instrucción completa.','Da igual, lo importante son los campos.'],
+      pregunta:'Un formulario dice: "Complete los campos marcados con asterisco (*) y firme al pie del documento." Si llenas solo los campos con asterisco, pero no firmas…',
+      opciones:['Cumpliste la instrucción.','No cumpliste la instrucción completa.','Da igual, lo importante son los campos.'],
       correcta:1,
       explicacion:'La instrucción pide <strong>dos</strong> acciones: completar Y firmar. Sin la firma, la instrucción está incompleta.'
     },
     {
       pregunta:'En el GED aparece la instrucción: "Seleccione la opción que mejor describe el tema central." ¿Qué tipo de respuesta espera?',
-      opciones:['Una respuesta escrita con sus propias palabras.','Elegir entre las opciones dadas.','Subrayar una frase del texto.'],
+      opciones:['Una respuesta escrita con tus propias palabras.','Elegir entre las opciones dadas.','Subrayar una frase del texto.'],
       correcta:1,
       explicacion:'El verbo <em>seleccione</em> indica que hay opciones dadas entre las cuales se debe elegir una.'
     },
@@ -476,7 +617,7 @@
         }else{
           b.classList.add('incorrecta');
           feedback.className='feedback-q no mostrar';
-          feedback.innerHTML='❌ Revise la instrucción otra vez. Recuerde: identifique los verbos y cuente las acciones.';
+          feedback.innerHTML='❌ Lee la instrucción otra vez. Recuerda: encuentra los verbos y cuenta las acciones.';
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
       });
@@ -491,6 +632,114 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Tocar palabras ===== */
+/* <div class="marcable" data-texto="Mi [familia] vive en una [casa] grande."> ;
+   cada línea del texto (separada por «|») es un párrafo. */
+function prepararMarcable(id, idRevisar, idLimpiar, idResultado, queBusca){
+  var caja=document.getElementById(id), res=document.getElementById(idResultado);
+  function pintar(){
+    caja.innerHTML='';
+    caja.getAttribute('data-texto').split('|').forEach(function(linea){
+      var p=document.createElement('p');
+      linea.trim().split(/\s+/).forEach(function(tok,k){
+        var m=tok.match(/^([¿¡«(]*)(\[?)([^\]\s.,;:!?»)]+)(\]?)([.,;:!?»)]*)$/);
+        if(k) p.appendChild(document.createTextNode(' '));
+        if(!m){ p.appendChild(document.createTextNode(tok)); return; }
+        if(m[1]) p.appendChild(document.createTextNode(m[1]));
+        var b=document.createElement('button'); b.type='button'; b.className='pal-m'; b.textContent=m[3];
+        b.setAttribute('aria-pressed','false'); if(m[2]==='[') b.dataset.ok='1';
+        b.addEventListener('click',function(){ if(b.disabled)return; b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true'); res.textContent=''; res.className='resultado-marcar'; });
+        p.appendChild(b);
+        if(m[5]){ var sg=document.createElement('span'); sg.className='punt'; sg.textContent=m[5]; p.appendChild(sg); }
+      });
+      caja.appendChild(p);
+    });
+    res.textContent=''; res.className='resultado-marcar';
+  }
+  document.getElementById(idRevisar).addEventListener('click',function(){
+    var bien=0,mal=0,falta=0,total=0;
+    caja.querySelectorAll('.pal-m').forEach(function(b){
+      var marcada=b.getAttribute('aria-pressed')==='true', obj=b.dataset.ok==='1';
+      if(obj) total++;
+      b.classList.remove('bien','mal','falto');
+      if(marcada&&obj){b.classList.add('bien');bien++;}
+      else if(marcada&&!obj){b.classList.add('mal');mal++;}
+      else if(!marcada&&obj){b.classList.add('falto');falta++;}
+    });
+    if(!mal&&!falta){ res.textContent='🎉 ¡Excelente! Encontraste '+(total===1?'el '+queBusca[0]:'los '+total+' '+queBusca[1])+'.'; res.className='resultado-marcar correcto'; }
+    else{ res.textContent='Encontraste '+bien+' de '+total+'.'+(mal?' Marcaste '+mal+' que no '+(mal===1?'es '+queBusca[0]:'son '+queBusca[1])+' (en rojo).':'')+(falta?' Te '+(falta===1?'faltó':'faltaron')+' '+falta+' (con borde naranja).':'')+' Puedes corregir y volver a revisar.'; res.className='resultado-marcar incorrecto'; }
+  });
+  document.getElementById(idLimpiar).addEventListener('click',pintar);
+  pintar();
+}
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuál es el <strong>primer paso</strong> del método para seguir instrucciones?", "o": ["Leer toda la instrucción antes de actuar", "Hacer lo que dice la primera línea", "Preguntarle a otra persona"], "c": 0}, {"t": "¿Cuál es el <strong>último paso</strong> del método?", "o": ["Comprobar que hiciste todo lo que se pedía", "Leer solo el título", "Subrayar los sustantivos"], "c": 0}, {"t": "¿Qué palabras son la clave de toda instrucción?", "o": ["Los verbos de acción", "Los artículos", "Los adjetivos"], "c": 0}, {"t": "«Lea el texto y subraye la idea principal.» ¿Cuántas acciones pide?", "o": ["Una", "Dos", "Tres"], "c": 1, "fijo": true}, {"t": "«Escriba su nombre, firme y ponga la fecha.» ¿Cuántas acciones pide?", "o": ["Una", "Dos", "Tres"], "c": 2, "fijo": true}, {"t": "«Agite bien antes de usar.» ¿Cuál es el verbo de acción?", "o": ["Agite", "Bien", "Antes"], "c": 0}, {"t": "«Hierva el agua hasta que salgan burbujas.» ¿Cuál <strong>no</strong> es una orden para el lector?", "o": ["salgan", "Hierva"], "c": 0}, {"t": "¿Qué pide el verbo <strong>seleccione</strong>?", "o": ["Elegir entre opciones dadas", "Escribir con palabras propias", "Trazar una línea debajo"], "c": 0}, {"t": "¿Qué pide el verbo <strong>complete</strong>?", "o": ["Rellenar un espacio en blanco", "Elegir una opción", "Ordenar una lista"], "c": 0}, {"t": "«Tome una pastilla cada doce horas.» ¿Cuántas pastillas al día son?", "o": ["Dos", "Una", "Doce"], "c": 0}, {"t": "Una pregunta dice: «¿Qué idea <strong>no</strong> aparece en el texto?». ¿Qué opción debes elegir?", "o": ["La que el texto no menciona", "La que el texto menciona primero", "La más larga"], "c": 0}, {"t": "«Lee», «escribe» y «marca» le hablan de tú al lector. ¿Cómo se dicen las mismas órdenes de usted?", "o": ["Lea, escriba, marque", "Leer, escribir, marcar", "Leyó, escribió, marcó"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes leer instrucciones sin equivocarte. Puedes continuar con la Lección 5.5.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

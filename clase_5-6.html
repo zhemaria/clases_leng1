@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 5.6 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 6: Comparar y contrastar información</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 5.6 · Comparar y contrastar información</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -134,25 +140,109 @@
   .caja-cierre{background:linear-gradient(135deg,var(--cp-claro) 0%,#fff3e0 100%);border:2px solid var(--acento);border-radius:12px;padding:20px 24px;margin:20px 0;text-align:center}
   .caja-cierre h3{color:var(--cp-oscuro);margin-top:0;border:none;padding:0}
   .caja-cierre p{margin:8px 0;color:var(--texto)}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  .btn-colocar{display:block;margin:8px auto 0;font:inherit;font-size:0.85rem;font-weight:600;background:#fff;border:2px dashed currentColor;border-radius:6px;padding:4px 10px;cursor:pointer;color:inherit}
+  .col-venn-a .btn-colocar{color:var(--texto-a)} .col-venn-comun .btn-colocar{color:var(--comun)} .col-venn-b .btn-colocar{color:var(--texto-b)}
+  .col-venn li button{font:inherit;background:none;border:none;padding:0;text-align:left;cursor:pointer;color:inherit}
+  .col-venn li button:focus-visible,.btn-colocar:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
 </style>
 </head>
 <body>
 
-<h1>Clase 6: Comparar y contrastar información</h1>
-<p class="subtitulo">Similitudes y diferencias entre dos textos · Nivel 1 · Tema 5, semana 10</p>
+<h1>Lección 5.6 · Comparar y contrastar información</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 5 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Reconocer <strong>similitudes</strong> (comparación) y <strong>diferencias</strong> (contraste) entre dos ideas o textos sobre el mismo tema, identificar las <strong>palabras de transición</strong> que las señalan y organizar la información en un <strong>diagrama de Venn</strong>.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-comparar">Comparar y contrastar: dos operaciones distintas</a></li>
+    <li><a href="#s-2-venn">El diagrama de Venn y las palabras de transición</a></li>
+    <li><a href="#s-3-practica">Práctica: completar un diagrama de Venn</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre del tema</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Llegamos a la última clase del tema. Hasta aquí hemos aprendido a identificar personajes, escenarios, secuencias e instrucciones, y a entender por qué ocurren las cosas. Hoy cerramos con la destreza más exigida en el examen GED: <span class="palabra-clave">comparar y contrastar dos textos</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>En el examen, muchas veces se presentan dos pasajes que tratan el mismo tema desde perspectivas distintas. La pregunta no es "¿qué dice cada uno?", sino "¿en qué se <strong>parecen</strong> y en qué se <strong>diferencian</strong>?". Para responder bien necesitamos dos herramientas: el <strong>diagrama de Venn</strong> y el lenguaje de transición.</p>
+<p>Llegaste a la última lección del Tema 5. Ya sabes analizar personajes y escenarios, seguir el orden de los hechos y de las instrucciones, y entender por qué ocurren las cosas. Ahora vas a cerrar con una destreza que el examen GED pide con frecuencia: <span class="palabra-clave">comparar y contrastar dos textos</span>.</p>
 
-<details open>
+<p>En el examen pueden aparecer dos textos que tratan el mismo tema desde puntos de vista distintos. Entonces la pregunta no es solo «¿qué dice cada uno?», sino «¿en qué se <strong>parecen</strong> y en qué se <strong>diferencian</strong>?». Para responder bien necesitas dos herramientas: el <strong>diagrama de Venn</strong> y las palabras de transición.</p>
+
+<details open id="s-1-comparar">
 <summary>1. Comparar y contrastar: dos operaciones distintas <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
@@ -172,7 +262,7 @@
 
 </div>
 
-<p>Aunque en el habla cotidiana se usa "comparar" para ambas operaciones, en lectura crítica son dos cosas distintas: <strong>comparar busca parecidos; contrastar busca diferencias</strong>. Un buen lector sabe hacer las dos cosas con el mismo texto.</p>
+<p>Aunque en el habla de todos los días se usa «comparar» para las dos operaciones, en lectura crítica son dos cosas distintas: <strong>comparar busca parecidos; contrastar busca diferencias</strong>. Un buen lector sabe hacer las dos cosas con el mismo texto.</p>
 
 <div class="tip">
   <strong>💡 Idea central:</strong> No basta con leer dos textos por separado. Compararlos y contrastarlos significa <em>leerlos juntos</em>, prestando atención a los puntos en los que coinciden y a los puntos en los que se separan.
@@ -181,8 +271,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. El diagrama de Venn y el lenguaje de transición <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-venn">
+<summary>2. El diagrama de Venn y las palabras de transición <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El diagrama de Venn</h3>
@@ -196,7 +286,9 @@
 </ul>
 
 <div class="venn-wrap">
-  <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" aria-label="Diagrama de Venn">
+  <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="venn-t venn-d">
+    <title id="venn-t">Diagrama de Venn</title>
+    <desc id="venn-d">Dos círculos que se cruzan. El círculo de la izquierda es el texto A y guarda lo que solo tiene A. El de la derecha es el texto B y guarda lo que solo tiene B. La zona del centro, donde se cruzan, guarda lo que tienen en común.</desc>
     <circle cx="180" cy="140" r="110" fill="#1565c0" fill-opacity="0.25" stroke="#1565c0" stroke-width="2.5"/>
     <circle cx="320" cy="140" r="110" fill="#ef6c00" fill-opacity="0.25" stroke="#ef6c00" stroke-width="2.5"/>
     <text x="115" y="90" font-family="Poppins,sans-serif" font-size="15" font-weight="700" fill="#1565c0" text-anchor="middle">Texto A</text>
@@ -215,39 +307,40 @@
   </div>
 </div>
 
-<h3>El lenguaje de transición</h3>
+<h3>Las palabras de transición</h3>
 
-<p>Los autores utilizan palabras especiales para señalar cuándo están comparando y cuándo están contrastando. Reconocer estas palabras es la clave para leer este tipo de textos.</p>
+<p>Los autores usan palabras especiales para señalar cuándo comparan y cuándo contrastan. Reconocerlas es la clave para leer este tipo de textos.</p>
 
 <table class="tabla-cc">
+  <caption class="sr-solo">Conectores de comparación y de contraste</caption>
   <thead>
     <tr>
-      <th>Función</th>
-      <th>Conectores</th>
-      <th>Ejemplo</th>
+      <th scope="col">Función</th>
+      <th scope="col">Conectores</th>
+      <th scope="col">Ejemplo</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td class="col-comp">Comparar (similitudes)</td>
-      <td>como, al igual que, de la misma manera, análogamente, también, asimismo, de modo similar</td>
+      <td>como, al igual que, así como, de la misma manera, de manera similar, también, asimismo</td>
       <td>El perro es un animal doméstico, <span class="marca-comp">al igual que</span> el gato.</td>
     </tr>
     <tr>
       <td class="col-cont">Contrastar (diferencias)</td>
-      <td>sin embargo, pero, en cambio, por el contrario, en contraste, a diferencia de, en lugar de, a pesar de, mientras que</td>
+      <td>pero, sin embargo, en cambio, por el contrario, en contraste, a diferencia de, mientras que</td>
       <td>El perro suele ser sociable; <span class="marca-cont">sin embargo</span>, el gato prefiere la soledad.</td>
     </tr>
   </tbody>
 </table>
 
 <div class="tip">
-  <strong>⚠️ Atención:</strong> Los conectores de contraste son más numerosos en español que los de comparación, y muchos son fáciles de confundir. Lea el contexto: si después del conector aparece una característica <em>parecida</em>, es comparación; si aparece una característica <em>opuesta</em>, es contraste.
+  <strong>⚠️ Atención:</strong> Hay muchos conectores de contraste y algunos se confunden con facilidad. Lee el contexto: si después del conector aparece una característica <em>parecida</em>, es comparación; si aparece una característica <em>opuesta</em>, es contraste.
 </div>
 
 <h3>Dos textos sobre el mismo tema</h3>
 
-<p>Lea los siguientes dos textos breves sobre el debate de la perforación petrolera en el Ártico. Cada uno presenta una posición distinta.</p>
+<p>Lee estos dos textos breves sobre el debate de la perforación petrolera en el Ártico. Cada uno presenta una posición distinta.</p>
 
 <div class="dos-textos">
 
@@ -260,30 +353,35 @@
   <div class="texto-bloque bloque-b">
     <h4>📕 Texto B · En contra de la perforación</h4>
     <p>La perforación en el Ártico representa un riesgo grave para un ecosistema frágil y único en el mundo. <span class="marca-cont">A diferencia de</span> otras regiones, el Ártico tiene una capacidad de recuperación muy limitada frente a un derrame de petróleo.</p>
-    <p>Los pueblos indígenas que habitan la zona, <span class="marca-cont">por el contrario</span>, dependen de la fauna silvestre y se verían directamente afectados.</p>
+    <p>Los defensores de la perforación hablan de empleos; <span class="marca-cont">sin embargo</span>, los pueblos indígenas que viven en la zona dependen de la fauna silvestre y serían los primeros afectados.</p>
   </div>
 
 </div>
 
-<p>Ambos textos hablan del mismo asunto, pero desde posiciones opuestas. Note cómo el primero usa <em>al igual que</em> para comparar con otras regiones, mientras que el segundo usa <em>a diferencia de</em> y <em>por el contrario</em> para marcar contraste.</p>
+<p>Ambos textos hablan del mismo asunto, pero desde posiciones opuestas. Fíjate en que el primero usa <em>al igual que</em> para comparar con otras regiones, mientras que el segundo usa <em>a diferencia de</em> y <em>sin embargo</em> para marcar contraste.</p>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: completar un diagrama de Venn <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: completar un diagrama de Venn <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Actividad 1: clasifique cada conector</h3>
+<h3>Actividad 1: clasifica cada conector</h3>
 
-<p>Lea cada oración y decida si el conector destacado señala una <strong>similitud</strong> (comparar) o una <strong>diferencia</strong> (contrastar).</p>
+<p>Lee cada oración y decide si el conector destacado señala una <strong>similitud</strong> (comparar) o una <strong>diferencia</strong> (contrastar).</p>
 
 <div class="quiz-cc" id="quiz-cc"></div>
-<div class="puntaje" id="puntaje-quiz-cc">Aciertos: 0 / 8</div>
+<div class="puntaje" id="puntaje-quiz-cc" role="status">Aciertos: 0 / 8</div>
 
-<h3>Actividad 2: complete el diagrama de Venn</h3>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-6.html#comparar-contrastar" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Comparar o contrastar? ↗
+  <span>Veinte oraciones más para clasificar los conectores. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
-<p>Lea los dos textos siguientes sobre dos formas de transporte urbano. Después, arrastre cada rasgo del banco al lugar correcto del diagrama: solo metro, solo autobús, o en común.</p>
+<h3>Actividad 2: completa el diagrama de Venn</h3>
+
+<p>Lee estos dos textos sobre dos formas de transporte en la ciudad. Después, coloca cada rasgo del banco en el lugar correcto del diagrama: solo metro, solo autobús o en común.</p>
 
 <div class="dos-textos">
 
@@ -302,8 +400,8 @@
 </div>
 
 <div class="venn-rellenable">
-  <h4>🔄 Coloque cada rasgo donde corresponde</h4>
-  <p style="text-align:center;color:var(--gris);font-size:0.9rem;margin:0 0 12px 0">1. Haga clic en un rasgo del banco. 2. Haga clic en la columna del diagrama donde lo quiere colocar.</p>
+  <h4>🔄 Coloca cada rasgo donde corresponde</h4>
+  <p style="text-align:center;color:var(--gris);font-size:0.9rem;margin:0 0 12px 0">1. Toca un rasgo del banco. 2. Toca «Colocar aquí» en la columna que corresponde. Si te equivocas, toca el rasgo colocado para devolverlo al banco.</p>
 
   <div class="banco-rasgos">
     <h5>📦 Banco de rasgos</h5>
@@ -314,14 +412,17 @@
     <div class="col-venn col-venn-a" data-col="a">
       <h5>🚇 Solo metro</h5>
       <ul id="col-a"></ul>
+      <button type="button" class="btn-colocar" data-col="a">Colocar aquí</button>
     </div>
     <div class="col-venn col-venn-comun" data-col="comun">
       <h5>⚪ En común</h5>
       <ul id="col-comun"></ul>
+      <button type="button" class="btn-colocar" data-col="comun">Colocar aquí</button>
     </div>
     <div class="col-venn col-venn-b" data-col="b">
       <h5>🚌 Solo autobús</h5>
       <ul id="col-b"></ul>
+      <button type="button" class="btn-colocar" data-col="b">Colocar aquí</button>
     </div>
   </div>
 
@@ -329,53 +430,103 @@
     <button type="button" class="btn btn-primario" id="btn-verificar-venn">Verificar</button>
     <button type="button" class="btn btn-secundario" id="btn-reset-venn">Reiniciar</button>
   </div>
-  <div class="puntaje" id="puntaje-venn"></div>
+  <div class="puntaje" id="puntaje-venn" role="status"></div>
 </div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-6.html#venn" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Solo A, solo B o los dos? ↗
+  <span>Más pares de textos cortos para ordenar sus rasgos en el diagrama de Venn. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre del tema <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>Dos lugares, un diagrama.</strong> Compara dos lugares que conozcas bien: tu país de origen y la ciudad donde vives ahora, dos trabajos que has tenido, o dos tiendas de tu barrio.</p>
+<ul class="lista-bonita">
+  <li>Dibuja en tu cuaderno un <strong>diagrama de Venn</strong> con al menos <strong>tres rasgos</strong> en cada zona: solo A, en común y solo B.</li>
+  <li>Escribe un párrafo de seis a ocho oraciones que compare y contraste los dos lugares.</li>
+  <li>Usa al menos <strong>dos conectores de comparación</strong> (al igual que, también, asimismo…) y <strong>dos de contraste</strong> (sin embargo, en cambio, mientras que…). Enciérralos en un círculo.</li>
+</ul>
+<p>Si alguien de tu casa conoce los mismos lugares, muéstrale tu diagrama y pregúntale si agregaría algún rasgo.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Dos lugares, un diagrama»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Diagrama</td><td class="nivel-4">Hay al menos tres rasgos en cada una de las tres zonas</td><td class="nivel-1">Alguna zona tiene menos de tres rasgos o está vacía</td></tr>
+      <tr><td>Zonas correctas</td><td class="nivel-4">Cada rasgo está en la zona que le corresponde</td><td class="nivel-1">Puse rasgos comunes en un solo lado</td></tr>
+      <tr><td>Conectores</td><td class="nivel-4">Usé al menos dos de comparación y dos de contraste</td><td class="nivel-1">Usé solo «pero» o ningún conector</td></tr>
+      <tr><td>Párrafo</td><td class="nivel-4">El párrafo habla de parecidos y de diferencias</td><td class="nivel-1">Solo describí cada lugar por separado</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre del tema <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste</h3>
 
 <ul class="lista-bonita">
   <li><strong>Comparar</strong> es buscar similitudes; <strong>contrastar</strong> es buscar diferencias.</li>
   <li>El <strong>diagrama de Venn</strong> organiza la información en tres zonas: solo A, solo B, y la intersección (lo común).</li>
   <li>Los conectores de <strong>comparación</strong> incluyen: <em>como, al igual que, de la misma manera, también, asimismo</em>.</li>
   <li>Los conectores de <strong>contraste</strong> incluyen: <em>sin embargo, pero, en cambio, por el contrario, a diferencia de, mientras que</em>.</li>
-  <li>Esta destreza es decisiva en las secciones de Razonamiento a través de las Artes del Lenguaje y de Estudios Sociales del GED.</li>
+  <li>Esta destreza se usa mucho en el GED, sobre todo en Razonamiento a través del lenguaje y en Estudios Sociales.</li>
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irse, revísese</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Cuál es la diferencia entre comparar y contrastar?</li>
     <li>¿Para qué sirve la zona central del diagrama de Venn?</li>
-    <li>¿Puede mencionar tres conectores de comparación y tres de contraste?</li>
-    <li>Piense en dos personas que conoce. ¿En qué se parecen? ¿En qué se diferencian?</li>
+    <li>¿Puedes mencionar tres conectores de comparación y tres de contraste?</li>
+    <li>Piensa en dos personas que conoces. ¿En qué se parecen? ¿En qué se diferencian?</li>
   </ul>
 </div>
 
 <div class="caja-cierre">
   <h3>🎓 Cierre del Tema 5</h3>
-  <p>Felicitaciones por completar este bloque dedicado a la lectura de historias y textos informativos. En estas seis clases aprendió a analizar personajes y escenarios, a seguir el orden cronológico de los eventos, a comprender instrucciones paso a paso, a identificar relaciones de causa y efecto, y a comparar y contrastar dos textos.</p>
-  <p>Estas destrezas no son solo herramientas para aprobar el examen GED: son las bases sólidas que le permitirán enfrentar lecturas más complejas y escribir ensayos efectivos en las semanas siguientes del curso.</p>
+  <p>¡Felicidades por completar este tema dedicado a la lectura de historias y textos informativos! En estas seis lecciones aprendiste a analizar personajes y escenarios, a seguir el orden de los hechos, a comprender instrucciones paso a paso, a reconocer relaciones de causa y efecto, y a comparar y contrastar dos textos.</p>
+  <p>Estas destrezas no sirven solo para aprobar el examen GED: son la base para enfrentar lecturas más difíciles y para escribir mejor en los próximos temas.</p>
 </div>
 
 <div class="tip">
-  <strong>📅 Para el próximo tema:</strong> Pasaremos del análisis lector a la <strong>escritura</strong>. Aprenderemos a estructurar un párrafo claro, con oración temática, oraciones de apoyo y oración de cierre.
+  <strong>📅 En el próximo tema:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_6-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 6.1 · El poder de las ilustraciones para comprender</a>. Empieza el Tema 6, sobre la información visual. Aprenderás a leer imágenes, mapas, tablas y gráficas, y verás cómo una ilustración te ayuda a comprender un texto.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 5 · Lección 5.6</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -388,7 +539,7 @@
     {frase:'Mi hermana estudió enfermería, <em>mientras que</em> mi hermano se graduó de mecánico.',tipo:'contrastar',pista:'<em>"Mientras que"</em> contrasta dos elecciones profesionales distintas.'},
     {frase:'El café contiene cafeína, <em>así como</em> el té negro.',tipo:'comparar',pista:'<em>"Así como"</em> indica que ambas bebidas comparten la característica.'},
     {frase:'El examen de matemáticas fue difícil; <em>sin embargo</em>, el de lectura me resultó sencillo.',tipo:'contrastar',pista:'<em>"Sin embargo"</em> marca una diferencia entre las dos experiencias.'},
-    {frase:'Las ciudades grandes ofrecen muchos servicios, <em>asimismo</em>, los pueblos pequeños tienen sus ventajas.',tipo:'comparar',pista:'<em>"Asimismo"</em> añade una semejanza: en ambos lugares hay aspectos valiosos.'}
+    {frase:'La biblioteca del barrio presta libros gratis; <em>asimismo</em>, la del centro no cobra por el préstamo.',tipo:'comparar',pista:'<em>«Asimismo»</em> señala que las dos bibliotecas se parecen en algo: las dos prestan libros gratis.'}
   ];
 
   var aciertosQCC=0;
@@ -423,7 +574,7 @@
         }else{
           b.classList.add('incorrecta');
           feedback.className='feedback-q-cc no mostrar';
-          feedback.innerHTML='❌ Pregúntese: ¿el conector señala un parecido (comparar) o una diferencia (contrastar)?';
+          feedback.innerHTML='❌ Pregúntate: ¿el conector señala un parecido (comparar) o una diferencia (contrastar)?';
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
       });
@@ -496,9 +647,10 @@
     var ul=document.getElementById('col-'+col);
     var li=document.createElement('li');
     li.setAttribute('data-id',id);
-    li.textContent=texto;
-    li.title='Clic para devolver al banco';
-    li.addEventListener('click',function(){
+    var bq=document.createElement('button');
+    bq.type='button'; bq.textContent=texto; bq.setAttribute('aria-label',texto+'. Toca para devolverlo al banco');
+    li.appendChild(bq);
+    bq.addEventListener('click',function(){
       delete ubicaciones[id];
       li.remove();
       // Restaurar en banco
@@ -512,10 +664,9 @@
 
   document.querySelectorAll('.col-venn').forEach(function(c){
     c.addEventListener('click',function(e){
-      // Solo colocar si hicimos clic en el contenedor (no en un li ya colocado)
-      if(e.target.tagName==='LI')return;
-      var col=c.getAttribute('data-col');
-      colocarEnColumna(col);
+      // Colocar al tocar la columna o su botón «Colocar aquí» (no al tocar un rasgo ya colocado)
+      if(e.target.closest('li'))return;
+      colocarEnColumna(c.getAttribute('data-col'));
     });
   });
 
@@ -539,7 +690,7 @@
     });
     var el=document.getElementById('puntaje-venn');
     if(correctos===rasgos.length){
-      el.innerHTML='🎉 ¡Excelente! Colocó los '+rasgos.length+' rasgos en el lugar correcto.';
+      el.innerHTML='🎉 ¡Excelente! Colocaste los '+rasgos.length+' rasgos en el lugar correcto.';
       el.style.color='var(--exito)';
     }else{
       el.innerHTML='Aciertos: '+correctos+' de '+rasgos.length+'. Errores: '+incorrectos+'. Sin colocar: '+sinColocar+'. Los marcados en rojo están en la columna incorrecta.';
@@ -556,6 +707,73 @@
     pintarBanco();
     document.getElementById('puntaje-venn').textContent='';
   });
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué significa <strong>comparar</strong>?", "o": ["Buscar parecidos", "Buscar diferencias", "Ordenar hechos en el tiempo"], "c": 0}, {"t": "¿Qué significa <strong>contrastar</strong>?", "o": ["Buscar diferencias", "Buscar parecidos", "Buscar la causa"], "c": 0}, {"t": "En un diagrama de Venn, ¿qué va en la zona del centro?", "o": ["Lo que tienen en común", "Lo que solo tiene A", "Lo que solo tiene B"], "c": 0}, {"t": "¿Cuál de estos conectores señala una <strong>similitud</strong>?", "o": ["al igual que", "sin embargo", "en cambio"], "c": 0}, {"t": "¿Cuál de estos conectores señala una <strong>diferencia</strong>?", "o": ["en cambio", "asimismo", "también"], "c": 0}, {"t": "«Mi hermano trabaja de noche, ____ yo trabajo de día.»", "o": ["mientras que", "al igual que", "asimismo"], "c": 0}, {"t": "«El limón es ácido, ____ la naranja agria.»", "o": ["al igual que", "a diferencia de", "en cambio"], "c": 0}, {"t": "«El metro no depende del tráfico; ____, el autobús sí.»", "o": ["en cambio", "de la misma manera", "también"], "c": 0}, {"t": "El metro y el autobús tienen horarios fijos. ¿Dónde va ese rasgo en el diagrama de Venn?", "o": ["En común", "Solo metro", "Solo autobús"], "c": 0, "fijo": true}, {"t": "El metro circula bajo tierra; el autobús, por la calle. ¿Dónde va «circula bajo tierra»?", "o": ["En común", "Solo metro", "Solo autobús"], "c": 1, "fijo": true}, {"t": "Dos textos hablan de la perforación en el Ártico: uno a favor y otro en contra. ¿Qué tienen en común?", "o": ["El tema", "La opinión", "Todos sus argumentos"], "c": 0}, {"t": "«El café tiene cafeína; ____, el té negro también la tiene.»", "o": ["de manera similar", "por el contrario", "sin embargo"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"¡Terminaste el Tema 5! Puedes continuar con la Lección 6.1.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 
