@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 4.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 2: Aclarar y resumir lo leído</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.2 · Aclarar y resumir lo leído</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -121,46 +127,124 @@
   .nivel-3{background:#fff8e1}
   .nivel-2{background:#fff3e0}
   .nivel-1{background:#ffebee}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Cuento ── */
+  .cuento{background:#fff;border:2px solid var(--gris-claro);border-radius:12px;padding:18px 22px;margin:16px 0}
+  .cuento h4{font-family:Georgia,serif;font-size:1.35rem;margin:0 0 6px;color:var(--cp-oscuro)}
+  .cuento .imagen{display:flex;gap:14px;align-items:center;background:#f6f8fa;border-radius:8px;padding:10px 14px;margin:8px 0 14px;font-style:italic;color:#444}
+  .cuento .imagen span[aria-hidden]{font-size:2.4rem;font-style:normal;flex:none;white-space:nowrap}
+  .btn-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.95rem}
+  .btn-oir:hover{background:#cfe8f7}
+  .cuento .texto{font-family:Georgia,serif;font-size:1.15rem;line-height:1.9}
+  .cuento .texto p{margin:0 0 10px}
+  .parada{border-left:6px solid var(--acento);background:#fff8ee;border-radius:8px;padding:12px 16px;margin:14px 0}
+  .parada h5{margin:0 0 6px;font-size:1rem;color:#8a3d0c}
+  .parada ul{margin:4px 0 0;padding-left:1.2em}
+  .palabra-aclarar{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:12px 16px;margin:10px 0}
+  .palabra-aclarar summary{background:none;padding:6px 0;font-weight:600}
 </style>
 </head>
 <body>
 
-<h1>Clase 2: Aclarar y resumir lo leído</h1>
-<p class="subtitulo">El detective lector trabaja durante y después de la lectura · Nivel 1 · Tema 4, semana 7</p>
+<h1>Lección 4.2 · Aclarar y resumir lo leído</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 4 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aprender a <strong>aclarar dudas</strong> durante la lectura usando estrategias prácticas, y a <strong>resumir</strong> con palabras propias las ideas más importantes de un texto corto.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-ciclo">Recordando el ciclo de lectura</a></li>
+    <li><a href="#s-2-aclarar">Aclarar: qué hacer cuando algo no se entiende</a></li>
+    <li><a href="#s-3-resumir">Resumir: contar lo leído con tus palabras</a></li>
+    <li><a href="#s-4-practica">Práctica: elegir el mejor resumen</a></li>
+    <li><a href="#s-5-cuento">De vuelta al cuento: aclara y resume</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre: las cuatro estrategias del buen lector</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En la clase anterior estudiamos el trabajo del lector <em>antes</em> de leer: predecir y preguntar. Esta sesión completa el ciclo. Examinaremos las dos estrategias restantes: lo que hace el lector eficiente <strong>durante</strong> la lectura (cuando encuentra un pasaje confuso o una palabra desconocida) y <strong>después</strong> de la lectura (cuando debe sintetizar el contenido con sus propias palabras). Al concluir esta clase, usted dominará las cuatro estrategias fundamentales de la lectura activa: <span class="palabra-clave">predecir, preguntar, aclarar y resumir</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<details open>
+<p>En la <a href="https://zhemaria.github.io/clases_leng1/clase_4-1.html">Lección 4.1</a> aprendiste lo que hace el lector <em>antes</em> de leer: predecir y preguntar. Esta lección completa el ciclo con las dos estrategias que faltan: lo que haces <strong>durante</strong> la lectura, cuando encuentras una palabra o una idea que no entiendes, y lo que haces <strong>después</strong>, cuando cuentas con tus palabras lo que leíste. Al terminar, vas a dominar las cuatro estrategias de la lectura activa: <span class="palabra-clave">predecir, preguntar, aclarar y resumir</span>.</p>
+
+<details open id="s-1-ciclo">
 <summary>1. Recordando el ciclo de lectura <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Hoy nos enfocamos en los dos momentos finales</h3>
+<h3>En esta lección: los dos momentos finales</h3>
 
 <div class="ciclo-lectura">
   <div class="puntos-ciclo">
     <div class="punto-ciclo antes">
       <span class="icono">🔍</span>
       <h4>Antes</h4>
-      <p style="margin:0;font-size:0.9rem">(clase anterior)</p>
+      <p style="margin:0;font-size:0.9rem">(Lección 4.1)</p>
       <p class="accion">Predigo y pregunto</p>
     </div>
     <div class="punto-ciclo durante">
       <span class="icono">📖</span>
       <h4>Durante</h4>
-      <p style="margin:0;font-size:0.9rem;font-weight:700">⬅ hoy</p>
+      <p style="margin:0;font-size:0.9rem;font-weight:700">⬅ esta lección</p>
       <p class="accion">Aclaro dudas</p>
     </div>
     <div class="punto-ciclo despues">
       <span class="icono">✍️</span>
       <h4>Después</h4>
-      <p style="margin:0;font-size:0.9rem;font-weight:700">⬅ hoy</p>
+      <p style="margin:0;font-size:0.9rem;font-weight:700">⬅ esta lección</p>
       <p class="accion">Resumo lo leído</p>
     </div>
   </div>
@@ -173,8 +257,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. Aclarar: qué hacer cuando algo no se entiende <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-aclarar">
+<summary>2. Aclarar: qué hacer cuando algo no se entiende <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Las cuatro estrategias para aclarar</h3>
@@ -183,7 +267,7 @@
 
 <table class="pistas">
   <thead>
-    <tr><th>Estrategia</th><th>Cuándo usarla</th><th>Cómo se hace</th></tr>
+    <tr><th scope="col">Estrategia</th><th scope="col">Cuándo usarla</th><th scope="col">Cómo se hace</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -199,7 +283,7 @@
     <tr>
       <td>💬 <strong>Preguntar</strong></td>
       <td>Cuando la duda no se aclara sola</td>
-      <td>Pregúntale al profesor o a un compañero</td>
+      <td>Pregúntale a alguien que sepa (un familiar, un compañero de estudio, la biblioteca), o anota la duda para resolverla después</td>
     </tr>
     <tr>
       <td>📖 <strong>Consultar</strong></td>
@@ -233,8 +317,8 @@
 </div>
 </details>
 
-<details>
-<summary>3. Resumir: contar lo leído con palabras propias <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-resumir">
+<summary>3. Resumir: contar lo leído con tus palabras <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué es resumir?</h3>
@@ -286,8 +370,8 @@
 </div>
 </details>
 
-<details>
-<summary>4. Práctica: elegir el mejor resumen <span class="caja-tiempo">10 min</span></summary>
+<details id="s-4-practica">
+<summary>4. Práctica: elegir el mejor resumen <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Identifica el resumen más fiel y claro</h3>
@@ -297,37 +381,109 @@
 <div id="ejercicio-resumen"></div>
 <div class="puntaje" id="puntaje-resumen">Aciertos: 0 / 3</div>
 
-<h3>Actividad oral: think-pair-share</h3>
+<h3>Ahora resume tú</h3>
 
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · think-pair-share</h4>
-  <p>El profesor reparte un texto corto. El procedimiento es:</p>
-  <ul class="lista-bonita">
-    <li><strong>Think (piensa):</strong> Cada estudiante lee el texto solo y escribe un resumen de dos oraciones.</li>
-    <li><strong>Pair (parejas):</strong> Se junta con un compañero. Comparan resúmenes y discuten: ¿qué dejaron fuera? ¿qué incluyeron?</li>
-    <li><strong>Share (compartir):</strong> Algunas parejas comparten su mejor resumen con toda la clase.</li>
-  </ul>
+  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · en tu cuaderno</h4>
+  <p>Lee este texto y escribe un resumen de <strong>dos oraciones</strong>, con tus palabras. Usa los cuatro pasos de la <a href="#s-3-resumir">sección 3</a>. Después compara con el resumen modelo.</p>
 </div>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>Los estudiantes escriben en una tarjeta. Después se levantan y buscan pareja. Tres parejas comparten su resumen en voz alta. El profesor anota en el pizarrón los puntos en común.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>Cada estudiante escribe su resumen en el chat (sin enviarlo todavía). Cuando el profesor dice "ya", todos lo envían a la vez. Después se forman salas pequeñas de a dos para comparar.</p>
-  </div>
+<div class="texto-modelo" style="border-color:var(--despues)">
+  Beber suficiente agua es importante para la salud. El agua ayuda a que el cuerpo mantenga la temperatura correcta. También ayuda a la digestión y a que los riñones funcionen bien. Cuando una persona no bebe suficiente agua, puede sentir cansancio y dolor de cabeza. Por eso, conviene tomar agua varias veces al día, aunque no se tenga sed.
 </div>
+<details class="palabra-aclarar">
+  <summary>Ya escribí mi resumen: ver el resumen modelo</summary>
+  <p style="margin:6px 0 0"><em>«El agua es necesaria para que el cuerpo funcione bien: controla la temperatura y ayuda a la digestión y a los riñones. Si no tomamos suficiente, nos cansamos y nos duele la cabeza, así que conviene beberla durante todo el día.»</em></p>
+  <p style="margin:6px 0 0">Tu resumen no tiene que ser igual. Revisa que diga la idea principal, uno o dos detalles importantes, y que esté escrito con tus palabras.</p>
+</details>
 
 </div>
 </details>
 
-<details>
-<summary>5. Cierre: las cuatro estrategias del buen lector <span class="caja-tiempo">5 min</span></summary>
+<details id="s-5-cuento">
+<summary>5. De vuelta al cuento: aclara y resume <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<p>Vuelve a leer el cuento de la <a href="https://zhemaria.github.io/clases_leng1/clase_4-1.html#s-4-cuento">Lección 4.1</a>. Esta vez, practica las dos estrategias nuevas.</p>
+<div class="cuento">
+  <h4>«La caja de la abuela»</h4>
+  <div class="imagen"><span aria-hidden="true">📦🗝️</span><span><strong>Imagen:</strong> Una caja de madera vieja sobre una mesa, con una llave pequeña y dorada al lado.</span></div>
+  <div class="texto"><p>Un domingo, Lucía ayudaba a su abuela a ordenar el armario. En el fondo encontró una caja de madera vieja, con una cerradura pequeña. Junto a la caja había una llave dorada.</p><p>—¿Puedo abrirla? —preguntó Lucía.</p><p>—Sí, pero con cuidado: la madera está frágil y se puede romper —contestó la abuela.</p><p>Adentro había cartas, fotos en blanco y negro y un pañuelo bordado con flores azules. Las cartas eran del abuelo, que había trabajado muchos años lejos de casa. En cada carta, él le contaba a la abuela cómo era su vida en otro país y cuánto la extrañaba. Lucía y su abuela leyeron las cartas toda la tarde, entre risas y lágrimas. Esa noche, las dos decidieron guardar la caja como el tesoro de la familia.</p></div>
+  <div class="botones" style="justify-content:flex-start"><button type="button" class="btn-oir" onclick="if(window.speechSynthesis){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance('Un domingo, Lucía ayudaba a su abuela a ordenar el armario. En el fondo encontró una caja de madera vieja, con una cerradura pequeña. Junto a la caja había una llave dorada.  ¿Puedo abrirla?  preguntó Lucía.  Sí, pero con cuidado: la madera está frágil y se puede romper  contestó la abuela. Adentro había cartas, fotos en blanco y negro y un pañuelo bordado con flores azules. Las cartas eran del abuelo, que había trabajado muchos años lejos de casa. En cada carta, él le contaba a la abuela cómo era su vida en otro país y cuánto la extrañaba. Lucía y su abuela leyeron las cartas toda la tarde, entre risas y lágrimas. Esa noche, las dos decidieron guardar la caja como el tesoro de la familia.');u.lang='es-US';u.rate=0.85;speechSynthesis.speak(u);}">🔊 Escuchar</button></div>
+</div>
+<h3>Aclarar: tres palabras difíciles</h3>
+<p>Para cada palabra, piensa qué estrategia usarías (releer, buscar pistas, preguntar o consultar). Escribe tu respuesta y después ábrela para comparar.</p>
+<details class="palabra-aclarar">
+  <summary>«frágil» · ¿Qué estrategia usarías?</summary>
+  <p style="margin:6px 0">«…la madera está <strong>frágil</strong> y se puede romper…»</p>
+  <p style="margin:6px 0 0">🔍 <strong>Buscar pistas:</strong> la misma oración dice que «se puede romper». <em>Frágil</em> significa que se rompe con facilidad.</p>
+</details>
+<details class="palabra-aclarar">
+  <summary>«bordado» · ¿Qué estrategia usarías?</summary>
+  <p style="margin:6px 0">«…un pañuelo <strong>bordado</strong> con flores azules.»</p>
+  <p style="margin:6px 0 0">📖 <strong>Consultar:</strong> la oración no da muchas pistas. Si buscas la palabra, verás que <em>bordado</em> es un dibujo hecho con hilo y aguja sobre la tela.</p>
+</details>
+<details class="palabra-aclarar">
+  <summary>«extrañaba» · ¿Qué estrategia usarías?</summary>
+  <p style="margin:6px 0">«…le contaba cuánto la <strong>extrañaba</strong>.»</p>
+  <p style="margin:6px 0 0">🔍 <strong>Buscar pistas:</strong> el abuelo «había trabajado muchos años lejos de casa». Quien está lejos siente la falta de su familia: <em>extrañar</em> es echar de menos a alguien.</p>
+</details>
+
+<h3>Resumir el cuento</h3>
+<p>Escribe en tu cuaderno un resumen del cuento en <strong>dos oraciones</strong>. Recuerda: quién, qué pasó y cómo terminó.</p>
+<details class="palabra-aclarar">
+  <summary>Ya escribí mi resumen: ver un resumen posible</summary>
+  <p style="margin:6px 0 0"><em>«Lucía y su abuela encontraron una caja vieja con las cartas que el abuelo escribió cuando trabajaba lejos. Al leerlas se emocionaron, y decidieron guardar la caja como el tesoro de la familia.»</em></p>
+</details>
+</div>
+</details>
+
+
+
+<details id="s-tarea">
+<summary>6. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p>Completa las «Mis tres preguntas» que empezaste en la <a href="https://zhemaria.github.io/clases_leng1/clase_4-1.html#s-tarea">Lección 4.1</a>. En tu cuaderno, agrega:</p>
+<ul class="lista-bonita">
+  <li><strong>Una palabra que aclaraste</strong> en el cuento (u otra que te costó) y la estrategia que usaste.</li>
+  <li><strong>Un resumen final</strong> del cuento, de dos oraciones, con tus palabras.</li>
+  <li><strong>Un texto de tu vida:</strong> lee una noticia corta o un aviso, y escribe su resumen en dos oraciones.</li>
+</ul>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Mis tres preguntas» completas</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Predicción razonable</td><td class="nivel-4">Se conecta con pistas del título o de la imagen</td><td class="nivel-1">Es una adivinanza</td></tr>
+      <tr><td>Pregunta de comprensión</td><td class="nivel-4">Es una pregunta abierta y relevante</td><td class="nivel-1">No hay pregunta, o es muy simple</td></tr>
+      <tr><td>Palabra aclarada</td><td class="nivel-4">Dice la palabra, su significado y la estrategia</td><td class="nivel-1">Falta el significado o la estrategia</td></tr>
+      <tr><td>Resumen</td><td class="nivel-4">Dice quién, qué pasó y cómo terminó, con palabras propias</td><td class="nivel-1">Copia oraciones o deja fuera lo importante</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>7. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>8. Cierre: las cuatro estrategias del buen lector <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste en esta lección</h3>
 
 <ul class="lista-bonita">
   <li>Cuando algo no se entiende, hay cuatro estrategias para aclarar: <strong>releer, buscar pistas, preguntar y consultar</strong>.</li>
@@ -337,7 +493,7 @@
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Puedes nombrar las cuatro estrategias para aclarar dudas durante la lectura?</li>
     <li>¿Cuál es la diferencia entre <em>resumir</em> y <em>copiar</em>?</li>
@@ -346,85 +502,19 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Vamos a entrar de lleno en la <strong>idea principal</strong> — esa oración o idea que sostiene todo el texto. Aprenderás a encontrarla y a separarla de los detalles que la apoyan.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_4-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 4.3 · A la caza de la idea principal</a>. Aprenderás a encontrar la idea que sostiene todo un párrafo y a separarla de los detalles.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>6. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
-<div class="contenido-detalle">
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 4 · Lección 4.2</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-lectura">Lectura</span> Cuento corto auténtico (continuación)</h4>
-  <p>Continuación del cuento iniciado en la Clase 1. Modalidad: <strong>lectura guiada con paradas</strong>. Esta vez el énfasis está en:</p>
-  <ul class="lista-bonita">
-    <li><strong>Stop and Ask</strong> — pausa para hacer preguntas y aclarar palabras desconocidas.</li>
-    <li><strong>Stop and Summarize</strong> — al final, resumen completo del cuento en dos oraciones.</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> "Mis tres preguntas" (cierre)</h4>
-  <p>El estudiante completa su entrada del foro de la Clase 1, ahora agregando:</p>
-  <ul class="lista-bonita">
-    <li>Una <strong>palabra que tuvo que aclarar</strong> y la estrategia que usó.</li>
-    <li>Un <strong>resumen final</strong> del cuento, de dos oraciones, con palabras propias.</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-quiz">Quiz</span> 10 preguntas · Brightspace (toda la Lección 4.1)</h4>
-  <p>El quiz cubre las cuatro estrategias del ciclo completo:</p>
-  <ul class="lista-bonita">
-    <li>Clasificar acciones como antes / durante / después de leer.</li>
-    <li>Identificar predicciones razonables y preguntas útiles.</li>
-    <li>Elegir la estrategia adecuada para aclarar una duda.</li>
-    <li>Distinguir un buen resumen de uno incompleto o copiado.</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Lista de cotejo del foro "Mis tres preguntas"</h4>
-  <p>Las tres respuestas del foro se evalúan con esta lista de cotejo:</p>
-
-  <table class="rubrica">
-    <thead>
-      <tr>
-        <th>Criterio</th>
-        <th class="nivel-4">Cumple (1 pt)</th>
-        <th class="nivel-1">No cumple (0 pt)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>¿Hizo una predicción razonable?</td>
-        <td class="nivel-4">Se conecta con pistas del título o imagen</td>
-        <td class="nivel-1">Es una adivinanza al azar</td>
-      </tr>
-      <tr>
-        <td>¿Hizo una pregunta de comprensión?</td>
-        <td class="nivel-4">Es una pregunta abierta y relevante</td>
-        <td class="nivel-1">No hay pregunta o es trivial</td>
-      </tr>
-      <tr>
-        <td>¿El resumen incluye quién/qué/dónde?</td>
-        <td class="nivel-4">Identifica los elementos básicos del texto</td>
-        <td class="nivel-1">No identifica los elementos básicos</td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje total:</strong> 3 puntos. Cierre completo de la Lección 4.1.</p>
-</div>
-
-</div>
-</details>
-
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
 
 <script>
 (function(){
@@ -443,7 +533,7 @@
       opciones:[
         {texto:'⏭️ Seguir leyendo sin pensarlo',correcta:false},
         {texto:'🔍 Buscar pistas: "muchas hojas verdes" — frondoso es lleno de hojas',correcta:true},
-        {texto:'💬 Preguntar al profesor inmediatamente',correcta:false}
+        {texto:'💬 Preguntarle a otra persona sin intentarlo antes',correcta:false}
       ]
     },
     {
@@ -459,7 +549,7 @@
       opciones:[
         {texto:'😔 Asumir que no eres buen lector',correcta:false},
         {texto:'⏭️ Inventar el significado para seguir',correcta:false},
-        {texto:'💬 Preguntarle al profesor o a un compañero',correcta:true}
+        {texto:'💬 Preguntarle a alguien que sepa, o anotar la duda para resolverla después',correcta:true}
       ]
     },
     {
@@ -521,13 +611,13 @@
       opciones:[
         {texto:'"El mercado de los sábados es muy popular en mi barrio. Los vendedores llegan temprano."',correcta:false},
         {texto:'"En el barrio hay un mercado los sábados, con productos frescos, precios bajos y mucho ambiente."',correcta:true},
-        {texto:'"A la gente le gusta caminar y conversar en los mercados de Cuba."',correcta:false}
+        {texto:'"A la gente le gusta caminar y conversar en todos los mercados del mundo."',correcta:false}
       ]
     },
     {
       original:'<strong>Texto:</strong> Ana decidió aprender computación a los cincuenta años. Al principio le costó porque nunca había usado una. Tomó clases por seis meses y practicó todos los días. Hoy maneja bien el correo electrónico, busca trabajo por internet y videollama a su hija que vive en Florida.',
       opciones:[
-        {texto:'"Ana es una mujer de cincuenta años que vive en Cuba y tiene una hija en Florida."',correcta:false},
+        {texto:'"Ana es una mujer de cincuenta años que vive en México y tiene una hija en Florida."',correcta:false},
         {texto:'"Aprender computación a los cincuenta años fue difícil pero Ana lo logró con clases y práctica diaria."',correcta:true},
         {texto:'"Ana decidió aprender computación a los cincuenta años. Al principio le costó porque nunca había usado una."',correcta:false}
       ]
@@ -583,6 +673,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué significa <strong>aclarar</strong> durante la lectura?", "o": ["Parar y usar una estrategia cuando algo no se entiende", "Leer más rápido", "Saltar las partes difíciles"], "c": 0}, {"t": "Lees una oración y no la entiendes, aunque conoces todas las palabras. ¿Qué haces primero?", "o": ["Releerla despacio", "Buscar cada palabra en el diccionario", "Cerrar el libro"], "c": 0}, {"t": "«El parque tenía árboles <strong>frondosos</strong>, con muchas hojas.» ¿Qué estrategia te ayuda?", "o": ["Buscar pistas: «con muchas hojas»", "Consultar el diccionario antes de leer la oración", "Saltar la palabra"], "c": 0}, {"t": "Una palabra es completamente nueva y no hay pistas cerca. ¿Qué haces?", "o": ["Consultar un diccionario o el celular", "Inventar su significado", "Dejar de leer"], "c": 0}, {"t": "¿Qué es <strong>resumir</strong>?", "o": ["Decir con tus palabras lo más importante del texto", "Copiar las primeras oraciones", "Contar todos los detalles"], "c": 0}, {"t": "Un buen resumen es…", "o": ["corto, claro y fiel al texto", "largo y con todos los detalles", "una copia exacta del texto"], "c": 0}, {"t": "¿Cuál es el primer paso para resumir?", "o": ["Identificar la idea principal", "Copiar la última oración", "Contar las palabras"], "c": 0}, {"t": "¿Qué debes dejar fuera de un resumen?", "o": ["Los ejemplos pequeños y lo que se repite", "La idea principal", "Quién hizo qué"], "c": 0}, {"t": "Resumir con tus palabras se llama…", "o": ["parafrasear", "copiar", "predecir"], "c": 0}, {"t": "¿Cuál es el mejor resumen de «La caja de la abuela»?", "o": ["Lucía y su abuela encuentran cartas viejas del abuelo y deciden guardarlas como un tesoro.", "Lucía ayudaba a su abuela a ordenar el armario un domingo.", "Había cartas, fotos en blanco y negro y un pañuelo con flores azules."], "c": 0}, {"t": "¿Cuáles son las cuatro estrategias de la lectura activa?", "o": ["Predecir, preguntar, aclarar y resumir", "Leer, copiar, borrar y repetir", "Mirar, contar, subrayar y dormir"], "c": 0}, {"t": "Un resumen que inventa algo que el texto no dice no es…", "o": ["fiel", "corto", "claro"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya dominas las cuatro estrategias. Puedes continuar con la Lección 4.3.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 2 y 3 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

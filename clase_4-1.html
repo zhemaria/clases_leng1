@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 4.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 1: Predecir y preguntar antes de leer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.1 · Predecir y preguntar antes de leer</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -178,29 +184,104 @@
   .nivel-3{background:#fff8e1}
   .nivel-2{background:#fff3e0}
   .nivel-1{background:#ffebee}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Cuento ── */
+  .cuento{background:#fff;border:2px solid var(--gris-claro);border-radius:12px;padding:18px 22px;margin:16px 0}
+  .cuento h4{font-family:Georgia,serif;font-size:1.35rem;margin:0 0 6px;color:var(--cp-oscuro)}
+  .cuento .imagen{display:flex;gap:14px;align-items:center;background:#f6f8fa;border-radius:8px;padding:10px 14px;margin:8px 0 14px;font-style:italic;color:#444}
+  .cuento .imagen span[aria-hidden]{font-size:2.4rem;font-style:normal;flex:none;white-space:nowrap}
+  .btn-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.95rem}
+  .btn-oir:hover{background:#cfe8f7}
+  .cuento .texto{font-family:Georgia,serif;font-size:1.15rem;line-height:1.9}
+  .cuento .texto p{margin:0 0 10px}
+  .parada{border-left:6px solid var(--acento);background:#fff8ee;border-radius:8px;padding:12px 16px;margin:14px 0}
+  .parada h5{margin:0 0 6px;font-size:1rem;color:#8a3d0c}
+  .parada ul{margin:4px 0 0;padding-left:1.2em}
 </style>
 </head>
 <body>
 
-<h1>Clase 1: Predecir y preguntar antes de leer</h1>
-<p class="subtitulo">El detective lector se prepara · Nivel 1 · Tema 4, semana 7</p>
+<h1>Lección 4.1 · Predecir y preguntar antes de leer</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 4 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aprender a <strong>activar los conocimientos previos</strong> y a usar las pistas del texto (título, imágenes, palabras destacadas) para <strong>predecir</strong> de qué tratará la lectura y <strong>formular preguntas</strong> que guíen la comprensión.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-ciclo">El ciclo de la lectura activa</a></li>
+    <li><a href="#s-2-pistas">Las pistas del detective lector</a></li>
+    <li><a href="#s-3-predicciones">Práctica de predicciones razonables</a></li>
+    <li><a href="#s-4-cuento">Lectura guiada: «La caja de la abuela»</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre: confirmar, ajustar o rechazar</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En esta clase iniciamos el estudio de un proceso fundamental para la comprensión lectora: el trabajo del lector <em>antes</em> de comenzar a leer un texto. La comprensión no comienza con la primera palabra del párrafo; comienza desde el momento en que el lector observa el título, las imágenes y las palabras destacadas para <span class="palabra-clave">anticipar</span> el contenido. Al igual que un investigador examina la escena antes de actuar, el lector eficiente prepara su mente antes de entrar al texto. En los próximos cincuenta minutos, usted aprenderá a <strong>predecir</strong> y a <strong>preguntar</strong> antes de leer.</p>
+<h2>📚 Para empezar</h2>
 
-<details open>
-<summary>1. Introducción: el ciclo de la lectura activa <span class="caja-tiempo">10 min</span></summary>
+<p>Con el Tema 4 empiezas a trabajar la <strong>comprensión</strong>: entender de verdad lo que lees. Y la comprensión no empieza con la primera palabra del texto. Empieza antes, cuando miras el título, las imágenes y las palabras destacadas para <span class="palabra-clave">anticipar</span> de qué va a tratar. Igual que un detective examina la escena antes de actuar, un buen lector prepara la mente antes de entrar al texto. En esta lección vas a aprender a <strong>predecir</strong> y a <strong>preguntar</strong> antes de leer.</p>
+
+<details open id="s-1-ciclo">
+<summary>1. El ciclo de la lectura activa <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Tres momentos del buen lector</h3>
 
-<p>El lector eficaz <strong>trabaja con el texto en tres momentos</strong>. Cada momento tiene su propia estrategia. Hoy nos enfocamos en el primer momento: <strong>antes de leer</strong>.</p>
+<p>El lector eficaz <strong>trabaja con el texto en tres momentos</strong>. Cada momento tiene su propia estrategia. En esta lección te enfocas en el primero: <strong>antes de leer</strong>.</p>
 
 <div class="ciclo-lectura">
   <div class="puntos-ciclo">
@@ -241,8 +322,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. Desarrollo: las pistas que usa el detective lector <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-pistas">
+<summary>2. Las pistas del detective lector <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Dónde buscar las pistas</h3>
@@ -251,7 +332,7 @@
 
 <table class="pistas">
   <thead>
-    <tr><th>Pista</th><th>Qué observar</th><th>Qué te dice</th></tr>
+    <tr><th scope="col">Pista</th><th scope="col">Qué observar</th><th scope="col">Qué te dice</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -274,7 +355,7 @@
 
 <h3>Modelaje: pensar en voz alta</h3>
 
-<p>Mira cómo el profesor hace una predicción a partir de un título. Este proceso se llama <strong>pensamiento en voz alta</strong> y es el que vas a imitar.</p>
+<p>Mira cómo una lectora experta hace una predicción a partir de un título. Este proceso se llama <strong>pensar en voz alta</strong>, y es el que vas a imitar.</p>
 
 <div class="tarjeta-titulo">
   <span class="etiqueta">Título a predecir</span>
@@ -283,7 +364,7 @@
 </div>
 
 <div class="tip" style="border-left-color:var(--antes);background:var(--antes-claro)">
-  <strong style="color:var(--antes)">🗣️ El profesor piensa en voz alta:</strong>
+  <strong style="color:var(--antes)">🗣️ La lectora piensa en voz alta:</strong>
   <p style="margin:8px 0 0 0">"A ver… veo <em>huracanes</em> y <em>Caribe</em>. Yo sé que en el Caribe hay temporada de huracanes entre junio y noviembre. También veo <em>cuando la naturaleza ruge</em> — eso suena fuerte, peligroso. Y la imagen muestra una palmera casi caída."</p>
   <p style="margin:8px 0 0 0"><strong>Mi predicción:</strong> "Este texto va a hablar sobre el daño que causan los huracanes en las islas del Caribe. Quizás mencione tormentas famosas como María o Irma."</p>
   <p style="margin:8px 0 0 0"><strong>Mi pregunta:</strong> "¿Cuál ha sido el huracán más fuerte del Caribe?"</p>
@@ -295,7 +376,7 @@
 
 <table class="pistas">
   <thead>
-    <tr><th>Frase modelo</th><th>Ejemplo completo</th></tr>
+    <tr><th scope="col">Frase modelo</th><th scope="col">Ejemplo completo</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -312,7 +393,7 @@
     </tr>
     <tr>
       <td>"Después de leer espero saber…"</td>
-      <td>"Después de leer espero saber cómo se prepara el ajiaco."</td>
+      <td>"Después de leer espero saber cómo se prepara una sopa de pollo."</td>
     </tr>
   </tbody>
 </table>
@@ -327,13 +408,13 @@
 </div>
 </details>
 
-<details>
+<details id="s-3-predicciones">
 <summary>3. Práctica de predicciones razonables <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>No toda predicción vale lo mismo</h3>
 
-<p>Una <span class="palabra-clave">predicción razonable</span> se conecta con las pistas del título. Una predicción <em>al azar</em> ignora lo que el texto te muestra. Vamos a practicar el ojo del detective.</p>
+<p>Una <span class="palabra-clave">predicción razonable</span> se conecta con las pistas del título. Una predicción <em>al azar</em> ignora lo que el texto te muestra. Vas a practicar el ojo del detective.</p>
 
 <div class="tip">
   <strong>🎯 Regla del detective:</strong> Toda predicción debe <em>justificarse</em> con al menos una pista del título o de la imagen. Si no puedes decir <em>"pienso esto porque vi…"</em>, no es una predicción, es una adivinanza.
@@ -346,35 +427,107 @@
 <div id="ejercicio-predicciones"></div>
 <div class="puntaje" id="puntaje-predicciones">Aciertos: 0 / 5</div>
 
-<h3>Actividad oral: "Mis tres preguntas"</h3>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · en parejas (think-pair-share)</h4>
-  <p>El profesor proyectará el título y la imagen de portada de un cuento corto. En parejas, cada estudiante hace tres cosas <strong>antes</strong> de leer:</p>
-  <ul class="lista-bonita">
-    <li><span class="ant">Una predicción</span> sobre el tema del cuento ("Creo que va a tratar de…").</li>
-    <li><span class="ant">Una pregunta</span> que esperas que el cuento te responda ("¿Por qué…?").</li>
-    <li><span class="ant">Una pista</span> que usaste para hacer tu predicción.</li>
-  </ul>
-  <p style="margin-bottom:0">Después comparten con la pareja. ¿Hicieron predicciones parecidas o distintas? ¿Cuál pista usaron más: el título o la imagen?</p>
-</div>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>El profesor proyecta el título en el pizarrón. Los estudiantes escriben sus tres respuestas en una tarjeta de papel y la comparten con su pareja antes de leer juntos el texto.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>El profesor comparte pantalla con el título y la imagen. Los estudiantes responden por el chat o en un documento compartido, luego pasan a salas pequeñas (breakout rooms) en parejas.</p>
-  </div>
-</div>
+<div class="tip"><strong>📖 Ahora con un cuento de verdad:</strong> en la <a href="#s-4-cuento">sección 4</a> vas a leer un cuento corto y a usar estas estrategias paso a paso.</div>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre: confirmar, ajustar o rechazar <span class="caja-tiempo">5 min</span></summary>
+<details id="s-4-cuento">
+<summary>4. Lectura guiada: «La caja de la abuela» <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<p>Vas a leer un cuento corto con <strong>dos paradas</strong>. En cada parada, detente y escribe en tu cuaderno antes de seguir.</p>
+
+<div class="cuento">
+  <h4>«La caja de la abuela»</h4>
+  <div class="imagen"><span aria-hidden="true">📦🗝️</span><span><strong>Imagen:</strong> Una caja de madera vieja sobre una mesa, con una llave pequeña y dorada al lado.</span></div>
+
+  <div class="parada">
+    <h5>🛑 Parada 1 · Antes de leer</h5>
+    <p style="margin:0">Mira solo el título y la imagen. En tu cuaderno escribe:</p>
+    <ul>
+      <li><strong>Una predicción:</strong> «Creo que el cuento va a tratar de…»</li>
+      <li><strong>Una pregunta</strong> que esperas que el cuento te responda: «¿Qué habrá…?», «¿Por qué…?»</li>
+      <li><strong>La pista</strong> que usaste: el título, la imagen o las dos.</li>
+    </ul>
+  </div>
+
+  <details class="parte-cuento">
+    <summary>Ya escribí mi predicción: leer la primera parte</summary>
+    <div class="contenido-detalle">
+      <div class="texto"><p>Un domingo, Lucía ayudaba a su abuela a ordenar el armario. En el fondo encontró una caja de madera vieja, con una cerradura pequeña. Junto a la caja había una llave dorada.</p><p>—¿Puedo abrirla? —preguntó Lucía.</p><p>—Sí, pero con cuidado: la madera está frágil y se puede romper —contestó la abuela.</p></div>
+      <div class="botones" style="justify-content:flex-start"><button type="button" class="btn-oir" onclick="if(window.speechSynthesis){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance('Un domingo, Lucía ayudaba a su abuela a ordenar el armario. En el fondo encontró una caja de madera vieja, con una cerradura pequeña. Junto a la caja había una llave dorada.  ¿Puedo abrirla?  preguntó Lucía.  Sí, pero con cuidado: la madera está frágil y se puede romper  contestó la abuela.');u.lang='es-US';u.rate=0.85;speechSynthesis.speak(u);}">🔊 Escuchar</button></div>
+      <div class="parada">
+        <h5>🛑 Parada 2 · Durante la lectura</h5>
+        <ul>
+          <li>¿Tu predicción va bien? ¿La <strong>confirmas</strong>, la <strong>ajustas</strong> o la <strong>rechazas</strong>?</li>
+          <li>Escribe una predicción nueva: ¿qué crees que hay dentro de la caja?</li>
+        </ul>
+      </div>
+      <details class="parte-cuento">
+        <summary>Leer la segunda parte</summary>
+        <div class="contenido-detalle">
+          <div class="texto"><p>Adentro había cartas, fotos en blanco y negro y un pañuelo bordado con flores azules. Las cartas eran del abuelo, que había trabajado muchos años lejos de casa. En cada carta, él le contaba a la abuela cómo era su vida en otro país y cuánto la extrañaba. Lucía y su abuela leyeron las cartas toda la tarde, entre risas y lágrimas. Esa noche, las dos decidieron guardar la caja como el tesoro de la familia.</p></div>
+          <div class="botones" style="justify-content:flex-start"><button type="button" class="btn-oir" onclick="if(window.speechSynthesis){speechSynthesis.cancel();var u=new SpeechSynthesisUtterance('Adentro había cartas, fotos en blanco y negro y un pañuelo bordado con flores azules. Las cartas eran del abuelo, que había trabajado muchos años lejos de casa. En cada carta, él le contaba a la abuela cómo era su vida en otro país y cuánto la extrañaba. Lucía y su abuela leyeron las cartas toda la tarde, entre risas y lágrimas. Esa noche, las dos decidieron guardar la caja como el tesoro de la familia.');u.lang='es-US';u.rate=0.85;speechSynthesis.speak(u);}">🔊 Escuchar</button></div>
+          <div class="parada">
+            <h5>🛑 Al terminar</h5>
+            <ul>
+              <li>¿Se respondió tu pregunta de la Parada 1?</li>
+              <li>¿En qué acertaste y en qué te sorprendió el cuento?</li>
+            </ul>
+            <p style="margin:6px 0 0">En la <a href="https://zhemaria.github.io/clases_leng1/clase_4-2.html">Lección 4.2</a> vas a volver a este cuento para aclarar sus palabras difíciles y resumirlo.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
+</div>
+</details>
+
+
+
+<details id="s-tarea">
+<summary>5. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+<ul class="lista-bonita">
+  <li><strong>Mis tres preguntas.</strong> Copia en limpio lo que escribiste en las paradas del cuento: tu <strong>predicción</strong>, tu <strong>pregunta</strong> y la <strong>pista</strong> que usaste. Guárdalo: lo vas a completar en la Lección 4.2.</li>
+  <li><strong>Un texto de tu vida.</strong> Busca un texto corto de verdad (una noticia, un aviso, un folleto). Antes de leerlo, mira el título y las imágenes, y escribe una predicción y una pregunta. Después léelo y anota si confirmaste, ajustaste o rechazaste tu predicción.</li>
+  <li><strong>Frases modelo.</strong> Escribe tres predicciones para estos títulos usando las frases modelo de la <a href="#s-2-pistas">sección 2</a>: <em>«Cómo preparar una entrevista de trabajo»</em>, <em>«El día que se fue la luz en el barrio»</em> y <em>«Diez frutas que ayudan al corazón»</em>.</li>
+</ul>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa «Mis tres preguntas» con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo para «Mis tres preguntas»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Predicción razonable</td><td class="nivel-4">Se conecta con alguna pista del título o de la imagen</td><td class="nivel-1">Es una adivinanza, sin pista que la apoye</td></tr>
+      <tr><td>Pregunta de comprensión</td><td class="nivel-4">Es una pregunta abierta (qué, por qué, cómo)</td><td class="nivel-1">No es una pregunta, o se responde solo con sí o no</td></tr>
+      <tr><td>Pista</td><td class="nivel-4">Dice qué pista usó: el título, la imagen o una palabra</td><td class="nivel-1">No dice de dónde salió la predicción</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>7. Cierre: confirmar, ajustar o rechazar <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>La predicción tiene un riesgo</h3>
@@ -392,7 +545,7 @@
 </div>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Puedes nombrar las tres pistas que usa el detective lector antes de leer?</li>
     <li>¿Cuál es la diferencia entre una predicción razonable y una adivinanza?</li>
@@ -401,87 +554,19 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Vamos a completar el ciclo. Aprenderás a <strong>aclarar</strong> lo que no entiendes <em>durante</em> la lectura, y a <strong>resumir</strong> con tus propias palabras lo que aprendiste <em>después</em> de leer.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_4-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 4.2 · Aclarar y resumir lo leído</a>. Vas a completar el ciclo: aprenderás a <strong>aclarar</strong> lo que no entiendes <em>durante</em> la lectura y a <strong>resumir</strong> con tus palabras <em>después</em> de leer.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>5. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
-<div class="contenido-detalle">
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 4 · Lección 4.1</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-lectura">Lectura</span> Cuento corto auténtico (8–10 oraciones)</h4>
-  <p>El profesor selecciona un cuento corto con vocabulario controlado. Modalidad: <strong>lectura guiada con paradas</strong>:</p>
-  <ul class="lista-bonita">
-    <li><strong>Stop and Predict</strong> — antes de leer, predicción a partir del título y la imagen.</li>
-    <li><strong>Stop and Ask</strong> — durante la lectura, pausas para hacer preguntas.</li>
-    <li><strong>Stop and Summarize</strong> — al final, resumen en una oración.</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> "Mis tres preguntas"</h4>
-  <p>En el foro de Brightspace, cada estudiante publica:</p>
-  <ul class="lista-bonita">
-    <li>Una <strong>predicción</strong> sobre el texto leído (antes de leer).</li>
-    <li>Una <strong>pregunta</strong> de comprensión (durante la lectura).</li>
-    <li>Un <strong>resumen</strong> en una sola oración (después de leer).</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-quiz">Quiz</span> 10 preguntas · Brightspace</h4>
-  <p>El quiz de la lección evalúa:</p>
-  <ul class="lista-bonita">
-    <li>Clasificar acciones del lector como <em>antes / durante / después</em> de leer.</li>
-    <li>Identificar una predicción válida frente a una adivinanza.</li>
-    <li>Reconocer una pregunta útil de comprensión.</li>
-    <li>Distinguir un buen resumen de uno incompleto.</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Lista de cotejo del foro "Mis tres preguntas"</h4>
-  <p>Cada respuesta del foro se evalúa con esta lista de cotejo (cada criterio: ✓ cumple / ✗ no cumple):</p>
-
-  <table class="rubrica">
-    <thead>
-      <tr>
-        <th>Criterio</th>
-        <th class="nivel-4">Cumple (1 pt)</th>
-        <th class="nivel-1">No cumple (0 pt)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Predicción razonable</td>
-        <td class="nivel-4">Se conecta con alguna pista del título o imagen</td>
-        <td class="nivel-1">Es una adivinanza al azar, sin justificación</td>
-      </tr>
-      <tr>
-        <td>Pregunta de comprensión</td>
-        <td class="nivel-4">Es una pregunta abierta (qué, por qué, cómo)</td>
-        <td class="nivel-1">No es una pregunta o es de sí/no superficial</td>
-      </tr>
-      <tr>
-        <td>Resumen básico</td>
-        <td class="nivel-4">Incluye al menos quién / qué / dónde del texto</td>
-        <td class="nivel-1">No identifica los elementos básicos del texto</td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje total:</strong> 3 puntos. Una respuesta completa (3/3) demuestra dominio inicial de las estrategias antes/durante/después.</p>
-</div>
-
-</div>
-</details>
-
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
 
 <script>
 (function(){
@@ -491,7 +576,7 @@
     {frase:'Escribo un resumen de lo que leí.',correcta:'despues'},
     {frase:'Me pregunto qué significa una palabra desconocida.',correcta:'durante'},
     {frase:'Predigo de qué se va a tratar el cuento.',correcta:'antes'},
-    {frase:'Cuento a un compañero lo que aprendí.',correcta:'despues'},
+    {frase:'Le cuento a alguien de mi familia lo que aprendí.',correcta:'despues'},
     {frase:'Pauso y vuelvo a leer una oración que no entendí.',correcta:'durante'},
     {frase:'Activo lo que ya sé sobre el tema.',correcta:'antes'},
     {frase:'Identifico las palabras clave mientras leo.',correcta:'durante'}
@@ -545,7 +630,7 @@
       titulo:'"Cómo ahorrar dinero en el supermercado"',
       opciones:[
         {texto:'El texto va a dar consejos prácticos para gastar menos cuando compras comida.',correcta:true},
-        {texto:'El texto va a hablar de la historia de los supermercados en Cuba.',correcta:false},
+        {texto:'El texto va a hablar de la historia de los supermercados.',correcta:false},
         {texto:'El texto va a contar la vida de un cajero famoso.',correcta:false}
       ]
     },
@@ -568,7 +653,7 @@
     {
       titulo:'"Receta de la abuela: arroz con pollo"',
       opciones:[
-        {texto:'El texto va a contar la biografía de una abuela cubana.',correcta:false},
+        {texto:'El texto va a contar la vida de una abuela famosa.',correcta:false},
         {texto:'El texto va a dar los ingredientes y los pasos para preparar arroz con pollo.',correcta:true},
         {texto:'El texto va a hablar sobre la cría de pollos.',correcta:false}
       ]
@@ -626,6 +711,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿En qué momento de la lectura <strong>predices</strong> de qué tratará el texto?", "o": ["Antes de leer", "Durante la lectura", "Después de leer"], "c": 0, "fijo": true}, {"t": "¿En qué momento <strong>aclaras</strong> una palabra que no entiendes?", "o": ["Antes de leer", "Durante la lectura", "Después de leer"], "c": 1, "fijo": true}, {"t": "¿En qué momento <strong>resumes</strong> lo que leíste?", "o": ["Antes de leer", "Durante la lectura", "Después de leer"], "c": 2, "fijo": true}, {"t": "¿Qué es una <strong>predicción</strong>?", "o": ["Una anticipación lógica basada en pistas del texto", "Una adivinanza al azar", "Un resumen de lo leído"], "c": 0}, {"t": "¿Cuáles son las pistas que usas antes de leer?", "o": ["El título, las imágenes y las palabras destacadas", "Solo la última oración", "El número de páginas"], "c": 0}, {"t": "Título: «Cómo ahorrar dinero en el supermercado». ¿Cuál es la mejor predicción?", "o": ["Dará consejos para gastar menos al comprar comida", "Contará la historia de un cajero famoso", "Explicará cómo se cultivan las verduras"], "c": 0}, {"t": "Título: «Por qué dormir bien cambia tu salud». ¿Cuál es la mejor predicción?", "o": ["Explicará los beneficios del sueño para el cuerpo", "Hablará de recetas de cocina", "Tratará sobre el significado de los sueños"], "c": 0}, {"t": "¿Cuál es una buena <strong>pregunta</strong> antes de leer «El primer día de Marta en su nuevo trabajo»?", "o": ["¿Cómo se sintió Marta ese primer día?", "¿Marta?", "¿Cuántas páginas tiene?"], "c": 0}, {"t": "Una predicción razonable siempre…", "o": ["se puede justificar con una pista: «pienso esto porque vi…»", "acierta", "es muy larga"], "c": 0}, {"t": "Mientras lees, descubres que tu predicción no era correcta. ¿Qué haces?", "o": ["La rechazo o la ajusto y sigo leyendo atento", "Dejo de leer", "Cambio el texto"], "c": 0}, {"t": "¿Por qué ayuda predecir?", "o": ["Porque te mantiene pensando y le da un objetivo a tu lectura", "Porque así no hace falta leer el texto", "Porque así se lee más rápido sin entender"], "c": 0}, {"t": "«Activo lo que ya sé sobre el tema.» ¿En qué momento se hace?", "o": ["Antes de leer", "Durante la lectura", "Después de leer"], "c": 0, "fijo": true}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes prepararte antes de leer. Puedes continuar con la Lección 4.2.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

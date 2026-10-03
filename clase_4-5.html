@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 4.5 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 5: Descubrir significados usando claves de contexto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.5 · Descubrir significados con claves de contexto</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -111,23 +117,86 @@
   .nivel-3{background:#fff8e1}
   .nivel-2{background:#fff3e0}
   .nivel-1{background:#ffebee}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
 </style>
 </head>
 <body>
 
-<h1>Clase 5: Descubrir significados usando claves de contexto</h1>
-<p class="subtitulo">Inferir el significado sin diccionario · Nivel 1 · Tema 4, semana 8</p>
+<h1>Lección 4.5 · Descubrir significados con claves de contexto</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 4 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aprender a <strong>inferir el significado</strong> de palabras desconocidas usando las <strong>claves de contexto</strong> que el autor incluye en las oraciones cercanas: sinónimos, antónimos, ejemplos y definiciones.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-contexto">¿Qué es el contexto?</a></li>
+    <li><a href="#s-2-tipos">Los cuatro tipos de claves de contexto</a></li>
+    <li><a href="#s-3-practica">Práctica: inferir el significado</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Incluso los lectores más experimentados encuentran con frecuencia palabras cuyo significado desconocen. La diferencia entre un lector eficiente y uno que se detiene ante cada palabra nueva no consiste en conocer todo el vocabulario del idioma — algo imposible — sino en saber <strong>qué hacer cuando aparece una palabra desconocida</strong>. En esta clase usted aprenderá la herramienta más poderosa del lector autónomo: el uso de las <span class="palabra-clave">claves de contexto</span>. Con esta técnica podrá inferir el significado de palabras nuevas sin recurrir al diccionario, utilizando únicamente las pistas que el propio texto le ofrece.</p>
+<h2>📚 Para empezar</h2>
 
-<details open>
+<p>Hasta los mejores lectores encuentran palabras que no conocen. La diferencia entre un lector que avanza y uno que se detiene ante cada palabra nueva no está en saberse todo el vocabulario, que es imposible, sino en saber <strong>qué hacer cuando aparece una palabra desconocida</strong>. En esta lección vas a aprender la herramienta más poderosa del lector que estudia solo: las <span class="palabra-clave">claves de contexto</span>. Con ellas podrás descifrar palabras nuevas sin diccionario, solo con las pistas que el mismo texto te da.</p>
+
+<details open id="s-1-contexto">
 <summary>1. ¿Qué es el contexto? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
@@ -160,8 +229,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. Los cuatro tipos de claves de contexto <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-tipos">
+<summary>2. Los cuatro tipos de claves de contexto <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Cómo te ayudan los autores</h3>
@@ -173,7 +242,7 @@
     <span class="icono">🟰</span>
     <h4>Sinónimos</h4>
     <p>Palabras con significado <strong>parecido</strong> cerca de la palabra desconocida.</p>
-    <div class="muestra">El abuelo era muy <span class="palabra-desconocida">longevo</span>, vivió casi cien años. La pista: <span class="pista-sin">vivió casi cien años</span> = longevo significa "que vive muchos años".</div>
+    <div class="muestra">Los vecinos estaban <span class="palabra-desconocida">furiosos</span>, muy enojados por el ruido de la fiesta. La pista: <span class="pista-sin">muy enojados</span> = furiosos significa casi lo mismo, «muy enojados».</div>
   </div>
   <div class="tipo-clave ant">
     <span class="icono">↔️</span>
@@ -201,13 +270,13 @@
 
 <table style="width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)">
   <thead>
-    <tr style="background:var(--cp-oscuro);color:#fff"><th style="padding:12px;text-align:left">Tipo de clave</th><th style="padding:12px;text-align:left">Palabras que la avisan</th></tr>
+    <tr style="background:var(--cp-oscuro);color:#fff"><th scope="col" style="padding:12px;text-align:left">Tipo de clave</th><th scope="col" style="padding:12px;text-align:left">Palabras que la avisan</th></tr>
   </thead>
   <tbody>
-    <tr><td style="padding:12px;border-bottom:1px solid var(--gris-claro);font-weight:600;color:var(--sinonimo)">Sinónimo</td><td style="padding:12px;border-bottom:1px solid var(--gris-claro)"><em>o sea, también llamado, conocido como, también</em></td></tr>
+    <tr><td style="padding:12px;border-bottom:1px solid var(--gris-claro);font-weight:600;color:var(--sinonimo)">Sinónimo</td><td style="padding:12px;border-bottom:1px solid var(--gris-claro)"><em>también llamado, conocido como, y</em>; o una palabra parecida justo al lado</td></tr>
     <tr><td style="padding:12px;border-bottom:1px solid var(--gris-claro);font-weight:600;color:var(--antonimo)">Antónimo</td><td style="padding:12px;border-bottom:1px solid var(--gris-claro)"><em>pero, sin embargo, sino, en cambio, al contrario</em></td></tr>
     <tr><td style="padding:12px;border-bottom:1px solid var(--gris-claro);font-weight:600;color:var(--ejemplo)">Ejemplo</td><td style="padding:12px;border-bottom:1px solid var(--gris-claro)"><em>como, por ejemplo, tales como, incluyendo</em></td></tr>
-    <tr><td style="padding:12px;font-weight:600;color:var(--definicion)">Definición</td><td style="padding:12px"><em>es decir, significa, o sea, es lo mismo que</em></td></tr>
+    <tr><td style="padding:12px;font-weight:600;color:var(--definicion)">Definición</td><td style="padding:12px"><em>es decir, o sea, significa, quiere decir</em>, seguidos de una explicación</td></tr>
   </tbody>
 </table>
 
@@ -218,49 +287,100 @@
 <div id="ejercicio-tipo"></div>
 <div class="puntaje" id="puntaje-tipo">Aciertos: 0 / 6</div>
 
+<div class="enlace-practica" style="cursor:default"><a  href="https://zhemaria.github.io/gramatica/n1-l4-5.html#tipo-de-clave" target="_blank" rel="noopener" style="color:inherit">
+  ✍️ Práctica: ¿Qué tipo de clave es? ↗</a>
+  <span>Veinte oraciones para reconocer el tipo de pista. En la misma página practicas también <a href="https://zhemaria.github.io/gramatica/n1-l4-5.html#palabras-senal" target="_blank" rel="noopener">las palabras que avisan</a>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</div>
+
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: inferir el significado <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: inferir el significado <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Decifrar palabras desconocidas</h3>
+<h3>Descifrar palabras desconocidas</h3>
 
 <p>Lee cada oración con cuidado, busca las pistas y elige el significado correcto de la palabra subrayada.</p>
 
 <div id="ejercicio-significado"></div>
 <div class="puntaje" id="puntaje-significado">Aciertos: 0 / 6</div>
 
-<h3>Actividad oral: "Detective en parejas"</h3>
+<h3>Actividad: explica tu pista</h3>
 
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · en parejas (lectura alternada)</h4>
-  <p>El profesor reparte una hoja con seis oraciones. Cada oración tiene <strong>una palabra subrayada y desconocida</strong>. En parejas:</p>
+  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · en voz alta y en tu cuaderno</h4>
+  <p>Lee en voz alta cada oración. Después escribe en tu cuaderno qué crees que significa la palabra en negrita y <strong>qué pista usaste</strong> («Lo sé porque dice…»). Lo más importante no es acertar, sino <em>explicar la pista</em>.</p>
   <ul class="lista-bonita">
-    <li>Un estudiante lee la oración en voz alta.</li>
-    <li>El otro <strong>adivina el significado</strong> y explica <strong>qué pista usó</strong> ("Es porque dice…").</li>
-    <li>Después se intercambian: el segundo lee, el primero adivina.</li>
+    <li>Después de correr diez kilómetros, el atleta estaba <strong>exhausto</strong> y se sentó a descansar.</li>
+    <li>La sopa estaba <strong>insípida</strong>; no tenía nada de sal ni de sabor.</li>
+    <li>Mi hermano es muy <strong>madrugador</strong>: se levanta todos los días a las cinco de la mañana.</li>
+    <li>El examen no fue <strong>sencillo</strong>, sino muy difícil.</li>
   </ul>
-  <p style="margin-bottom:0">Lo más importante <strong>no es acertar</strong>, sino <em>explicar la pista</em>. Si la pista es buena, el significado vendrá solo.</p>
 </div>
+<details class="ver-modelo">
+  <summary>Ya escribí mis respuestas: ver un modelo</summary>
+  <ul class="lista-bonita">
+    <li><strong>Exhausto:</strong> muy cansado. Pista: corrió diez kilómetros y se sentó a descansar.</li>
+    <li><strong>Insípida:</strong> sin sabor. Pista: «no tenía nada de sal ni de sabor» (casi una definición).</li>
+    <li><strong>Madrugador:</strong> que se levanta muy temprano. Pista: «se levanta a las cinco de la mañana».</li>
+    <li><strong>Sencillo:</strong> fácil. Pista: lo contrario de «muy difícil» (un antónimo, avisado por «sino»).</li>
+  </ul>
+</details>
 
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>Cada pareja recibe una hoja con seis oraciones. Hacen el ejercicio en voz alta. El profesor pasa por las parejas escuchando cómo justifican sus inferencias.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>El profesor comparte un documento con las oraciones. Las parejas pasan a salas pequeñas con micrófono encendido. Después regresan al grupo grande y comparten dos casos.</p>
-  </div>
-</div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l4-5.html#significado" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Qué significa la palabra? ↗
+  <span>Veinte oraciones más para descifrar el significado por el contexto. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre: lo que aprendimos hoy <span class="caja-tiempo">5 min</span></summary>
+
+
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>Mi palabra del día.</strong> Durante tres días, busca en un texto de verdad (una noticia corta, un aviso, una etiqueta) una palabra que no conozcas. Para cada una, escribe en tu cuaderno:</p>
+<ul class="lista-bonita">
+  <li>La <strong>oración completa</strong> donde apareció la palabra.</li>
+  <li>El significado que <strong>dedujiste</strong> por el contexto.</li>
+  <li>El <strong>tipo de clave</strong> que usaste: sinónimo, antónimo, ejemplo, definición, o «no había clave».</li>
+  <li>Al final, búscala en el diccionario y comprueba si acertaste.</li>
+</ul>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa cada entrada con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Mi palabra del día»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Oración con contexto</td><td class="nivel-4">Copié la oración completa, con sus pistas</td><td class="nivel-1">Solo escribí la palabra suelta</td></tr>
+      <tr><td>Significado deducido</td><td class="nivel-4">Es razonable y se conecta con el contexto</td><td class="nivel-1">Lo adiviné sin mirar las pistas</td></tr>
+      <tr><td>Tipo de clave</td><td class="nivel-4">Identifiqué bien el tipo de pista</td><td class="nivel-1">No sé qué pista usé</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <ul class="lista-bonita">
@@ -272,7 +392,7 @@
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Cuáles son los cuatro tipos de claves de contexto?</li>
     <li>Si una oración dice <em>"no fue rápido, sino lento"</em>, ¿qué tipo de clave es?</li>
@@ -281,81 +401,19 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Vamos a otra herramienta poderosa para descifrar palabras: la <strong>anatomía de la palabra</strong>. Aprenderás a separar las palabras en raíces, prefijos y sufijos para descubrir su significado por partes.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_4-6.html" style="color:var(--cp-oscuro);font-weight:700">Lección 4.6 · La anatomía de las palabras: raíces y afijos</a>. Aprenderás otra herramienta para descifrar palabras: separarlas en raíz, prefijo y sufijo.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>5. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
-<div class="contenido-detalle">
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 4 · Lección 4.5</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-lectura">Lectura</span> Oraciones con palabra clave subrayada</h4>
-  <p>Oraciones con una palabra clave subrayada y pistas de contexto evidentes. Modalidad: <strong>lectura en parejas alternando</strong> — uno lee, el otro adivina y explica cómo lo supo.</p>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> "Mi palabra del día"</h4>
-  <p>Cada estudiante busca en un texto auténtico (puede ser una noticia corta) una palabra que no conozca. En el foro publica:</p>
-  <ul class="lista-bonita">
-    <li>La oración completa donde apareció la palabra.</li>
-    <li>El significado que <strong>infirió</strong> usando el contexto.</li>
-    <li>El tipo de clave que usó (sinónimo / antónimo / ejemplo / definición / sin clave).</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-quiz">Quiz</span> Parte 1 de 15 preguntas · Brightspace</h4>
-  <p>La primera parte del quiz de la Lección 4.3 evalúa el contexto:</p>
-  <ul class="lista-bonita">
-    <li>Adivinar el significado de una palabra por contexto (opción múltiple).</li>
-    <li>Identificar qué tipo de clave usó el autor.</li>
-    <li>Reconocer las palabras que avisan que viene una pista.</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Lista de cotejo del foro "Mi palabra del día"</h4>
-  <p>Las tres partes de la respuesta del foro se evalúan así:</p>
-
-  <table class="rubrica">
-    <thead>
-      <tr>
-        <th>Criterio</th>
-        <th class="nivel-4">Cumple (1 pt)</th>
-        <th class="nivel-1">No cumple (0 pt)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Oración con contexto</td>
-        <td class="nivel-4">Incluye la oración completa con pistas</td>
-        <td class="nivel-1">Solo escribe la palabra suelta</td>
-      </tr>
-      <tr>
-        <td>Significado inferido</td>
-        <td class="nivel-4">Significado razonable, conectado al contexto</td>
-        <td class="nivel-1">Significado al azar o incorrecto</td>
-      </tr>
-      <tr>
-        <td>Tipo de clave</td>
-        <td class="nivel-4">Identifica correctamente el tipo de clave</td>
-        <td class="nivel-1">No identifica o se equivoca de tipo</td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje total:</strong> 3 puntos por entrada del foro.</p>
-</div>
-
-</div>
-</details>
-
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
 
 <script>
 (function(){
@@ -364,7 +422,7 @@
     {frase:'El médico recetó un <strong>analgésico</strong>, es decir, una medicina para el dolor.',correcta:'definicion'},
     {frase:'No es una persona <strong>tacaña</strong>, sino muy generosa con sus amigos.',correcta:'antonimo'},
     {frase:'Las <strong>aves</strong>, como las palomas, los gorriones y las gaviotas, viven en la ciudad.',correcta:'ejemplo'},
-    {frase:'Mi tío es <strong>tenaz</strong>, también llamado perseverante, nunca se rinde con un proyecto.',correcta:'sinonimo'},
+    {frase:'Mi tío es <strong>tenaz</strong>, perseverante: nunca se rinde con un proyecto.',correcta:'sinonimo'},
     {frase:'Ese trabajo no era <strong>tedioso</strong>, al contrario, era muy entretenido.',correcta:'antonimo'},
     {frase:'Los <strong>cereales</strong>, como el trigo, el arroz y el maíz, son la base de la alimentación.',correcta:'ejemplo'}
   ];
@@ -433,7 +491,7 @@
     {
       oracion:'No es <strong>perspicaz</strong>, sino bastante distraída — siempre pierde las llaves.',
       opciones:[
-        {texto:'Inteligente y observadora',correcta:true},
+        {texto:'Atenta y observadora',correcta:true},
         {texto:'Cansada y dormida',correcta:false},
         {texto:'Trabajadora y rápida',correcta:false}
       ]
@@ -442,7 +500,7 @@
       oracion:'Los <strong>tubérculos</strong>, como la papa, el boniato y la yuca, crecen bajo la tierra.',
       opciones:[
         {texto:'Frutas de árbol',correcta:false},
-        {texto:'Raíces que se comen',correcta:true},
+        {texto:'Partes de plantas que crecen bajo la tierra y se comen',correcta:true},
         {texto:'Verduras de hoja',correcta:false}
       ]
     },
@@ -455,7 +513,7 @@
       ]
     },
     {
-      oracion:'Ese discurso fue muy <strong>ameno</strong>, también llamado entretenido y divertido.',
+      oracion:'Ese discurso fue muy <strong>ameno</strong> y entretenido; nadie se aburrió.',
       opciones:[
         {texto:'Aburrido y largo',correcta:false},
         {texto:'Entretenido y agradable',correcta:true},
@@ -505,6 +563,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué es el <strong>contexto</strong> de una palabra?", "o": ["Todo lo que la rodea: las otras palabras, las oraciones y el tema", "Su significado en el diccionario", "La primera letra de la palabra"], "c": 0}, {"t": "¿Cuáles son los cuatro tipos de claves de contexto?", "o": ["Sinónimo, antónimo, ejemplo y definición", "Verbo, sustantivo, adjetivo y artículo", "Título, imagen, índice y página"], "c": 0}, {"t": "«El médico recetó un <strong>analgésico</strong>, es decir, una medicina para el dolor.» ¿Qué tipo de clave es?", "o": ["Sinónimo", "Antónimo", "Ejemplo", "Definición"], "c": 3, "fijo": true}, {"t": "«No es <strong>tacaña</strong>, sino muy generosa.» ¿Qué tipo de clave es?", "o": ["Sinónimo", "Antónimo", "Ejemplo", "Definición"], "c": 1, "fijo": true}, {"t": "«Las <strong>aves</strong>, como las palomas y los gorriones, viven en la ciudad.» ¿Qué tipo de clave es?", "o": ["Sinónimo", "Antónimo", "Ejemplo", "Definición"], "c": 2, "fijo": true}, {"t": "«Los vecinos estaban <strong>furiosos</strong>, muy enojados por el ruido.» ¿Qué tipo de clave es?", "o": ["Sinónimo", "Antónimo", "Ejemplo", "Definición"], "c": 0, "fijo": true}, {"t": "¿Qué significa <strong>tedioso</strong> en «El trabajo no era tedioso; al contrario, era muy entretenido»?", "o": ["Aburrido", "Peligroso", "Bien pagado"], "c": 0}, {"t": "¿Qué significa <strong>cítricos</strong> en «Los cítricos, como la naranja y el limón, tienen vitamina C»?", "o": ["Frutas ácidas como la naranja y el limón", "Verduras de hoja verde", "Frutas muy dulces"], "c": 0}, {"t": "¿Qué palabras avisan que viene un <strong>ejemplo</strong>?", "o": ["«como» y «por ejemplo»", "«pero» y «sino»", "«es decir» y «significa»"], "c": 0}, {"t": "¿Qué palabras avisan que viene lo <strong>contrario</strong>?", "o": ["«pero», «sino» y «al contrario»", "«como» y «tales como»", "«es decir» y «o sea»"], "c": 0}, {"t": "«El camino era <strong>angosto</strong>, tan estrecho que no cabían dos carros.» ¿Qué significa angosto?", "o": ["Estrecho, poco ancho", "Muy largo", "Lleno de piedras"], "c": 0}, {"t": "Cuando encuentras una palabra desconocida, lo primero es…", "o": ["leer la oración completa y las de alrededor para buscar pistas", "cerrar el libro", "saltarte el párrafo"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya descifras palabras por el contexto. Puedes continuar con la Lección 4.6.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

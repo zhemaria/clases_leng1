@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 4.4 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 4: Los detalles que sostienen la idea</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.4 · Los detalles que sostienen la idea</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -110,23 +116,88 @@
   .nivel-3{background:#fff8e1}
   .nivel-2{background:#fff3e0}
   .nivel-1{background:#ffebee}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .fuente{font-size:.85rem;color:var(--gris);margin:6px 0 0}
 </style>
 </head>
 <body>
 
-<h1>Clase 4: Los detalles que sostienen la idea</h1>
-<p class="subtitulo">Diferenciar la idea principal de los detalles de apoyo · Nivel 1 · Tema 4, semana 8</p>
+<h1>Lección 4.4 · Los detalles que sostienen la idea</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 4 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aprender a <strong>identificar los detalles de apoyo</strong> de un párrafo y reconocer sus distintos tipos (ejemplos, datos y descripciones), distinguiéndolos de la idea principal y de las oraciones que no apoyan.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-detalles">¿Qué son los detalles de apoyo?</a></li>
+    <li><a href="#s-2-tipos">Los tres tipos de detalles</a></li>
+    <li><a href="#s-3-intruso">El detalle intruso</a></li>
+    <li><a href="#s-4-practica">Práctica integradora</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>La clase anterior se centró en la identificación de la idea principal de un párrafo. Sin embargo, la idea principal por sí sola resulta insuficiente: requiere <span class="palabra-clave">detalles de apoyo</span> que la sustenten, la expliquen y la hagan creíble. Sin detalles, la idea queda vacía y abstracta. Sin idea principal, los detalles carecen de dirección y propósito. En esta sesión examinaremos el párrafo como una unidad completa — <strong>idea principal acompañada de sus detalles</strong> — y aprenderemos a distinguir los distintos tipos de detalles que emplean los autores para fortalecer su argumentación.</p>
+<h2>📚 Para empezar</h2>
 
-<details open>
+<p>En la <a href="https://zhemaria.github.io/clases_leng1/clase_4-3.html">Lección 4.3</a> aprendiste a encontrar la idea principal. Pero la idea principal sola no basta: necesita <span class="palabra-clave">detalles de apoyo</span> que la expliquen y la hagan creíble. Sin detalles, la idea queda vacía; sin idea principal, los detalles no tienen rumbo. En esta lección vas a mirar el párrafo completo, <strong>la idea principal con sus detalles</strong>, y a distinguir los tipos de detalles que usan los autores.</p>
+
+<details open id="s-1-detalles">
 <summary>1. ¿Qué son los detalles de apoyo? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
@@ -143,8 +214,9 @@
 <p>Mira este párrafo. La idea principal está en rojo y los detalles de apoyo en sus colores correspondientes:</p>
 
 <div class="texto-marcado">
-  <span class="mark-idea">El huracán Ike causó mucho daño en Cuba en 2008.</span> <span class="mark-dato">Sus vientos alcanzaron 110 millas por hora</span> y <span class="mark-dato">la marejada llegó a 15 pies de altura</span>. <span class="mark-desc">Las calles de Holguín quedaron inundadas y muchas casas perdieron el techo.</span> <span class="mark-ej">En el municipio de Gibara, por ejemplo, miles de personas se quedaron sin hogar.</span>
+  <span class="mark-idea">El huracán Ike causó mucho daño en Cuba en 2008.</span> <span class="mark-dato">Llegó a la provincia de Holguín con vientos de unas 130 millas por hora</span>, y <span class="mark-dato">en todo el país más de 300 000 viviendas sufrieron daños</span>. <span class="mark-desc">Las calles quedaron inundadas y muchas casas perdieron el techo.</span> <span class="mark-ej">En Baracoa, por ejemplo, olas enormes pasaron por encima de las casas de la costa.</span>
 </div>
+<p class="fuente">Datos: informe del Centro Nacional de Huracanes de Estados Unidos sobre el huracán Ike (2008).</p>
 
 <div class="tip">
   <strong>👀 Observa:</strong> La <span class="mark-idea">idea principal</span> dice <em>qué</em> pasó. Los detalles dicen <em>cuánto, cómo, dónde y para qué</em>. Sin esos detalles, la idea sería solo una afirmación sin pruebas.
@@ -153,8 +225,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. Los tres tipos de detalles de apoyo <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-tipos">
+<summary>2. Los tres tipos de detalles de apoyo <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Tres formas de apoyar una idea</h3>
@@ -166,13 +238,13 @@
     <span class="icono">💡</span>
     <h4>Ejemplos</h4>
     <p>Casos concretos que ilustran la idea principal.</p>
-    <div class="muestra">"Por ejemplo, en Gibara miles de personas se quedaron sin hogar."</div>
+    <div class="muestra">"En Baracoa, por ejemplo, olas enormes pasaron por encima de las casas."</div>
   </div>
   <div class="tipo-detalle dato">
     <span class="icono">🔢</span>
     <h4>Datos</h4>
     <p>Números, cantidades, fechas, estadísticas precisas.</p>
-    <div class="muestra">"Los vientos alcanzaron 110 millas por hora."</div>
+    <div class="muestra">"Los vientos llegaron a unas 130 millas por hora."</div>
   </div>
   <div class="tipo-detalle descripcion">
     <span class="icono">🖼️</span>
@@ -193,11 +265,16 @@
 <div id="ejercicio-clasificar"></div>
 <div class="puntaje" id="puntaje-clasificar">Aciertos: 0 / 6</div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l4-3.html#tipo-de-detalle" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Ejemplo, dato o descripción? ↗
+  <span>Quince detalles más para clasificar. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>3. El detalle intruso: el que no apoya <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-intruso">
+<summary>3. El detalle intruso: el que no apoya <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>No todo lo que está en el párrafo apoya la idea</h3>
@@ -227,41 +304,85 @@
 <div id="ejercicio-intruso"></div>
 <div class="puntaje" id="puntaje-intruso">Aciertos: 0 / 4</div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l4-3.html#intruso" target="_blank" rel="noopener">
+  ✍️ Práctica: El detalle intruso ↗
+  <span>Doce párrafos completos con una oración que no apoya la idea: encuéntrala. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>4. Práctica integradora: huracán Ike <span class="caja-tiempo">5 min</span></summary>
+<details id="s-4-practica">
+<summary>4. Práctica integradora <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Identificar idea principal + dos detalles</h3>
-
+<h3>La idea principal y sus detalles</h3>
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-lectura">Lectura + ejercicio</span> En parejas · sincrónico</h4>
-  <p>El profesor reparte un texto corto sobre el huracán Ike (u otro evento). En parejas, los estudiantes deben:</p>
+  <h4><span class="badge-tipo badge-lectura">Lectura y ejercicio</span> Individual · en tu cuaderno</h4>
+  <p>Lee el párrafo. Divide una hoja en dos columnas: en la izquierda escribe la <strong>idea principal</strong>; en la derecha, <strong>tres detalles</strong> con su tipo (ejemplo, dato o descripción). Después compara con el modelo.</p>
+</div>
+<div class="texto-marcado">
+  Los huertos comunitarios mejoran la vida del barrio. El huerto de mi calle tiene 15 parcelas, una para cada familia. Las plantas verdes y las flores amarillas llenan de color un terreno que antes estaba vacío. La señora Elena, por ejemplo, ya no compra tomates en la tienda: los cosecha ella misma. Además, los niños aprenden de dónde vienen los alimentos.
+</div>
+<details class="ver-modelo">
+  <summary>Ya hice mi tabla: ver el modelo</summary>
+  <p style="margin:6px 0"><strong>Idea principal:</strong> Los huertos comunitarios mejoran la vida del barrio (al inicio).</p>
   <ul class="lista-bonita">
-    <li>Identificar la <strong>idea principal</strong> del texto (ejemplo: <em>"El huracán causó mucho daño"</em>).</li>
-    <li>Extraer <strong>dos detalles específicos</strong> que apoyan la idea (ejemplo: <em>"vientos de 110 mph"</em> y <em>"marejada de 15 pies"</em>).</li>
-    <li>Clasificar cada detalle: ¿es un ejemplo, un dato o una descripción?</li>
+    <li><strong>Dato:</strong> el huerto tiene 15 parcelas, una para cada familia.</li>
+    <li><strong>Descripción:</strong> las plantas verdes y las flores amarillas llenan de color el terreno.</li>
+    <li><strong>Ejemplo:</strong> la señora Elena ya no compra tomates.</li>
   </ul>
-</div>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>Los estudiantes usan un papel dividido en dos columnas. En la izquierda escriben la idea principal. En la derecha, los dos detalles con su tipo (ej / dato / desc). Tres parejas presentan sus respuestas.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>Las parejas trabajan en salas pequeñas con un documento compartido. Al regresar, cada pareja pega su respuesta en el chat. El profesor proyecta dos o tres para comparar.</p>
-  </div>
-</div>
-
+  <p style="margin:6px 0 0">La última oración (los niños aprenden) también apoya la idea: es otra razón por la que el huerto mejora el barrio.</p>
+</details>
 </div>
 </details>
 
-<details>
-<summary>5. Cierre: lo que aprendimos hoy <span class="caja-tiempo">5 min</span></summary>
+
+
+<details id="s-tarea">
+<summary>5. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>Mi mapa de la idea.</strong> Copia en tu cuaderno el párrafo de abajo y haz lo siguiente:</p>
+<ul class="lista-bonita">
+  <li>Escribe la <strong>idea principal</strong>.</li>
+  <li>Anota <strong>dos detalles de apoyo</strong> y di de qué tipo es cada uno: ejemplo, dato o descripción.</li>
+  <li>El párrafo tiene una <strong>oración intrusa</strong>: márcala y explica por qué no apoya la idea.</li>
+</ul>
+<div class="texto-marcado">
+  Aprender a usar la computadora ayuda mucho en la vida adulta. Permite buscar trabajo y llenar solicitudes por internet. Mi primo, por ejemplo, encontró su empleo actual en una página de anuncios. Las computadoras de antes eran grandes y grises. Además, con el correo electrónico es fácil comunicarse con la escuela de los hijos.
+</div>
+<details class="ver-modelo">
+  <summary>Ya hice mi mapa: ver el modelo</summary>
+  <p style="margin:6px 0">Idea principal: aprender a usar la computadora ayuda mucho en la vida adulta. Detalles: buscar trabajo y llenar solicitudes (razón), el primo que encontró empleo (ejemplo), el correo con la escuela (razón). La intrusa es <em>«Las computadoras de antes eran grandes y grises»</em>: describe las computadoras, pero no dice por qué aprender a usarlas ayuda.</p>
+</details>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> ¿Cómo te fue? Puntúate de 1 a 4</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Rúbrica holística del mapa de la idea</caption>
+    <thead><tr><th scope="col">Nivel</th><th scope="col" class="nivel-4">4 · Excelente</th><th scope="col" class="nivel-3">3 · Bueno</th><th scope="col" class="nivel-2">2 · Aceptable</th><th scope="col" class="nivel-1">1 · Inicial</th></tr></thead>
+    <tbody><tr><td>Mapa de la idea</td><td class="nivel-4">Idea correcta, 2 detalles bien clasificados y la intrusa encontrada</td><td class="nivel-3">Idea correcta y 2 detalles, con algún error de clasificación</td><td class="nivel-2">Idea correcta y 1 detalle</td><td class="nivel-1">Idea equivocada o sin detalles</td></tr></tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>7. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <ul class="lista-bonita">
@@ -273,7 +394,7 @@
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Cuáles son los tres tipos de detalles de apoyo?</li>
     <li>¿Qué es un detalle intruso? ¿Cómo se detecta?</li>
@@ -282,86 +403,28 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Vamos a aprender a <strong>descifrar palabras desconocidas</strong> sin diccionario, usando las pistas del contexto. Es una herramienta poderosísima para el GED.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_4-5.html" style="color:var(--cp-oscuro);font-weight:700">Lección 4.5 · Descubrir significados con claves de contexto</a>. Aprenderás a descifrar palabras desconocidas sin diccionario, con las pistas del texto: una herramienta poderosa para el GED.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>6. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
-<div class="contenido-detalle">
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 4 · Lección 4.4</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-lectura">Lectura</span> Párrafos informativos cortos</h4>
-  <p>Lecturas: continuación de los párrafos cortos (3–5 oraciones) iniciados en la Clase 3. Modalidad: <strong>lectura silenciosa breve + análisis idea-detalles</strong>.</p>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> "Mi mapa de la idea"</h4>
-  <p>En el foro de Brightspace, cada estudiante:</p>
-  <ul class="lista-bonita">
-    <li>Copia un párrafo asignado.</li>
-    <li>Identifica la <strong>idea principal</strong> y la transcribe.</li>
-    <li>Lista <strong>dos detalles de apoyo</strong> y los clasifica (ejemplo / dato / descripción).</li>
-    <li>Si hay un detalle intruso, lo marca y explica por qué no apoya.</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-quiz">Quiz</span> 12 preguntas · Brightspace (cierre de Lección 4.2)</h4>
-  <p>El quiz cubre las dos clases de la lección:</p>
-  <ul class="lista-bonita">
-    <li>Leer un párrafo y elegir la idea principal (opción múltiple).</li>
-    <li>Emparejar detalles con la idea principal correcta.</li>
-    <li>Clasificar detalles como ejemplo, dato o descripción.</li>
-    <li>Identificar la oración que <strong>NO</strong> apoya la idea principal (intruso).</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Holística (escala 1–4) · Foro "Mi mapa de la idea"</h4>
-  <p>La respuesta del foro se evalúa con esta rúbrica:</p>
-
-  <table class="rubrica">
-    <thead>
-      <tr>
-        <th>Nivel</th>
-        <th class="nivel-4">4 — Excelente</th>
-        <th class="nivel-3">3 — Bueno</th>
-        <th class="nivel-2">2 — Aceptable</th>
-        <th class="nivel-1">1 — Inicial</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Análisis del párrafo</td>
-        <td class="nivel-4">Idea correcta + 2 detalles bien clasificados</td>
-        <td class="nivel-3">Idea correcta + 2 detalles (clasificación parcial)</td>
-        <td class="nivel-2">Idea correcta + 1 detalle</td>
-        <td class="nivel-1">Idea incorrecta o sin detalles</td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje:</strong> 1–4. Cierre de la Lección 4.2.</p>
-</div>
-
-</div>
-</details>
-
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
 
 <script>
 (function(){
   // Ejercicio 1: clasificar tipo de detalle
   var detallesClasificar=[
     {frase:'Por ejemplo, el huracán María dejó a Puerto Rico sin electricidad por meses.',correcta:'ejemplo'},
-    {frase:'El 35% de los adultos en Estados Unidos no duerme las ocho horas recomendadas.',correcta:'dato'},
+    {frase:'Más de un tercio de los adultos en Estados Unidos duerme menos de siete horas por noche.',correcta:'dato'},
     {frase:'Las hojas amarillas y rojas del otoño cubrían todo el parque.',correcta:'descripcion'},
-    {frase:'Cuba tiene 11 millones de habitantes.',correcta:'dato'},
+    {frase:'El huracán María llegó a Puerto Rico el 20 de septiembre de 2017.',correcta:'dato'},
     {frase:'Los frijoles olían a comino y ajo recién picado.',correcta:'descripcion'},
     {frase:'Mi vecina Rosa, por ejemplo, terminó el GED a los 65 años.',correcta:'ejemplo'}
   ];
@@ -460,7 +523,7 @@
     }).join('');
     div.innerHTML=
       '<div class="idea-cabecera"><strong>Idea principal:</strong> '+item.idea+'</div>'+
-      '<p style="margin-bottom:8px;font-size:0.9rem;color:var(--gris)">Clic en la oración que <strong>NO</strong> apoya la idea:</p>'+
+      '<p style="margin-bottom:8px;font-size:0.9rem;color:var(--gris)">Toca la oración que <strong>NO</strong> apoya la idea:</p>'+
       '<div class="opciones-intruso">'+opcionesHTML+'</div>';
     contG.appendChild(div);
 
@@ -490,6 +553,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué hacen los <strong>detalles de apoyo</strong>?", "o": ["Explican y prueban la idea principal", "Cambian de tema", "Repiten el título"], "c": 0}, {"t": "¿Cuáles son los tres tipos de detalles de apoyo?", "o": ["Ejemplos, datos y descripciones", "Títulos, verbos y comas", "Preguntas, respuestas y resúmenes"], "c": 0}, {"t": "«Por ejemplo, mi vecina Rosa terminó el GED a los 65 años.» ¿Qué tipo de detalle es?", "o": ["Ejemplo", "Dato", "Descripción"], "c": 0, "fijo": true}, {"t": "«El huracán María llegó a Puerto Rico el 20 de septiembre de 2017.» ¿Qué tipo de detalle es?", "o": ["Ejemplo", "Dato", "Descripción"], "c": 1, "fijo": true}, {"t": "«El pan salía del horno caliente, dorado y crujiente.» ¿Qué tipo de detalle es?", "o": ["Ejemplo", "Dato", "Descripción"], "c": 2, "fijo": true}, {"t": "Un <strong>dato</strong> es…", "o": ["un número, una fecha o una cantidad precisa", "una opinión", "un ejemplo de mi vida"], "c": 0}, {"t": "¿Qué es un <strong>detalle intruso</strong>?", "o": ["Una oración que no apoya la idea principal", "La oración más larga del párrafo", "La última oración"], "c": 0}, {"t": "Idea: «El desayuno es la comida más importante del día.» ¿Cuál es la intrusa?", "o": ["La cena tradicional incluye arroz y frijoles.", "Le da energía al cuerpo después de muchas horas sin comer.", "Ayuda a concentrarse en el trabajo."], "c": 0}, {"t": "Idea: «Cuidar el dinero es una destreza importante.» ¿Cuál es la intrusa?", "o": ["Mi prima trabaja en un banco de Miami.", "Hacer un presupuesto ayuda a no gastar de más.", "Ahorrar cada semana protege en las emergencias."], "c": 0}, {"t": "¿Qué pregunta te ayuda a detectar un intruso?", "o": ["¿Esta oración me ayuda a entender o probar la idea principal?", "¿Esta oración es la más corta?", "¿Esta oración tiene un número?"], "c": 0}, {"t": "¿Por qué los datos son útiles para apoyar una idea?", "o": ["Porque dan pruebas precisas que hacen la idea más creíble", "Porque hacen el texto más largo", "Porque siempre son la idea principal"], "c": 0}, {"t": "Un buen párrafo suele…", "o": ["combinar varios tipos de detalles", "tener solo datos", "no tener idea principal"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya distingues la idea principal de sus detalles. Puedes continuar con la Lección 4.5.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 2 y 3, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

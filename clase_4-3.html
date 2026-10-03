@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 4.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 3: A la caza de la idea principal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 4.3 · A la caza de la idea principal</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -115,23 +121,87 @@
   .nivel-3{background:#fff8e1}
   .nivel-2{background:#fff3e0}
   .nivel-1{background:#ffebee}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
 </style>
 </head>
 <body>
 
-<h1>Clase 3: A la caza de la idea principal</h1>
-<p class="subtitulo">Encontrar el mensaje central del párrafo · Nivel 1 · Tema 4, semana 8</p>
+<h1>Lección 4.3 · A la caza de la idea principal</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 4 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aprender a <strong>localizar la idea principal</strong> de un párrafo o texto corto, reconociendo que esa idea puede aparecer al <strong>inicio, en el medio o al final</strong>, y separándola de las oraciones secundarias.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-idea">¿Qué es la idea principal?</a></li>
+    <li><a href="#s-2-donde">Dónde se esconde la idea principal</a></li>
+    <li><a href="#s-3-practica">Práctica: encontrar la idea principal</a></li>
+    <li><a href="#s-4-mapa">Actividad: el mapa de la idea</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Una vez dominadas las cuatro estrategias de la lectura activa, esta clase aborda una habilidad central para el examen GED: la identificación de la <strong>idea principal</strong>. Todo texto bien construido posee un <em>mensaje central</em> que organiza y sostiene el resto del contenido. Si el lector no logra identificar esa idea, la comprensión global del texto resulta deficiente. Por el contrario, cuando se identifica con precisión, el resto de la información se acomoda naturalmente alrededor de ella. En esta sesión usted aprenderá a localizar la <span class="palabra-clave">idea principal</span> en cualquier párrafo, independientemente del lugar donde el autor la haya situado.</p>
+<h2>📚 Para empezar</h2>
 
-<details open>
+<p>Ya conoces las cuatro estrategias de la lectura activa. Ahora vas a trabajar una destreza central para el examen del GED: encontrar la <strong>idea principal</strong>. Todo texto bien escrito tiene un <em>mensaje central</em> que organiza el resto. Si no lo encuentras, el texto se vuelve confuso; si lo encuentras, todo lo demás se acomoda alrededor. En esta lección vas a aprender a localizar la <span class="palabra-clave">idea principal</span> de cualquier párrafo, esté donde esté.</p>
+
+<details open id="s-1-idea">
 <summary>1. ¿Qué es la idea principal? <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
@@ -165,7 +235,7 @@
 </div>
 </details>
 
-<details>
+<details id="s-2-donde">
 <summary>2. Dónde se esconde la idea principal <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
@@ -215,11 +285,16 @@
   <strong>📌 Observa:</strong> En las tres versiones, la idea principal es <em>la misma</em>. Lo que cambia es <em>dónde</em> el autor la colocó.
 </div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l4-3.html#donde-esta" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Dónde está la idea principal? ↗
+  <span>Doce párrafos para ubicar la idea principal: al inicio, en el medio o al final. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: encontrar la idea principal <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: encontrar la idea principal <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Cuál es la idea principal?</h3>
@@ -236,40 +311,80 @@
 <div id="ejercicio-ubicar"></div>
 <div class="puntaje" id="puntaje-ubicar">Aciertos: 0 / 4</div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l4-3.html#elige-idea" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Cuál es la idea principal? ↗
+  <span>Más párrafos para elegir la idea principal entre una opción demasiado amplia y un simple detalle. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>4. Discusión grupal: "El mapa de la idea" <span class="caja-tiempo">5 min</span></summary>
+<details id="s-4-mapa">
+<summary>4. Actividad: el mapa de la idea <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · grupos pequeños</h4>
-  <p>El profesor reparte un párrafo informativo a cada grupo (3–4 estudiantes). El grupo debe:</p>
-  <ul class="lista-bonita">
-    <li>Leer el párrafo en voz alta una vez.</li>
-    <li>Completar un <strong>organizador gráfico tipo sol</strong>: la idea principal en el centro, los detalles como rayos.</li>
-    <li>Marcar dónde aparece la idea principal: al inicio, en el medio o al final.</li>
-    <li>Presentar su mapa a la clase explicando por qué eligieron esa oración como idea principal.</li>
-  </ul>
+  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · en tu cuaderno</h4>
+  <p>Lee este párrafo en voz alta una vez. Después dibuja en tu cuaderno un <strong>organizador tipo sol</strong>, como el de la <a href="#s-1-idea">sección 1</a>: la idea principal en el centro y los detalles como rayos. Anota también dónde está la idea principal: al inicio, en el medio o al final.</p>
 </div>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>Los grupos trabajan con papel grande y marcadores. Dibujan el sol con sus rayos. Después pegan los carteles en la pared y la clase camina viéndolos.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>Los grupos usan una plantilla compartida en Brightspace (puede ser un Google Doc o Jamboard). Escriben la idea principal y los detalles. Cada grupo presenta su pantalla a la clase.</p>
-  </div>
+<div class="texto-modelo">
+  Mucha gente piensa que cocinar en casa toma demasiado tiempo. Sin embargo, cocinar en casa tiene grandes ventajas. Se gasta menos dinero que comiendo en la calle. Uno sabe exactamente qué ingredientes lleva la comida. Además, es una buena ocasión para compartir con la familia.
 </div>
+<details class="ver-modelo">
+  <summary>Ya hice mi mapa: ver el modelo</summary>
+  <p style="margin:6px 0"><strong>Idea principal (el sol):</strong> Cocinar en casa tiene grandes ventajas. Está <strong>en el medio</strong>: la primera oración solo presenta lo que mucha gente piensa, y el «sin embargo» anuncia la idea del autor.</p>
+  <p style="margin:6px 0 0"><strong>Detalles (los rayos):</strong> se gasta menos dinero · se sabe qué ingredientes lleva · se comparte con la familia.</p>
+</details>
 
 </div>
 </details>
 
-<details>
-<summary>5. Cierre: lo que aprendimos hoy <span class="caja-tiempo">5 min</span></summary>
+
+
+<details id="s-tarea">
+<summary>5. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+<ul class="lista-bonita">
+  <li><strong>Una idea en una oración.</strong> Lee el párrafo de abajo. Escribe su idea principal en <strong>una sola oración</strong>, con tus palabras, y en una segunda línea di dónde está: al inicio, en el medio o al final.</li>
+  <li><strong>Tres párrafos de tu vida.</strong> Busca tres párrafos cortos (de una noticia, un folleto o un libro) y subraya en cada uno la oración que dice la idea principal. Si no hay una oración así, escríbela tú.</li>
+</ul>
+<div class="texto-modelo">
+  El parque del barrio se llena los domingos. Las familias llegan temprano con comida para compartir. Los niños juegan al fútbol y los abuelos conversan a la sombra. Por la tarde, algunos vecinos tocan música. El parque es el corazón de la vida del barrio.
+</div>
+<details class="ver-modelo">
+  <summary>Ya escribí mi respuesta: ver un modelo</summary>
+  <p style="margin:6px 0 0"><em>«El parque es el centro de la vida del barrio, sobre todo los domingos.»</em> La idea principal está <strong>al final</strong>. Las otras oraciones son detalles que la muestran.</p>
+</details>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> ¿Cómo te fue? Puntúate de 1 a 4</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Rúbrica holística de la idea principal</caption>
+    <thead><tr><th scope="col">Nivel</th><th scope="col" class="nivel-4">4 · Excelente</th><th scope="col" class="nivel-3">3 · Bueno</th><th scope="col" class="nivel-2">2 · Aceptable</th><th scope="col" class="nivel-1">1 · Inicial</th></tr></thead>
+    <tbody><tr><td>Idea principal</td><td class="nivel-4">Idea correcta, con tus palabras, y su posición bien dicha</td><td class="nivel-3">Idea correcta, pero copiada o sin la posición</td><td class="nivel-2">Idea incompleta: solo un detalle</td><td class="nivel-1">Idea equivocada</td></tr></tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>7. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <ul class="lista-bonita">
@@ -281,7 +396,7 @@
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Qué pasa si quitas la idea principal de un párrafo?</li>
     <li>¿En qué tres lugares puede aparecer la idea principal?</li>
@@ -290,80 +405,28 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Vamos a profundizar en los <strong>detalles de apoyo</strong> — esas oraciones que sostienen y explican la idea principal. Aprenderás a distinguirlos y a saber cuál apoya, cuál ilustra y cuál es de relleno.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_4-4.html" style="color:var(--cp-oscuro);font-weight:700">Lección 4.4 · Los detalles que sostienen la idea</a>. Vas a profundizar en los detalles de apoyo y a reconocer cuál ejemplifica, cuál da un dato y cuál sobra.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>6. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
-<div class="contenido-detalle">
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 4 · Lección 4.3</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-lectura">Lectura</span> Párrafos cortos informativos</h4>
-  <p>Lecturas: párrafos cortos (3–5 oraciones) sobre temas cotidianos: el clima, una receta sencilla, un anuncio. Modalidad: <strong>lectura silenciosa breve + relectura compartida</strong>.</p>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> Una idea principal por estudiante</h4>
-  <p>En el foro de Brightspace, el profesor publica un párrafo corto. Cada estudiante responde con <strong>la idea principal en una sola oración</strong> y, en una segunda línea, dice en qué posición está (inicio / medio / final).</p>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-quiz">Quiz</span> 12 preguntas · Brightspace</h4>
-  <p>El quiz de la Lección 4.2 evalúa:</p>
-  <ul class="lista-bonita">
-    <li>Leer un párrafo y elegir la idea principal (opción múltiple).</li>
-    <li>Identificar la posición de la idea principal (inicio, medio, final).</li>
-    <li>Emparejar detalles con la idea principal correcta.</li>
-    <li>Identificar la oración que <strong>NO</strong> apoya la idea principal.</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Holística (escala 1–4) · Foro "Idea principal"</h4>
-  <p>La respuesta del foro se evalúa con una rúbrica holística simple:</p>
-
-  <table class="rubrica">
-    <thead>
-      <tr>
-        <th>Nivel</th>
-        <th class="nivel-4">4 — Excelente</th>
-        <th class="nivel-3">3 — Bueno</th>
-        <th class="nivel-2">2 — Aceptable</th>
-        <th class="nivel-1">1 — Inicial</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Idea principal</td>
-        <td class="nivel-4">Idea correcta + un detalle de apoyo</td>
-        <td class="nivel-3">Idea correcta sin detalles</td>
-        <td class="nivel-2">Idea parcial (incompleta)</td>
-        <td class="nivel-1">Idea incorrecta</td>
-      </tr>
-    </tbody>
-  </table>
-  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje:</strong> 1–4. Permite ver el progreso del estudiante de manera clara, sin entrar en demasiados criterios.</p>
-</div>
-
-</div>
-</details>
-
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
 
 <script>
 (function(){
   // Ejercicio 1: identificar la idea principal
   var parrafosIdea=[
     {
-      parrafo:'Los frijoles negros son un alimento muy nutritivo. Tienen mucha proteína vegetal y son ricos en fibra. También contienen hierro, magnesio y vitaminas del complejo B. Por eso son una parte fundamental de la dieta cubana.',
+      parrafo:'Los frijoles negros son un alimento muy nutritivo. Tienen mucha proteína vegetal y son ricos en fibra. También contienen hierro, magnesio y vitaminas del complejo B. Por eso son una parte fundamental de la comida de muchos países de América Latina.',
       opciones:[
-        {texto:'Los frijoles negros son parte de la dieta cubana.',correcta:false},
+        {texto:'Los frijoles negros se comen en América Latina.',correcta:false},
         {texto:'Los frijoles negros son un alimento muy nutritivo.',correcta:true},
         {texto:'Los frijoles negros tienen hierro y magnesio.',correcta:false}
       ]
@@ -451,7 +514,7 @@
       correcta:'inicio'
     },
     {
-      parrafo:'<span class="oracion-num">(1)</span> Mi vecina siempre llega temprano al trabajo. <span class="oracion-num">(2)</span> Nunca falta a una reunión y termina sus tareas a tiempo. <span class="oracion-num">(3)</span> Por todo eso, en su oficina la consideran una persona muy responsable. <span class="oracion-num">(4)</span> Ya le han ofrecido dos ascensos.',
+      parrafo:'<span class="oracion-num">(1)</span> Mi vecina siempre llega temprano al trabajo. <span class="oracion-num">(2)</span> Nunca falta a una reunión y termina sus tareas a tiempo. <span class="oracion-num">(3)</span> Por todo eso, en su oficina la consideran una persona muy responsable.',
       correcta:'final'
     },
     {
@@ -459,7 +522,7 @@
       correcta:'medio'
     },
     {
-      parrafo:'<span class="oracion-num">(1)</span> Los días de fiesta en Cuba son inolvidables. <span class="oracion-num">(2)</span> En Navidad la familia se reúne alrededor de un puerco asado. <span class="oracion-num">(3)</span> En Nochebuena se hacen los frijoles negros y el arroz blanco. <span class="oracion-num">(4)</span> En Año Nuevo todos se abrazan a la medianoche.',
+      parrafo:'<span class="oracion-num">(1)</span> Las fiestas de fin de año son inolvidables en mi familia. <span class="oracion-num">(2)</span> En Nochebuena preparamos una gran cena. <span class="oracion-num">(3)</span> En Navidad nos reunimos a abrir los regalos. <span class="oracion-num">(4)</span> En Año Nuevo todos nos abrazamos a la medianoche.',
       correcta:'inicio'
     }
   ];
@@ -505,6 +568,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué es la <strong>idea principal</strong> de un párrafo?", "o": ["El mensaje central, que las demás oraciones explican", "La primera palabra del párrafo", "El detalle más curioso"], "c": 0}, {"t": "Si quitas la idea principal de un párrafo…", "o": ["el párrafo pierde su sentido", "el párrafo se entiende mejor", "no pasa nada"], "c": 0}, {"t": "¿Dónde puede estar la idea principal?", "o": ["Al inicio, en el medio o al final", "Solo al inicio", "Solo en el título"], "c": 0}, {"t": "«Los huracanes son malos.» Como idea principal de un párrafo sobre los daños de los huracanes en el Caribe, es…", "o": ["demasiado amplia", "demasiado estrecha", "perfecta"], "c": 0}, {"t": "«Los vientos llegan a 130 millas por hora.» Como idea principal de ese mismo párrafo, es…", "o": ["demasiado estrecha: es solo un detalle", "demasiado amplia", "perfecta"], "c": 0}, {"t": "Lee: «Caminar mejora el corazón. Ayuda a dormir mejor. No necesita equipo. Por todo eso, caminar es uno de los mejores ejercicios.» ¿Dónde está la idea principal?", "o": ["Al final", "Al inicio", "En el medio"], "c": 0, "fijo": true}, {"t": "Lee: «La biblioteca es un gran recurso. Presta libros gratis. Tiene computadoras. Ofrece clases.» ¿Dónde está la idea principal?", "o": ["Al inicio", "Al final", "En el medio"], "c": 0, "fijo": true}, {"t": "¿Qué palabra suele anunciar una idea principal en el medio, después de una introducción?", "o": ["«pero» o «sin embargo»", "«y»", "«el»"], "c": 0}, {"t": "¿Qué expresión suele anunciar una idea principal al final?", "o": ["«Por todo eso…»", "«Por ejemplo…»", "«Además…»"], "c": 0}, {"t": "Las oraciones que explican o prueban la idea principal se llaman…", "o": ["detalles de apoyo", "títulos", "sinónimos"], "c": 0}, {"t": "¿Qué pista te puede avisar cuál es la idea principal antes de leer?", "o": ["El título", "El número de la página", "El tipo de letra"], "c": 0}, {"t": "Lee: «Mi abuela usaba la sábila para las quemaduras y la manzanilla para el estómago. Para cada problema tenía una planta.» ¿Cuál es la idea principal?", "o": ["Mi abuela conocía los usos de muchas plantas medicinales", "La sábila sirve para las quemaduras", "Mi abuela tenía un jardín"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya encuentras la idea principal. Puedes continuar con la Lección 4.4.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 
