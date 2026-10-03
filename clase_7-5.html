@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 5: Escribir sobre información visual</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--error:#c62828;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --sust:#0277bd;--sust-claro:#e1f5fe;--sust-oscuro:#01486d;
+    --verbo:#c62828;--verbo-claro:#fdecea;--verbo-oscuro:#8b1a1a;
+    --adj:#2e7d32;--adj-claro:#e8f5e9;--adj-oscuro:#1b5e20;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Imagen + lista de sustantivos/verbos/adjetivos */
+  .imagen-cont{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px;margin:14px 0;text-align:center}
+  .imagen-cont svg{max-width:100%;height:auto;display:block;margin:0 auto;border-radius:6px}
+  .imagen-cont .pie-img{font-size:0.85rem;color:var(--gris);font-style:italic;margin-top:8px}
+
+  /* Tres columnas: sustantivos, verbos, adjetivos */
+  .triada-cont{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+  @media(max-width:640px){.triada-cont{grid-template-columns:1fr}}
+  .triada-col{border-radius:10px;padding:12px 14px;border-top:5px solid;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  .triada-col.sust{border-color:var(--sust);background:linear-gradient(180deg,var(--sust-claro) 0%,#fff 40%)}
+  .triada-col.verbo{border-color:var(--verbo);background:linear-gradient(180deg,var(--verbo-claro) 0%,#fff 40%)}
+  .triada-col.adj{border-color:var(--adj);background:linear-gradient(180deg,var(--adj-claro) 0%,#fff 40%)}
+  .triada-col h5{margin:0 0 8px 0;text-align:center;font-size:0.98rem}
+  .triada-col.sust h5{color:var(--sust-oscuro)}
+  .triada-col.verbo h5{color:var(--verbo-oscuro)}
+  .triada-col.adj h5{color:var(--adj-oscuro)}
+  .triada-col .preg-orient{font-size:0.78rem;color:var(--gris);font-style:italic;text-align:center;display:block;margin-bottom:8px}
+  .triada-col ul{list-style:none;padding:0;margin:0}
+  .triada-col li{padding:5px 8px;margin:4px 0;border-radius:5px;font-size:0.9rem;background:#fff;text-align:center}
+  .triada-col.sust li{border:1px solid var(--sust)}
+  .triada-col.verbo li{border:1px solid var(--verbo)}
+  .triada-col.adj li{border:1px solid var(--adj)}
+
+  /* Resultado: oraciones construidas */
+  .resultado-oraciones{background:#fff;border:2px dashed var(--cp);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .resultado-oraciones h5{margin-top:0;color:var(--cp-oscuro)}
+  .resultado-oraciones .or-construida{padding:8px 12px;margin:6px 0;background:var(--cp-claro);border-left:4px solid var(--cp);border-radius:5px;font-size:0.93rem;line-height:1.55}
+  .resultado-oraciones .or-construida .sust-r{color:var(--sust-oscuro);font-weight:700}
+  .resultado-oraciones .or-construida .verbo-r{color:var(--verbo-oscuro);font-weight:700}
+  .resultado-oraciones .or-construida .adj-r{color:var(--adj-oscuro);font-weight:700}
+
+  /* Gráfica con anotaciones para describir */
+  .grafica-describir{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:16px;margin:18px 0;box-shadow:0 2px 8px rgba(0,137,205,0.1)}
+  .grafica-describir h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .grafica-svg-wrap{max-width:600px;margin:0 auto;background:#fff;border:1px solid #ddd;border-radius:6px;padding:8px}
+  .grafica-svg-wrap svg{width:100%;height:auto;display:block}
+
+  /* Fórmula visual: 3 pasos para describir una gráfica */
+  .pasos-describir{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+  .paso-describ{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px;text-align:center}
+  .paso-describ .num-pd{background:var(--cp);color:#fff;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;margin-bottom:6px}
+  .paso-describ h5{margin:6px 0;color:var(--cp-oscuro);font-size:1rem}
+  .paso-describ p{margin:0;font-size:0.86rem;line-height:1.5;color:var(--texto)}
+
+  /* Frases plantilla para describir */
+  .frases-describir{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:14px 18px;margin:14px 0}
+  .frases-describir h4{margin-top:0;color:var(--acento-oscuro)}
+  .grupo-frases{margin:10px 0}
+  .grupo-frases .titulo-grupo{font-size:0.88rem;font-weight:700;color:var(--acento-oscuro);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+  .grupo-frases .ejemplos-fr{background:var(--acento-claro);padding:8px 12px;border-radius:6px;font-size:0.92rem;font-style:italic;line-height:1.6}
+
+  /* Texto modelo describiendo gráfica */
+  .descrip-modelo{background:#fff;border:2px solid var(--exito);border-radius:10px;padding:14px 18px;margin:14px 0;line-height:1.8;font-size:0.95rem;position:relative}
+  .descrip-modelo .etiq-mod{position:absolute;top:-13px;left:18px;background:var(--exito);color:#fff;padding:3px 12px;border-radius:14px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+
+  /* Práctica: gráfica con preguntas para construir oraciones */
+  .practica-cont{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(123,63,191,0.08)}
+  .practica-cont h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
+
+  /* Quiz */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+</style>
+</head>
+<body>
+
+<h1>Clase 5: Escribir sobre información visual</h1>
+<p class="subtitulo">Tema 7 · Lección 7.3 · Nivel 1 · Semana 14 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Aplicar la técnica de las tres listas (sustantivos, verbos y adjetivos) antes de escribir sobre una imagen.</li>
+    <li>Describir por escrito la información de una <strong>gráfica</strong>, <strong>mapa</strong> o <strong>tabla</strong> siguiendo tres pasos ordenados.</li>
+    <li>Usar el <strong>vocabulario específico</strong> para hablar de cantidades, posiciones y comparaciones en datos visuales.</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En las lecciones anteriores aprendimos a construir párrafos con buena estructura (Lección 7.1) y a elegir el tipo de texto según el propósito (Lección 7.2). En esta lección final del tema combinaremos todo lo aprendido para enfrentar una situación muy común en el examen GED: <strong>escribir un texto a partir de información visual</strong> (una gráfica, un mapa, una imagen o una tabla).</p>
+
+<p>El reto es doble. Por un lado, debemos <strong>observar</strong> bien la imagen para extraer la información correcta. Por otro lado, debemos <strong>organizar</strong> esa información en oraciones claras y completas. Una técnica sencilla nos ayudará: hacer tres listas antes de escribir.</p>
+
+<details open>
+<summary>1. Antes de escribir: las tres listas <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El error común: empezar a escribir sin observar</h3>
+
+<p>Cuando un estudiante ve una imagen y le piden que escriba sobre ella, suele cometer un error: empieza a escribir de inmediato. El resultado es un párrafo confuso, con oraciones incompletas y detalles dispersos.</p>
+
+<p>La técnica de las <span class="palabra-clave">tres listas</span> resuelve este problema. Antes de redactar, dedicamos unos minutos a anotar tres tipos de palabras que vemos en la imagen:</p>
+
+<div class="triada-cont">
+  <div class="triada-col sust">
+    <h5>📦 Sustantivos</h5>
+    <span class="preg-orient">¿Qué objetos veo?</span>
+    <ul>
+      <li>(cosas, personas, lugares)</li>
+    </ul>
+  </div>
+  <div class="triada-col verbo">
+    <h5>⚡ Verbos</h5>
+    <span class="preg-orient">¿Qué acciones ocurren?</span>
+    <ul>
+      <li>(lo que hacen, lo que pasa)</li>
+    </ul>
+  </div>
+  <div class="triada-col adj">
+    <h5>🎨 Adjetivos</h5>
+    <span class="preg-orient">¿Cómo es lo que veo?</span>
+    <ul>
+      <li>(colores, tamaños, cualidades)</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Veamos un ejemplo con una imagen</h3>
+
+<p>Observemos la siguiente escena: un parque por la mañana.</p>
+
+<div class="imagen-cont">
+  <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cielo -->
+    <rect x="0" y="0" width="500" height="160" fill="#bfe4ff"/>
+    <!-- Sol -->
+    <circle cx="430" cy="50" r="22" fill="#fdd835" stroke="#f9a825" stroke-width="2"/>
+    <line x1="430" y1="15" x2="430" y2="5" stroke="#f9a825" stroke-width="2"/>
+    <line x1="430" y1="85" x2="430" y2="95" stroke="#f9a825" stroke-width="2"/>
+    <line x1="395" y1="50" x2="385" y2="50" stroke="#f9a825" stroke-width="2"/>
+    <line x1="465" y1="50" x2="475" y2="50" stroke="#f9a825" stroke-width="2"/>
+    <!-- Nubes -->
+    <ellipse cx="100" cy="40" rx="35" ry="15" fill="#fff"/>
+    <ellipse cx="130" cy="35" rx="25" ry="12" fill="#fff"/>
+    <ellipse cx="240" cy="55" rx="30" ry="14" fill="#fff"/>
+    <!-- Suelo (césped) -->
+    <rect x="0" y="160" width="500" height="120" fill="#8bc34a"/>
+    <!-- Camino -->
+    <path d="M 0 220 Q 250 200 500 230 L 500 250 Q 250 220 0 240 Z" fill="#bcaaa4"/>
+    <!-- Árbol 1 -->
+    <rect x="80" y="140" width="14" height="50" fill="#6d4c41"/>
+    <circle cx="87" cy="130" r="32" fill="#388e3c"/>
+    <circle cx="73" cy="140" r="24" fill="#43a047"/>
+    <circle cx="100" cy="138" r="22" fill="#43a047"/>
+    <!-- Árbol 2 -->
+    <rect x="380" y="140" width="14" height="50" fill="#6d4c41"/>
+    <circle cx="387" cy="125" r="36" fill="#2e7d32"/>
+    <circle cx="370" cy="140" r="22" fill="#43a047"/>
+    <circle cx="402" cy="138" r="24" fill="#43a047"/>
+    <!-- Banco -->
+    <rect x="200" y="190" width="80" height="6" fill="#5d4037"/>
+    <rect x="200" y="170" width="80" height="6" fill="#5d4037"/>
+    <rect x="208" y="170" width="4" height="30" fill="#5d4037"/>
+    <rect x="268" y="170" width="4" height="30" fill="#5d4037"/>
+    <!-- Persona caminando -->
+    <circle cx="320" cy="180" r="7" fill="#fdd835"/>
+    <rect x="317" y="187" width="6" height="18" fill="#1565c0"/>
+    <line x1="320" y1="195" x2="313" y2="200" stroke="#1565c0" stroke-width="2"/>
+    <line x1="320" y1="195" x2="327" y2="200" stroke="#1565c0" stroke-width="2"/>
+    <line x1="320" y1="205" x2="316" y2="218" stroke="#1565c0" stroke-width="2"/>
+    <line x1="320" y1="205" x2="324" y2="218" stroke="#1565c0" stroke-width="2"/>
+    <!-- Perro -->
+    <ellipse cx="350" cy="215" rx="14" ry="7" fill="#6d4c41"/>
+    <circle cx="362" cy="210" r="6" fill="#6d4c41"/>
+    <line x1="345" y1="221" x2="343" y2="225" stroke="#6d4c41" stroke-width="2"/>
+    <line x1="355" y1="221" x2="357" y2="225" stroke="#6d4c41" stroke-width="2"/>
+    <!-- Flor 1 -->
+    <circle cx="150" cy="220" r="5" fill="#e91e63"/>
+    <circle cx="155" cy="218" r="3" fill="#fdd835"/>
+    <line x1="150" y1="225" x2="150" y2="240" stroke="#388e3c" stroke-width="2"/>
+    <!-- Flor 2 -->
+    <circle cx="450" cy="225" r="5" fill="#ff9800"/>
+    <circle cx="455" cy="222" r="3" fill="#fdd835"/>
+    <line x1="450" y1="230" x2="450" y2="245" stroke="#388e3c" stroke-width="2"/>
+  </svg>
+  <p class="pie-img">Escena: un parque por la mañana</p>
+</div>
+
+<p>Antes de escribir, recorremos la imagen con la mirada y completamos las tres listas:</p>
+
+<div class="triada-cont">
+  <div class="triada-col sust">
+    <h5>📦 Sustantivos</h5>
+    <span class="preg-orient">¿Qué objetos veo?</span>
+    <ul>
+      <li>parque</li>
+      <li>árboles</li>
+      <li>banco</li>
+      <li>persona</li>
+      <li>perro</li>
+      <li>flores</li>
+      <li>sol</li>
+      <li>nubes</li>
+    </ul>
+  </div>
+  <div class="triada-col verbo">
+    <h5>⚡ Verbos</h5>
+    <span class="preg-orient">¿Qué acciones ocurren?</span>
+    <ul>
+      <li>caminar</li>
+      <li>brillar</li>
+      <li>florecer</li>
+      <li>pasear</li>
+      <li>descansar</li>
+    </ul>
+  </div>
+  <div class="triada-col adj">
+    <h5>🎨 Adjetivos</h5>
+    <span class="preg-orient">¿Cómo es lo que veo?</span>
+    <ul>
+      <li>tranquilo</li>
+      <li>verde</li>
+      <li>soleado</li>
+      <li>limpio</li>
+      <li>colorido</li>
+      <li>pequeño</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Con las tres listas, las oraciones se construyen solas</h3>
+
+<p>Una vez que tenemos las tres listas, escribir oraciones completas es mucho más fácil. Combinamos un sustantivo con un verbo y le añadimos uno o dos adjetivos:</p>
+
+<div class="resultado-oraciones">
+  <h5>📝 Oraciones construidas a partir de las listas</h5>
+  <div class="or-construida">El <span class="sust-r">parque</span> está <span class="adj-r">tranquilo</span> y <span class="adj-r">soleado</span> esta mañana.</div>
+  <div class="or-construida">Una <span class="sust-r">persona</span> <span class="verbo-r">camina</span> con su <span class="sust-r">perro</span> por el sendero.</div>
+  <div class="or-construida">Hay dos <span class="sust-r">árboles</span> <span class="adj-r">grandes</span> y <span class="adj-r">verdes</span> a los lados.</div>
+  <div class="or-construida">Las <span class="sust-r">flores</span> <span class="verbo-r">crecen</span> entre el césped.</div>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Idea central:</strong> Las tres listas funcionan como un <strong>mapa de la imagen</strong>. Anotamos primero lo que vemos por categorías y, después, las oraciones aparecen casi solas. Es la diferencia entre escribir con dirección y escribir a ciegas.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Describir datos visuales: gráficas, mapas y tablas <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Tres pasos para describir un dato visual</h3>
+
+<p>Cuando la imagen es una gráfica, un mapa o una tabla, la descripción sigue un orden específico. Los tres pasos son:</p>
+
+<div class="pasos-describir">
+  <div class="paso-describ">
+    <span class="num-pd">1</span>
+    <h5>Tema general</h5>
+    <p>Diga qué muestra la gráfica (el título y el tema).</p>
+  </div>
+  <div class="paso-describ">
+    <span class="num-pd">2</span>
+    <h5>Datos principales</h5>
+    <p>Nombre al menos dos cifras o valores importantes.</p>
+  </div>
+  <div class="paso-describ">
+    <span class="num-pd">3</span>
+    <h5>Comparación o conclusión</h5>
+    <p>Explique qué se puede deducir (cuál es mayor, cuál es menor).</p>
+  </div>
+</div>
+
+<h3>Vocabulario específico para describir cantidades</h3>
+
+<p>Para que la descripción sea precisa, conviene usar palabras propias del lenguaje de los datos:</p>
+
+<div class="frases-describir">
+  <h4>🗣️ Frases plantilla útiles</h4>
+
+  <div class="grupo-frases">
+    <div class="titulo-grupo">Para presentar la gráfica</div>
+    <div class="ejemplos-fr">"La gráfica muestra...", "La tabla presenta...", "El mapa indica...", "Según los datos..."</div>
+  </div>
+
+  <div class="grupo-frases">
+    <div class="titulo-grupo">Para mencionar cantidades</div>
+    <div class="ejemplos-fr">"...alcanza los X...", "...se registran X...", "...llega hasta...", "...es de aproximadamente..."</div>
+  </div>
+
+  <div class="grupo-frases">
+    <div class="titulo-grupo">Para comparar</div>
+    <div class="ejemplos-fr">"...es mayor que...", "...es menor que...", "...el más alto...", "...el más bajo...", "...el doble de..."</div>
+  </div>
+
+  <div class="grupo-frases">
+    <div class="titulo-grupo">Para concluir</div>
+    <div class="ejemplos-fr">"Por lo tanto...", "En conclusión...", "Esto indica que...", "Se puede observar que..."</div>
+  </div>
+</div>
+
+<h3>Ejemplo aplicado: una gráfica de barras</h3>
+
+<p>Observemos la siguiente gráfica sobre la temperatura promedio en cuatro ciudades durante el mes de julio:</p>
+
+<div class="grafica-describir">
+  <h4>Temperatura promedio en julio (°F)</h4>
+  <div class="grafica-svg-wrap">
+    <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- Título -->
+      <text x="250" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2332">Temperatura promedio en julio (°F)</text>
+      <!-- Ejes -->
+      <line x1="70" y1="50" x2="70" y2="230" stroke="#1a2332" stroke-width="2"/>
+      <line x1="70" y1="230" x2="470" y2="230" stroke="#1a2332" stroke-width="2"/>
+      <!-- Marcas eje Y -->
+      <text x="60" y="234" text-anchor="end" font-size="11" fill="#1a2332">0</text>
+      <line x1="66" y1="212" x2="70" y2="212" stroke="#1a2332"/>
+      <text x="60" y="216" text-anchor="end" font-size="11" fill="#1a2332">20</text>
+      <line x1="66" y1="194" x2="70" y2="194" stroke="#1a2332"/>
+      <text x="60" y="198" text-anchor="end" font-size="11" fill="#1a2332">40</text>
+      <line x1="66" y1="176" x2="70" y2="176" stroke="#1a2332"/>
+      <text x="60" y="180" text-anchor="end" font-size="11" fill="#1a2332">60</text>
+      <line x1="66" y1="140" x2="70" y2="140" stroke="#1a2332"/>
+      <text x="60" y="144" text-anchor="end" font-size="11" fill="#1a2332">80</text>
+      <line x1="66" y1="104" x2="70" y2="104" stroke="#1a2332"/>
+      <text x="60" y="108" text-anchor="end" font-size="11" fill="#1a2332">100</text>
+      <!-- Barras: Chicago 75, Miami 88, Phoenix 95, Seattle 65 -->
+      <rect x="105" y="140" width="60" height="90" fill="#0277bd"/>
+      <text x="135" y="134" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">75°</text>
+      <text x="135" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Chicago</text>
+
+      <rect x="195" y="116" width="60" height="114" fill="#ef6c00"/>
+      <text x="225" y="110" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">88°</text>
+      <text x="225" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Miami</text>
+
+      <rect x="285" y="104" width="60" height="126" fill="#c62828"/>
+      <text x="315" y="98" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">95°</text>
+      <text x="315" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Phoenix</text>
+
+      <rect x="375" y="158" width="60" height="72" fill="#2e7d32"/>
+      <text x="405" y="152" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">65°</text>
+      <text x="405" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Seattle</text>
+
+      <!-- Etiquetas ejes -->
+      <text x="270" y="268" text-anchor="middle" font-size="11" fill="#2e7d32" font-style="italic">Ciudad</text>
+      <text x="25" y="140" text-anchor="middle" font-size="11" fill="#c62828" font-style="italic" transform="rotate(-90 25 140)">Temperatura (°F)</text>
+    </svg>
+  </div>
+</div>
+
+<p>Aplicando los tres pasos, podemos escribir esta descripción:</p>
+
+<div class="descrip-modelo">
+  <span class="etiq-mod">✅ Descripción modelo</span>
+  <p style="margin:8px 0 0 0"><strong>(1)</strong> La gráfica muestra la temperatura promedio en cuatro ciudades de Estados Unidos durante el mes de julio. <strong>(2)</strong> Phoenix alcanza los 95 grados, Miami llega a 88 grados, Chicago registra 75 grados y Seattle tiene 65 grados. <strong>(3)</strong> Por lo tanto, Phoenix es la ciudad más caliente y Seattle la más fresca. La diferencia entre ambas es de 30 grados.</p>
+</div>
+
+<div class="tip">
+  <strong>📝 Importante:</strong> Al describir un dato visual, evite la opinión. <em>"Phoenix es la ciudad más caliente"</em> es un hecho que se ve en la gráfica. <em>"En Phoenix se vive mal por el calor"</em> es una opinión y no corresponde a esta tarea.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Aplicación: describamos una segunda gráfica <span class="caja-tiempo">12 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Su turno: describa esta gráfica</h3>
+
+<p>Observe la siguiente gráfica sobre las horas de luz solar promedio al día en cuatro meses del año en Chicago. Después, aplique los tres pasos para construir mentalmente una descripción.</p>
+
+<div class="grafica-describir">
+  <h4>Horas de luz solar al día en Chicago</h4>
+  <div class="grafica-svg-wrap">
+    <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- Título -->
+      <text x="250" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2332">Horas de luz solar al día (Chicago)</text>
+      <!-- Ejes -->
+      <line x1="70" y1="50" x2="70" y2="230" stroke="#1a2332" stroke-width="2"/>
+      <line x1="70" y1="230" x2="470" y2="230" stroke="#1a2332" stroke-width="2"/>
+      <!-- Marcas eje Y -->
+      <text x="60" y="234" text-anchor="end" font-size="11" fill="#1a2332">0</text>
+      <line x1="66" y1="208" x2="70" y2="208" stroke="#1a2332"/>
+      <text x="60" y="212" text-anchor="end" font-size="11" fill="#1a2332">4</text>
+      <line x1="66" y1="186" x2="70" y2="186" stroke="#1a2332"/>
+      <text x="60" y="190" text-anchor="end" font-size="11" fill="#1a2332">6</text>
+      <line x1="66" y1="164" x2="70" y2="164" stroke="#1a2332"/>
+      <text x="60" y="168" text-anchor="end" font-size="11" fill="#1a2332">8</text>
+      <line x1="66" y1="142" x2="70" y2="142" stroke="#1a2332"/>
+      <text x="60" y="146" text-anchor="end" font-size="11" fill="#1a2332">10</text>
+      <line x1="66" y1="120" x2="70" y2="120" stroke="#1a2332"/>
+      <text x="60" y="124" text-anchor="end" font-size="11" fill="#1a2332">12</text>
+      <line x1="66" y1="98" x2="70" y2="98" stroke="#1a2332"/>
+      <text x="60" y="102" text-anchor="end" font-size="11" fill="#1a2332">14</text>
+      <line x1="66" y1="76" x2="70" y2="76" stroke="#1a2332"/>
+      <text x="60" y="80" text-anchor="end" font-size="11" fill="#1a2332">16</text>
+
+      <!-- Barras: Enero 9 (y=131), Abril 13 (y=87), Julio 15 (y=65), Octubre 11 (y=109) -->
+      <rect x="105" y="131" width="60" height="99" fill="#0277bd"/>
+      <text x="135" y="125" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">9 h</text>
+      <text x="135" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Enero</text>
+
+      <rect x="195" y="87" width="60" height="143" fill="#43a047"/>
+      <text x="225" y="81" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">13 h</text>
+      <text x="225" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Abril</text>
+
+      <rect x="285" y="65" width="60" height="165" fill="#fdd835"/>
+      <text x="315" y="59" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">15 h</text>
+      <text x="315" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Julio</text>
+
+      <rect x="375" y="109" width="60" height="121" fill="#ef6c00"/>
+      <text x="405" y="103" text-anchor="middle" font-size="12" fill="#1a2332" font-weight="bold">11 h</text>
+      <text x="405" y="248" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Octubre</text>
+
+      <!-- Etiquetas ejes -->
+      <text x="270" y="268" text-anchor="middle" font-size="11" fill="#2e7d32" font-style="italic">Mes</text>
+      <text x="25" y="140" text-anchor="middle" font-size="11" fill="#c62828" font-style="italic" transform="rotate(-90 25 140)">Horas</text>
+    </svg>
+  </div>
+</div>
+
+<h3>El quiz de hoy lo guiará paso a paso</h3>
+
+<p>El quiz a continuación está organizado para que usted construya la descripción de la gráfica oración por oración. Cada pregunta apunta a un paso distinto: identificar el tema, leer los datos y formular la conclusión.</p>
+
+<div class="quiz-cont">
+  <h4>📝 Describamos la gráfica paso a paso</h4>
+  <div class="preguntas-quiz" id="preguntas-quiz5"></div>
+  <div class="puntaje" id="puntaje-quiz5">Aciertos: 0 / 6</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre y conexión con la próxima clase <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>Antes de escribir sobre una imagen, conviene hacer <strong>tres listas</strong>: sustantivos, verbos y adjetivos.</li>
+  <li>Las listas funcionan como un mapa de la imagen y facilitan la construcción de oraciones completas.</li>
+  <li>Para describir una gráfica, mapa o tabla, seguimos <strong>tres pasos</strong>: tema, datos, comparación o conclusión.</li>
+  <li>Existe un <strong>vocabulario específico</strong> (mayor, menor, alcanza, registra, por lo tanto) que da precisión a la descripción.</li>
+  <li>En la descripción de datos no se incluye opinión: solo lo que la imagen muestra.</li>
+</ul>
+
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> El examen GED de Razonamiento a través de las Artes del Lenguaje, así como los de Ciencias y Estudios Sociales, presenta múltiples gráficas y tablas. Saber describirlas por escrito con orden y precisión es una destreza transversal que se evalúa de manera constante.
+</div>
+
+<h3>Próxima clase</h3>
+
+<p>En la <strong>Clase 6</strong>, la última del Tema 7, aprenderemos el <strong>proceso de revisión</strong> de un texto: cómo detectar errores, cómo entender por qué algo "no suena bien" y cómo reescribir para mejorar la claridad. También trabajaremos la <strong>retroalimentación entre pares</strong> con frases plantilla y aplicaremos la lista de verificación final a nuestro propio párrafo descriptivo.</p>
+
+</div>
+</details>
+
+<p class="firma">Prof. José M. Fernández · Truman College · Tema 7, Clase 5</p>
+
+<script>
+(function(){
+  'use strict';
+
+  var preguntas=[
+    {
+      texto:'Paso 1: ¿Cuál sería una buena oración para presentar el tema de la gráfica?',
+      opciones:[
+        {t:'En Chicago hace mucho frío en enero.',ok:false},
+        {t:'La gráfica muestra las horas de luz solar al día en Chicago durante cuatro meses.',ok:true},
+        {t:'Me gusta el verano porque hay más luz.',ok:false},
+        {t:'Julio es mi mes favorito del año.',ok:false}
+      ],
+      explica:'La opción correcta presenta el tema de la gráfica (qué muestra) sin opiniones ni narraciones. Es la forma adecuada de comenzar una descripción.'
+    },
+    {
+      texto:'Paso 2: Según la gráfica, ¿cuántas horas de luz solar al día hay en Chicago en el mes de julio?',
+      opciones:[
+        {t:'9 horas',ok:false},
+        {t:'11 horas',ok:false},
+        {t:'13 horas',ok:false},
+        {t:'15 horas',ok:true}
+      ],
+      explica:'La barra de julio alcanza el valor 15 en el eje vertical. Es el mes con más horas de luz solar en la gráfica.'
+    },
+    {
+      texto:'Paso 2: ¿En qué mes hay MENOS horas de luz solar?',
+      opciones:[
+        {t:'Enero',ok:true},
+        {t:'Abril',ok:false},
+        {t:'Julio',ok:false},
+        {t:'Octubre',ok:false}
+      ],
+      explica:'La barra de enero (9 horas) es la más baja de las cuatro. Es el mes con menos horas de luz solar.'
+    },
+    {
+      texto:'Paso 3: ¿Cuál es la diferencia entre el mes de más luz y el mes de menos luz?',
+      opciones:[
+        {t:'2 horas',ok:false},
+        {t:'4 horas',ok:false},
+        {t:'6 horas',ok:true},
+        {t:'9 horas',ok:false}
+      ],
+      explica:'Julio tiene 15 horas y enero tiene 9 horas. La diferencia es 15 − 9 = 6 horas.'
+    },
+    {
+      texto:'¿Cuál oración describe correctamente la gráfica usando vocabulario de comparación?',
+      opciones:[
+        {t:'En julio el sol calienta mucho más que en enero.',ok:false},
+        {t:'Julio tiene 15 horas de luz al día, que es mayor que las 9 horas de enero.',ok:true},
+        {t:'Yo creo que en julio el día se hace eterno.',ok:false},
+        {t:'Cuando yo era niño, los veranos en Chicago eran muy largos.',ok:false}
+      ],
+      explica:'La opción correcta es una comparación objetiva que cita los datos exactos y usa la expresión "mayor que". Las otras opciones contienen opinión personal o narración.'
+    },
+    {
+      texto:'¿Cuál oración sería un buen CIERRE para la descripción de esta gráfica?',
+      opciones:[
+        {t:'Por eso me gusta tanto el verano.',ok:false},
+        {t:'En conclusión, las horas de luz solar varían con las estaciones del año y son mayores en verano.',ok:true},
+        {t:'Algún día me gustaría mudarme a un lugar con más luz.',ok:false},
+        {t:'Los meses se cuentan de enero a diciembre.',ok:false}
+      ],
+      explica:'La opción correcta cierra la descripción con una conclusión objetiva derivada de los datos. Usa "En conclusión", una frase típica de cierre descriptivo.'
+    }
+  ];
+
+  var resueltas={};
+  var aciertos=0;
+  var cont=document.getElementById('preguntas-quiz5');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-quiz';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      '<div class="opciones-quiz">'+opcHtml+'</div>'+
+      '<div class="retro-quiz" id="retro-q5-'+idx+'"></div>';
+
+    cont.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-quiz');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltas[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+          var retro=document.getElementById('retro-q5-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-quiz5');
+    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
+    if(aciertos===preguntas.length){
+      el.innerHTML='🎉 ¡Descripción de gráficas dominada! Aciertos: '+aciertos+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

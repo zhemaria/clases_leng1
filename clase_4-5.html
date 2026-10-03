@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 5: Descubrir significados usando claves de contexto</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --sinonimo:#2e7d32;--sinonimo-claro:#e8f5e9;
+    --antonimo:#c62828;--antonimo-claro:#ffebee;
+    --ejemplo:#1565c0;--ejemplo-claro:#e3f2fd;
+    --definicion:#6a1b9a;--definicion-claro:#f3e5f5;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Tipos de claves */
+  .tipos-clave{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+  @media(max-width:768px){.tipos-clave{grid-template-columns:1fr}}
+  .tipo-clave{background:#fff;border-radius:10px;padding:16px;border-top:5px solid}
+  .tipo-clave.sin{border-color:var(--sinonimo);background:var(--sinonimo-claro)}
+  .tipo-clave.ant{border-color:var(--antonimo);background:var(--antonimo-claro)}
+  .tipo-clave.eje{border-color:var(--ejemplo);background:var(--ejemplo-claro)}
+  .tipo-clave.def{border-color:var(--definicion);background:var(--definicion-claro)}
+  .tipo-clave h4{margin-top:0}
+  .tipo-clave.sin h4{color:var(--sinonimo)}
+  .tipo-clave.ant h4{color:var(--antonimo)}
+  .tipo-clave.eje h4{color:var(--ejemplo)}
+  .tipo-clave.def h4{color:var(--definicion)}
+  .tipo-clave .icono{font-size:1.8rem;display:block;margin-bottom:4px}
+  .tipo-clave .muestra{background:rgba(255,255,255,0.7);padding:8px 10px;border-radius:6px;font-family:'Georgia',serif;font-size:0.9rem;font-style:italic;margin-top:10px;line-height:1.6}
+  .palabra-desconocida{background:#fff3cd;color:#856404;padding:2px 6px;border-radius:4px;font-weight:700;font-style:normal}
+  .pista-sin{background:var(--sinonimo-claro);color:var(--sinonimo);padding:2px 6px;border-radius:4px;font-weight:600;font-style:normal}
+  .pista-ant{background:var(--antonimo-claro);color:var(--antonimo);padding:2px 6px;border-radius:4px;font-weight:600;font-style:normal}
+  .pista-eje{background:var(--ejemplo-claro);color:var(--ejemplo);padding:2px 6px;border-radius:4px;font-weight:600;font-style:normal}
+  .pista-def{background:var(--definicion-claro);color:var(--definicion);padding:2px 6px;border-radius:4px;font-weight:600;font-style:normal}
+
+  /* Texto modelo con pistas */
+  .oracion-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 22px;margin:14px 0;font-family:'Georgia',serif;line-height:2;font-size:1.05rem}
+
+  /* Ejercicio: inferir significado */
+  .item-significado{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .oracion-contexto{background:#f7f9fb;border-left:4px solid var(--cp);padding:12px 16px;border-radius:6px;margin-bottom:12px;font-family:'Georgia',serif;font-size:1rem;line-height:1.8}
+  .opciones-significado{display:flex;flex-direction:column;gap:8px}
+  .btn-significado{padding:10px 14px;border:2px solid var(--cp);background:#fff;color:var(--texto);border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.95rem;text-align:left;transition:all 0.2s}
+  .btn-significado:hover{background:var(--cp-claro)}
+  .btn-significado.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-significado.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error)}
+
+  /* Ejercicio: identificar tipo de clave */
+  .item-tipo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:12px 0}
+  .frase-tipo{background:#f7f9fb;padding:10px 14px;border-radius:6px;margin-bottom:10px;font-family:'Georgia',serif;font-size:1rem;line-height:1.8}
+  .opciones-tipo{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-tipo{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.85rem;transition:all 0.2s}
+  .btn-tipo[data-tipo="sinonimo"]{border-color:var(--sinonimo);color:var(--sinonimo)}
+  .btn-tipo[data-tipo="antonimo"]{border-color:var(--antonimo);color:var(--antonimo)}
+  .btn-tipo[data-tipo="ejemplo"]{border-color:var(--ejemplo);color:var(--ejemplo)}
+  .btn-tipo[data-tipo="definicion"]{border-color:var(--definicion);color:var(--definicion)}
+  .btn-tipo.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-tipo.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+  .badge-rubrica{background:#fff3e0;color:#e65100}
+
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#b35316;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#b35316;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-3{background:#fff8e1}
+  .nivel-2{background:#fff3e0}
+  .nivel-1{background:#ffebee}
+</style>
+</head>
+<body>
+
+<h1>Clase 5: Descubrir significados usando claves de contexto</h1>
+<p class="subtitulo">Inferir el significado sin diccionario · Nivel 1 · Tema 4, semana 8</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Aprender a <strong>inferir el significado</strong> de palabras desconocidas usando las <strong>claves de contexto</strong> que el autor incluye en las oraciones cercanas: sinónimos, antónimos, ejemplos y definiciones.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Incluso los lectores más experimentados encuentran con frecuencia palabras cuyo significado desconocen. La diferencia entre un lector eficiente y uno que se detiene ante cada palabra nueva no consiste en conocer todo el vocabulario del idioma — algo imposible — sino en saber <strong>qué hacer cuando aparece una palabra desconocida</strong>. En esta clase usted aprenderá la herramienta más poderosa del lector autónomo: el uso de las <span class="palabra-clave">claves de contexto</span>. Con esta técnica podrá inferir el significado de palabras nuevas sin recurrir al diccionario, utilizando únicamente las pistas que el propio texto le ofrece.</p>
+
+<details open>
+<summary>1. ¿Qué es el contexto? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Las palabras no viven solas</h3>
+
+<p>El <span class="palabra-clave">contexto</span> es el sentido general que <strong>rodea</strong> a una palabra: las otras oraciones, las palabras aledañas, el tema del texto. Cuando una palabra es desconocida, lo que está alrededor casi siempre te da pistas para descifrarla.</p>
+
+<div class="tip">
+  <strong>💡 Idea clave:</strong> El autor <em>sabe</em> que algunas palabras serán difíciles. Por eso muchas veces incluye, sin que te des cuenta, <strong>pistas escondidas</strong> en las oraciones cercanas. Tu trabajo es encontrarlas.
+</div>
+
+<h3>Ejemplo del detective lector</h3>
+
+<div class="oracion-modelo">
+  El niño estaba <span class="palabra-desconocida">hambriento</span> porque no había comido en todo el día.
+</div>
+
+<p>No sabes qué significa <em>hambriento</em>. Pero el texto te ayuda:</p>
+
+<ul class="lista-bonita">
+  <li>La oración dice <strong>"no había comido en todo el día"</strong>.</li>
+  <li>¿Cómo se siente alguien que no come en todo el día? Con mucha hambre.</li>
+  <li>Entonces <strong>hambriento = con mucha hambre</strong>. ✅</li>
+</ul>
+
+<div class="tip">
+  <strong>🔍 La regla del detective:</strong> Lee la oración completa. Lee también la oración anterior y la siguiente. <em>Casi siempre</em> hay una pista. Sin abrir nada, solo leyendo bien.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Los cuatro tipos de claves de contexto <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Cómo te ayudan los autores</h3>
+
+<p>Los autores usan cuatro tipos de claves para ayudarte. Aprende a reconocerlas:</p>
+
+<div class="tipos-clave">
+  <div class="tipo-clave sin">
+    <span class="icono">🟰</span>
+    <h4>Sinónimos</h4>
+    <p>Palabras con significado <strong>parecido</strong> cerca de la palabra desconocida.</p>
+    <div class="muestra">El abuelo era muy <span class="palabra-desconocida">longevo</span>, vivió casi cien años. La pista: <span class="pista-sin">vivió casi cien años</span> = longevo significa "que vive muchos años".</div>
+  </div>
+  <div class="tipo-clave ant">
+    <span class="icono">↔️</span>
+    <h4>Antónimos</h4>
+    <p>Palabras con significado <strong>opuesto</strong>, que te dicen lo contrario.</p>
+    <div class="muestra">No fue una decisión <span class="palabra-desconocida">precipitada</span>, sino bien pensada y reflexionada. La pista: <span class="pista-ant">bien pensada y reflexionada</span> (opuesto) = precipitada significa "apurada, sin pensar".</div>
+  </div>
+  <div class="tipo-clave eje">
+    <span class="icono">💡</span>
+    <h4>Ejemplos</h4>
+    <p>Casos concretos que <strong>ilustran</strong> el concepto desconocido.</p>
+    <div class="muestra">Los <span class="palabra-desconocida">cítricos</span>, como la naranja, el limón y la toronja, son ricos en vitamina C. La pista: <span class="pista-eje">naranja, limón, toronja</span> = cítricos son frutas ácidas de ese tipo.</div>
+  </div>
+  <div class="tipo-clave def">
+    <span class="icono">📖</span>
+    <h4>Definiciones</h4>
+    <p>El autor <strong>te explica directamente</strong> con frases como "es decir", "significa", "o sea".</p>
+    <div class="muestra">El <span class="palabra-desconocida">insomnio</span>, es decir, la dificultad para dormir, afecta a muchos adultos. La pista: <span class="pista-def">es decir, la dificultad para dormir</span> = definición directa.</div>
+  </div>
+</div>
+
+<h3>Palabras que avisan pistas</h3>
+
+<p>Algunas palabras y signos te avisan que <strong>viene una pista</strong>. Búscalas cuando una palabra te confunda:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)">
+  <thead>
+    <tr style="background:var(--cp-oscuro);color:#fff"><th style="padding:12px;text-align:left">Tipo de clave</th><th style="padding:12px;text-align:left">Palabras que la avisan</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:12px;border-bottom:1px solid var(--gris-claro);font-weight:600;color:var(--sinonimo)">Sinónimo</td><td style="padding:12px;border-bottom:1px solid var(--gris-claro)"><em>o sea, también llamado, conocido como, también</em></td></tr>
+    <tr><td style="padding:12px;border-bottom:1px solid var(--gris-claro);font-weight:600;color:var(--antonimo)">Antónimo</td><td style="padding:12px;border-bottom:1px solid var(--gris-claro)"><em>pero, sin embargo, sino, en cambio, al contrario</em></td></tr>
+    <tr><td style="padding:12px;border-bottom:1px solid var(--gris-claro);font-weight:600;color:var(--ejemplo)">Ejemplo</td><td style="padding:12px;border-bottom:1px solid var(--gris-claro)"><em>como, por ejemplo, tales como, incluyendo</em></td></tr>
+    <tr><td style="padding:12px;font-weight:600;color:var(--definicion)">Definición</td><td style="padding:12px"><em>es decir, significa, o sea, es lo mismo que</em></td></tr>
+  </tbody>
+</table>
+
+<h3>Práctica: ¿qué tipo de clave es?</h3>
+
+<p>Para cada oración, identifica qué tipo de clave usó el autor para ayudarte con la palabra subrayada.</p>
+
+<div id="ejercicio-tipo"></div>
+<div class="puntaje" id="puntaje-tipo">Aciertos: 0 / 6</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: inferir el significado <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Decifrar palabras desconocidas</h3>
+
+<p>Lee cada oración con cuidado, busca las pistas y elige el significado correcto de la palabra subrayada.</p>
+
+<div id="ejercicio-significado"></div>
+<div class="puntaje" id="puntaje-significado">Aciertos: 0 / 6</div>
+
+<h3>Actividad oral: "Detective en parejas"</h3>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · en parejas (lectura alternada)</h4>
+  <p>El profesor reparte una hoja con seis oraciones. Cada oración tiene <strong>una palabra subrayada y desconocida</strong>. En parejas:</p>
+  <ul class="lista-bonita">
+    <li>Un estudiante lee la oración en voz alta.</li>
+    <li>El otro <strong>adivina el significado</strong> y explica <strong>qué pista usó</strong> ("Es porque dice…").</li>
+    <li>Después se intercambian: el segundo lee, el primero adivina.</li>
+  </ul>
+  <p style="margin-bottom:0">Lo más importante <strong>no es acertar</strong>, sino <em>explicar la pista</em>. Si la pista es buena, el significado vendrá solo.</p>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>Cada pareja recibe una hoja con seis oraciones. Hacen el ejercicio en voz alta. El profesor pasa por las parejas escuchando cómo justifican sus inferencias.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>El profesor comparte un documento con las oraciones. Las parejas pasan a salas pequeñas con micrófono encendido. Después regresan al grupo grande y comparten dos casos.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre: lo que aprendimos hoy <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<ul class="lista-bonita">
+  <li>El <strong>contexto</strong> es todo lo que rodea a una palabra: oraciones y tema.</li>
+  <li>Hay <strong>cuatro tipos de claves</strong>: sinónimos, antónimos, ejemplos y definiciones.</li>
+  <li>Algunas palabras avisan que viene una pista (<em>como, por ejemplo, es decir, pero</em>).</li>
+  <li>Cuando una palabra es desconocida, <strong>no te rindas</strong>: lee con calma lo que está cerca.</li>
+  <li>Lo importante es <strong>explicar la pista</strong>, no solo acertar el significado.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuáles son los cuatro tipos de claves de contexto?</li>
+    <li>Si una oración dice <em>"no fue rápido, sino lento"</em>, ¿qué tipo de clave es?</li>
+    <li>¿Qué palabras avisan que viene una definición?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Vamos a otra herramienta poderosa para descifrar palabras: la <strong>anatomía de la palabra</strong>. Aprenderás a separar las palabras en raíces, prefijos y sufijos para descubrir su significado por partes.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Oraciones con palabra clave subrayada</h4>
+  <p>Oraciones con una palabra clave subrayada y pistas de contexto evidentes. Modalidad: <strong>lectura en parejas alternando</strong> — uno lee, el otro adivina y explica cómo lo supo.</p>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> "Mi palabra del día"</h4>
+  <p>Cada estudiante busca en un texto auténtico (puede ser una noticia corta) una palabra que no conozca. En el foro publica:</p>
+  <ul class="lista-bonita">
+    <li>La oración completa donde apareció la palabra.</li>
+    <li>El significado que <strong>infirió</strong> usando el contexto.</li>
+    <li>El tipo de clave que usó (sinónimo / antónimo / ejemplo / definición / sin clave).</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-quiz">Quiz</span> Parte 1 de 15 preguntas · Brightspace</h4>
+  <p>La primera parte del quiz de la Lección 4.3 evalúa el contexto:</p>
+  <ul class="lista-bonita">
+    <li>Adivinar el significado de una palabra por contexto (opción múltiple).</li>
+    <li>Identificar qué tipo de clave usó el autor.</li>
+    <li>Reconocer las palabras que avisan que viene una pista.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Lista de cotejo del foro "Mi palabra del día"</h4>
+  <p>Las tres partes de la respuesta del foro se evalúan así:</p>
+
+  <table class="rubrica">
+    <thead>
+      <tr>
+        <th>Criterio</th>
+        <th class="nivel-4">Cumple (1 pt)</th>
+        <th class="nivel-1">No cumple (0 pt)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Oración con contexto</td>
+        <td class="nivel-4">Incluye la oración completa con pistas</td>
+        <td class="nivel-1">Solo escribe la palabra suelta</td>
+      </tr>
+      <tr>
+        <td>Significado inferido</td>
+        <td class="nivel-4">Significado razonable, conectado al contexto</td>
+        <td class="nivel-1">Significado al azar o incorrecto</td>
+      </tr>
+      <tr>
+        <td>Tipo de clave</td>
+        <td class="nivel-4">Identifica correctamente el tipo de clave</td>
+        <td class="nivel-1">No identifica o se equivoca de tipo</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje total:</strong> 3 puntos por entrada del foro.</p>
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Ejercicio 1: identificar tipo de clave
+  var tiposClave=[
+    {frase:'El médico recetó un <strong>analgésico</strong>, es decir, una medicina para el dolor.',correcta:'definicion'},
+    {frase:'No es una persona <strong>tacaña</strong>, sino muy generosa con sus amigos.',correcta:'antonimo'},
+    {frase:'Las <strong>aves</strong>, como las palomas, los gorriones y las gaviotas, viven en la ciudad.',correcta:'ejemplo'},
+    {frase:'Mi tío es <strong>tenaz</strong>, también llamado perseverante, nunca se rinde con un proyecto.',correcta:'sinonimo'},
+    {frase:'Ese trabajo no era <strong>tedioso</strong>, al contrario, era muy entretenido.',correcta:'antonimo'},
+    {frase:'Los <strong>cereales</strong>, como el trigo, el arroz y el maíz, son la base de la alimentación.',correcta:'ejemplo'}
+  ];
+
+  var resueltasT={};
+  var aciertosT=0;
+  var contT=document.getElementById('ejercicio-tipo');
+
+  tiposClave.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-tipo';
+    div.innerHTML=
+      '<div class="frase-tipo">"'+item.frase+'"</div>'+
+      '<div class="opciones-tipo">'+
+        '<button type="button" class="btn-tipo" data-tipo="sinonimo">🟰 Sinónimo</button>'+
+        '<button type="button" class="btn-tipo" data-tipo="antonimo">↔️ Antónimo</button>'+
+        '<button type="button" class="btn-tipo" data-tipo="ejemplo">💡 Ejemplo</button>'+
+        '<button type="button" class="btn-tipo" data-tipo="definicion">📖 Definición</button>'+
+      '</div>';
+    contT.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-tipo');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasT[idx])return;
+        if(b.getAttribute('data-tipo')===item.correcta){
+          b.classList.add('correcta');
+          resueltasT[idx]=true;
+          aciertosT++;
+          actualizarPuntajeT();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeT(){
+    var el=document.getElementById('puntaje-tipo');
+    el.textContent='Aciertos: '+aciertosT+' / '+tiposClave.length;
+    if(aciertosT===tiposClave.length){
+      el.innerHTML='🎉 ¡Excelente trabajo! Aciertos: '+aciertosT+' / '+tiposClave.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Ejercicio 2: inferir el significado
+  var inferencias=[
+    {
+      oracion:'Era una decisión <strong>frívola</strong>, sin importancia real, tomada en cinco segundos.',
+      opciones:[
+        {texto:'Muy seria y profunda',correcta:false},
+        {texto:'Superficial, sin profundidad',correcta:true},
+        {texto:'Costosa en dinero',correcta:false}
+      ]
+    },
+    {
+      oracion:'El <strong>orfanato</strong>, es decir, la casa donde viven los niños sin padres, está cerca de la iglesia.',
+      opciones:[
+        {texto:'Escuela primaria',correcta:false},
+        {texto:'Casa para niños sin padres',correcta:true},
+        {texto:'Hospital para niños',correcta:false}
+      ]
+    },
+    {
+      oracion:'No es <strong>perspicaz</strong>, sino bastante distraída — siempre pierde las llaves.',
+      opciones:[
+        {texto:'Inteligente y observadora',correcta:true},
+        {texto:'Cansada y dormida',correcta:false},
+        {texto:'Trabajadora y rápida',correcta:false}
+      ]
+    },
+    {
+      oracion:'Los <strong>tubérculos</strong>, como la papa, el boniato y la yuca, crecen bajo la tierra.',
+      opciones:[
+        {texto:'Frutas de árbol',correcta:false},
+        {texto:'Raíces que se comen',correcta:true},
+        {texto:'Verduras de hoja',correcta:false}
+      ]
+    },
+    {
+      oracion:'El paciente estaba <strong>convaleciente</strong>; ya se recuperaba del accidente, pero todavía no podía trabajar.',
+      opciones:[
+        {texto:'Completamente sano',correcta:false},
+        {texto:'Recuperándose poco a poco',correcta:true},
+        {texto:'En estado de coma',correcta:false}
+      ]
+    },
+    {
+      oracion:'Ese discurso fue muy <strong>ameno</strong>, también llamado entretenido y divertido.',
+      opciones:[
+        {texto:'Aburrido y largo',correcta:false},
+        {texto:'Entretenido y agradable',correcta:true},
+        {texto:'Difícil de entender',correcta:false}
+      ]
+    }
+  ];
+
+  var resueltasS={};
+  var aciertosS=0;
+  var contS=document.getElementById('ejercicio-significado');
+
+  inferencias.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-significado';
+    var opcionesHTML=item.opciones.map(function(op){
+      return '<button type="button" class="btn-significado" data-correcta="'+op.correcta+'">'+op.texto+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="oracion-contexto">'+item.oracion+'</div>'+
+      '<div class="opciones-significado">'+opcionesHTML+'</div>';
+    contS.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-significado');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasS[idx])return;
+        if(b.getAttribute('data-correcta')==='true'){
+          b.classList.add('correcta');
+          resueltasS[idx]=true;
+          aciertosS++;
+          actualizarPuntajeS();
+          botones.forEach(function(other){if(other!==b)other.disabled=true});
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},600);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeS(){
+    var el=document.getElementById('puntaje-significado');
+    el.textContent='Aciertos: '+aciertosS+' / '+inferencias.length;
+    if(aciertosS===inferencias.length){
+      el.innerHTML='🎉 ¡Felicitaciones! Aciertos: '+aciertosS+' / '+inferencias.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

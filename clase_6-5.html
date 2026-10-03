@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 5: El duelo de las gráficas — Barras vs. Pastel</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--error:#c62828;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --barras:#0277bd;--pastel:#e91e63;
+    --c-titulo-g:#1a2332;--c-ejex:#2e7d32;--c-ejey:#c62828;--c-cat:#7b3fbf;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* El duelo: dos gráficas comparadas */
+  .duelo-graficas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media(max-width:680px){.duelo-graficas{grid-template-columns:1fr}}
+  .lado-duelo{background:#fff;border-radius:10px;padding:14px;border:2px solid}
+  .lado-duelo.barras{border-color:var(--barras)}
+  .lado-duelo.pastel{border-color:var(--pastel)}
+  .lado-duelo h4{margin-top:0;text-align:center;font-size:1.05rem}
+  .lado-duelo.barras h4{color:var(--barras)}
+  .lado-duelo.pastel h4{color:var(--pastel)}
+  .lado-duelo svg{width:100%;height:auto;display:block;margin:0 auto 10px auto;max-height:240px}
+  .lado-duelo p{margin:0;font-size:0.88rem;line-height:1.5;color:var(--texto)}
+  .veredicto{margin-top:10px;padding:8px 10px;border-radius:6px;text-align:center;font-weight:700;font-size:0.88rem}
+  .veredicto.bien{background:#d4edda;color:var(--exito)}
+  .veredicto.mal{background:#f8d7da;color:var(--error)}
+
+  /* Anatomía de la gráfica de barras */
+  .anatomia-grafica{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:18px;margin:18px 0}
+  .anatomia-grafica h4{margin-top:0;text-align:center;color:var(--acento-oscuro);margin-bottom:14px}
+  .anatomia-grafica-svg-wrap{max-width:620px;margin:0 auto;background:#fff;border:1px solid #ddd;border-radius:6px;padding:8px}
+  .anatomia-grafica-svg-wrap svg{width:100%;height:auto;display:block}
+
+  .partes-grafica{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:18px}
+  .parte-graf{background:#fff;border-radius:8px;padding:12px 14px;border-left:5px solid;display:flex;gap:10px;align-items:flex-start}
+  .parte-graf.g1{border-color:var(--c-titulo-g);background:#f5f5f5}
+  .parte-graf.g2{border-color:var(--c-cat);background:var(--acento-claro)}
+  .parte-graf.g3{border-color:var(--c-ejey);background:#fdecea}
+  .parte-graf.g4{border-color:var(--c-ejex);background:#e8f5e9}
+  .parte-graf .num-g{font-weight:700;font-size:1.3rem;min-width:28px}
+  .parte-graf.g1 .num-g{color:var(--c-titulo-g)}
+  .parte-graf.g2 .num-g{color:var(--c-cat)}
+  .parte-graf.g3 .num-g{color:var(--c-ejey)}
+  .parte-graf.g4 .num-g{color:var(--c-ejex)}
+  .parte-graf .desc-g{flex:1}
+  .parte-graf .desc-g strong{display:block;font-size:0.95rem;margin-bottom:3px}
+  .parte-graf.g1 .desc-g strong{color:var(--c-titulo-g)}
+  .parte-graf.g2 .desc-g strong{color:var(--c-cat)}
+  .parte-graf.g3 .desc-g strong{color:var(--c-ejey)}
+  .parte-graf.g4 .desc-g strong{color:var(--c-ejex)}
+  .parte-graf .desc-g span{font-size:0.85rem;line-height:1.5;display:block}
+
+  /* Pasos de lectura */
+  .pasos-lectura{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+  .paso-lect{background:#fff;border-radius:10px;padding:14px;text-align:center;border:2px solid var(--cp)}
+  .paso-lect .num-pl{background:var(--cp);color:#fff;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;margin-bottom:8px}
+  .paso-lect h5{margin:6px 0;color:var(--cp-oscuro);font-size:1rem}
+  .paso-lect p{margin:0;font-size:0.88rem;line-height:1.5;color:var(--texto)}
+
+  /* Práctica interactiva: gráfica de barras */
+  .practica-graf-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .practica-graf-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .grafica-practica{max-width:620px;margin:0 auto 14px auto;background:#fff;border:1px solid #ddd;border-radius:6px;padding:8px}
+  .grafica-practica svg{width:100%;height:auto;display:block}
+
+  /* Preguntas */
+  .preguntas-graf{margin:14px 0}
+  .preg-graf{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .preg-graf .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-graf .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .opciones-graf{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .opt-graf{padding:9px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:600}
+  .opt-graf:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-graf.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .opt-graf.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-graf{margin-top:10px;padding:8px 12px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.88rem;display:none;border-left:4px solid var(--cp)}
+  .retro-graf.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Actividad unidad */
+  .actividad-unidad{background:#fff;border:2px solid var(--naranja);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:var(--naranja-oscuro);margin-top:0}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+
+  /* Vocabulario de comparación */
+  .vocab-comparacion{background:#fff;border-radius:10px;padding:14px 18px;margin:14px 0;border:2px solid var(--acento)}
+  .vocab-comparacion h4{margin-top:0;color:var(--acento-oscuro)}
+  .grid-vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:10px}
+  .palabra-vocab{background:var(--acento-claro);border-radius:8px;padding:10px;text-align:center;border-left:4px solid var(--acento)}
+  .palabra-vocab .pal{font-weight:700;color:var(--acento-oscuro);font-size:1rem;display:block;margin-bottom:4px}
+  .palabra-vocab .uso{font-size:0.82rem;color:var(--texto);font-style:italic;display:block;line-height:1.4}
+</style>
+</head>
+<body>
+
+<h1>Clase 5: El duelo de las gráficas</h1>
+<p class="subtitulo">Barras vs. Pastel · Tema 6 · Lección 6.3 · Nivel 1 · Semana 12 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Distinguir entre <strong>gráfica de barras</strong> y <strong>gráfica de pastel</strong>, y saber cuándo se usa cada una.</li>
+    <li>Identificar los <strong>cuatro elementos clave</strong> de una gráfica de barras: título, eje X, eje Y y categorías.</li>
+    <li>Leer una gráfica de barras siguiendo un <strong>procedimiento ordenado</strong> en tres pasos.</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Hasta ahora hemos aprendido a leer imágenes, mapas y tablas. Hoy vamos a estudiar una herramienta visual que combina lo mejor de las anteriores: la <span class="palabra-clave">gráfica</span>. Las gráficas muestran información numérica en forma de imágenes, y son protagonistas tanto en el examen de Ciencias como en el de Estudios Sociales.</p>
+
+<p>Existen muchos tipos de gráficas, pero en este nivel nos concentraremos en las dos más comunes: la gráfica de <strong>barras</strong> y la gráfica de <strong>pastel</strong>. Aprenderemos por qué una es casi siempre más clara que la otra.</p>
+
+<details open>
+<summary>1. Introducción: ¿gráficas para qué? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Una imagen vale más que mil números</h3>
+
+<p>Imaginemos que queremos saber qué fruta es la favorita en nuestro salón de clases. Podríamos escribirlo así:</p>
+
+<p style="font-style:italic;color:var(--gris);padding:10px 14px;background:#f5f5f5;border-radius:6px;font-size:0.92rem">"Diez estudiantes prefieren la manzana, ocho prefieren la naranja, cuatro prefieren el plátano y dos prefieren la pera."</p>
+
+<p>O podríamos mostrarlo en una <strong>gráfica</strong> y entenderlo de un vistazo:</p>
+
+<div style="max-width:380px;margin:14px auto;background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:12px">
+  <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+    <text x="180" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a2332">Fruta favorita del salón</text>
+    <!-- Eje Y -->
+    <line x1="60" y1="40" x2="60" y2="180" stroke="#1a2332" stroke-width="2"/>
+    <line x1="60" y1="180" x2="340" y2="180" stroke="#1a2332" stroke-width="2"/>
+    <!-- Marcas eje Y -->
+    <text x="50" y="184" text-anchor="end" font-size="9" fill="#1a2332">0</text>
+    <line x1="56" y1="166" x2="60" y2="166" stroke="#1a2332"/>
+    <text x="50" y="170" text-anchor="end" font-size="9" fill="#1a2332">2</text>
+    <line x1="56" y1="138" x2="60" y2="138" stroke="#1a2332"/>
+    <text x="50" y="142" text-anchor="end" font-size="9" fill="#1a2332">4</text>
+    <line x1="56" y1="110" x2="60" y2="110" stroke="#1a2332"/>
+    <text x="50" y="114" text-anchor="end" font-size="9" fill="#1a2332">6</text>
+    <line x1="56" y1="82" x2="60" y2="82" stroke="#1a2332"/>
+    <text x="50" y="86" text-anchor="end" font-size="9" fill="#1a2332">8</text>
+    <line x1="56" y1="54" x2="60" y2="54" stroke="#1a2332"/>
+    <text x="50" y="58" text-anchor="end" font-size="9" fill="#1a2332">10</text>
+    <!-- Barras -->
+    <rect x="85" y="54" width="50" height="126" fill="#e53935"/>
+    <rect x="155" y="68" width="50" height="112" fill="#fb8c00"/>
+    <rect x="225" y="124" width="50" height="56" fill="#fdd835"/>
+    <rect x="295" y="152" width="40" height="28" fill="#7cb342"/>
+    <!-- Etiquetas categorías -->
+    <text x="110" y="196" text-anchor="middle" font-size="10" fill="#1a2332" font-weight="bold">Manzana</text>
+    <text x="180" y="196" text-anchor="middle" font-size="10" fill="#1a2332" font-weight="bold">Naranja</text>
+    <text x="250" y="196" text-anchor="middle" font-size="10" fill="#1a2332" font-weight="bold">Plátano</text>
+    <text x="315" y="196" text-anchor="middle" font-size="10" fill="#1a2332" font-weight="bold">Pera</text>
+    <!-- Valores encima de cada barra -->
+    <text x="110" y="48" text-anchor="middle" font-size="10" fill="#1a2332" font-weight="bold">10</text>
+    <text x="180" y="62" text-anchor="middle" font-size="10" fill="#1a2332" font-weight="bold">8</text>
+    <text x="250" y="118" text-anchor="middle" font-size="10" fill="#1a2332" font-weight="bold">4</text>
+    <text x="315" y="146" text-anchor="middle" font-size="10" fill="#1a2332" font-weight="bold">2</text>
+    <!-- Etiquetas ejes -->
+    <text x="200" y="215" text-anchor="middle" font-size="10" fill="#2e7d32" font-style="italic">Fruta</text>
+    <text x="20" y="110" text-anchor="middle" font-size="10" fill="#c62828" font-style="italic" transform="rotate(-90 20 110)">Número de estudiantes</text>
+  </svg>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Idea central:</strong> Una <span class="palabra-clave">gráfica</span> es una imagen que muestra información numérica usando elementos visuales (barras, círculos, líneas). Su propósito es que el cerebro <strong>compare cantidades</strong> rápidamente, sin tener que leer todos los números uno por uno.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Desarrollo: barras vs. pastel — el duelo <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Dos formas distintas de mostrar los mismos datos</h3>
+
+<p>Tomemos los datos de la fruta favorita del salón y mostrémoslos de las dos formas: como gráfica de pastel y como gráfica de barras. Observe cuál es más fácil de leer:</p>
+
+<div class="duelo-graficas">
+
+  <div class="lado-duelo pastel">
+    <h4>🥧 Gráfica de pastel</h4>
+    <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="110" y="18" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Fruta favorita</text>
+      <!-- Pastel: 24 total. Manzana 10 (150°), Naranja 8 (120°), Plátano 4 (60°), Pera 2 (30°) -->
+      <!-- Centro 110,105, radio 60 -->
+      <!-- Manzana: 0° a 150° -->
+      <path d="M 110 105 L 170 105 A 60 60 0 0 1 58.04 135 Z" fill="#e53935" stroke="#fff" stroke-width="1.5"/>
+      <!-- Naranja: 150° a 270° -->
+      <path d="M 110 105 L 58.04 135 A 60 60 0 0 1 110 45 Z" fill="#fb8c00" stroke="#fff" stroke-width="1.5"/>
+      <!-- Plátano: 270° a 330° -->
+      <path d="M 110 105 L 110 45 A 60 60 0 0 1 161.96 75 Z" fill="#fdd835" stroke="#fff" stroke-width="1.5"/>
+      <!-- Pera: 330° a 360° -->
+      <path d="M 110 105 L 161.96 75 A 60 60 0 0 1 170 105 Z" fill="#7cb342" stroke="#fff" stroke-width="1.5"/>
+
+      <!-- Leyenda -->
+      <rect x="6" y="170" width="10" height="10" fill="#e53935"/>
+      <text x="20" y="179" font-size="8" fill="#1a2332">Manzana</text>
+      <rect x="64" y="170" width="10" height="10" fill="#fb8c00"/>
+      <text x="78" y="179" font-size="8" fill="#1a2332">Naranja</text>
+      <rect x="120" y="170" width="10" height="10" fill="#fdd835"/>
+      <text x="134" y="179" font-size="8" fill="#1a2332">Plátano</text>
+      <rect x="172" y="170" width="10" height="10" fill="#7cb342"/>
+      <text x="186" y="179" font-size="8" fill="#1a2332">Pera</text>
+    </svg>
+    <p>Para saber si la manzana es más popular que la naranja, hay que <strong>comparar ángulos</strong>. El ojo humano no es bueno comparando ángulos similares.</p>
+    <div class="veredicto mal">⚠️ Difícil de comparar</div>
+  </div>
+
+  <div class="lado-duelo barras">
+    <h4>📊 Gráfica de barras</h4>
+    <svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+      <text x="110" y="18" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Fruta favorita</text>
+      <!-- Ejes -->
+      <line x1="40" y1="35" x2="40" y2="155" stroke="#1a2332" stroke-width="1.5"/>
+      <line x1="40" y1="155" x2="210" y2="155" stroke="#1a2332" stroke-width="1.5"/>
+      <!-- Líneas guía -->
+      <line x1="38" y1="35" x2="42" y2="35" stroke="#1a2332"/>
+      <text x="35" y="39" text-anchor="end" font-size="8" fill="#1a2332">10</text>
+      <line x1="38" y1="95" x2="42" y2="95" stroke="#1a2332"/>
+      <text x="35" y="99" text-anchor="end" font-size="8" fill="#1a2332">5</text>
+      <line x1="38" y1="155" x2="42" y2="155" stroke="#1a2332"/>
+      <text x="35" y="159" text-anchor="end" font-size="8" fill="#1a2332">0</text>
+      <!-- Barras: altura = valor * 12 -->
+      <rect x="55" y="35" width="30" height="120" fill="#e53935"/>
+      <rect x="95" y="59" width="30" height="96" fill="#fb8c00"/>
+      <rect x="135" y="107" width="30" height="48" fill="#fdd835"/>
+      <rect x="175" y="131" width="30" height="24" fill="#7cb342"/>
+      <!-- Etiquetas -->
+      <text x="70" y="170" text-anchor="middle" font-size="8" fill="#1a2332" font-weight="bold">Manzana</text>
+      <text x="110" y="170" text-anchor="middle" font-size="8" fill="#1a2332" font-weight="bold">Naranja</text>
+      <text x="150" y="170" text-anchor="middle" font-size="8" fill="#1a2332" font-weight="bold">Plátano</text>
+      <text x="190" y="170" text-anchor="middle" font-size="8" fill="#1a2332" font-weight="bold">Pera</text>
+    </svg>
+    <p>Para saber si la manzana es más popular, basta <strong>comparar las alturas</strong>. El ojo humano compara longitudes con gran precisión.</p>
+    <div class="veredicto bien">✓ Fácil de comparar</div>
+  </div>
+
+</div>
+
+<h3>¿Cuándo usar cada una?</h3>
+
+<ul class="lista-bonita">
+  <li><strong>Gráficas de pastel:</strong> sirven para mostrar <strong>partes de un todo</strong> (100%), pero solo funcionan bien con 2 o 3 categorías. Más de eso, se vuelven confusas.</li>
+  <li><strong>Gráficas de barras:</strong> sirven para <strong>comparar cantidades</strong> entre varias categorías. Funcionan bien con muchas categorías y son siempre más precisas.</li>
+</ul>
+
+<div class="tip">
+  <strong>📌 En el examen del GED:</strong> aparecen ambos tipos, pero las gráficas de barras son mucho más frecuentes. Por eso vamos a concentrarnos especialmente en ellas.
+</div>
+
+<h3>Anatomía de la gráfica de barras</h3>
+
+<p>Toda gráfica de barras tiene cuatro elementos esenciales. Los identificamos siempre <strong>antes</strong> de tratar de responder cualquier pregunta:</p>
+
+<div class="anatomia-grafica">
+  <h4>📊 Las cuatro partes de la gráfica de barras</h4>
+
+  <div class="anatomia-grafica-svg-wrap">
+    <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- 1. Título -->
+      <text x="300" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2332">Horas de sueño por día (lunes)</text>
+
+      <!-- Eje Y -->
+      <line x1="100" y1="60" x2="100" y2="240" stroke="#c62828" stroke-width="2.5"/>
+      <!-- Eje X -->
+      <line x1="100" y1="240" x2="560" y2="240" stroke="#2e7d32" stroke-width="2.5"/>
+
+      <!-- Marcas eje Y -->
+      <text x="90" y="244" text-anchor="end" font-size="11" fill="#1a2332">0</text>
+      <line x1="96" y1="222" x2="100" y2="222" stroke="#1a2332"/>
+      <text x="90" y="226" text-anchor="end" font-size="11" fill="#1a2332">2</text>
+      <line x1="96" y1="204" x2="100" y2="204" stroke="#1a2332"/>
+      <text x="90" y="208" text-anchor="end" font-size="11" fill="#1a2332">4</text>
+      <line x1="96" y1="186" x2="100" y2="186" stroke="#1a2332"/>
+      <text x="90" y="190" text-anchor="end" font-size="11" fill="#1a2332">6</text>
+      <line x1="96" y1="168" x2="100" y2="168" stroke="#1a2332"/>
+      <text x="90" y="172" text-anchor="end" font-size="11" fill="#1a2332">8</text>
+      <line x1="96" y1="150" x2="100" y2="150" stroke="#1a2332"/>
+      <text x="90" y="154" text-anchor="end" font-size="11" fill="#1a2332">10</text>
+
+      <!-- Barras -->
+      <rect x="135" y="168" width="60" height="72" fill="#1e88e5"/>
+      <rect x="220" y="186" width="60" height="54" fill="#1e88e5"/>
+      <rect x="305" y="150" width="60" height="90" fill="#1e88e5"/>
+      <rect x="390" y="159" width="60" height="81" fill="#1e88e5"/>
+      <rect x="475" y="195" width="60" height="45" fill="#1e88e5"/>
+
+      <!-- Etiquetas categorías -->
+      <text x="165" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Juan</text>
+      <text x="250" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Lucía</text>
+      <text x="335" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Pedro</text>
+      <text x="420" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Ana</text>
+      <text x="505" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Marta</text>
+
+      <!-- Rótulos de ejes -->
+      <text x="330" y="290" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#2e7d32">Estudiante (eje X)</text>
+      <text x="50" y="150" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#c62828" transform="rotate(-90 50 150)">Horas de sueño (eje Y)</text>
+
+      <!-- Etiquetas numeradas -->
+      <circle cx="300" cy="28" r="13" fill="#fff" stroke="#1a2332" stroke-width="3"/>
+      <text x="300" y="33" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a2332">1</text>
+
+      <circle cx="335" cy="290" r="13" fill="#fff" stroke="#2e7d32" stroke-width="3"/>
+      <text x="335" y="295" text-anchor="middle" font-size="13" font-weight="bold" fill="#2e7d32">4</text>
+
+      <circle cx="50" cy="150" r="13" fill="#fff" stroke="#c62828" stroke-width="3"/>
+      <text x="50" y="155" text-anchor="middle" font-size="13" font-weight="bold" fill="#c62828">3</text>
+
+      <circle cx="335" cy="120" r="13" fill="#fff" stroke="#7b3fbf" stroke-width="3"/>
+      <text x="335" y="125" text-anchor="middle" font-size="13" font-weight="bold" fill="#7b3fbf">2</text>
+    </svg>
+  </div>
+
+  <div class="partes-grafica">
+    <div class="parte-graf g1">
+      <div class="num-g">1</div>
+      <div class="desc-g">
+        <strong>Título</strong>
+        <span>Anuncia qué información muestra la gráfica. Siempre va arriba.</span>
+      </div>
+    </div>
+    <div class="parte-graf g2">
+      <div class="num-g">2</div>
+      <div class="desc-g">
+        <strong>Barras (categorías)</strong>
+        <span>Cada barra representa un elemento. Su altura indica el valor.</span>
+      </div>
+    </div>
+    <div class="parte-graf g3">
+      <div class="num-g">3</div>
+      <div class="desc-g">
+        <strong>Eje Y (vertical)</strong>
+        <span>Indica la <em>cantidad</em> que se mide. Sube con los números.</span>
+      </div>
+    </div>
+    <div class="parte-graf g4">
+      <div class="num-g">4</div>
+      <div class="desc-g">
+        <strong>Eje X (horizontal)</strong>
+        <span>Indica las <em>categorías</em> que se comparan (personas, días, productos...).</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Cómo leer una gráfica de barras: tres pasos</h3>
+
+<div class="pasos-lectura">
+  <div class="paso-lect">
+    <div class="num-pl">1</div>
+    <h5>Leer el título</h5>
+    <p>Nos dice de qué tema trata la gráfica. Sin esto, los números no significan nada.</p>
+  </div>
+  <div class="paso-lect">
+    <div class="num-pl">2</div>
+    <h5>Leer los ejes</h5>
+    <p>Eje Y: ¿qué se mide? Eje X: ¿qué se compara? Esto nos da el contexto.</p>
+  </div>
+  <div class="paso-lect">
+    <div class="num-pl">3</div>
+    <h5>Comparar las barras</h5>
+    <p>¿Cuál es más alta? ¿Cuál más baja? Las alturas se comparan a simple vista.</p>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>⚡ Importante:</strong> Antes de responder cualquier pregunta sobre una gráfica, siempre debemos identificar la <strong>fuente</strong> (¿quién hizo la gráfica?, ¿de cuándo son los datos?). En el examen del GED, una fuente confiable hace que los datos sean confiables.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: lectura de gráfica de barras <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Practiquemos con una gráfica real</h3>
+
+<p>La siguiente gráfica muestra el número de libros leídos por cinco estudiantes durante un mes. Aplique los tres pasos (título, ejes, comparación) y responda las preguntas:</p>
+
+<div class="practica-graf-cont">
+
+  <div class="grafica-practica">
+    <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Título -->
+      <text x="300" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a2332">Libros leídos en el mes de marzo</text>
+
+      <!-- Eje Y -->
+      <line x1="90" y1="50" x2="90" y2="240" stroke="#1a2332" stroke-width="2"/>
+      <line x1="90" y1="240" x2="570" y2="240" stroke="#1a2332" stroke-width="2"/>
+
+      <!-- Marcas eje Y (0 a 12) -->
+      <text x="80" y="244" text-anchor="end" font-size="11" fill="#1a2332">0</text>
+      <line x1="86" y1="208" x2="90" y2="208" stroke="#1a2332"/>
+      <text x="80" y="212" text-anchor="end" font-size="11" fill="#1a2332">2</text>
+      <line x1="86" y1="176" x2="90" y2="176" stroke="#1a2332"/>
+      <text x="80" y="180" text-anchor="end" font-size="11" fill="#1a2332">4</text>
+      <line x1="86" y1="144" x2="90" y2="144" stroke="#1a2332"/>
+      <text x="80" y="148" text-anchor="end" font-size="11" fill="#1a2332">6</text>
+      <line x1="86" y1="112" x2="90" y2="112" stroke="#1a2332"/>
+      <text x="80" y="116" text-anchor="end" font-size="11" fill="#1a2332">8</text>
+      <line x1="86" y1="80" x2="90" y2="80" stroke="#1a2332"/>
+      <text x="80" y="84" text-anchor="end" font-size="11" fill="#1a2332">10</text>
+      <line x1="86" y1="48" x2="90" y2="48" stroke="#1a2332"/>
+      <text x="80" y="52" text-anchor="end" font-size="11" fill="#1a2332">12</text>
+
+      <!-- Barras (16 px por unidad)
+        Carlos: 5 libros -> alt=80, y=160
+        María: 8 libros -> alt=128, y=112
+        José: 3 libros -> alt=48, y=192
+        Sofía: 11 libros -> alt=176, y=64
+        Diego: 7 libros -> alt=112, y=128 -->
+      <rect x="130" y="160" width="65" height="80" fill="#5e35b1" stroke="#311b92" stroke-width="1.5"/>
+      <rect x="220" y="112" width="65" height="128" fill="#5e35b1" stroke="#311b92" stroke-width="1.5"/>
+      <rect x="310" y="192" width="65" height="48" fill="#5e35b1" stroke="#311b92" stroke-width="1.5"/>
+      <rect x="400" y="64" width="65" height="176" fill="#5e35b1" stroke="#311b92" stroke-width="1.5"/>
+      <rect x="490" y="128" width="65" height="112" fill="#5e35b1" stroke="#311b92" stroke-width="1.5"/>
+
+      <!-- Valores encima -->
+      <text x="162" y="154" text-anchor="middle" font-size="11" font-weight="bold" fill="#311b92">5</text>
+      <text x="252" y="106" text-anchor="middle" font-size="11" font-weight="bold" fill="#311b92">8</text>
+      <text x="342" y="186" text-anchor="middle" font-size="11" font-weight="bold" fill="#311b92">3</text>
+      <text x="432" y="58" text-anchor="middle" font-size="11" font-weight="bold" fill="#311b92">11</text>
+      <text x="522" y="122" text-anchor="middle" font-size="11" font-weight="bold" fill="#311b92">7</text>
+
+      <!-- Etiquetas categorías -->
+      <text x="162" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Carlos</text>
+      <text x="252" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">María</text>
+      <text x="342" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">José</text>
+      <text x="432" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Sofía</text>
+      <text x="522" y="260" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Diego</text>
+
+      <!-- Rótulos ejes -->
+      <text x="330" y="290" text-anchor="middle" font-size="11" font-style="italic" font-weight="bold" fill="#1a2332">Estudiante</text>
+      <text x="35" y="145" text-anchor="middle" font-size="11" font-style="italic" font-weight="bold" fill="#1a2332" transform="rotate(-90 35 145)">Número de libros</text>
+
+      <!-- Fuente -->
+      <text x="570" y="310" text-anchor="end" font-size="8" fill="#6b7785" font-style="italic">Fuente: club de lectura de la clase, marzo de 2024</text>
+    </svg>
+  </div>
+
+  <div class="preguntas-graf" id="preguntas-graf5"></div>
+  <div class="puntaje" id="puntaje-graf5">Aciertos: 0 / 6</div>
+</div>
+
+<h3>Vocabulario de comparación que vamos a usar</h3>
+
+<p>Al describir gráficas, usamos un grupo de palabras especiales que es importante conocer:</p>
+
+<div class="vocab-comparacion">
+  <h4>📚 Palabras de comparación</h4>
+  <div class="grid-vocab">
+    <div class="palabra-vocab">
+      <span class="pal">Mayor</span>
+      <span class="uso">"Sofía leyó el mayor número de libros."</span>
+    </div>
+    <div class="palabra-vocab">
+      <span class="pal">Menor</span>
+      <span class="uso">"José leyó el menor número de libros."</span>
+    </div>
+    <div class="palabra-vocab">
+      <span class="pal">Más que</span>
+      <span class="uso">"María leyó más libros que Carlos."</span>
+    </div>
+    <div class="palabra-vocab">
+      <span class="pal">Menos que</span>
+      <span class="uso">"Carlos leyó menos libros que Diego."</span>
+    </div>
+    <div class="palabra-vocab">
+      <span class="pal">Igual a</span>
+      <span class="uso">"Diego leyó casi igual número que María."</span>
+    </div>
+    <div class="palabra-vocab">
+      <span class="pal">Total</span>
+      <span class="uso">"En total, leyeron 34 libros."</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Actividades de la lección <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<p>Las actividades de la Lección 6.3 se reparten entre las Clases 5 y 6. El quiz combinado se entrega al final de la Clase 6.</p>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Modalidad presencial (sincrónica)</h4>
+    <p><span class="badge-tipo badge-discusion">Nuestra clase en datos</span></p>
+    <p>Actividad colectiva. La clase elige una pregunta sencilla, por ejemplo:</p>
+    <p style="font-style:italic;color:var(--gris);padding-left:14px;border-left:3px solid var(--cp)">"¿Qué desayunaste hoy?"</p>
+    <p>Cada estudiante levanta la mano según su respuesta (café, té, jugo, agua). El profesor escribe los conteos en el pizarrón y, junto con la clase, dibuja una <strong>gráfica de barras</strong> en vivo. Luego, todos juntos describen la gráfica usando el vocabulario nuevo (mayor, menor, más que, menos que).</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Modalidad en línea (asincrónica)</h4>
+    <p><span class="badge-tipo badge-reflexion">Mi gráfica del día</span></p>
+    <p>Cada estudiante crea una gráfica de barras simple (a mano, en papel cuadriculado, o en una hoja electrónica) que muestre:</p>
+    <ul style="padding-left:20px;font-size:0.92rem">
+      <li>Una pregunta de su elección (¿cuántas horas duermo cada día de la semana?, ¿cuántos vasos de agua bebo?).</li>
+      <li>Al menos <strong>5 barras</strong> con categorías claras.</li>
+      <li>Título, eje X y eje Y rotulados.</li>
+    </ul>
+    <p>Sube una foto o imagen de su gráfica al foro.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Cierre y conexión con la próxima clase <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>Una <strong>gráfica</strong> muestra información numérica en forma de imagen para facilitar la comparación.</li>
+  <li>Las gráficas de <strong>pastel</strong> sirven para mostrar partes de un todo (pocas categorías).</li>
+  <li>Las gráficas de <strong>barras</strong> son más precisas y se usan para comparar cantidades.</li>
+  <li>Toda gráfica de barras tiene <strong>cuatro elementos</strong>: título, eje X, eje Y y barras (categorías).</li>
+  <li>Para leerlas, seguimos <strong>tres pasos</strong>: título, ejes, comparación.</li>
+  <li>Usamos palabras especiales para describir gráficas: <strong>mayor, menor, más que, menos que, total</strong>.</li>
+</ul>
+
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> Las gráficas de barras aparecen constantemente en el examen de GED Ciencias (resultados de experimentos, mediciones) y Estudios Sociales (datos demográficos, encuestas, economía). Dominar su lectura aumenta considerablemente la puntuación.
+</div>
+
+<h3>Próxima clase</h3>
+
+<p>En la <strong>Clase 6</strong>, la última de este tema, daremos el paso final: aprenderemos el <strong>vocabulario de dominio específico</strong> que aparece en ciencias y estudios sociales (palabras como <em>población, latitud, altitud, temperatura</em>) y practicaremos cómo describir por escrito lo que muestra una gráfica. Será nuestra evaluación formativa final.</p>
+
+</div>
+</details>
+
+<p class="firma">Prof. José M. Fernández · Truman College · Tema 6, Clase 5</p>
+
+<script>
+(function(){
+  'use strict';
+
+  var preguntas=[
+    {
+      texto:'¿Cuál es el título de la gráfica?',
+      opciones:[
+        {t:'Libros leídos en el mes de marzo',ok:true},
+        {t:'Estudiantes de la clase',ok:false},
+        {t:'Marzo de 2024',ok:false}
+      ],
+      explica:'El título siempre se ubica en la parte superior y anuncia el tema de la gráfica.'
+    },
+    {
+      texto:'¿Qué se mide en el eje Y?',
+      opciones:[
+        {t:'El nombre del estudiante',ok:false},
+        {t:'El número de libros',ok:true},
+        {t:'El mes del año',ok:false}
+      ],
+      explica:'El eje Y (vertical) siempre muestra la cantidad medida. En este caso, el número de libros leídos.'
+    },
+    {
+      texto:'¿Cuántos libros leyó Sofía?',
+      opciones:[
+        {t:'5 libros',ok:false},
+        {t:'8 libros',ok:false},
+        {t:'11 libros',ok:true}
+      ],
+      explica:'Buscamos la barra de Sofía y leemos su altura: 11 libros, el valor más alto.'
+    },
+    {
+      texto:'¿Quién leyó el MENOR número de libros?',
+      opciones:[
+        {t:'Carlos',ok:false},
+        {t:'José',ok:true},
+        {t:'Diego',ok:false}
+      ],
+      explica:'José tiene la barra más baja, con 3 libros. Es el menor valor.'
+    },
+    {
+      texto:'¿María leyó más libros que Diego?',
+      opciones:[
+        {t:'Sí, María leyó más',ok:true},
+        {t:'No, Diego leyó más',ok:false},
+        {t:'Leyeron exactamente lo mismo',ok:false}
+      ],
+      explica:'María leyó 8 libros y Diego 7. La barra de María es más alta que la de Diego.'
+    },
+    {
+      texto:'¿Cuántos libros leyeron entre todos en total?',
+      opciones:[
+        {t:'24 libros',ok:false},
+        {t:'34 libros',ok:true},
+        {t:'40 libros',ok:false}
+      ],
+      explica:'Sumamos todas las barras: 5 + 8 + 3 + 11 + 7 = 34 libros.'
+    }
+  ];
+
+  var resueltas={};
+  var aciertos=0;
+  var cont=document.getElementById('preguntas-graf5');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-graf';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-graf" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      '<div class="opciones-graf">'+opcHtml+'</div>'+
+      '<div class="retro-graf" id="retro-g5-'+idx+'"></div>';
+
+    cont.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-graf');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltas[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+          var retro=document.getElementById('retro-g5-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-graf5');
+    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
+    if(aciertos===preguntas.length){
+      el.innerHTML='🎉 ¡Lectura de gráficas dominada! Aciertos: '+aciertos+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 2: Decodificación de palabras de 1 y 2 sílabas</title>
+<style>
+  :root{
+    --cp:#0089cd;
+    --cp-claro:#e3f2fd;
+    --cp-oscuro:#005a8a;
+    --acento:#ff8c42;
+    --texto:#1a2332;
+    --fondo:#fafbfc;
+    --gris:#6b7785;
+    --gris-claro:#eef1f4;
+    --silaba-1:#e91e63;
+    --silaba-2:#1976d2;
+    --silaba-3:#388e3c;
+    --silaba-4:#f57c00;
+    --letra:#7b1fa2;
+    --sonido:#d84315;
+    --exito:#2e7d32;
+    --error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Poppins','Segoe UI',Arial,sans-serif;
+    line-height:1.7;
+    color:var(--texto);
+    background:var(--fondo);
+    max-width:960px;
+    margin:0 auto;
+    padding:24px 18px;
+  }
+  h1{
+    color:var(--cp-oscuro);
+    border-bottom:4px solid var(--cp);
+    padding-bottom:14px;
+    font-size:1.85rem;
+    margin-bottom:8px;
+  }
+  .subtitulo{
+    color:var(--gris);
+    font-style:italic;
+    margin-top:0;
+    margin-bottom:24px;
+    font-size:1.05rem;
+  }
+  h2{
+    color:var(--cp-oscuro);
+    border-left:6px solid var(--cp);
+    padding-left:14px;
+    margin-top:32px;
+    font-size:1.4rem;
+  }
+  h3{
+    color:var(--cp);
+    margin-top:24px;
+    font-size:1.15rem;
+  }
+  .caja-objetivos{
+    background:var(--cp-claro);
+    border-left:6px solid var(--cp);
+    padding:18px 22px;
+    border-radius:8px;
+    margin:18px 0 28px 0;
+  }
+  .caja-objetivos h3{margin-top:0;color:var(--cp-oscuro)}
+  .caja-tiempo{
+    display:inline-block;
+    background:var(--acento);
+    color:#fff;
+    padding:4px 12px;
+    border-radius:14px;
+    font-size:0.85rem;
+    font-weight:600;
+    margin-left:10px;
+    vertical-align:middle;
+  }
+  details{
+    background:#fff;
+    border:1px solid #d6dde4;
+    border-radius:10px;
+    margin:14px 0;
+    padding:0;
+    overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,0.04);
+  }
+  details[open]{
+    border-color:var(--cp);
+    box-shadow:0 3px 10px rgba(0,137,205,0.12);
+  }
+  summary{
+    cursor:pointer;
+    padding:16px 20px;
+    font-weight:600;
+    color:var(--cp-oscuro);
+    background:var(--gris-claro);
+    list-style:none;
+    user-select:none;
+    font-size:1.05rem;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::before{
+    content:'▶';
+    display:inline-block;
+    margin-right:10px;
+    color:var(--cp);
+    transition:transform 0.25s;
+    font-size:0.85rem;
+  }
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{
+    background:var(--cp-claro);
+    border-bottom:2px solid var(--cp);
+  }
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:16px 0;
+  }
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{
+    border-radius:10px;
+    padding:16px 18px;
+    border:2px solid;
+  }
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{
+    background:#fffbe6;
+    border-left:5px solid #f4c430;
+    padding:12px 18px;
+    border-radius:6px;
+    margin:14px 0;
+  }
+  .tip strong{color:#8a6d00}
+  .ejercicio{
+    background:#f3f9f3;
+    border:2px dashed #4caf50;
+    border-radius:10px;
+    padding:18px 22px;
+    margin:20px 0;
+  }
+  .ejercicio h4{color:#2e7d32;margin-top:0}
+  .botones{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:14px 0;
+  }
+  .btn{
+    padding:10px 22px;
+    border:none;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:0.95rem;
+    transition:all 0.2s;
+  }
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .btn-sonido{
+    background:var(--acento);
+    color:#fff;
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:0.95rem;
+  }
+  .btn-sonido:hover{background:#e07020}
+  .btn-sonido::before{content:'🔊 ';margin-right:4px}
+  .firma{
+    margin-top:40px;
+    padding-top:18px;
+    border-top:2px solid var(--gris-claro);
+    text-align:center;
+    color:var(--gris);
+    font-style:italic;
+    font-size:0.9rem;
+  }
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{
+    content:'➜';
+    position:absolute;
+    left:0;
+    color:var(--cp);
+    font-weight:700;
+  }
+  .palabra-clave{
+    background:linear-gradient(transparent 60%,#ffeb3b 60%);
+    padding:0 4px;
+    font-weight:600;
+  }
+
+  /* === Tabla letra vs nombre vs sonido === */
+  .tabla-letras{
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    background:#fff;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  }
+  .tabla-letras th{
+    background:var(--cp);
+    color:#fff;
+    padding:12px;
+    text-align:center;
+  }
+  .tabla-letras td{
+    padding:12px;
+    border-bottom:1px solid var(--gris-claro);
+    text-align:center;
+    font-family:'Georgia',serif;
+  }
+  .tabla-letras tr:last-child td{border-bottom:none}
+  .col-letra{
+    font-size:1.8rem;
+    font-weight:700;
+    color:var(--letra);
+  }
+  .col-nombre{color:var(--gris);font-style:italic}
+  .col-sonido{
+    color:var(--sonido);
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  .tabla-letras td.col-accion{padding:6px}
+  .btn-mini{
+    background:var(--acento);
+    color:#fff;
+    border:none;
+    padding:6px 12px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:0.85rem;
+    font-weight:600;
+    font-family:inherit;
+  }
+  .btn-mini:hover{background:#e07020}
+
+  /* === Bloques de decodificación === */
+  .bloques-decodifica{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    margin:14px 8px;
+  }
+  .bloque-silaba{
+    padding:14px 20px;
+    border-radius:10px;
+    color:#fff;
+    font-family:'Georgia',serif;
+    font-size:1.8rem;
+    font-weight:700;
+    box-shadow:0 3px 6px rgba(0,0,0,0.15);
+    cursor:pointer;
+    transition:transform 0.15s;
+    user-select:none;
+  }
+  .bloque-silaba:hover{transform:translateY(-3px)}
+  .bloque-silaba:active{transform:translateY(0)}
+  .bloque-c1{background:var(--silaba-1)}
+  .bloque-c2{background:var(--silaba-2)}
+  .signo-mas{font-size:1.8rem;color:var(--gris);font-weight:700}
+  .signo-igual{font-size:1.8rem;color:var(--cp-oscuro);font-weight:700}
+  .palabra-final{
+    padding:14px 22px;
+    background:#fff;
+    border:3px solid var(--cp);
+    border-radius:10px;
+    font-family:'Georgia',serif;
+    font-size:1.8rem;
+    font-weight:700;
+    color:var(--cp-oscuro);
+    cursor:pointer;
+    transition:all 0.15s;
+  }
+  .palabra-final:hover{
+    background:var(--cp-claro);
+    transform:translateY(-3px);
+  }
+
+  /* === Lista de palabras para leer === */
+  .lista-leer{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:12px;
+    margin:18px 0;
+  }
+  .tarjeta-leer{
+    background:#fff;
+    border:2px solid var(--gris-claro);
+    border-radius:10px;
+    padding:16px;
+    text-align:center;
+    transition:all 0.2s;
+  }
+  .tarjeta-leer:hover{
+    border-color:var(--cp);
+    box-shadow:0 3px 8px rgba(0,137,205,0.15);
+  }
+  .palabra-grande{
+    font-family:'Georgia',serif;
+    font-size:1.7rem;
+    font-weight:700;
+    color:var(--cp-oscuro);
+    margin-bottom:4px;
+  }
+  .silabeo{
+    font-family:'Georgia',serif;
+    font-size:0.95rem;
+    color:var(--gris);
+    margin-bottom:10px;
+  }
+  .silabeo .s1{color:var(--silaba-1);font-weight:700}
+  .silabeo .s2{color:var(--silaba-2);font-weight:700}
+  .botones-tarjeta{
+    display:flex;
+    gap:6px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn-pequeño{
+    padding:6px 12px;
+    border:none;
+    border-radius:14px;
+    font-size:0.8rem;
+    font-weight:600;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .btn-pequeño-sonido{background:var(--acento);color:#fff}
+  .btn-pequeño-silab{background:var(--cp);color:#fff}
+
+  /* === Construcción interactiva de palabras === */
+  .constructor{
+    background:#fff;
+    border:2px solid var(--cp);
+    border-radius:12px;
+    padding:20px;
+    margin:18px 0;
+  }
+  .silabas-disponibles{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin:14px 0;
+    padding:14px;
+    background:var(--gris-claro);
+    border-radius:8px;
+  }
+  .silaba-arrastrar{
+    background:var(--silaba-1);
+    color:#fff;
+    padding:10px 16px;
+    border-radius:8px;
+    font-family:'Georgia',serif;
+    font-size:1.25rem;
+    font-weight:700;
+    cursor:pointer;
+    user-select:none;
+    border:none;
+    box-shadow:0 2px 4px rgba(0,0,0,0.15);
+    transition:transform 0.15s;
+  }
+  .silaba-arrastrar:nth-child(even){background:var(--silaba-2)}
+  .silaba-arrastrar:hover{transform:translateY(-2px)}
+  .silaba-arrastrar.usada{opacity:0.3;cursor:default}
+  .area-palabra{
+    min-height:70px;
+    background:#f9f9f9;
+    border:3px dashed var(--cp);
+    border-radius:8px;
+    padding:14px;
+    display:flex;
+    gap:8px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .area-palabra:empty::before{
+    content:'(arma una palabra haciendo clic en las sílabas)';
+    color:var(--gris);
+    font-style:italic;
+    font-size:0.95rem;
+  }
+  .silaba-construida{
+    background:var(--cp);
+    color:#fff;
+    padding:10px 16px;
+    border-radius:8px;
+    font-family:'Georgia',serif;
+    font-size:1.25rem;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .silaba-construida:hover{background:#005a8a}
+
+  .feedback{
+    margin-top:14px;
+    padding:12px 16px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:600;
+    min-height:20px;
+  }
+  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+  .neutral{background:#fff3cd;color:#856404;border:1px solid #ffeaa7}
+
+  .puntaje{
+    text-align:center;
+    margin-top:14px;
+    font-weight:600;
+    color:var(--cp-oscuro);
+    font-size:1.05rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Clase 2: Decodificación de palabras de 1 y 2 sílabas</h1>
+<p class="subtitulo">Conectando sonidos con letras escritas · Tema 2, semana 2 · Nivel 1</p>
+
+<div class="caja-objetivos">
+  <h3>🎯 Objetivo de la clase</h3>
+  <p style="margin-bottom:0">Conectar los sonidos que aprendiste en la Clase 1 con sus <strong>letras escritas</strong> (esto se llama <em>principio alfabético</em>), para que puedas leer palabras sencillas de manera precisa.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Asere, ya tienes el oído entrenado. Ya sabes contar sílabas con palmadas, identificar rimas y aislar los sonidos individuales (fonemas). <strong>Hoy damos el gran salto</strong>: vas a unir esos sonidos que tienes en el oído con las letras que ves en el papel.</p>
+
+<p>A ese proceso de mirar una letra y producir el sonido que le corresponde se le llama <span class="palabra-clave">decodificación</span>. Es como traducir: ves un símbolo (la letra) y le pones su sonido. Cuando juntas varios sonidos seguidos, sale una palabra. ¡Eso es leer!</p>
+
+<details open>
+<summary>1. Repaso e introducción a la decodificación <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Recuerda la clase anterior</h3>
+
+<ul class="lista-bonita">
+  <li>Las palabras tienen <strong>sílabas</strong> (bloques de sonido).</li>
+  <li>Cada sílaba tiene <strong>fonemas</strong> (sonidos individuales).</li>
+  <li>El <strong>nombre</strong> de una letra y su <strong>sonido</strong> NO son iguales.</li>
+</ul>
+
+<h3>¿Qué es decodificar?</h3>
+
+<p><strong>Decodificar</strong> significa relacionar los sonidos que ya escuchas en tu oído con las letras que ves en el papel. Es como armar un rompecabezas: cada letra es una pieza, y la palabra completa es el dibujo final.</p>
+
+<div class="tip">
+  <strong>⚠️ Regla de oro:</strong> Cuando enseñamos a leer, usamos el <em>sonido</em> de la letra, NO el nombre. En lugar de decir "la pe", decimos cómo suena: "p" (corto y seco). En lugar de decir "la ese", decimos "ssss". Si dices el nombre, la palabra se complica. Si dices el sonido, todo encaja.
+</div>
+
+<h3>Letras: nombre vs. sonido</h3>
+
+<p>Mira esta tabla. Haz clic en el botón 🔊 para escuchar la diferencia entre el <em>nombre</em> de la letra y su <em>sonido</em>.</p>
+
+<table class="tabla-letras">
+  <thead>
+    <tr>
+      <th>Letra</th>
+      <th>Nombre (cómo se llama)</th>
+      <th>Sonido (cómo suena)</th>
+      <th>Escuchar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="col-letra">P</td>
+      <td class="col-nombre">"pe"</td>
+      <td class="col-sonido">/p/ (corto)</td>
+      <td class="col-accion">
+        <button type="button" class="btn-mini" onclick="hablar('pe')">Nombre</button>
+        <button type="button" class="btn-mini" onclick="hablar('p, pa', 0.5)">Sonido</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-letra">M</td>
+      <td class="col-nombre">"eme"</td>
+      <td class="col-sonido">/mmm/</td>
+      <td class="col-accion">
+        <button type="button" class="btn-mini" onclick="hablar('eme')">Nombre</button>
+        <button type="button" class="btn-mini" onclick="hablar('mmmm', 0.4)">Sonido</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-letra">S</td>
+      <td class="col-nombre">"ese"</td>
+      <td class="col-sonido">/sss/</td>
+      <td class="col-accion">
+        <button type="button" class="btn-mini" onclick="hablar('ese')">Nombre</button>
+        <button type="button" class="btn-mini" onclick="hablar('sssss', 0.4)">Sonido</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-letra">L</td>
+      <td class="col-nombre">"ele"</td>
+      <td class="col-sonido">/lll/</td>
+      <td class="col-accion">
+        <button type="button" class="btn-mini" onclick="hablar('ele')">Nombre</button>
+        <button type="button" class="btn-mini" onclick="hablar('llll', 0.4)">Sonido</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-letra">N</td>
+      <td class="col-nombre">"ene"</td>
+      <td class="col-sonido">/nnn/</td>
+      <td class="col-accion">
+        <button type="button" class="btn-mini" onclick="hablar('ene')">Nombre</button>
+        <button type="button" class="btn-mini" onclick="hablar('nnnn', 0.4)">Sonido</button>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-letra">D</td>
+      <td class="col-nombre">"de"</td>
+      <td class="col-sonido">/d/ (corto)</td>
+      <td class="col-accion">
+        <button type="button" class="btn-mini" onclick="hablar('de')">Nombre</button>
+        <button type="button" class="btn-mini" onclick="hablar('d, da', 0.5)">Sonido</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+</details>
+
+<details>
+<summary>2. Palabras de una y dos sílabas <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Empezamos con un solo paso de baile</h3>
+
+<p>Las palabras más fáciles de leer son las de <strong>una sola sílaba</strong>. Son como un solo paso de baile: la dices y ya está.</p>
+
+<p>Ejemplos: <strong>luz</strong>, <strong>pan</strong>, <strong>sol</strong>, <strong>mar</strong>, <strong>flor</strong>.</p>
+
+<div class="lista-leer">
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">luz</div>
+    <div class="silabeo"><span class="s1">luz</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('luz')">🔊 Leer</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">pan</div>
+    <div class="silabeo"><span class="s1">pan</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('pan')">🔊 Leer</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">sol</div>
+    <div class="silabeo"><span class="s1">sol</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('sol')">🔊 Leer</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">mar</div>
+    <div class="silabeo"><span class="s1">mar</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('mar')">🔊 Leer</button>
+    </div>
+  </div>
+</div>
+
+<h3>Ahora dos pasos de baile: las bisílabas</h3>
+
+<p>Las palabras de <strong>dos sílabas</strong> (que se llaman <span class="palabra-clave">bisílabas</span>) requieren coordinar dos tiempos. Primero pronuncias la primera sílaba, después la segunda, y al unirlas, sale la palabra completa.</p>
+
+<h3>Marcar el ritmo con bloques</h3>
+
+<p>Te presento la técnica de los bloques de colores. Imagina que cada bloque es una sílaba. Haz clic en cada bloque para escucharlo, y después en la palabra completa:</p>
+
+<div style="text-align:center;margin:20px 0">
+  <div class="bloques-decodifica">
+    <span class="bloque-silaba bloque-c1" onclick="hablar('va', 0.55)">va</span>
+    <span class="signo-mas">+</span>
+    <span class="bloque-silaba bloque-c2" onclick="hablar('ca', 0.55)">ca</span>
+    <span class="signo-igual">=</span>
+    <span class="palabra-final" onclick="hablar('vaca')">¡vaca!</span>
+  </div>
+
+  <div class="bloques-decodifica">
+    <span class="bloque-silaba bloque-c1" onclick="hablar('lá', 0.55)">lá</span>
+    <span class="signo-mas">+</span>
+    <span class="bloque-silaba bloque-c2" onclick="hablar('piz', 0.55)">piz</span>
+    <span class="signo-igual">=</span>
+    <span class="palabra-final" onclick="hablar('lápiz')">¡lápiz!</span>
+  </div>
+
+  <div class="bloques-decodifica">
+    <span class="bloque-silaba bloque-c1" onclick="hablar('be', 0.55)">be</span>
+    <span class="signo-mas">+</span>
+    <span class="bloque-silaba bloque-c2" onclick="hablar('bé', 0.55)">bé</span>
+    <span class="signo-igual">=</span>
+    <span class="palabra-final" onclick="hablar('bebé')">¡bebé!</span>
+  </div>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor usa dos bloques o tarjetas de colores diferentes sobre la mesa. Toca el primero y dice la primera sílaba, toca el segundo y dice la segunda. Al unirlos físicamente, todos juntos leen la palabra. Tú puedes hacer lo mismo con dos lápices de colores en tu pupitre.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>Aquí en la página tienes los bloques digitales. Haz clic en cada uno para escuchar su sílaba y luego en la palabra completa. Repite varias veces hasta que tu boca pueda hacerlo sin la ayuda del audio.</p>
+  </div>
+</div>
+
+<div class="ejercicio">
+  <h4>🎯 Constructor de palabras: arma tú mismo</h4>
+  <p style="text-align:center">Haz clic en dos sílabas (en orden) para armar una palabra. Después pulsa <strong>"Leer mi palabra"</strong> para escucharla.</p>
+
+  <div class="constructor">
+    <p style="margin:0 0 8px 0;font-weight:600;color:var(--cp-oscuro)">Sílabas disponibles (haz clic en el orden que quieras):</p>
+    <div class="silabas-disponibles" id="silabas-disponibles">
+      <button type="button" class="silaba-arrastrar" data-silaba="ca">ca</button>
+      <button type="button" class="silaba-arrastrar" data-silaba="sa">sa</button>
+      <button type="button" class="silaba-arrastrar" data-silaba="me">me</button>
+      <button type="button" class="silaba-arrastrar" data-silaba="ma">ma</button>
+      <button type="button" class="silaba-arrastrar" data-silaba="lo">lo</button>
+      <button type="button" class="silaba-arrastrar" data-silaba="pa">pa</button>
+      <button type="button" class="silaba-arrastrar" data-silaba="ta">ta</button>
+      <button type="button" class="silaba-arrastrar" data-silaba="to">to</button>
+    </div>
+
+    <p style="margin:14px 0 8px 0;font-weight:600;color:var(--cp-oscuro)">Tu palabra:</p>
+    <div class="area-palabra" id="area-palabra"></div>
+
+    <div class="botones">
+      <button type="button" class="btn btn-primario" id="btn-leer-construida">🔊 Leer mi palabra</button>
+      <button type="button" class="btn btn-secundario" id="btn-limpiar-construida">Limpiar</button>
+    </div>
+
+    <div class="feedback" id="feedback-constructor"></div>
+  </div>
+
+  <div class="tip" style="margin-top:14px">
+    <strong>💡 Pista:</strong> Algunas combinaciones forman palabras reales (como "casa", "mesa", "mapa", "pato", "loma", "pasa"). Otras combinaciones son inventadas. ¡A ver cuántas reales encuentras!
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica de lectura independiente <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Tu lista de palabras bisílabas</h3>
+
+<p>Aquí tienes una lista de palabras de dos sílabas que aparecen muchísimo en la vida real. Léelas decodificando cada sonido hasta lograr formar la palabra completa. Usa los botones para escucharlas si te trabas.</p>
+
+<div class="lista-leer">
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">bebé</div>
+    <div class="silabeo"><span class="s1">be</span>-<span class="s2">bé</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-silab" onclick="hablar('be, bé', 0.55)">por sílabas</button>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('bebé')">entera</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">bota</div>
+    <div class="silabeo"><span class="s1">bo</span>-<span class="s2">ta</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-silab" onclick="hablar('bo, ta', 0.55)">por sílabas</button>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('bota')">entera</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">boca</div>
+    <div class="silabeo"><span class="s1">bo</span>-<span class="s2">ca</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-silab" onclick="hablar('bo, ca', 0.55)">por sílabas</button>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('boca')">entera</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">dado</div>
+    <div class="silabeo"><span class="s1">da</span>-<span class="s2">do</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-silab" onclick="hablar('da, do', 0.55)">por sílabas</button>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('dado')">entera</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">tigre</div>
+    <div class="silabeo"><span class="s1">ti</span>-<span class="s2">gre</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-silab" onclick="hablar('ti, gre', 0.55)">por sílabas</button>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('tigre')">entera</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">taxi</div>
+    <div class="silabeo"><span class="s1">ta</span>-<span class="s2">xi</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-silab" onclick="hablar('ta, xi', 0.55)">por sílabas</button>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('taxi')">entera</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">mesa</div>
+    <div class="silabeo"><span class="s1">me</span>-<span class="s2">sa</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-silab" onclick="hablar('me, sa', 0.55)">por sílabas</button>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('mesa')">entera</button>
+    </div>
+  </div>
+  <div class="tarjeta-leer">
+    <div class="palabra-grande">pato</div>
+    <div class="silabeo"><span class="s1">pa</span>-<span class="s2">to</span></div>
+    <div class="botones-tarjeta">
+      <button type="button" class="btn-pequeño btn-pequeño-silab" onclick="hablar('pa, to', 0.55)">por sílabas</button>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('pato')">entera</button>
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Estrategia de práctica:</strong> Lee cada palabra primero <em>por sílabas</em> (despacito) y después <em>entera</em>. Repítela tres veces. Con la práctica, esa pausa entre sílabas va a desaparecer y leerás la palabra de un solo golpe. <strong>No te apures.</strong>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor te entrega una hoja impresa con la lista. Tú lees en voz alta cada palabra, primero separando las sílabas y después junta. Si te trabas, el profesor te ayuda. No te apenes: <em>todos pasamos por ahí</em>.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>Aquí en esta misma página tienes las palabras. Practícalas en voz alta. Si quieres, enciende tu micrófono y léelas para que tus compañeros también escuchen. Si tienes vergüenza, léelas en silencio para ti: también vale.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que ya puedes hacer</h3>
+
+<ul class="lista-bonita">
+  <li>Conoces el <strong>sonido</strong> de las letras (no confundirlo con el nombre).</li>
+  <li>Puedes leer palabras de <strong>una sílaba</strong>.</li>
+  <li>Puedes leer palabras <strong>bisílabas</strong> dividiéndolas en bloques.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h3 style="color:#b35316">✅ Antes de irte, prueba</h3>
+  <p>Mira estas palabras nuevas (no las hemos practicado) y trata de leerlas decodificando sílaba por sílaba. Después usa el botón para confirmar:</p>
+  <div class="lista-leer" style="margin-top:14px">
+    <div class="tarjeta-leer">
+      <div class="palabra-grande">gato</div>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('gato')">🔊 Confirmar</button>
+    </div>
+    <div class="tarjeta-leer">
+      <div class="palabra-grande">pelo</div>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('pelo')">🔊 Confirmar</button>
+    </div>
+    <div class="tarjeta-leer">
+      <div class="palabra-grande">lima</div>
+      <button type="button" class="btn-pequeño btn-pequeño-sonido" onclick="hablar('lima')">🔊 Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>🐢 Importante:</strong> Es completamente normal si tu lectura suena un poco separada o lenta al principio. Es como aprender a manejar un carro de cambios: al principio sientes cada movimiento, pero con el tiempo se vuelve natural. En la <strong>próxima clase</strong> vamos a aprender trucos para leer más rápido y con más naturalidad.
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // ============== Síntesis de voz ==============
+  window.hablar=function(texto,velocidad){
+    if(!('speechSynthesis' in window)){
+      alert('Tu navegador no soporta la reproducción de audio. Usa Chrome, Edge o Safari.');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(texto);
+    u.lang='es-ES';
+    u.rate=velocidad||0.85;
+    u.pitch=1;
+    var voces=window.speechSynthesis.getVoices();
+    for(var i=0;i<voces.length;i++){
+      if(voces[i].lang.indexOf('es')===0){
+        u.voice=voces[i];
+        break;
+      }
+    }
+    window.speechSynthesis.speak(u);
+  };
+  if('speechSynthesis' in window){
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged=function(){
+      window.speechSynthesis.getVoices();
+    };
+  }
+
+  // ============== Constructor de palabras ==============
+  var palabrasReales=[
+    'casa','sala','mesa','masa','mapa','pasa','pata','pato','lota','loma',
+    'capa','cama','meta','mete','sapo','sopa','tasa','tomate','sacar','maleta',
+    'patata','sabor','tame','mato','toma','meto','salto','sapote','samba','poco'
+  ];
+
+  var areaPalabra=document.getElementById('area-palabra');
+  var feedback=document.getElementById('feedback-constructor');
+  var silabasDisponibles=document.querySelectorAll('.silaba-arrastrar');
+  var construida=[];
+
+  silabasDisponibles.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      if(btn.classList.contains('usada'))return;
+      if(construida.length>=4)return;
+      var sil=btn.getAttribute('data-silaba');
+      construida.push({silaba:sil,origen:btn});
+      btn.classList.add('usada');
+      renderConstruida();
+    });
+  });
+
+  function renderConstruida(){
+    areaPalabra.innerHTML='';
+    construida.forEach(function(item,idx){
+      var d=document.createElement('span');
+      d.className='silaba-construida';
+      d.textContent=item.silaba;
+      d.title='Quitar';
+      d.addEventListener('click',function(){
+        item.origen.classList.remove('usada');
+        construida.splice(idx,1);
+        renderConstruida();
+        feedback.textContent='';
+        feedback.className='feedback';
+      });
+      areaPalabra.appendChild(d);
+    });
+  }
+
+  document.getElementById('btn-leer-construida').addEventListener('click',function(){
+    if(construida.length===0){
+      feedback.textContent='Primero arma una palabra haciendo clic en las sílabas.';
+      feedback.className='feedback neutral';
+      return;
+    }
+    var palabra=construida.map(function(c){return c.silaba}).join('');
+    var separada=construida.map(function(c){return c.silaba}).join(', ');
+
+    // Pronunciar primero separada, luego entera
+    window.hablar(separada,0.55);
+    setTimeout(function(){
+      window.hablar(palabra,0.85);
+    },construida.length*700+200);
+
+    // Verificar si es palabra real
+    if(palabrasReales.indexOf(palabra.toLowerCase())!==-1){
+      feedback.innerHTML='✅ ¡<strong>'+palabra+'</strong>! Eso sí es una palabra real en español. ¡De cine!';
+      feedback.className='feedback correcto';
+    }else{
+      feedback.innerHTML='🤔 "<strong>'+palabra+'</strong>" no es una palabra común, pero la decodificación está bien. Prueba otra combinación.';
+      feedback.className='feedback neutral';
+    }
+  });
+
+  document.getElementById('btn-limpiar-construida').addEventListener('click',function(){
+    construida.forEach(function(item){item.origen.classList.remove('usada')});
+    construida=[];
+    renderConstruida();
+    feedback.textContent='';
+    feedback.className='feedback';
+  });
+})();
+</script>
+
+</body>
+</html>

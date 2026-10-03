@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!-- Lección 1.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 1.3 · La dirección de la lectura y la estructura de la oración</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;--acento:#ff8c42;
+    --texto:#1a2332;--fondo:#fafbfc;--gris:#5f6b78;--gris-claro:#eef1f4;
+    --sujeto:#c2185b;--predicado:#1b5e20;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro)}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px}
+  .caja-objetivos h2{margin-top:0;border:none;padding-left:0}
+  .caja-objetivos h3{margin-top:0}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform .25s;font-size:.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .ejemplo-oracion{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0;font-size:1.15rem;text-align:center;font-family:Georgia,serif}
+  .sujeto{color:var(--sujeto);font-weight:700}
+  .predicado{color:var(--predicado);font-weight:700}
+  .sujeto,.predicado{text-decoration-line:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+  .sujeto{text-decoration-style:solid}
+  .predicado{text-decoration-style:wavy}
+  .leyenda{display:flex;gap:18px;justify-content:center;margin:10px 0 16px;font-size:.95rem;flex-wrap:wrap}
+  .leyenda span{display:inline-flex;align-items:center;gap:6px}
+  .leyenda .punto{width:14px;height:14px;border-radius:50%;display:inline-block}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#6b5400}
+  .ejercicio{background:#f3f9f3;border:2px dashed #4caf50;border-radius:10px;padding:18px 22px;margin:20px 0}
+  .ejercicio h4{color:#2e7d32;margin-top:0}
+  .opciones-arrastrar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
+  .pieza{padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer;border:2px solid;transition:all .2s;font-family:inherit;font-size:1rem}
+  .pieza-sujeto{background:#fce4ec;border-color:var(--sujeto);color:var(--sujeto)}
+  .pieza-predicado{background:#e8f5e9;border-color:var(--predicado);color:var(--predicado)}
+  .pieza:hover{transform:translateY(-2px);box-shadow:0 3px 8px rgba(0,0,0,.15)}
+  .pieza[aria-pressed="true"]{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--acento)}
+  .area-construccion{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:14px 0;min-height:60px;text-align:center;font-size:1.2rem;font-family:Georgia,serif}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.95rem;transition:all .2s}
+  .btn-primario{background:var(--cp-oscuro);color:#fff}
+  .btn-primario:hover{background:#003f63}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .retroalimentacion{margin-top:14px;padding:12px 16px;border-radius:8px;text-align:center;font-weight:600;min-height:20px}
+  .retroalimentacion:empty{padding:0;min-height:0}
+  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+  .aviso{background:#fff3cd;color:#5c3900;border:1px solid #ffeaa7}
+  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+  .flecha-lectura{display:block;margin:18px auto;max-width:100%;height:auto}
+  .texto-demo{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.2rem;line-height:2.1}
+  .texto-demo .pal{border-radius:4px;padding:0 2px;transition:background .15s}
+  .texto-demo .pal.marcada{background:#ffe08a;outline:2px solid var(--acento)}
+  .texto-demo .pal.leida{color:#555}
+  .control-guia{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin:10px 0}
+  .control-guia label{font-size:.95rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+  table.estructura{width:100%;border-collapse:collapse;margin:18px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+  table.estructura caption{text-align:left;font-weight:600;padding:0 0 6px;color:var(--cp-oscuro)}
+  table.estructura th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.estructura td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.estructura tr:last-child td{border-bottom:none}
+  table.estructura td:first-child{font-weight:600;color:var(--sujeto)}
+  table.estructura td:last-child{color:var(--predicado)}
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .indice a:focus-visible,.volver-indice:focus-visible,summary:focus-visible,.btn:focus-visible,.btn-letra:focus-visible,.pieza:focus-visible,.enlace-practica:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  @media print{.indice,.volver-indice,.abrir-cerrar,.control-guia{display:none}details{border:none}}
+  /* ── Quiz de la lección ── */
+  .actividad-unidad{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .actividad-unidad h4{margin:0 0 6px}
+  .quiz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .quiz-preg .enunciado{font-weight:600;margin:0 0 10px}
+  .quiz-preg .num-preg{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .quiz-preg .oracion-preg{display:block;font-family:Georgia,serif;font-size:1.15rem;text-align:center;margin:6px 0 10px;font-weight:400}
+  .opciones-letra{display:flex;flex-direction:column;gap:8px}
+  .btn-letra{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .btn-letra:hover:not(:disabled){border-color:var(--cp)}
+  .btn-letra.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .btn-letra.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .btn-letra.correcta::before{content:'✓ '}
+  .btn-letra.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .btn-letra.incorrecta::before{content:'✗ '}
+  .btn-letra:disabled{cursor:default}
+  .resultado-quiz{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .resultado-quiz.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+
+<body>
+<h1>Lección 1.3 · La dirección de la lectura y la estructura de la oración</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 1 · Unas 2 horas, a tu ritmo</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la lección</h2>
+  <ul class="lista-bonita">
+    <li>Reforzar el <span class="palabra-clave">seguimiento visual</span> del texto impreso: de izquierda a derecha y de arriba abajo.</li>
+    <li>Comprender la <span class="palabra-clave">estructura básica de la oración</span>: sujeto y predicado.</li>
+    <li>Construir oraciones completas y leerlas en voz alta con fluidez.</li>
+  </ul>
+</div>
+
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-direccion-de-la-lectura">Calentamiento: la dirección de la lectura</a></li>
+    <li><a href="#s-2-sujeto-y-predicado">¿Qué es una oración? Sujeto y predicado</a></li>
+    <li><a href="#s-3-construye-oraciones">Práctica: construye tus propias oraciones</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
+
+<h2>📚 Bienvenida</h2>
+<p>Antes de que pienses que esto va a ser aburrido, déjame decirte algo: <strong>leer es como caminar</strong>. Nadie nace sabiéndolo, pero una vez que aprendes a llevar bien los pies (o los ojos), no se olvida nunca más. En esta lección vas a aprender dos cosas que parecen pequeñas pero son la base de todo: <em>hacia dónde miran tus ojos cuando leen</em> y <em>de qué está hecha una oración</em>.</p>
+<p>Vamos por partes. La lección tiene <strong>seis momentos</strong>, y cada uno indica cuánto tiempo te puede llevar. Es solo una orientación: tómate el tiempo que necesites y vuelve a cualquier parte desde el índice.</p>
+
+<details open id="s-1-direccion-de-la-lectura">
+<summary>1. Calentamiento: la dirección de la lectura <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+  <h3>¿Por qué importa la dirección de la lectura?</h3>
+  <p>En español, como en inglés y en casi todos los idiomas occidentales, <strong>leemos de izquierda a derecha y de arriba abajo</strong>. No es un capricho: es una convención que nuestros ojos aprenden desde pequeños. Pero los adultos que vuelven a estudiar a veces han perdido el ritmo, y los ojos saltan, regresan o se pierden entre líneas. <strong>El truco está en entrenar de nuevo ese movimiento.</strong></p>
+
+  <svg class="flecha-lectura" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-titulo svg-desc">
+    <title id="svg-titulo">Recorrido de los ojos al leer</title>
+    <desc id="svg-desc">Tres líneas de texto. Cada una se lee de izquierda a derecha. Al terminar una línea, la vista baja y regresa al comienzo de la línea siguiente.</desc>
+    <defs>
+      <marker id="flecha" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="12" refX="12" refY="6" orient="auto">
+        <polygon points="0 0, 14 6, 0 12" fill="#005a8a"></polygon>
+      </marker>
+      <marker id="flecha2" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto">
+        <polygon points="0 0, 12 5, 0 10" fill="#b35316"></polygon>
+      </marker>
+    </defs>
+    <rect x="10" y="10" width="480" height="180" fill="#fff" stroke="#d6dde4" stroke-width="2" rx="8"></rect>
+    <text x="40" y="38" font-family="Poppins,sans-serif" font-size="12" fill="#005a8a" font-weight="600">Línea 1: de izquierda a derecha →</text>
+    <line x1="40" y1="50" x2="440" y2="50" stroke="#005a8a" stroke-width="3" marker-end="url(#flecha)"></line>
+    <path d="M 445 56 Q 465 72 445 78 L 48 78 Q 30 80 34 96" fill="none" stroke="#b35316" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#flecha2)"></path>
+    <text x="40" y="96" dx="14" font-family="Poppins,sans-serif" font-size="12" fill="#005a8a" font-weight="600">Línea 2: de izquierda a derecha →</text>
+    <line x1="40" y1="108" x2="440" y2="108" stroke="#005a8a" stroke-width="3" marker-end="url(#flecha)"></line>
+    <path d="M 445 114 Q 465 130 445 136 L 48 136 Q 30 138 34 154" fill="none" stroke="#b35316" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#flecha2)"></path>
+    <text x="40" y="154" dx="14" font-family="Poppins,sans-serif" font-size="12" fill="#005a8a" font-weight="600">Línea 3: de izquierda a derecha →</text>
+    <line x1="40" y1="166" x2="440" y2="166" stroke="#005a8a" stroke-width="3" marker-end="url(#flecha)"></line>
+    <text x="425" y="72" text-anchor="end" font-family="Poppins,sans-serif" font-size="11" fill="#8a3d0c">← baja y regresa al comienzo</text>
+    <text x="425" y="130" text-anchor="end" font-family="Poppins,sans-serif" font-size="11" fill="#8a3d0c">← baja y regresa al comienzo</text>
+  </svg>
+
+  <h3>Practica con la guía de lectura</h3>
+  <p>Aquí tienes un párrafo corto para practicar el seguimiento. Pulsa <strong>Empezar la guía</strong>: cada palabra se ilumina por turno, en el orden en que deben moverse tus ojos. Síguela con la vista y, si quieres, también con el dedo sobre la pantalla. Después léelo tú solo, en voz alta y despacio.</p>
+
+  <div class="texto-demo" id="texto-demo">María se levantó muy temprano esa mañana.<br>El cielo todavía estaba oscuro y el café olía rico.<br>Ella sabía que el día sería largo, pero hermoso.</div>
+
+  <div class="control-guia">
+    <button type="button" class="btn btn-primario" id="btn-guia">▶ Empezar la guía</button>
+    <button type="button" class="btn btn-secundario" id="btn-escuchar">🔊 Escuchar el párrafo</button>
+    <label for="vel-guia">Velocidad:</label>
+    <select id="vel-guia">
+      <option value="1100">Muy despacio</option>
+      <option value="800" selected>Despacio</option>
+      <option value="550">Normal</option>
+    </select>
+  </div>
+  <p class="sr-solo" id="estado-guia" aria-live="polite"></p>
+
+  <div class="tip"><strong>💡 Consejo:</strong> si los ojos se te van solos, no te preocupes. Es señal de que el cerebro está aprendiendo. Vuelve al principio del párrafo y respira. La lectura no es una carrera.</div>
+
+  <div class="tip"><strong>📄 Con papel también funciona:</strong> toma cualquier texto impreso (una receta, una carta, el periódico) y léelo pasando el dedo o un lápiz debajo de cada línea. Hasta los lectores expertos lo hacen cuando el texto se pone difícil.</div>
+</div>
+</details>
+
+<details id="s-2-sujeto-y-predicado">
+<summary>2. ¿Qué es una oración? Sujeto y predicado <span class="caja-tiempo">25 min</span></summary>
+<div class="contenido-detalle">
+  <h3>Definición</h3>
+  <p>Una <strong>oración</strong> es un grupo de palabras que expresa <span class="palabra-clave">una idea completa</span>. Si dices «el carro rojo», todavía no es una oración, porque no dices qué pasa con el carro. Pero si dices <em>«el carro rojo está estacionado»</em>, ya sí: hay una idea completa.</p>
+  <p>Toda oración tiene <strong>dos partes esenciales</strong>:</p>
+  <div class="leyenda">
+    <span><span class="punto" style="background:#c2185b" aria-hidden="true"></span><strong>Sujeto</strong> (subrayado recto): ¿quién o qué?</span>
+    <span><span class="punto" style="background:#1b5e20" aria-hidden="true"></span><strong>Predicado</strong> (subrayado ondulado): ¿qué hace o qué le pasa?</span>
+  </div>
+
+  <h3>Ejemplos</h3>
+  <div class="ejemplo-oracion"><span class="sujeto">El perro</span> <span class="predicado">corre por el parque.</span></div>
+  <div class="ejemplo-oracion"><span class="sujeto">Mi vecina</span> <span class="predicado">canta los domingos.</span></div>
+  <div class="ejemplo-oracion"><span class="sujeto">Los estudiantes de la noche</span> <span class="predicado">estudian con muchas ganas.</span></div>
+
+  <p>¿Ves el patrón? El sujeto responde a la pregunta <strong>«¿quién?»</strong> o <strong>«¿qué?»</strong>. El predicado responde a <strong>«¿qué hace?»</strong> o <strong>«¿qué le pasa?»</strong>.</p>
+
+  <table class="estructura">
+    <caption>Más ejemplos de sujeto y predicado</caption>
+    <thead>
+      <tr><th scope="col">Sujeto (¿quién o qué?)</th><th scope="col">Predicado (¿qué hace o qué le pasa?)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mi mamá</td><td>prepara arroz con pollo los domingos.</td></tr>
+      <tr><td>El profesor</td><td>explica con paciencia.</td></tr>
+      <tr><td>Nosotros</td><td>aprendemos cosas nuevas cada día.</td></tr>
+      <tr><td>La lluvia</td><td>cayó toda la tarde.</td></tr>
+      <tr><td>Tú</td><td>vas a pasar este examen.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip"><strong>✏️ En tu cuaderno:</strong> copia las cinco oraciones de la tabla. Subraya el sujeto con un color y el predicado con otro (si no tienes lápices de colores, usa una raya recta para el sujeto y una ondulada para el predicado, como en esta página).</div>
+
+  <div class="tip"><strong>⚠️ Cuidado con esto:</strong> a veces el sujeto no aparece escrito porque está «escondido» en el verbo. Por ejemplo: «Estudio todos los días». El sujeto es <em>yo</em>, aunque no lo digamos. A este sujeto se le llama <strong>sujeto tácito</strong> (es decir, sobreentendido). No te preocupes: por ahora trabajamos con sujetos que se ven.</div>
+</div>
+</details>
+
+<details id="s-3-construye-oraciones">
+<summary>3. Práctica: construye tus propias oraciones <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+  <h3>Manos a la obra</h3>
+  <p>Llegó el momento de armar oraciones tú mismo. La idea es <strong>unir un sujeto con un predicado</strong>, siempre leyendo de izquierda a derecha. Es como construir una casa: primero las paredes y después el techo.</p>
+
+  <div class="ejercicio">
+    <h4>🎯 Actividad interactiva: arma una oración</h4>
+    <p>Elige primero un <span class="sujeto">sujeto</span> y después un <span class="predicado">predicado</span>. Luego pulsa <strong>Comprobar</strong>. Lee en voz alta cada oración que formes.</p>
+
+    <p style="margin-top:18px;font-weight:600;color:var(--sujeto)" id="et-sujetos">Sujetos:</p>
+    <div class="opciones-arrastrar" id="grupo-sujetos" role="group" aria-labelledby="et-sujetos">
+      <button type="button" class="pieza pieza-sujeto" aria-pressed="false" data-texto="El gato negro">El gato negro</button>
+      <button type="button" class="pieza pieza-sujeto" aria-pressed="false" data-texto="Mi hermana">Mi hermana</button>
+      <button type="button" class="pieza pieza-sujeto" aria-pressed="false" data-texto="Los niños">Los niños</button>
+      <button type="button" class="pieza pieza-sujeto" aria-pressed="false" data-texto="El sol">El sol</button>
+    </div>
+    <p style="font-weight:600;color:var(--predicado)" id="et-predicados">Predicados:</p>
+    <div class="opciones-arrastrar" id="grupo-predicados" role="group" aria-labelledby="et-predicados">
+      <button type="button" class="pieza pieza-predicado" aria-pressed="false" data-texto="duerme en el sofá.">duerme en el sofá.</button>
+      <button type="button" class="pieza pieza-predicado" aria-pressed="false" data-texto="cocina muy sabroso.">cocina muy sabroso.</button>
+      <button type="button" class="pieza pieza-predicado" aria-pressed="false" data-texto="juegan en el parque.">juegan en el parque.</button>
+      <button type="button" class="pieza pieza-predicado" aria-pressed="false" data-texto="brilla en el cielo.">brilla en el cielo.</button>
+    </div>
+
+    <p style="margin-top:16px;font-weight:600;text-align:center">Tu oración:</p>
+    <div class="area-construccion" id="area-construccion" aria-live="polite"></div>
+    <div class="botones">
+      <button class="btn btn-primario" id="btn-comprobar" type="button">Comprobar</button>
+      <button class="btn btn-secundario" id="btn-limpiar" type="button">Limpiar</button>
+    </div>
+    <div class="retroalimentacion" id="retroalimentacion" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="tip"><strong>✂️ Versión en papel:</strong> corta diez tarjetas pequeñas. En cinco escribe sujetos (Mi abuela, El autobús, Mis amigos…) y en otras cinco, predicados (llega tarde, ríen mucho…). Mézclalas y forma oraciones al azar. Léelas en voz alta: ¡a ver cuál sale más graciosa! Si alguien de tu casa quiere jugar, háganlo por turnos.</div>
+
+  <a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l1-3.html" target="_blank" rel="noopener">
+    ✍️ Práctica adicional: Mayúscula al inicio, punto al final ↗
+    <span>Toda oración empieza con mayúscula y termina con punto. En esta práctica corriges párrafos y la página te dice dónde está cada error. Se abre en otra pestaña.</span>
+  </a>
+
+  <div class="tip"><strong>📝 Para anotar en tu cuaderno:</strong> después de armar tres oraciones aquí, escríbelas en tu cuaderno y subráyalas: el sujeto con un color y el predicado con otro. Te van a servir en la tarea.</div>
+</div>
+</details>
+
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+  <p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+  <ul class="lista-bonita">
+    <li><strong>Diez oraciones sobre mi día.</strong> Escribe diez oraciones sobre lo que haces en un día normal (por ejemplo: «Mi hijo se levanta a las siete»). Cada una debe empezar con mayúscula y terminar con punto.</li>
+    <li><strong>Sujeto y predicado.</strong> En cada una de tus diez oraciones, subraya el sujeto con una raya recta y el predicado con una raya ondulada.</li>
+    <li><strong>¿Oración o no?</strong> Copia estos grupos de palabras y escribe al lado si son oración o no. Cuando no lo sean, complétalos para que lo sean: <em>«La tienda de la esquina»</em>, <em>«Mi jefe llegó temprano»</em>, <em>«Con mucho cuidado»</em>, <em>«El bebé duerme»</em>.</li>
+    <li><strong>Lectura con guía.</strong> Lee en voz alta un texto corto de tu vida diaria (una receta, un aviso, una noticia) pasando el dedo debajo de cada línea. Hazlo dos veces: la segunda vez, intenta leer sin detenerte.</li>
+  </ul>
+  <div class="tip"><strong>🎯 Antes del quiz:</strong> asegúrate de poder explicar con tus palabras qué es el sujeto y qué es el predicado. Si dudas, vuelve a la <a href="#s-2-sujeto-y-predicado">sección 2</a>.</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+  <div class="actividad-unidad">
+    <h4>✅ Quiz · 15 preguntas · puedes repetirlo las veces que quieras</h4>
+    <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>12 de 15</strong>.</p>
+  </div>
+
+  <div id="quiz-cuerpo"></div>
+
+  <div class="botones">
+    <button type="button" class="btn btn-primario" id="btn-calificar">Ver mi resultado</button>
+    <button type="button" class="btn btn-secundario" id="btn-reintentar" style="display:none">Intentar de nuevo</button>
+  </div>
+  <div class="resultado-quiz" id="resultado-quiz" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+  <h3>Lectura en voz alta</h3>
+  <p>Cierra la lección leyendo en voz alta las oraciones que construiste y las que escribiste en la tarea. Recuerda dos cosas:</p>
+  <ul class="lista-bonita">
+    <li>Sigue la dirección: <strong>de izquierda a derecha</strong>.</li>
+    <li>Pronuncia con calma. Mejor despacio y bien que rápido y mal.</li>
+  </ul>
+
+  <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+    <h3 style="color:#8a3d0c">✅ Antes de terminar, revisa</h3>
+    <ul class="lista-bonita">
+      <li>¿Sabes en qué dirección leemos en español?</li>
+      <li>¿Puedes identificar el sujeto y el predicado de una oración sencilla?</li>
+      <li>¿Sabes hacer una oración nueva uniendo un sujeto con un predicado?</li>
+    </ul>
+    <p style="margin-bottom:0"><strong>Si contestaste «sí» a las tres y lograste 12 de 15 en el quiz, estás listo para seguir.</strong> Si tienes dudas en alguna, vuelve a la parte de la lección que la explica: el índice te lleva directo.</p>
+  </div>
+
+  <div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_2-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 2.1</a>, con la que empieza el Tema 2. Vas a trabajar los sonidos de las palabras, que son la base para leer con soltura. Más adelante, en el Tema 3, aprenderás a distinguir las oraciones completas de los <em>fragmentos</em> (oraciones rotas).</div>
+</div>
+</details>
+
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 1 · Lección 1.3</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
+<script>
+/* ===== Guía de lectura: ilumina cada palabra en orden ===== */
+(function(){
+  var caja=document.getElementById('texto-demo');
+  var lineas=caja.innerHTML.split(/<br\s*\/?>/i);
+  caja.innerHTML=lineas.map(function(l){
+    return l.trim().split(/\s+/).map(function(p){return '<span class="pal">'+p+'</span>';}).join(' ');
+  }).join('<br>');
+  var pals=caja.querySelectorAll('.pal');
+  var btn=document.getElementById('btn-guia');
+  var estado=document.getElementById('estado-guia');
+  var vel=document.getElementById('vel-guia');
+  var temp=null,i=0;
+  function limpiar(){pals.forEach(function(p){p.classList.remove('marcada','leida');});}
+  function detener(texto){
+    if(temp){clearTimeout(temp);temp=null;}
+    btn.textContent='▶ Empezar la guía';
+    if(texto)estado.textContent=texto;
+  }
+  function paso(){
+    if(i>0)pals[i-1].classList.replace('marcada','leida');
+    if(i>=pals.length){detener('Llegaste al final del párrafo. Ahora léelo tú solo, en voz alta.');return;}
+    pals[i].classList.add('marcada');i++;
+    temp=setTimeout(paso,parseInt(vel.value,10));
+  }
+  btn.addEventListener('click',function(){
+    if(temp){detener('Guía detenida.');return;}   // un segundo clic detiene: nunca corren dos guías
+    limpiar();i=0;btn.textContent='■ Detener la guía';
+    estado.textContent='Guía en marcha.';paso();
+  });
+  var btnEsc=document.getElementById('btn-escuchar');
+  if(!('speechSynthesis' in window)){btnEsc.style.display='none';}
+  btnEsc.addEventListener('click',function(){
+    speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(caja.textContent.replace(/\s+/g,' '));
+    u.lang='es-US';u.rate=0.8;
+    var v=speechSynthesis.getVoices().filter(function(x){return /^es/i.test(x.lang);});
+    if(v.length)u.voice=v[0];
+    speechSynthesis.speak(u);
+  });
+})();
+
+/* ===== Arma una oración ===== */
+(function(){
+  var sujetoSel=null,predicadoSel=null;
+  var sujetos=document.querySelectorAll('#grupo-sujetos .pieza');
+  var predicados=document.querySelectorAll('#grupo-predicados .pieza');
+  var area=document.getElementById('area-construccion');
+  var feedback=document.getElementById('retroalimentacion');
+  var ideales={"El gato negro":"duerme en el sofá.","Mi hermana":"cocina muy sabroso.","Los niños":"juegan en el parque.","El sol":"brilla en el cielo."};
+
+  function pintar(){
+    if(!sujetoSel&&!predicadoSel){
+      area.innerHTML='<span style="color:var(--gris);font-style:italic;font-size:1rem">(elige un sujeto y un predicado)</span>';return;
+    }
+    area.innerHTML=(sujetoSel?'<span class="sujeto">'+sujetoSel+'</span>':'<span style="color:var(--gris);font-style:italic">[sujeto]</span>')+' '+
+                   (predicadoSel?'<span class="predicado">'+predicadoSel+'</span>':'<span style="color:var(--gris);font-style:italic">[predicado]</span>');
+  }
+  function aviso(texto,clase){feedback.textContent=texto;feedback.className='retroalimentacion'+(clase?' '+clase:'');}
+  function marcar(grupo,pieza){
+    grupo.forEach(function(p){p.setAttribute('aria-pressed','false');});
+    if(pieza)pieza.setAttribute('aria-pressed','true');
+  }
+  sujetos.forEach(function(p){p.addEventListener('click',function(){marcar(sujetos,p);sujetoSel=p.getAttribute('data-texto');aviso('');pintar();});});
+  predicados.forEach(function(p){p.addEventListener('click',function(){marcar(predicados,p);predicadoSel=p.getAttribute('data-texto');aviso('');pintar();});});
+
+  document.getElementById('btn-comprobar').addEventListener('click',function(){
+    if(!sujetoSel||!predicadoSel){aviso('Te falta elegir '+(!sujetoSel?'un sujeto':'un predicado')+'.','incorrecto');return;}
+    /* Toda combinación cumple la estructura sujeto + predicado; algunas tienen más sentido que otras.
+       («Los niños» es plural y pide un predicado en plural; los demás sujetos, en singular.) */
+    var plural=sujetoSel==='Los niños', predPlural=predicadoSel==='juegan en el parque.';
+    if(ideales[sujetoSel]===predicadoSel){
+      aviso('✅ ¡Excelente! Esa oración tiene sentido completo y la combinación es muy natural. Léela en voz alta.','correcto');
+    }else if(plural!==predPlural){
+      aviso('🔎 Tiene sujeto y predicado, pero no suena bien: «'+sujetoSel+'» es '+(plural?'plural (varios)':'singular (uno)')+' y el predicado está en '+(predPlural?'plural':'singular')+'. Prueba otra combinación.','aviso');
+    }else{
+      aviso('✅ La estructura es correcta (sujeto + predicado), pero la combinación queda un poco rara. Prueba otra que tenga más sentido.','aviso');
+    }
+  });
+  document.getElementById('btn-limpiar').addEventListener('click',function(){
+    sujetoSel=predicadoSel=null;marcar(sujetos);marcar(predicados);aviso('');pintar();
+  });
+  pintar();
+})();
+
+/* ===== Quiz de la lección (15 preguntas) ===== */
+(function(){
+  var S='<span class="sujeto">',P='<span class="predicado">',F='</span>';
+  var PREGUNTAS=[
+    {t:'En español, ¿en qué dirección leemos cada línea?',o:['De derecha a izquierda','De izquierda a derecha','De abajo arriba'],c:1},
+    {t:'Al terminar de leer una línea, ¿adónde van los ojos?',o:['Al comienzo de la línea de abajo','Al final de la línea de arriba','Al comienzo de la misma línea'],c:0},
+    {t:'¿Qué es una oración?',o:['Una sola palabra importante','Una lista de palabras sueltas','Un grupo de palabras que expresa una idea completa'],c:2},
+    {t:'¿Cuál de estos grupos de palabras es una oración?',o:['El carro rojo','El carro rojo está estacionado.','Con el carro rojo'],c:1},
+    {t:'¿Cuál de estos grupos de palabras <strong>no</strong> es una oración?',o:['Mi hermano trabaja de noche.','La lluvia cayó toda la tarde.','La casa grande de la esquina'],c:2},
+    {t:'¿A qué pregunta responde el sujeto?',o:['¿Quién o qué?','¿Cuándo?','¿Qué hace o qué le pasa?'],c:0},
+    {t:'¿A qué pregunta responde el predicado?',o:['¿Dónde?','¿Qué hace o qué le pasa?','¿Quién o qué?'],c:1},
+    {t:'¿Cuál es el <strong>sujeto</strong> de esta oración?',s:'El perro corre por el parque.',o:['corre por el parque','el parque','El perro'],c:2},
+    {t:'¿Cuál es el <strong>sujeto</strong> de esta oración?',s:'Mi vecina canta los domingos.',o:['Mi vecina','canta','los domingos'],c:0},
+    {t:'¿Cuál es el <strong>predicado</strong> de esta oración?',s:'Los estudiantes de la noche estudian con muchas ganas.',o:['Los estudiantes','estudian con muchas ganas','de la noche'],c:1},
+    {t:'¿Cuál es el <strong>predicado</strong> de esta oración?',s:'Mi mamá prepara arroz con pollo.',o:['Mi mamá','arroz con pollo','prepara arroz con pollo'],c:2},
+    {t:'¿Qué predicado completa mejor esta oración?',s:S+'El sol'+F+' ___',o:['brilla en el cielo.','juegan en el parque.','duermen en el sofá.'],c:0},
+    {t:'¿Qué sujeto completa mejor esta oración?',s:'___ '+P+'juegan en el parque.'+F,o:['El niño','Los niños','Mi hermana'],c:1},
+    {t:'En la oración «Estudio todos los días», ¿cuál es el sujeto?',o:['todos los días','Estudio','yo (aunque no está escrito)'],c:2},
+    {t:'¿Cómo se llama el sujeto que no está escrito pero se entiende?',o:['Sujeto tácito','Sujeto doble','Predicado'],c:0}
+  ];
+  var cuerpo=document.getElementById('quiz-cuerpo'),elegidas={};
+  PREGUNTAS.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='quiz-preg';d.setAttribute('role','group');d.setAttribute('aria-labelledby','enun-'+i);
+    var h='<p class="enunciado" id="enun-'+i+'"><span class="num-preg">'+(i+1)+'</span>'+p.t+
+          (p.s?'<span class="oracion-preg">'+p.s+'</span>':'')+'</p><div class="opciones-letra">';
+    p.o.forEach(function(op,j){h+='<button type="button" class="btn-letra" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+op+'</button>';});
+    d.innerHTML=h+'</div>';cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var b=ev.target.closest('.btn-letra');if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.btn-letra[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida');b.setAttribute('aria-pressed','true');elegidas[i]=parseInt(b.getAttribute('data-j'),10);
+  });
+  var res=document.getElementById('resultado-quiz');
+  document.getElementById('btn-calificar').addEventListener('click',function(){
+    var bien=0;
+    PREGUNTAS.forEach(function(p,i){
+      cuerpo.querySelectorAll('.btn-letra[data-i="'+i+'"]').forEach(function(x){
+        var j=parseInt(x.getAttribute('data-j'),10);
+        x.disabled=true;x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta');else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=12){msg='¡Excelente! '+bien+' de 15. Ya reconoces el sujeto y el predicado y puedes continuar con la Lección 2.1.';fondo='#d4edda';color='#155724';}
+    else if(bien>=9){msg='Buen trabajo: '+bien+' de 15. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de 15. Vuelve a leer la sección 2 y repite el quiz: con práctica sale.';fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg;res.style.background=fondo;res.style.color=color;res.classList.add('visible');
+    this.style.display='none';document.getElementById('btn-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('btn-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.btn-letra').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={};res.classList.remove('visible');res.textContent='';
+    this.style.display='none';document.getElementById('btn-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id);if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
+})();
+</script>
+</body>
+</html>

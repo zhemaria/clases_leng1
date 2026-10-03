@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 4: Los detalles que sostienen la idea</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --principal:#c62828;--principal-claro:#ffebee;
+    --ejemplo:#1565c0;--ejemplo-claro:#e3f2fd;
+    --dato:#2e7d32;--dato-claro:#e8f5e9;
+    --descripcion:#6a1b9a;--descripcion-claro:#f3e5f5;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Tipos de detalles */
+  .tipos-detalle{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+  @media(max-width:768px){.tipos-detalle{grid-template-columns:1fr}}
+  .tipo-detalle{background:#fff;border-radius:10px;padding:16px;border-top:5px solid}
+  .tipo-detalle.ejemplo{border-color:var(--ejemplo);background:var(--ejemplo-claro)}
+  .tipo-detalle.dato{border-color:var(--dato);background:var(--dato-claro)}
+  .tipo-detalle.descripcion{border-color:var(--descripcion);background:var(--descripcion-claro)}
+  .tipo-detalle h4{margin-top:0}
+  .tipo-detalle.ejemplo h4{color:var(--ejemplo)}
+  .tipo-detalle.dato h4{color:var(--dato)}
+  .tipo-detalle.descripcion h4{color:var(--descripcion)}
+  .tipo-detalle .icono{font-size:2rem;display:block;margin-bottom:6px;text-align:center}
+  .tipo-detalle .muestra{background:rgba(255,255,255,0.7);padding:8px 10px;border-radius:6px;font-family:'Georgia',serif;font-size:0.9rem;font-style:italic;margin-top:8px}
+
+  /* Marcadores en texto */
+  .mark-ej{background:var(--ejemplo-claro);color:var(--ejemplo);padding:1px 5px;border-radius:3px;font-weight:600}
+  .mark-dato{background:var(--dato-claro);color:var(--dato);padding:1px 5px;border-radius:3px;font-weight:600}
+  .mark-desc{background:var(--descripcion-claro);color:var(--descripcion);padding:1px 5px;border-radius:3px;font-weight:600}
+  .mark-idea{background:var(--principal-claro);color:var(--principal);padding:2px 6px;border-radius:4px;font-weight:700;border-bottom:2px solid var(--principal)}
+
+  /* Texto con marcas */
+  .texto-marcado{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:18px 22px;margin:14px 0;font-family:'Georgia',serif;line-height:2;font-size:1.05rem}
+
+  /* Detalle que NO encaja */
+  .item-intruso{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .idea-cabecera{background:var(--principal-claro);border-left:4px solid var(--principal);padding:10px 14px;border-radius:6px;margin-bottom:12px}
+  .idea-cabecera strong{color:var(--principal)}
+  .opciones-intruso{display:flex;flex-direction:column;gap:8px}
+  .btn-intruso{padding:12px 14px;border:2px solid var(--cp);background:#fff;color:var(--texto);border-radius:8px;cursor:pointer;font-family:'Georgia',serif;font-size:0.95rem;text-align:left;transition:all 0.2s}
+  .btn-intruso:hover{background:var(--cp-claro)}
+  .btn-intruso.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-intruso.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error)}
+
+  /* Clasificar tipo de detalle */
+  .item-clasificar{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:12px 0}
+  .frase-clasificar{font-family:'Georgia',serif;font-size:1.05rem;margin-bottom:10px;text-align:center;background:#f7f9fb;padding:10px 14px;border-radius:6px;font-style:italic}
+  .opciones-clasificar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-clasificar{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-clasificar[data-tipo="ejemplo"]{border-color:var(--ejemplo);color:var(--ejemplo)}
+  .btn-clasificar[data-tipo="dato"]{border-color:var(--dato);color:var(--dato)}
+  .btn-clasificar[data-tipo="descripcion"]{border-color:var(--descripcion);color:var(--descripcion)}
+  .btn-clasificar.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-clasificar.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+  .badge-rubrica{background:#fff3e0;color:#e65100}
+
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#b35316;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#b35316;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-3{background:#fff8e1}
+  .nivel-2{background:#fff3e0}
+  .nivel-1{background:#ffebee}
+</style>
+</head>
+<body>
+
+<h1>Clase 4: Los detalles que sostienen la idea</h1>
+<p class="subtitulo">Diferenciar la idea principal de los detalles de apoyo · Nivel 1 · Tema 4, semana 8</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Aprender a <strong>identificar los detalles de apoyo</strong> de un párrafo y reconocer sus distintos tipos (ejemplos, datos y descripciones), distinguiéndolos de la idea principal y de las oraciones que no apoyan.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>La clase anterior se centró en la identificación de la idea principal de un párrafo. Sin embargo, la idea principal por sí sola resulta insuficiente: requiere <span class="palabra-clave">detalles de apoyo</span> que la sustenten, la expliquen y la hagan creíble. Sin detalles, la idea queda vacía y abstracta. Sin idea principal, los detalles carecen de dirección y propósito. En esta sesión examinaremos el párrafo como una unidad completa — <strong>idea principal acompañada de sus detalles</strong> — y aprenderemos a distinguir los distintos tipos de detalles que emplean los autores para fortalecer su argumentación.</p>
+
+<details open>
+<summary>1. ¿Qué son los detalles de apoyo? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Detalles: las pruebas de la idea principal</h3>
+
+<p>Los <span class="palabra-clave">detalles de apoyo</span> son las oraciones que <strong>sostienen, explican y fortalecen</strong> la idea principal del párrafo. Funcionan como <em>pruebas</em>: te dan razones, ejemplos o datos que muestran por qué la idea principal es verdadera.</p>
+
+<div class="tip">
+  <strong>⚖️ Prueba del párrafo:</strong> Si un detalle se conecta directamente con la idea principal y la apoya, es un <em>detalle de apoyo</em>. Si una oración habla de otra cosa o no aporta, es información secundaria que sobra.
+</div>
+
+<h3>Modelaje: idea principal y detalles juntos</h3>
+
+<p>Mira este párrafo. La idea principal está en rojo y los detalles de apoyo en sus colores correspondientes:</p>
+
+<div class="texto-marcado">
+  <span class="mark-idea">El huracán Ike causó mucho daño en Cuba en 2008.</span> <span class="mark-dato">Sus vientos alcanzaron 110 millas por hora</span> y <span class="mark-dato">la marejada llegó a 15 pies de altura</span>. <span class="mark-desc">Las calles de Holguín quedaron inundadas y muchas casas perdieron el techo.</span> <span class="mark-ej">En el municipio de Gibara, por ejemplo, miles de personas se quedaron sin hogar.</span>
+</div>
+
+<div class="tip">
+  <strong>👀 Observa:</strong> La <span class="mark-idea">idea principal</span> dice <em>qué</em> pasó. Los detalles dicen <em>cuánto, cómo, dónde y para qué</em>. Sin esos detalles, la idea sería solo una afirmación sin pruebas.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Los tres tipos de detalles de apoyo <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Tres formas de apoyar una idea</h3>
+
+<p>Los autores usan diferentes tipos de detalles según lo que quieren transmitir. Los tres más comunes son:</p>
+
+<div class="tipos-detalle">
+  <div class="tipo-detalle ejemplo">
+    <span class="icono">💡</span>
+    <h4>Ejemplos</h4>
+    <p>Casos concretos que ilustran la idea principal.</p>
+    <div class="muestra">"Por ejemplo, en Gibara miles de personas se quedaron sin hogar."</div>
+  </div>
+  <div class="tipo-detalle dato">
+    <span class="icono">🔢</span>
+    <h4>Datos</h4>
+    <p>Números, cantidades, fechas, estadísticas precisas.</p>
+    <div class="muestra">"Los vientos alcanzaron 110 millas por hora."</div>
+  </div>
+  <div class="tipo-detalle descripcion">
+    <span class="icono">🖼️</span>
+    <h4>Descripciones</h4>
+    <p>Detalles visuales o sensoriales que ayudan a imaginar la escena.</p>
+    <div class="muestra">"Las calles quedaron inundadas y muchas casas perdieron el techo."</div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>💡 Idea clave:</strong> Un buen párrafo suele combinar los tres tipos. <strong>Datos</strong> para dar peso. <strong>Ejemplos</strong> para concretar. <strong>Descripciones</strong> para visualizar.
+</div>
+
+<h3>Práctica: ¿qué tipo de detalle es?</h3>
+
+<p>Para cada oración, decide si es un ejemplo, un dato o una descripción.</p>
+
+<div id="ejercicio-clasificar"></div>
+<div class="puntaje" id="puntaje-clasificar">Aciertos: 0 / 6</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. El detalle intruso: el que no apoya <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>No todo lo que está en el párrafo apoya la idea</h3>
+
+<p>A veces un párrafo tiene una oración que <strong>no se conecta</strong> con la idea principal. Esa oración es un <span class="palabra-clave">detalle intruso</span> — sobra, no aporta, distrae. Saber detectarlo es una destreza importante para el GED.</p>
+
+<div class="tip">
+  <strong>🔍 Cómo detectar un intruso:</strong> Pregúntate por cada oración: <em>"¿Esta oración me ayuda a entender o probar la idea principal?"</em> Si la respuesta es <strong>no</strong>, es un intruso.
+</div>
+
+<h3>Modelaje: encontrar el intruso</h3>
+
+<p>Lee este párrafo. La idea principal está en rojo. ¿Cuál oración <strong>NO</strong> apoya la idea?</p>
+
+<div class="texto-marcado">
+  <span class="mark-idea">Caminar todos los días tiene muchos beneficios para la salud.</span> Mejora el corazón y baja la presión arterial. <span style="background:#ffebee;color:#c62828;text-decoration:line-through;padding:1px 4px;border-radius:3px">La ciudad de Chicago tiene muchos parques bonitos.</span> Ayuda a controlar el peso y a dormir mejor. Lo mejor es que no necesitas equipo especial.
+</div>
+
+<div class="tip" style="background:#ffebee;border-left-color:var(--error)">
+  <strong style="color:var(--error)">❌ Intruso detectado:</strong> "La ciudad de Chicago tiene muchos parques bonitos" habla de Chicago, no de los <em>beneficios de caminar</em>. Aunque suene relacionado (caminamos en parques), no apoya directamente la idea principal del párrafo.
+</div>
+
+<h3>Práctica: encuentra el intruso</h3>
+
+<p>Para cada idea principal, hay cuatro oraciones. Tres apoyan la idea, una es intrusa. Encuentra la intrusa.</p>
+
+<div id="ejercicio-intruso"></div>
+<div class="puntaje" id="puntaje-intruso">Aciertos: 0 / 4</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Práctica integradora: huracán Ike <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Identificar idea principal + dos detalles</h3>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura + ejercicio</span> En parejas · sincrónico</h4>
+  <p>El profesor reparte un texto corto sobre el huracán Ike (u otro evento). En parejas, los estudiantes deben:</p>
+  <ul class="lista-bonita">
+    <li>Identificar la <strong>idea principal</strong> del texto (ejemplo: <em>"El huracán causó mucho daño"</em>).</li>
+    <li>Extraer <strong>dos detalles específicos</strong> que apoyan la idea (ejemplo: <em>"vientos de 110 mph"</em> y <em>"marejada de 15 pies"</em>).</li>
+    <li>Clasificar cada detalle: ¿es un ejemplo, un dato o una descripción?</li>
+  </ul>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>Los estudiantes usan un papel dividido en dos columnas. En la izquierda escriben la idea principal. En la derecha, los dos detalles con su tipo (ej / dato / desc). Tres parejas presentan sus respuestas.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>Las parejas trabajan en salas pequeñas con un documento compartido. Al regresar, cada pareja pega su respuesta en el chat. El profesor proyecta dos o tres para comparar.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Cierre: lo que aprendimos hoy <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<ul class="lista-bonita">
+  <li>Los <strong>detalles de apoyo</strong> sostienen y explican la idea principal.</li>
+  <li>Hay tres tipos comunes: <strong>ejemplos, datos y descripciones</strong>.</li>
+  <li>Un buen párrafo suele combinar varios tipos de detalles.</li>
+  <li>Algunas oraciones son <strong>intrusas</strong>: no apoyan la idea principal y deben detectarse.</li>
+  <li>La pregunta clave es: <em>"¿Esta oración apoya la idea principal?"</em></li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuáles son los tres tipos de detalles de apoyo?</li>
+    <li>¿Qué es un detalle intruso? ¿Cómo se detecta?</li>
+    <li>¿Por qué los datos son útiles para apoyar una idea?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Vamos a aprender a <strong>descifrar palabras desconocidas</strong> sin diccionario, usando las pistas del contexto. Es una herramienta poderosísima para el GED.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Párrafos informativos cortos</h4>
+  <p>Lecturas: continuación de los párrafos cortos (3–5 oraciones) iniciados en la Clase 3. Modalidad: <strong>lectura silenciosa breve + análisis idea-detalles</strong>.</p>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> "Mi mapa de la idea"</h4>
+  <p>En el foro de Brightspace, cada estudiante:</p>
+  <ul class="lista-bonita">
+    <li>Copia un párrafo asignado.</li>
+    <li>Identifica la <strong>idea principal</strong> y la transcribe.</li>
+    <li>Lista <strong>dos detalles de apoyo</strong> y los clasifica (ejemplo / dato / descripción).</li>
+    <li>Si hay un detalle intruso, lo marca y explica por qué no apoya.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-quiz">Quiz</span> 12 preguntas · Brightspace (cierre de Lección 4.2)</h4>
+  <p>El quiz cubre las dos clases de la lección:</p>
+  <ul class="lista-bonita">
+    <li>Leer un párrafo y elegir la idea principal (opción múltiple).</li>
+    <li>Emparejar detalles con la idea principal correcta.</li>
+    <li>Clasificar detalles como ejemplo, dato o descripción.</li>
+    <li>Identificar la oración que <strong>NO</strong> apoya la idea principal (intruso).</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Holística (escala 1–4) · Foro "Mi mapa de la idea"</h4>
+  <p>La respuesta del foro se evalúa con esta rúbrica:</p>
+
+  <table class="rubrica">
+    <thead>
+      <tr>
+        <th>Nivel</th>
+        <th class="nivel-4">4 — Excelente</th>
+        <th class="nivel-3">3 — Bueno</th>
+        <th class="nivel-2">2 — Aceptable</th>
+        <th class="nivel-1">1 — Inicial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Análisis del párrafo</td>
+        <td class="nivel-4">Idea correcta + 2 detalles bien clasificados</td>
+        <td class="nivel-3">Idea correcta + 2 detalles (clasificación parcial)</td>
+        <td class="nivel-2">Idea correcta + 1 detalle</td>
+        <td class="nivel-1">Idea incorrecta o sin detalles</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje:</strong> 1–4. Cierre de la Lección 4.2.</p>
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Ejercicio 1: clasificar tipo de detalle
+  var detallesClasificar=[
+    {frase:'Por ejemplo, el huracán María dejó a Puerto Rico sin electricidad por meses.',correcta:'ejemplo'},
+    {frase:'El 35% de los adultos en Estados Unidos no duerme las ocho horas recomendadas.',correcta:'dato'},
+    {frase:'Las hojas amarillas y rojas del otoño cubrían todo el parque.',correcta:'descripcion'},
+    {frase:'Cuba tiene 11 millones de habitantes.',correcta:'dato'},
+    {frase:'Los frijoles olían a comino y ajo recién picado.',correcta:'descripcion'},
+    {frase:'Mi vecina Rosa, por ejemplo, terminó el GED a los 65 años.',correcta:'ejemplo'}
+  ];
+
+  var resueltasC={};
+  var aciertosC=0;
+  var contC=document.getElementById('ejercicio-clasificar');
+
+  detallesClasificar.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-clasificar';
+    div.innerHTML=
+      '<div class="frase-clasificar">"'+item.frase+'"</div>'+
+      '<div class="opciones-clasificar">'+
+        '<button type="button" class="btn-clasificar" data-tipo="ejemplo">💡 Ejemplo</button>'+
+        '<button type="button" class="btn-clasificar" data-tipo="dato">🔢 Dato</button>'+
+        '<button type="button" class="btn-clasificar" data-tipo="descripcion">🖼️ Descripción</button>'+
+      '</div>';
+    contC.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-clasificar');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasC[idx])return;
+        if(b.getAttribute('data-tipo')===item.correcta){
+          b.classList.add('correcta');
+          resueltasC[idx]=true;
+          aciertosC++;
+          actualizarPuntajeC();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeC(){
+    var el=document.getElementById('puntaje-clasificar');
+    el.textContent='Aciertos: '+aciertosC+' / '+detallesClasificar.length;
+    if(aciertosC===detallesClasificar.length){
+      el.innerHTML='🎉 ¡Excelente trabajo! Aciertos: '+aciertosC+' / '+detallesClasificar.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Ejercicio 2: detectar el intruso
+  var grupos=[
+    {
+      idea:'Aprender a manejar abre muchas oportunidades en la vida adulta.',
+      oraciones:[
+        {texto:'Permite buscar trabajo en barrios más lejanos.',intruso:false},
+        {texto:'Ayuda a llevar a los hijos al médico sin depender de nadie.',intruso:false},
+        {texto:'En Cuba muchos manejan motos chinas porque son baratas.',intruso:true},
+        {texto:'Te da independencia para hacer mandados cuando tú quieras.',intruso:false}
+      ]
+    },
+    {
+      idea:'El desayuno es la comida más importante del día.',
+      oraciones:[
+        {texto:'Le da energía al cuerpo después de muchas horas sin comer.',intruso:false},
+        {texto:'Ayuda a concentrarse mejor en el trabajo o el estudio.',intruso:false},
+        {texto:'La cena tradicional cubana incluye arroz y frijoles.',intruso:true},
+        {texto:'Las personas que desayunan tienden a comer mejor el resto del día.',intruso:false}
+      ]
+    },
+    {
+      idea:'Cuidar el dinero es una destreza importante para los adultos.',
+      oraciones:[
+        {texto:'Hacer un presupuesto mensual ayuda a no gastar de más.',intruso:false},
+        {texto:'Ahorrar un poco cada semana protege para emergencias.',intruso:false},
+        {texto:'Mi prima trabaja en un banco de Miami.',intruso:true},
+        {texto:'Comparar precios antes de comprar evita gastos innecesarios.',intruso:false}
+      ]
+    },
+    {
+      idea:'La diabetes es una enfermedad seria que se puede controlar.',
+      oraciones:[
+        {texto:'Una dieta sana con poco azúcar mantiene los niveles de glucosa estables.',intruso:false},
+        {texto:'El ejercicio diario ayuda al cuerpo a procesar mejor el azúcar.',intruso:false},
+        {texto:'Tomar las medicinas a la hora correcta es fundamental.',intruso:false},
+        {texto:'Los hospitales de Chicago tienen muchas especialidades médicas.',intruso:true}
+      ]
+    }
+  ];
+
+  var resueltasG={};
+  var aciertosG=0;
+  var contG=document.getElementById('ejercicio-intruso');
+
+  grupos.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-intruso';
+    var opcionesHTML=item.oraciones.map(function(op){
+      return '<button type="button" class="btn-intruso" data-intruso="'+op.intruso+'">'+op.texto+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="idea-cabecera"><strong>Idea principal:</strong> '+item.idea+'</div>'+
+      '<p style="margin-bottom:8px;font-size:0.9rem;color:var(--gris)">Clic en la oración que <strong>NO</strong> apoya la idea:</p>'+
+      '<div class="opciones-intruso">'+opcionesHTML+'</div>';
+    contG.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-intruso');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasG[idx])return;
+        if(b.getAttribute('data-intruso')==='true'){
+          b.classList.add('correcta');
+          resueltasG[idx]=true;
+          aciertosG++;
+          actualizarPuntajeG();
+          botones.forEach(function(other){if(other!==b)other.disabled=true});
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},600);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeG(){
+    var el=document.getElementById('puntaje-intruso');
+    el.textContent='Aciertos: '+aciertosG+' / '+grupos.length;
+    if(aciertosG===grupos.length){
+      el.innerHTML='🎉 ¡Felicitaciones! Aciertos: '+aciertosG+' / '+grupos.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

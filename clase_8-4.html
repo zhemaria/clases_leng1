@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 4: Presentación oral breve</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--exito-claro:#e8f5e9;--error:#c62828;--error-claro:#fdecea;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    /* Colores para las 3 partes del discurso */
+    --apertura:#0277bd;--apertura-claro:#e1f5fe;--apertura-oscuro:#01486d;
+    --desarrollo:#7b3fbf;--desarrollo-claro:#f3e8ff;--desarrollo-oscuro:#5a2d8f;
+    --cierre:#2e7d32;--cierre-claro:#e8f5e9;--cierre-oscuro:#1b5e20;
+    /* Colores para canal vocal */
+    --vocal:#ef6c00;--vocal-claro:#fff3e0;--vocal-oscuro:#a04200;
+    /* Rúbrica niveles */
+    --nivel1:#c62828;--nivel1-claro:#fdecea;
+    --nivel2:#ef6c00;--nivel2-claro:#fff3e0;
+    --nivel3:#0277bd;--nivel3-claro:#e1f5fe;
+    --nivel4:#2e7d32;--nivel4-claro:#e8f5e9;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:#ffeb3b;padding:1px 6px;border-radius:3px;font-weight:600}
+
+  /* Estructura del discurso: 3 partes */
+  .estructura-discurso{display:grid;grid-template-columns:1fr;gap:12px;margin:20px 0;max-width:760px;margin-left:auto;margin-right:auto}
+  .parte-discurso{background:#fff;border-radius:12px;padding:16px 18px;border-left:6px solid;display:flex;gap:16px;align-items:flex-start;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+  .parte-discurso.p-apertura{border-left-color:var(--apertura);background:var(--apertura-claro)}
+  .parte-discurso.p-desarrollo{border-left-color:var(--desarrollo);background:var(--desarrollo-claro)}
+  .parte-discurso.p-cierre{border-left-color:var(--cierre);background:var(--cierre-claro)}
+  .parte-discurso .icono-pd{font-size:2.4rem;flex-shrink:0;display:flex;align-items:center}
+  .parte-discurso .cont-pd{flex:1}
+  .parte-discurso .titulo-pd{font-weight:700;font-size:1.1rem;display:block;margin-bottom:4px}
+  .parte-discurso.p-apertura .titulo-pd{color:var(--apertura-oscuro)}
+  .parte-discurso.p-desarrollo .titulo-pd{color:var(--desarrollo-oscuro)}
+  .parte-discurso.p-cierre .titulo-pd{color:var(--cierre-oscuro)}
+  .parte-discurso .tiempo-pd{display:inline-block;background:#fff;padding:2px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;margin-bottom:8px}
+  .parte-discurso.p-apertura .tiempo-pd{color:var(--apertura-oscuro);border:1px solid var(--apertura)}
+  .parte-discurso.p-desarrollo .tiempo-pd{color:var(--desarrollo-oscuro);border:1px solid var(--desarrollo)}
+  .parte-discurso.p-cierre .tiempo-pd{color:var(--cierre-oscuro);border:1px solid var(--cierre)}
+  .parte-discurso .desc-pd{font-size:0.94rem;line-height:1.55;color:var(--texto);margin:6px 0}
+  .parte-discurso .ejemplo-pd{background:#fff;padding:8px 12px;border-radius:6px;font-style:italic;font-size:0.88rem;margin-top:8px;border-left:3px solid}
+  .parte-discurso.p-apertura .ejemplo-pd{border-left-color:var(--apertura);color:var(--apertura-oscuro)}
+  .parte-discurso.p-desarrollo .ejemplo-pd{border-left-color:var(--desarrollo);color:var(--desarrollo-oscuro)}
+  .parte-discurso.p-cierre .ejemplo-pd{border-left-color:var(--cierre);color:var(--cierre-oscuro)}
+
+  /* Canal vocal - tabla de aspectos */
+  .canal-vocal{background:#fff;border:2px solid var(--vocal);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 2px 10px rgba(239,108,0,0.1)}
+  .canal-vocal h4{margin-top:0;text-align:center;color:var(--vocal-oscuro)}
+  .aspectos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+  .aspecto{background:var(--vocal-claro);border:2px solid var(--vocal);border-radius:10px;padding:14px 14px}
+  .aspecto .icono-asp{font-size:1.6rem;display:block;margin-bottom:4px}
+  .aspecto .titulo-asp{font-weight:700;color:var(--vocal-oscuro);display:block;font-size:1rem;margin-bottom:4px}
+  .aspecto .desc-asp{font-size:0.88rem;line-height:1.55;color:var(--texto);display:block;margin-bottom:6px}
+  .aspecto .consejo-asp{font-style:italic;font-size:0.85rem;color:var(--vocal-oscuro);display:block;background:#fff;padding:6px 10px;border-radius:4px;border-left:3px solid var(--vocal)}
+
+  /* Muletillas */
+  .muletillas-cont{background:var(--error-claro);border:2px solid var(--error);border-radius:10px;padding:16px 18px;margin:18px 0}
+  .muletillas-cont h4{margin-top:0;color:var(--error);text-align:center}
+  .muletillas-lista{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:12px 0}
+  .muletilla{background:#fff;border:2px solid var(--error);color:var(--error);padding:6px 14px;border-radius:18px;font-style:italic;font-weight:600;font-size:0.92rem}
+  .alternativa-muletilla{background:var(--exito-claro);border:2px solid var(--exito);border-radius:8px;padding:12px 14px;margin-top:12px;font-size:0.93rem;color:var(--cierre-oscuro)}
+  .alternativa-muletilla strong{color:var(--exito)}
+
+  /* Guion modelo */
+  .guion-modelo{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px 22px;margin:18px 0;line-height:1.75;font-size:0.96rem;box-shadow:0 2px 8px rgba(0,137,205,0.08);position:relative}
+  .guion-modelo .etiq-guion{position:absolute;top:-13px;left:18px;background:var(--cp);color:#fff;padding:3px 12px;border-radius:14px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+  .guion-modelo .titulo-guion{font-weight:700;color:var(--cp-oscuro);font-size:1.08rem;margin:6px 0 12px 0}
+  .guion-seccion{border-left:4px solid;padding:8px 14px;margin:10px 0;border-radius:0 6px 6px 0}
+  .guion-seccion.gs-apertura{background:var(--apertura-claro);border-left-color:var(--apertura)}
+  .guion-seccion.gs-desarrollo{background:var(--desarrollo-claro);border-left-color:var(--desarrollo)}
+  .guion-seccion.gs-cierre{background:var(--cierre-claro);border-left-color:var(--cierre)}
+  .guion-seccion .marca-gs{font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:4px}
+  .guion-seccion.gs-apertura .marca-gs{color:var(--apertura-oscuro)}
+  .guion-seccion.gs-desarrollo .marca-gs{color:var(--desarrollo-oscuro)}
+  .guion-seccion.gs-cierre .marca-gs{color:var(--cierre-oscuro)}
+  .guion-seccion .nota-tecnica{display:block;font-style:italic;color:var(--gris);font-size:0.82rem;margin-top:6px;padding-top:6px;border-top:1px dashed #ccc}
+
+  /* Plantilla guiada para mi presentación */
+  .plantilla-pres{background:var(--advertencia-fondo);border:2px dashed var(--advertencia);border-radius:10px;padding:16px 18px;margin:16px 0}
+  .plantilla-pres h4{margin-top:0;color:#8a6d00;text-align:center}
+  .seccion-plantilla{background:#fff;border-left:4px solid;border-radius:0 8px 8px 0;padding:12px 14px;margin:10px 0}
+  .seccion-plantilla.sp-apertura{border-left-color:var(--apertura)}
+  .seccion-plantilla.sp-desarrollo{border-left-color:var(--desarrollo)}
+  .seccion-plantilla.sp-cierre{border-left-color:var(--cierre)}
+  .seccion-plantilla h5{margin:0 0 4px 0;font-size:0.98rem}
+  .seccion-plantilla.sp-apertura h5{color:var(--apertura-oscuro)}
+  .seccion-plantilla.sp-desarrollo h5{color:var(--desarrollo-oscuro)}
+  .seccion-plantilla.sp-cierre h5{color:var(--cierre-oscuro)}
+  .seccion-plantilla .indicacion-sp{font-size:0.86rem;font-style:italic;color:var(--gris);display:block;margin-bottom:8px}
+  .linea-escritura{display:block;border-bottom:2px solid #aab2bd;height:28px;margin:4px 0;background:repeating-linear-gradient(180deg,transparent 0,transparent 27px,#aab2bd 27px,#aab2bd 28px)}
+
+  /* Actividad: diagnostique el problema */
+  .diag-cont{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(123,63,191,0.08)}
+  .diag-cont h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
+  .caso-diag{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .caso-diag .texto-caso{font-style:italic;line-height:1.6;font-size:0.94rem;margin-bottom:10px;padding:10px 12px;background:var(--gris-claro);border-radius:6px}
+  .caso-diag .opciones-diag{display:flex;flex-wrap:wrap;gap:8px}
+  .btn-diag{padding:8px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp);border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.88rem;transition:all 0.2s;font-weight:600;flex:1;min-width:130px}
+  .btn-diag:hover{background:var(--cp-claro)}
+  .btn-diag.correcto{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-diag.incorrecto{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-diag{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-diag.visible{display:block}
+  .puntaje-diag{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.02rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Rúbrica analítica 4 criterios x 4 niveles */
+  .rubrica-cont{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 2px 10px rgba(0,137,205,0.08);overflow-x:auto}
+  .rubrica-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .rubrica-tabla{width:100%;border-collapse:collapse;font-size:0.88rem;min-width:680px}
+  .rubrica-tabla th{padding:10px 8px;color:#fff;text-align:center;font-weight:700;font-size:0.86rem}
+  .rubrica-tabla th.h-crit{background:var(--gris);text-align:left}
+  .rubrica-tabla th.h-n1{background:var(--nivel1)}
+  .rubrica-tabla th.h-n2{background:var(--nivel2)}
+  .rubrica-tabla th.h-n3{background:var(--nivel3)}
+  .rubrica-tabla th.h-n4{background:var(--nivel4)}
+  .rubrica-tabla td{padding:10px 10px;border:1px solid var(--gris-claro);vertical-align:top;line-height:1.5;font-size:0.84rem}
+  .rubrica-tabla td:first-child{font-weight:700;color:var(--cp-oscuro);background:#f9fafb;width:22%}
+  .rubrica-tabla td.n1{background:var(--nivel1-claro)}
+  .rubrica-tabla td.n2{background:var(--nivel2-claro)}
+  .rubrica-tabla td.n3{background:var(--nivel3-claro)}
+  .rubrica-tabla td.n4{background:var(--nivel4-claro)}
+  .puntos-rub{font-size:0.78rem;font-weight:700;display:block;margin-bottom:4px}
+  .puntos-rub.p-n1{color:var(--nivel1)}
+  .puntos-rub.p-n2{color:var(--nivel2)}
+  .puntos-rub.p-n3{color:var(--nivel3)}
+  .puntos-rub.p-n4{color:var(--nivel4)}
+
+  /* Quiz final */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+</style>
+</head>
+<body>
+
+<h1>Clase 4: Presentación oral breve</h1>
+<p class="subtitulo">Tema 8 · Lección 8.2 · Nivel 1 · Semana 16 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Construir el <strong>guion</strong> de una presentación oral breve en tres partes: apertura, desarrollo y cierre.</li>
+    <li>Controlar el <strong>canal vocal</strong>: volumen, velocidad, modulación y pausas.</li>
+    <li>Identificar y reducir las <strong>muletillas</strong> y otros ruidos de la comunicación.</li>
+    <li>Conocer la <strong>rúbrica analítica</strong> con la que se evalúan las presentaciones del curso.</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En la <strong>Clase 3</strong> aprendimos a manejar el vocabulario digital y los procedimientos básicos de Brightspace. Hoy damos el siguiente paso: usar todo eso para preparar una <span class="palabra-clave">presentación oral breve</span> de unos tres minutos sobre un tema personal o un texto leído en clase. Esta presentación será el ensayo general del <strong>proyecto final integrador</strong> que defenderemos en las Clases 5 y 6.</p>
+
+<p>Hablar en público no es solo «saber lo que vas a decir». Es <strong>tener un guion claro, controlar la voz y no perder al público</strong>. En esta clase trabajamos esos tres pilares, y al final conocerá exactamente la rúbrica con la que su profesor evaluará la presentación.</p>
+
+<div class="clave-pedagogica">
+  <strong>🧠 Clave de la clase:</strong> No se memoriza palabra por palabra. Se prepara un <em>esquema o libreto</em> escrito y se ensaya en voz alta varias veces. Si tratamos de memorizar, en el momento del nervio se nos olvida una palabra y se cae todo el discurso. Si dominamos la estructura, podemos improvisar las palabras sin perder el rumbo.
+</div>
+
+<details open>
+<summary>1. La estructura del discurso: tres partes <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El esqueleto de cualquier presentación</h3>
+
+<p>Toda presentación oral, sea de tres minutos o de treinta, tiene la misma estructura básica de <strong>tres partes</strong>. Cada parte cumple una función distinta y tiene un tiempo recomendado dentro del total. Para una presentación de <strong>tres minutos</strong>, la distribución sería esta:</p>
+
+<div class="estructura-discurso">
+  <div class="parte-discurso p-apertura">
+    <span class="icono-pd">🚀</span>
+    <div class="cont-pd">
+      <span class="titulo-pd">1. Apertura</span>
+      <span class="tiempo-pd">⏱️ 30 segundos</span>
+      <p class="desc-pd">Salude al público, preséntese, y diga claramente sobre qué va a hablar. La apertura debe «enganchar» a quien escucha en los primeros segundos.</p>
+      <div class="ejemplo-pd"><em>«Buenos días, soy María Pérez. Hoy les voy a contar por qué decidí volver a estudiar a los cincuenta años.»</em></div>
+    </div>
+  </div>
+  <div class="parte-discurso p-desarrollo">
+    <span class="icono-pd">💡</span>
+    <div class="cont-pd">
+      <span class="titulo-pd">2. Desarrollo</span>
+      <span class="tiempo-pd">⏱️ 2 minutos</span>
+      <p class="desc-pd">Explique <strong>dos o tres ideas principales</strong> sobre su tema. Use ejemplos concretos. No trate de meterlo todo: mejor pocas ideas, bien explicadas.</p>
+      <div class="ejemplo-pd"><em>«Mi primera razón fue darle el ejemplo a mis hijos. La segunda, conseguir un mejor trabajo. La tercera, demostrarme a mí misma que aún puedo aprender…»</em></div>
+    </div>
+  </div>
+  <div class="parte-discurso p-cierre">
+    <span class="icono-pd">🎯</span>
+    <div class="cont-pd">
+      <span class="titulo-pd">3. Cierre</span>
+      <span class="tiempo-pd">⏱️ 30 segundos</span>
+      <p class="desc-pd">Recoja en una frase la idea principal y termine con una frase memorable o una invitación. Nunca cierre con un débil «bueno… eso es todo».</p>
+      <div class="ejemplo-pd"><em>«Por eso digo siempre: nunca es tarde para volver a estudiar. Muchas gracias.»</em></div>
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Regla del 30-120-30:</strong> En una presentación de 3 minutos, dedique unos <strong>30 segundos</strong> a abrir, unos <strong>120 segundos</strong> a desarrollar y otros <strong>30 segundos</strong> a cerrar. Esa proporción mantiene el equilibrio: ni demasiado preámbulo ni un cierre apresurado.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Un guion modelo: "Mi historia, mis metas" <span class="caja-tiempo">7 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Cómo se ve un guion completo</h3>
+
+<p>Veamos un ejemplo real: el guion de una presentación de tres minutos titulada «Mi historia, mis metas». Fíjese cómo el guion tiene <strong>las palabras que diré</strong> y, en cursiva, <strong>notas técnicas</strong> sobre la voz y el gesto.</p>
+
+<div class="guion-modelo">
+  <span class="etiq-guion">📝 Guion completo</span>
+  <p class="titulo-guion">Mi historia, mis metas — por José Martínez</p>
+
+  <div class="guion-seccion gs-apertura">
+    <span class="marca-gs">🚀 Apertura (30 s)</span>
+    <p style="margin:4px 0">«Buenas tardes a todos. Soy José Martínez. Hoy quiero contarles tres cosas: de dónde vengo, dónde estoy y a dónde quiero llegar.»</p>
+    <span class="nota-tecnica">🎙️ <em>Voz firme, mirar al público, sonrisa breve. Pausa de un segundo antes de empezar.</em></span>
+  </div>
+
+  <div class="guion-seccion gs-desarrollo">
+    <span class="marca-gs">💡 Desarrollo (2 min)</span>
+    <p style="margin:4px 0"><strong>Idea 1 — De dónde vengo:</strong> «Nací en Michoacán, México. Llegué a Chicago a los veinticinco años. Trabajé muchos años en construcción y nunca tuve oportunidad de terminar la escuela.»</p>
+    <p style="margin:4px 0"><strong>Idea 2 — Dónde estoy:</strong> «Hoy estoy en el nivel 1 de español para el GED. Mi familia me apoya. Aprender a usar la computadora ha sido un reto, pero ya subo mis tareas a Brightspace.»</p>
+    <p style="margin:4px 0"><strong>Idea 3 — A dónde quiero llegar:</strong> «Mi meta es terminar el GED en dos años y entrar al programa de enfermería. Quiero ayudar a otros hispanos que llegan a este país sin saber el sistema.»</p>
+    <span class="nota-tecnica">🎙️ <em>Bajar un poco el ritmo al decir «nunca tuve oportunidad». Hacer pausa breve antes de cada nueva idea.</em></span>
+  </div>
+
+  <div class="guion-seccion gs-cierre">
+    <span class="marca-gs">🎯 Cierre (30 s)</span>
+    <p style="margin:4px 0">«En resumen: vengo de lejos, estoy avanzando paso a paso, y voy a ser enfermero. Si yo puedo a los cuarenta y siete años, ustedes también pueden. Muchas gracias.»</p>
+    <span class="nota-tecnica">🎙️ <em>Voz firme, mirada general al público, sonrisa. Esperar el aplauso o reconocimiento antes de moverse.</em></span>
+  </div>
+</div>
+
+<p>Fíjese cómo el guion no es un texto seguido: son <strong>frases cortas y notas</strong> que José puede mirar durante la presentación si se traba. Pero el contenido lo lleva en la cabeza, no lee párrafo por párrafo.</p>
+
+</div>
+</details>
+
+<details>
+<summary>3. El canal vocal: cómo suena lo que decimos <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Más allá de las palabras</h3>
+
+<p>Una misma frase puede sonar amable, agresiva, aburrida o emocionante según <strong>cómo</strong> se diga. Esos «cómo» son los aspectos del <span class="palabra-clave">canal vocal</span>. Hay cuatro que conviene controlar:</p>
+
+<div class="canal-vocal">
+  <h4>🎙️ Los cuatro aspectos del canal vocal</h4>
+  <div class="aspectos-grid">
+    <div class="aspecto">
+      <span class="icono-asp">🔊</span>
+      <span class="titulo-asp">Volumen</span>
+      <span class="desc-asp">Qué tan alto o bajo se habla. Debe oírse claramente desde la última fila, pero sin gritar.</span>
+      <span class="consejo-asp"><strong>Consejo:</strong> mire a la persona más lejana del aula y hable como si solo le hablara a ella.</span>
+    </div>
+    <div class="aspecto">
+      <span class="icono-asp">⏩</span>
+      <span class="titulo-asp">Velocidad</span>
+      <span class="desc-asp">Qué tan rápido o lento se habla. Los nervios nos hacen acelerar; conviene bajar el ritmo deliberadamente.</span>
+      <span class="consejo-asp"><strong>Consejo:</strong> haga una pausa de un segundo después de cada idea importante.</span>
+    </div>
+    <div class="aspecto">
+      <span class="icono-asp">🎵</span>
+      <span class="titulo-asp">Modulación</span>
+      <span class="desc-asp">Los cambios de tono. Una voz que siempre suena igual aburre. Subir y bajar el tono ayuda a marcar lo importante.</span>
+      <span class="consejo-asp"><strong>Consejo:</strong> diga las palabras clave con un tono un poco más alto y firme.</span>
+    </div>
+    <div class="aspecto">
+      <span class="icono-asp">⏸️</span>
+      <span class="titulo-asp">Pausas y silencios</span>
+      <span class="desc-asp">El silencio bien usado es una herramienta poderosa. Una pausa antes de la idea principal hace que el público preste atención.</span>
+      <span class="consejo-asp"><strong>Consejo:</strong> respire profundo y haga silencio en lugar de decir «eh…» o «mmm…».</span>
+    </div>
+  </div>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 El silencio no es vacío:</strong> Muchos estudiantes le tienen miedo al silencio y lo llenan con muletillas. Pero una pausa breve y deliberada <em>aumenta</em> la atención del público. El silencio dice: «lo que sigue es importante, escuchen».
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Las muletillas y otros ruidos de la comunicación <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué son las muletillas?</h3>
+
+<p>Las <span class="palabra-clave">muletillas</span> son palabras o sonidos vacíos que usamos sin querer mientras pensamos qué decir. No aportan información; solo «llenan» el silencio. Estos son los ejemplos más comunes:</p>
+
+<div class="muletillas-cont">
+  <h4>🚫 Muletillas que conviene eliminar</h4>
+  <div class="muletillas-lista">
+    <span class="muletilla">«eh…»</span>
+    <span class="muletilla">«este…»</span>
+    <span class="muletilla">«mmm…»</span>
+    <span class="muletilla">«o sea…»</span>
+    <span class="muletilla">«¿no?»</span>
+    <span class="muletilla">«¿verdad?»</span>
+    <span class="muletilla">«como que…»</span>
+    <span class="muletilla">«bueno…»</span>
+  </div>
+  <div class="alternativa-muletilla">
+    <strong>✅ Alternativa:</strong> en lugar de decir «eh…», respire profundo, haga silencio durante un segundo y siga. El público lee el silencio como reflexión, no como duda. Las muletillas, en cambio, comunican inseguridad.
+  </div>
+</div>
+
+<h3>Otros ruidos de la comunicación</h3>
+
+<p>Además de las muletillas verbales, hay otros «ruidos» que distraen al público:</p>
+
+<ul class="lista-bonita">
+  <li><strong>Tics físicos:</strong> tocarse el pelo, jugar con un anillo, mover las manos sin propósito. Distraen la vista del público.</li>
+  <li><strong>Mirar el suelo o el techo:</strong> rompe el contacto visual y comunica timidez o falta de seguridad.</li>
+  <li><strong>Leer todo de un papel:</strong> bloquea la conexión con el público. El papel es una guía, no un texto para recitar.</li>
+  <li><strong>Hablar demasiado bajo:</strong> obliga al público a esforzarse y al cabo de poco se pierde la atención.</li>
+</ul>
+
+</div>
+</details>
+
+<details>
+<summary>5. Mi plantilla guiada: preparo mi guion <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Su turno: prepare el guion de su presentación</h3>
+
+<p>Use la siguiente plantilla para preparar el guion de una presentación de tres minutos sobre un tema personal (su historia, sus metas, su familia, su trabajo) o sobre un texto leído en clase. Escriba en cada espacio frases cortas y notas. Recuerde: <strong>no se escribe palabra por palabra</strong>.</p>
+
+<div class="plantilla-pres">
+  <h4>📝 Plantilla del guion (3 minutos)</h4>
+
+  <div class="seccion-plantilla sp-apertura">
+    <h5>🚀 1. Apertura (30 segundos)</h5>
+    <span class="indicacion-sp">Salude, preséntese, anuncie su tema. Una o dos frases cortas.</span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+  </div>
+
+  <div class="seccion-plantilla sp-desarrollo">
+    <h5>💡 2. Desarrollo — Idea 1 (40 segundos)</h5>
+    <span class="indicacion-sp">Primera idea principal con un ejemplo concreto.</span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+  </div>
+
+  <div class="seccion-plantilla sp-desarrollo">
+    <h5>💡 2. Desarrollo — Idea 2 (40 segundos)</h5>
+    <span class="indicacion-sp">Segunda idea principal con un ejemplo concreto.</span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+  </div>
+
+  <div class="seccion-plantilla sp-desarrollo">
+    <h5>💡 2. Desarrollo — Idea 3 (40 segundos)</h5>
+    <span class="indicacion-sp">Tercera idea principal con un ejemplo concreto.</span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+  </div>
+
+  <div class="seccion-plantilla sp-cierre">
+    <h5>🎯 3. Cierre (30 segundos)</h5>
+    <span class="indicacion-sp">Resuma en una frase y termine con una invitación o frase memorable.</span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Ensayo:</strong> Una vez tenga el guion, léalo en voz alta <strong>al menos tres veces</strong>. La primera vez, leyendo. La segunda, mirando solo de reojo. La tercera, sin mirar, solo recordando la estructura. Cronométrese: si pasa de 3 minutos y 30 segundos, recorte algo.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Actividad: diagnostique el problema <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<p>A continuación tiene seis situaciones de estudiantes presentando. Para cada una, elija cuál es el <strong>problema principal</strong> que está afectando su presentación:</p>
+
+<div class="diag-cont">
+  <h4>🩺 Diagnostique cada caso</h4>
+  <div id="items-diag"></div>
+  <div class="puntaje-diag" id="puntaje-diag">Aciertos: 0 / 6</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>7. La rúbrica de la presentación oral <span class="caja-tiempo">4 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Así se evaluará su presentación</h3>
+
+<p>El profesor evaluará su presentación con la siguiente <strong>rúbrica analítica</strong> de cuatro criterios por cuatro niveles. Cada criterio vale hasta 4 puntos, para un máximo de <strong>16 puntos</strong>. Léala con atención antes de ensayar: lo que aquí se pide es exactamente lo que se va a calificar.</p>
+
+<div class="rubrica-cont">
+  <h4>📊 Rúbrica analítica · Presentación oral breve</h4>
+  <table class="rubrica-tabla">
+    <thead>
+      <tr>
+        <th class="h-crit">Criterio</th>
+        <th class="h-n1">Inicial</th>
+        <th class="h-n2">En desarrollo</th>
+        <th class="h-n3">Competente</th>
+        <th class="h-n4">Avanzado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Claridad del mensaje</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>No se entiende cuál es la idea principal.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>Hay una idea principal, pero no queda clara.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>La idea principal se entiende y hay ejemplos.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>La idea principal es clara, sólida y bien apoyada con ejemplos.</td>
+      </tr>
+      <tr>
+        <td>Uso de oraciones completas</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>Habla con frases cortadas y desorganizadas.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>Mezcla oraciones completas con frases cortadas.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>Usa mayormente oraciones completas y bien construidas.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>Habla con oraciones completas, variadas y correctas.</td>
+      </tr>
+      <tr>
+        <td>Volumen y ritmo</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>No se oye o se oye demasiado rápido para entender.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>El volumen o la velocidad fallan en momentos largos.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>Volumen audible y ritmo adecuado la mayor parte del tiempo.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>Volumen, ritmo y pausas controlados durante toda la presentación.</td>
+      </tr>
+      <tr>
+        <td>Contacto visual o apoyo visual</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>Lee todo de un papel o no mira al público.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>Mira de vez en cuando, pero predomina la lectura.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>Mantiene contacto visual la mayor parte del tiempo.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>Mantiene contacto visual constante y usa apoyo visual con destreza.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Cómo aprovechar la rúbrica:</strong> Antes de ensayar, lea las descripciones del nivel <em>«avanzado»</em> (4 puntos) en cada criterio. Eso le da el objetivo claro: a qué quiere llegar. Luego ensaye y compárese con la rúbrica.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>8. Modalidades presencial y online <span class="caja-tiempo">3 min</span></summary>
+<div class="contenido-detalle">
+
+<p>La presentación oral funciona en ambas modalidades, pero hay diferencias importantes en cómo se ejecuta:</p>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Modalidad presencial (sincrónica)</h4>
+    <p><span class="badge-tipo badge-discusion">Cuerpo y proyector</span></p>
+    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
+      <li>Se presenta de pie, mirando al auditorio, con los pies firmes en el suelo.</li>
+      <li>Se proyecta la voz para que llegue a la última fila sin amplificación.</li>
+      <li>Se puede usar el proyector del aula o un cartel impreso como apoyo visual.</li>
+      <li>Las manos se usan para gesticular, no para apoyarse en la mesa o esconderlas.</li>
+    </ul>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Modalidad en línea (sincrónica)</h4>
+    <p><span class="badge-tipo badge-reflexion">Cámara y micrófono</span></p>
+    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
+      <li>Se presenta sentado, con la cámara a la altura de los ojos.</li>
+      <li>Se mira a la <strong>lente de la cámara</strong>, no a la pantalla, para simular contacto visual.</li>
+      <li>Se controla el volumen del micrófono y se evita el ruido de fondo.</li>
+      <li>Se usa <strong>«compartir pantalla»</strong> para mostrar el apoyo visual (foto, gráfica, presentación).</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>9. Quiz final de la Lección 8.2 <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<p>El siguiente quiz combina lo aprendido en las <strong>Clases 3 y 4</strong>: alfabetización tecnológica, vocabulario digital, atajos, estructura del discurso, canal vocal, muletillas y rúbrica. Es el quiz de cierre de la <strong>Lección 8.2 · Alfabetización tecnológica y presentación oral breve</strong>.</p>
+
+<div class="quiz-cont">
+  <h4>📝 Quiz: lección 8.2</h4>
+  <div class="preguntas-quiz" id="preguntas-quiz4"></div>
+  <div class="puntaje" id="puntaje-quiz4">Aciertos: 0 / 8</div>
+</div>
+
+</div>
+</details>
+
+<div class="tip">
+  <strong>👉 ¿Qué viene en la próxima clase?</strong> En la <strong>Clase 5</strong> empezamos la <strong>Lección 8.3</strong>: el proyecto final integrador <strong>«Mi historia, mis metas»</strong>. Combinará todo lo aprendido en el curso: lectura, escritura, gráfica simple y presentación oral. Llegue a clase con su guion ya preparado.
+</div>
+
+<p class="firma">Spanish ASE Language Arts 1 · GEDparaHispanos.com · Prof. José M. Fernández</p>
+
+<script>
+(function(){
+  /* =========================================================
+     ACTIVIDAD: DIAGNOSTIQUE EL PROBLEMA
+     ========================================================= */
+  var casos=[
+    {
+      texto:'María lee toda su presentación palabra por palabra de una hoja, sin levantar la vista una sola vez. El público pierde interés a los 30 segundos.',
+      opciones:['Falta de volumen','Falta de contacto visual','Demasiadas muletillas','Mala apertura'],
+      correcta:'Falta de contacto visual',
+      explica:'María está leyendo todo de la hoja en lugar de usarla como guía. Se rompe el contacto visual y el público se desconecta. La hoja es para mirar de reojo, no para leer.'
+    },
+    {
+      texto:'Pedro habla tan bajito que solo lo oye la primera fila. Los estudiantes del fondo se preguntan unos a otros qué dijo.',
+      opciones:['Falta de volumen','Mala estructura','Demasiadas pausas','Habla muy rápido'],
+      correcta:'Falta de volumen',
+      explica:'El problema principal es el volumen: Pedro no proyecta la voz a toda el aula. El consejo es mirar a la persona más lejana y hablar como si solo se le hablara a ella.'
+    },
+    {
+      texto:'Carmen dice «eh…» y «este…» cada cinco palabras. La presentación dura tres minutos, pero la mitad del tiempo son sonidos sin contenido.',
+      opciones:['Falta de volumen','Demasiadas muletillas','Cierre débil','Mala apertura'],
+      correcta:'Demasiadas muletillas',
+      explica:'Las muletillas son palabras o sonidos vacíos que llenan los silencios. La solución es respirar profundo y hacer pausa en silencio en lugar de decir "eh".'
+    },
+    {
+      texto:'Luis arranca su presentación diciendo «Bueno… no sé bien por dónde empezar… lo que iba a decir era…» antes de llegar al tema.',
+      opciones:['Mala apertura','Falta de contacto visual','Cierre débil','Velocidad excesiva'],
+      correcta:'Mala apertura',
+      explica:'Una apertura debe enganchar en los primeros segundos. Luis pierde 15 segundos con titubeos antes de anunciar el tema. La apertura debe ser firme: saludo, nombre, tema.'
+    },
+    {
+      texto:'Roberto va apurado porque está nervioso. Habla tan rápido que pronuncia las palabras una encima de la otra y nadie puede seguirlo.',
+      opciones:['Velocidad excesiva','Falta de volumen','Mala estructura','Demasiadas pausas'],
+      correcta:'Velocidad excesiva',
+      explica:'Los nervios suelen acelerar el ritmo. La solución es bajar la velocidad deliberadamente y hacer pausas breves después de cada idea importante.'
+    },
+    {
+      texto:'Ana termina su presentación con un débil «bueno, eso es todo, ya me callo», baja la mirada y se va sin esperar reacción.',
+      opciones:['Mala apertura','Cierre débil','Falta de volumen','Demasiadas muletillas'],
+      correcta:'Cierre débil',
+      explica:'El cierre debe recoger la idea principal y terminar con una frase memorable. "Bueno, eso es todo" desperdicia la oportunidad de dejar una buena impresión final. Mejor: "En resumen… Muchas gracias."'
+    }
+  ];
+
+  function mezclar(arr){
+    var copia=arr.slice();
+    for(var i=copia.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var t=copia[i];copia[i]=copia[j];copia[j]=t;
+    }
+    return copia;
+  }
+
+  var contDiag=document.getElementById('items-diag');
+  var resueltosD={};
+  var aciertosD=0;
+
+  casos.forEach(function(it,idx){
+    var div=document.createElement('div');
+    div.className='caso-diag';
+    var opcionesMezcladas=mezclar(it.opciones);
+    var opcHtml='';
+    opcionesMezcladas.forEach(function(op){
+      opcHtml+='<button type="button" class="btn-diag" data-opcion="'+op+'">'+op+'</button>';
+    });
+    div.innerHTML=
+      '<div class="texto-caso">'+it.texto+'</div>'+
+      '<div class="opciones-diag">'+opcHtml+'</div>'+
+      '<div class="retro-diag" id="retro-diag-'+idx+'"></div>';
+    contDiag.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-diag');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltosD[idx])return;
+        if(b.getAttribute('data-opcion')===it.correcta){
+          b.classList.add('correcto');
+          resueltosD[idx]=true;
+          aciertosD++;
+          actualizarDiag();
+          var r=document.getElementById('retro-diag-'+idx);
+          r.textContent='✅ '+it.explica;
+          r.classList.add('visible');
+        }else{
+          b.classList.add('incorrecto');
+          setTimeout(function(){b.classList.remove('incorrecto')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarDiag(){
+    var el=document.getElementById('puntaje-diag');
+    el.textContent='Aciertos: '+aciertosD+' / '+casos.length;
+    if(aciertosD===casos.length){
+      el.innerHTML='🎉 ¡Perfecto! Aciertos: '+aciertosD+' / '+casos.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  /* =========================================================
+     QUIZ FINAL DE LA LECCIÓN 8.2
+     ========================================================= */
+  var preguntas=[
+    {
+      texto:'¿Cuál es la regla del 30-120-30 para una presentación de 3 minutos?',
+      opciones:[
+        {t:'30 segundos para la apertura, 2 minutos para el desarrollo y 30 segundos para el cierre.',ok:true},
+        {t:'30 minutos para preparar, 120 minutos para ensayar y 30 minutos para presentar.',ok:false},
+        {t:'30 palabras por minuto, 120 ideas principales y 30 ejemplos.',ok:false},
+        {t:'30 muletillas máximo, 120 palabras clave y 30 segundos de silencio.',ok:false}
+      ],
+      explica:'La regla del 30-120-30 distribuye el tiempo de una presentación de 3 minutos: apertura corta (30 s), desarrollo amplio (120 s = 2 min) y cierre breve (30 s).'
+    },
+    {
+      contexto:'Antes de subir la tarea a Brightspace, María quiere asegurarse de no perder lo que escribió. ¿Qué atajo debe usar?',
+      texto:'¿Cuál es el atajo correcto?',
+      opciones:[
+        {t:'Ctrl + Z',ok:false},
+        {t:'Ctrl + C',ok:false},
+        {t:'Ctrl + S',ok:true},
+        {t:'Ctrl + V',ok:false}
+      ],
+      explica:'Ctrl+S guarda el archivo. Ctrl+Z deshace la última acción, Ctrl+C copia y Ctrl+V pega. Para no perder el trabajo hay que guardarlo.'
+    },
+    {
+      texto:'¿Por qué NO debemos memorizar palabra por palabra una presentación?',
+      opciones:[
+        {t:'Porque memorizar es de mala educación.',ok:false},
+        {t:'Porque si nos olvidamos de una palabra, los nervios nos hacen perder todo el discurso.',ok:true},
+        {t:'Porque las reglas del GED lo prohíben.',ok:false},
+        {t:'Porque hablar memorizado es ilegal.',ok:false}
+      ],
+      explica:'Si memorizamos palabra por palabra y se nos olvida una sola palabra, los nervios pueden hacernos perder todo el hilo. En cambio, si dominamos la estructura, podemos improvisar las palabras sin perder el rumbo.'
+    },
+    {
+      contexto:'Pedro está nervioso y entre frase y frase llena los silencios con «eh…», «este…» y «como que…».',
+      texto:'¿Qué problema tiene Pedro y cuál es la mejor solución?',
+      opciones:[
+        {t:'Problema de volumen; debe hablar más alto.',ok:false},
+        {t:'Problema de muletillas; debe respirar profundo y hacer silencio en lugar de decir "eh".',ok:true},
+        {t:'Problema de estructura; debe cambiar el orden de las ideas.',ok:false},
+        {t:'Problema de cierre; debe terminar con una frase memorable.',ok:false}
+      ],
+      explica:'Pedro tiene un problema clásico de muletillas. La solución es entrenar el silencio: hacer una pausa en silencio en lugar de llenarla con "eh" o "este". El público lee el silencio como reflexión, no como duda.'
+    },
+    {
+      texto:'En la rúbrica de presentación oral, el nivel "Avanzado" en el criterio "Contacto visual o apoyo visual" significa que el estudiante:',
+      opciones:[
+        {t:'Lee toda la presentación de un papel.',ok:false},
+        {t:'Mira al público de vez en cuando.',ok:false},
+        {t:'Mantiene contacto visual constante y usa apoyo visual con destreza.',ok:true},
+        {t:'No usa ningún apoyo visual.',ok:false}
+      ],
+      explica:'El nivel "Avanzado" (4 puntos) requiere contacto visual constante con el público y uso adecuado del apoyo visual (foto, gráfica, presentación). Es el objetivo al que apuntar.'
+    },
+    {
+      texto:'¿Cuál de los siguientes aspectos NO forma parte del canal vocal?',
+      opciones:[
+        {t:'El volumen de la voz',ok:false},
+        {t:'La velocidad al hablar',ok:false},
+        {t:'El color de la ropa que se lleva',ok:true},
+        {t:'Las pausas y los silencios',ok:false}
+      ],
+      explica:'El canal vocal abarca todo lo relacionado con la voz: volumen, velocidad, modulación y pausas. El color de la ropa pertenece a otro plano (la imagen personal o el canal visual), no al canal vocal.'
+    },
+    {
+      contexto:'Carmen está presentando en línea por videoconferencia y quiere demostrar contacto visual con la clase.',
+      texto:'¿Qué debe hacer Carmen?',
+      opciones:[
+        {t:'Mirar fijamente a la pantalla.',ok:false},
+        {t:'Mirar directamente a la lente de la cámara mientras habla.',ok:true},
+        {t:'Cerrar los ojos para concentrarse.',ok:false},
+        {t:'Apagar la cámara para no distraerse.',ok:false}
+      ],
+      explica:'En línea, mirar a la lente de la cámara da la sensación de contacto visual a quien está al otro lado. Mirar a la pantalla, aunque parezca natural, hace que el público vea los ojos desviados hacia abajo.'
+    },
+    {
+      texto:'Su profesor le dice: «Su presentación está bien estructurada, pero llegó al nivel 2 en volumen y ritmo». Según la rúbrica del curso, esto significa que:',
+      opciones:[
+        {t:'Tiene volumen y ritmo controlados durante toda la presentación.',ok:false},
+        {t:'No se le oye nada o habla demasiado rápido para entender.',ok:false},
+        {t:'El volumen o la velocidad fallan en momentos largos de la presentación.',ok:true},
+        {t:'Tiene un volumen audible y un ritmo adecuado la mayor parte del tiempo.',ok:false}
+      ],
+      explica:'El nivel 2 ("En desarrollo") corresponde a 2 puntos: el volumen o la velocidad fallan en momentos largos. El nivel 1 ("Inicial") es no oírse o hablar muy rápido. Los niveles 3 y 4 describen un manejo adecuado o sobresaliente.'
+    }
+  ];
+
+  var resueltasQ={};
+  var aciertosQ=0;
+  var contQuiz=document.getElementById('preguntas-quiz4');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-quiz';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      contextoHtml+
+      '<div class="opciones-quiz">'+opcHtml+'</div>'+
+      '<div class="retro-quiz" id="retro-q4-'+idx+'"></div>';
+
+    contQuiz.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-quiz');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasQ[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltasQ[idx]=true;
+          aciertosQ++;
+          actualizarPuntajeQ();
+          var retro=document.getElementById('retro-q4-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeQ(){
+    var el=document.getElementById('puntaje-quiz4');
+    el.textContent='Aciertos: '+aciertosQ+' / '+preguntas.length;
+    if(aciertosQ===preguntas.length){
+      el.innerHTML='🎉 ¡Lección 8.2 dominada! Aciertos: '+aciertosQ+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

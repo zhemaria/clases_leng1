@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 1: Conociendo a los personajes y sus conflictos</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --protagonista:#1565c0;--protagonista-claro:#e3f2fd;
+    --antagonista:#c62828;--antagonista-claro:#ffebee;
+    --mentor:#6a1b9a;--mentor-claro:#f3e5f5;
+    --conflicto-interno:#00838f;--conflicto-interno-claro:#e0f7fa;
+    --conflicto-externo:#ef6c00;--conflicto-externo-claro:#fff3e0;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Tarjetas de rol */
+  .roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+  @media(max-width:720px){.roles-grid{grid-template-columns:1fr}}
+  .tarjeta-rol{border-radius:10px;padding:16px 18px;border:2px solid;background:#fff}
+  .tarjeta-rol h4{margin-top:0;margin-bottom:8px;font-size:1.05rem}
+  .tarjeta-rol p{margin:0 0 8px 0;font-size:0.95rem}
+  .tarjeta-rol .ejemplo{font-style:italic;font-size:0.9rem;color:var(--gris);border-top:1px dashed currentColor;padding-top:8px;margin-top:8px}
+  .rol-protag{border-color:var(--protagonista);background:var(--protagonista-claro)}
+  .rol-protag h4{color:var(--protagonista)}
+  .rol-antag{border-color:var(--antagonista);background:var(--antagonista-claro)}
+  .rol-antag h4{color:var(--antagonista)}
+  .rol-ment{border-color:var(--mentor);background:var(--mentor-claro)}
+  .rol-ment h4{color:var(--mentor)}
+
+  /* Tabla rasgos */
+  table.tabla-rasgos{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-rasgos th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.tabla-rasgos td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.tabla-rasgos tr:last-child td{border-bottom:none}
+  table.tabla-rasgos td:first-child{font-weight:700;width:180px;color:var(--cp-oscuro)}
+
+  /* Texto del cuento */
+  .cuento{background:#fffaf3;border:2px solid var(--acento);border-radius:10px;padding:20px 24px;margin:18px 0;font-family:'Georgia',serif;font-size:1.05rem;line-height:1.85}
+  .cuento h4{color:#b35316;margin-top:0;font-family:'Poppins',sans-serif}
+  .cuento p{margin:0 0 12px 0}
+
+  /* Mapa de personaje */
+  .mapa-personaje{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .mapa-personaje h4{color:var(--cp-oscuro);margin-top:0;text-align:center}
+  .mapa-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:640px){.mapa-grid{grid-template-columns:1fr}}
+  .cuadro-mapa{border:2px solid var(--gris-claro);border-radius:8px;padding:12px 14px;background:#fafbfc}
+  .cuadro-mapa .etiq{display:block;font-weight:700;color:var(--cp-oscuro);font-size:0.95rem;margin-bottom:6px}
+  .cuadro-mapa textarea{width:100%;border:1px solid var(--gris-claro);border-radius:6px;padding:8px;font-family:inherit;font-size:0.95rem;resize:vertical;min-height:60px}
+  .cuadro-mapa textarea:focus{outline:none;border-color:var(--cp)}
+
+  /* Clasificador de conflictos */
+  .clasificador-conf{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .item-conf{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:10px 0}
+  .frase-conf{font-family:'Georgia',serif;font-size:1.05rem;margin-bottom:10px;line-height:1.6}
+  .opciones-conf{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-tipo-conf{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-int{border-color:var(--conflicto-interno);color:var(--conflicto-interno)}
+  .btn-int:hover{background:var(--conflicto-interno-claro)}
+  .btn-ext{border-color:var(--conflicto-externo);color:var(--conflicto-externo)}
+  .btn-ext:hover{background:var(--conflicto-externo-claro)}
+  .btn-tipo-conf.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-tipo-conf.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .feedback-item{margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.9rem;display:none}
+  .feedback-item.mostrar{display:block}
+  .feedback-item.correcto{background:#d4edda;color:#155724}
+  .feedback-item.incorrecto{background:#f8d7da;color:#721c24}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Leyenda */
+  .leyenda-colores{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.95rem}
+  .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
+  .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+</style>
+</head>
+<body>
+
+<h1>Clase 1: Conociendo a los personajes y sus conflictos</h1>
+<p class="subtitulo">Personajes, roles y conflictos · Nivel 1 · Tema 5, semana 9</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Analizar el <strong>papel</strong> (rol), los <strong>rasgos</strong> y los <strong>conflictos</strong> de los personajes en un texto literario, distinguiendo entre <strong>protagonista</strong>, <strong>antagonista</strong> y <strong>mentor</strong>, y entre <strong>conflicto interno</strong> y <strong>conflicto externo</strong>.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En clases anteriores estudiamos las oraciones, los sustantivos y los verbos. Ahora damos un paso más: vamos a aplicar todas esas herramientas a la lectura de <strong>historias</strong>. Y toda historia comienza con un elemento esencial: <span class="palabra-clave">los personajes</span>.</p>
+
+<p>Sin personajes no hay historia. Sin conflicto, los personajes no cambian. Por eso, comprender a quién le pasan las cosas y qué problemas enfrenta es la base para entender cualquier cuento, novela o relato. Esta clase nos prepara para identificar y describir personajes con precisión.</p>
+
+<details open>
+<summary>1. Introducción: el papel de los personajes <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Por qué importan los personajes?</h3>
+
+<p>Los <span class="palabra-clave">personajes</span> son las personas, animales o seres imaginarios que protagonizan los hechos de una historia. Analizar a un personaje significa observar tres cosas: el <strong>rol</strong> que cumple, sus <strong>rasgos</strong> (cómo es) y los <strong>conflictos</strong> que enfrenta.</p>
+
+<p>Sin personajes no habría acciones que narrar. Pero un personaje sin retos ni dificultades no produce una historia interesante: necesita enfrentarse a algo. Ese "algo" es lo que llamamos <strong>conflicto</strong>, y es el motor que pone en marcha la narración.</p>
+
+<div class="tip">
+  <strong>💡 Idea central:</strong> Toda historia se sostiene en una pregunta simple: <em>¿qué le pasa al personaje y cómo responde a lo que le pasa?</em>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Roles, rasgos y conflictos <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El rol del personaje</h3>
+
+<p>El <strong>rol</strong> es la función que cumple un personaje dentro de la historia. Los tres roles más frecuentes son los siguientes.</p>
+
+<div class="roles-grid">
+
+  <div class="tarjeta-rol rol-protag">
+    <h4>👤 Protagonista</h4>
+    <p>Es el personaje principal, alrededor del cual gira la historia. Es quien enfrenta el conflicto y, generalmente, quien cambia o aprende algo.</p>
+    <div class="ejemplo">Ejemplo: en <em>Caperucita Roja</em>, la protagonista es Caperucita.</div>
+  </div>
+
+  <div class="tarjeta-rol rol-antag">
+    <h4>⚔️ Antagonista</h4>
+    <p>Es el personaje (o fuerza) que se opone al protagonista. No siempre es "malvado": puede ser un rival, una autoridad rígida o incluso la naturaleza.</p>
+    <div class="ejemplo">Ejemplo: en <em>Caperucita Roja</em>, el antagonista es el lobo.</div>
+  </div>
+
+  <div class="tarjeta-rol rol-ment">
+    <h4>🦉 Mentor</h4>
+    <p>Es el personaje que guía, aconseja o ayuda al protagonista. Le entrega información, herramientas o sabiduría para enfrentar el conflicto.</p>
+    <div class="ejemplo">Ejemplo: la abuela en muchos cuentos tradicionales actúa como mentora.</div>
+  </div>
+
+</div>
+
+<h3>Los rasgos del personaje</h3>
+
+<p>Los <strong>rasgos</strong> son las características que definen al personaje. Para analizarlos, observamos tres dimensiones.</p>
+
+<table class="tabla-rasgos">
+  <thead>
+    <tr>
+      <th>Dimensión</th>
+      <th>Pregunta clave</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Atributos físicos</td>
+      <td>¿Cómo se ve? ¿Qué edad tiene?</td>
+      <td>Alto, delgado, de cabello cano, con anteojos.</td>
+    </tr>
+    <tr>
+      <td>Rasgos de personalidad</td>
+      <td>¿Cómo es por dentro? ¿Cómo actúa?</td>
+      <td>Honesto, tímido, valiente, generoso.</td>
+    </tr>
+    <tr>
+      <td>Forma de hablar</td>
+      <td>¿Qué dice y cómo lo dice?</td>
+      <td>Habla con cortesía / usa palabras técnicas / grita siempre.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>El conflicto: el motor de la historia</h3>
+
+<p>El <span class="palabra-clave">conflicto</span> es el problema o desafío que enfrenta el protagonista. Sin conflicto no hay historia: nada cambia, nada se desarrolla. Existen dos grandes tipos.</p>
+
+<div class="roles-grid" style="grid-template-columns:1fr 1fr">
+
+  <div class="tarjeta-rol" style="border-color:var(--conflicto-interno);background:var(--conflicto-interno-claro)">
+    <h4 style="color:var(--conflicto-interno)">🧠 Conflicto interno</h4>
+    <p>Ocurre dentro del personaje. Es una lucha emocional, moral o psicológica: miedo, duda, culpa, indecisión.</p>
+    <div class="ejemplo" style="border-color:var(--conflicto-interno)">Ejemplo: Ana tiene miedo de hablar en público, pero debe dar un discurso.</div>
+  </div>
+
+  <div class="tarjeta-rol" style="border-color:var(--conflicto-externo);background:var(--conflicto-externo-claro)">
+    <h4 style="color:var(--conflicto-externo)">🌪️ Conflicto externo</h4>
+    <p>Ocurre fuera del personaje. Es una lucha contra otra persona, contra la naturaleza, contra la sociedad o contra una circunstancia.</p>
+    <div class="ejemplo" style="border-color:var(--conflicto-externo)">Ejemplo: Pedro pierde el trabajo y debe encontrar dinero para pagar la renta.</div>
+  </div>
+
+</div>
+
+<div class="tip">
+  <strong>⚠️ Atención:</strong> Una misma historia puede tener varios conflictos a la vez. Por ejemplo, un personaje puede luchar contra una tormenta (externo) y al mismo tiempo contra su propio miedo (interno).
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: el mapa de personaje <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lectura: "El día que Marta se atrevió"</h3>
+
+<div class="cuento">
+<h4>📖 Cuento corto</h4>
+<p>Marta vivía en un pueblo pequeño donde nadie hablaba inglés. Tenía cuarenta años y trabajaba limpiando casas. Era una mujer callada, trabajadora y muy educada con sus clientes, pero cuando llegaba a casa se sentía triste: quería estudiar y aprender, pero el miedo a equivocarse le cerraba la boca.</p>
+<p>Una vecina, doña Elena, era maestra jubilada. Ella le repetía cada semana: "Marta, tú puedes. No tienes que hablar perfecto, solo tienes que empezar."</p>
+<p>Un martes por la mañana, Marta caminó hasta el centro comunitario y se inscribió en la clase de inglés. Se sentó en la última fila, con el cuaderno temblando entre las manos. Cuando la maestra le pidió que se presentara, Marta respiró profundo y dijo: "My name is Marta." Tres palabras. Pero por primera vez en años, sonrió desde adentro.</p>
+</div>
+
+<h3>Completa el mapa de personaje de Marta</h3>
+
+<p>Lee de nuevo el cuento y llena los cuatro cuadros del mapa. Escribe con tus propias palabras.</p>
+
+<div class="mapa-personaje">
+  <h4>🗺️ Mapa de personaje: Marta</h4>
+  <div class="mapa-grid">
+    <div class="cuadro-mapa">
+      <span class="etiq">👤 Rasgos físicos y datos</span>
+      <textarea placeholder="Edad, oficio, descripción física..."></textarea>
+    </div>
+    <div class="cuadro-mapa">
+      <span class="etiq">💭 Rasgos de personalidad</span>
+      <textarea placeholder="¿Cómo es por dentro?"></textarea>
+    </div>
+    <div class="cuadro-mapa">
+      <span class="etiq">⚔️ Conflicto que enfrenta</span>
+      <textarea placeholder="¿Qué problema tiene? ¿Es interno o externo?"></textarea>
+    </div>
+    <div class="cuadro-mapa">
+      <span class="etiq">🌱 Cambio o resolución</span>
+      <textarea placeholder="¿Qué hizo Marta? ¿Cómo cambió al final?"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="botones">
+  <button type="button" class="btn btn-secundario" id="btn-limpiar-mapa">Limpiar mapa</button>
+</div>
+
+<div class="tip">
+  <strong>💡 Pista:</strong> El conflicto de Marta es <em>principalmente interno</em> (el miedo a equivocarse), aunque también enfrenta un obstáculo externo (vivir en un lugar donde nadie habla inglés).
+</div>
+
+<h3>Clasifica el conflicto: ¿interno o externo?</h3>
+
+<p>Lee cada situación y decide si el conflicto del personaje es <strong>interno</strong> (dentro de la mente o el corazón) o <strong>externo</strong> (contra algo o alguien afuera).</p>
+
+<div class="leyenda-colores">
+  <span><span class="punto" style="background:var(--conflicto-interno)"></span> Interno</span>
+  <span><span class="punto" style="background:var(--conflicto-externo)"></span> Externo</span>
+</div>
+
+<div class="clasificador-conf" id="clasif-conf"></div>
+<div class="puntaje" id="puntaje-clasif-conf">Aciertos: 0 / 8</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>Los <strong>personajes</strong> se analizan según su <strong>rol</strong>, sus <strong>rasgos</strong> y sus <strong>conflictos</strong>.</li>
+  <li>Los roles principales son <strong>protagonista</strong>, <strong>antagonista</strong> y <strong>mentor</strong>.</li>
+  <li>Los rasgos se observan en tres dimensiones: físicos, de personalidad y forma de hablar.</li>
+  <li>El <strong>conflicto interno</strong> ocurre dentro del personaje; el <strong>externo</strong>, contra una fuerza exterior.</li>
+  <li>Sin conflicto, el personaje no cambia y no hay verdadera historia.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Puedes nombrar tres roles que cumplen los personajes en una historia?</li>
+    <li>¿Cuál es la diferencia entre un conflicto interno y uno externo?</li>
+    <li>¿Puedes pensar en una película o serie donde el protagonista enfrente un conflicto interno?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Los personajes no flotan en el aire: viven en un <strong>escenario</strong>. Aprenderemos cómo el lugar, el tiempo y los detalles sensoriales afectan la historia y las emociones del lector.
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Limpiar mapa
+  document.getElementById('btn-limpiar-mapa').addEventListener('click',function(){
+    document.querySelectorAll('.mapa-personaje textarea').forEach(function(t){t.value=''});
+  });
+
+  // Clasificador de conflictos
+  var conflictos=[
+    {frase:'Carlos quiere pedirle una cita a María, pero le tiembla la voz y no se atreve a llamarla.',tipo:'interno',pista:'La lucha está dentro de Carlos: su miedo y su timidez.'},
+    {frase:'Una tormenta atrapa a Luis y a su familia en la carretera, sin gasolina ni señal de teléfono.',tipo:'externo',pista:'La fuerza opositora es la naturaleza: una tormenta y la falta de recursos.'},
+    {frase:'Sofía siente culpa porque mintió a su madre y no sabe si confesar la verdad.',tipo:'interno',pista:'La culpa y la duda son emociones internas.'},
+    {frase:'El jefe de Roberto le exige que trabaje hasta tarde, pero su hija lo espera en la casa.',tipo:'externo',pista:'El conflicto es con otra persona (el jefe) y con una situación externa (el horario).'},
+    {frase:'Ana mira el examen final y se pregunta si realmente estudió lo suficiente para aprobar.',tipo:'interno',pista:'La duda sobre sí misma es un conflicto interno.'},
+    {frase:'Un perro grande persigue a Pedro mientras camina hacia su casa.',tipo:'externo',pista:'El opositor es algo de afuera: el perro.'},
+    {frase:'Miguel quiere dejar de fumar, pero cada vez que está nervioso siente la urgencia de prender un cigarro.',tipo:'interno',pista:'La lucha está dentro: deseo contra voluntad.'},
+    {frase:'Una ley nueva obliga a Lucía a mudarse del apartamento donde vivió veinte años.',tipo:'externo',pista:'La fuerza opositora es la sociedad / una ley.'}
+  ];
+
+  var aciertosConf=0;
+  var resueltasConf={};
+  var contConf=document.getElementById('clasif-conf');
+
+  conflictos.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-conf';
+    div.innerHTML=
+      '<div class="frase-conf">'+(idx+1)+'. '+item.frase+'</div>'+
+      '<div class="opciones-conf">'+
+        '<button type="button" class="btn-tipo-conf btn-int" data-tipo="interno">Interno</button>'+
+        '<button type="button" class="btn-tipo-conf btn-ext" data-tipo="externo">Externo</button>'+
+      '</div>'+
+      '<div class="feedback-item"></div>';
+    contConf.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-tipo-conf');
+    var feedback=div.querySelector('.feedback-item');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasConf[idx])return;
+        var t=b.getAttribute('data-tipo');
+        if(t===item.tipo){
+          b.classList.add('correcta');
+          feedback.className='feedback-item correcto mostrar';
+          feedback.innerHTML='✅ Correcto. '+item.pista;
+          resueltasConf[idx]=true;
+          aciertosConf++;
+          actualizarPuntajeConf();
+        }else{
+          b.classList.add('incorrecta');
+          feedback.className='feedback-item incorrecto mostrar';
+          feedback.innerHTML='❌ Inténtalo otra vez. Pregúntate: ¿la lucha ocurre dentro del personaje o contra algo de afuera?';
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeConf(){
+    var el=document.getElementById('puntaje-clasif-conf');
+    el.textContent='Aciertos: '+aciertosConf+' / '+conflictos.length;
+    if(aciertosConf===conflictos.length){
+      el.innerHTML='🎉 ¡Excelente trabajo! Aciertos: '+aciertosConf+' / '+conflictos.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

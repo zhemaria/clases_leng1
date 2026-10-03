@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 2: Cualidades del párrafo y conectores básicos</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--error:#c62828;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --unidad:#1976d2;--unidad-claro:#e3f2fd;
+    --cohesion:#7b3fbf;--cohesion-claro:#f3e8ff;
+    --coherencia:#2e7d32;--coherencia-claro:#e8f5e9;
+    --conector-y:#0277bd;--conector-pero:#c62828;--conector-porque:#7b3fbf;--conector-entonces:#ef6c00;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Las tres cualidades del párrafo */
+  .cualidades-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .cualidad-card{border-radius:10px;padding:16px 18px;border:2px solid;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  .cualidad-card.unidad{border-color:var(--unidad);background:linear-gradient(180deg,var(--unidad-claro) 0%,#fff 30%)}
+  .cualidad-card.cohesion{border-color:var(--cohesion);background:linear-gradient(180deg,var(--cohesion-claro) 0%,#fff 30%)}
+  .cualidad-card.coherencia{border-color:var(--coherencia);background:linear-gradient(180deg,var(--coherencia-claro) 0%,#fff 30%)}
+  .cualidad-card h4{margin-top:0;margin-bottom:8px;font-size:1.1rem}
+  .cualidad-card.unidad h4{color:var(--unidad)}
+  .cualidad-card.cohesion h4{color:var(--cohesion)}
+  .cualidad-card.coherencia h4{color:var(--coherencia)}
+  .cualidad-card .icono-cual{font-size:1.6rem;margin-right:6px;vertical-align:middle}
+  .cualidad-card p{margin:6px 0;font-size:0.92rem;line-height:1.55}
+  .cualidad-card .definicion{font-weight:600;font-size:0.95rem}
+
+  /* Comparación: con y sin la cualidad */
+  .comparacion-cual{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  @media(max-width:640px){.comparacion-cual{grid-template-columns:1fr}}
+  .col-comp{background:#fff;border-radius:10px;padding:14px 16px;border:2px solid}
+  .col-comp.mal{border-color:var(--error);background:#fdecea}
+  .col-comp.bien{border-color:var(--exito);background:#e8f5e9}
+  .col-comp h5{margin:0 0 8px 0;font-size:0.95rem}
+  .col-comp.mal h5{color:var(--error)}
+  .col-comp.bien h5{color:var(--exito)}
+  .col-comp p{margin:0;font-size:0.92rem;line-height:1.6}
+  .resaltar-problema{background:#ffe0e0;padding:1px 4px;border-radius:3px;text-decoration:line-through;text-decoration-color:var(--error)}
+
+  /* Conectores */
+  .conectores-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+  .conector-card{background:#fff;border-radius:10px;padding:14px;border-top:5px solid;box-shadow:0 2px 6px rgba(0,0,0,0.07)}
+  .conector-card.conec-y{border-color:var(--conector-y)}
+  .conector-card.conec-y .pal{color:var(--conector-y)}
+  .conector-card.conec-pero{border-color:var(--conector-pero)}
+  .conector-card.conec-pero .pal{color:var(--conector-pero)}
+  .conector-card.conec-porque{border-color:var(--conector-porque)}
+  .conector-card.conec-porque .pal{color:var(--conector-porque)}
+  .conector-card.conec-entonces{border-color:var(--conector-entonces)}
+  .conector-card.conec-entonces .pal{color:var(--conector-entonces)}
+  .conector-card .pal{font-size:1.3rem;font-weight:700;display:block;text-align:center;margin-bottom:4px}
+  .conector-card .funcion{font-size:0.85rem;color:var(--gris);text-align:center;font-style:italic;margin-bottom:8px;display:block}
+  .conector-card .ejemplo{font-size:0.88rem;line-height:1.5;background:var(--gris-claro);padding:8px 10px;border-radius:6px;display:block}
+
+  /* Actividad: ordenar oraciones */
+  .ordenar-cont{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(123,63,191,0.08)}
+  .ordenar-cont h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
+  .instruccion-ord{background:var(--acento-claro);padding:10px 14px;border-radius:6px;font-size:0.93rem;margin:10px 0;border-left:4px solid var(--acento)}
+  .oraciones-desordenadas{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+  .oracion-mover{background:#fff;border:2px solid var(--gris-claro);padding:10px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:12px;font-size:0.92rem;transition:all 0.2s;user-select:none}
+  .oracion-mover:hover{border-color:var(--acento);background:var(--acento-claro)}
+  .oracion-mover.seleccionada{border-color:var(--acento);background:var(--acento-claro);box-shadow:0 0 0 3px rgba(123,63,191,0.15)}
+  .oracion-mover .etiq-orig{background:var(--gris);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0}
+  .oracion-mover .texto-or{flex:1}
+  .botones-ord{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
+  .btn-orden{padding:9px 18px;border-radius:6px;border:none;font-family:inherit;font-weight:600;cursor:pointer;font-size:0.92rem;transition:all 0.2s}
+  .btn-subir{background:var(--cp);color:#fff}
+  .btn-subir:hover{background:var(--cp-oscuro)}
+  .btn-bajar{background:var(--acento);color:#fff}
+  .btn-bajar:hover{background:var(--acento-oscuro)}
+  .btn-verificar{background:var(--exito);color:#fff;padding:10px 22px}
+  .btn-verificar:hover{filter:brightness(0.92)}
+  .btn-reiniciar{background:var(--gris);color:#fff}
+  .btn-reiniciar:hover{background:#4a5560}
+  .resultado-ord{padding:14px 18px;border-radius:8px;margin-top:14px;display:none;font-size:0.95rem;line-height:1.6}
+  .resultado-ord.correcto{background:#d4edda;border:2px solid var(--exito);color:var(--exito);display:block}
+  .resultado-ord.incorrecto{background:#fdecea;border:2px solid var(--error);color:var(--error);display:block}
+
+  /* Plantilla guiada para escribir */
+  .plantilla-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:20px;margin:18px 0;box-shadow:0 3px 12px rgba(0,137,205,0.1)}
+  .plantilla-cont h4{margin-top:0;color:var(--cp-oscuro)}
+  .paso-plantilla{margin:14px 0;padding:14px 16px;border-radius:8px;background:#fafbfc;border-left:5px solid var(--cp)}
+  .paso-plantilla.p1{border-color:#d4a056;background:#fdf6e8}
+  .paso-plantilla.p2{border-color:#c0392b;background:#fdecea}
+  .paso-plantilla.p3{border-color:#d4a056;background:#fdf6e8}
+  .paso-plantilla h5{margin:0 0 6px 0;font-size:0.98rem}
+  .paso-plantilla.p1 h5{color:#8a5a00}
+  .paso-plantilla.p2 h5{color:var(--error)}
+  .paso-plantilla.p3 h5{color:#8a5a00}
+  .paso-plantilla .indicacion{font-size:0.88rem;font-style:italic;color:var(--gris);margin-bottom:8px}
+  .linea-escritura{display:block;border-bottom:2px solid #aab2bd;height:28px;margin:6px 0;background:repeating-linear-gradient(180deg,transparent 0,transparent 27px,#aab2bd 27px,#aab2bd 28px)}
+
+  /* Quiz */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+
+  /* Párrafo con conectores resaltados */
+  .parrafo-con-conectores{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:14px 0;line-height:1.85;font-size:0.95rem}
+  .conec-marca{padding:1px 6px;border-radius:4px;font-weight:700;color:#fff}
+  .conec-marca.y{background:var(--conector-y)}
+  .conec-marca.pero{background:var(--conector-pero)}
+  .conec-marca.porque{background:var(--conector-porque)}
+  .conec-marca.entonces{background:var(--conector-entonces)}
+</style>
+</head>
+<body>
+
+<h1>Clase 2: Cualidades del párrafo y conectores básicos</h1>
+<p class="subtitulo">Tema 7 · Lección 7.1 · Nivel 1 · Semana 13 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Distinguir las tres <strong>cualidades</strong> de un buen párrafo: unidad, cohesión y coherencia.</li>
+    <li>Aplicar los <strong>conectores básicos</strong> <em>y, pero, porque, entonces</em> para unir oraciones.</li>
+    <li>Escribir un primer <strong>párrafo informativo</strong> corto siguiendo una plantilla guiada.</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En la clase anterior aprendimos la estructura del párrafo con la <strong>técnica de la hamburguesa</strong>: pan de arriba, relleno y pan de abajo. Hoy daremos el siguiente paso. Saber dónde va cada parte no basta; necesitamos también que las oraciones se sostengan unas a otras y que el conjunto tenga sentido.</p>
+
+<p>Para lograrlo, estudiaremos las tres <span class="palabra-clave">cualidades</span> de un buen párrafo y aprenderemos a usar <span class="palabra-clave">conectores</span>, que son las palabras que enlazan las ideas. Al final, escribiremos el primer párrafo de nuestra cosecha.</p>
+
+<details open>
+<summary>1. Las tres cualidades del párrafo <span class="caja-tiempo">12 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Un buen párrafo se sostiene por tres cualidades</h3>
+
+<p>Un párrafo puede tener las tres partes que ya conocemos, pero si le falta alguna de las siguientes cualidades, el lector se confunde. Estas son las tres condiciones que distinguen un párrafo bien escrito:</p>
+
+<div class="cualidades-grid">
+  <div class="cualidad-card unidad">
+    <h4><span class="icono-cual">🎯</span>Unidad</h4>
+    <p class="definicion">Hablar de un solo tema.</p>
+    <p>Todas las oraciones deben referirse al mismo asunto. Si una oración se aparta del tema, rompe la unidad.</p>
+  </div>
+  <div class="cualidad-card cohesion">
+    <h4><span class="icono-cual">🔗</span>Cohesión</h4>
+    <p class="definicion">Conectar las oraciones entre sí.</p>
+    <p>Las oraciones deben enlazarse con palabras de unión (conectores) para que fluyan como un río, no como piedras sueltas.</p>
+  </div>
+  <div class="cualidad-card coherencia">
+    <h4><span class="icono-cual">🧠</span>Coherencia</h4>
+    <p class="definicion">Que las ideas tengan sentido lógico.</p>
+    <p>El orden de las oraciones debe seguir un razonamiento que el lector pueda entender sin esfuerzo.</p>
+  </div>
+</div>
+
+<h3>Cuando falta la <span style="color:var(--unidad)">unidad</span></h3>
+
+<p>Veamos un párrafo que pierde la unidad porque una oración se sale del tema:</p>
+
+<div class="comparacion-cual">
+  <div class="col-comp mal">
+    <h5>❌ Sin unidad</h5>
+    <p>El mercado de mi barrio abre todos los días desde las siete de la mañana. Allí venden frutas, verduras y carne fresca. <span class="resaltar-problema">Mi sobrino estudia en una universidad de California.</span> Los precios son bajos comparados con los del supermercado.</p>
+  </div>
+  <div class="col-comp bien">
+    <h5>✅ Con unidad</h5>
+    <p>El mercado de mi barrio abre todos los días desde las siete de la mañana. Allí venden frutas, verduras y carne fresca. Los precios son bajos comparados con los del supermercado. Por eso prefiero comprar allí.</p>
+  </div>
+</div>
+
+<h3>Cuando falta la <span style="color:var(--cohesion)">cohesión</span></h3>
+
+<p>Ahora veamos un párrafo donde las oraciones están sueltas, sin conectores que las unan:</p>
+
+<div class="comparacion-cual">
+  <div class="col-comp mal">
+    <h5>❌ Sin cohesión</h5>
+    <p>El invierno en Chicago es muy frío. Cae mucha nieve. Las personas usan abrigo, guantes y gorro. Los carros llevan llantas especiales. Es importante salir bien preparado.</p>
+  </div>
+  <div class="col-comp bien">
+    <h5>✅ Con cohesión</h5>
+    <p>El invierno en Chicago es muy frío <strong>y</strong> cae mucha nieve. <strong>Por eso</strong>, las personas usan abrigo, guantes y gorro. <strong>Además</strong>, los carros llevan llantas especiales. <strong>Entonces</strong>, es importante salir bien preparado.</p>
+  </div>
+</div>
+
+<h3>Cuando falta la <span style="color:var(--coherencia)">coherencia</span></h3>
+
+<p>Aquí el problema es que las oraciones están desordenadas y el lector no entiende la secuencia lógica:</p>
+
+<div class="comparacion-cual">
+  <div class="col-comp mal">
+    <h5>❌ Sin coherencia</h5>
+    <p>Comimos pastel de cumpleaños. Mi hija sopló las velas. Compramos un pastel de chocolate. Ayer fue el cumpleaños de mi hija. Cantamos las mañanitas todos juntos.</p>
+  </div>
+  <div class="col-comp bien">
+    <h5>✅ Con coherencia</h5>
+    <p>Ayer fue el cumpleaños de mi hija. Compramos un pastel de chocolate. Cantamos las mañanitas todos juntos. Mi hija sopló las velas. Después comimos pastel de cumpleaños.</p>
+  </div>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Resumen visual:</strong> La <strong>unidad</strong> es el <em>tema único</em>; la <strong>cohesión</strong> es el <em>pegamento</em> entre oraciones; la <strong>coherencia</strong> es el <em>orden lógico</em>. Las tres juntas hacen que un párrafo funcione.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Los conectores básicos: el pegamento de las ideas <span class="caja-tiempo">12 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué son los conectores?</h3>
+
+<p>Los <span class="palabra-clave">conectores</span> son palabras pequeñas con un trabajo muy importante: unen oraciones e indican la relación que existe entre ellas. Sin conectores, las oraciones son como ladrillos sueltos; con conectores, esos ladrillos forman una pared.</p>
+
+<p>En este nivel trabajaremos cuatro conectores básicos. Cada uno tiene una función distinta:</p>
+
+<div class="conectores-grid">
+  <div class="conector-card conec-y">
+    <span class="pal">Y</span>
+    <span class="funcion">Añadir información</span>
+    <span class="ejemplo">Compré pan <strong>y</strong> leche en la tienda.</span>
+  </div>
+  <div class="conector-card conec-pero">
+    <span class="pal">Pero</span>
+    <span class="funcion">Contraste / oposición</span>
+    <span class="ejemplo">Quería ir al cine, <strong>pero</strong> estaba lloviendo.</span>
+  </div>
+  <div class="conector-card conec-porque">
+    <span class="pal">Porque</span>
+    <span class="funcion">Dar una razón / causa</span>
+    <span class="ejemplo">Llegué tarde <strong>porque</strong> perdí el autobús.</span>
+  </div>
+  <div class="conector-card conec-entonces">
+    <span class="pal">Entonces</span>
+    <span class="funcion">Consecuencia / resultado</span>
+    <span class="ejemplo">No había azúcar; <strong>entonces</strong> compré una bolsa.</span>
+  </div>
+</div>
+
+<h3>Conectores en acción dentro de un párrafo</h3>
+
+<p>Observemos cómo se ven los cuatro conectores dentro de un párrafo completo:</p>
+
+<div class="parrafo-con-conectores">
+Los sábados son mi día favorito de la semana. <span class="conec-marca porque">Porque</span> no trabajo, puedo levantarme tarde. Después desayuno con calma <span class="conec-marca y">y</span> leo el periódico. A veces planeo salir al parque, <span class="conec-marca pero">pero</span> si hace mal tiempo, me quedo en casa viendo películas. <span class="conec-marca entonces">Entonces</span>, sea cual sea el clima, siempre disfruto mis sábados.
+</div>
+
+<div class="tip">
+  <strong>📝 Reglas de puntuación importantes:</strong>
+  <ul style="margin:8px 0 0 0;padding-left:22px">
+    <li><strong>Antes de "pero"</strong> casi siempre va una coma: <em>"Estudié mucho, pero el examen fue difícil."</em></li>
+    <li><strong>"Y" no lleva coma antes</strong> en oraciones simples: <em>"Comí arroz y frijoles."</em></li>
+    <li><strong>"Porque" no se separa con coma</strong>: <em>"Estoy cansado porque trabajé doce horas."</em></li>
+    <li><strong>"Entonces" suele ir con coma después</strong>: <em>"Entonces, decidí descansar."</em></li>
+  </ul>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Actividad: ordenar un párrafo desarmado <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Ponga las oraciones en el orden correcto</h3>
+
+<p>A continuación tiene cuatro oraciones de un párrafo que están desordenadas. Su tarea es <strong>reordenarlas</strong> para que formen un párrafo con las tres cualidades: unidad, cohesión y coherencia. Recuerde: la oración principal anuncia el tema y el cierre cierra la idea.</p>
+
+<div class="ordenar-cont">
+  <h4>🧩 Arme el párrafo correctamente</h4>
+
+  <div class="instruccion-ord">
+    <strong>Instrucciones:</strong> Toque (o haga clic) sobre una oración para seleccionarla. Luego use los botones <em>Subir</em> o <em>Bajar</em> para moverla. Cuando crea que el orden es correcto, presione <em>Verificar orden</em>.
+  </div>
+
+  <div class="oraciones-desordenadas" id="oraciones-list"></div>
+
+  <div class="botones-ord">
+    <button type="button" class="btn-orden btn-subir" id="btn-subir">↑ Subir</button>
+    <button type="button" class="btn-orden btn-bajar" id="btn-bajar">↓ Bajar</button>
+    <button type="button" class="btn-orden btn-verificar" id="btn-verificar">✓ Verificar orden</button>
+    <button type="button" class="btn-orden btn-reiniciar" id="btn-reiniciar">↻ Reiniciar</button>
+  </div>
+
+  <div class="resultado-ord" id="resultado-ord"></div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Plantilla guiada: escribo mi primer párrafo <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Mi tema favorito en cinco oraciones</h3>
+
+<p>Ahora le toca a usted escribir. Use la siguiente plantilla guiada para construir un párrafo corto sobre un tema que conozca bien (su trabajo, su barrio, una comida que le gusta, su rutina del fin de semana, una persona importante en su vida).</p>
+
+<div class="plantilla-cont">
+  <h4>✍️ Plantilla del primer párrafo</h4>
+
+  <div class="paso-plantilla p1">
+    <h5>🍞 Pan de arriba — Oración principal</h5>
+    <p class="indicacion">Escriba una oración que anuncie su tema. Comience con mayúscula y termine con punto.</p>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+  </div>
+
+  <div class="paso-plantilla p2">
+    <h5>🥩 Relleno — Oraciones de apoyo (2 o 3)</h5>
+    <p class="indicacion">Escriba 2 o 3 oraciones con detalles. Use al menos uno de estos conectores: <strong>y, pero, porque, entonces</strong>.</p>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+  </div>
+
+  <div class="paso-plantilla p3">
+    <h5>🍞 Pan de abajo — Oración de cierre</h5>
+    <p class="indicacion">Termine el párrafo con una oración que resuma o cierre la idea. Puede comenzar con <em>"Por eso"</em>, <em>"Sin duda"</em> o <em>"En conclusión"</em>.</p>
+    <span class="linea-escritura"></span>
+    <span class="linea-escritura"></span>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Antes de entregar, verifique:</strong>
+  <ul style="margin:8px 0 0 0;padding-left:22px">
+    <li>¿Todas mis oraciones hablan del mismo tema? (unidad)</li>
+    <li>¿Usé al menos un conector (<em>y, pero, porque, entonces</em>)? (cohesión)</li>
+    <li>¿El orden de las oraciones tiene sentido? (coherencia)</li>
+    <li>¿Cada oración comienza con mayúscula y termina con punto?</li>
+  </ul>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Actividades de la lección y cierre <span class="caja-tiempo">6 min</span></summary>
+<div class="contenido-detalle">
+
+<p>Las actividades de la Lección 7.1 se reparten entre las Clases 1 y 2. El quiz combinado de 10 preguntas (identificar la oración principal, elegir la oración de apoyo que no encaja, elegir el conector correcto) se entrega al final de la Clase 2.</p>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Modalidad presencial (sincrónica)</h4>
+    <p><span class="badge-tipo badge-discusion">Mi tema favorito</span></p>
+    <p>Cada estudiante elige un tema sencillo (su barrio, su trabajo, una comida favorita) y lo presenta verbalmente al grupo siguiendo la estructura de la hamburguesa: una oración principal y dos detalles. El profesor anota en la pizarra las oraciones principales que va escuchando para discutir cuáles cumplen mejor con la función de "anunciar el tema".</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Modalidad en línea (asincrónica)</h4>
+    <p><span class="badge-tipo badge-reflexion">Mi primer párrafo</span></p>
+    <p>Cada estudiante publica en el foro su primer párrafo informativo siguiendo la plantilla guiada (4 a 5 oraciones). El párrafo debe:</p>
+    <ul style="padding-left:20px;font-size:0.92rem">
+      <li>Tener una oración principal clara.</li>
+      <li>Incluir 2 o 3 oraciones de apoyo.</li>
+      <li>Usar al menos un conector básico.</li>
+      <li>Cerrar con una oración de cierre.</li>
+    </ul>
+    <p>Cada estudiante comenta el párrafo de un compañero señalando algo positivo.</p>
+  </div>
+</div>
+
+<h3>Quiz final de la lección</h3>
+
+<p>El siguiente quiz combina los aprendizajes de las dos clases. Tiene seis preguntas sobre identificación de oración principal, oraciones que no encajan y conectores básicos.</p>
+
+<div class="quiz-cont">
+  <h4>📝 Quiz: el párrafo, sus partes y sus conectores</h4>
+  <div class="preguntas-quiz" id="preguntas-quiz2"></div>
+  <div class="puntaje" id="puntaje-quiz2">Aciertos: 0 / 6</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Cierre y conexión con la próxima lección <span class="caja-tiempo">2 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>Un buen párrafo cumple con tres cualidades: <strong>unidad</strong> (un solo tema), <strong>cohesión</strong> (oraciones conectadas) y <strong>coherencia</strong> (orden lógico).</li>
+  <li>Los <strong>conectores básicos</strong> (<em>y, pero, porque, entonces</em>) son el pegamento de las ideas.</li>
+  <li>Cada conector tiene una función específica: añadir, contrastar, dar razón o expresar consecuencia.</li>
+  <li>Para escribir un primer párrafo, podemos seguir una <strong>plantilla guiada</strong>: oración principal + apoyos + cierre.</li>
+  <li>Antes de entregar un párrafo, debemos <strong>revisarlo</strong> usando una lista de verificación.</li>
+</ul>
+
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> En el GED de Razonamiento a través de las Artes del Lenguaje, las respuestas extendidas exigen escribir párrafos con unidad, cohesión y coherencia. Los conectores son uno de los criterios visibles que evalúan los correctores. Aprenderlos bien desde el nivel principiante es una inversión segura.
+</div>
+
+<h3>Próxima lección</h3>
+
+<p>En la <strong>Lección 7.2</strong> (Clases 3 y 4) aprenderemos a distinguir y escribir tres tipos de texto distintos según su propósito: <strong>narrativo</strong> (contar algo que sucedió), <strong>informativo</strong> (dar datos sobre un tema) y <strong>de opinión</strong> (expresar un punto de vista). El mismo tema podrá presentarse de tres maneras diferentes.</p>
+
+</div>
+</details>
+
+<p class="firma">Prof. José M. Fernández · Truman College · Tema 7, Clase 2</p>
+
+<script>
+(function(){
+  'use strict';
+
+  /* =========================================================
+     ACTIVIDAD: ORDENAR PÁRRAFO
+     Orden correcto: 3, 1, 4, 2
+     (3) Tema (principal) → (1) detalle → (4) detalle → (2) cierre
+     ========================================================= */
+
+  var oracionesOriginales=[
+    {id:1,letra:'A',texto:'Por ejemplo, ayudan a calmar los nervios después de un día difícil.'},
+    {id:2,letra:'B',texto:'Por todo eso, recomiendo siempre tener una mascota en casa.'},
+    {id:3,letra:'C',texto:'Tener una mascota en casa trae muchos beneficios.'},
+    {id:4,letra:'D',texto:'Además, los niños aprenden a ser responsables cuando cuidan al animal.'}
+  ];
+  var ordenCorrecto=[3,1,4,2];
+
+  var estadoActual=[];
+  var seleccionado=null;
+
+  function inicializar(){
+    estadoActual=[2,4,3,1]; // orden inicial desordenado (no es el correcto)
+    seleccionado=null;
+    renderizar();
+    document.getElementById('resultado-ord').style.display='none';
+    document.getElementById('resultado-ord').className='resultado-ord';
+  }
+
+  function renderizar(){
+    var cont=document.getElementById('oraciones-list');
+    cont.innerHTML='';
+    estadoActual.forEach(function(idOr,pos){
+      var or=oracionesOriginales.find(function(o){return o.id===idOr;});
+      var div=document.createElement('div');
+      div.className='oracion-mover';
+      if(seleccionado===idOr)div.className+=' seleccionada';
+      div.setAttribute('data-id',idOr);
+      div.innerHTML='<span class="etiq-orig">'+or.letra+'</span><span class="texto-or">'+or.texto+'</span>';
+      div.addEventListener('click',function(){
+        seleccionado=parseInt(this.getAttribute('data-id'),10);
+        renderizar();
+      });
+      cont.appendChild(div);
+    });
+  }
+
+  function moverArriba(){
+    if(seleccionado===null)return;
+    var idx=estadoActual.indexOf(seleccionado);
+    if(idx<=0)return;
+    var temp=estadoActual[idx-1];
+    estadoActual[idx-1]=estadoActual[idx];
+    estadoActual[idx]=temp;
+    renderizar();
+  }
+  function moverAbajo(){
+    if(seleccionado===null)return;
+    var idx=estadoActual.indexOf(seleccionado);
+    if(idx<0||idx>=estadoActual.length-1)return;
+    var temp=estadoActual[idx+1];
+    estadoActual[idx+1]=estadoActual[idx];
+    estadoActual[idx]=temp;
+    renderizar();
+  }
+
+  function verificar(){
+    var res=document.getElementById('resultado-ord');
+    var ok=true;
+    for(var i=0;i<ordenCorrecto.length;i++){
+      if(estadoActual[i]!==ordenCorrecto[i]){ok=false;break;}
+    }
+    if(ok){
+      res.className='resultado-ord correcto';
+      res.innerHTML='✅ <strong>¡Orden correcto!</strong><br>El párrafo armado es:<br><br><em>"Tener una mascota en casa trae muchos beneficios. Por ejemplo, ayudan a calmar los nervios después de un día difícil. Además, los niños aprenden a ser responsables cuando cuidan al animal. Por todo eso, recomiendo siempre tener una mascota en casa."</em><br><br>Note cómo la oración (C) es la principal (anuncia el tema), las oraciones (A) y (D) dan detalles, y la oración (B) cierra el párrafo.';
+    }else{
+      res.className='resultado-ord incorrecto';
+      res.innerHTML='❌ El orden todavía no es el correcto. <br><strong>Pista:</strong> Busque primero la oración más general (la que anuncia "muchos beneficios"). Luego ponga los detalles que apoyan esa idea. La oración de cierre suele comenzar con expresiones como <em>"Por todo eso"</em>, <em>"Por eso"</em> o <em>"En conclusión"</em>.';
+    }
+  }
+
+  document.getElementById('btn-subir').addEventListener('click',moverArriba);
+  document.getElementById('btn-bajar').addEventListener('click',moverAbajo);
+  document.getElementById('btn-verificar').addEventListener('click',verificar);
+  document.getElementById('btn-reiniciar').addEventListener('click',inicializar);
+
+  inicializar();
+
+  /* =========================================================
+     QUIZ FINAL DE LA LECCIÓN
+     ========================================================= */
+  var preguntas=[
+    {
+      contexto:'(1) El café cubano es una bebida muy popular en mi familia. (2) Lo tomamos por la mañana después del desayuno. (3) También lo ofrecemos a las visitas cuando llegan a casa. (4) Por eso, en mi casa nunca falta una cafetera lista.',
+      texto:'¿Cuál es la oración principal de este párrafo?',
+      opciones:[
+        {t:'(1) El café cubano es una bebida muy popular en mi familia.',ok:true},
+        {t:'(2) Lo tomamos por la mañana después del desayuno.',ok:false},
+        {t:'(3) También lo ofrecemos a las visitas cuando llegan a casa.',ok:false},
+        {t:'(4) Por eso, en mi casa nunca falta una cafetera lista.',ok:false}
+      ],
+      explica:'La oración (1) es la más general: anuncia que el café es popular en la familia. Las demás dan detalles (cuándo se toma, a quién se ofrece) y la (4) es el cierre.'
+    },
+    {
+      contexto:'El parque de mi barrio es muy agradable. Tiene árboles grandes que dan sombra. Hay bancos donde uno puede sentarse a descansar. Los niños juegan en los columpios todas las tardes. Mi tía vive en California desde hace diez años. Por eso me gusta caminar allí los fines de semana.',
+      texto:'¿Cuál oración NO encaja en el párrafo? (rompe la unidad)',
+      opciones:[
+        {t:'Tiene árboles grandes que dan sombra.',ok:false},
+        {t:'Hay bancos donde uno puede sentarse a descansar.',ok:false},
+        {t:'Mi tía vive en California desde hace diez años.',ok:true},
+        {t:'Los niños juegan en los columpios todas las tardes.',ok:false}
+      ],
+      explica:'La oración sobre la tía en California no habla del parque del barrio. Rompe la unidad porque cambia de tema sin razón.'
+    },
+    {
+      texto:'Complete la oración con el conector correcto: "Quería salir a caminar, ___ comenzó a llover."',
+      opciones:[
+        {t:'y',ok:false},
+        {t:'pero',ok:true},
+        {t:'porque',ok:false},
+        {t:'entonces',ok:false}
+      ],
+      explica:'La segunda parte de la oración contradice o se opone a la primera (quería salir, pero algo lo impidió). Para contraste se usa "pero".'
+    },
+    {
+      texto:'Complete la oración con el conector correcto: "Llegué muy cansada ___ trabajé doce horas seguidas."',
+      opciones:[
+        {t:'y',ok:false},
+        {t:'pero',ok:false},
+        {t:'porque',ok:true},
+        {t:'entonces',ok:false}
+      ],
+      explica:'La segunda parte explica la causa o razón de la primera (¿por qué estoy cansada? porque trabajé mucho). Para indicar causa se usa "porque".'
+    },
+    {
+      texto:'Complete la oración con el conector correcto: "No había leche en la nevera; ___ fui rápido a la tienda de la esquina."',
+      opciones:[
+        {t:'y',ok:false},
+        {t:'pero',ok:false},
+        {t:'porque',ok:false},
+        {t:'entonces',ok:true}
+      ],
+      explica:'La segunda parte es la consecuencia o resultado de la primera (no había leche, así que fui a comprar). Para indicar consecuencia se usa "entonces".'
+    },
+    {
+      texto:'Complete la oración con el conector correcto: "En el desayuno tomé café ___ un pan con mantequilla."',
+      opciones:[
+        {t:'y',ok:true},
+        {t:'pero',ok:false},
+        {t:'porque',ok:false},
+        {t:'entonces',ok:false}
+      ],
+      explica:'La segunda parte añade más información a la primera (qué más tomé). Para añadir se usa "y".'
+    }
+  ];
+
+  var resueltas={};
+  var aciertos=0;
+  var cont=document.getElementById('preguntas-quiz2');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-quiz';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      contextoHtml+
+      '<div class="opciones-quiz">'+opcHtml+'</div>'+
+      '<div class="retro-quiz" id="retro-q2-'+idx+'"></div>';
+
+    cont.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-quiz');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltas[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+          var retro=document.getElementById('retro-q2-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-quiz2');
+    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
+    if(aciertos===preguntas.length){
+      el.innerHTML='🎉 ¡Lección 7.1 dominada! Aciertos: '+aciertos+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

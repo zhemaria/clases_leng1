@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 5: La relación de causa y efecto</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --causa:#1565c0;--causa-claro:#e3f2fd;
+    --efecto:#c62828;--efecto-claro:#ffebee;
+    --conector-c:#6a1b9a;--conector-c-claro:#f3e5f5;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Causa y efecto */
+  .marca-causa{background:var(--causa-claro);color:var(--causa);padding:2px 8px;border-radius:4px;font-weight:700;box-shadow:0 -3px 0 var(--causa) inset}
+  .marca-efecto{background:var(--efecto-claro);color:var(--efecto);padding:2px 8px;border-radius:4px;font-weight:700;box-shadow:0 -3px 0 var(--efecto) inset}
+  .marca-conec{background:var(--conector-c-claro);color:var(--conector-c);padding:1px 6px;border-radius:3px;font-weight:600;font-style:italic}
+
+  /* Diagrama causa-efecto */
+  .diagrama-ce{display:grid;grid-template-columns:1fr 60px 1fr;gap:10px;align-items:center;margin:20px 0;font-family:'Georgia',serif}
+  @media(max-width:600px){.diagrama-ce{grid-template-columns:1fr;gap:8px}}
+  .bloque-causa,.bloque-efecto{padding:16px 18px;border-radius:10px;border:2px solid;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;font-size:0.98rem}
+  .bloque-causa{background:var(--causa-claro);border-color:var(--causa);color:var(--causa)}
+  .bloque-efecto{background:var(--efecto-claro);border-color:var(--efecto);color:var(--efecto)}
+  .flecha-ce{font-size:2.2rem;color:var(--conector-c);text-align:center;font-weight:700}
+  @media(max-width:600px){.flecha-ce{transform:rotate(90deg);font-size:1.8rem}}
+  .etiq-bloque{display:block;font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;opacity:0.75}
+
+  /* Tabla de conectores causales */
+  table.tabla-conec-c{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-conec-c th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.tabla-conec-c td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.tabla-conec-c tr:last-child td{border-bottom:none}
+  table.tabla-conec-c td:first-child{font-weight:700;width:160px;color:var(--conector-c)}
+
+  /* Texto informativo */
+  .texto-info{background:#fffaf3;border:2px solid var(--acento);border-radius:10px;padding:20px 24px;margin:18px 0;font-family:'Georgia',serif;font-size:1.05rem;line-height:1.85}
+  .texto-info h4{color:#b35316;margin-top:0;font-family:'Poppins',sans-serif}
+  .texto-info p{margin:0 0 12px 0}
+
+  /* Emparejador causa-efecto */
+  .empareja-ce{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media(max-width:640px){.empareja-ce{grid-template-columns:1fr}}
+  .col-empareja-ce h4{margin-bottom:10px;text-align:center;font-size:1rem}
+  .col-empareja-ce.col-c h4{color:var(--causa)}
+  .col-empareja-ce.col-e h4{color:var(--efecto)}
+  .item-ce{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font-size:0.95rem;font-family:'Georgia',serif;transition:all 0.2s;line-height:1.5}
+  .item-ce.col-c-it{border-left:6px solid var(--causa)}
+  .item-ce.col-e-it{border-left:6px solid var(--efecto)}
+  .item-ce:hover{background:var(--cp-claro)}
+  .item-ce.seleccionado{border-color:var(--acento);background:#fff3e0;font-weight:600}
+  .item-ce.unido{border-color:var(--exito);background:#d4edda;cursor:default}
+  .item-ce.unido::after{content:' ✓';color:var(--exito);font-weight:700}
+
+  /* Cloze con conectores causales */
+  .cloze-c{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .item-cloze-c{background:#fafbfc;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:10px 0}
+  .frase-cloze-c{font-family:'Georgia',serif;font-size:1.05rem;line-height:1.7;margin-bottom:10px}
+  .hueco-c{display:inline-block;min-width:130px;padding:2px 10px;border:2px dashed var(--conector-c);border-radius:6px;background:#fff;text-align:center;font-weight:700;color:var(--gris);margin:0 4px;font-style:italic}
+  .hueco-c.lleno{border-style:solid;color:var(--conector-c);background:var(--conector-c-claro)}
+  .hueco-c.correcta{border-color:var(--exito);background:#d4edda;color:var(--exito)}
+  .hueco-c.incorrecta{border-color:var(--error);background:#f8d7da;color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .banco-conec-c{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0;padding:10px;background:var(--gris-claro);border-radius:8px}
+  .ficha-c{padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:700;border:2px solid var(--conector-c);background:#fff;color:var(--conector-c);font-family:inherit;font-size:0.95rem;transition:all 0.2s;font-style:italic}
+  .ficha-c:hover{background:var(--conector-c-claro)}
+  .ficha-c.activa{transform:scale(1.05);box-shadow:0 0 0 3px var(--acento)}
+  .ficha-c.usada{opacity:0.4;pointer-events:none}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  .leyenda-colores{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.9rem}
+  .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
+  .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+</style>
+</head>
+<body>
+
+<h1>Clase 5: La relación de causa y efecto</h1>
+<p class="subtitulo">Identificar por qué ocurren las cosas en un texto · Nivel 1 · Tema 5, semana 10</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Identificar el <strong>motivo</strong> por el cual ocurre un hecho (<strong>causa</strong>) y el <strong>resultado</strong> que produce (<strong>efecto</strong>) en textos informativos. Reconocer las palabras conectoras que señalan estas relaciones lógicas.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En las clases anteriores aprendimos a organizar los hechos en el tiempo (qué pasó antes, qué pasó después). Hoy damos un paso más profundo: vamos a estudiar la <strong>lógica</strong> que conecta esos hechos, es decir, no solo <em>cuándo</em> ocurren, sino <strong>por qué</strong> ocurren.</p>
+
+<p>Las relaciones de <span class="palabra-clave">causa y efecto</span> son la columna vertebral de los textos informativos: noticias, artículos científicos, lecturas de estudios sociales, problemas de razonamiento. En el examen GED, especialmente en las secciones de Ciencias y Estudios Sociales, identificar correctamente qué <em>causó</em> qué es la diferencia entre acertar o fallar una pregunta.</p>
+
+<details open>
+<summary>1. Introducción a causa y efecto <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Las dos preguntas fundamentales</h3>
+
+<p>Toda relación de causa y efecto se construye sobre dos preguntas muy simples:</p>
+
+<div class="leyenda-colores">
+  <span><span class="punto" style="background:var(--causa)"></span> Causa</span>
+  <span><span class="punto" style="background:var(--efecto)"></span> Efecto</span>
+</div>
+
+<div class="diagrama-ce">
+  <div class="bloque-causa">
+    <div>
+      <span class="etiq-bloque">Causa</span>
+      ¿Por qué ocurrió?
+    </div>
+  </div>
+  <div class="flecha-ce">➜</div>
+  <div class="bloque-efecto">
+    <div>
+      <span class="etiq-bloque">Efecto</span>
+      ¿Qué pasó?
+    </div>
+  </div>
+</div>
+
+<p>La <span class="palabra-clave">causa</span> es la razón por la que algo sucede. Responde a <em>¿por qué ocurrió?</em>. El <span class="palabra-clave">efecto</span> es el resultado o la consecuencia. Responde a <em>¿qué pasó?</em>.</p>
+
+<h3>El orden temporal: la causa siempre va primero</h3>
+
+<p>Una regla importante: en la realidad, <strong>la causa siempre ocurre antes que el efecto</strong>. Si llueve, el suelo se moja; nunca al revés. Esto es así aunque en el texto escrito el autor decida mencionar primero el efecto y después la causa.</p>
+
+<div class="diagrama-ce">
+  <div class="bloque-causa">
+    <div>
+      <span class="etiq-bloque">Causa</span>
+      Llovió toda la noche.
+    </div>
+  </div>
+  <div class="flecha-ce">➜</div>
+  <div class="bloque-efecto">
+    <div>
+      <span class="etiq-bloque">Efecto</span>
+      Las calles amanecieron inundadas.
+    </div>
+  </div>
+</div>
+
+<div class="diagrama-ce">
+  <div class="bloque-causa">
+    <div>
+      <span class="etiq-bloque">Causa</span>
+      Olvidé poner el despertador.
+    </div>
+  </div>
+  <div class="flecha-ce">➜</div>
+  <div class="bloque-efecto">
+    <div>
+      <span class="etiq-bloque">Efecto</span>
+      Llegué tarde al trabajo.
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>💡 Idea central:</strong> No confunda <em>secuencia</em> con <em>causa</em>. Dos hechos pueden ocurrir uno después del otro sin que el primero haya causado el segundo. Para que exista relación de causa-efecto, el primero debe <strong>producir</strong> el segundo.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Las palabras indicadoras (conectores causales) <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Conectores que introducen la causa</h3>
+
+<p>Los autores no siempre nos dicen directamente "esta es la causa y este es el efecto". En lugar de eso, utilizan <span class="palabra-clave">conectores causales</span>: palabras que señalan la relación lógica entre dos hechos. Aprender a detectarlos es la clave para leer textos informativos con precisión.</p>
+
+<table class="tabla-conec-c">
+  <thead>
+    <tr>
+      <th>Conector</th>
+      <th>Función</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>porque</td>
+      <td>Introduce la causa después del efecto.</td>
+      <td><span class="marca-efecto">No fui a clase</span> <span class="marca-conec">porque</span> <span class="marca-causa">estaba enfermo</span>.</td>
+    </tr>
+    <tr>
+      <td>ya que</td>
+      <td>Equivalente a "porque", más formal.</td>
+      <td><span class="marca-efecto">Cancelamos el viaje</span> <span class="marca-conec">ya que</span> <span class="marca-causa">la tormenta era muy fuerte</span>.</td>
+    </tr>
+    <tr>
+      <td>debido a</td>
+      <td>Introduce la causa expresada como sustantivo.</td>
+      <td><span class="marca-efecto">El vuelo se retrasó</span> <span class="marca-conec">debido a</span> <span class="marca-causa">la niebla</span>.</td>
+    </tr>
+    <tr>
+      <td>puesto que / pues</td>
+      <td>Introducen la causa, registro formal.</td>
+      <td><span class="marca-conec">Puesto que</span> <span class="marca-causa">llovía fuerte</span>, <span class="marca-efecto">suspendimos el partido</span>.</td>
+    </tr>
+    <tr>
+      <td>como resultado</td>
+      <td>Introduce el efecto después de la causa.</td>
+      <td><span class="marca-causa">Estudió todos los días</span>; <span class="marca-conec">como resultado</span>, <span class="marca-efecto">aprobó el examen</span>.</td>
+    </tr>
+    <tr>
+      <td>por esta razón</td>
+      <td>Introduce el efecto, registro formal.</td>
+      <td><span class="marca-causa">No había transporte</span>. <span class="marca-conec">Por esta razón</span>, <span class="marca-efecto">caminamos hasta la casa</span>.</td>
+    </tr>
+    <tr>
+      <td>en consecuencia / por lo tanto</td>
+      <td>Introducen el efecto, registro formal.</td>
+      <td><span class="marca-causa">El río se desbordó</span>; <span class="marca-conec">en consecuencia</span>, <span class="marca-efecto">evacuaron la zona</span>.</td>
+    </tr>
+    <tr>
+      <td>así que / por eso</td>
+      <td>Introducen el efecto, registro informal.</td>
+      <td><span class="marca-causa">Tenía hambre</span>, <span class="marca-conec">así que</span> <span class="marca-efecto">preparé un sándwich</span>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip">
+  <strong>⚠️ Cuidado con el orden:</strong> Algunos conectores introducen la <em>causa</em> (porque, ya que, debido a, puesto que); otros introducen el <em>efecto</em> (como resultado, por esta razón, en consecuencia, así que). Identifique qué viene después del conector para saber qué está señalando.
+</div>
+
+<h3>Texto informativo con causas y efectos marcados</h3>
+
+<p>Lea el siguiente párrafo. Observe cómo el autor encadena hechos mediante conectores causales. Las causas aparecen en azul, los efectos en rojo, y los conectores en púrpura.</p>
+
+<div class="texto-info">
+<h4>📖 El cambio en el barrio</h4>
+<p><span class="marca-causa">El precio de la renta subió un 40% el año pasado</span>; <span class="marca-conec">como resultado</span>, <span class="marca-efecto">muchas familias del barrio tuvieron que mudarse a la periferia</span>.</p>
+<p><span class="marca-efecto">Varios negocios pequeños cerraron sus puertas</span> <span class="marca-conec">debido a</span> <span class="marca-causa">la pérdida de clientela habitual</span>. <span class="marca-conec">Por esta razón</span>, <span class="marca-efecto">la junta vecinal organizó reuniones con los concejales</span>.</p>
+<p><span class="marca-causa">La presión comunitaria fue constante</span>, <span class="marca-conec">así que</span> <span class="marca-efecto">la alcaldía aprobó un programa de protección del alquiler para las familias de bajos ingresos</span>.</p>
+</div>
+
+<p>Sin los conectores causales, este párrafo se leería como una lista de hechos sueltos: "subió la renta, las familias se mudaron, cerraron negocios". Con los conectores, el lector entiende la <strong>lógica</strong> que une esos hechos.</p>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: emparejar y completar <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Actividad 1: empareje cada causa con su efecto</h3>
+
+<p>Haga clic en una causa de la columna izquierda y luego en el efecto que mejor le corresponde a la derecha. Si la pareja es correcta, ambos quedarán marcados en verde.</p>
+
+<div class="empareja-ce">
+  <div class="col-empareja-ce col-c">
+    <h4>🔵 Causa</h4>
+    <div id="col-causas"></div>
+  </div>
+  <div class="col-empareja-ce col-e">
+    <h4>🔴 Efecto</h4>
+    <div id="col-efectos"></div>
+  </div>
+</div>
+<div class="puntaje" id="puntaje-empareja-ce">Parejas correctas: 0 / 6</div>
+
+<h3>Actividad 2: complete con el conector causal correcto</h3>
+
+<p>Lea cada oración y elija el conector que mejor exprese la relación de causa y efecto. Cada conector se usa <strong>una sola vez</strong>.</p>
+
+<div class="cloze-c">
+  <p style="text-align:center;color:var(--gris);font-size:0.9rem;margin:0 0 12px 0">1. Haga clic en un conector del banco. 2. Haga clic en el hueco donde lo quiere colocar.</p>
+
+  <div class="banco-conec-c" id="banco-c">
+    <button type="button" class="ficha-c" data-conec="porque">porque</button>
+    <button type="button" class="ficha-c" data-conec="debido a">debido a</button>
+    <button type="button" class="ficha-c" data-conec="como resultado">como resultado</button>
+    <button type="button" class="ficha-c" data-conec="ya que">ya que</button>
+    <button type="button" class="ficha-c" data-conec="por esta razón">por esta razón</button>
+    <button type="button" class="ficha-c" data-conec="así que">así que</button>
+  </div>
+
+  <div class="item-cloze-c">
+    <div class="frase-cloze-c">
+      No pude asistir a la reunión <span class="hueco-c" data-correcta="porque">[ ? ]</span> mi hijo estaba enfermo en casa.
+    </div>
+  </div>
+  <div class="item-cloze-c">
+    <div class="frase-cloze-c">
+      Las clases se suspendieron <span class="hueco-c" data-correcta="debido a">[ ? ]</span> la tormenta de nieve.
+    </div>
+  </div>
+  <div class="item-cloze-c">
+    <div class="frase-cloze-c">
+      Estudió todas las tardes durante seis meses; <span class="hueco-c" data-correcta="como resultado">[ ? ]</span>, obtuvo su diploma de GED.
+    </div>
+  </div>
+  <div class="item-cloze-c">
+    <div class="frase-cloze-c">
+      Decidimos quedarnos en casa <span class="hueco-c" data-correcta="ya que">[ ? ]</span> el clima estaba demasiado frío para salir.
+    </div>
+  </div>
+  <div class="item-cloze-c">
+    <div class="frase-cloze-c">
+      El autobús no llegó a tiempo. <span class="hueco-c" data-correcta="por esta razón">[ ? ]</span>, muchos pasajeros llegaron tarde al trabajo.
+    </div>
+  </div>
+  <div class="item-cloze-c">
+    <div class="frase-cloze-c">
+      Tenía mucho sueño, <span class="hueco-c" data-correcta="así que">[ ? ]</span> me acosté temprano.
+    </div>
+  </div>
+
+  <div class="botones">
+    <button type="button" class="btn btn-primario" id="btn-verificar-cloze-c">Verificar</button>
+    <button type="button" class="btn btn-secundario" id="btn-reset-cloze-c">Limpiar</button>
+  </div>
+  <div class="puntaje" id="puntaje-cloze-c"></div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>La <strong>causa</strong> es la razón por la que algo sucede; el <strong>efecto</strong> es su resultado o consecuencia.</li>
+  <li>La causa siempre ocurre <strong>antes</strong> que el efecto, aunque el autor a veces los mencione en orden inverso.</li>
+  <li>Los conectores causales que introducen la <strong>causa</strong>: <em>porque, ya que, debido a, puesto que</em>.</li>
+  <li>Los conectores causales que introducen el <strong>efecto</strong>: <em>como resultado, por esta razón, en consecuencia, por lo tanto, así que</em>.</li>
+  <li>Estas palabras revelan la <strong>lógica</strong> del autor en textos de ciencias, estudios sociales y noticias.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irse, revísese</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuál es la diferencia entre causa y efecto?</li>
+    <li>¿Puede nombrar tres conectores que introducen la causa y tres que introducen el efecto?</li>
+    <li>Piense en algo que le ocurrió esta semana. ¿Cuál fue la causa y cuál fue el efecto?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Cerraremos el tema con la última destreza de lectura crítica: <strong>comparar y contrastar</strong> dos textos sobre el mismo asunto. Aprenderemos a usar el <em>diagrama de Venn</em> y a reconocer los conectores de similitud y diferencia.
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // ===== Actividad 1: Emparejar causa-efecto =====
+  var parejasCE=[
+    {c:'Una helada destruyó las cosechas de tomate.',e:'El precio del tomate en el supermercado subió drásticamente.'},
+    {c:'María estudió durante seis meses sin faltar a una sola clase.',e:'Aprobó el examen GED con una calificación excelente.'},
+    {c:'El despertador de Roberto no sonó esa mañana.',e:'Roberto llegó una hora tarde a su trabajo.'},
+    {c:'La fábrica del barrio cerró por mudanza al exterior.',e:'Doscientos trabajadores quedaron desempleados.'},
+    {c:'Una tubería se rompió durante la noche en el edificio.',e:'Tres apartamentos amanecieron inundados.'},
+    {c:'El equipo entrenó dos horas diarias durante toda la temporada.',e:'Ganaron el campeonato regional por primera vez.'}
+  ];
+
+  // Mezclar orden visual de los efectos
+  var efectosOrden=parejasCE.map(function(p,i){return {texto:p.e,id:i}});
+  efectosOrden=efectosOrden.sort(function(a,b){return (a.texto.length%5)-(b.texto.length%5)});
+
+  var colC=document.getElementById('col-causas');
+  var colE=document.getElementById('col-efectos');
+
+  parejasCE.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='item-ce col-c-it';
+    d.setAttribute('data-id',i);
+    d.textContent=p.c;
+    colC.appendChild(d);
+  });
+
+  efectosOrden.forEach(function(e){
+    var d=document.createElement('div');
+    d.className='item-ce col-e-it';
+    d.setAttribute('data-id',e.id);
+    d.textContent=e.texto;
+    colE.appendChild(d);
+  });
+
+  var selC=null;
+  var selE=null;
+  var unidos=0;
+
+  function intentarUnir(){
+    if(!selC||!selE)return;
+    var idC=selC.getAttribute('data-id');
+    var idE=selE.getAttribute('data-id');
+    if(idC===idE){
+      selC.classList.remove('seleccionado');
+      selE.classList.remove('seleccionado');
+      selC.classList.add('unido');
+      selE.classList.add('unido');
+      selC.style.pointerEvents='none';
+      selE.style.pointerEvents='none';
+      unidos++;
+      var el=document.getElementById('puntaje-empareja-ce');
+      el.textContent='Parejas correctas: '+unidos+' / '+parejasCE.length;
+      if(unidos===parejasCE.length){
+        el.innerHTML='🎉 ¡Excelente! Identificó las '+parejasCE.length+' relaciones de causa y efecto.';
+        el.style.color='var(--exito)';
+      }
+      selC=null;
+      selE=null;
+    }else{
+      var a=selC,b=selE;
+      a.style.borderColor='var(--error)';
+      b.style.borderColor='var(--error)';
+      setTimeout(function(){
+        a.classList.remove('seleccionado');
+        b.classList.remove('seleccionado');
+        a.style.borderColor='';
+        b.style.borderColor='';
+      },500);
+      selC=null;
+      selE=null;
+    }
+  }
+
+  colC.addEventListener('click',function(e){
+    var it=e.target.closest('.item-ce');
+    if(!it||it.classList.contains('unido'))return;
+    if(selC)selC.classList.remove('seleccionado');
+    selC=it;
+    it.classList.add('seleccionado');
+    intentarUnir();
+  });
+
+  colE.addEventListener('click',function(e){
+    var it=e.target.closest('.item-ce');
+    if(!it||it.classList.contains('unido'))return;
+    if(selE)selE.classList.remove('seleccionado');
+    selE=it;
+    it.classList.add('seleccionado');
+    intentarUnir();
+  });
+
+  // ===== Actividad 2: Cloze con conectores causales =====
+  var fichaActivaC=null;
+
+  document.querySelectorAll('#banco-c .ficha-c').forEach(function(f){
+    f.addEventListener('click',function(){
+      if(f.classList.contains('usada'))return;
+      if(fichaActivaC)fichaActivaC.classList.remove('activa');
+      if(fichaActivaC===f){
+        fichaActivaC=null;
+      }else{
+        fichaActivaC=f;
+        f.classList.add('activa');
+      }
+    });
+  });
+
+  document.querySelectorAll('.hueco-c').forEach(function(h){
+    h.addEventListener('click',function(){
+      if(!fichaActivaC)return;
+      var prev=h.getAttribute('data-ficha-id');
+      if(prev){
+        var fichaPrev=document.querySelector('#banco-c .ficha-c[data-conec="'+prev+'"]');
+        if(fichaPrev)fichaPrev.classList.remove('usada');
+      }
+      var c=fichaActivaC.getAttribute('data-conec');
+      h.textContent=fichaActivaC.textContent;
+      h.classList.add('lleno');
+      h.classList.remove('correcta','incorrecta');
+      h.setAttribute('data-ficha-id',c);
+      fichaActivaC.classList.add('usada');
+      fichaActivaC.classList.remove('activa');
+      fichaActivaC=null;
+      document.getElementById('puntaje-cloze-c').textContent='';
+    });
+  });
+
+  document.getElementById('btn-verificar-cloze-c').addEventListener('click',function(){
+    var huecos=document.querySelectorAll('.hueco-c');
+    var correctos=0;
+    huecos.forEach(function(h){
+      var esperada=h.getAttribute('data-correcta');
+      var puesta=h.getAttribute('data-ficha-id');
+      h.classList.remove('correcta','incorrecta');
+      if(!puesta){
+        h.classList.add('incorrecta');
+      }else if(puesta===esperada){
+        h.classList.add('correcta');
+        correctos++;
+      }else{
+        h.classList.add('incorrecta');
+      }
+    });
+    var el=document.getElementById('puntaje-cloze-c');
+    if(correctos===huecos.length){
+      el.innerHTML='🎉 ¡Excelente! Todos los conectores causales en su lugar correcto.';
+      el.style.color='var(--exito)';
+    }else{
+      el.innerHTML='Aciertos: '+correctos+' de '+huecos.length+'. Revise las oraciones marcadas en rojo.';
+      el.style.color='var(--acento)';
+    }
+  });
+
+  document.getElementById('btn-reset-cloze-c').addEventListener('click',function(){
+    document.querySelectorAll('.hueco-c').forEach(function(h){
+      h.textContent='[ ? ]';
+      h.classList.remove('lleno','correcta','incorrecta');
+      h.removeAttribute('data-ficha-id');
+    });
+    document.querySelectorAll('#banco-c .ficha-c').forEach(function(f){
+      f.classList.remove('usada','activa');
+    });
+    fichaActivaC=null;
+    document.getElementById('puntaje-cloze-c').textContent='';
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 5: Oración completa vs. fragmentos</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --completa:#2e7d32;--completa-claro:#e8f5e9;
+    --fragmento:#c62828;--fragmento-claro:#ffebee;
+    --sujeto:#1565c0;--sujeto-claro:#e3f2fd;
+    --verbo:#d32f2f;--verbo-claro:#ffebee;
+    --comp:#7b1fa2;--comp-claro:#f3e5f5;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  .suj{background:var(--sujeto-claro);color:var(--sujeto);padding:2px 8px;border-radius:4px;font-weight:700}
+  .vbo{background:var(--verbo-claro);color:var(--verbo);padding:2px 8px;border-radius:4px;font-weight:700}
+  .cmp{background:var(--comp-claro);color:var(--comp);padding:2px 8px;border-radius:4px;font-weight:700}
+  .leyenda-colores{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.95rem}
+  .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
+  .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+  /* Caja completa vs fragmento */
+  .caja-ejemplo{background:#fff;border:2px solid;border-radius:10px;padding:16px 20px;margin:12px 0;font-family:'Georgia',serif}
+  .caja-ejemplo.completa{border-color:var(--completa);background:var(--completa-claro)}
+  .caja-ejemplo.fragmento{border-color:var(--fragmento);background:var(--fragmento-claro)}
+  .caja-ejemplo h4{margin-top:0;font-family:'Poppins','Segoe UI',sans-serif}
+  .caja-ejemplo.completa h4{color:var(--completa)}
+  .caja-ejemplo.fragmento h4{color:var(--fragmento)}
+  .frase-ejemplo{font-size:1.2rem;text-align:center;margin:10px 0}
+  .nota-ejemplo{font-style:italic;color:var(--gris);text-align:center;font-size:0.95rem;font-family:'Poppins','Segoe UI',sans-serif}
+
+  /* Receta GED */
+  .receta-ged{background:linear-gradient(135deg,#fff3e0 0%,#fff8ee 100%);border:3px solid var(--acento);border-radius:14px;padding:20px;margin:20px 0;position:relative}
+  .receta-ged h3{color:#b35316;margin-top:0;text-align:center;font-size:1.3rem}
+  .receta-formula{font-family:'Georgia',serif;font-size:1.4rem;text-align:center;margin:18px 0;padding:14px;background:#fff;border-radius:10px}
+  .formula-parte{display:inline-block;padding:6px 12px;border-radius:6px;margin:4px}
+  .formula-parte.s{background:var(--sujeto-claro);color:var(--sujeto)}
+  .formula-parte.v{background:var(--verbo-claro);color:var(--verbo)}
+  .formula-parte.c{background:var(--comp-claro);color:var(--comp)}
+  .formula-parte.p{background:#000;color:#fff;font-weight:900}
+  .formula-mas{font-weight:700;color:var(--gris);margin:0 4px}
+
+  /* Ejercicio detective gramatical */
+  .item-detect{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:12px 0}
+  .frase-detect{font-family:'Georgia',serif;font-size:1.15rem;margin-bottom:10px;text-align:center}
+  .opciones-detect{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-detect{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-detect[data-tipo="completa"]{border-color:var(--completa);color:var(--completa)}
+  .btn-detect[data-tipo="completa"]:hover{background:var(--completa-claro)}
+  .btn-detect[data-tipo="fragmento"]{border-color:var(--fragmento);color:var(--fragmento)}
+  .btn-detect[data-tipo="fragmento"]:hover{background:var(--fragmento-claro)}
+  .btn-detect.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-detect.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .feedback-detect{margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.9rem;display:none}
+  .feedback-detect.mostrar{display:block}
+  .feedback-detect.correcto{background:#d4edda;color:#155724}
+  .feedback-detect.incorrecto{background:#f8d7da;color:#721c24}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Texto con errores */
+  .texto-detective{background:#fff;border:3px dashed var(--fragmento);border-radius:10px;padding:18px 22px;margin:14px 0;font-family:'Georgia',serif;font-size:1.1rem;line-height:2}
+  .texto-correcto{background:#fff;border:3px solid var(--completa);border-radius:10px;padding:18px 22px;margin:14px 0;font-family:'Georgia',serif;font-size:1.1rem;line-height:2}
+  .error-marca{background:#ffe0b2;padding:1px 4px;border-radius:3px}
+
+  /* Reparador de fragmentos */
+  .reparador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .frase-rota{background:var(--fragmento-claro);color:var(--fragmento);padding:10px 14px;border-radius:8px;font-family:'Georgia',serif;font-size:1.15rem;text-align:center;margin:10px 0;border:2px dashed var(--fragmento)}
+  .que-falta{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+  .btn-que-falta{padding:8px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem}
+  .btn-que-falta:hover{background:var(--cp-claro)}
+  .btn-que-falta.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-que-falta.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+</style>
+</head>
+<body>
+
+<h1>Clase 5: La oración completa vs. los fragmentos</h1>
+<p class="subtitulo">Construir ideas completas · Nivel 1 · Tema 3, semana 3</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Distinguir y escribir <strong>oraciones completas con sentido propio</strong>, evitando los <em>fragmentos</em> (grupos de palabras incompletos). Aplicar la estrategia GED: <strong>oraciones cortas y claras</strong> (sujeto + verbo + complemento + punto).</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Asere, llegamos al punto donde se junta todo. Ya tenemos sustantivos (los protagonistas), adjetivos (los detalles), y verbos (las acciones). <strong>Hoy vamos a unirlos para formar oraciones completas</strong> — las que de verdad expresan una idea, no las que se quedan a medias.</p>
+
+<p>Esta clase es <em>clave para el GED</em>: el ensayo evalúa fuerte la calidad de tus oraciones. Si escribes oraciones rotas o frases sueltas, te bajan la nota aunque la idea sea buena. Hoy te doy una receta sencilla y poderosa.</p>
+
+<details open>
+<summary>1. Introducción: ¿qué es una oración completa? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>La regla básica</h3>
+
+<p>Una <span class="palabra-clave">oración completa</span> expresa una idea o mensaje completo. Para estar completa, necesita dos cosas mínimas:</p>
+
+<div class="leyenda-colores">
+  <span><span class="punto" style="background:var(--sujeto)"></span> Sujeto (quién)</span>
+  <span><span class="punto" style="background:var(--verbo)"></span> Verbo (qué hace)</span>
+</div>
+
+<ul class="lista-bonita">
+  <li>Un <strong>sujeto</strong>: <em>quién</em> hace algo.</li>
+  <li>Un <strong>verbo</strong>: <em>qué</em> hace o cómo está.</li>
+</ul>
+
+<p>Y al final, debe llevar un <strong>punto</strong> (.) que cierre la idea.</p>
+
+<div class="caja-ejemplo completa">
+  <h4>✅ Oración completa</h4>
+  <p class="frase-ejemplo"><span class="suj">Los niños</span> <span class="vbo">juegan</span> en el parque.</p>
+  <p class="nota-ejemplo">Tiene sujeto (los niños) + verbo (juegan) + punto al final.</p>
+</div>
+
+<div class="caja-ejemplo fragmento">
+  <h4>❌ Fragmento</h4>
+  <p class="frase-ejemplo">Niños jugando en el parque.</p>
+  <p class="nota-ejemplo">Le falta el verbo conjugado. "Jugando" es una forma, pero no hay verbo principal. La idea queda colgando.</p>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. ¿Qué es un fragmento? <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El fragmento: la oración rota</h3>
+
+<p>Un <span class="palabra-clave">fragmento</span> es un grupo de palabras al que le falta el sujeto, el verbo, o ambos. Por eso no expresa una idea completa. El lector se queda esperando "¿y qué pasó?".</p>
+
+<div class="caja-ejemplo fragmento">
+  <h4>❌ Fragmentos típicos</h4>
+  <p class="frase-ejemplo">"Niños ayudando en la cocina."</p>
+  <p class="nota-ejemplo">No tiene verbo conjugado.</p>
+  <hr style="border:none;border-top:1px dashed var(--fragmento);margin:12px 0">
+  <p class="frase-ejemplo">"Cuando llegó mi mamá."</p>
+  <p class="nota-ejemplo">Tiene sujeto y verbo pero deja la idea incompleta. ¿Cuando llegó mi mamá... qué?</p>
+  <hr style="border:none;border-top:1px dashed var(--fragmento);margin:12px 0">
+  <p class="frase-ejemplo">"El carro rojo de mi tío."</p>
+  <p class="nota-ejemplo">Tiene sujeto, pero no tiene verbo. ¿Qué hace el carro rojo de mi tío?</p>
+</div>
+
+<div class="caja-ejemplo completa">
+  <h4>✅ Versiones completas (arregladas)</h4>
+  <p class="frase-ejemplo"><span class="suj">Los niños</span> <span class="vbo">ayudan</span> en la cocina.</p>
+  <p class="frase-ejemplo"><span class="suj">Cuando llegó mi mamá</span>, <span class="vbo">cenamos</span> juntos.</p>
+  <p class="frase-ejemplo"><span class="suj">El carro rojo de mi tío</span> <span class="vbo">es</span> muy bonito.</p>
+</div>
+
+<div class="tip">
+  <strong>💡 Prueba rápida:</strong> Léete la oración en voz alta. Si al terminar te quedas esperando que diga algo más, probablemente es un fragmento. Una oración completa <em>cierra</em> la idea.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Estrategia para el GED: escriban oraciones cortas <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>La receta de oro</h3>
+
+<p>Si vas a tomar el examen GED, escucha bien este consejo: <strong>escribe oraciones cortas</strong>. No te enredes con oraciones de 4 líneas donde se pierde el sujeto, el verbo y hasta el lector. Una fórmula sencilla que casi nunca falla:</p>
+
+<div class="receta-ged">
+  <h3>🍳 La fórmula GED</h3>
+  <div class="receta-formula">
+    <span class="formula-parte s">Sujeto</span>
+    <span class="formula-mas">+</span>
+    <span class="formula-parte v">Verbo</span>
+    <span class="formula-mas">+</span>
+    <span class="formula-parte c">Complemento</span>
+    <span class="formula-mas">+</span>
+    <span class="formula-parte p">.</span>
+  </div>
+  <p style="margin:0;text-align:center;font-style:italic;color:#b35316">Quién + qué hace + sobre qué + punto. <strong>Inmediatamente</strong>.</p>
+</div>
+
+<h3>Ejemplos con la fórmula</h3>
+
+<div class="caja-ejemplo completa">
+  <p class="frase-ejemplo"><span class="suj">Mi mamá</span> <span class="vbo">prepara</span> <span class="cmp">arroz con frijoles</span>.</p>
+  <p class="frase-ejemplo"><span class="suj">Los estudiantes</span> <span class="vbo">leen</span> <span class="cmp">el libro de matemáticas</span>.</p>
+  <p class="frase-ejemplo"><span class="suj">Yo</span> <span class="vbo">trabajo</span> <span class="cmp">en un restaurante</span>.</p>
+  <p class="frase-ejemplo"><span class="suj">El perro</span> <span class="vbo">duerme</span> <span class="cmp">en la sala</span>.</p>
+</div>
+
+<div class="tip">
+  <strong>⚠️ No tengas miedo a las oraciones cortas:</strong> Muchos estudiantes piensan que escribir "bonito" es escribir oraciones largas. Es al revés. Una oración corta y clara vale más que una larga y confusa. <strong>Punto. Nueva oración. Punto. Nueva oración.</strong> Así, paso a paso, se construye un buen párrafo.
+</div>
+
+<h3>Lectura activa: el detective gramatical</h3>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Activa · "Detective gramatical"</h4>
+  <p>Lee este texto que contiene errores intencionados (fragmentos sin sujeto o verbo). <strong>Encuentra las palabras o frases que no forman una oración completa</strong>. La versión limpia está debajo para comparar después.</p>
+</div>
+
+<div class="texto-detective">
+<p style="margin:0 0 10px 0;color:var(--gris);font-size:0.85rem">⚠️ Texto con fragmentos:</p>
+<p>Mi familia vive en Chicago. <span class="error-marca">Una casa grande con jardín.</span> Mi papá trabaja en una fábrica. <span class="error-marca">Cuando llega del trabajo.</span> Mi mamá lo recibe con café caliente. <span class="error-marca">Comiendo juntos en la cocina.</span> Mis hermanos hacen la tarea.</p>
+</div>
+
+<details style="margin:8px 0">
+<summary style="font-size:0.95rem">🔍 Ver versión correcta (después de intentar)</summary>
+<div class="contenido-detalle">
+<div class="texto-correcto">
+<p>Mi familia vive en Chicago. <strong style="color:var(--exito)">Vivimos en una casa grande con jardín.</strong> Mi papá trabaja en una fábrica. <strong style="color:var(--exito)">Cuando llega del trabajo, mi mamá lo recibe con café caliente.</strong> Después <strong style="color:var(--exito)">comemos juntos en la cocina</strong>. Mis hermanos hacen la tarea.</p>
+</div>
+<p><strong>Lo que se reparó:</strong></p>
+<ul class="lista-bonita">
+  <li><em>"Una casa grande con jardín"</em> → le agregamos sujeto y verbo: "Vivimos en una casa grande con jardín".</li>
+  <li><em>"Cuando llega del trabajo"</em> → la unimos con la siguiente para completar la idea.</li>
+  <li><em>"Comiendo juntos en la cocina"</em> → cambiamos "comiendo" por el verbo conjugado "comemos".</li>
+</ul>
+</div>
+</details>
+
+</div>
+</details>
+
+<details>
+<summary>4. Práctica: ¿completa o fragmento? <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Decide en cada caso</h3>
+
+<p>Para cada frase, decide si es una <strong>oración completa</strong> o un <strong>fragmento</strong>. Pista: pregúntate <em>"¿quién? ¿qué hace?"</em>. Si falta uno, es fragmento.</p>
+
+<div id="ejercicio-detect"></div>
+<div class="puntaje" id="puntaje-detect">Aciertos: 0 / 8</div>
+
+<h3>Repara los fragmentos</h3>
+
+<p>Para cada fragmento, identifica <strong>qué le falta</strong>: ¿sujeto o verbo?</p>
+
+<div class="reparador" id="reparador"></div>
+<div class="puntaje" id="puntaje-reparar">Aciertos: 0 / 5</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Discusión: "Corrijamos juntos" <span class="caja-tiempo">complemento</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · grupal</h4>
+  <p>El profesor proyecta oraciones con errores (fragmentos, sin sujeto, sin verbo). <strong>Los estudiantes proponen correcciones en voz alta</strong>. Trabajan como detectives gramaticales en equipo.</p>
+  <p style="margin-bottom:0">Cada estudiante debe identificar el error y proponer al menos una forma de arreglarlo. No hay una sola respuesta correcta: lo importante es que la oración quede completa.</p>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Foro</span> Asincrónica · individual</h4>
+  <p>Cada estudiante escribe en el foro <strong>5 oraciones</strong> distintas:</p>
+  <ul class="lista-bonita">
+    <li>Una oración <strong>declarativa</strong> (afirma algo): "Mi mamá cocina arroz."</li>
+    <li>Una oración <strong>interrogativa</strong> (pregunta): "¿Dónde está la escuela?"</li>
+    <li>Una oración <strong>exclamativa</strong> (expresa emoción): "¡Qué bonito día!"</li>
+    <li>Una oración con <strong>coma en serie</strong>: "Compré leche, pan y queso."</li>
+    <li>Una oración con <strong>fecha</strong>: "El examen es el 15 de mayo de 2026."</li>
+  </ul>
+  <p style="margin-bottom:0"><strong>Tarea adicional:</strong> revisa la publicación de al menos un compañero y comenta si todas sus oraciones están completas (con sujeto y verbo).</p>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor proyecta oraciones en la pizarra. Los estudiantes proponen correcciones a mano alzada. El foro queda como tarea para casa.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>El profesor comparte pantalla con las oraciones. Los estudiantes proponen correcciones por chat o micrófono. El foro se completa en Brightspace.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>Una <strong>oración completa</strong> tiene sujeto + verbo + idea cerrada con punto.</li>
+  <li>Un <strong>fragmento</strong> es un grupo de palabras al que le falta algo. No expresa idea completa.</li>
+  <li>Para el GED: <strong>oraciones cortas</strong> (sujeto + verbo + complemento + punto).</li>
+  <li>Si te falta sujeto o verbo, no es una oración. Es un fragmento.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Puedes decir si "Caminando hacia el trabajo" es oración o fragmento?</li>
+    <li>¿Puedes arreglar el fragmento "Mi tío en el carro" para hacerlo completo?</li>
+    <li>¿Por qué los profesores del GED recomiendan oraciones cortas?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Vamos a aprender a vestir bien las oraciones: <strong>mayúsculas, puntos, comas, signos de interrogación y exclamación</strong>. La mecánica que separa una escritura descuidada de una profesional.
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Detective: completa o fragmento
+  var oraciones=[
+    {frase:'Los estudiantes leen el libro.',tipo:'completa',explicacion:'Tiene sujeto (los estudiantes) y verbo (leen).'},
+    {frase:'Caminando por la calle.',tipo:'fragmento',explicacion:'No tiene verbo conjugado. "Caminando" es gerundio, no verbo principal.'},
+    {frase:'Mi hermana es enfermera.',tipo:'completa',explicacion:'Tiene sujeto (mi hermana) y verbo (es).'},
+    {frase:'Cuando llegó la maestra.',tipo:'fragmento',explicacion:'Empieza una idea pero no la cierra. ¿Qué pasó cuando llegó?'},
+    {frase:'El gato negro de la vecina.',tipo:'fragmento',explicacion:'Solo es un grupo de palabras con sustantivos. Falta el verbo.'},
+    {frase:'Yo trabajo todos los días.',tipo:'completa',explicacion:'Tiene sujeto (yo) y verbo (trabajo).'},
+    {frase:'En el parque del barrio.',tipo:'fragmento',explicacion:'Es una frase preposicional. No tiene ni sujeto ni verbo.'},
+    {frase:'Mañana cocinaré para la familia.',tipo:'completa',explicacion:'Sujeto tácito (yo) + verbo (cocinaré).'}
+  ];
+
+  var aciertosD=0;
+  var resueltasD={};
+  var contD=document.getElementById('ejercicio-detect');
+
+  oraciones.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-detect';
+    div.innerHTML=
+      '<div class="frase-detect">"'+item.frase+'"</div>'+
+      '<div class="opciones-detect">'+
+        '<button type="button" class="btn-detect" data-tipo="completa">Oración completa</button>'+
+        '<button type="button" class="btn-detect" data-tipo="fragmento">Fragmento</button>'+
+      '</div>'+
+      '<div class="feedback-detect"></div>';
+    contD.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-detect');
+    var feedback=div.querySelector('.feedback-detect');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasD[idx])return;
+        if(b.getAttribute('data-tipo')===item.tipo){
+          b.classList.add('correcta');
+          feedback.className='feedback-detect correcto mostrar';
+          feedback.innerHTML='✅ Correcto. '+item.explicacion;
+          resueltasD[idx]=true;
+          aciertosD++;
+          actualizarPuntajeD();
+        }else{
+          b.classList.add('incorrecta');
+          feedback.className='feedback-detect incorrecto mostrar';
+          feedback.innerHTML='❌ Revisa: '+item.explicacion;
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeD(){
+    var el=document.getElementById('puntaje-detect');
+    el.textContent='Aciertos: '+aciertosD+' / '+oraciones.length;
+    if(aciertosD===oraciones.length){
+      el.innerHTML='🎉 ¡Bestial detective! Aciertos: '+aciertosD+' / '+oraciones.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Reparar fragmentos
+  var fragmentos=[
+    {frase:'El carro nuevo de mi tío.',falta:'verbo'},
+    {frase:'Caminando hacia el trabajo.',falta:'verbo'},
+    {frase:'En la cocina con mi mamá.',falta:'sujeto'},
+    {frase:'Mi hermana y yo.',falta:'verbo'},
+    {frase:'Compró pan en la tienda.',falta:'sujeto'}
+  ];
+
+  var aciertosR=0;
+  var resueltasR={};
+  var contR=document.getElementById('reparador');
+
+  fragmentos.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.style.marginBottom='14px';
+    div.innerHTML=
+      '<div class="frase-rota">"'+item.frase+'"</div>'+
+      '<p style="text-align:center;margin:6px 0 8px 0;font-size:0.9rem;color:var(--gris)">¿Qué le falta?</p>'+
+      '<div class="que-falta">'+
+        '<button type="button" class="btn-que-falta" data-falta="sujeto">Falta sujeto (quién)</button>'+
+        '<button type="button" class="btn-que-falta" data-falta="verbo">Falta verbo (qué hace)</button>'+
+      '</div>';
+    contR.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-que-falta');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasR[idx])return;
+        if(b.getAttribute('data-falta')===item.falta){
+          b.classList.add('correcta');
+          resueltasR[idx]=true;
+          aciertosR++;
+          actualizarPuntajeR();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeR(){
+    var el=document.getElementById('puntaje-reparar');
+    el.textContent='Aciertos: '+aciertosR+' / '+fragmentos.length;
+    if(aciertosR===fragmentos.length){
+      el.innerHTML='🎉 ¡Reparador experto! Aciertos: '+aciertosR+' / '+fragmentos.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

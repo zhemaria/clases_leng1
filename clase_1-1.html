@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>El alfabeto: letras mayúsculas y minúsculas</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --mayus:#1565c0;--mayus-claro:#e3f2fd;
+    --minus:#c2185b;--minus-claro:#fce4ec;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Abecedario ilustrado */
+  .abecedario{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:10px;
+    margin:18px 0;
+  }
+  .letra-card{
+    background:#fff;
+    border:2px solid var(--cp);
+    border-radius:12px;
+    padding:14px 10px;
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.2s;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  }
+  .letra-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 14px rgba(0,137,205,0.25);
+    border-color:var(--cp-oscuro);
+  }
+  .letra-card.sonando{
+    background:var(--cp-claro);
+    border-color:var(--acento);
+    box-shadow:0 0 0 4px rgba(255,140,66,0.3);
+  }
+  .letras-pareja{
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:6px;
+    margin-bottom:4px;
+  }
+  .letra-mayus{
+    font-family:'Georgia',serif;
+    font-size:2.4rem;
+    font-weight:700;
+    color:var(--mayus);
+    line-height:1;
+  }
+  .letra-minus{
+    font-family:'Georgia',serif;
+    font-size:1.8rem;
+    font-weight:700;
+    color:var(--minus);
+    line-height:1;
+  }
+  .letra-palabra{
+    font-size:0.85rem;
+    color:var(--gris);
+    margin-top:2px;
+    font-style:italic;
+  }
+  .letra-emoji{font-size:1.6rem;display:block;margin-top:2px}
+
+  /* Tabla mayús/minús explicación */
+  table.tabla-explicacion{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-explicacion th{padding:12px;text-align:left;font-weight:700;color:#fff}
+  table.tabla-explicacion th.col-mayus{background:var(--mayus)}
+  table.tabla-explicacion th.col-minus{background:var(--minus)}
+  table.tabla-explicacion td{padding:12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.tabla-explicacion tr:last-child td{border-bottom:none}
+  table.tabla-explicacion td.celda-mayus{background:var(--mayus-claro)}
+  table.tabla-explicacion td.celda-minus{background:var(--minus-claro)}
+
+  /* Quiz emparejamiento */
+  .quiz-emparejar{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .columnas-emp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:640px){.columnas-emp{grid-template-columns:1fr}}
+  .col-emp{background:#f9f9f9;border:2px dashed var(--cp);border-radius:8px;padding:12px;min-height:80px}
+  .col-emp h5{margin:0 0 8px 0;text-align:center;color:var(--cp-oscuro);font-size:0.95rem}
+  .letra-emp{
+    background:#fff;
+    border:2px solid;
+    border-radius:8px;
+    padding:10px;
+    margin:6px 0;
+    text-align:center;
+    cursor:pointer;
+    font-family:'Georgia',serif;
+    font-size:1.5rem;
+    font-weight:700;
+    transition:all 0.15s;
+  }
+  .letra-emp.mayus-style{border-color:var(--mayus);color:var(--mayus)}
+  .letra-emp.mayus-style:hover{background:var(--mayus-claro)}
+  .letra-emp.minus-style{border-color:var(--minus);color:var(--minus)}
+  .letra-emp.minus-style:hover{background:var(--minus-claro)}
+  .letra-emp.activa{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--acento)}
+  .letra-emp.emparejada{
+    background:#d4edda;
+    border-color:var(--exito);
+    color:var(--exito);
+    cursor:default;
+  }
+  .feedback{margin-top:14px;padding:12px 16px;border-radius:8px;text-align:center;font-weight:600;min-height:20px}
+  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+  .neutral{background:#fff3cd;color:#856404;border:1px solid #ffeaa7}
+
+  /* Quiz imagen → letra */
+  .item-imagen{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:12px 0}
+  .imagen-emoji-grande{font-size:4rem;text-align:center;margin:8px 0}
+  .nombre-objeto{text-align:center;font-family:'Georgia',serif;font-size:1.1rem;color:var(--gris);margin-bottom:10px}
+  .opciones-letra{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .btn-letra{
+    padding:10px 18px;
+    border:2px solid var(--cp);
+    background:#fff;
+    color:var(--cp);
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+    font-family:'Georgia',serif;
+    font-size:1.4rem;
+    min-width:55px;
+    transition:all 0.2s;
+  }
+  .btn-letra:hover{background:var(--cp-claro)}
+  .btn-letra.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-letra.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Aviso audio */
+  .aviso-audio{background:#e3f2fd;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:14px 0;text-align:center}
+  .aviso-audio .icono-audio{font-size:1.8rem;margin-bottom:6px;display:block}
+
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+</style>
+</head>
+<body>
+
+<h1>El alfabeto: letras mayúsculas y minúsculas</h1>
+<p class="subtitulo">Lección de apertura · Artes del Lenguaje · Nivel 1 · 4 horas (2 sincrónicas + 2 asincrónicas)</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Reconocer y nombrar todas las letras del <strong>alfabeto español</strong> en sus dos formas (mayúscula y minúscula), y asociar cada letra con su <strong>sonido inicial</strong> y palabras que empiezan con ella.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>¡Bienvenido al inicio de tu curso de Artes del Lenguaje! Antes de leer, escribir y construir oraciones, vamos a recordar lo más básico: <strong>las letras del alfabeto</strong>. Algunos las recuerdas perfectamente, otras quizás se confunden — sobre todo si has aprendido inglés y español al mismo tiempo.</p>
+
+<p>Esta lección es la base de todo lo que viene. Vamos a darle ese repaso bien hecho.</p>
+
+<div class="aviso-audio">
+  <span class="icono-audio">🔊</span>
+  <strong>Esta lección tiene audio.</strong> Haz clic en cualquier letra para escucharla. Usa audífonos o asegúrate de tener el volumen activado.
+</div>
+
+<details open>
+<summary>1. El abecedario español <span class="caja-tiempo">25 min · sincrónico</span></summary>
+<div class="contenido-detalle">
+
+<h3>27 letras: las conocemos todas</h3>
+
+<p>El alfabeto español tiene <span class="palabra-clave">27 letras</span>. Cada letra tiene una forma <strong>mayúscula</strong> (grande, para iniciar oración y nombres propios) y una forma <strong>minúscula</strong> (pequeña, para el resto). Aquí están todas:</p>
+
+<table class="tabla-explicacion">
+  <thead>
+    <tr>
+      <th class="col-mayus">Mayúscula</th>
+      <th class="col-minus">Minúscula</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="celda-mayus"><strong>Para qué se usa:</strong> al inicio de cada oración, en nombres propios (María, Chicago, Truman), en siglas (GED, ABE).</td>
+      <td class="celda-minus"><strong>Para qué se usa:</strong> en el resto de las palabras. Es la forma más común — la que usas todo el tiempo.</td>
+    </tr>
+    <tr>
+      <td class="celda-mayus"><strong>Ejemplo:</strong> <span style="font-family:'Georgia',serif;font-size:1.5rem">M, A, R, Í, A</span></td>
+      <td class="celda-minus"><strong>Ejemplo:</strong> <span style="font-family:'Georgia',serif;font-size:1.5rem">m, a, r, í, a</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Abecedario ilustrado · haz clic para escuchar</h3>
+
+<p><strong>Lectura coral con audio modelo.</strong> Vas a hacer tres pasadas:</p>
+<ol>
+  <li><strong>Primera pasada:</strong> escucha cada letra y la palabra-ejemplo haciendo clic una a una.</li>
+  <li><strong>Segunda pasada:</strong> usa el botón <em>"Escuchar todo el abecedario"</em> y repite en voz alta junto al audio.</li>
+  <li><strong>Tercera pasada:</strong> intenta decir el abecedario tú solo, y verifica con clics individuales.</li>
+</ol>
+
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="btn-todo">🔊 Escuchar todo el abecedario</button>
+  <button type="button" class="btn btn-secundario" id="btn-detener">⏹️ Detener</button>
+</div>
+
+<div class="abecedario" id="abecedario"></div>
+
+<div class="tip">
+  <strong>💡 Cómo se llaman las letras:</strong> Cada letra tiene su <em>nombre</em> (cómo la pronuncias cuando deletreas) y su <em>sonido</em> (cómo suena dentro de una palabra). Por ejemplo, la letra <strong>B</strong> se llama "be" pero suena "bbb" dentro de "barco". La letra <strong>H</strong> se llama "hache" pero en español <em>no suena</em> dentro de las palabras: "hola" se pronuncia "ola".
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Discusión: "Cosas que empiezan con mi letra" <span class="caja-tiempo">25 min · sincrónico</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · en parejas</h4>
+  <p>En parejas, cada uno <strong>elige una letra del alfabeto</strong> (por turnos) y debe nombrar <strong>3 objetos o palabras</strong> que empiezan con esa letra. Después de tu turno, le toca a tu compañero.</p>
+
+  <p><strong>Ejemplos:</strong></p>
+  <ul class="lista-bonita">
+    <li><strong>Letra M:</strong> mesa, mamá, mango.</li>
+    <li><strong>Letra C:</strong> carro, casa, café.</li>
+    <li><strong>Letra P:</strong> perro, pan, paz.</li>
+  </ul>
+
+  <p><strong>Reglas del juego:</strong></p>
+  <ul class="lista-bonita">
+    <li>No se vale repetir palabras que ya usó tu compañero.</li>
+    <li>Si dudas con una letra difícil (K, W, X, Y, Ñ), pide ayuda a tu compañero o al profesor.</li>
+    <li>Anota las palabras que escuchas para construir tu propio diccionario personal.</li>
+  </ul>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor empareja a los estudiantes en clase. Trabajan oral cara a cara, anotando en una hoja las palabras que se les ocurren. Al final, cada pareja comparte una palabra interesante con el grupo grande.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>El profesor abre salas pequeñas (breakout rooms) de 2 personas. Trabajan con micrófono encendido o por chat. Después regresan al grupo grande para una ronda de "palabras curiosas".</p>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Ejercicio adicional:</strong> Intenta encontrar palabras que empiecen con cada vocal: A, E, I, O, U. Las vocales son las cinco letras más importantes — vamos a usarlas en cada palabra que escribamos.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: emparejar mayúscula con minúscula <span class="caja-tiempo">30 min · asincrónico</span></summary>
+<div class="contenido-detalle">
+
+<h3>Empareja cada mayúscula con su minúscula</h3>
+
+<p>Haz clic primero en una letra <strong>mayúscula</strong> (columna izquierda) y luego en su <strong>minúscula</strong> (columna derecha). Si están bien emparejadas, se ponen verdes.</p>
+
+<div class="quiz-emparejar">
+  <div class="columnas-emp">
+    <div class="col-emp">
+      <h5 style="color:var(--mayus)">Mayúsculas</h5>
+      <div id="col-mayus"></div>
+    </div>
+    <div class="col-emp">
+      <h5 style="color:var(--minus)">Minúsculas</h5>
+      <div id="col-minus"></div>
+    </div>
+  </div>
+
+  <div class="feedback" id="feedback-emp"></div>
+  <div class="puntaje" id="puntaje-emp">Parejas correctas: 0 / 8</div>
+
+  <div class="botones">
+    <button type="button" class="btn btn-secundario" id="btn-reset-emp">Reiniciar</button>
+    <button type="button" class="btn btn-primario" id="btn-nueva-tanda">Nueva tanda de letras</button>
+  </div>
+</div>
+
+<h3>¿Con qué letra empieza?</h3>
+
+<p>Mira el objeto y elige con qué letra empieza su nombre.</p>
+
+<div id="quiz-imagenes"></div>
+<div class="puntaje" id="puntaje-imagenes">Aciertos: 0 / 7</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Quiz formal en Brightspace <span class="caja-tiempo">20 min · asincrónico</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-quiz">Quiz</span> 15 preguntas · Brightspace · 2 intentos</h4>
+  <p>El quiz formal de esta lección está disponible en Brightspace. Incluye:</p>
+  <ul class="lista-bonita">
+    <li><strong>Preguntas de emparejamiento</strong> (matching): mayúscula → minúscula.</li>
+    <li><strong>Preguntas de opción múltiple</strong>: imagen → letra inicial.</li>
+    <li><strong>Identificación de letras</strong> dentro de palabras cortas.</li>
+  </ul>
+  <p><strong>Tienes 2 intentos.</strong> Se cuenta la mejor calificación. La calificación es <strong>automática por porcentaje</strong> (no hay rúbrica analítica en esta lección).</p>
+</div>
+
+<div class="tip">
+  <strong>🎯 Recomendación:</strong> Antes de hacer el quiz formal, asegúrate de poder decir el abecedario completo en voz alta, sin saltarte ninguna letra. Si dudas en alguna, vuelve a la sección 1 y haz clic en esa letra para escucharla de nuevo.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Cierre <span class="caja-tiempo">5 min · sincrónico</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>El alfabeto español tiene <strong>27 letras</strong>.</li>
+  <li>Cada letra tiene su forma <strong>mayúscula</strong> (grande) y <strong>minúscula</strong> (pequeña).</li>
+  <li>Cada letra tiene un <strong>nombre</strong> (cómo la dices) y un <strong>sonido</strong> (cómo suena en palabras).</li>
+  <li>La letra <strong>H</strong> es muda en español: "hola" se dice "ola".</li>
+  <li>La <strong>Ñ</strong> es una letra única del español — el inglés no la tiene.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Puedes decir el abecedario completo de memoria, sin saltarte ninguna letra?</li>
+    <li>¿Puedes decir 3 palabras que empiezan con la letra <em>S</em>?</li>
+    <li>¿Sabes la diferencia entre el nombre de una letra (ej. "be") y su sonido?</li>
+    <li>¿Cuál es la única letra del español que no existe en el inglés?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Vamos a aprender la <strong>dirección de la lectura</strong> en español: de izquierda a derecha, de arriba hacia abajo. Y veremos cómo se forman las primeras oraciones.
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Abecedario español
+  var letras=[
+    {mayus:'A',minus:'a',palabra:'árbol',emoji:'🌳'},
+    {mayus:'B',minus:'b',palabra:'barco',emoji:'⛵'},
+    {mayus:'C',minus:'c',palabra:'casa',emoji:'🏠'},
+    {mayus:'D',minus:'d',palabra:'dedo',emoji:'👆'},
+    {mayus:'E',minus:'e',palabra:'estrella',emoji:'⭐'},
+    {mayus:'F',minus:'f',palabra:'flor',emoji:'🌸'},
+    {mayus:'G',minus:'g',palabra:'gato',emoji:'🐱'},
+    {mayus:'H',minus:'h',palabra:'hoja',emoji:'🍃'},
+    {mayus:'I',minus:'i',palabra:'isla',emoji:'🏝️'},
+    {mayus:'J',minus:'j',palabra:'jugo',emoji:'🥤'},
+    {mayus:'K',minus:'k',palabra:'kilo',emoji:'⚖️'},
+    {mayus:'L',minus:'l',palabra:'luna',emoji:'🌙'},
+    {mayus:'M',minus:'m',palabra:'manzana',emoji:'🍎'},
+    {mayus:'N',minus:'n',palabra:'nube',emoji:'☁️'},
+    {mayus:'Ñ',minus:'ñ',palabra:'ñame',emoji:'🍠'},
+    {mayus:'O',minus:'o',palabra:'oso',emoji:'🐻'},
+    {mayus:'P',minus:'p',palabra:'pan',emoji:'🍞'},
+    {mayus:'Q',minus:'q',palabra:'queso',emoji:'🧀'},
+    {mayus:'R',minus:'r',palabra:'ratón',emoji:'🐭'},
+    {mayus:'S',minus:'s',palabra:'sol',emoji:'☀️'},
+    {mayus:'T',minus:'t',palabra:'taza',emoji:'🍵'},
+    {mayus:'U',minus:'u',palabra:'uva',emoji:'🍇'},
+    {mayus:'V',minus:'v',palabra:'vaca',emoji:'🐄'},
+    {mayus:'W',minus:'w',palabra:'wifi',emoji:'📶'},
+    {mayus:'X',minus:'x',palabra:'xilófono',emoji:'🎵'},
+    {mayus:'Y',minus:'y',palabra:'yate',emoji:'🛥️'},
+    {mayus:'Z',minus:'z',palabra:'zapato',emoji:'👞'}
+  ];
+
+  // Nombres de las letras en español
+  var nombresLetras={
+    'A':'a','B':'be','C':'ce','D':'de','E':'e','F':'efe','G':'ge','H':'hache',
+    'I':'i','J':'jota','K':'ka','L':'ele','M':'eme','N':'ene','Ñ':'eñe','O':'o',
+    'P':'pe','Q':'cu','R':'erre','S':'ese','T':'te','U':'u','V':'uve','W':'doble uve',
+    'X':'equis','Y':'i griega','Z':'zeta'
+  };
+
+  // Web Speech API
+  var hablando=false;
+  var leyendoTodo=false;
+
+  function hablar(texto,callback){
+    if(!('speechSynthesis' in window))return callback&&callback();
+    var utter=new SpeechSynthesisUtterance(texto);
+    utter.lang='es-ES';
+    utter.rate=0.85;
+    utter.pitch=1;
+    if(callback)utter.onend=callback;
+    speechSynthesis.speak(utter);
+  }
+
+  function detenerAudio(){
+    if('speechSynthesis' in window)speechSynthesis.cancel();
+    leyendoTodo=false;
+    document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
+  }
+
+  // Dibujar abecedario
+  var contAbc=document.getElementById('abecedario');
+  letras.forEach(function(L,idx){
+    var card=document.createElement('div');
+    card.className='letra-card';
+    card.setAttribute('data-idx',idx);
+    card.innerHTML=
+      '<div class="letras-pareja">'+
+        '<span class="letra-mayus">'+L.mayus+'</span>'+
+        '<span class="letra-minus">'+L.minus+'</span>'+
+      '</div>'+
+      '<div class="letra-palabra">'+L.palabra+'</div>'+
+      '<span class="letra-emoji">'+L.emoji+'</span>';
+    card.addEventListener('click',function(){
+      if(leyendoTodo)return;
+      detenerAudio();
+      card.classList.add('sonando');
+      hablar(nombresLetras[L.mayus]+'. '+L.mayus+' de '+L.palabra,function(){
+        card.classList.remove('sonando');
+      });
+    });
+    contAbc.appendChild(card);
+  });
+
+  // Botón "todo"
+  document.getElementById('btn-todo').addEventListener('click',function(){
+    detenerAudio();
+    leyendoTodo=true;
+    var i=0;
+    function siguiente(){
+      if(i>=letras.length||!leyendoTodo){
+        leyendoTodo=false;
+        document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
+        return;
+      }
+      var L=letras[i];
+      var card=contAbc.children[i];
+      document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
+      card.classList.add('sonando');
+      card.scrollIntoView({behavior:'smooth',block:'center'});
+      hablar(nombresLetras[L.mayus]+'. '+L.mayus+' de '+L.palabra,function(){
+        i++;
+        setTimeout(siguiente,300);
+      });
+    }
+    siguiente();
+  });
+
+  document.getElementById('btn-detener').addEventListener('click',detenerAudio);
+
+  // ============== Emparejamiento mayús ↔ minús ==============
+  var tandas=[
+    ['A','M','P','S','C','L','N','R'],
+    ['B','D','F','G','T','V','Z','J'],
+    ['E','I','O','U','H','Q','Ñ','K'],
+    ['X','Y','W','A','C','M','P','S']
+  ];
+  var tandaIdx=0;
+  var seleccionMayus=null;
+  var emparejadosTotal=0;
+  var emparejadosEnTanda=0;
+
+  function dibujarEmp(){
+    var tanda=tandas[tandaIdx];
+    var colM=document.getElementById('col-mayus');
+    var colm=document.getElementById('col-minus');
+    colM.innerHTML='';
+    colm.innerHTML='';
+    seleccionMayus=null;
+    emparejadosEnTanda=0;
+    document.getElementById('feedback-emp').textContent='';
+    document.getElementById('feedback-emp').className='feedback';
+
+    // Mayúsculas en orden
+    tanda.forEach(function(letra){
+      var d=document.createElement('div');
+      d.className='letra-emp mayus-style';
+      d.textContent=letra;
+      d.setAttribute('data-letra',letra);
+      d.addEventListener('click',function(){
+        if(d.classList.contains('emparejada'))return;
+        document.querySelectorAll('#col-mayus .letra-emp').forEach(function(x){x.classList.remove('activa')});
+        d.classList.add('activa');
+        seleccionMayus=d;
+        document.getElementById('feedback-emp').innerHTML='Ahora elige la minúscula que le corresponde a <strong style="color:var(--mayus)">'+letra+'</strong>.';
+        document.getElementById('feedback-emp').className='feedback neutral';
+      });
+      colM.appendChild(d);
+    });
+
+    // Minúsculas mezcladas
+    var minusOrden=tanda.slice();
+    minusOrden.sort(function(){return Math.random()-0.5});
+    minusOrden.forEach(function(letra){
+      var d=document.createElement('div');
+      d.className='letra-emp minus-style';
+      d.textContent=letra.toLowerCase();
+      d.setAttribute('data-letra',letra);
+      d.addEventListener('click',function(){
+        if(d.classList.contains('emparejada'))return;
+        if(!seleccionMayus){
+          document.getElementById('feedback-emp').textContent='Primero elige una mayúscula de la columna izquierda.';
+          document.getElementById('feedback-emp').className='feedback neutral';
+          return;
+        }
+        var letraM=seleccionMayus.getAttribute('data-letra');
+        if(letra===letraM){
+          d.classList.add('emparejada');
+          seleccionMayus.classList.add('emparejada');
+          seleccionMayus.classList.remove('activa');
+          seleccionMayus=null;
+          emparejadosEnTanda++;
+          emparejadosTotal++;
+          document.getElementById('feedback-emp').innerHTML='✅ ¡Bien! '+letraM+' y '+letra.toLowerCase()+' van juntas.';
+          document.getElementById('feedback-emp').className='feedback correcto';
+          actualizarPuntajeEmp();
+          if(emparejadosEnTanda===tanda.length){
+            document.getElementById('feedback-emp').innerHTML='🎉 ¡Tanda completa! Pulsa "Nueva tanda" para seguir practicando.';
+          }
+        }else{
+          document.getElementById('feedback-emp').innerHTML='❌ '+letraM+' no va con '+letra.toLowerCase()+'. Inténtalo otra vez.';
+          document.getElementById('feedback-emp').className='feedback incorrecto';
+        }
+      });
+      colm.appendChild(d);
+    });
+
+    actualizarPuntajeEmp();
+  }
+
+  function actualizarPuntajeEmp(){
+    var el=document.getElementById('puntaje-emp');
+    el.textContent='Parejas correctas en esta sesión: '+emparejadosTotal;
+  }
+
+  document.getElementById('btn-reset-emp').addEventListener('click',function(){
+    emparejadosTotal-=emparejadosEnTanda;
+    dibujarEmp();
+  });
+  document.getElementById('btn-nueva-tanda').addEventListener('click',function(){
+    tandaIdx=(tandaIdx+1)%tandas.length;
+    dibujarEmp();
+  });
+  dibujarEmp();
+
+  // ============== Imagen → letra inicial ==============
+  var imagenes=[
+    {emoji:'🐱',palabra:'gato',correcta:'G',opciones:['G','J','C']},
+    {emoji:'🏠',palabra:'casa',correcta:'C',opciones:['K','C','S']},
+    {emoji:'🍎',palabra:'manzana',correcta:'M',opciones:['M','N','A']},
+    {emoji:'☀️',palabra:'sol',correcta:'S',opciones:['S','Z','C']},
+    {emoji:'🌙',palabra:'luna',correcta:'L',opciones:['L','I','J']},
+    {emoji:'🐭',palabra:'ratón',correcta:'R',opciones:['R','L','D']},
+    {emoji:'⛵',palabra:'barco',correcta:'B',opciones:['B','V','P']}
+  ];
+
+  var aciertosImg=0;
+  var resueltasImg={};
+  var contImg=document.getElementById('quiz-imagenes');
+
+  imagenes.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-imagen';
+    var opcionesHTML=item.opciones.map(function(op){
+      return '<button type="button" class="btn-letra" data-opt="'+op+'">'+op+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="imagen-emoji-grande">'+item.emoji+'</div>'+
+      '<div class="nombre-objeto">'+item.palabra+'</div>'+
+      '<div class="opciones-letra">'+opcionesHTML+'</div>';
+    contImg.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-letra');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasImg[idx])return;
+        if(b.getAttribute('data-opt')===item.correcta){
+          b.classList.add('correcta');
+          resueltasImg[idx]=true;
+          aciertosImg++;
+          actualizarPuntajeImg();
+          // Audio de confirmación con la letra y palabra
+          detenerAudio();
+          hablar(item.correcta+' de '+item.palabra);
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeImg(){
+    var el=document.getElementById('puntaje-imagenes');
+    el.textContent='Aciertos: '+aciertosImg+' / '+imagenes.length;
+    if(aciertosImg===imagenes.length){
+      el.innerHTML='🎉 ¡Excelente! Aciertos: '+aciertosImg+' / '+imagenes.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

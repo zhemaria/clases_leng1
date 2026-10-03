@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 2: Aclarar y resumir lo leído</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --antes:#7b1fa2;--antes-claro:#f3e5f5;
+    --durante:#1565c0;--durante-claro:#e3f2fd;
+    --despues:#e65100;--despues-claro:#fff3e0;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Ciclo de lectura */
+  .ciclo-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:12px;padding:24px 18px;margin:18px 0;position:relative}
+  .ciclo-lectura::before{content:'';position:absolute;top:50%;left:5%;right:5%;height:4px;background:linear-gradient(90deg,var(--antes) 0%,var(--durante) 50%,var(--despues) 100%);border-radius:2px;z-index:1}
+  .puntos-ciclo{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:2}
+  .punto-ciclo{background:#fff;border-radius:10px;padding:14px;text-align:center;border:3px solid}
+  .punto-ciclo.antes{border-color:var(--antes);background:var(--antes-claro)}
+  .punto-ciclo.antes h4{color:var(--antes)}
+  .punto-ciclo.durante{border-color:var(--durante);background:var(--durante-claro);transform:scale(1.05);box-shadow:0 4px 12px rgba(21,94,192,0.25)}
+  .punto-ciclo.durante h4{color:var(--durante)}
+  .punto-ciclo.despues{border-color:var(--despues);background:var(--despues-claro);transform:scale(1.05);box-shadow:0 4px 12px rgba(230,81,0,0.25)}
+  .punto-ciclo.despues h4{color:var(--despues)}
+  .punto-ciclo .icono{font-size:2rem;display:block;margin-bottom:6px}
+  .punto-ciclo h4{margin:0 0 6px 0}
+  .punto-ciclo .accion{font-family:'Georgia',serif;font-style:italic;font-size:0.95rem}
+  @media(max-width:640px){.puntos-ciclo{grid-template-columns:1fr}.ciclo-lectura::before{display:none}}
+
+  /* Tabla pistas */
+  table.pistas{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.pistas th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.pistas td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.pistas tr:last-child td{border-bottom:none}
+  table.pistas td:first-child{font-weight:700}
+
+  /* Texto con estrategias durante la lectura */
+  .texto-modelo{background:#fff;border:2px solid var(--durante);border-radius:10px;padding:18px 22px;margin:14px 0;font-family:'Georgia',serif;line-height:1.9;font-size:1.05rem}
+  .palabra-dudosa{background:var(--durante-claro);color:var(--durante);padding:2px 6px;border-radius:4px;font-weight:600;border-bottom:2px dashed var(--durante)}
+  .nota-margen{display:block;background:#fffbe6;border-left:4px solid #f4c430;padding:8px 12px;margin:8px 0 8px 24px;font-family:'Poppins',sans-serif;font-style:italic;font-size:0.9rem;color:#8a6d00;border-radius:4px}
+
+  /* Caja resumen modelo */
+  .caja-resumen{background:#fff;border:3px solid var(--despues);border-radius:10px;padding:18px 22px;margin:14px 0;position:relative}
+  .caja-resumen .etiqueta-resumen{position:absolute;top:-12px;left:18px;background:var(--despues);color:#fff;padding:3px 14px;border-radius:10px;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+  .caja-resumen p{margin:8px 0;font-family:'Georgia',serif}
+
+  /* Ejercicio: identificar estrategia para aclarar */
+  .item-aclarar{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:12px 0}
+  .situacion{background:var(--durante-claro);border-left:4px solid var(--durante);padding:10px 14px;border-radius:6px;margin-bottom:12px;font-style:italic}
+  .opciones-aclarar{display:flex;flex-direction:column;gap:8px}
+  .btn-aclarar{padding:10px 14px;border:2px solid var(--cp);background:#fff;color:var(--texto);border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.95rem;text-align:left;transition:all 0.2s}
+  .btn-aclarar:hover{background:var(--cp-claro)}
+  .btn-aclarar.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-aclarar.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error)}
+
+  /* Ejercicio: mejor resumen */
+  .item-resumen{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .texto-original{background:var(--despues-claro);border-left:4px solid var(--despues);padding:12px 16px;border-radius:6px;margin-bottom:12px;font-family:'Georgia',serif;font-size:1rem;line-height:1.8}
+  .texto-original strong{color:var(--despues)}
+  .opciones-resumen{display:flex;flex-direction:column;gap:8px}
+  .btn-resumen{padding:12px 14px;border:2px solid var(--cp);background:#fff;color:var(--texto);border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.95rem;text-align:left;transition:all 0.2s;font-family:'Georgia',serif}
+  .btn-resumen:hover{background:var(--cp-claro)}
+  .btn-resumen.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-resumen.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error)}
+
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Pasos del resumen */
+  .pasos-resumen{counter-reset:paso;list-style:none;padding-left:0;margin:14px 0}
+  .pasos-resumen li{position:relative;padding:12px 14px 12px 56px;background:#fff;border-left:4px solid var(--despues);margin-bottom:8px;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .pasos-resumen li::before{counter-increment:paso;content:counter(paso);position:absolute;left:14px;top:50%;transform:translateY(-50%);width:32px;height:32px;background:var(--despues);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem}
+
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+  .badge-rubrica{background:#fff3e0;color:#e65100}
+
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#b35316;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#b35316;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-3{background:#fff8e1}
+  .nivel-2{background:#fff3e0}
+  .nivel-1{background:#ffebee}
+</style>
+</head>
+<body>
+
+<h1>Clase 2: Aclarar y resumir lo leído</h1>
+<p class="subtitulo">El detective lector trabaja durante y después de la lectura · Nivel 1 · Tema 4, semana 7</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Aprender a <strong>aclarar dudas</strong> durante la lectura usando estrategias prácticas, y a <strong>resumir</strong> con palabras propias las ideas más importantes de un texto corto.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En la clase anterior estudiamos el trabajo del lector <em>antes</em> de leer: predecir y preguntar. Esta sesión completa el ciclo. Examinaremos las dos estrategias restantes: lo que hace el lector eficiente <strong>durante</strong> la lectura (cuando encuentra un pasaje confuso o una palabra desconocida) y <strong>después</strong> de la lectura (cuando debe sintetizar el contenido con sus propias palabras). Al concluir esta clase, usted dominará las cuatro estrategias fundamentales de la lectura activa: <span class="palabra-clave">predecir, preguntar, aclarar y resumir</span>.</p>
+
+<details open>
+<summary>1. Recordando el ciclo de lectura <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Hoy nos enfocamos en los dos momentos finales</h3>
+
+<div class="ciclo-lectura">
+  <div class="puntos-ciclo">
+    <div class="punto-ciclo antes">
+      <span class="icono">🔍</span>
+      <h4>Antes</h4>
+      <p style="margin:0;font-size:0.9rem">(clase anterior)</p>
+      <p class="accion">Predigo y pregunto</p>
+    </div>
+    <div class="punto-ciclo durante">
+      <span class="icono">📖</span>
+      <h4>Durante</h4>
+      <p style="margin:0;font-size:0.9rem;font-weight:700">⬅ hoy</p>
+      <p class="accion">Aclaro dudas</p>
+    </div>
+    <div class="punto-ciclo despues">
+      <span class="icono">✍️</span>
+      <h4>Después</h4>
+      <p style="margin:0;font-size:0.9rem;font-weight:700">⬅ hoy</p>
+      <p class="accion">Resumo lo leído</p>
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>💡 Idea clave:</strong> Un buen lector no se rinde cuando algo no se entiende. <strong>Para, piensa y usa una estrategia para aclarar.</strong> Después, al terminar, <strong>cuenta con sus propias palabras</strong> lo más importante.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Aclarar: qué hacer cuando algo no se entiende <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Las cuatro estrategias para aclarar</h3>
+
+<p>Cuando estás leyendo y encuentras una palabra, una oración o una idea que no entiendes, no sigas como si nada. <span class="palabra-clave">Para y aclara</span> usando una de estas cuatro estrategias:</p>
+
+<table class="pistas">
+  <thead>
+    <tr><th>Estrategia</th><th>Cuándo usarla</th><th>Cómo se hace</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>🔁 <strong>Releer</strong></td>
+      <td>Cuando una oración te confundió</td>
+      <td>Vuelve atrás y léela despacio, una vez más</td>
+    </tr>
+    <tr>
+      <td>🔍 <strong>Buscar pistas</strong></td>
+      <td>Cuando una palabra es desconocida</td>
+      <td>Mira las palabras de alrededor — pueden darte el significado</td>
+    </tr>
+    <tr>
+      <td>💬 <strong>Preguntar</strong></td>
+      <td>Cuando la duda no se aclara sola</td>
+      <td>Pregúntale al profesor o a un compañero</td>
+    </tr>
+    <tr>
+      <td>📖 <strong>Consultar</strong></td>
+      <td>Cuando la palabra es nueva y no hay pistas</td>
+      <td>Búscala en un diccionario o en el celular</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Modelaje: aclarar mientras se lee</h3>
+
+<p>Mira cómo un lector experto aclara mientras lee este párrafo. Las palabras subrayadas son las que le hicieron parar:</p>
+
+<div class="texto-modelo">
+  Marisol vive en un barrio <span class="palabra-dudosa">tranquilo</span> de Chicago. Sus vecinos son <span class="palabra-dudosa">amables</span> y siempre se saludan en la mañana. A ella le gusta caminar a la <span class="palabra-dudosa">panadería</span> los sábados para comprar pan fresco.
+
+  <span class="nota-margen">💭 "Tranquilo" — releo: "un barrio tranquilo de Chicago". Si los vecinos son amables y todos se saludan, entonces tranquilo significa <strong>calmado, sin ruido ni problemas</strong>. ✅</span>
+
+  <span class="nota-margen">💭 "Amables" — busco pistas: "se saludan en la mañana". Eso es algo bueno, simpático. Amables significa <strong>buenos con los demás</strong>. ✅</span>
+
+  <span class="nota-margen">💭 "Panadería" — busco pistas: "comprar pan fresco". Panadería es <strong>el lugar donde venden pan</strong>. ✅</span>
+</div>
+
+<h3>Práctica: ¿qué estrategia conviene?</h3>
+
+<p>Para cada situación, elige la estrategia más útil para aclarar la duda.</p>
+
+<div id="ejercicio-aclarar"></div>
+<div class="puntaje" id="puntaje-aclarar">Aciertos: 0 / 5</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Resumir: contar lo leído con palabras propias <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué es resumir?</h3>
+
+<p><span class="palabra-clave">Resumir</span> es decir, con tus propias palabras, lo más importante de lo que leíste. Un buen resumen es <strong>corto, claro y fiel</strong>: corto porque deja fuera lo secundario, claro porque cualquiera lo entiende, y fiel porque no inventa ni cambia las ideas del texto.</p>
+
+<div class="tip">
+  <strong>⚠️ Cuidado:</strong> Resumir <strong>no es copiar</strong> oraciones del texto. Es <em>parafrasear</em> — decir lo mismo con palabras tuyas. Si copias palabra por palabra, no estás resumiendo, estás copiando.
+</div>
+
+<h3>Cuatro pasos para resumir bien</h3>
+
+<ol class="pasos-resumen">
+  <li><strong>Identifica la idea principal.</strong> ¿De qué se trata el texto? Esa es tu primera oración.</li>
+  <li><strong>Escoge dos o tres detalles importantes.</strong> Los que el autor menciona varias veces o que explican la idea principal.</li>
+  <li><strong>Deja fuera lo secundario.</strong> Ejemplos pequeños, opiniones repetidas, palabras de relleno.</li>
+  <li><strong>Escribe con tus palabras.</strong> Parafrasea. No copies oraciones enteras del texto.</li>
+</ol>
+
+<h3>Modelaje: del texto al resumen</h3>
+
+<p><strong>Texto original:</strong></p>
+
+<div class="texto-modelo" style="border-color:var(--despues)">
+  El sueño es muy importante para la salud. Cuando una persona duerme ocho horas, su cuerpo descansa y se recupera. El cerebro también necesita el sueño para guardar lo que aprendió durante el día. Los adultos que duermen poco se enferman más y se sienten cansados. Por eso, los doctores recomiendan dormir entre siete y nueve horas cada noche.
+</div>
+
+<div class="caja-resumen">
+  <span class="etiqueta-resumen">✍️ Resumen</span>
+  <p style="margin-top:14px"><strong>Dos oraciones, con palabras propias:</strong></p>
+  <p>"El sueño es muy importante porque el cuerpo descansa y el cerebro guarda lo aprendido. Los doctores recomiendan dormir entre siete y nueve horas cada noche para no enfermarse."</p>
+</div>
+
+<div class="tip">
+  <strong>👀 Observa:</strong> El resumen dice lo más importante del texto, pero <em>no copia</em> ninguna oración entera. Cambian las palabras y el orden, pero la idea es la misma.
+</div>
+
+<h3>Pregúntate al terminar</h3>
+
+<p>Antes de dar tu resumen por bueno, hazte estas preguntas:</p>
+
+<ul class="lista-bonita">
+  <li>¿Mi resumen expresa con claridad <strong>de qué trata el texto</strong>?</li>
+  <li>¿Usé <strong>mis propias palabras</strong> o copié oraciones del original?</li>
+  <li>¿Incluí los <strong>detalles más importantes</strong> y dejé fuera los pequeños?</li>
+  <li>¿Es <strong>corto</strong>, sin información de más?</li>
+</ul>
+
+</div>
+</details>
+
+<details>
+<summary>4. Práctica: elegir el mejor resumen <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Identifica el resumen más fiel y claro</h3>
+
+<p>Lee cada texto original y elige el resumen que mejor cumple con los criterios: <strong>corto, claro, fiel</strong> y con palabras propias.</p>
+
+<div id="ejercicio-resumen"></div>
+<div class="puntaje" id="puntaje-resumen">Aciertos: 0 / 3</div>
+
+<h3>Actividad oral: think-pair-share</h3>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · think-pair-share</h4>
+  <p>El profesor reparte un texto corto. El procedimiento es:</p>
+  <ul class="lista-bonita">
+    <li><strong>Think (piensa):</strong> Cada estudiante lee el texto solo y escribe un resumen de dos oraciones.</li>
+    <li><strong>Pair (parejas):</strong> Se junta con un compañero. Comparan resúmenes y discuten: ¿qué dejaron fuera? ¿qué incluyeron?</li>
+    <li><strong>Share (compartir):</strong> Algunas parejas comparten su mejor resumen con toda la clase.</li>
+  </ul>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>Los estudiantes escriben en una tarjeta. Después se levantan y buscan pareja. Tres parejas comparten su resumen en voz alta. El profesor anota en el pizarrón los puntos en común.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>Cada estudiante escribe su resumen en el chat (sin enviarlo todavía). Cuando el profesor dice "ya", todos lo envían a la vez. Después se forman salas pequeñas de a dos para comparar.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Cierre: las cuatro estrategias del buen lector <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>Cuando algo no se entiende, hay cuatro estrategias para aclarar: <strong>releer, buscar pistas, preguntar y consultar</strong>.</li>
+  <li>Resumir es decir lo más importante con <strong>palabras propias</strong>, no copiar.</li>
+  <li>Un buen resumen es <strong>corto, claro y fiel</strong> al texto original.</li>
+  <li>Sigue los cuatro pasos: identifica la idea principal, escoge detalles importantes, deja fuera lo secundario, parafrasea.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Puedes nombrar las cuatro estrategias para aclarar dudas durante la lectura?</li>
+    <li>¿Cuál es la diferencia entre <em>resumir</em> y <em>copiar</em>?</li>
+    <li>¿Qué pregunta debes hacerte al terminar tu resumen para saber si está bien?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Vamos a entrar de lleno en la <strong>idea principal</strong> — esa oración o idea que sostiene todo el texto. Aprenderás a encontrarla y a separarla de los detalles que la apoyan.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Cuento corto auténtico (continuación)</h4>
+  <p>Continuación del cuento iniciado en la Clase 1. Modalidad: <strong>lectura guiada con paradas</strong>. Esta vez el énfasis está en:</p>
+  <ul class="lista-bonita">
+    <li><strong>Stop and Ask</strong> — pausa para hacer preguntas y aclarar palabras desconocidas.</li>
+    <li><strong>Stop and Summarize</strong> — al final, resumen completo del cuento en dos oraciones.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> "Mis tres preguntas" (cierre)</h4>
+  <p>El estudiante completa su entrada del foro de la Clase 1, ahora agregando:</p>
+  <ul class="lista-bonita">
+    <li>Una <strong>palabra que tuvo que aclarar</strong> y la estrategia que usó.</li>
+    <li>Un <strong>resumen final</strong> del cuento, de dos oraciones, con palabras propias.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-quiz">Quiz</span> 10 preguntas · Brightspace (toda la Lección 4.1)</h4>
+  <p>El quiz cubre las cuatro estrategias del ciclo completo:</p>
+  <ul class="lista-bonita">
+    <li>Clasificar acciones como antes / durante / después de leer.</li>
+    <li>Identificar predicciones razonables y preguntas útiles.</li>
+    <li>Elegir la estrategia adecuada para aclarar una duda.</li>
+    <li>Distinguir un buen resumen de uno incompleto o copiado.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Lista de cotejo del foro "Mis tres preguntas"</h4>
+  <p>Las tres respuestas del foro se evalúan con esta lista de cotejo:</p>
+
+  <table class="rubrica">
+    <thead>
+      <tr>
+        <th>Criterio</th>
+        <th class="nivel-4">Cumple (1 pt)</th>
+        <th class="nivel-1">No cumple (0 pt)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>¿Hizo una predicción razonable?</td>
+        <td class="nivel-4">Se conecta con pistas del título o imagen</td>
+        <td class="nivel-1">Es una adivinanza al azar</td>
+      </tr>
+      <tr>
+        <td>¿Hizo una pregunta de comprensión?</td>
+        <td class="nivel-4">Es una pregunta abierta y relevante</td>
+        <td class="nivel-1">No hay pregunta o es trivial</td>
+      </tr>
+      <tr>
+        <td>¿El resumen incluye quién/qué/dónde?</td>
+        <td class="nivel-4">Identifica los elementos básicos del texto</td>
+        <td class="nivel-1">No identifica los elementos básicos</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje total:</strong> 3 puntos. Cierre completo de la Lección 4.1.</p>
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Ejercicio 1: estrategia para aclarar
+  var situacionesAclarar=[
+    {
+      situacion:'Lees una oración pero no la entiendes bien — las palabras son todas conocidas, pero la idea se te escapó.',
+      opciones:[
+        {texto:'🔁 Releer la oración despacio',correcta:true},
+        {texto:'📖 Buscar todas las palabras en el diccionario',correcta:false},
+        {texto:'⏭️ Saltar al siguiente párrafo',correcta:false}
+      ]
+    },
+    {
+      situacion:'Encuentras la palabra "frondoso" en una oración sobre árboles: "El parque tenía árboles frondosos con muchas hojas verdes".',
+      opciones:[
+        {texto:'⏭️ Seguir leyendo sin pensarlo',correcta:false},
+        {texto:'🔍 Buscar pistas: "muchas hojas verdes" — frondoso es lleno de hojas',correcta:true},
+        {texto:'💬 Preguntar al profesor inmediatamente',correcta:false}
+      ]
+    },
+    {
+      situacion:'Lees una palabra completamente nueva, sin ninguna pista en las oraciones de alrededor: "polígono".',
+      opciones:[
+        {texto:'📖 Consultar el diccionario o el celular',correcta:true},
+        {texto:'🔁 Releer dos veces, a ver si aparece',correcta:false},
+        {texto:'❌ Cerrar el libro',correcta:false}
+      ]
+    },
+    {
+      situacion:'Después de usar varias estrategias, una idea del texto sigue confusa para ti.',
+      opciones:[
+        {texto:'😔 Asumir que no eres buen lector',correcta:false},
+        {texto:'⏭️ Inventar el significado para seguir',correcta:false},
+        {texto:'💬 Preguntarle al profesor o a un compañero',correcta:true}
+      ]
+    },
+    {
+      situacion:'En medio de un texto, una palabra te suena conocida pero no estás seguro: "ahorrar".',
+      opciones:[
+        {texto:'🔍 Buscar pistas: el texto habla del supermercado y de gastar menos',correcta:true},
+        {texto:'📖 Pararte a buscarla en el diccionario',correcta:false},
+        {texto:'⏭️ Saltarla y seguir',correcta:false}
+      ]
+    }
+  ];
+
+  var resueltasA={};
+  var aciertosA=0;
+  var contA=document.getElementById('ejercicio-aclarar');
+
+  situacionesAclarar.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-aclarar';
+    var opcionesHTML=item.opciones.map(function(op){
+      return '<button type="button" class="btn-aclarar" data-correcta="'+op.correcta+'">'+op.texto+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="situacion"><strong>Situación:</strong> '+item.situacion+'</div>'+
+      '<div class="opciones-aclarar">'+opcionesHTML+'</div>';
+    contA.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-aclarar');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasA[idx])return;
+        if(b.getAttribute('data-correcta')==='true'){
+          b.classList.add('correcta');
+          resueltasA[idx]=true;
+          aciertosA++;
+          actualizarPuntajeA();
+          botones.forEach(function(other){if(other!==b)other.disabled=true});
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},600);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeA(){
+    var el=document.getElementById('puntaje-aclarar');
+    el.textContent='Aciertos: '+aciertosA+' / '+situacionesAclarar.length;
+    if(aciertosA===situacionesAclarar.length){
+      el.innerHTML='🎉 ¡Excelente trabajo! Aciertos: '+aciertosA+' / '+situacionesAclarar.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Ejercicio 2: mejor resumen
+  var resumenes=[
+    {
+      original:'<strong>Texto:</strong> El mercado de los sábados es muy popular en mi barrio. Los vendedores llegan temprano con frutas, verduras y pescado fresco. La gente camina entre los puestos, conversa y prueba la comida. Los precios son más bajos que en el supermercado y todo es de mejor calidad.',
+      opciones:[
+        {texto:'"El mercado de los sábados es muy popular en mi barrio. Los vendedores llegan temprano."',correcta:false},
+        {texto:'"En el barrio hay un mercado los sábados, con productos frescos, precios bajos y mucho ambiente."',correcta:true},
+        {texto:'"A la gente le gusta caminar y conversar en los mercados de Cuba."',correcta:false}
+      ]
+    },
+    {
+      original:'<strong>Texto:</strong> Ana decidió aprender computación a los cincuenta años. Al principio le costó porque nunca había usado una. Tomó clases por seis meses y practicó todos los días. Hoy maneja bien el correo electrónico, busca trabajo por internet y videollama a su hija que vive en Florida.',
+      opciones:[
+        {texto:'"Ana es una mujer de cincuenta años que vive en Cuba y tiene una hija en Florida."',correcta:false},
+        {texto:'"Aprender computación a los cincuenta años fue difícil pero Ana lo logró con clases y práctica diaria."',correcta:true},
+        {texto:'"Ana decidió aprender computación a los cincuenta años. Al principio le costó porque nunca había usado una."',correcta:false}
+      ]
+    },
+    {
+      original:'<strong>Texto:</strong> Los huracanes son tormentas muy fuertes que se forman en el océano. Tienen vientos que pueden alcanzar más de 150 millas por hora. Cuando llegan a tierra, causan inundaciones, derriban árboles y destruyen casas. En el Caribe la temporada de huracanes va de junio a noviembre.',
+      opciones:[
+        {texto:'"Los huracanes son peligrosos en el Caribe entre junio y noviembre."',correcta:false},
+        {texto:'"Los huracanes son tormentas oceánicas con vientos muy fuertes que causan daños graves; en el Caribe ocurren de junio a noviembre."',correcta:true},
+        {texto:'"En el Caribe hay árboles caídos y casas destruidas todos los años."',correcta:false}
+      ]
+    }
+  ];
+
+  var resueltasR={};
+  var aciertosR=0;
+  var contR=document.getElementById('ejercicio-resumen');
+
+  resumenes.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-resumen';
+    var opcionesHTML=item.opciones.map(function(op){
+      return '<button type="button" class="btn-resumen" data-correcta="'+op.correcta+'">'+op.texto+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="texto-original">'+item.original+'</div>'+
+      '<div class="opciones-resumen">'+opcionesHTML+'</div>';
+    contR.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-resumen');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasR[idx])return;
+        if(b.getAttribute('data-correcta')==='true'){
+          b.classList.add('correcta');
+          resueltasR[idx]=true;
+          aciertosR++;
+          actualizarPuntajeR();
+          botones.forEach(function(other){if(other!==b)other.disabled=true});
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},600);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeR(){
+    var el=document.getElementById('puntaje-resumen');
+    el.textContent='Aciertos: '+aciertosR+' / '+resumenes.length;
+    if(aciertosR===resumenes.length){
+      el.innerHTML='🎉 ¡Felicitaciones! Aciertos: '+aciertosR+' / '+resumenes.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

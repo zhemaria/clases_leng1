@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 2: Las características del texto informativo visual</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--error:#c62828;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --c-titulo:#1a2332;--c-subtitulo:#0277bd;--c-leyenda:#7b3fbf;--c-pie:#e65100;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Anatomía de un artículo: ilustración con etiquetas */
+  .anatomia-articulo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:18px;margin:18px 0}
+  .anatomia-articulo h4{margin-top:0;text-align:center;color:var(--acento-oscuro);margin-bottom:14px}
+  .articulo-demo{max-width:520px;margin:0 auto;background:#fff;border:1px solid #ddd;border-radius:6px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+  .demo-titulo{background:var(--c-titulo);color:#fff;padding:12px 16px;font-size:1.15rem;font-weight:700;position:relative}
+  .demo-subtitulo{background:#e3f2fd;color:var(--c-subtitulo);padding:8px 16px;font-size:0.95rem;font-weight:600;border-bottom:1px solid #bbdefb;position:relative}
+  .demo-imagen{background:#c8e6c9;height:140px;display:flex;align-items:center;justify-content:center;position:relative}
+  .demo-imagen svg{width:100%;height:100%}
+  .demo-pie{background:#f5f5f5;padding:8px 16px;font-size:0.82rem;font-style:italic;color:#444;border-bottom:1px solid #eee;position:relative}
+  .demo-cuerpo{padding:14px 16px;font-size:0.9rem;line-height:1.6}
+  .demo-cuerpo p{margin:0 0 8px 0}
+  .num-etiqueta{position:absolute;top:50%;right:-32px;transform:translateY(-50%);background:#fff;border:3px solid;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+  .num-etiqueta.n1{border-color:var(--c-titulo);color:var(--c-titulo)}
+  .num-etiqueta.n2{border-color:var(--c-subtitulo);color:var(--c-subtitulo)}
+  .num-etiqueta.n3{border-color:var(--c-leyenda);color:var(--c-leyenda)}
+  .num-etiqueta.n4{border-color:var(--c-pie);color:var(--c-pie)}
+
+  .leyenda-anatomia{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:18px}
+  .item-leyenda{background:#fff;border-radius:8px;padding:10px 12px;border-left:4px solid;display:flex;align-items:flex-start;gap:10px}
+  .item-leyenda.t1{border-color:var(--c-titulo);background:#f5f5f5}
+  .item-leyenda.t2{border-color:var(--c-subtitulo);background:#e3f2fd}
+  .item-leyenda.t3{border-color:var(--c-leyenda);background:var(--acento-claro)}
+  .item-leyenda.t4{border-color:var(--c-pie);background:#fff3e0}
+  .item-leyenda .num-leyenda{font-weight:700;font-size:1.05rem;min-width:24px}
+  .item-leyenda.t1 .num-leyenda{color:var(--c-titulo)}
+  .item-leyenda.t2 .num-leyenda{color:var(--c-subtitulo)}
+  .item-leyenda.t3 .num-leyenda{color:var(--c-leyenda)}
+  .item-leyenda.t4 .num-leyenda{color:var(--c-pie)}
+  .item-leyenda .desc-leyenda{flex:1}
+  .item-leyenda .desc-leyenda strong{display:block;margin-bottom:3px;font-size:0.95rem}
+  .item-leyenda.t1 .desc-leyenda strong{color:var(--c-titulo)}
+  .item-leyenda.t2 .desc-leyenda strong{color:var(--c-subtitulo)}
+  .item-leyenda.t3 .desc-leyenda strong{color:var(--c-leyenda)}
+  .item-leyenda.t4 .desc-leyenda strong{color:var(--c-pie)}
+  .item-leyenda .desc-leyenda span{font-size:0.85rem;line-height:1.45;display:block}
+
+  /* Tabla comparativa título vs pie de foto */
+  table.comparativa{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.comparativa th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left;font-size:0.95rem}
+  table.comparativa td{padding:12px;border-bottom:1px solid var(--gris-claro);font-size:0.93rem;vertical-align:top}
+  table.comparativa tr:last-child td{border-bottom:none}
+  table.comparativa td:first-child{font-weight:700;color:var(--cp-oscuro);background:var(--cp-claro);width:30%}
+
+  /* Búsqueda del tesoro: artículo simulado */
+  .articulo-tesoro{background:#fff;border:2px solid var(--cp);border-radius:10px;margin:18px 0;overflow:hidden;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .tit-tesoro{background:#1a2332;color:#fff;padding:14px 18px;font-size:1.2rem;font-weight:700}
+  .sub-tesoro{background:#0277bd;color:#fff;padding:10px 18px;font-size:1rem;font-style:italic;font-weight:500}
+  .meta-tesoro{padding:8px 18px;font-size:0.82rem;color:var(--gris);background:#fafafa;border-bottom:1px solid var(--gris-claro)}
+  .cuerpo-tesoro{padding:16px 18px}
+  .seccion-articulo{margin-bottom:18px}
+  .seccion-articulo h5{color:var(--naranja-oscuro);background:var(--naranja-claro);padding:6px 12px;border-radius:6px;display:inline-block;margin:0 0 8px 0;font-size:0.98rem}
+  .seccion-articulo p{margin:0 0 8px 0;font-size:0.93rem;line-height:1.6}
+  .figura-articulo{margin:12px 0;background:#f9f9f9;border:1px solid var(--gris-claro);border-radius:6px;overflow:hidden}
+  .figura-articulo svg{width:100%;height:140px;display:block;background:#e1f5fe}
+  .figura-articulo .pie-figura{background:#f5f5f5;padding:8px 12px;font-size:0.82rem;font-style:italic;color:#444;border-top:1px solid var(--gris-claro)}
+
+  /* Preguntas búsqueda del tesoro */
+  .preguntas-tesoro{margin:20px 0}
+  .preg-tesoro{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .preg-tesoro .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-tesoro .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .pista-busqueda{display:inline-block;background:var(--cp-claro);color:var(--cp-oscuro);padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:600;margin-left:8px}
+  .opciones-tesoro{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+  .opt-tes{padding:9px 12px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;text-align:left;font-family:inherit;font-size:0.92rem;transition:all 0.2s}
+  .opt-tes:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-tes.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);font-weight:600;cursor:default}
+  .opt-tes.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-tes{margin-top:8px;padding:8px 12px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.88rem;display:none;border-left:4px solid var(--cp)}
+  .retro-tes.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Actividad unidad */
+  .actividad-unidad{background:#fff;border:2px solid var(--naranja);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:var(--naranja-oscuro);margin-top:0}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+  .badge-rubrica{background:#fff3e0;color:#e65100}
+
+  /* Rúbrica del foro */
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:var(--naranja-oscuro);color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:var(--naranja-oscuro);background:var(--naranja-claro);text-align:center;width:30%}
+</style>
+</head>
+<body>
+
+<h1>Clase 2: Las características del texto informativo visual</h1>
+<p class="subtitulo">Tema 6 · Lección 6.1 · Nivel 1 · Semana 11 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Identificar los <strong>cuatro elementos visuales clave</strong> de un texto informativo: título, subtítulos, leyendas (de imágenes) y pies de foto.</li>
+    <li>Distinguir la <strong>función</strong> que cumple cada elemento.</li>
+    <li>Aplicar la técnica de <strong>"búsqueda del tesoro"</strong> para localizar información sin leer todo el texto.</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En la clase anterior aprendimos que las imágenes no son adornos: son herramientas estratégicas que ayudan a comprender. Hoy vamos un paso más allá. Vamos a estudiar las <strong>"pistas visuales"</strong> que el autor coloca en un artículo para guiar al lector.</p>
+
+<p>Estas pistas se llaman <span class="palabra-clave">características del texto informativo</span> y son universales: aparecen en libros de texto, revistas, periódicos, sitios web y, por supuesto, en el examen de GED. Quien las reconoce puede localizar información en segundos. Quien no las reconoce tiene que leer línea por línea, perdiendo tiempo valioso.</p>
+
+<details open>
+<summary>1. Introducción: las pistas visuales del texto <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué son las características del texto informativo?</h3>
+
+<p>Cuando un autor escribe un artículo informativo, no quiere que el lector se pierda. Por eso coloca <strong>señales visuales</strong> que funcionan como letreros en una carretera: indican dónde estamos, qué viene a continuación y qué es importante.</p>
+
+<p>Los cuatro elementos visuales más importantes son:</p>
+
+<ul class="lista-bonita">
+  <li>El <strong>título</strong> principal del artículo.</li>
+  <li>Los <strong>subtítulos</strong> de cada sección.</li>
+  <li>La <strong>leyenda</strong> de la imagen (rótulo breve sobre o dentro de la ilustración).</li>
+  <li>El <strong>pie de foto</strong> (texto pequeño debajo de la imagen).</li>
+</ul>
+
+<div class="clave-pedagogica">
+  <strong>💡 Idea central:</strong> Estos elementos están diseñados para ser leídos <strong>antes</strong> que el texto principal. Funcionan como un mapa que nos dice dónde encontrar cada cosa. Si los ignoramos, perdemos la guía y nos cuesta mucho más comprender.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Desarrollo: anatomía de un artículo informativo <span class="caja-tiempo">25 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Veamos un artículo por dentro</h3>
+
+<p>A continuación se muestra un artículo típico de revista, con sus cuatro elementos visuales marcados con números:</p>
+
+<div class="anatomia-articulo">
+  <h4>📰 Anatomía de un artículo informativo</h4>
+
+  <div class="articulo-demo">
+    <div class="demo-titulo">
+      Las abejas y nuestra alimentación
+      <span class="num-etiqueta n1">1</span>
+    </div>
+    <div class="demo-subtitulo">
+      Por qué su desaparición es un problema para todos
+      <span class="num-etiqueta n2">2</span>
+    </div>
+    <div class="demo-imagen">
+      <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <rect width="400" height="140" fill="#fff9c4"/>
+        <circle cx="80" cy="50" r="22" fill="#fdd835" stroke="#000" stroke-width="1.5"/>
+        <rect x="68" y="40" width="24" height="20" fill="#1a1a1a"/>
+        <ellipse cx="100" cy="40" rx="14" ry="8" fill="#fff" opacity="0.7"/>
+        <ellipse cx="60" cy="40" rx="14" ry="8" fill="#fff" opacity="0.7"/>
+        <circle cx="62" cy="48" r="2" fill="#000"/>
+        <circle cx="100" cy="48" r="2" fill="#000"/>
+        <polygon points="50,55 65,75 75,60" fill="#ff9800" opacity="0.7"/>
+        <polygon points="55,60 70,80 80,65" fill="#ff5722" opacity="0.7"/>
+        <polygon points="60,65 75,85 85,70" fill="#f57c00" opacity="0.7"/>
+        <text x="200" y="80" font-size="14" font-weight="bold" fill="#5a2d8f" text-anchor="middle">Abeja polinizando una flor</text>
+        <ellipse cx="320" cy="80" rx="22" ry="20" fill="#e91e63"/>
+        <circle cx="320" cy="80" r="8" fill="#ffeb3b"/>
+        <ellipse cx="305" cy="70" rx="10" ry="14" fill="#e91e63" transform="rotate(-30 305 70)"/>
+        <ellipse cx="335" cy="70" rx="10" ry="14" fill="#e91e63" transform="rotate(30 335 70)"/>
+        <ellipse cx="305" cy="90" rx="10" ry="14" fill="#e91e63" transform="rotate(-150 305 90)"/>
+        <ellipse cx="335" cy="90" rx="10" ry="14" fill="#e91e63" transform="rotate(150 335 90)"/>
+        <rect x="318" y="100" width="4" height="35" fill="#2e7d32"/>
+      </svg>
+      <span class="num-etiqueta n3" style="right:-32px;top:50%">3</span>
+    </div>
+    <div class="demo-pie">
+      Las abejas transportan polen entre flores. Sin ellas, muchas frutas y verduras no existirían.
+      <span class="num-etiqueta n4">4</span>
+    </div>
+    <div class="demo-cuerpo">
+      <p>Las abejas son insectos pequeños que cumplen una función enorme en la naturaleza. Cuando vuelan de flor en flor para alimentarse, transportan polen sin darse cuenta...</p>
+    </div>
+  </div>
+
+  <div class="leyenda-anatomia">
+    <div class="item-leyenda t1">
+      <div class="num-leyenda">1</div>
+      <div class="desc-leyenda">
+        <strong>Título principal</strong>
+        <span>Anuncia el tema general del artículo. Es la primera pista que vemos.</span>
+      </div>
+    </div>
+    <div class="item-leyenda t2">
+      <div class="num-leyenda">2</div>
+      <div class="desc-leyenda">
+        <strong>Subtítulo</strong>
+        <span>Explica con más detalle el ángulo o enfoque del artículo.</span>
+      </div>
+    </div>
+    <div class="item-leyenda t3">
+      <div class="num-leyenda">3</div>
+      <div class="desc-leyenda">
+        <strong>Leyenda (rótulo de la imagen)</strong>
+        <span>Texto colocado <em>sobre o dentro</em> de la imagen que identifica lo que se muestra.</span>
+      </div>
+    </div>
+    <div class="item-leyenda t4">
+      <div class="num-leyenda">4</div>
+      <div class="desc-leyenda">
+        <strong>Pie de foto</strong>
+        <span>Texto colocado <em>debajo</em> de la imagen que explica el contexto o aporta información adicional.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Título y pie de foto: dos pistas, dos funciones</h3>
+
+<p>Es importante no confundir el título con el pie de foto. Aunque ambos son textos cortos, cumplen funciones muy distintas:</p>
+
+<table class="comparativa">
+  <thead>
+    <tr><th>Característica</th><th>Título</th><th>Pie de foto</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ubicación</td>
+      <td>Arriba del artículo, en letra grande y destacada.</td>
+      <td>Inmediatamente debajo de la imagen, en letra pequeña.</td>
+    </tr>
+    <tr>
+      <td>Función</td>
+      <td>Anuncia el tema general del artículo completo.</td>
+      <td>Explica qué se ve en una imagen específica.</td>
+    </tr>
+    <tr>
+      <td>Tamaño típico</td>
+      <td>De 3 a 10 palabras.</td>
+      <td>De 1 a 3 oraciones.</td>
+    </tr>
+    <tr>
+      <td>Estilo</td>
+      <td>Llamativo, a veces con una pregunta o frase corta.</td>
+      <td>Descriptivo, a menudo en cursiva o letra pequeña.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip">
+  <strong>📌 Pista de examen:</strong> En el GED, muchas preguntas se contestan leyendo <strong>solo el pie de foto</strong>, sin necesidad de leer el texto principal completo. Si la pregunta dice "según la imagen…", el pie de foto suele tener la respuesta.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: búsqueda del tesoro <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Encuentre la información sin leer todo el artículo</h3>
+
+<p>A continuación se presenta un artículo de revista sobre el agua potable. Su tarea es responder cinco preguntas <strong>leyendo únicamente</strong> los títulos, subtítulos, leyendas y pies de foto. <strong>No es necesario</strong> leer el cuerpo principal del texto.</p>
+
+<div class="articulo-tesoro">
+  <div class="tit-tesoro">El agua potable en nuestra ciudad</div>
+  <div class="sub-tesoro">De dónde viene y cómo llega a su llave</div>
+  <div class="meta-tesoro">Revista comunitaria · Año 2024 · Sección Salud Pública</div>
+
+  <div class="cuerpo-tesoro">
+
+    <div class="seccion-articulo">
+      <h5>1. El recorrido del agua</h5>
+      <p>El agua que sale de su llave hace un viaje largo antes de llegar a su casa. Pasa por varias etapas en las que se limpia y se prueba para asegurar que sea segura para beber.</p>
+
+      <div class="figura-articulo">
+        <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <rect width="400" height="140" fill="#e1f5fe"/>
+          <!-- Lago -->
+          <ellipse cx="50" cy="85" rx="40" ry="20" fill="#0277bd"/>
+          <text x="50" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#01579b">Lago Michigan</text>
+          <!-- Planta tratamiento -->
+          <rect x="130" y="60" width="60" height="50" fill="#90a4ae" stroke="#37474f" stroke-width="2"/>
+          <rect x="145" y="40" width="12" height="20" fill="#37474f"/>
+          <rect x="165" y="40" width="12" height="20" fill="#37474f"/>
+          <text x="160" y="125" text-anchor="middle" font-size="9" font-weight="bold" fill="#37474f">Planta de</text>
+          <text x="160" y="135" text-anchor="middle" font-size="9" font-weight="bold" fill="#37474f">tratamiento</text>
+          <!-- Tubería -->
+          <rect x="230" y="80" width="60" height="12" fill="#5d4037"/>
+          <text x="260" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#3e2723">Tubería</text>
+          <!-- Casa -->
+          <polygon points="320,70 360,50 400,70" fill="#c62828"/>
+          <rect x="320" y="70" width="80" height="50" fill="#ffe0b2"/>
+          <rect x="345" y="90" width="15" height="30" fill="#5d4037"/>
+          <rect x="370" y="85" width="15" height="15" fill="#90caf9"/>
+          <text x="360" y="135" text-anchor="middle" font-size="10" font-weight="bold" fill="#b71c1c">Su casa</text>
+          <!-- Flechas -->
+          <path d="M 90 85 L 128 85" stroke="#01579b" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M 192 85 L 228 85" stroke="#01579b" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M 292 85 L 318 85" stroke="#01579b" stroke-width="2" marker-end="url(#arr)"/>
+          <defs>
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <polygon points="0 0, 8 4, 0 8" fill="#01579b"/>
+            </marker>
+          </defs>
+        </svg>
+        <div class="pie-figura">Figura 1: El agua viaja del Lago Michigan a la planta de tratamiento, y de ahí por tuberías hasta cada hogar de Chicago.</div>
+      </div>
+    </div>
+
+    <div class="seccion-articulo">
+      <h5>2. La importancia del agua limpia</h5>
+      <p>Cada persona necesita aproximadamente dos litros de agua al día para mantenerse saludable. El agua limpia previene enfermedades graves y permite preparar alimentos de forma segura.</p>
+
+      <div class="figura-articulo">
+        <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <rect width="400" height="140" fill="#fff3e0"/>
+          <!-- Vaso de agua -->
+          <path d="M 150 30 L 165 110 L 235 110 L 250 30 Z" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
+          <path d="M 150 30 L 250 30" stroke="#1565c0" stroke-width="2"/>
+          <ellipse cx="200" cy="32" rx="50" ry="6" fill="#90caf9"/>
+          <circle cx="180" cy="60" r="4" fill="#fff" opacity="0.7"/>
+          <circle cx="210" cy="75" r="3" fill="#fff" opacity="0.7"/>
+          <circle cx="195" cy="90" r="3" fill="#fff" opacity="0.7"/>
+          <text x="200" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="#01579b">2 litros al día</text>
+        </svg>
+        <div class="pie-figura">Figura 2: Un adulto sano debe beber al menos dos litros de agua cada día.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="preguntas-tesoro" id="preguntas-tesoro"></div>
+<div class="puntaje" id="puntaje-tesoro">Aciertos: 0 / 5</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Actividades de la lección <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Modalidad presencial (sincrónica)</h4>
+    <p><span class="badge-tipo badge-discusion">Búsqueda del tesoro</span></p>
+    <p>El profesor entrega a cada pareja de estudiantes una página de revista impresa. En 7 minutos, deben:</p>
+    <ul style="padding-left:20px;font-size:0.92rem">
+      <li>Subrayar con amarillo el <strong>título</strong>.</li>
+      <li>Subrayar con verde los <strong>subtítulos</strong>.</li>
+      <li>Encerrar en círculo las <strong>leyendas</strong> de las imágenes.</li>
+      <li>Marcar con un asterisco los <strong>pies de foto</strong>.</li>
+    </ul>
+    <p>Después, cada pareja presenta su página y comparten las dificultades que encontraron.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Modalidad en línea (asincrónica)</h4>
+    <p><span class="badge-tipo badge-reflexion">Foro guiado</span></p>
+    <p><strong>Mi foto con leyenda y pie</strong></p>
+    <p>Cada estudiante sube a la plataforma:</p>
+    <ul style="padding-left:20px;font-size:0.92rem">
+      <li>Una fotografía familiar o de su barrio (apropiada para compartir).</li>
+      <li>Una <strong>leyenda</strong> breve de 3 a 5 palabras (como rótulo).</li>
+      <li>Un <strong>pie de foto</strong> de 1 a 2 oraciones que explique el contexto.</li>
+    </ul>
+    <p>El estudiante debe rotular claramente cuál es la leyenda y cuál el pie de foto.</p>
+  </div>
+</div>
+
+<div class="actividad-unidad">
+  <h4>📝 Quiz de la lección <span class="badge-tipo badge-quiz">10 preguntas</span></h4>
+  <p>Al finalizar esta clase, los estudiantes completan en línea el quiz que cubre las dos clases de la Lección 6.1:</p>
+  <ul style="padding-left:20px;font-size:0.92rem">
+    <li>Emparejar imágenes con su leyenda correcta.</li>
+    <li>Identificar si un fragmento es título o pie de foto.</li>
+    <li>Responder preguntas de comprensión cuya respuesta está únicamente en la imagen.</li>
+  </ul>
+</div>
+
+<h3>📋 Rúbrica del foro asincrónico</h3>
+
+<p>Lista de cotejo que se aplicará al foro de la modalidad en línea:</p>
+
+<table class="rubrica">
+  <thead>
+    <tr>
+      <th>Criterio</th>
+      <th>Cumplido ✓</th>
+      <th>Por mejorar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Incluyó leyenda (rótulo de la imagen)</td>
+      <td>Hay un rótulo breve de 3 a 5 palabras claramente identificado.</td>
+      <td>No incluyó leyenda o no la rotuló como tal.</td>
+    </tr>
+    <tr>
+      <td>Incluyó pie de foto</td>
+      <td>Hay 1 o 2 oraciones que explican el contexto de la imagen.</td>
+      <td>No incluyó pie de foto o lo confundió con leyenda.</td>
+    </tr>
+    <tr>
+      <td>Ambos describen la imagen</td>
+      <td>Leyenda y pie son coherentes con lo que se ve en la foto.</td>
+      <td>El texto no corresponde a la imagen subida.</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+</details>
+
+<details>
+<summary>5. Cierre y conexión con el GED <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos en esta lección</h3>
+
+<ul class="lista-bonita">
+  <li>Las imágenes son herramientas que <strong>liberan al cerebro</strong> del esfuerzo de decodificar.</li>
+  <li>La técnica de las <strong>dos lecturas</strong> (imagen primero, texto después) mejora la comprensión.</li>
+  <li>Los textos informativos tienen <strong>cuatro pistas visuales</strong>: título, subtítulo, leyenda y pie de foto.</li>
+  <li>Cada pista tiene una <strong>función distinta</strong> y se ubica en un lugar específico de la página.</li>
+  <li>En el GED, leer las pistas visuales <strong>antes</strong> del texto principal ahorra tiempo y mejora la puntuación.</li>
+</ul>
+
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> Las preguntas de Ciencias y Estudios Sociales del GED casi siempre incluyen una imagen, gráfica o diagrama con su pie de foto. Quien sabe leer esas pistas responde más rápido y con mayor precisión.
+</div>
+
+<h3>Próxima lección</h3>
+
+<p>En la <strong>Clase 3</strong> daremos el siguiente paso: aprenderemos a leer un tipo especial de imagen visual que es fundamental en el examen: el <strong>mapa</strong>. Veremos cómo identificar sus cuatro elementos clave (título, leyenda, rosa de los vientos y escala) para extraer información geográfica con facilidad.</p>
+
+</div>
+</details>
+
+<p class="firma">Prof. José M. Fernández · Truman College · Tema 6, Clase 2</p>
+
+<script>
+(function(){
+  'use strict';
+
+  var preguntas=[
+    {
+      texto:'¿Cuál es el tema general del artículo?',
+      pista:'Pista: léase solo el título',
+      opciones:[
+        {t:'El agua potable en nuestra ciudad',ok:true},
+        {t:'Los lagos de Norteamérica',ok:false},
+        {t:'Cómo construir una casa',ok:false}
+      ],
+      explica:'El título principal anuncia siempre el tema general. En este caso: "El agua potable en nuestra ciudad".'
+    },
+    {
+      texto:'¿Cuál es el enfoque específico del artículo?',
+      pista:'Pista: léase solo el subtítulo',
+      opciones:[
+        {t:'La historia del agua en Chicago',ok:false},
+        {t:'De dónde viene el agua y cómo llega a la llave',ok:true},
+        {t:'Los precios del agua en distintas ciudades',ok:false}
+      ],
+      explica:'El subtítulo precisa el ángulo del artículo: el recorrido del agua hasta el hogar.'
+    },
+    {
+      texto:'¿De dónde sale el agua antes de ser tratada?',
+      pista:'Pista: léase solo la leyenda de la Figura 1',
+      opciones:[
+        {t:'Del río Mississippi',ok:false},
+        {t:'Del Lago Michigan',ok:true},
+        {t:'De un pozo subterráneo',ok:false}
+      ],
+      explica:'La leyenda dentro de la imagen identifica directamente la fuente del agua: el Lago Michigan.'
+    },
+    {
+      texto:'¿Cuánta agua debe beber un adulto cada día?',
+      pista:'Pista: léase solo el pie de la Figura 2',
+      opciones:[
+        {t:'Un litro',ok:false},
+        {t:'Dos litros',ok:true},
+        {t:'Cinco litros',ok:false}
+      ],
+      explica:'El pie de foto de la Figura 2 dice claramente "al menos dos litros de agua cada día".'
+    },
+    {
+      texto:'¿Cuántas secciones principales tiene el artículo?',
+      pista:'Pista: cuéntense los subtítulos numerados',
+      opciones:[
+        {t:'Una sola sección',ok:false},
+        {t:'Dos secciones',ok:true},
+        {t:'Cuatro secciones',ok:false}
+      ],
+      explica:'Hay dos subtítulos: "1. El recorrido del agua" y "2. La importancia del agua limpia".'
+    }
+  ];
+
+  var resueltas={};
+  var aciertos=0;
+  var cont=document.getElementById('preguntas-tesoro');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-tesoro';
+
+    var opcionesHtml='';
+    item.opciones.forEach(function(op){
+      opcionesHtml+='<button type="button" class="opt-tes" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span>'+
+      '<span class="pista-busqueda">'+item.pista+'</span></div>'+
+      '<div class="opciones-tesoro">'+opcionesHtml+'</div>'+
+      '<div class="retro-tes" id="retro-tes-'+idx+'"></div>';
+
+    cont.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-tes');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltas[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+          var retro=document.getElementById('retro-tes-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-tesoro');
+    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
+    if(aciertos===preguntas.length){
+      el.innerHTML='🎉 ¡Búsqueda del tesoro completada! Aciertos: '+aciertos+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

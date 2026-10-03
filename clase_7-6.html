@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 6: El proceso de revisión y la retroalimentación</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--error:#c62828;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --p1:#0277bd;--p1-claro:#e1f5fe;--p1-oscuro:#01486d;
+    --p2:#7b3fbf;--p2-claro:#f3e8ff;--p2-oscuro:#5a2d8f;
+    --p3:#2e7d32;--p3-claro:#e8f5e9;--p3-oscuro:#1b5e20;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Tres pasos del proceso de revisión */
+  .proceso-rev{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0;position:relative}
+  @media(max-width:640px){.proceso-rev{grid-template-columns:1fr}}
+  .paso-rev{background:#fff;border-radius:10px;padding:16px 18px;border-top:5px solid;box-shadow:0 2px 8px rgba(0,0,0,0.07);text-align:center;position:relative}
+  .paso-rev.p1{border-color:var(--p1)}
+  .paso-rev.p2{border-color:var(--p2)}
+  .paso-rev.p3{border-color:var(--p3)}
+  .paso-rev .num-rev{display:inline-flex;width:42px;height:42px;border-radius:50%;color:#fff;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;margin-bottom:8px}
+  .paso-rev.p1 .num-rev{background:var(--p1)}
+  .paso-rev.p2 .num-rev{background:var(--p2)}
+  .paso-rev.p3 .num-rev{background:var(--p3)}
+  .paso-rev .icono-rev{font-size:1.8rem;display:block;margin-bottom:4px}
+  .paso-rev h5{margin:4px 0 6px 0;font-size:1.05rem}
+  .paso-rev.p1 h5{color:var(--p1-oscuro)}
+  .paso-rev.p2 h5{color:var(--p2-oscuro)}
+  .paso-rev.p3 h5{color:var(--p3-oscuro)}
+  .paso-rev .desc-rev{font-size:0.88rem;line-height:1.5;color:var(--texto);margin:0}
+  .paso-rev .preg-rev{display:block;font-size:0.82rem;color:var(--gris);font-style:italic;margin-top:6px}
+
+  /* Borradores: antes y después */
+  .borradores{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media(max-width:640px){.borradores{grid-template-columns:1fr}}
+  .borrador{background:#fff;border-radius:10px;padding:14px 18px;border:2px solid;font-size:0.94rem;line-height:1.7;position:relative}
+  .borrador .etiq-bor{position:absolute;top:-13px;left:18px;padding:3px 12px;border-radius:14px;font-size:0.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px}
+  .borrador.b1{border-color:var(--error)}
+  .borrador.b1 .etiq-bor{background:var(--error)}
+  .borrador.b2{border-color:var(--exito)}
+  .borrador.b2 .etiq-bor{background:var(--exito)}
+  .borrador p{margin:8px 0 0 0}
+  .error-marcado{background:#ffe0e0;padding:1px 4px;border-radius:3px;color:var(--error);font-weight:600;text-decoration:underline wavy var(--error)}
+  .mejora{background:#d4f5d4;padding:1px 4px;border-radius:3px;color:var(--exito);font-weight:600}
+
+  /* Tabla de errores comunes */
+  .tabla-errores{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,0.06);font-size:0.92rem}
+  .tabla-errores th{background:var(--acento);color:#fff;padding:10px 12px;text-align:left;font-size:0.92rem}
+  .tabla-errores td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  .tabla-errores tr:last-child td{border-bottom:none}
+  .tabla-errores tr:nth-child(even) td{background:#f9fafb}
+  .tabla-errores td .ej-mal{color:var(--error);font-style:italic;display:block;font-size:0.88rem;margin-top:3px}
+  .tabla-errores td .ej-bien{color:var(--exito);font-style:italic;display:block;font-size:0.88rem;margin-top:3px}
+
+  /* Frases plantilla para retroalimentación */
+  .frases-retro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+  .frase-retro{background:#fff;border-radius:10px;padding:12px 14px;border-left:5px solid}
+  .frase-retro.positivo{border-color:var(--exito);background:#f1f8f4}
+  .frase-retro.sugerencia{border-color:var(--p1);background:var(--p1-claro)}
+  .frase-retro h5{margin:0 0 8px 0;font-size:0.95rem;display:flex;align-items:center;gap:6px}
+  .frase-retro.positivo h5{color:var(--exito)}
+  .frase-retro.sugerencia h5{color:var(--p1-oscuro)}
+  .frase-retro ul{list-style:none;padding:0;margin:0}
+  .frase-retro li{padding:4px 0;font-size:0.88rem;line-height:1.5;font-style:italic}
+  .frase-retro li::before{content:'"';font-weight:700;margin-right:2px}
+  .frase-retro li::after{content:'"';font-weight:700;margin-left:2px}
+
+  /* Lista de verificación interactiva */
+  .checklist-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .checklist-cont h4{margin-top:0;color:var(--cp-oscuro);text-align:center}
+  .checklist-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#f9fafb;border-radius:8px;margin:8px 0;cursor:pointer;transition:all 0.2s;border:2px solid transparent}
+  .checklist-item:hover{background:var(--cp-claro);border-color:var(--cp)}
+  .checklist-item.marcado{background:#d4edda;border-color:var(--exito)}
+  .checklist-item .cuadro-check{width:24px;height:24px;border:2px solid var(--gris);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;background:#fff;font-weight:700;color:#fff;font-size:0.9rem}
+  .checklist-item.marcado .cuadro-check{background:var(--exito);border-color:var(--exito)}
+  .checklist-item.marcado .cuadro-check::before{content:'✓'}
+  .checklist-item .texto-check{flex:1;font-size:0.93rem;line-height:1.5}
+  .checklist-item.marcado .texto-check{text-decoration:line-through;color:var(--gris)}
+  .progreso-check{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.02rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Quiz */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* Caja de cierre final del tema */
+  .cierre-tema{background:linear-gradient(135deg,var(--cp-claro) 0%,var(--acento-claro) 100%);border:2px solid var(--cp);border-radius:14px;padding:20px 24px;margin:24px 0;text-align:center}
+  .cierre-tema h3{margin-top:0;color:var(--cp-oscuro);font-size:1.3rem;border-bottom:none}
+  .cierre-tema p{font-size:0.98rem;line-height:1.7;margin:10px 0}
+  .recorrido-tema{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+  .hito{background:#fff;border:2px solid var(--cp);color:var(--cp-oscuro);padding:6px 12px;border-radius:18px;font-size:0.85rem;font-weight:600}
+</style>
+</head>
+<body>
+
+<h1>Clase 6: El proceso de revisión y la retroalimentación</h1>
+<p class="subtitulo">Tema 7 · Lección 7.3 · Nivel 1 · Semana 14 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Aplicar el proceso de revisión en tres pasos: <strong>detección</strong>, <strong>diagnóstico</strong> y <strong>reescritura</strong>.</li>
+    <li>Usar <strong>frases plantilla</strong> para ofrecer y recibir retroalimentación constructiva.</li>
+    <li>Aplicar una <strong>lista de verificación</strong> final antes de entregar un párrafo.</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Llegamos a la última clase del Tema 7. Hasta aquí hemos aprendido a estructurar un párrafo (Lección 7.1), a elegir el tipo de texto según el propósito (Lección 7.2) y a escribir sobre información visual (Clase 5). Falta una pieza esencial que distingue al buen escritor del principiante: <span class="palabra-clave">el proceso de revisión</span>.</p>
+
+<p>Existe un mito muy común: pensar que escribir es sentarse y producir un texto perfecto a la primera. La realidad es otra. Todos los buenos textos pasan por <strong>varios borradores</strong>. Un primer borrador nunca es el texto final; es solo el punto de partida.</p>
+
+<details open>
+<summary>1. Por qué revisar: el primer borrador nunca es el final <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>La diferencia entre escribir y revisar</h3>
+
+<p>Cuando escribimos por primera vez, nuestra mente está concentrada en <strong>producir ideas</strong>. Es natural que aparezcan oraciones incompletas, palabras repetidas, errores de concordancia o ideas que no están bien conectadas. Eso no significa que escribamos mal: significa que estamos en el <strong>primer paso</strong>.</p>
+
+<p>Revisar es una tarea diferente. Cuando revisamos, ya no producimos ideas: <strong>mejoramos lo que está escrito</strong>. Cambiamos de sombrero. Pasamos del papel de autor al papel de lector crítico de nuestro propio texto.</p>
+
+<div class="clave-pedagogica">
+  <strong>💡 Idea central:</strong> Escribir y revisar son dos tareas distintas. Conviene separarlas en el tiempo. Es difícil corregir bien un texto que acabamos de escribir; conviene dejar pasar unos minutos (o, si es posible, unas horas) entre ambas tareas.
+</div>
+
+<h3>Tres borradores del mismo párrafo</h3>
+
+<p>Veamos cómo un mismo párrafo va mejorando a través de tres versiones. El tema es una descripción simple del mercado del barrio:</p>
+
+<div class="borrador b1">
+  <span class="etiq-bor">❌ Borrador 1</span>
+  <p>el mercado de mi barrio <span class="error-marcado">esta</span> abierto todos los <span class="error-marcado">dias</span>. venden frutas <span class="error-marcado">y verduras y</span> carne. <span class="error-marcado">los precios bajos</span>. me gusta mucho ir.</p>
+</div>
+
+<div class="borrador b1">
+  <span class="etiq-bor">⚠️ Borrador 2 — corregido pero todavía incompleto</span>
+  <p>El mercado de mi barrio está abierto todos los días. Venden frutas, verduras y carne. Los precios son bajos. Me gusta mucho ir.</p>
+</div>
+
+<div class="borrador b2">
+  <span class="etiq-bor">✅ Versión final</span>
+  <p><span class="mejora">El mercado de mi barrio es un lugar muy útil para las familias</span>. Está abierto todos los días <span class="mejora">desde temprano por la mañana</span>. Allí venden frutas frescas, verduras de la temporada y carne <span class="mejora">recién traída</span>. Los precios son bajos <span class="mejora">comparados con los del supermercado</span>. <span class="mejora">Por eso, es el lugar al que más voy a hacer las compras</span>.</p>
+</div>
+
+<div class="tip">
+  <strong>📝 Observe la diferencia:</strong> El borrador 1 tiene errores de ortografía y oraciones incompletas. El borrador 2 está corregido, pero suena pobre y suelto. La versión final añade detalles, conectores y una oración principal clara. Es el resultado de <strong>tres pasos de revisión</strong>.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. El proceso de revisión en tres pasos <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Detección, diagnóstico y reescritura</h3>
+
+<p>Para revisar un texto con orden, seguimos tres pasos. Cada uno responde a una pregunta distinta:</p>
+
+<div class="proceso-rev">
+  <div class="paso-rev p1">
+    <div class="num-rev">1</div>
+    <span class="icono-rev">🔍</span>
+    <h5>Detección</h5>
+    <p class="desc-rev">Leer el texto en voz alta para encontrar ideas confusas, errores ortográficos o partes que "no suenan bien".</p>
+    <span class="preg-rev">¿Qué hay mal?</span>
+  </div>
+  <div class="paso-rev p2">
+    <div class="num-rev">2</div>
+    <span class="icono-rev">🩺</span>
+    <h5>Diagnóstico</h5>
+    <p class="desc-rev">Entender por qué algo no suena bien: ¿falta un verbo?, ¿falta concordancia?, ¿se repite una palabra?, ¿falta un conector?</p>
+    <span class="preg-rev">¿Por qué está mal?</span>
+  </div>
+  <div class="paso-rev p3">
+    <div class="num-rev">3</div>
+    <span class="icono-rev">✏️</span>
+    <h5>Reescritura</h5>
+    <p class="desc-rev">Añadir, quitar o cambiar palabras para mejorar la claridad y la fluidez. A veces conviene rehacer toda la oración.</p>
+    <span class="preg-rev">¿Cómo lo arreglo?</span>
+  </div>
+</div>
+
+<h3>Paso 1: detección — leer en voz alta</h3>
+
+<p>La técnica más eficaz para detectar errores es <strong>leer el texto en voz alta</strong>. Al oírlo, el oído detecta lo que el ojo deja pasar: oraciones demasiado largas, palabras que se repiten, ideas que se cortan. Si una oración nos hace tropezar al leerla, casi seguro tiene un problema.</p>
+
+<div class="tip">
+  <strong>📝 Truco profesional:</strong> Si no puede leer en voz alta (por ejemplo, en una biblioteca), <em>mueva los labios sin emitir sonido</em>. El efecto es muy parecido y le ayudará a detectar lo que un ojo cansado deja pasar.
+</div>
+
+<h3>Paso 2: diagnóstico — los errores comunes en el nivel principiante</h3>
+
+<p>Detectar es solo la mitad del trabajo; hace falta entender qué es lo que está mal. Estos son los errores más frecuentes en el nivel principiante y cómo reconocerlos:</p>
+
+<table class="tabla-errores">
+  <thead>
+    <tr>
+      <th style="width:30%">Tipo de error</th>
+      <th>Cómo se reconoce</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Sin mayúscula inicial</strong></td>
+      <td>La oración empieza con minúscula.<span class="ej-mal">❌ "el parque está lleno hoy."</span><span class="ej-bien">✅ "El parque está lleno hoy."</span></td>
+    </tr>
+    <tr>
+      <td><strong>Sin punto final</strong></td>
+      <td>La oración no termina con ningún signo de puntuación.<span class="ej-mal">❌ "Compré pan en la tienda"</span><span class="ej-bien">✅ "Compré pan en la tienda."</span></td>
+    </tr>
+    <tr>
+      <td><strong>Fragmento (oración incompleta)</strong></td>
+      <td>Le falta el verbo o el sujeto, y no se entiende sola.<span class="ej-mal">❌ "Los precios bajos en el mercado."</span><span class="ej-bien">✅ "Los precios son bajos en el mercado."</span></td>
+    </tr>
+    <tr>
+      <td><strong>Falta de concordancia</strong></td>
+      <td>El sujeto y el verbo no concuerdan en número, o el sustantivo y el adjetivo no concuerdan en género.<span class="ej-mal">❌ "Los niños juega en el parque."</span><span class="ej-bien">✅ "Los niños juegan en el parque."</span></td>
+    </tr>
+    <tr>
+      <td><strong>Palabra repetida muy seguido</strong></td>
+      <td>La misma palabra aparece dos o tres veces en oraciones cercanas.<span class="ej-mal">❌ "La casa es grande. La casa tiene jardín. La casa es vieja."</span><span class="ej-bien">✅ "La casa es grande. Tiene un jardín y, además, es vieja."</span></td>
+    </tr>
+    <tr>
+      <td><strong>Falta de conector</strong></td>
+      <td>Las oraciones suenan sueltas, como ladrillos sin pegamento.<span class="ej-mal">❌ "Llovió mucho. No salí de casa."</span><span class="ej-bien">✅ "Llovió mucho, por eso no salí de casa."</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Paso 3: reescritura — tres operaciones básicas</h3>
+
+<p>Una vez detectado y diagnosticado el error, hay que arreglarlo. La reescritura consiste en una o varias de estas tres operaciones:</p>
+
+<ul class="lista-bonita">
+  <li><strong>Añadir</strong>: agregar palabras o frases que faltan (un verbo, un conector, un adjetivo que aclare).</li>
+  <li><strong>Quitar</strong>: eliminar palabras innecesarias o repeticiones que estorban.</li>
+  <li><strong>Cambiar</strong>: sustituir una palabra por otra más precisa o una oración por una mejor formulada.</li>
+</ul>
+
+</div>
+</details>
+
+<details>
+<summary>3. La retroalimentación entre compañeros <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Cuatro ojos ven más que dos</h3>
+
+<p>Uno de los métodos más eficaces para mejorar un texto es pedirle a un compañero que lo lea. El compañero, como no escribió el texto, lo lee con ojos frescos y descubre cosas que el autor no ve. Pero la retroalimentación entre pares funciona bien solo si se da con respeto y con frases adecuadas.</p>
+
+<h3>Frases plantilla para dar retroalimentación</h3>
+
+<p>Existen dos tipos de comentarios que un buen compañero ofrece: <strong>positivos</strong> (lo que está bien hecho) y <strong>sugerencias</strong> (lo que podría mejorar). Las dos son útiles. Aquí algunas frases listas para usar:</p>
+
+<div class="frases-retro-grid">
+  <div class="frase-retro positivo">
+    <h5>💚 Comentarios positivos</h5>
+    <ul>
+      <li>Me gusta cómo empezaste el párrafo.</li>
+      <li>Tu oración principal es muy clara.</li>
+      <li>Usaste bien el conector <em>"porque"</em>.</li>
+      <li>El cierre cierra muy bien la idea.</li>
+      <li>Los detalles son interesantes.</li>
+    </ul>
+  </div>
+  <div class="frase-retro sugerencia">
+    <h5>🔵 Sugerencias para mejorar</h5>
+    <ul>
+      <li>¿Puedes añadir un detalle más sobre este tema?</li>
+      <li>¿Esta oración tiene verbo?</li>
+      <li>¿Puedes unir estas dos oraciones con un conector?</li>
+      <li>¿Estás seguro de la mayúscula al inicio?</li>
+      <li>¿Crees que esta oración habla del mismo tema?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Regla de oro:</strong> En la retroalimentación entre pares, comente <strong>primero algo positivo</strong> y después haga la sugerencia. Esta estructura, conocida como "sándwich", ayuda a que el compañero reciba el comentario con buena disposición y no como un ataque.
+</div>
+
+<h3>Lo que NO debe hacer un buen compañero</h3>
+
+<ul class="lista-bonita">
+  <li>Reescribir el texto del otro por su cuenta. La idea es ayudar, no sustituir.</li>
+  <li>Hacer comentarios sobre la persona en lugar del texto.</li>
+  <li>Dar opiniones sobre el tema (eso no es retroalimentación de escritura).</li>
+  <li>Ofrecer solo críticas, sin reconocer lo que está bien hecho.</li>
+</ul>
+
+</div>
+</details>
+
+<details>
+<summary>4. Lista de verificación final <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Antes de entregar, márquese cada punto</h3>
+
+<p>Cuando el párrafo ya pasó por revisión propia y por retroalimentación del compañero, queda un último filtro: la <strong>lista de verificación</strong>. Es una serie de preguntas que el autor se hace a sí mismo. Vaya marcando cada punto a medida que lo verifique:</p>
+
+<div class="checklist-cont">
+  <h4>✅ Lista de verificación del párrafo</h4>
+  <div id="checklist-items"></div>
+  <div class="progreso-check" id="progreso-check">Verificado: 0 / 8</div>
+</div>
+
+<div class="tip">
+  <strong>📝 Práctica recomendada:</strong> Imprima esta lista y guárdela en su cuaderno. Úsela cada vez que escriba un párrafo durante el resto del curso. Con el tiempo, las preguntas se vuelven automáticas y la calidad de los textos mejora visiblemente.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Quiz final del Tema 7 <span class="caja-tiempo">7 min</span></summary>
+<div class="contenido-detalle">
+
+<p>Este quiz combina los aprendizajes de la Lección 7.3 (descripción de información visual y proceso de revisión). Las preguntas evalúan la capacidad de identificar errores comunes, elegir la frase de retroalimentación más útil y reconocer mejoras entre versiones de un mismo párrafo.</p>
+
+<div class="quiz-cont">
+  <h4>📝 Quiz: revisión y descripción visual</h4>
+  <div class="preguntas-quiz" id="preguntas-quiz6"></div>
+  <div class="puntaje" id="puntaje-quiz6">Aciertos: 0 / 8</div>
+</div>
+
+<h3>Actividades de la lección 7.3</h3>
+
+<p>Las actividades de la lección se distribuyen entre las clases 5 y 6.</p>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Modalidad presencial (sincrónica)</h4>
+    <p><span class="badge-tipo badge-discusion">Lee y comenta</span></p>
+    <p>Actividad en parejas. Cada estudiante lee en voz alta su párrafo descriptivo al compañero. El compañero ofrece <strong>dos sugerencias</strong> usando las frases plantilla: una positiva y una de mejora. Después cambian de rol. Al final, cada estudiante revisa su párrafo aplicando al menos una de las sugerencias recibidas.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Modalidad en línea (asincrónica)</h4>
+    <p><span class="badge-tipo badge-reflexion">Mi descripción y un comentario</span></p>
+    <p>Cada estudiante publica en el foro un párrafo descriptivo de la gráfica asignada (4 a 6 oraciones). Luego comenta el párrafo de un compañero usando dos frases plantilla:</p>
+    <ul style="padding-left:20px;font-size:0.92rem">
+      <li>Una frase positiva sobre algo bien hecho.</li>
+      <li>Una pregunta o sugerencia respetuosa para mejorar.</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Cierre del Tema 7 <span class="caja-tiempo">2 min</span></summary>
+<div class="contenido-detalle">
+
+<div class="cierre-tema">
+  <h3>🎓 Hemos cerrado el Tema 7</h3>
+  <p>Al iniciar este tema, solo reconocíamos palabras y leíamos textos. Hoy, al cerrarlo, somos capaces de organizar nuestras propias ideas en un párrafo bien estructurado, elegir el tipo de texto según nuestro propósito, describir información visual y revisar nuestro propio trabajo. El recorrido fue:</p>
+  <div class="recorrido-tema">
+    <span class="hito">🍔 La hamburguesa</span>
+    <span class="hito">🔗 Conectores</span>
+    <span class="hito">📖 Narrativo</span>
+    <span class="hito">📊 Informativo</span>
+    <span class="hito">💭 Opinión</span>
+    <span class="hito">🖼️ Tres listas</span>
+    <span class="hito">📈 Describir datos</span>
+    <span class="hito">✏️ Revisión</span>
+  </div>
+</div>
+
+<h3>Lo que aprendimos en esta clase</h3>
+
+<ul class="lista-bonita">
+  <li>Un primer borrador nunca es el texto final.</li>
+  <li>El proceso de revisión tiene tres pasos: <strong>detección</strong>, <strong>diagnóstico</strong> y <strong>reescritura</strong>.</li>
+  <li>Leer en voz alta es la técnica más eficaz para detectar errores.</li>
+  <li>La retroalimentación entre compañeros funciona con frases plantilla y la regla del "sándwich" (positivo + sugerencia).</li>
+  <li>Una lista de verificación es la última garantía antes de entregar.</li>
+</ul>
+
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> El examen GED de Razonamiento a través de las Artes del Lenguaje incluye una <strong>respuesta extendida</strong> que se evalúa con criterios muy similares a los que hemos trabajado: estructura, conectores, claridad, ortografía y mecánica. Quien domine el proceso de revisión tiene una ventaja real el día del examen.
+</div>
+
+<h3>Y ahora, ¿qué sigue?</h3>
+
+<p>Con el cierre del Tema 7 dejamos atrás los fundamentos básicos de la escritura. En los próximos temas profundizaremos en la estructura de la oración compleja, la ortografía sistemática, la lectura crítica de textos más largos y la redacción de párrafos múltiples. Cada destreza nueva se construirá sobre lo que hoy ya dominamos.</p>
+
+</div>
+</details>
+
+<p class="firma">Prof. José M. Fernández · Truman College · Tema 7, Clase 6</p>
+
+<script>
+(function(){
+  'use strict';
+
+  /* =========================================================
+     LISTA DE VERIFICACIÓN
+     ========================================================= */
+  var checks=[
+    'Mi párrafo tiene una oración principal clara que anuncia el tema.',
+    'Hay dos o tres oraciones de apoyo con detalles relacionados.',
+    'Hay una oración de cierre que redondea la idea.',
+    'Todas las oraciones hablan del mismo tema (unidad).',
+    'Usé al menos un conector (y, pero, porque, entonces, además, por eso).',
+    'Cada oración comienza con mayúscula y termina con punto.',
+    'No hay oraciones incompletas (todas tienen verbo).',
+    'Leí el párrafo en voz alta y suena bien.'
+  ];
+
+  var marcados={};
+  var contChecks=document.getElementById('checklist-items');
+
+  checks.forEach(function(texto,idx){
+    var div=document.createElement('div');
+    div.className='checklist-item';
+    div.setAttribute('data-idx',idx);
+    div.innerHTML='<span class="cuadro-check"></span><span class="texto-check">'+texto+'</span>';
+    div.addEventListener('click',function(){
+      var i=parseInt(div.getAttribute('data-idx'),10);
+      if(marcados[i]){
+        delete marcados[i];
+        div.classList.remove('marcado');
+      }else{
+        marcados[i]=true;
+        div.classList.add('marcado');
+      }
+      actualizarProgreso();
+    });
+    contChecks.appendChild(div);
+  });
+
+  function actualizarProgreso(){
+    var total=checks.length;
+    var hechos=Object.keys(marcados).length;
+    var el=document.getElementById('progreso-check');
+    el.textContent='Verificado: '+hechos+' / '+total;
+    if(hechos===total){
+      el.innerHTML='🎉 ¡Párrafo listo para entregar! Verificado: '+hechos+' / '+total;
+      el.style.color='var(--exito)';
+    }else{
+      el.style.color='var(--cp-oscuro)';
+    }
+  }
+
+  /* =========================================================
+     QUIZ FINAL DEL TEMA
+     ========================================================= */
+  var preguntas=[
+    {
+      texto:'¿Cuál es el primer paso del proceso de revisión?',
+      opciones:[
+        {t:'Reescribir el texto entero.',ok:false},
+        {t:'Leer el texto en voz alta para detectar problemas.',ok:true},
+        {t:'Pedir que un compañero lo lea.',ok:false},
+        {t:'Cambiar todas las palabras repetidas.',ok:false}
+      ],
+      explica:'El primer paso es la detección: leer el texto en voz alta para identificar qué partes no suenan bien o tienen errores visibles.'
+    },
+    {
+      contexto:'"los niños juega en el parque todas las tardes."',
+      texto:'¿Qué errores tiene esta oración?',
+      opciones:[
+        {t:'Solo le falta la mayúscula inicial.',ok:false},
+        {t:'Falta la mayúscula inicial y hay un error de concordancia.',ok:true},
+        {t:'Solo le falta el punto final.',ok:false},
+        {t:'No tiene ningún error.',ok:false}
+      ],
+      explica:'La oración tiene dos errores: empieza con minúscula ("los" debería ser "Los") y el verbo no concuerda con el sujeto plural ("Los niños juegan", no "juega").'
+    },
+    {
+      contexto:'Versión 1: "El parque tiene árboles. El parque tiene bancos. El parque tiene flores."\n\nVersión 2: "El parque tiene árboles, bancos y flores."',
+      texto:'¿Qué problema resolvió la versión 2?',
+      opciones:[
+        {t:'La falta de mayúsculas.',ok:false},
+        {t:'La repetición de la misma frase ("El parque tiene").',ok:true},
+        {t:'La falta de concordancia.',ok:false},
+        {t:'La falta de un conector.',ok:false}
+      ],
+      explica:'La versión 2 eliminó la repetición innecesaria de "El parque tiene" en cada oración. Unificó las tres ideas en una sola oración más clara y fluida.'
+    },
+    {
+      contexto:'Un compañero le entrega este párrafo: "Me gusta mucho mi nueva computadora. Es rápida y tiene buena pantalla. Por eso la uso todos los días para estudiar."',
+      texto:'¿Cuál sería la mejor frase de retroalimentación POSITIVA?',
+      opciones:[
+        {t:'No tiene errores graves, está bien.',ok:false},
+        {t:'Me gusta cómo usaste el conector "por eso" para cerrar la idea.',ok:true},
+        {t:'Yo no sé nada de computadoras, no puedo opinar.',ok:false},
+        {t:'Deberías escribir más, es muy corto.',ok:false}
+      ],
+      explica:'La opción correcta es específica y señala algo concreto que el compañero hizo bien (el uso del conector). Las otras son vagas, evasivas o sustituyen al autor.'
+    },
+    {
+      contexto:'Un compañero le entrega este párrafo: "voy al trabajo en autobús es muy práctico llego rápido"',
+      texto:'¿Cuál sería la mejor SUGERENCIA de mejora?',
+      opciones:[
+        {t:'¡Está perfecto, no cambies nada!',ok:false},
+        {t:'¿Puedes revisar las mayúsculas y los puntos? Parece que las oraciones están unidas sin separación.',ok:true},
+        {t:'No me gusta el autobús, prefiero el tren.',ok:false},
+        {t:'Escribes mal.',ok:false}
+      ],
+      explica:'La opción correcta es una sugerencia respetuosa, específica y orientada al texto (no a la persona). Pregunta en lugar de imponer y señala un problema concreto: falta de mayúsculas y puntos.'
+    },
+    {
+      texto:'¿Cuál es la regla del "sándwich" en la retroalimentación entre compañeros?',
+      opciones:[
+        {t:'Comer algo antes de revisar el texto.',ok:false},
+        {t:'Decir primero algo positivo y después la sugerencia de mejora.',ok:true},
+        {t:'Escribir tres veces el mismo párrafo.',ok:false},
+        {t:'Trabajar siempre en grupos de tres personas.',ok:false}
+      ],
+      explica:'La regla del sándwich consiste en comentar primero algo bien hecho y luego ofrecer una sugerencia respetuosa. Así el compañero recibe el comentario con buena disposición.'
+    },
+    {
+      contexto:'Observe esta gráfica imaginaria: en el mes de enero llovieron 5 días; en abril, 10 días; en julio, 3 días; en octubre, 8 días.',
+      texto:'¿Cuál oración describe mejor estos datos siguiendo las pautas aprendidas?',
+      opciones:[
+        {t:'Me gusta cuando llueve mucho en abril.',ok:false},
+        {t:'Abril es el mes con más días de lluvia, con 10 días, mientras que julio es el mes con menos lluvia, con solo 3 días.',ok:true},
+        {t:'Cuando era niño, llovía todos los días.',ok:false},
+        {t:'La lluvia es muy útil para las plantas del jardín.',ok:false}
+      ],
+      explica:'La opción correcta describe los datos con precisión, usa comparación (más, menos) y cita las cifras exactas. Las otras opciones son opinión, narración o información ajena a la gráfica.'
+    },
+    {
+      texto:'¿Qué NO debería hacer un buen compañero al dar retroalimentación?',
+      opciones:[
+        {t:'Reescribir el párrafo del otro por su cuenta.',ok:true},
+        {t:'Señalar algo positivo del texto.',ok:false},
+        {t:'Hacer preguntas sobre las partes confusas.',ok:false},
+        {t:'Sugerir un detalle adicional con respeto.',ok:false}
+      ],
+      explica:'Reescribir el texto del compañero sustituye al autor en lugar de ayudarlo a mejorar. El buen revisor sugiere, pregunta y comenta, pero respeta que el texto es del autor.'
+    }
+  ];
+
+  var resueltas={};
+  var aciertos=0;
+  var cont=document.getElementById('preguntas-quiz6');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-quiz';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto.replace(/\n/g,'<br>')+'</div>':'';
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      contextoHtml+
+      '<div class="opciones-quiz">'+opcHtml+'</div>'+
+      '<div class="retro-quiz" id="retro-q6-'+idx+'"></div>';
+
+    cont.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-quiz');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltas[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+          var retro=document.getElementById('retro-q6-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-quiz6');
+    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
+    if(aciertos===preguntas.length){
+      el.innerHTML='🎉 ¡Tema 7 completado! Aciertos: '+aciertos+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

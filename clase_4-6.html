@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 6: La anatomía de las palabras (Raíces y afijos)</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --raiz:#2e7d32;--raiz-claro:#e8f5e9;
+    --prefijo:#7b1fa2;--prefijo-claro:#f3e5f5;
+    --sufijo:#e65100;--sufijo-claro:#fff3e0;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Anatomía de palabra: tres bloques de colores (prefijo + raíz + sufijo) */
+  .anatomia-palabra{display:flex;justify-content:center;align-items:stretch;gap:6px;margin:18px 0;flex-wrap:wrap}
+  .pieza{padding:14px 22px;border-radius:8px;text-align:center;font-family:'Georgia',serif;font-size:1.3rem;font-weight:700;border:3px solid;min-width:90px}
+  .pieza .etiq{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;font-weight:600;font-family:'Poppins',sans-serif;margin-top:4px}
+  .pieza.prefijo{background:var(--prefijo-claro);border-color:var(--prefijo);color:var(--prefijo)}
+  .pieza.raiz{background:var(--raiz-claro);border-color:var(--raiz);color:var(--raiz)}
+  .pieza.sufijo{background:var(--sufijo-claro);border-color:var(--sufijo);color:var(--sufijo)}
+  .pieza.signo{background:transparent;border:none;font-size:2rem;color:var(--gris);min-width:auto;padding:14px 4px}
+
+  /* Marcadores */
+  .pre-tag{background:var(--prefijo-claro);color:var(--prefijo);padding:1px 6px;border-radius:4px;font-weight:700}
+  .raz-tag{background:var(--raiz-claro);color:var(--raiz);padding:1px 6px;border-radius:4px;font-weight:700}
+  .suf-tag{background:var(--sufijo-claro);color:var(--sufijo);padding:1px 6px;border-radius:4px;font-weight:700}
+
+  /* Tabla pistas */
+  table.pistas{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.pistas th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.pistas td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.pistas tr:last-child td{border-bottom:none}
+  table.pistas td:first-child{font-weight:700}
+
+  /* Tablas de prefijos/sufijos coloreadas */
+  table.prefijos th{background:var(--prefijo);color:#fff;padding:10px;text-align:left}
+  table.prefijos td:first-child{color:var(--prefijo);background:var(--prefijo-claro)}
+  table.sufijos th{background:var(--sufijo);color:#fff;padding:10px;text-align:left}
+  table.sufijos td:first-child{color:var(--sufijo);background:var(--sufijo-claro)}
+
+  /* Ejercicio: identificar afijo */
+  .item-afijo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:10px 0}
+  .palabra-grande{font-family:'Georgia',serif;font-size:1.5rem;font-weight:700;text-align:center;color:var(--texto);margin-bottom:10px;letter-spacing:1px}
+  .opciones-afijo{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-afijo{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.95rem;transition:all 0.2s;font-family:'Georgia',serif}
+  .btn-afijo[data-tipo="prefijo"]{border-color:var(--prefijo);color:var(--prefijo)}
+  .btn-afijo[data-tipo="raiz"]{border-color:var(--raiz);color:var(--raiz)}
+  .btn-afijo[data-tipo="sufijo"]{border-color:var(--sufijo);color:var(--sufijo)}
+  .btn-afijo.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-afijo.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+  /* Ejercicio: significado del afijo */
+  .item-significado{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:10px 0}
+  .frase-significado{font-family:'Georgia',serif;font-size:1.1rem;margin-bottom:10px;text-align:center}
+  .opciones-significado{display:flex;flex-direction:column;gap:8px}
+  .btn-significado{padding:10px 14px;border:2px solid var(--cp);background:#fff;color:var(--texto);border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.95rem;text-align:left;transition:all 0.2s}
+  .btn-significado:hover{background:var(--cp-claro)}
+  .btn-significado.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-significado.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error)}
+
+  /* Constructor de familia de palabras */
+  .item-construir{background:#fff;border:2px solid var(--raiz);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .raiz-base{text-align:center;font-family:'Georgia',serif;font-size:1.3rem;margin-bottom:14px}
+  .raiz-base .raiz-resaltada{background:var(--raiz-claro);color:var(--raiz);padding:6px 16px;border-radius:8px;font-weight:700;border:2px solid var(--raiz)}
+  .construye-opciones{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:10px}
+  .btn-construir{padding:10px;border:2px solid var(--cp);background:#fff;color:var(--texto);border-radius:8px;cursor:pointer;font-family:'Georgia',serif;font-size:1rem;transition:all 0.2s}
+  .btn-construir:hover{background:var(--cp-claro)}
+  .btn-construir.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);font-weight:700;cursor:default}
+  .btn-construir.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error)}
+  .construidas{margin-top:12px;padding:12px;background:var(--raiz-claro);border-radius:8px;min-height:50px;font-family:'Georgia',serif;font-size:1rem}
+  .construidas .vacio{color:var(--gris);font-style:italic;font-size:0.9rem}
+  .construidas .palabra-construida{display:inline-block;background:#fff;border:2px solid var(--raiz);color:var(--raiz);padding:4px 10px;border-radius:6px;margin:3px;font-weight:600}
+
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Actividades de la unidad */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+  .badge-rubrica{background:#fff3e0;color:#e65100}
+
+  /* Rúbrica */
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#b35316;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#b35316;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-3{background:#fff8e1}
+  .nivel-2{background:#fff3e0}
+  .nivel-1{background:#ffebee}
+</style>
+</head>
+<body>
+
+<h1>Clase 6: La anatomía de las palabras</h1>
+<p class="subtitulo">Raíces, prefijos y sufijos · Nivel 1 · Tema 4, semana 8</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Aprender a <strong>desglosar palabras complejas</strong> en sus partes (raíz, prefijo y sufijo) para descifrar su significado sin diccionario, y construir <strong>familias de palabras</strong> a partir de una misma raíz usando afijos comunes del español.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En la clase anterior estudiamos cómo las palabras vecinas aportan pistas sobre el significado de un término desconocido. Esta sesión introduce una segunda herramienta complementaria: el análisis de la <strong>estructura interna de la palabra</strong>. Las palabras del español se forman a partir de <span class="palabra-clave">elementos combinables</span>: una <strong>raíz</strong>, que aporta el significado central, y unos <strong>afijos</strong>, que se añaden delante o detrás para modificar dicho significado. Cuando el lector reconoce estas piezas, una palabra desconocida deja de ser un obstáculo y se convierte en una estructura analizable, cuyo significado puede deducirse de manera sistemática.</p>
+
+<details open>
+<summary>1. Introducción: las palabras tienen partes <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>La raíz es el corazón</h3>
+
+<p>La <span class="palabra-clave">raíz</span> es la parte de la palabra que <strong>carga el significado principal</strong>. Es como el tronco de un árbol: de ella nacen muchas palabras parecidas, y todas comparten una idea común.</p>
+
+<div class="anatomia-palabra">
+  <div class="pieza raiz">cas-<span class="etiq">raíz</span></div>
+</div>
+
+<p style="text-align:center"><em>De la raíz <strong>cas-</strong> nacen: <span class="raz-tag">casa</span>, <span class="raz-tag">casita</span>, <span class="raz-tag">casona</span>, <span class="raz-tag">casero</span>, <span class="raz-tag">caserío</span>... todas tienen que ver con vivienda.</em></p>
+
+<h3>Los afijos cambian el significado</h3>
+
+<p>Los <span class="palabra-clave">afijos</span> son piezas pequeñas que se le pegan a la raíz. Hay dos tipos:</p>
+
+<div class="anatomia-palabra">
+  <div class="pieza prefijo">in-<span class="etiq">prefijo</span></div>
+  <div class="pieza signo">+</div>
+  <div class="pieza raiz">feliz<span class="etiq">raíz</span></div>
+  <div class="pieza signo">=</div>
+  <div class="pieza raiz" style="background:#fff;color:var(--texto);border-color:var(--gris)">infeliz<span class="etiq" style="color:var(--gris)">palabra nueva</span></div>
+</div>
+
+<div class="anatomia-palabra">
+  <div class="pieza raiz">feliz<span class="etiq">raíz</span></div>
+  <div class="pieza signo">+</div>
+  <div class="pieza sufijo">-mente<span class="etiq">sufijo</span></div>
+  <div class="pieza signo">=</div>
+  <div class="pieza raiz" style="background:#fff;color:var(--texto);border-color:var(--gris)">felizmente<span class="etiq" style="color:var(--gris)">palabra nueva</span></div>
+</div>
+
+<table class="pistas">
+  <thead>
+    <tr><th>Pieza</th><th>Posición</th><th>Función</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="pre-tag">Prefijo</span></td>
+      <td>Al <strong>principio</strong> de la raíz</td>
+      <td>Modifica el significado: niega, repite, indica origen, etc.</td>
+    </tr>
+    <tr>
+      <td><span class="raz-tag">Raíz</span></td>
+      <td>En el <strong>centro</strong></td>
+      <td>Carga el significado principal de la palabra</td>
+    </tr>
+    <tr>
+      <td><span class="suf-tag">Sufijo</span></td>
+      <td>Al <strong>final</strong> de la raíz</td>
+      <td>Modifica función o tamaño: hace adverbio, diminutivo, etc.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip">
+  <strong>🧩 Como los cubos:</strong> Igual que los cubos cambian al unirse, el significado de una palabra cambia cuando le añades piezas. <em>Feliz</em> es una cosa; <em>infeliz</em> es lo contrario; <em>felizmente</em> es un modo de actuar. La raíz es la misma; lo que cambia son los afijos.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Prefijos comunes del español <span class="caja-tiempo">12 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Los prefijos van al principio</h3>
+
+<p>Estos son los prefijos más comunes en español. Memorizarlos te da una llave para entender <strong>cientos</strong> de palabras nuevas.</p>
+
+<table class="pistas prefijos">
+  <thead>
+    <tr><th>Prefijo</th><th>Significado</th><th>Ejemplos</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>in- / im-</td>
+      <td>No, sin, lo contrario</td>
+      <td><em>infeliz, imposible, inútil, incorrecto</em></td>
+    </tr>
+    <tr>
+      <td>des-</td>
+      <td>Lo contrario, deshacer</td>
+      <td><em>deshacer, desconocido, destapar, desconfiar</em></td>
+    </tr>
+    <tr>
+      <td>re-</td>
+      <td>Otra vez, de nuevo</td>
+      <td><em>rehacer, releer, repensar, revivir</em></td>
+    </tr>
+    <tr>
+      <td>auto-</td>
+      <td>Por uno mismo</td>
+      <td><em>autoservicio, autorretrato, automóvil</em></td>
+    </tr>
+    <tr>
+      <td>pre-</td>
+      <td>Antes de</td>
+      <td><em>prehistoria, prevenir, precaución, prefijo</em></td>
+    </tr>
+    <tr>
+      <td>sub-</td>
+      <td>Debajo de</td>
+      <td><em>submarino, subsuelo, subterráneo</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip" style="border-left-color:var(--prefijo);background:var(--prefijo-claro)">
+  <strong style="color:var(--prefijo)">💡 Truco:</strong> Si sabes que <em>quietas</em> significa "tranquilas", y conoces el prefijo <em>in-</em> (no), entonces <strong>inquietas</strong> significa "no tranquilas". Acabas de descifrar una palabra sin diccionario.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Sufijos comunes del español <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Los sufijos van al final</h3>
+
+<p>Los sufijos cambian la <strong>función</strong> o el <strong>matiz</strong> de la palabra: la pueden hacer pequeña, grande, convertirla en un modo, indicar quién hace la acción, etc.</p>
+
+<table class="pistas sufijos">
+  <thead>
+    <tr><th>Sufijo</th><th>Significado</th><th>Ejemplos</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-ito / -ita</td>
+      <td>Pequeño, cariño (diminutivo)</td>
+      <td><em>casita, perrito, gatito, mesita</em></td>
+    </tr>
+    <tr>
+      <td>-ón / -ona</td>
+      <td>Grande (aumentativo)</td>
+      <td><em>casona, hombrón, sillón, cabezón</em></td>
+    </tr>
+    <tr>
+      <td>-mente</td>
+      <td>De manera... (forma adverbio)</td>
+      <td><em>felizmente, rápidamente, fácilmente</em></td>
+    </tr>
+    <tr>
+      <td>-dor / -dora</td>
+      <td>Persona o cosa que hace</td>
+      <td><em>trabajador, lavadora, vendedor, contadora</em></td>
+    </tr>
+    <tr>
+      <td>-able / -ible</td>
+      <td>Que se puede</td>
+      <td><em>comestible, lavable, leíble, posible</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip" style="border-left-color:var(--sufijo);background:var(--sufijo-claro)">
+  <strong style="color:var(--sufijo)">💡 Truco:</strong> Si una palabra termina en <em>-mente</em>, es casi seguro un adverbio (un modo de hacer algo). Si termina en <em>-dor / -dora</em>, suele ser una persona o cosa que hace una acción.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Práctica de afijos <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Identifica el afijo</h3>
+
+<p>Para cada palabra, identifica si la parte resaltada es un <span class="pre-tag">prefijo</span>, una <span class="raz-tag">raíz</span> o un <span class="suf-tag">sufijo</span>.</p>
+
+<div id="ejercicio-afijo"></div>
+<div class="puntaje" id="puntaje-afijo">Aciertos: 0 / 8</div>
+
+<h3>Descifra el significado</h3>
+
+<p>Usa lo que sabes de los afijos para elegir el significado correcto de cada palabra.</p>
+
+<div id="ejercicio-significado"></div>
+<div class="puntaje" id="puntaje-significado">Aciertos: 0 / 6</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Constructor de familias de palabras <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Construye palabras a partir de una raíz</h3>
+
+<p>Esta es la <strong>actividad sincrónica "Familia de palabras"</strong>. A partir de una raíz, vas a construir tantas palabras como puedas combinando prefijos y sufijos. Cada palabra que aciertes se suma a tu familia.</p>
+
+<div id="ejercicio-construir"></div>
+
+<h3>Actividad oral en grupos</h3>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · grupos de 3 o 4</h4>
+  <p>El profesor reparte una raíz diferente a cada grupo (<em>hacer, casa, feliz, hablar, vivir</em>). En 5 minutos, el grupo construye <strong>todas las palabras</strong> que pueda usando prefijos (re-, des-, in-, pre-) y sufijos (-ito, -ón, -mente, -dor, -ble). Después cada grupo comparte su lista y la clase decide cuál tiene más palabras válidas.</p>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>Cada grupo trabaja en un papelógrafo o en el pizarrón. Escriben la raíz en el centro y van añadiendo las palabras a su alrededor, dibujando flechas para mostrar las relaciones.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>El profesor abre salas pequeñas (breakout rooms) de 3 a 4 personas. Cada sala usa un documento compartido para listar las palabras. Después regresan al grupo grande y pegan su lista en el chat para comparar.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Cierre del ciclo: tus dos llaves para vocabulario nuevo <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos en la Lección 4.3</h3>
+
+<p>En las dos clases de esta lección aprendimos <strong>dos llaves complementarias</strong> para descifrar palabras desconocidas:</p>
+
+<ul class="lista-bonita">
+  <li><strong>Clave de contexto</strong> (clase 5) — usa las palabras vecinas para inferir el significado.</li>
+  <li><strong>Anatomía de la palabra</strong> (clase 6) — descompón la palabra en raíz + afijos para inferir el significado.</li>
+</ul>
+
+<div class="tip">
+  <strong>🔑 Las dos juntas son imbatibles:</strong> Cuando encuentres una palabra que no conoces, usa <em>primero</em> el contexto (¿qué dicen las palabras de alrededor?) y <em>después</em> la anatomía (¿reconozco la raíz o algún afijo?). Con esas dos llaves, vas a descifrar la mayoría de las palabras que el GED te presente.
+</div>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuál es la diferencia entre un prefijo y un sufijo?</li>
+    <li>¿Qué significan los prefijos <em>in-, des-, re-</em>?</li>
+    <li>Si una palabra termina en <em>-mente</em>, ¿qué tipo de palabra suele ser?</li>
+    <li>¿Cómo le explicarías a un compañero qué es una "familia de palabras"?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>🎓 Cierre del Tema 4:</strong> Con esta clase cerramos el Tema 4 "Estrategias de comprensión lectora". Las cuatro herramientas que dominas ahora — <strong>predecir / preguntar / aclarar / resumir</strong> — combinadas con <strong>idea principal + detalles</strong> y con <strong>contexto + afijos</strong>, te dan las bases para enfrentar las lecturas del examen GED real, sobre todo las complejas de ciencias y estudios sociales.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>7. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Oraciones con palabras compuestas</h4>
+  <p>El profesor entrega un conjunto de oraciones con palabras formadas por raíz + afijos (<em>"Mi tía es una <strong>trabajadora</strong> incansable", "El libro era <strong>incomprensible</strong> para mí", "<strong>Releí</strong> la carta tres veces"</em>). Modalidad: lectura en parejas alternando — uno lee la oración, el otro descompone la palabra resaltada y explica su significado.</p>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> "Familia de palabras" sincrónica</h4>
+  <p>Actividad en grupos donde cada grupo recibe una raíz y construye palabras con prefijos y sufijos. Se evalúa con la lista de cotejo de abajo.</p>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-quiz">Quiz</span> 15 preguntas · Brightspace</h4>
+  <p>El quiz de la lección 4.3 evalúa <strong>las dos clases juntas</strong> (contexto y afijos):</p>
+  <ul class="lista-bonita">
+    <li>Adivinar el significado por contexto (opción múltiple).</li>
+    <li>Identificar el prefijo o sufijo en una palabra.</li>
+    <li>Elegir el significado de un afijo (<em>des- = "lo contrario de"</em>, <em>re- = "otra vez"</em>, <em>-ito = "pequeño"</em>).</li>
+    <li>Construir palabras nuevas a partir de una raíz y una lista de afijos.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Lista de cotejo del trabajo grupal</h4>
+  <p>El trabajo grupal "Familia de palabras" se evalúa con esta lista de cotejo (cada criterio: ✓ cumple / ✗ no cumple):</p>
+
+  <table class="rubrica">
+    <thead>
+      <tr>
+        <th>Criterio</th>
+        <th class="nivel-4">Cumple (1 pt)</th>
+        <th class="nivel-1">No cumple (0 pt)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Construcción de palabras correctas</td>
+        <td class="nivel-4">El grupo construyó <strong>al menos 3 palabras válidas</strong> a partir de la raíz</td>
+        <td class="nivel-1">Construyó menos de 3 palabras o varias son inventadas</td>
+      </tr>
+      <tr>
+        <td>Explicación del cambio de significado</td>
+        <td class="nivel-4">El grupo puede <strong>explicar cómo cambia el significado</strong> con cada afijo</td>
+        <td class="nivel-1">No identifica el cambio o lo confunde</td>
+      </tr>
+      <tr>
+        <td>Uso de afijos variados</td>
+        <td class="nivel-4">Usaron <strong>al menos 2 prefijos diferentes y 2 sufijos diferentes</strong></td>
+        <td class="nivel-1">Solo usaron un tipo de afijo o repitieron mucho</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje total:</strong> 3 puntos por grupo. Un grupo con 3/3 demuestra dominio inicial de la formación de palabras en español.</p>
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Ejercicio 1: identificar afijo (palabras con una parte resaltada)
+  var palabrasAfijo=[
+    {palabra:'<u style="text-decoration-color:var(--prefijo);text-decoration-thickness:3px">in</u>feliz',correcta:'prefijo'},
+    {palabra:'cas<u style="text-decoration-color:var(--sufijo);text-decoration-thickness:3px">ita</u>',correcta:'sufijo'},
+    {palabra:'<u style="text-decoration-color:var(--prefijo);text-decoration-thickness:3px">re</u>hacer',correcta:'prefijo'},
+    {palabra:'feliz<u style="text-decoration-color:var(--sufijo);text-decoration-thickness:3px">mente</u>',correcta:'sufijo'},
+    {palabra:'<u style="text-decoration-color:var(--raiz);text-decoration-thickness:3px">cas</u>a',correcta:'raiz'},
+    {palabra:'<u style="text-decoration-color:var(--prefijo);text-decoration-thickness:3px">des</u>conocido',correcta:'prefijo'},
+    {palabra:'trabaja<u style="text-decoration-color:var(--sufijo);text-decoration-thickness:3px">dor</u>',correcta:'sufijo'},
+    {palabra:'<u style="text-decoration-color:var(--raiz);text-decoration-thickness:3px">habl</u>ar',correcta:'raiz'}
+  ];
+
+  var resueltasA={};
+  var aciertosA=0;
+  var contA=document.getElementById('ejercicio-afijo');
+
+  palabrasAfijo.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-afijo';
+    div.innerHTML=
+      '<div class="palabra-grande">'+item.palabra+'</div>'+
+      '<div class="opciones-afijo">'+
+        '<button type="button" class="btn-afijo" data-tipo="prefijo">Prefijo</button>'+
+        '<button type="button" class="btn-afijo" data-tipo="raiz">Raíz</button>'+
+        '<button type="button" class="btn-afijo" data-tipo="sufijo">Sufijo</button>'+
+      '</div>';
+    contA.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-afijo');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasA[idx])return;
+        if(b.getAttribute('data-tipo')===item.correcta){
+          b.classList.add('correcta');
+          resueltasA[idx]=true;
+          aciertosA++;
+          actualizarPuntajeA();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeA(){
+    var el=document.getElementById('puntaje-afijo');
+    el.textContent='Aciertos: '+aciertosA+' / '+palabrasAfijo.length;
+    if(aciertosA===palabrasAfijo.length){
+      el.innerHTML='🎉 ¡Excelente trabajo! Aciertos: '+aciertosA+' / '+palabrasAfijo.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Ejercicio 2: significado por afijo
+  var significados=[
+    {
+      pregunta:'Si "feliz" significa contento, ¿qué significa <strong>infeliz</strong>?',
+      opciones:[
+        {texto:'Muy contento',correcta:false},
+        {texto:'Lo contrario de contento (triste)',correcta:true},
+        {texto:'Contento otra vez',correcta:false}
+      ]
+    },
+    {
+      pregunta:'Si "leer" significa pasar los ojos por el texto, ¿qué significa <strong>releer</strong>?',
+      opciones:[
+        {texto:'Leer otra vez',correcta:true},
+        {texto:'No leer',correcta:false},
+        {texto:'Leer poco',correcta:false}
+      ]
+    },
+    {
+      pregunta:'Si "casa" es una vivienda, ¿qué significa <strong>casita</strong>?',
+      opciones:[
+        {texto:'Una casa grande',correcta:false},
+        {texto:'Una casa pequeña o querida',correcta:true},
+        {texto:'Lo contrario de casa',correcta:false}
+      ]
+    },
+    {
+      pregunta:'Si "hacer" significa realizar algo, ¿qué significa <strong>deshacer</strong>?',
+      opciones:[
+        {texto:'Hacer mucho',correcta:false},
+        {texto:'Volver a hacer',correcta:false},
+        {texto:'Lo contrario de hacer',correcta:true}
+      ]
+    },
+    {
+      pregunta:'Si "rápido" significa veloz, ¿qué significa <strong>rápidamente</strong>?',
+      opciones:[
+        {texto:'De manera rápida',correcta:true},
+        {texto:'Más rápido',correcta:false},
+        {texto:'No rápido',correcta:false}
+      ]
+    },
+    {
+      pregunta:'Si "trabaja" es lo que hace una persona, ¿qué es un <strong>trabajador</strong>?',
+      opciones:[
+        {texto:'Un lugar donde se trabaja',correcta:false},
+        {texto:'Una persona que trabaja',correcta:true},
+        {texto:'No trabajar',correcta:false}
+      ]
+    }
+  ];
+
+  var resueltasS={};
+  var aciertosS=0;
+  var contS=document.getElementById('ejercicio-significado');
+
+  significados.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-significado';
+    var opcionesHTML=item.opciones.map(function(op){
+      return '<button type="button" class="btn-significado" data-correcta="'+op.correcta+'">'+op.texto+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="frase-significado">'+item.pregunta+'</div>'+
+      '<div class="opciones-significado">'+opcionesHTML+'</div>';
+    contS.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-significado');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasS[idx])return;
+        if(b.getAttribute('data-correcta')==='true'){
+          b.classList.add('correcta');
+          resueltasS[idx]=true;
+          aciertosS++;
+          actualizarPuntajeS();
+          botones.forEach(function(other){if(other!==b)other.disabled=true});
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},600);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeS(){
+    var el=document.getElementById('puntaje-significado');
+    el.textContent='Aciertos: '+aciertosS+' / '+significados.length;
+    if(aciertosS===significados.length){
+      el.innerHTML='🎉 ¡Felicitaciones! Aciertos: '+aciertosS+' / '+significados.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Ejercicio 3: constructor de familias de palabras
+  var familias=[
+    {
+      raiz:'cas-',
+      raizDisplay:'cas-',
+      palabras:[
+        {texto:'casa',correcta:true},
+        {texto:'casita',correcta:true},
+        {texto:'casona',correcta:true},
+        {texto:'casero',correcta:true},
+        {texto:'cascada',correcta:false},
+        {texto:'casino',correcta:false}
+      ]
+    },
+    {
+      raiz:'feliz',
+      raizDisplay:'feliz',
+      palabras:[
+        {texto:'infeliz',correcta:true},
+        {texto:'felizmente',correcta:true},
+        {texto:'felicidad',correcta:true},
+        {texto:'felino',correcta:false},
+        {texto:'fenomenal',correcta:false}
+      ]
+    },
+    {
+      raiz:'hacer',
+      raizDisplay:'hac- / hech-',
+      palabras:[
+        {texto:'rehacer',correcta:true},
+        {texto:'deshacer',correcta:true},
+        {texto:'hacedor',correcta:true},
+        {texto:'hechizo',correcta:false},
+        {texto:'hacienda',correcta:false}
+      ]
+    }
+  ];
+
+  var contF=document.getElementById('ejercicio-construir');
+
+  familias.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-construir';
+    var opcionesHTML=item.palabras.map(function(p,i){
+      return '<button type="button" class="btn-construir" data-correcta="'+p.correcta+'" data-texto="'+p.texto+'">'+p.texto+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="raiz-base">Raíz: <span class="raiz-resaltada">'+item.raizDisplay+'</span></div>'+
+      '<p style="text-align:center;color:var(--gris);font-size:0.95rem;margin-bottom:10px"><em>Haz clic en las palabras que <strong>pertenecen</strong> a esta familia (comparten la raíz).</em></p>'+
+      '<div class="construye-opciones">'+opcionesHTML+'</div>'+
+      '<div class="construidas"><span class="vacio">Las palabras de la familia aparecerán aquí…</span></div>';
+    contF.appendChild(div);
+
+    var resueltas={};
+    var construidas=div.querySelector('.construidas');
+    var botones=div.querySelectorAll('.btn-construir');
+
+    botones.forEach(function(b,i){
+      b.addEventListener('click',function(){
+        if(resueltas[i])return;
+        if(b.getAttribute('data-correcta')==='true'){
+          b.classList.add('correcta');
+          resueltas[i]=true;
+          // Añadir a la lista de construidas
+          var vacio=construidas.querySelector('.vacio');
+          if(vacio)vacio.remove();
+          var span=document.createElement('span');
+          span.className='palabra-construida';
+          span.textContent=b.getAttribute('data-texto');
+          construidas.appendChild(span);
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},600);
+        }
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

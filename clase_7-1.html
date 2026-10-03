@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 1: El párrafo y la técnica de la hamburguesa</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--error:#c62828;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --pan:#d4a056;--pan-oscuro:#8a5a00;--pan-claro:#fdf6e8;
+    --relleno:#c0392b;--relleno-claro:#fdecea;
+    --lechuga:#7cb342;--lechuga-claro:#ecf5e0;
+    --queso:#f4c430;--queso-claro:#fff8d6;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Hamburguesa visual: las tres partes apiladas */
+  .hamburguesa{max-width:520px;margin:18px auto;background:#fff;border:2px solid var(--pan);border-radius:14px;padding:18px;box-shadow:0 4px 14px rgba(0,0,0,0.08)}
+  .hamburguesa h4{margin-top:0;text-align:center;color:var(--pan-oscuro);font-size:1.1rem}
+  .hamburguesa-svg-wrap{max-width:380px;margin:0 auto}
+  .hamburguesa-svg-wrap svg{width:100%;height:auto;display:block}
+  .partes-hamb{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+  .parte-hamb{padding:12px 14px;border-radius:8px;border-left:6px solid;display:flex;gap:12px;align-items:flex-start}
+  .parte-hamb.pan-sup{background:var(--pan-claro);border-color:var(--pan-oscuro)}
+  .parte-hamb.pan-sup .nombre-parte{color:var(--pan-oscuro)}
+  .parte-hamb.relleno-parte{background:var(--relleno-claro);border-color:var(--relleno)}
+  .parte-hamb.relleno-parte .nombre-parte{color:var(--relleno)}
+  .parte-hamb.pan-inf{background:var(--pan-claro);border-color:var(--pan-oscuro)}
+  .parte-hamb.pan-inf .nombre-parte{color:var(--pan-oscuro)}
+  .parte-hamb .icono-parte{font-size:1.8rem;line-height:1}
+  .parte-hamb .desc-parte{flex:1}
+  .parte-hamb .nombre-parte{font-weight:700;display:block;margin-bottom:3px;font-size:1rem}
+  .parte-hamb .texto-parte{font-size:0.92rem;line-height:1.5;display:block}
+
+  /* Párrafo modelo con colores por parte */
+  .parrafo-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:14px 0;line-height:1.8}
+  .parrafo-modelo .principal{background:var(--pan-claro);padding:2px 6px;border-radius:4px;border-bottom:3px solid var(--pan-oscuro);font-weight:600;color:var(--pan-oscuro)}
+  .parrafo-modelo .apoyo{background:var(--relleno-claro);padding:2px 6px;border-radius:4px;border-bottom:3px solid var(--relleno);color:var(--relleno)}
+  .parrafo-modelo .cierre{background:var(--pan-claro);padding:2px 6px;border-radius:4px;border-bottom:3px solid var(--pan-oscuro);font-weight:600;color:var(--pan-oscuro);font-style:italic}
+  .leyenda-parrafo{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:0.85rem;justify-content:center}
+  .leyenda-parrafo .leyenda-item{display:flex;align-items:center;gap:6px}
+  .leyenda-parrafo .cuadrito{width:14px;height:14px;border-radius:3px;display:inline-block}
+  .leyenda-parrafo .c-principal{background:var(--pan);border:1px solid var(--pan-oscuro)}
+  .leyenda-parrafo .c-apoyo{background:var(--relleno);border:1px solid var(--relleno)}
+  .leyenda-parrafo .c-cierre{background:var(--pan);border:1px solid var(--pan-oscuro);opacity:0.7}
+
+  /* Quiz: identificar la oración principal */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* Tabla pregunta-respuesta */
+  .tabla-qa{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .tabla-qa th{background:var(--acento);color:#fff;padding:10px 14px;text-align:left;font-size:0.95rem}
+  .tabla-qa td{padding:12px 14px;border-bottom:1px solid var(--gris-claro);font-size:0.93rem;vertical-align:top}
+  .tabla-qa tr:last-child td{border-bottom:none}
+  .tabla-qa tr:nth-child(even) td{background:#f9fafb}
+
+  /* Tarjetas de "qué hace" cada parte */
+  .funciones-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0}
+  .funcion-card{background:#fff;border-radius:8px;padding:12px 14px;border-top:4px solid var(--cp);box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+  .funcion-card h5{margin:0 0 6px 0;color:var(--cp-oscuro);font-size:0.95rem}
+  .funcion-card p{margin:0;font-size:0.88rem;line-height:1.5;color:var(--texto)}
+
+  /* Caja "preguntas guía" */
+  .preg-guia{background:var(--queso-claro);border:2px dashed var(--queso);border-radius:10px;padding:14px 18px;margin:14px 0}
+  .preg-guia h4{margin-top:0;color:#8a6d00}
+  .preg-guia ul{margin:8px 0 0 0;padding-left:22px}
+  .preg-guia li{margin-bottom:5px;font-size:0.93rem}
+</style>
+</head>
+<body>
+
+<h1>Clase 1: El párrafo y la técnica de la hamburguesa</h1>
+<p class="subtitulo">Tema 7 · Lección 7.1 · Nivel 1 · Semana 13 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Reconocer que un <strong>párrafo</strong> es una unidad temática que desarrolla una sola idea.</li>
+    <li>Identificar las <strong>tres partes</strong> del párrafo: oración principal, oraciones de apoyo y oración de cierre.</li>
+    <li>Localizar la <strong>oración principal</strong> dentro de párrafos modelo sobre temas cotidianos.</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Hasta este punto del curso, hemos aprendido a leer oraciones, textos cortos e información visual. Ahora damos un paso decisivo: comenzamos a <strong>escribir nuestras propias ideas</strong> de forma organizada. El primer destino de este viaje es el <span class="palabra-clave">párrafo</span>, la unidad básica de la escritura.</p>
+
+<p>Un párrafo no es un conjunto cualquiera de oraciones; es un grupo de oraciones que hablan de <strong>un solo tema</strong> y están ordenadas de tal modo que el lector pueda seguir la idea sin confundirse. Para visualizarlo, usaremos una imagen muy útil: la <strong>técnica de la hamburguesa</strong>.</p>
+
+<details open>
+<summary>1. Introducción: ¿qué es un párrafo? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Una definición sencilla</h3>
+
+<p>Un <span class="palabra-clave">párrafo</span> es un conjunto de oraciones conectadas entre sí que desarrollan una sola idea principal. Visualmente, todo párrafo comienza con <strong>mayúscula</strong> y termina con un <strong>punto y aparte</strong>, lo que indica al lector que ahí concluye una idea y, si hay otro párrafo, comenzará una idea distinta.</p>
+
+<div class="clave-pedagogica">
+  <strong>💡 Idea central:</strong> Un párrafo no se mide por su longitud, sino por su <strong>unidad temática</strong>. Puede tener tres oraciones o diez; lo importante es que todas hablen del mismo asunto.
+</div>
+
+<h3>¿Cómo reconocer un párrafo en un texto?</h3>
+
+<p>En un texto bien escrito, los párrafos se distinguen visualmente por tres señales:</p>
+
+<ul class="lista-bonita">
+  <li>La <strong>primera línea</strong> suele tener una sangría (espacio en blanco) o estar precedida de una línea en blanco.</li>
+  <li>Comienza con <strong>mayúscula</strong>.</li>
+  <li>Termina con un <strong>punto y aparte</strong>, después del cual viene el siguiente párrafo o el final del texto.</li>
+</ul>
+
+<div class="tip">
+  <strong>📝 Observación:</strong> Cuando alguien escribe sin separar sus ideas en párrafos, el lector se cansa rápidamente y se pierde. Los párrafos son al texto lo que los capítulos son a una novela: ayudan a organizar la lectura.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. La técnica de la hamburguesa: las tres partes <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Una analogía útil para nunca olvidar la estructura</h3>
+
+<p>Imaginemos una hamburguesa: tiene un pan arriba, un relleno en el medio y un pan abajo. Un párrafo bien construido funciona exactamente igual. Cada parte tiene una función específica y, si falta alguna, la hamburguesa (o el párrafo) se desarma.</p>
+
+<div class="hamburguesa">
+  <h4>🍔 El párrafo como hamburguesa</h4>
+  <div class="hamburguesa-svg-wrap">
+    <svg viewBox="0 0 360 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- Pan superior con semillas -->
+      <ellipse cx="180" cy="60" rx="140" ry="42" fill="#d4a056" stroke="#8a5a00" stroke-width="2"/>
+      <path d="M 40 60 Q 180 10 320 60" fill="#d4a056" stroke="#8a5a00" stroke-width="2"/>
+      <!-- Semillas -->
+      <ellipse cx="120" cy="40" rx="3" ry="2" fill="#fdf6e8"/>
+      <ellipse cx="160" cy="30" rx="3" ry="2" fill="#fdf6e8"/>
+      <ellipse cx="200" cy="32" rx="3" ry="2" fill="#fdf6e8"/>
+      <ellipse cx="240" cy="42" rx="3" ry="2" fill="#fdf6e8"/>
+      <ellipse cx="140" cy="50" rx="3" ry="2" fill="#fdf6e8"/>
+      <ellipse cx="220" cy="50" rx="3" ry="2" fill="#fdf6e8"/>
+      <!-- Etiqueta pan superior -->
+      <text x="180" y="65" text-anchor="middle" font-size="13" font-weight="bold" fill="#5a3a00">Oración principal</text>
+      
+      <!-- Lechuga -->
+      <path d="M 40 95 Q 80 88 120 96 Q 160 88 200 96 Q 240 88 280 96 Q 310 90 320 95 L 320 105 L 40 105 Z" fill="#7cb342" stroke="#558b2f" stroke-width="1.5"/>
+      
+      <!-- Carne (relleno) -->
+      <rect x="40" y="105" width="280" height="48" rx="8" fill="#c0392b" stroke="#8b1a1a" stroke-width="2"/>
+      <text x="180" y="125" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Oraciones de apoyo</text>
+      <text x="180" y="143" text-anchor="middle" font-size="11" fill="#fff">(detalles, ejemplos, explicaciones)</text>
+      
+      <!-- Queso -->
+      <path d="M 35 153 L 325 153 L 320 168 L 40 168 Z" fill="#f4c430" stroke="#c9a022" stroke-width="1.5"/>
+      
+      <!-- Tomate -->
+      <rect x="50" y="168" width="260" height="14" rx="3" fill="#e53935" stroke="#a82c2c" stroke-width="1.5"/>
+      
+      <!-- Pan inferior -->
+      <path d="M 40 182 Q 180 215 320 182 L 320 195 Q 180 230 40 195 Z" fill="#d4a056" stroke="#8a5a00" stroke-width="2"/>
+      <text x="180" y="205" text-anchor="middle" font-size="13" font-weight="bold" fill="#5a3a00">Oración de cierre</text>
+      
+      <!-- Llaves laterales y etiquetas -->
+      <text x="180" y="255" text-anchor="middle" font-size="11" fill="#5a3a00" font-style="italic">Tres partes que se sostienen unas a otras</text>
+    </svg>
+  </div>
+
+  <div class="partes-hamb">
+    <div class="parte-hamb pan-sup">
+      <span class="icono-parte">🍞</span>
+      <div class="desc-parte">
+        <span class="nombre-parte">1. El pan de arriba — Oración principal (o temática)</span>
+        <span class="texto-parte">Es la <strong>primera oración</strong> del párrafo y anuncia el tema. Le dice al lector de qué va a tratar todo lo que viene a continuación.</span>
+      </div>
+    </div>
+    <div class="parte-hamb relleno-parte">
+      <span class="icono-parte">🥩</span>
+      <div class="desc-parte">
+        <span class="nombre-parte">2. El relleno — Oraciones de apoyo</span>
+        <span class="texto-parte">Son <strong>dos o tres oraciones</strong> que explican, dan detalles o ejemplos sobre la idea principal. Sin el relleno, la hamburguesa es solo pan: el lector se queda con hambre de información.</span>
+      </div>
+    </div>
+    <div class="parte-hamb pan-inf">
+      <span class="icono-parte">🍞</span>
+      <div class="desc-parte">
+        <span class="nombre-parte">3. El pan de abajo — Oración de cierre</span>
+        <span class="texto-parte">Es la <strong>última oración</strong>. Cierra la idea, hace un pequeño resumen o redondea lo dicho. Sin el pan de abajo, el relleno se cae.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Las funciones de cada parte</h3>
+
+<div class="funciones-grid">
+  <div class="funcion-card">
+    <h5>🎯 Oración principal</h5>
+    <p>Anuncia el tema. Responde a la pregunta: <em>¿De qué voy a hablar?</em></p>
+  </div>
+  <div class="funcion-card">
+    <h5>📋 Oraciones de apoyo</h5>
+    <p>Desarrollan el tema con detalles. Responden a: <em>¿Qué quiero decir sobre eso?</em></p>
+  </div>
+  <div class="funcion-card">
+    <h5>🔚 Oración de cierre</h5>
+    <p>Concluye la idea. Responde a: <em>¿Cómo termino lo que dije?</em></p>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Importante:</strong> En el nivel principiante, recomendamos que el párrafo tenga entre <strong>4 y 6 oraciones</strong>: una principal, dos o tres de apoyo y una de cierre. Más adelante se podrá ampliar.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Párrafos modelo: ver las tres partes en acción <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Modelo 1: Mi familia</h3>
+
+<p>Observemos cómo aparecen las tres partes en un párrafo real. Los colores señalan a qué parte corresponde cada oración:</p>
+
+<div class="parrafo-modelo">
+  <span class="principal">Mi familia es pequeña pero muy unida.</span>
+  <span class="apoyo">Vivimos cuatro personas en la casa: mi esposa, mis dos hijos y yo.</span>
+  <span class="apoyo">Todos los domingos nos reunimos a almorzar y conversamos sobre la semana.</span>
+  <span class="apoyo">Mi esposa prepara la comida y los hijos ayudan a poner la mesa.</span>
+  <span class="cierre">Por eso, para mí, la familia es lo más importante de la vida.</span>
+
+  <div class="leyenda-parrafo">
+    <div class="leyenda-item"><span class="cuadrito c-principal"></span> Principal</div>
+    <div class="leyenda-item"><span class="cuadrito c-apoyo"></span> Apoyo</div>
+    <div class="leyenda-item"><span class="cuadrito c-cierre"></span> Cierre</div>
+  </div>
+</div>
+
+<table class="tabla-qa">
+  <thead>
+    <tr>
+      <th style="width:35%">Pregunta</th>
+      <th>Respuesta del párrafo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>¿Cuál es el tema?</strong></td><td>La familia del autor.</td></tr>
+    <tr><td><strong>¿Cuál es la oración principal?</strong></td><td><em>Mi familia es pequeña pero muy unida.</em></td></tr>
+    <tr><td><strong>¿Cuántas oraciones de apoyo hay?</strong></td><td>Tres oraciones que dan detalles (cuántos son, qué hacen los domingos, cómo se reparten las tareas).</td></tr>
+    <tr><td><strong>¿Qué hace el cierre?</strong></td><td>Resume el sentimiento del autor sobre la familia.</td></tr>
+  </tbody>
+</table>
+
+<h3>Modelo 2: Mi barrio</h3>
+
+<div class="parrafo-modelo">
+  <span class="principal">El barrio donde vivo es tranquilo y agradable.</span>
+  <span class="apoyo">Las calles son anchas y tienen árboles a ambos lados.</span>
+  <span class="apoyo">Hay una panadería en la esquina y un parque pequeño a dos cuadras.</span>
+  <span class="apoyo">Los vecinos se conocen entre sí y se saludan cuando se cruzan en la calle.</span>
+  <span class="cierre">Por estas razones, me siento muy a gusto en este lugar.</span>
+
+  <div class="leyenda-parrafo">
+    <div class="leyenda-item"><span class="cuadrito c-principal"></span> Principal</div>
+    <div class="leyenda-item"><span class="cuadrito c-apoyo"></span> Apoyo</div>
+    <div class="leyenda-item"><span class="cuadrito c-cierre"></span> Cierre</div>
+  </div>
+</div>
+
+<h3>Modelo 3: Mi trabajo</h3>
+
+<div class="parrafo-modelo">
+  <span class="principal">Trabajar en una panadería tiene muchas cosas buenas.</span>
+  <span class="apoyo">El olor del pan recién horneado llena toda la tienda desde temprano.</span>
+  <span class="apoyo">Los clientes llegan contentos porque saben que van a comer algo rico.</span>
+  <span class="apoyo">Además, aprendí a preparar diferentes tipos de pan y dulces.</span>
+  <span class="cierre">Sin duda, es un oficio que me da muchas satisfacciones.</span>
+
+  <div class="leyenda-parrafo">
+    <div class="leyenda-item"><span class="cuadrito c-principal"></span> Principal</div>
+    <div class="leyenda-item"><span class="cuadrito c-apoyo"></span> Apoyo</div>
+    <div class="leyenda-item"><span class="cuadrito c-cierre"></span> Cierre</div>
+  </div>
+</div>
+
+<div class="preg-guia">
+  <h4>🔍 Preguntas guía para identificar la oración principal</h4>
+  <p>Cuando lea un párrafo y quiera encontrar la oración principal, pregúntese:</p>
+  <ul>
+    <li>¿Cuál es la oración más <strong>general</strong> (la que dice menos detalles)?</li>
+    <li>¿Qué oración <strong>resume</strong> de qué trata todo el párrafo?</li>
+    <li>¿Cuál podría ser un buen <strong>título</strong> para este párrafo?</li>
+    <li>¿Qué oración <strong>abarca</strong> a todas las demás?</li>
+  </ul>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Quiz: identificar la oración principal <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<p>A continuación, se presentan cuatro párrafos cortos. En cada caso, identifique cuál es la oración principal. Recuerde: la oración principal es la más general, la que anuncia el tema del párrafo.</p>
+
+<div class="quiz-cont">
+  <h4>📝 Encuentre el pan de arriba</h4>
+  <div class="preguntas-quiz" id="preguntas-quiz1"></div>
+  <div class="puntaje" id="puntaje-quiz1">Aciertos: 0 / 4</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Cierre y conexión con la próxima clase <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>Un <strong>párrafo</strong> es un conjunto de oraciones que desarrollan una sola idea.</li>
+  <li>Todo párrafo bien construido tiene <strong>tres partes</strong>: oración principal, oraciones de apoyo y oración de cierre.</li>
+  <li>La <strong>técnica de la hamburguesa</strong> nos ayuda a recordar la estructura visualmente.</li>
+  <li>La <strong>oración principal</strong> es la más general y anuncia el tema del párrafo.</li>
+  <li>Para identificarla, podemos preguntarnos: <em>¿qué oración resume todo el párrafo?</em></li>
+</ul>
+
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> En el GED de Razonamiento a través de las Artes del Lenguaje (RLA), tanto en lectura como en escritura, se evalúa la capacidad de reconocer y construir párrafos bien estructurados. La técnica de la hamburguesa es un punto de partida sólido para responder con éxito.
+</div>
+
+<h3>Próxima clase</h3>
+
+<p>En la <strong>Clase 2</strong> avanzaremos del reconocimiento a la <strong>producción</strong>: aprenderemos las cualidades de un buen párrafo (unidad, cohesión y coherencia), conoceremos los conectores básicos (<em>y, pero, porque, entonces</em>) y escribiremos nuestro primer párrafo informativo siguiendo una plantilla guiada.</p>
+
+</div>
+</details>
+
+<p class="firma">Prof. José M. Fernández · Truman College · Tema 7, Clase 1</p>
+
+<script>
+(function(){
+  'use strict';
+
+  var preguntas=[
+    {
+      contexto:'(1) La cocina cubana tiene sabores muy variados. (2) Combina ingredientes españoles, africanos y caribeños. (3) Platos como el lechón, los frijoles negros y el arroz con pollo son ejemplos clásicos. (4) Por eso, comer comida cubana es probar la historia de toda una isla.',
+      texto:'¿Cuál es la oración principal de este párrafo?',
+      opciones:[
+        {t:'(1) La cocina cubana tiene sabores muy variados.',ok:true},
+        {t:'(2) Combina ingredientes españoles, africanos y caribeños.',ok:false},
+        {t:'(3) Platos como el lechón, los frijoles negros y el arroz con pollo son ejemplos clásicos.',ok:false},
+        {t:'(4) Por eso, comer comida cubana es probar la historia de toda una isla.',ok:false}
+      ],
+      explica:'La oración (1) es la más general: anuncia que la cocina cubana tiene sabores variados, y las demás oraciones dan detalles que apoyan esa idea.'
+    },
+    {
+      contexto:'(1) Camino dos cuadras hasta la parada del autobús. (2) Después tomo el tren rojo durante quince minutos. (3) Mi viaje al trabajo todas las mañanas tiene tres etapas. (4) Finalmente, camino otra cuadra hasta la entrada del edificio.',
+      texto:'¿Cuál es la oración principal? (Atención: aquí no está en primer lugar.)',
+      opciones:[
+        {t:'(1) Camino dos cuadras hasta la parada del autobús.',ok:false},
+        {t:'(2) Después tomo el tren rojo durante quince minutos.',ok:false},
+        {t:'(3) Mi viaje al trabajo todas las mañanas tiene tres etapas.',ok:true},
+        {t:'(4) Finalmente, camino otra cuadra hasta la entrada del edificio.',ok:false}
+      ],
+      explica:'Aunque la oración (3) está en el medio, es la que resume el tema: el viaje al trabajo. Las otras tres son las etapas (apoyos). La oración principal no siempre está al inicio.'
+    },
+    {
+      contexto:'(1) El verano en Chicago puede ser muy caluroso. (2) Las temperaturas suelen pasar de los 90 grados Fahrenheit. (3) La humedad hace que el calor se sienta aún peor. (4) Por eso muchas personas buscan refugio en el lago Michigan durante esos meses.',
+      texto:'¿Cuál es la oración principal?',
+      opciones:[
+        {t:'(1) El verano en Chicago puede ser muy caluroso.',ok:true},
+        {t:'(2) Las temperaturas suelen pasar de los 90 grados Fahrenheit.',ok:false},
+        {t:'(3) La humedad hace que el calor se sienta aún peor.',ok:false},
+        {t:'(4) Por eso muchas personas buscan refugio en el lago Michigan durante esos meses.',ok:false}
+      ],
+      explica:'La oración (1) presenta la idea general (el calor del verano en Chicago); las oraciones (2) y (3) dan detalles concretos sobre ese calor, y la (4) es el cierre con una consecuencia.'
+    },
+    {
+      contexto:'(1) Practicar un deporte mejora la salud del corazón. (2) También ayuda a controlar el peso y a dormir mejor. (3) Hacer ejercicio con regularidad trae muchos beneficios. (4) Además, reduce el estrés del trabajo y de la vida diaria.',
+      texto:'¿Cuál es la oración principal?',
+      opciones:[
+        {t:'(1) Practicar un deporte mejora la salud del corazón.',ok:false},
+        {t:'(2) También ayuda a controlar el peso y a dormir mejor.',ok:false},
+        {t:'(3) Hacer ejercicio con regularidad trae muchos beneficios.',ok:true},
+        {t:'(4) Además, reduce el estrés del trabajo y de la vida diaria.',ok:false}
+      ],
+      explica:'La oración (3) es la más general: anuncia que el ejercicio trae "muchos beneficios". Las demás son ejemplos concretos de esos beneficios (salud del corazón, peso, sueño, estrés).'
+    }
+  ];
+
+  var resueltas={};
+  var aciertos=0;
+  var cont=document.getElementById('preguntas-quiz1');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-quiz';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      '<div class="contexto-preg">'+item.contexto+'</div>'+
+      '<div class="opciones-quiz">'+opcHtml+'</div>'+
+      '<div class="retro-quiz" id="retro-q1-'+idx+'"></div>';
+
+    cont.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-quiz');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltas[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+          var retro=document.getElementById('retro-q1-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-quiz1');
+    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
+    if(aciertos===preguntas.length){
+      el.innerHTML='🎉 ¡Identificación de la oración principal dominada! Aciertos: '+aciertos+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

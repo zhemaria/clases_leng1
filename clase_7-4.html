@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 4: El texto de opinión y la comparación de los tres tipos</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--error:#c62828;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --narrativo:#ef6c00;--narrativo-claro:#fff3e0;--narrativo-oscuro:#a04200;
+    --informativo:#0277bd;--informativo-claro:#e1f5fe;--informativo-oscuro:#01486d;
+    --opinion:#7b3fbf;--opinion-claro:#f3e8ff;--opinion-oscuro:#5a2d8f;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Estructura del texto de opinión: 4 escalones */
+  .escalones-opinion{display:grid;grid-template-columns:1fr;gap:10px;margin:18px 0;max-width:600px;margin-left:auto;margin-right:auto}
+  .escalon{background:#fff;border-radius:10px;padding:14px 18px;border-left:6px solid var(--opinion);display:flex;gap:14px;align-items:flex-start;box-shadow:0 2px 6px rgba(123,63,191,0.1)}
+  .escalon .num-esc{background:var(--opinion);color:#fff;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:1.05rem;flex-shrink:0}
+  .escalon .contenido-esc{flex:1}
+  .escalon .nombre-esc{font-weight:700;color:var(--opinion-oscuro);font-size:1rem;display:block;margin-bottom:3px}
+  .escalon .preg-esc{font-style:italic;color:var(--gris);font-size:0.88rem;display:block;margin-bottom:6px}
+  .escalon .ej-esc{background:var(--opinion-claro);padding:8px 12px;border-radius:6px;font-size:0.9rem;display:block;line-height:1.5}
+
+  /* Texto modelo con anotaciones */
+  .texto-modelo{background:#fff;border:2px solid;border-radius:10px;padding:16px 20px;margin:14px 0;line-height:1.85;font-size:0.95rem;position:relative}
+  .texto-modelo.t-narr{border-color:var(--narrativo)}
+  .texto-modelo.t-info{border-color:var(--informativo)}
+  .texto-modelo.t-opin{border-color:var(--opinion)}
+  .etiq-modelo{position:absolute;top:-13px;left:18px;padding:3px 12px;border-radius:14px;font-size:0.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px}
+  .etiq-modelo.e-narr{background:var(--narrativo)}
+  .etiq-modelo.e-info{background:var(--informativo)}
+  .etiq-modelo.e-opin{background:var(--opinion)}
+
+  /* Anotaciones de partes del texto de opinión */
+  .anot-opin{display:block;padding:1px 6px;border-radius:3px;font-weight:600}
+  .anot-opin.tema{background:#fce4ec;color:#880e4f;border-bottom:2px solid #ad1457}
+  .anot-opin.opinion-marca{background:#f3e8ff;color:var(--opinion-oscuro);border-bottom:2px solid var(--opinion)}
+  .anot-opin.razon{background:#e8f5e9;color:#1b5e20;border-bottom:2px solid #2e7d32}
+  .anot-opin.cierre{background:#fff3e0;color:#bf360c;border-bottom:2px solid #ef6c00}
+
+  /* Frases típicas para iniciar una opinión */
+  .frases-opinion-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0}
+  .frase-op{background:var(--opinion-claro);border-left:4px solid var(--opinion);border-radius:8px;padding:10px 12px}
+  .frase-op .fr-cat{font-size:0.78rem;font-weight:700;color:var(--opinion-oscuro);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:4px}
+  .frase-op .fr-ej{font-size:0.92rem;font-style:italic;line-height:1.5;display:block;color:var(--texto)}
+
+  /* Tabla comparativa de los tres tipos */
+  .tabla-comp{width:100%;border-collapse:collapse;margin:18px 0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);font-size:0.92rem}
+  .tabla-comp th{padding:12px 14px;color:#fff;text-align:center;font-size:0.95rem;font-weight:700}
+  .tabla-comp th.h-narr{background:var(--narrativo)}
+  .tabla-comp th.h-info{background:var(--informativo)}
+  .tabla-comp th.h-opin{background:var(--opinion)}
+  .tabla-comp th.h-fila{background:var(--gris);text-align:left}
+  .tabla-comp td{padding:11px 13px;border-bottom:1px solid var(--gris-claro);vertical-align:top;text-align:center}
+  .tabla-comp td:first-child{font-weight:600;background:#f9fafb;color:var(--cp-oscuro);text-align:left}
+  .tabla-comp tr:last-child td{border-bottom:none}
+  @media(max-width:640px){.tabla-comp{font-size:0.84rem}.tabla-comp td,.tabla-comp th{padding:8px 9px}}
+
+  /* Actividad de clasificación interactiva */
+  .clasif-cont{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(123,63,191,0.08)}
+  .clasif-cont h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
+  .item-clasif{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .item-clasif .texto-clasif{font-style:italic;line-height:1.6;font-size:0.93rem;margin-bottom:10px;padding:10px 12px;background:var(--gris-claro);border-radius:6px}
+  .item-clasif .opciones-clasif{display:flex;flex-wrap:wrap;gap:8px}
+  .btn-clasif{padding:8px 14px;border:2px solid;background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.9rem;transition:all 0.2s;font-weight:600;flex:1;min-width:120px}
+  .btn-clasif.bnarr{border-color:var(--narrativo);color:var(--narrativo)}
+  .btn-clasif.bnarr:hover{background:var(--narrativo-claro)}
+  .btn-clasif.binfo{border-color:var(--informativo);color:var(--informativo)}
+  .btn-clasif.binfo:hover{background:var(--informativo-claro)}
+  .btn-clasif.bopin{border-color:var(--opinion);color:var(--opinion)}
+  .btn-clasif.bopin:hover{background:var(--opinion-claro)}
+  .btn-clasif.correcto{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-clasif.incorrecto{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-clasif{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.88rem;display:none;border-left:4px solid var(--cp)}
+  .retro-clasif.visible{display:block}
+  .puntaje-clasif{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.02rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Plantilla guiada de escritura */
+  .plantilla-elec{background:var(--advertencia-fondo);border:2px dashed var(--advertencia);border-radius:10px;padding:14px 18px;margin:16px 0;text-align:center}
+  .plantilla-elec h4{margin-top:0;color:#8a6d00}
+  .botones-tipo{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
+  .btn-elegir{padding:10px 18px;border-radius:8px;border:none;font-family:inherit;font-weight:700;cursor:pointer;font-size:0.95rem;color:#fff;transition:transform 0.15s}
+  .btn-elegir:hover{transform:translateY(-2px)}
+  .btn-elegir.bnarr{background:var(--narrativo)}
+  .btn-elegir.binfo{background:var(--informativo)}
+  .btn-elegir.bopin{background:var(--opinion)}
+  .btn-elegir.activo{outline:3px solid #1a2332;outline-offset:2px}
+
+  .plantilla-cont{background:#fff;border:2px solid;border-radius:10px;padding:20px;margin:14px 0;box-shadow:0 3px 12px rgba(0,0,0,0.08);display:none}
+  .plantilla-cont.activa{display:block}
+  .plantilla-cont.tnarr{border-color:var(--narrativo)}
+  .plantilla-cont.tinfo{border-color:var(--informativo)}
+  .plantilla-cont.topin{border-color:var(--opinion)}
+  .plantilla-cont h4{margin-top:0}
+  .plantilla-cont.tnarr h4{color:var(--narrativo-oscuro)}
+  .plantilla-cont.tinfo h4{color:var(--informativo-oscuro)}
+  .plantilla-cont.topin h4{color:var(--opinion-oscuro)}
+  .paso-plantilla{margin:12px 0;padding:12px 16px;border-radius:8px;border-left:5px solid}
+  .plantilla-cont.tnarr .paso-plantilla{background:var(--narrativo-claro);border-color:var(--narrativo)}
+  .plantilla-cont.tinfo .paso-plantilla{background:var(--informativo-claro);border-color:var(--informativo)}
+  .plantilla-cont.topin .paso-plantilla{background:var(--opinion-claro);border-color:var(--opinion)}
+  .paso-plantilla h5{margin:0 0 4px 0;font-size:0.98rem}
+  .paso-plantilla .indicacion{font-size:0.86rem;font-style:italic;color:var(--gris);margin-bottom:6px;display:block}
+  .linea-escritura{display:block;border-bottom:2px solid #aab2bd;height:28px;margin:4px 0;background:repeating-linear-gradient(180deg,transparent 0,transparent 27px,#aab2bd 27px,#aab2bd 28px)}
+
+  /* Quiz final */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+</style>
+</head>
+<body>
+
+<h1>Clase 4: El texto de opinión y la comparación de los tres tipos</h1>
+<p class="subtitulo">Tema 7 · Lección 7.2 · Nivel 1 · Semana 14 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Reconocer la estructura del <strong>texto de opinión</strong>: tema, opinión, razón y conclusión.</li>
+    <li>Comparar los tres tipos de texto (narrativo, informativo y de opinión) en una tabla resumen.</li>
+    <li>Escribir un párrafo corto del tipo elegido siguiendo una <strong>plantilla guiada</strong>.</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En la clase anterior estudiamos los dos primeros tipos de texto: el <strong>narrativo</strong> (cuenta lo que pasó) y el <strong>informativo</strong> (presenta hechos sobre un tema). Hoy completamos el panorama con el tercer tipo: el <span class="palabra-clave">texto de opinión</span>, que es probablemente el más exigente de los tres porque no basta con decir lo que pensamos: debemos <strong>defenderlo con una razón</strong>.</p>
+
+<p>Al final de la clase compararemos los tres tipos lado a lado y escribiremos nuestro propio párrafo eligiendo el tipo que más nos atraiga.</p>
+
+<details open>
+<summary>1. El texto de opinión: expresar un punto de vista <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué es un texto de opinión?</h3>
+
+<p>Un <span class="palabra-clave">texto de opinión</span> presenta lo que el autor piensa o siente sobre un tema. No cuenta sucesos como el narrativo ni se limita a dar hechos como el informativo; expresa un <strong>punto de vista personal</strong> y lo <strong>justifica con razones</strong>. Lo encontramos en editoriales de prensa, reseñas, cartas de queja, ensayos y, sobre todo, en la <strong>respuesta extendida</strong> del examen GED.</p>
+
+<h3>La estructura del texto de opinión: cuatro escalones</h3>
+
+<p>En este nivel, un texto de opinión se construye con cuatro elementos en orden. Cada uno cumple una función específica:</p>
+
+<div class="escalones-opinion">
+  <div class="escalon">
+    <span class="num-esc">1</span>
+    <div class="contenido-esc">
+      <span class="nombre-esc">🎯 Presentar el tema</span>
+      <span class="preg-esc">¿De qué voy a opinar?</span>
+      <span class="ej-esc"><em>"El transporte público de Chicago..."</em></span>
+    </div>
+  </div>
+  <div class="escalon">
+    <span class="num-esc">2</span>
+    <div class="contenido-esc">
+      <span class="nombre-esc">💭 Expresar una opinión clara</span>
+      <span class="preg-esc">¿Qué pienso sobre el tema?</span>
+      <span class="ej-esc"><em>"...me parece muy útil para los trabajadores."</em></span>
+    </div>
+  </div>
+  <div class="escalon">
+    <span class="num-esc">3</span>
+    <div class="contenido-esc">
+      <span class="nombre-esc">🔗 Dar una razón que la apoye</span>
+      <span class="preg-esc">¿Por qué pienso eso?</span>
+      <span class="ej-esc"><em>"Funciona casi las 24 horas y conecta los barrios con el centro."</em></span>
+    </div>
+  </div>
+  <div class="escalon">
+    <span class="num-esc">4</span>
+    <div class="contenido-esc">
+      <span class="nombre-esc">✅ Proporcionar una conclusión</span>
+      <span class="preg-esc">¿Cómo cierro mi opinión?</span>
+      <span class="ej-esc"><em>"Por eso, considero que es un servicio indispensable."</em></span>
+    </div>
+  </div>
+</div>
+
+<h3>Un texto de opinión modelo</h3>
+
+<p>Veamos cómo se juntan los cuatro elementos en un párrafo real. Los colores señalan a qué parte corresponde cada oración:</p>
+
+<div class="texto-modelo t-opin">
+  <span class="etiq-modelo e-opin">💭 El transporte público</span>
+  <p style="margin:8px 0 0 0"><span class="anot-opin tema">El transporte público de Chicago</span> <span class="anot-opin opinion-marca">me parece muy útil para los trabajadores</span>. <span class="anot-opin razon">Esto se debe a que funciona casi las veinticuatro horas y conecta los barrios con el centro de la ciudad</span>. Además, los precios son más bajos que los de un automóvil propio. <span class="anot-opin cierre">Por estas razones, considero que es un servicio indispensable para la vida cotidiana</span>.</p>
+</div>
+
+<h3>Frases típicas para expresar una opinión</h3>
+
+<p>Cuando expresamos una opinión, conviene usar palabras que dejen claro al lector que estamos diciendo lo que pensamos, no lo que es un hecho. Aquí algunas frases útiles, organizadas por función:</p>
+
+<div class="frases-opinion-grid">
+  <div class="frase-op">
+    <span class="fr-cat">Para introducir opinión</span>
+    <span class="fr-ej">"Pienso que...", "Creo que...", "En mi opinión...", "Me parece que..."</span>
+  </div>
+  <div class="frase-op">
+    <span class="fr-cat">Para dar una razón</span>
+    <span class="fr-ej">"Porque...", "Esto se debe a...", "La razón es que...", "Por ejemplo..."</span>
+  </div>
+  <div class="frase-op">
+    <span class="fr-cat">Para añadir otra razón</span>
+    <span class="fr-ej">"Además...", "También...", "Por otra parte..."</span>
+  </div>
+  <div class="frase-op">
+    <span class="fr-cat">Para cerrar</span>
+    <span class="fr-ej">"Por eso...", "Por estas razones...", "En conclusión...", "Por lo tanto..."</span>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 La diferencia clave:</strong> Un texto de opinión bien escrito no se queda en <em>"me gusta"</em>. Siempre explica el <strong>porqué</strong>. Sin razón, una opinión es solo un gusto personal; con razón, se convierte en un argumento.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Los tres tipos lado a lado: tabla resumen <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Comparación de los tres tipos de texto</h3>
+
+<p>La siguiente tabla resume las características de los tres tipos. Conviene tenerla a mano cuando estemos por escribir un texto y necesitemos decidir cuál corresponde:</p>
+
+<table class="tabla-comp">
+  <thead>
+    <tr>
+      <th class="h-fila">Característica</th>
+      <th class="h-narr">📖 Narrativo</th>
+      <th class="h-info">📊 Informativo</th>
+      <th class="h-opin">💭 De opinión</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pregunta que responde</td>
+      <td>¿Qué pasó?</td>
+      <td>¿Qué es?</td>
+      <td>¿Qué pienso?</td>
+    </tr>
+    <tr>
+      <td>Propósito</td>
+      <td>Contar sucesos</td>
+      <td>Informar</td>
+      <td>Convencer / opinar</td>
+    </tr>
+    <tr>
+      <td>Tiempo verbal típico</td>
+      <td>Pasado</td>
+      <td>Presente</td>
+      <td>Presente</td>
+    </tr>
+    <tr>
+      <td>Palabras clave</td>
+      <td><em>primero, luego, después, finalmente</em></td>
+      <td><em>es, tiene, contiene, se encuentra</em></td>
+      <td><em>creo que, me parece, en mi opinión</em></td>
+    </tr>
+    <tr>
+      <td>Tono</td>
+      <td>Personal</td>
+      <td>Neutro / objetivo</td>
+      <td>Personal con razones</td>
+    </tr>
+    <tr>
+      <td>Ejemplo de uso</td>
+      <td>Anécdota, cuento</td>
+      <td>Enciclopedia, manual</td>
+      <td>Editorial, reseña</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Un mismo tema, tres textos: la familia</h3>
+
+<p>Para fijar bien la idea, veamos cómo el tema <strong>"la familia"</strong> se desarrolla de tres maneras distintas según el propósito:</p>
+
+<div class="texto-modelo t-narr">
+  <span class="etiq-modelo e-narr">📖 Narrativo</span>
+  <p style="margin:8px 0 0 0">El domingo pasado mi familia se reunió en casa. <strong>Primero</strong>, llegaron mis hijos con sus esposas. <strong>Luego</strong>, mi hermana trajo el postre. <strong>Después</strong>, almorzamos arroz con frijoles y conversamos toda la tarde. <strong>Finalmente</strong>, todos se despidieron contentos.</p>
+</div>
+
+<div class="texto-modelo t-info">
+  <span class="etiq-modelo e-info">📊 Informativo</span>
+  <p style="margin:8px 0 0 0">Mi familia <strong>está formada por</strong> seis personas. Tres viven en Chicago y tres viven en Miami. <strong>Tenemos</strong> reuniones familiares dos veces al año, en Navidad y en el cumpleaños de mi madre. Todos hablamos español como primer idioma.</p>
+</div>
+
+<div class="texto-modelo t-opin">
+  <span class="etiq-modelo e-opin">💭 De opinión</span>
+  <p style="margin:8px 0 0 0">La familia es lo más importante de mi vida. <strong>Creo que</strong> es el lugar donde uno aprende los valores más profundos. Mis hijos, por ejemplo, aprendieron de mí el respeto y la honestidad, <strong>porque</strong> en casa siempre se predicó con el ejemplo. <strong>Por eso</strong>, considero que cuidar la familia es la mejor inversión que se puede hacer.</p>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Observación importante:</strong> El mismo tema (la familia) puede dar lugar a tres textos completamente distintos. Lo que cambia no es el tema, sino el <strong>propósito</strong> del autor.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Actividad: clasifique cada texto <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<p>A continuación tiene seis textos cortos. Para cada uno, elija el tipo correcto. Recuerde las pistas: las palabras de secuencia y los verbos en pasado indican narrativo; los hechos verificables indican informativo; las frases con <em>"creo que"</em>, <em>"me parece"</em> o <em>"en mi opinión"</em> indican opinión.</p>
+
+<div class="clasif-cont">
+  <h4>🗂️ Clasifique cada texto en su tipo</h4>
+  <div id="items-clasif"></div>
+  <div class="puntaje-clasif" id="puntaje-clasif">Aciertos: 0 / 6</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Plantilla guiada: escribo el tipo que elija <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Mi turno: elijo un tipo y escribo</h3>
+
+<p>Ahora le toca a usted. Elija uno de los tres tipos de texto y escriba un párrafo corto (5 o 6 oraciones) siguiendo la plantilla guiada correspondiente. Puede elegir el tema (su familia, su trabajo, su barrio, una comida favorita, una experiencia reciente) y el tipo que prefiera.</p>
+
+<div class="plantilla-elec">
+  <h4>👇 Elija el tipo de texto que quiere practicar</h4>
+  <div class="botones-tipo">
+    <button type="button" class="btn-elegir bnarr" data-tipo="narr">📖 Narrativo</button>
+    <button type="button" class="btn-elegir binfo" data-tipo="info">📊 Informativo</button>
+    <button type="button" class="btn-elegir bopin" data-tipo="opin">💭 De opinión</button>
+  </div>
+</div>
+
+<!-- Plantilla NARRATIVO -->
+<div class="plantilla-cont tnarr" id="plantilla-narr">
+  <h4>📖 Plantilla del texto narrativo</h4>
+
+  <div class="paso-plantilla">
+    <h5>1. Oración inicial — Anuncie el suceso</h5>
+    <span class="indicacion">Diga qué pasó y cuándo. Use tiempo pasado.</span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>2. Primer suceso</h5>
+    <span class="indicacion">Use <em>"Primero..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>3. Segundo suceso</h5>
+    <span class="indicacion">Use <em>"Luego..."</em> o <em>"Después..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>4. Tercer suceso</h5>
+    <span class="indicacion">Use <em>"Después..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>5. Oración de cierre</h5>
+    <span class="indicacion">Use <em>"Finalmente..."</em> o <em>"Al final..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+</div>
+
+<!-- Plantilla INFORMATIVO -->
+<div class="plantilla-cont tinfo" id="plantilla-info">
+  <h4>📊 Plantilla del texto informativo</h4>
+
+  <div class="paso-plantilla">
+    <h5>1. Oración principal — Anuncie el tema</h5>
+    <span class="indicacion">Diga de qué va a hablar. Use tiempo presente.</span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>2. Primer hecho</h5>
+    <span class="indicacion">Un dato verificable sobre el tema.</span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>3. Segundo hecho</h5>
+    <span class="indicacion">Otro dato verificable. Use <em>"También..."</em> o <em>"Además..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>4. Tercer hecho</h5>
+    <span class="indicacion">Un detalle más sobre el tema.</span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>5. Oración de cierre</h5>
+    <span class="indicacion">Una oración que resuma lo principal.</span>
+    <span class="linea-escritura"></span>
+  </div>
+</div>
+
+<!-- Plantilla OPINIÓN -->
+<div class="plantilla-cont topin" id="plantilla-opin">
+  <h4>💭 Plantilla del texto de opinión</h4>
+
+  <div class="paso-plantilla">
+    <h5>1. Presentar el tema</h5>
+    <span class="indicacion">Diga sobre qué va a opinar.</span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>2. Expresar la opinión</h5>
+    <span class="indicacion">Use <em>"Creo que..."</em>, <em>"Me parece..."</em> o <em>"En mi opinión..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>3. Dar una razón</h5>
+    <span class="indicacion">Use <em>"Porque..."</em> o <em>"Esto se debe a..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>4. Añadir otra razón (opcional)</h5>
+    <span class="indicacion">Use <em>"Además..."</em> o <em>"También..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+  <div class="paso-plantilla">
+    <h5>5. Conclusión</h5>
+    <span class="indicacion">Use <em>"Por eso..."</em>, <em>"Por estas razones..."</em> o <em>"En conclusión..."</em></span>
+    <span class="linea-escritura"></span>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Antes de entregar, verifique:</strong>
+  <ul style="margin:8px 0 0 0;padding-left:22px">
+    <li>¿El tipo de texto cumple con su propósito (contar, informar u opinar)?</li>
+    <li>¿Usé las palabras clave del tipo elegido (secuencia, hechos o marcas de opinión)?</li>
+    <li>¿Mi párrafo tiene una oración principal y una de cierre?</li>
+    <li>¿Cada oración comienza con mayúscula y termina con punto?</li>
+  </ul>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Actividades de la lección y quiz final <span class="caja-tiempo">7 min</span></summary>
+<div class="contenido-detalle">
+
+<p>Las actividades de la Lección 7.2 se reparten entre las Clases 3 y 4. El quiz final de 6 preguntas se entrega al cerrar esta clase.</p>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Modalidad presencial (sincrónica)</h4>
+    <p><span class="badge-tipo badge-discusion">Tres maneras de hablar de lo mismo</span></p>
+    <p>El profesor asigna a cada grupo un tema sencillo (la lluvia, el café, el fin de semana, el barrio) y cada grupo debe producir oralmente las <strong>tres versiones</strong>: una narración (qué pasó), una informativa (qué es) y una de opinión (qué pienso). Al final, cada grupo presenta sus tres textos al resto de la clase y se identifica cuál cumple mejor con cada propósito.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Modalidad en línea (asincrónica)</h4>
+    <p><span class="badge-tipo badge-reflexion">Mi tipo de texto</span></p>
+    <p>Cada estudiante elige <strong>uno</strong> de los tres tipos y publica en el foro un párrafo corto (5 o 6 oraciones) siguiendo la plantilla guiada. El párrafo debe:</p>
+    <ul style="padding-left:20px;font-size:0.92rem">
+      <li>Indicar al inicio el tipo elegido (narrativo, informativo o de opinión).</li>
+      <li>Cumplir con las características del tipo.</li>
+      <li>Tener una oración principal y una oración de cierre.</li>
+    </ul>
+    <p>Cada estudiante comenta el texto de un compañero indicando si reconoce el tipo y por qué.</p>
+  </div>
+</div>
+
+<h3>Quiz final de la lección 7.2</h3>
+
+<p>El siguiente quiz combina los aprendizajes de las clases 3 y 4: clasificar un texto, identificar la opinión, identificar la palabra temporal y elegir un buen cierre.</p>
+
+<div class="quiz-cont">
+  <h4>📝 Quiz: los tres tipos de texto</h4>
+  <div class="preguntas-quiz" id="preguntas-quiz4"></div>
+  <div class="puntaje" id="puntaje-quiz4">Aciertos: 0 / 6</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Cierre y conexión con la próxima lección <span class="caja-tiempo">2 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos en esta lección</h3>
+
+<ul class="lista-bonita">
+  <li>Un <strong>texto de opinión</strong> presenta lo que pensamos y lo justifica con una razón.</li>
+  <li>Su estructura tiene cuatro partes: tema, opinión, razón y conclusión.</li>
+  <li>Los tres tipos de texto (narrativo, informativo, de opinión) se distinguen por su <strong>propósito</strong>.</li>
+  <li>Un mismo tema puede tratarse de tres maneras diferentes.</li>
+  <li>Antes de escribir, conviene decidir el tipo y seguir una <strong>plantilla guiada</strong>.</li>
+</ul>
+
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> La <strong>respuesta extendida</strong> del examen GED de Razonamiento a través de las Artes del Lenguaje exige escribir un texto argumentativo (opinión bien fundamentada). Dominar la estructura de cuatro partes (tema, opinión, razón, conclusión) es el primer paso hacia esa meta.
+</div>
+
+<h3>Próxima lección</h3>
+
+<p>En la <strong>Lección 7.3</strong> (Clases 5 y 6) daremos el paso final: aprenderemos a <strong>describir información visual</strong> (gráficas, mapas, tablas) por escrito, y conoceremos el <strong>proceso de revisión</strong> de un texto (escribir, leer en voz alta, recibir comentarios, mejorar). Será la culminación del Tema 7 y nos preparará para los temas más avanzados del curso.</p>
+
+</div>
+</details>
+
+<p class="firma">Prof. José M. Fernández · Truman College · Tema 7, Clase 4</p>
+
+<script>
+(function(){
+  'use strict';
+
+  /* =========================================================
+     ACTIVIDAD DE CLASIFICACIÓN
+     ========================================================= */
+  var items=[
+    {
+      texto:'"El lago Michigan es uno de los cinco Grandes Lagos de Norteamérica. Tiene una superficie de unos 58 000 kilómetros cuadrados. Su profundidad máxima alcanza los 281 metros."',
+      tipo:'info',
+      explica:'Es informativo: presenta hechos verificables (superficie, profundidad) en tiempo presente y con tono neutro.'
+    },
+    {
+      texto:'"Ayer mi vecino me invitó a probar su receta de tamales. Primero los abrí con cuidado, luego los probé despacio y después le pedí dos más para llevar."',
+      tipo:'narr',
+      explica:'Es narrativo: cuenta sucesos en orden cronológico ("Ayer", "Primero", "luego", "después") con verbos en pasado (invitó, abrí, probé).'
+    },
+    {
+      texto:'"Considero que aprender un segundo idioma es una de las mejores decisiones que puede tomar un adulto. Esto se debe a que abre puertas en el trabajo y enriquece la vida cotidiana."',
+      tipo:'opin',
+      explica:'Es de opinión: el autor expresa su punto de vista ("Considero que") y lo justifica con una razón ("Esto se debe a").'
+    },
+    {
+      texto:'"El maíz fue cultivado por primera vez en lo que hoy es México hace unos 9 000 años. Es uno de los tres cultivos más importantes del mundo, junto con el trigo y el arroz."',
+      tipo:'info',
+      explica:'Es informativo: presenta datos históricos y geográficos verificables, sin opiniones ni secuencias temporales personales.'
+    },
+    {
+      texto:'"Pienso que las bibliotecas públicas son un tesoro de la comunidad. Ofrecen libros gratis, computadoras y un lugar tranquilo para estudiar. Por eso deberían recibir más apoyo del gobierno."',
+      tipo:'opin',
+      explica:'Es de opinión: comienza con "Pienso que", presenta una idea personal con razones y cierra con "Por eso".'
+    },
+    {
+      texto:'"El sábado pasado celebramos el cumpleaños de mi nieta. Esa mañana, mi hija preparó un pastel de chocolate. Más tarde, llegaron los invitados con globos y regalos. Al final, cantamos las mañanitas todos juntos."',
+      tipo:'narr',
+      explica:'Es narrativo: cuenta una celebración con sucesos ordenados en el tiempo ("El sábado pasado", "Esa mañana", "Más tarde", "Al final") en pasado.'
+    }
+  ];
+
+  var puntaje=0;
+  var contItems=document.getElementById('items-clasif');
+
+  items.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-clasif';
+    div.innerHTML=
+      '<div class="texto-clasif">'+item.texto+'</div>'+
+      '<div class="opciones-clasif">'+
+        '<button type="button" class="btn-clasif bnarr" data-tipo="narr">📖 Narrativo</button>'+
+        '<button type="button" class="btn-clasif binfo" data-tipo="info">📊 Informativo</button>'+
+        '<button type="button" class="btn-clasif bopin" data-tipo="opin">💭 De opinión</button>'+
+      '</div>'+
+      '<div class="retro-clasif" id="retro-cl-'+idx+'"></div>';
+    contItems.appendChild(div);
+
+    var resuelto=false;
+    var botones=div.querySelectorAll('.btn-clasif');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resuelto)return;
+        if(b.getAttribute('data-tipo')===item.tipo){
+          b.classList.add('correcto');
+          resuelto=true;
+          puntaje++;
+          actualizarPuntajeClasif();
+          var retro=document.getElementById('retro-cl-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecto');
+          setTimeout(function(){b.classList.remove('incorrecto')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeClasif(){
+    var el=document.getElementById('puntaje-clasif');
+    el.textContent='Aciertos: '+puntaje+' / '+items.length;
+    if(puntaje===items.length){
+      el.innerHTML='🎉 ¡Clasificación dominada! Aciertos: '+puntaje+' / '+items.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  /* =========================================================
+     PLANTILLA: alternar entre los tres tipos
+     ========================================================= */
+  var btnsTipo=document.querySelectorAll('.btn-elegir');
+  var plantillas={
+    narr:document.getElementById('plantilla-narr'),
+    info:document.getElementById('plantilla-info'),
+    opin:document.getElementById('plantilla-opin')
+  };
+
+  btnsTipo.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var tipo=btn.getAttribute('data-tipo');
+      // Actualizar estado de botones
+      btnsTipo.forEach(function(b){b.classList.remove('activo');});
+      btn.classList.add('activo');
+      // Mostrar la plantilla correspondiente
+      Object.keys(plantillas).forEach(function(k){
+        plantillas[k].classList.remove('activa');
+      });
+      plantillas[tipo].classList.add('activa');
+    });
+  });
+
+  /* =========================================================
+     QUIZ FINAL DE LA LECCIÓN 7.2
+     ========================================================= */
+  var preguntas=[
+    {
+      contexto:'"El reciclaje es una práctica importante para proteger el medio ambiente. Permite reutilizar materiales como vidrio, papel y plástico. Reduce la cantidad de basura que llega a los vertederos."',
+      texto:'¿Qué tipo de texto es?',
+      opciones:[
+        {t:'Narrativo',ok:false},
+        {t:'Informativo',ok:true},
+        {t:'De opinión',ok:false}
+      ],
+      explica:'Es informativo: presenta hechos verificables sobre el reciclaje en tiempo presente, sin opiniones personales ni secuencias temporales.'
+    },
+    {
+      contexto:'"Me parece que todas las escuelas deberían enseñar dos idiomas desde el primer grado. Los niños aprenden con facilidad cuando son pequeños. Además, hablar otro idioma abre muchas oportunidades en el futuro. Por eso, esta debería ser una prioridad educativa."',
+      texto:'¿Cuál oración expresa la opinión principal del autor?',
+      opciones:[
+        {t:'Me parece que todas las escuelas deberían enseñar dos idiomas desde el primer grado.',ok:true},
+        {t:'Los niños aprenden con facilidad cuando son pequeños.',ok:false},
+        {t:'Hablar otro idioma abre muchas oportunidades en el futuro.',ok:false},
+        {t:'Esta debería ser una prioridad educativa.',ok:false}
+      ],
+      explica:'La primera oración es la opinión central ("Me parece que..."). Las otras dos del medio son razones que apoyan la opinión, y la última es el cierre.'
+    },
+    {
+      contexto:'"El verano pasado viajé a Miami por primera vez. ___ visité la playa con mi familia. Luego recorrimos el centro histórico. Después comimos en un restaurante cubano. Finalmente regresamos a Chicago con muchas fotos."',
+      texto:'¿Qué palabra temporal completa mejor el espacio en blanco?',
+      opciones:[
+        {t:'Porque',ok:false},
+        {t:'Primero',ok:true},
+        {t:'Aunque',ok:false},
+        {t:'Pero',ok:false}
+      ],
+      explica:'"Primero" es una palabra de secuencia que indica el primer suceso de la narración. Encaja perfectamente antes de "luego", "después" y "finalmente".'
+    },
+    {
+      contexto:'"El parque del barrio tiene árboles grandes, bancos para descansar y un área de juegos para los niños. Es un lugar muy frecuentado los fines de semana."',
+      texto:'¿Cuál sería un buen cierre INFORMATIVO para este párrafo?',
+      opciones:[
+        {t:'¡Me encanta ir al parque los domingos por la tarde!',ok:false},
+        {t:'Ayer salí al parque con mi hija y nos divertimos mucho.',ok:false},
+        {t:'En total, el parque ofrece varios espacios para distintas actividades.',ok:true},
+        {t:'Creo que es el mejor parque de toda la ciudad.',ok:false}
+      ],
+      explica:'La opción correcta es un cierre informativo: mantiene el tono neutro y resume los hechos. Las otras opciones introducen opinión personal (1, 4) o narración (2).'
+    },
+    {
+      texto:'¿Cuál de las siguientes oraciones es claramente una OPINIÓN?',
+      opciones:[
+        {t:'Chicago se encuentra a orillas del lago Michigan.',ok:false},
+        {t:'El verano pasado visité Chicago con mi familia.',ok:false},
+        {t:'Considero que Chicago es la mejor ciudad para vivir en el medio oeste.',ok:true},
+        {t:'Chicago tiene más de 2 millones de habitantes.',ok:false}
+      ],
+      explica:'La tercera oración expresa una opinión personal ("Considero que... la mejor ciudad"). Las otras tres son hechos verificables o narración de experiencia.'
+    },
+    {
+      contexto:'"Considero que el desayuno es la comida más importante del día. Después de muchas horas de sueño, el cuerpo necesita energía. ___ una persona que desayuna bien rinde más en el trabajo o el estudio. Por eso recomiendo no saltarse nunca el desayuno."',
+      texto:'¿Qué conector completa mejor el espacio para añadir otra razón?',
+      opciones:[
+        {t:'Pero',ok:false},
+        {t:'Además',ok:true},
+        {t:'Primero',ok:false},
+        {t:'Sin embargo',ok:false}
+      ],
+      explica:'"Además" es el conector adecuado para añadir una segunda razón en un texto de opinión. "Pero" y "Sin embargo" indican contraste; "Primero" indica secuencia temporal.'
+    }
+  ];
+
+  var resueltas={};
+  var aciertos=0;
+  var cont=document.getElementById('preguntas-quiz4');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-quiz';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      contextoHtml+
+      '<div class="opciones-quiz">'+opcHtml+'</div>'+
+      '<div class="retro-quiz" id="retro-q4-'+idx+'"></div>';
+
+    cont.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-quiz');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltas[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+          var retro=document.getElementById('retro-q4-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-quiz4');
+    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
+    if(aciertos===preguntas.length){
+      el.innerHTML='🎉 ¡Lección 7.2 dominada! Aciertos: '+aciertos+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

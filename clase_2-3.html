@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 3: Palabras de uso frecuente y fluidez inicial</title>
+<style>
+  :root{
+    --cp:#0089cd;
+    --cp-claro:#e3f2fd;
+    --cp-oscuro:#005a8a;
+    --acento:#ff8c42;
+    --texto:#1a2332;
+    --fondo:#fafbfc;
+    --gris:#6b7785;
+    --gris-claro:#eef1f4;
+    --frecuente:#5e35b1;
+    --frecuente-claro:#ede7f6;
+    --bisilaba:#00897b;
+    --bisilaba-clara:#e0f2f1;
+    --sujeto:#c2185b;
+    --predicado:#1b5e20;
+    --exito:#2e7d32;
+    --error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Poppins','Segoe UI',Arial,sans-serif;
+    line-height:1.7;
+    color:var(--texto);
+    background:var(--fondo);
+    max-width:960px;
+    margin:0 auto;
+    padding:24px 18px;
+  }
+  h1{
+    color:var(--cp-oscuro);
+    border-bottom:4px solid var(--cp);
+    padding-bottom:14px;
+    font-size:1.85rem;
+    margin-bottom:8px;
+  }
+  .subtitulo{
+    color:var(--gris);
+    font-style:italic;
+    margin-top:0;
+    margin-bottom:24px;
+    font-size:1.05rem;
+  }
+  h2{
+    color:var(--cp-oscuro);
+    border-left:6px solid var(--cp);
+    padding-left:14px;
+    margin-top:32px;
+    font-size:1.4rem;
+  }
+  h3{
+    color:var(--cp);
+    margin-top:24px;
+    font-size:1.15rem;
+  }
+  .caja-objetivos{
+    background:var(--cp-claro);
+    border-left:6px solid var(--cp);
+    padding:18px 22px;
+    border-radius:8px;
+    margin:18px 0 28px 0;
+  }
+  .caja-objetivos h3{margin-top:0;color:var(--cp-oscuro)}
+  .caja-tiempo{
+    display:inline-block;
+    background:var(--acento);
+    color:#fff;
+    padding:4px 12px;
+    border-radius:14px;
+    font-size:0.85rem;
+    font-weight:600;
+    margin-left:10px;
+    vertical-align:middle;
+  }
+  details{
+    background:#fff;
+    border:1px solid #d6dde4;
+    border-radius:10px;
+    margin:14px 0;
+    padding:0;
+    overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,0.04);
+  }
+  details[open]{
+    border-color:var(--cp);
+    box-shadow:0 3px 10px rgba(0,137,205,0.12);
+  }
+  summary{
+    cursor:pointer;
+    padding:16px 20px;
+    font-weight:600;
+    color:var(--cp-oscuro);
+    background:var(--gris-claro);
+    list-style:none;
+    user-select:none;
+    font-size:1.05rem;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::before{
+    content:'▶';
+    display:inline-block;
+    margin-right:10px;
+    color:var(--cp);
+    transition:transform 0.25s;
+    font-size:0.85rem;
+  }
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{
+    background:var(--cp-claro);
+    border-bottom:2px solid var(--cp);
+  }
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:16px 0;
+  }
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{
+    border-radius:10px;
+    padding:16px 18px;
+    border:2px solid;
+  }
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{
+    background:#fffbe6;
+    border-left:5px solid #f4c430;
+    padding:12px 18px;
+    border-radius:6px;
+    margin:14px 0;
+  }
+  .tip strong{color:#8a6d00}
+  .ejercicio{
+    background:#f3f9f3;
+    border:2px dashed #4caf50;
+    border-radius:10px;
+    padding:18px 22px;
+    margin:20px 0;
+  }
+  .ejercicio h4{color:#2e7d32;margin-top:0}
+  .botones{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:14px 0;
+  }
+  .btn{
+    padding:10px 22px;
+    border:none;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:0.95rem;
+    transition:all 0.2s;
+  }
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .btn-sonido{
+    background:var(--acento);
+    color:#fff;
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:0.95rem;
+  }
+  .btn-sonido:hover{background:#e07020}
+  .btn-sonido::before{content:'🔊 ';margin-right:4px}
+  .firma{
+    margin-top:40px;
+    padding-top:18px;
+    border-top:2px solid var(--gris-claro);
+    text-align:center;
+    color:var(--gris);
+    font-style:italic;
+    font-size:0.9rem;
+  }
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{
+    content:'➜';
+    position:absolute;
+    left:0;
+    color:var(--cp);
+    font-weight:700;
+  }
+  .palabra-clave{
+    background:linear-gradient(transparent 60%,#ffeb3b 60%);
+    padding:0 4px;
+    font-weight:600;
+  }
+
+  /* === Tarjetas de palabras frecuentes (estilo "flashcard") === */
+  .mural-frecuentes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:12px;
+    margin:18px 0;
+  }
+  .palabra-frec{
+    background:linear-gradient(135deg,var(--frecuente) 0%,#7e57c2 100%);
+    color:#fff;
+    padding:18px 8px;
+    border-radius:10px;
+    text-align:center;
+    font-family:'Georgia',serif;
+    font-size:1.5rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:all 0.2s;
+    box-shadow:0 3px 8px rgba(94,53,177,0.25);
+    user-select:none;
+  }
+  .palabra-frec:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 14px rgba(94,53,177,0.4);
+  }
+  .palabra-frec:active{transform:translateY(0)}
+
+  /* === Fluidez: tres pilares === */
+  .pilares-fluidez{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin:18px 0;
+  }
+  @media(max-width:640px){.pilares-fluidez{grid-template-columns:1fr}}
+  .pilar{
+    background:#fff;
+    border-top:5px solid;
+    border-radius:10px;
+    padding:18px;
+    text-align:center;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+  }
+  .pilar h4{margin-top:0}
+  .pilar.velocidad{border-color:#e91e63}
+  .pilar.velocidad h4{color:#e91e63}
+  .pilar.precision{border-color:#1976d2}
+  .pilar.precision h4{color:#1976d2}
+  .pilar.prosodia{border-color:#388e3c}
+  .pilar.prosodia h4{color:#388e3c}
+  .pilar .emoji-grande{
+    font-size:2.5rem;
+    display:block;
+    margin-bottom:8px;
+  }
+
+  /* === Lectura modelo (en eco y a coro) === */
+  .caja-lectura{
+    background:#fff;
+    border:2px solid var(--cp);
+    border-radius:10px;
+    padding:18px 22px;
+    margin:14px 0;
+  }
+  .frase-modelo{
+    font-family:'Georgia',serif;
+    font-size:1.3rem;
+    color:var(--cp-oscuro);
+    margin:10px 0;
+    padding:10px 14px;
+    background:var(--cp-claro);
+    border-radius:6px;
+  }
+  .botones-lectura{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:10px;
+    justify-content:center;
+  }
+
+  /* === Frases de apoyo === */
+  .frase-apoyo{
+    background:#fff;
+    border-left:5px solid var(--cp);
+    padding:14px 18px;
+    margin:12px 0;
+    border-radius:6px;
+    font-family:'Georgia',serif;
+    font-size:1.2rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .palabra-frecuente{
+    background:var(--frecuente-claro);
+    color:var(--frecuente);
+    padding:2px 8px;
+    border-radius:4px;
+    font-weight:700;
+    box-shadow:0 -3px 0 var(--frecuente) inset;
+  }
+  .palabra-bisilaba{
+    background:var(--bisilaba-clara);
+    color:var(--bisilaba);
+    padding:2px 8px;
+    border-radius:4px;
+    font-weight:700;
+    box-shadow:0 -3px 0 var(--bisilaba) inset;
+  }
+  .leyenda-colores{
+    display:flex;
+    gap:18px;
+    justify-content:center;
+    margin:14px 0;
+    flex-wrap:wrap;
+    font-size:0.95rem;
+  }
+  .leyenda-colores span{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .leyenda-colores .punto{
+    width:14px;
+    height:14px;
+    border-radius:3px;
+    display:inline-block;
+  }
+
+  /* === Análisis sujeto/predicado === */
+  .oracion-analizada{
+    background:#fff;
+    border:2px solid var(--gris-claro);
+    border-radius:10px;
+    padding:14px 18px;
+    margin:12px 0;
+    font-family:'Georgia',serif;
+    font-size:1.2rem;
+    text-align:center;
+  }
+  .marca-sujeto{
+    color:var(--sujeto);
+    font-weight:700;
+    border-bottom:3px solid var(--sujeto);
+  }
+  .marca-predicado{
+    color:var(--predicado);
+    font-weight:700;
+    border-bottom:3px solid var(--predicado);
+  }
+
+  /* === Ejercicio constructor de frase === */
+  .constructor-frase{
+    background:#fff;
+    border:2px solid var(--cp);
+    border-radius:10px;
+    padding:18px;
+    margin:14px 0;
+  }
+  .palabras-disponibles{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin:14px 0;
+    padding:14px;
+    background:var(--gris-claro);
+    border-radius:8px;
+  }
+  .palabra-elegir{
+    padding:8px 14px;
+    border-radius:8px;
+    font-family:'Georgia',serif;
+    font-size:1.1rem;
+    font-weight:700;
+    cursor:pointer;
+    border:none;
+    box-shadow:0 2px 4px rgba(0,0,0,0.12);
+    transition:transform 0.15s;
+    font-family:inherit;
+  }
+  .palabra-elegir.frec-tipo{
+    background:var(--frecuente);
+    color:#fff;
+  }
+  .palabra-elegir.bisil-tipo{
+    background:var(--bisilaba);
+    color:#fff;
+  }
+  .palabra-elegir:hover{transform:translateY(-2px)}
+  .palabra-elegir.usada{opacity:0.3;cursor:default}
+  .area-frase{
+    min-height:60px;
+    background:#f9f9f9;
+    border:3px dashed var(--cp);
+    border-radius:8px;
+    padding:14px;
+    display:flex;
+    gap:6px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    font-family:'Georgia',serif;
+    font-size:1.2rem;
+  }
+  .area-frase:empty::before{
+    content:'(toca palabras para armar una frase)';
+    color:var(--gris);
+    font-style:italic;
+    font-size:0.95rem;
+  }
+  .palabra-en-frase{
+    padding:6px 10px;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .palabra-en-frase.frec-tipo{
+    background:var(--frecuente-claro);
+    color:var(--frecuente);
+    font-weight:700;
+  }
+  .palabra-en-frase.bisil-tipo{
+    background:var(--bisilaba-clara);
+    color:var(--bisilaba);
+    font-weight:700;
+  }
+
+  .feedback{
+    margin-top:14px;
+    padding:12px 16px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:600;
+    min-height:20px;
+  }
+  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+  .neutral{background:#fff3cd;color:#856404;border:1px solid #ffeaa7}
+
+  /* === Resumen del Tema 2 === */
+  .resumen-tema{
+    background:linear-gradient(135deg,#fff3e0 0%,#ffe0b2 100%);
+    border:2px solid var(--acento);
+    border-radius:10px;
+    padding:20px 24px;
+    margin:24px 0;
+  }
+  .resumen-tema h3{
+    color:#b35316;
+    margin-top:0;
+  }
+  .escalera{
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:8px;
+    margin:18px 0;
+  }
+  .escalera-paso{
+    background:#fff;
+    border:2px solid var(--cp);
+    border-radius:8px 8px 0 0;
+    padding:12px 16px;
+    text-align:center;
+    font-weight:700;
+    color:var(--cp-oscuro);
+    box-shadow:0 -2px 6px rgba(0,0,0,0.08);
+  }
+  .escalera-paso:nth-child(1){min-height:90px}
+  .escalera-paso:nth-child(2){min-height:120px}
+  .escalera-paso:nth-child(3){min-height:150px;background:#fff3e0;border-color:var(--acento);color:#b35316}
+  .escalera-paso .numero{
+    display:block;
+    font-size:1.6rem;
+    color:var(--acento);
+    margin-bottom:6px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Clase 3: Palabras de uso frecuente y fluidez inicial</h1>
+<p class="subtitulo">El motor de la lectura · Tema 2, semana 2 · Nivel 1</p>
+
+<div class="caja-objetivos">
+  <h3>🎯 Objetivo de la clase</h3>
+  <p style="margin-bottom:0">Reconocer <strong>palabras de alta frecuencia</strong> de forma automática y unirlas a las palabras decodificadas para crear frases con <strong>fluidez básica</strong>.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Asere, hoy cerramos el Tema 2 y vamos a sentir cómo se acomoda todo lo aprendido. Hasta ahora:</p>
+
+<ul class="lista-bonita">
+  <li>En la Clase 1 entrenaste el <strong>oído</strong> con sílabas, rimas y fonemas.</li>
+  <li>En la Clase 2 aprendiste a <strong>decodificar</strong> palabras de 1 y 2 sílabas.</li>
+  <li>Hoy le vamos a poner <strong>velocidad y naturalidad</strong> a esa lectura.</li>
+</ul>
+
+<p>El secreto está en dos cosas. Primero, hay un grupo de palabras que aparecen <em>todo el tiempo</em> en el español; si las memorizas de un solo golpe, te ahorras el trabajo de decodificarlas. Segundo, hay técnicas de práctica que te ayudan a que tu voz suene natural, no como un robot. <strong>Vamos a verlas.</strong></p>
+
+<details open>
+<summary>1. Introducción: ¿qué son las palabras de alta frecuencia? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Las palabras que aparecen todo el tiempo</h3>
+
+<p>En el idioma español, hay un puñado de palabras que se repiten muchísimo. Tan seguido, que si te detienes a decodificarlas sonido por sonido cada vez, tu lectura se vuelve lenta y cansada. La estrategia mejor es <strong>memorizarlas visualmente</strong>: ver la palabra y reconocerla al instante, como cuando ves la cara de un amigo y sabes quién es sin tener que pensarlo.</p>
+
+<p>A estas se les llama <span class="palabra-clave">palabras de alta frecuencia</span> o <span class="palabra-clave">palabras frecuentes</span>.</p>
+
+<h3>Algunas palabras frecuentes en español</h3>
+
+<p>Aquí tienes las más comunes. Haz clic en cada tarjeta para escucharla. Léelas todas varias veces hasta que tu vista las reconozca de un golpe:</p>
+
+<div class="mural-frecuentes">
+  <div class="palabra-frec" onclick="hablar('el')">el</div>
+  <div class="palabra-frec" onclick="hablar('la')">la</div>
+  <div class="palabra-frec" onclick="hablar('de')">de</div>
+  <div class="palabra-frec" onclick="hablar('un')">un</div>
+  <div class="palabra-frec" onclick="hablar('una')">una</div>
+  <div class="palabra-frec" onclick="hablar('para')">para</div>
+  <div class="palabra-frec" onclick="hablar('tú')">tú</div>
+  <div class="palabra-frec" onclick="hablar('yo')">yo</div>
+  <div class="palabra-frec" onclick="hablar('con')">con</div>
+  <div class="palabra-frec" onclick="hablar('en')">en</div>
+  <div class="palabra-frec" onclick="hablar('lado')">lado</div>
+  <div class="palabra-frec" onclick="hablar('otro')">otro</div>
+  <div class="palabra-frec" onclick="hablar('mucho')">mucho</div>
+  <div class="palabra-frec" onclick="hablar('que')">que</div>
+  <div class="palabra-frec" onclick="hablar('por')">por</div>
+  <div class="palabra-frec" onclick="hablar('mi')">mi</div>
+</div>
+
+<div class="tip">
+  <strong>💡 Estrategia:</strong> Pídele a alguien de tu familia (o usa los botones de audio) que te diga estas palabras al azar. Tú apuntas a la palabra correcta. Cuando puedas hacerlo sin equivocarte y rápido, ya las dominaste.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Estrategias de lectura para la fluidez <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué es la fluidez?</h3>
+
+<p>La <span class="palabra-clave">fluidez</span> en la lectura no es solo leer rápido. Es leer <strong>bien</strong>. Tiene tres componentes que trabajan juntos:</p>
+
+<div class="pilares-fluidez">
+  <div class="pilar velocidad">
+    <span class="emoji-grande">⚡</span>
+    <h4>Velocidad</h4>
+    <p style="margin-bottom:0;font-size:0.95rem">Leer a un ritmo cómodo, sin trabarse mucho. No es una carrera.</p>
+  </div>
+  <div class="pilar precision">
+    <span class="emoji-grande">🎯</span>
+    <h4>Precisión</h4>
+    <p style="margin-bottom:0;font-size:0.95rem">Leer las palabras correctamente, sin inventar ni saltarse letras.</p>
+  </div>
+  <div class="pilar prosodia">
+    <span class="emoji-grande">🎵</span>
+    <h4>Prosodia</h4>
+    <p style="margin-bottom:0;font-size:0.95rem">La entonación: subir y bajar la voz, hacer pausas en las comas y puntos.</p>
+  </div>
+</div>
+
+<p>Si lees rápido pero te equivocas, no hay fluidez. Si lees con precisión pero monótono como un robot, tampoco. Los tres pilares trabajan en equipo.</p>
+
+<h3>Dos técnicas para entrenar la fluidez</h3>
+
+<p>Hay dos técnicas muy útiles que vamos a usar:</p>
+
+<div class="caja-lectura">
+  <h3 style="margin-top:0">🦜 Lectura en eco</h3>
+  <p>El profesor (o el audio) lee una frase con buena entonación. Tú la repites exactamente igual, imitando hasta los gestos de la voz. Como un loro elegante.</p>
+
+  <p style="font-weight:600;color:var(--cp-oscuro);margin-top:14px">Prueba con estas frases. Primero escucha, después repítelas tú:</p>
+
+  <div class="frase-modelo">Hoy es un día bonito.</div>
+  <div class="botones-lectura">
+    <button type="button" class="btn btn-sonido" onclick="hablar('Hoy es un día bonito.')">Escuchar modelo</button>
+  </div>
+
+  <div class="frase-modelo">¿Tú quieres un café?</div>
+  <div class="botones-lectura">
+    <button type="button" class="btn btn-sonido" onclick="hablar('¿Tú quieres un café?')">Escuchar modelo</button>
+  </div>
+
+  <div class="frase-modelo">¡Qué buena pelota tira ese jugador!</div>
+  <div class="botones-lectura">
+    <button type="button" class="btn btn-sonido" onclick="hablar('¡Qué buena pelota tira ese jugador!')">Escuchar modelo</button>
+  </div>
+</div>
+
+<div class="caja-lectura" style="border-color:var(--acento)">
+  <h3 style="margin-top:0;color:#b35316">👥 Lectura a coro</h3>
+  <p>Todos leen al mismo tiempo, en voz alta. Es como cantar el himno: si tú vas más despacio, te apoyas en los demás; si vas más rápido, los demás te frenan. Al final, todos llegan al mismo ritmo.</p>
+
+  <p style="font-weight:600;color:var(--cp-oscuro);margin-top:14px">Esta versión es para hacerla con tus compañeros. Aquí te dejamos las frases para practicar:</p>
+
+  <div class="frase-modelo">El sol sale por el este.</div>
+  <div class="frase-modelo">Mi mamá hace un café muy rico.</div>
+  <div class="frase-modelo">Los niños juegan en el parque del barrio.</div>
+
+  <div class="botones-lectura">
+    <button type="button" class="btn btn-sonido" onclick="leerCoro()">Escuchar las tres seguidas</button>
+  </div>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor lee una frase con entonación marcada. La clase entera la repite (lectura en eco). Después, el profesor da la señal y todos leen una lista a la vez (lectura a coro). Si te trabas, sigue: nadie va a notar.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>El profesor lee por el micrófono. Tú repites en voz alta en tu casa. Para la lectura a coro, el profesor cuenta "uno, dos, tres" y todos leen al mismo tiempo con micrófono encendido. Te vas a divertir.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: de palabras a oraciones organizadas <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Frases de apoyo: ahora todo se conecta</h3>
+
+<p>Ahora vamos a unir las dos clases anteriores. Tomamos las <strong>palabras frecuentes</strong> de hoy y las <strong>palabras bisílabas</strong> que decodificamos en la Clase 2, y armamos <span class="palabra-clave">frases de apoyo</span>.</p>
+
+<p>Las frases de apoyo son oraciones <strong>simples y repetitivas</strong> que te ayudan a leer sin sonar como robot. La estructura es siempre parecida, y eso le quita esfuerzo a tu cerebro para que pueda concentrarse en la entonación.</p>
+
+<div class="leyenda-colores">
+  <span><span class="punto" style="background:var(--frecuente)"></span> Palabra frecuente (de memoria)</span>
+  <span><span class="punto" style="background:var(--bisilaba)"></span> Palabra bisílaba (decodificada)</span>
+</div>
+
+<h3>Ejemplos de frases de apoyo</h3>
+
+<div class="frase-apoyo">
+  <div>
+    <span class="palabra-frecuente">Yo</span>
+    <span class="palabra-bisilaba">veo</span>
+    <span class="palabra-frecuente">un</span>
+    <span class="palabra-bisilaba">perro</span>.
+  </div>
+  <button type="button" class="btn btn-sonido" onclick="hablar('Yo veo un perro.')">Escuchar</button>
+</div>
+
+<div class="frase-apoyo">
+  <div>
+    <span class="palabra-frecuente">Yo</span>
+    <span class="palabra-bisilaba">quiero</span>
+    <span class="palabra-frecuente">la</span>
+    <span class="palabra-bisilaba">leche</span>.
+  </div>
+  <button type="button" class="btn btn-sonido" onclick="hablar('Yo quiero la leche.')">Escuchar</button>
+</div>
+
+<div class="frase-apoyo">
+  <div>
+    <span class="palabra-frecuente">Tú</span>
+    <span class="palabra-bisilaba">tienes</span>
+    <span class="palabra-frecuente">una</span>
+    <span class="palabra-bisilaba">bota</span>.
+  </div>
+  <button type="button" class="btn btn-sonido" onclick="hablar('Tú tienes una bota.')">Escuchar</button>
+</div>
+
+<div class="frase-apoyo">
+  <div>
+    <span class="palabra-frecuente">El</span>
+    <span class="palabra-bisilaba">bebé</span>
+    <span class="palabra-bisilaba">toma</span>
+    <span class="palabra-frecuente">la</span>
+    <span class="palabra-bisilaba">leche</span>.
+  </div>
+  <button type="button" class="btn btn-sonido" onclick="hablar('El bebé toma la leche.')">Escuchar</button>
+</div>
+
+<h3>Conexión con el tema anterior</h3>
+
+<p>¿Te acuerdas de la primera lección, cuando aprendimos que toda oración tiene <strong>sujeto</strong> y <strong>predicado</strong>? Pues mira: estas frases de apoyo también lo tienen. La información sigue fluyendo de <strong>izquierda a derecha</strong>, y cada frase tiene sentido completo.</p>
+
+<div class="oracion-analizada">
+  <span class="marca-sujeto">Yo</span> &nbsp;<span class="marca-predicado">veo un perro</span>.
+</div>
+
+<div class="oracion-analizada">
+  <span class="marca-sujeto">El bebé</span> &nbsp;<span class="marca-predicado">toma la leche</span>.
+</div>
+
+<p style="text-align:center;color:var(--gris);font-style:italic">¿Quién? → sujeto · ¿Qué hace? → predicado</p>
+
+<div class="ejercicio">
+  <h4>🎯 Constructor de frases de apoyo</h4>
+  <p style="text-align:center">Toca palabras (en orden de izquierda a derecha) para armar una frase. Después escúchala.</p>
+
+  <div class="constructor-frase">
+    <p style="margin:0 0 8px 0;font-weight:600;color:var(--frecuente)">Palabras frecuentes:</p>
+    <div class="palabras-disponibles" style="background:var(--frecuente-claro)" id="palabras-frec">
+      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="Yo">Yo</button>
+      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="Tú">Tú</button>
+      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="El">El</button>
+      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="La">La</button>
+      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="un">un</button>
+      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="una">una</button>
+      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="con">con</button>
+      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="mucho">mucho</button>
+    </div>
+
+    <p style="margin:14px 0 8px 0;font-weight:600;color:var(--bisilaba)">Palabras bisílabas:</p>
+    <div class="palabras-disponibles" style="background:var(--bisilaba-clara)" id="palabras-bisil">
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="veo">veo</button>
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="quiero">quiero</button>
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="tomo">tomo</button>
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="leche">leche</button>
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="perro">perro</button>
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="bota">bota</button>
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="boca">boca</button>
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="bebé">bebé</button>
+      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="taxi">taxi</button>
+    </div>
+
+    <p style="margin:14px 0 8px 0;font-weight:600;color:var(--cp-oscuro)">Tu frase:</p>
+    <div class="area-frase" id="area-frase"></div>
+
+    <div class="botones">
+      <button type="button" class="btn btn-primario" id="btn-leer-frase">🔊 Leer mi frase</button>
+      <button type="button" class="btn btn-secundario" id="btn-limpiar-frase">Limpiar</button>
+    </div>
+
+    <div class="feedback" id="feedback-frase"></div>
+  </div>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor te entrega tarjetas con palabras frecuentes (de un color) y palabras bisílabas (de otro). En tu pupitre o en grupo, las combinan para formar frases de apoyo y las leen en voz alta.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>Usa el constructor digital de arriba. Arma al menos cinco frases distintas. Léelas en voz alta. Si te animas, copia tres en el chat para que el profesor las vea.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre y evaluación del Tema 2 <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El motor de la lectura</h3>
+
+<p>Acabas de subir las tres escaleras del Tema 2. Mira lo que has logrado:</p>
+
+<div class="escalera">
+  <div class="escalera-paso">
+    <span class="numero">1</span>
+    Sonidos<br>(Clase 1)
+  </div>
+  <div class="escalera-paso">
+    <span class="numero">2</span>
+    Decodificación<br>(Clase 2)
+  </div>
+  <div class="escalera-paso">
+    <span class="numero">3</span>
+    Fluidez<br>(Clase 3)
+  </div>
+</div>
+
+<p style="text-align:center;font-style:italic;color:var(--gris)">Sonidos → letras → palabras → frases con sentido</p>
+
+<div class="resumen-tema">
+  <h3>🚀 Lo que esto significa para tu GED</h3>
+  <p>Dominar estos tres pasos (los sonidos, la decodificación de sílabas y la memorización de palabras frecuentes) <strong>es el verdadero motor</strong> que te va a permitir leer y comprender los textos más complejos que vas a encontrar en el resto de tu preparación para el GED: artículos de historia, textos científicos, instrucciones, problemas de razonamiento.</p>
+  <p style="margin-bottom:0">Sin este motor, la lectura se vuelve un esfuerzo gigante. Con este motor, leer se vuelve algo natural, y entonces puedes concentrarte en <em>entender</em> en lugar de en <em>descifrar</em>.</p>
+</div>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h3 style="color:#b35316">✅ Autoevaluación del Tema 2</h3>
+  <ul class="lista-bonita">
+    <li>¿Reconoces 10 palabras frecuentes sin tener que decodificarlas sonido por sonido?</li>
+    <li>¿Puedes leer palabras bisílabas (como "mesa", "pato", "tigre") sin pausa larga entre sílabas?</li>
+    <li>¿Eres capaz de leer una frase de apoyo con entonación (no como robot)?</li>
+  </ul>
+  <p style="margin-bottom:0"><strong>Si contestaste "sí" a las tres, dominaste el Tema 2.</strong> Si todavía te cuestan algunas, no te preocupes: vuelve a esta página cuantas veces necesites y practica.</p>
+</div>
+
+<div class="tip">
+  <strong>📅 Hacia adelante:</strong> Con el Tema 2 ya en tu mochila, en las próximas clases vamos a leer textos cortos completos, identificar la idea principal y empezar a hacer preguntas de comprensión, que es lo que el GED te pedirá.
+</div>
+
+<p style="text-align:center;margin-top:20px;font-style:italic;color:var(--cp-oscuro)">Recuerda revisar todos los materiales y tareas en <strong>brightspace.ccc.edu</strong>.</p>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // ============== Síntesis de voz ==============
+  window.hablar=function(texto,velocidad){
+    if(!('speechSynthesis' in window)){
+      alert('Tu navegador no soporta la reproducción de audio. Usa Chrome, Edge o Safari.');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(texto);
+    u.lang='es-ES';
+    u.rate=velocidad||0.9;
+    u.pitch=1;
+    var voces=window.speechSynthesis.getVoices();
+    for(var i=0;i<voces.length;i++){
+      if(voces[i].lang.indexOf('es')===0){
+        u.voice=voces[i];
+        break;
+      }
+    }
+    window.speechSynthesis.speak(u);
+  };
+  if('speechSynthesis' in window){
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged=function(){
+      window.speechSynthesis.getVoices();
+    };
+  }
+
+  // ============== Leer las 3 frases del coro seguidas ==============
+  window.leerCoro=function(){
+    var frases=[
+      'El sol sale por el este.',
+      'Mi mamá hace un café muy rico.',
+      'Los niños juegan en el parque del barrio.'
+    ];
+    var idx=0;
+    function siguiente(){
+      if(idx>=frases.length)return;
+      var u=new SpeechSynthesisUtterance(frases[idx]);
+      u.lang='es-ES';
+      u.rate=0.85;
+      var voces=window.speechSynthesis.getVoices();
+      for(var i=0;i<voces.length;i++){
+        if(voces[i].lang.indexOf('es')===0){u.voice=voces[i];break}
+      }
+      u.onend=function(){
+        idx++;
+        setTimeout(siguiente,600);
+      };
+      window.speechSynthesis.speak(u);
+    }
+    window.speechSynthesis.cancel();
+    siguiente();
+  };
+
+  // ============== Constructor de frases ==============
+  var areaFrase=document.getElementById('area-frase');
+  var feedback=document.getElementById('feedback-frase');
+  var palabrasDisp=document.querySelectorAll('.palabra-elegir');
+  var fraseConstruida=[];
+
+  palabrasDisp.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      if(btn.classList.contains('usada'))return;
+      if(fraseConstruida.length>=8)return;
+      var pal=btn.getAttribute('data-palabra');
+      var tipo=btn.getAttribute('data-tipo');
+      fraseConstruida.push({palabra:pal,tipo:tipo,origen:btn});
+      btn.classList.add('usada');
+      renderFrase();
+      feedback.textContent='';
+      feedback.className='feedback';
+    });
+  });
+
+  function renderFrase(){
+    areaFrase.innerHTML='';
+    fraseConstruida.forEach(function(item,idx){
+      var sp=document.createElement('span');
+      sp.className='palabra-en-frase '+(item.tipo==='frec'?'frec-tipo':'bisil-tipo');
+      sp.textContent=item.palabra;
+      sp.title='Quitar';
+      sp.addEventListener('click',function(){
+        item.origen.classList.remove('usada');
+        fraseConstruida.splice(idx,1);
+        renderFrase();
+      });
+      areaFrase.appendChild(sp);
+    });
+  }
+
+  document.getElementById('btn-leer-frase').addEventListener('click',function(){
+    if(fraseConstruida.length===0){
+      feedback.textContent='Primero arma una frase tocando las palabras.';
+      feedback.className='feedback neutral';
+      return;
+    }
+    var frase=fraseConstruida.map(function(c){return c.palabra}).join(' ');
+    window.hablar(frase+'.',0.85);
+
+    // Verificar que tenga al menos una de cada tipo
+    var tieneFrec=fraseConstruida.some(function(c){return c.tipo==='frec'});
+    var tieneBisil=fraseConstruida.some(function(c){return c.tipo==='bisil'});
+
+    if(tieneFrec && tieneBisil && fraseConstruida.length>=3){
+      feedback.innerHTML='✅ ¡Bestial! "<strong>'+frase+'</strong>" combina palabras frecuentes y bisílabas. Eso es una frase de apoyo.';
+      feedback.className='feedback correcto';
+    }else if(!tieneFrec){
+      feedback.innerHTML='🤔 Te faltó incluir alguna palabra <strong>frecuente</strong> (las moradas). Prueba a agregar una.';
+      feedback.className='feedback neutral';
+    }else if(!tieneBisil){
+      feedback.innerHTML='🤔 Te faltó incluir alguna palabra <strong>bisílaba</strong> (las verdes). Prueba a agregar una.';
+      feedback.className='feedback neutral';
+    }else{
+      feedback.innerHTML='🤔 Tu frase es muy corta. Intenta armar una con al menos 3 palabras.';
+      feedback.className='feedback neutral';
+    }
+  });
+
+  document.getElementById('btn-limpiar-frase').addEventListener('click',function(){
+    fraseConstruida.forEach(function(item){item.origen.classList.remove('usada')});
+    fraseConstruida=[];
+    renderFrase();
+    feedback.textContent='';
+    feedback.className='feedback';
+  });
+})();
+</script>
+
+</body>
+</html>

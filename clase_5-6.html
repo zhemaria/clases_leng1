@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 6: Comparar y contrastar información</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --comparar:#2e7d32;--comparar-claro:#e8f5e9;
+    --contrastar:#c62828;--contrastar-claro:#ffebee;
+    --comun:#7b1fa2;--comun-claro:#f3e5f5;
+    --texto-a:#1565c0;--texto-a-claro:#e3f2fd;
+    --texto-b:#ef6c00;--texto-b-claro:#fff3e0;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Tarjetas comparar / contrastar */
+  .cc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media(max-width:640px){.cc-grid{grid-template-columns:1fr}}
+  .tarjeta-cc{border-radius:10px;padding:16px 20px;border:2px solid;background:#fff}
+  .tarjeta-cc h4{margin-top:0;margin-bottom:8px}
+  .tarj-comp{border-color:var(--comparar);background:var(--comparar-claro)}
+  .tarj-comp h4{color:var(--comparar)}
+  .tarj-cont{border-color:var(--contrastar);background:var(--contrastar-claro)}
+  .tarj-cont h4{color:var(--contrastar)}
+
+  /* Marcas en texto */
+  .marca-comp{background:var(--comparar-claro);color:var(--comparar);padding:1px 6px;border-radius:3px;font-weight:600;font-style:italic}
+  .marca-cont{background:var(--contrastar-claro);color:var(--contrastar);padding:1px 6px;border-radius:3px;font-weight:600;font-style:italic}
+
+  /* Diagrama de Venn SVG */
+  .venn-wrap{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px;margin:18px 0;text-align:center}
+  .venn-wrap svg{max-width:100%;height:auto}
+  .venn-leyenda{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:10px;font-size:0.92rem}
+  .venn-leyenda span{display:inline-flex;align-items:center;gap:6px}
+  .venn-leyenda .punto{width:14px;height:14px;border-radius:50%;display:inline-block;opacity:0.7}
+
+  /* Tabla de conectores */
+  table.tabla-cc{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-cc th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.tabla-cc td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.tabla-cc tr:last-child td{border-bottom:none}
+  table.tabla-cc td:first-child{font-weight:700;width:160px}
+  td.col-comp{color:var(--comparar)}
+  td.col-cont{color:var(--contrastar)}
+
+  /* Dos textos lado a lado */
+  .dos-textos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media(max-width:760px){.dos-textos{grid-template-columns:1fr}}
+  .texto-bloque{border-radius:10px;padding:18px 22px;border:2px solid;font-family:'Georgia',serif;font-size:1rem;line-height:1.7}
+  .texto-bloque h4{font-family:'Poppins',sans-serif;margin-top:0;font-size:1rem}
+  .bloque-a{background:var(--texto-a-claro);border-color:var(--texto-a)}
+  .bloque-a h4{color:var(--texto-a)}
+  .bloque-b{background:var(--texto-b-claro);border-color:var(--texto-b)}
+  .bloque-b h4{color:var(--texto-b)}
+  .texto-bloque p{margin:0 0 10px 0}
+
+  /* Diagrama de Venn rellenable */
+  .venn-rellenable{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .venn-rellenable h4{color:var(--cp-oscuro);margin-top:0;text-align:center}
+  .venn-rell-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
+  @media(max-width:640px){.venn-rell-grid{grid-template-columns:1fr}}
+  .col-venn{border-radius:10px;padding:14px;border:2px solid;background:#fff;min-height:120px}
+  .col-venn h5{margin-top:0;margin-bottom:10px;text-align:center;font-size:0.95rem}
+  .col-venn ul{margin:0;padding-left:20px;font-size:0.92rem;line-height:1.6}
+  .col-venn li{margin-bottom:4px;cursor:pointer;padding:3px 0;border-radius:4px;transition:background 0.2s}
+  .col-venn li:hover{background:rgba(0,0,0,0.04)}
+  .col-venn li.usado{opacity:0.4;text-decoration:line-through}
+  .col-venn-a{border-color:var(--texto-a);background:var(--texto-a-claro)}
+  .col-venn-a h5{color:var(--texto-a)}
+  .col-venn-comun{border-color:var(--comun);background:var(--comun-claro)}
+  .col-venn-comun h5{color:var(--comun)}
+  .col-venn-b{border-color:var(--texto-b);background:var(--texto-b-claro)}
+  .col-venn-b h5{color:var(--texto-b)}
+  .banco-rasgos{background:var(--gris-claro);border-radius:8px;padding:12px;margin-top:14px}
+  .banco-rasgos h5{margin-top:0;margin-bottom:8px;color:var(--cp-oscuro);font-size:0.95rem}
+  .ficha-rasgo{display:inline-block;background:#fff;border:2px solid var(--cp);color:var(--cp-oscuro);padding:6px 12px;border-radius:6px;margin:4px;cursor:pointer;font-size:0.9rem;font-weight:600;transition:all 0.2s}
+  .ficha-rasgo:hover{background:var(--cp-claro)}
+  .ficha-rasgo.activa{transform:scale(1.05);box-shadow:0 0 0 3px var(--acento)}
+  .ficha-rasgo.usada{opacity:0.3;pointer-events:none;text-decoration:line-through}
+
+  /* Quiz comparar/contrastar */
+  .quiz-cc{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .item-q-cc{background:#fafbfc;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:10px 0}
+  .frase-q-cc{font-family:'Georgia',serif;font-size:1.02rem;margin-bottom:10px;line-height:1.6}
+  .opciones-q-cc{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-q-cc{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-q-comp{border-color:var(--comparar);color:var(--comparar)}
+  .btn-q-comp:hover{background:var(--comparar-claro)}
+  .btn-q-cont{border-color:var(--contrastar);color:var(--contrastar)}
+  .btn-q-cont:hover{background:var(--contrastar-claro)}
+  .btn-q-cc.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-q-cc.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .feedback-q-cc{margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.9rem;display:none}
+  .feedback-q-cc.mostrar{display:block}
+  .feedback-q-cc.ok{background:#d4edda;color:#155724}
+  .feedback-q-cc.no{background:#f8d7da;color:#721c24}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Cierre de bloque */
+  .caja-cierre{background:linear-gradient(135deg,var(--cp-claro) 0%,#fff3e0 100%);border:2px solid var(--acento);border-radius:12px;padding:20px 24px;margin:20px 0;text-align:center}
+  .caja-cierre h3{color:var(--cp-oscuro);margin-top:0;border:none;padding:0}
+  .caja-cierre p{margin:8px 0;color:var(--texto)}
+</style>
+</head>
+<body>
+
+<h1>Clase 6: Comparar y contrastar información</h1>
+<p class="subtitulo">Similitudes y diferencias entre dos textos · Nivel 1 · Tema 5, semana 10</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Reconocer <strong>similitudes</strong> (comparación) y <strong>diferencias</strong> (contraste) entre dos ideas o textos sobre el mismo tema, identificar las <strong>palabras de transición</strong> que las señalan y organizar la información en un <strong>diagrama de Venn</strong>.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Llegamos a la última clase del tema. Hasta aquí hemos aprendido a identificar personajes, escenarios, secuencias e instrucciones, y a entender por qué ocurren las cosas. Hoy cerramos con la destreza más exigida en el examen GED: <span class="palabra-clave">comparar y contrastar dos textos</span>.</p>
+
+<p>En el examen, muchas veces se presentan dos pasajes que tratan el mismo tema desde perspectivas distintas. La pregunta no es "¿qué dice cada uno?", sino "¿en qué se <strong>parecen</strong> y en qué se <strong>diferencian</strong>?". Para responder bien necesitamos dos herramientas: el <strong>diagrama de Venn</strong> y el lenguaje de transición.</p>
+
+<details open>
+<summary>1. Comparar y contrastar: dos operaciones distintas <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué significa cada una?</h3>
+
+<div class="cc-grid">
+
+  <div class="tarjeta-cc tarj-comp">
+    <h4>🟰 Comparar</h4>
+    <p>Buscar <strong>similitudes</strong>: en qué se parecen dos textos, dos personajes o dos ideas. La pregunta clave es: <em>¿qué tienen en común?</em></p>
+  </div>
+
+  <div class="tarjeta-cc tarj-cont">
+    <h4>↔️ Contrastar</h4>
+    <p>Buscar <strong>diferencias</strong>: en qué se separan dos textos, dos personajes o dos ideas. La pregunta clave es: <em>¿en qué se diferencian?</em></p>
+  </div>
+
+</div>
+
+<p>Aunque en el habla cotidiana se usa "comparar" para ambas operaciones, en lectura crítica son dos cosas distintas: <strong>comparar busca parecidos; contrastar busca diferencias</strong>. Un buen lector sabe hacer las dos cosas con el mismo texto.</p>
+
+<div class="tip">
+  <strong>💡 Idea central:</strong> No basta con leer dos textos por separado. Compararlos y contrastarlos significa <em>leerlos juntos</em>, prestando atención a los puntos en los que coinciden y a los puntos en los que se separan.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. El diagrama de Venn y el lenguaje de transición <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El diagrama de Venn</h3>
+
+<p>El <span class="palabra-clave">diagrama de Venn</span> es una herramienta gráfica que ayuda a organizar similitudes y diferencias. Consiste en dos círculos que se cruzan en el centro.</p>
+
+<ul class="lista-bonita">
+  <li>En el <strong>círculo de la izquierda</strong> se anotan las características <strong>solo del texto A</strong>.</li>
+  <li>En el <strong>círculo de la derecha</strong> se anotan las características <strong>solo del texto B</strong>.</li>
+  <li>En la <strong>zona del centro</strong> (donde se cruzan) se anotan las características que <strong>comparten ambos</strong>.</li>
+</ul>
+
+<div class="venn-wrap">
+  <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" aria-label="Diagrama de Venn">
+    <circle cx="180" cy="140" r="110" fill="#1565c0" fill-opacity="0.25" stroke="#1565c0" stroke-width="2.5"/>
+    <circle cx="320" cy="140" r="110" fill="#ef6c00" fill-opacity="0.25" stroke="#ef6c00" stroke-width="2.5"/>
+    <text x="115" y="90" font-family="Poppins,sans-serif" font-size="15" font-weight="700" fill="#1565c0" text-anchor="middle">Texto A</text>
+    <text x="115" y="150" font-family="Poppins,sans-serif" font-size="12" fill="#1565c0" text-anchor="middle">Solo A</text>
+    <text x="115" y="170" font-family="Poppins,sans-serif" font-size="11" fill="#1565c0" text-anchor="middle">(diferencias)</text>
+    <text x="385" y="90" font-family="Poppins,sans-serif" font-size="15" font-weight="700" fill="#ef6c00" text-anchor="middle">Texto B</text>
+    <text x="385" y="150" font-family="Poppins,sans-serif" font-size="12" fill="#ef6c00" text-anchor="middle">Solo B</text>
+    <text x="385" y="170" font-family="Poppins,sans-serif" font-size="11" fill="#ef6c00" text-anchor="middle">(diferencias)</text>
+    <text x="250" y="135" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="#6a1b9a" text-anchor="middle">EN COMÚN</text>
+    <text x="250" y="155" font-family="Poppins,sans-serif" font-size="11" fill="#6a1b9a" text-anchor="middle">(similitudes)</text>
+  </svg>
+  <div class="venn-leyenda">
+    <span><span class="punto" style="background:var(--texto-a)"></span> Solo texto A</span>
+    <span><span class="punto" style="background:var(--comun)"></span> En común</span>
+    <span><span class="punto" style="background:var(--texto-b)"></span> Solo texto B</span>
+  </div>
+</div>
+
+<h3>El lenguaje de transición</h3>
+
+<p>Los autores utilizan palabras especiales para señalar cuándo están comparando y cuándo están contrastando. Reconocer estas palabras es la clave para leer este tipo de textos.</p>
+
+<table class="tabla-cc">
+  <thead>
+    <tr>
+      <th>Función</th>
+      <th>Conectores</th>
+      <th>Ejemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="col-comp">Comparar (similitudes)</td>
+      <td>como, al igual que, de la misma manera, análogamente, también, asimismo, de modo similar</td>
+      <td>El perro es un animal doméstico, <span class="marca-comp">al igual que</span> el gato.</td>
+    </tr>
+    <tr>
+      <td class="col-cont">Contrastar (diferencias)</td>
+      <td>sin embargo, pero, en cambio, por el contrario, en contraste, a diferencia de, en lugar de, a pesar de, mientras que</td>
+      <td>El perro suele ser sociable; <span class="marca-cont">sin embargo</span>, el gato prefiere la soledad.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip">
+  <strong>⚠️ Atención:</strong> Los conectores de contraste son más numerosos en español que los de comparación, y muchos son fáciles de confundir. Lea el contexto: si después del conector aparece una característica <em>parecida</em>, es comparación; si aparece una característica <em>opuesta</em>, es contraste.
+</div>
+
+<h3>Dos textos sobre el mismo tema</h3>
+
+<p>Lea los siguientes dos textos breves sobre el debate de la perforación petrolera en el Ártico. Cada uno presenta una posición distinta.</p>
+
+<div class="dos-textos">
+
+  <div class="texto-bloque bloque-a">
+    <h4>📘 Texto A · A favor de la perforación</h4>
+    <p>La perforación en el Ártico podría generar miles de empleos para trabajadores del sector energético. <span class="marca-comp">Al igual que</span> en otras regiones petroleras, el desarrollo de estos yacimientos traería inversión, infraestructura y crecimiento económico para las comunidades cercanas.</p>
+    <p>Además, reduciría la dependencia del petróleo importado, lo cual fortalecería la seguridad energética del país.</p>
+  </div>
+
+  <div class="texto-bloque bloque-b">
+    <h4>📕 Texto B · En contra de la perforación</h4>
+    <p>La perforación en el Ártico representa un riesgo grave para un ecosistema frágil y único en el mundo. <span class="marca-cont">A diferencia de</span> otras regiones, el Ártico tiene una capacidad de recuperación muy limitada frente a un derrame de petróleo.</p>
+    <p>Los pueblos indígenas que habitan la zona, <span class="marca-cont">por el contrario</span>, dependen de la fauna silvestre y se verían directamente afectados.</p>
+  </div>
+
+</div>
+
+<p>Ambos textos hablan del mismo asunto, pero desde posiciones opuestas. Note cómo el primero usa <em>al igual que</em> para comparar con otras regiones, mientras que el segundo usa <em>a diferencia de</em> y <em>por el contrario</em> para marcar contraste.</p>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: completar un diagrama de Venn <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Actividad 1: clasifique cada conector</h3>
+
+<p>Lea cada oración y decida si el conector destacado señala una <strong>similitud</strong> (comparar) o una <strong>diferencia</strong> (contrastar).</p>
+
+<div class="quiz-cc" id="quiz-cc"></div>
+<div class="puntaje" id="puntaje-quiz-cc">Aciertos: 0 / 8</div>
+
+<h3>Actividad 2: complete el diagrama de Venn</h3>
+
+<p>Lea los dos textos siguientes sobre dos formas de transporte urbano. Después, arrastre cada rasgo del banco al lugar correcto del diagrama: solo metro, solo autobús, o en común.</p>
+
+<div class="dos-textos">
+
+  <div class="texto-bloque bloque-a">
+    <h4>🚇 Texto A · El metro</h4>
+    <p>El metro es un sistema de transporte público que circula bajo tierra. Tiene horarios fijos y estaciones predeterminadas. Es <strong>rápido</strong> porque no se ve afectado por el tráfico de la calle, y puede mover miles de pasajeros por hora.</p>
+    <p>Funciona con electricidad y requiere una infraestructura subterránea costosa. El boleto suele tener un precio fijo.</p>
+  </div>
+
+  <div class="texto-bloque bloque-b">
+    <h4>🚌 Texto B · El autobús</h4>
+    <p>El autobús es un sistema de transporte público que circula por las calles de la ciudad. Tiene horarios fijos y paradas predeterminadas. Su velocidad <strong>depende del tráfico</strong>, lo cual puede generar demoras en horas pico.</p>
+    <p>Funciona con combustible (diésel o gas) y su infraestructura es más sencilla y económica. El boleto suele tener un precio fijo.</p>
+  </div>
+
+</div>
+
+<div class="venn-rellenable">
+  <h4>🔄 Coloque cada rasgo donde corresponde</h4>
+  <p style="text-align:center;color:var(--gris);font-size:0.9rem;margin:0 0 12px 0">1. Haga clic en un rasgo del banco. 2. Haga clic en la columna del diagrama donde lo quiere colocar.</p>
+
+  <div class="banco-rasgos">
+    <h5>📦 Banco de rasgos</h5>
+    <div id="banco-rasgos"></div>
+  </div>
+
+  <div class="venn-rell-grid">
+    <div class="col-venn col-venn-a" data-col="a">
+      <h5>🚇 Solo metro</h5>
+      <ul id="col-a"></ul>
+    </div>
+    <div class="col-venn col-venn-comun" data-col="comun">
+      <h5>⚪ En común</h5>
+      <ul id="col-comun"></ul>
+    </div>
+    <div class="col-venn col-venn-b" data-col="b">
+      <h5>🚌 Solo autobús</h5>
+      <ul id="col-b"></ul>
+    </div>
+  </div>
+
+  <div class="botones">
+    <button type="button" class="btn btn-primario" id="btn-verificar-venn">Verificar</button>
+    <button type="button" class="btn btn-secundario" id="btn-reset-venn">Reiniciar</button>
+  </div>
+  <div class="puntaje" id="puntaje-venn"></div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre del tema <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li><strong>Comparar</strong> es buscar similitudes; <strong>contrastar</strong> es buscar diferencias.</li>
+  <li>El <strong>diagrama de Venn</strong> organiza la información en tres zonas: solo A, solo B, y la intersección (lo común).</li>
+  <li>Los conectores de <strong>comparación</strong> incluyen: <em>como, al igual que, de la misma manera, también, asimismo</em>.</li>
+  <li>Los conectores de <strong>contraste</strong> incluyen: <em>sin embargo, pero, en cambio, por el contrario, a diferencia de, mientras que</em>.</li>
+  <li>Esta destreza es decisiva en las secciones de Razonamiento a través de las Artes del Lenguaje y de Estudios Sociales del GED.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irse, revísese</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuál es la diferencia entre comparar y contrastar?</li>
+    <li>¿Para qué sirve la zona central del diagrama de Venn?</li>
+    <li>¿Puede mencionar tres conectores de comparación y tres de contraste?</li>
+    <li>Piense en dos personas que conoce. ¿En qué se parecen? ¿En qué se diferencian?</li>
+  </ul>
+</div>
+
+<div class="caja-cierre">
+  <h3>🎓 Cierre del Tema 5</h3>
+  <p>Felicitaciones por completar este bloque dedicado a la lectura de historias y textos informativos. En estas seis clases aprendió a analizar personajes y escenarios, a seguir el orden cronológico de los eventos, a comprender instrucciones paso a paso, a identificar relaciones de causa y efecto, y a comparar y contrastar dos textos.</p>
+  <p>Estas destrezas no son solo herramientas para aprobar el examen GED: son las bases sólidas que le permitirán enfrentar lecturas más complejas y escribir ensayos efectivos en las semanas siguientes del curso.</p>
+</div>
+
+<div class="tip">
+  <strong>📅 Para el próximo tema:</strong> Pasaremos del análisis lector a la <strong>escritura</strong>. Aprenderemos a estructurar un párrafo claro, con oración temática, oraciones de apoyo y oración de cierre.
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // ===== Actividad 1: Quiz comparar/contrastar =====
+  var preguntasCC=[
+    {frase:'El verano en Chicago es muy húmedo; <em>en cambio</em>, en Denver es bastante seco.',tipo:'contrastar',pista:'<em>"En cambio"</em> introduce una diferencia entre los dos climas.'},
+    {frase:'La manzana es una fruta rica en fibra, <em>al igual que</em> la pera.',tipo:'comparar',pista:'<em>"Al igual que"</em> señala una similitud entre ambas frutas.'},
+    {frase:'El español usa el alfabeto latino; <em>de manera similar</em>, el francés también lo emplea.',tipo:'comparar',pista:'<em>"De manera similar"</em> establece un parecido entre los dos idiomas.'},
+    {frase:'La gasolina contamina mucho; <em>por el contrario</em>, los autos eléctricos generan menos emisiones.',tipo:'contrastar',pista:'<em>"Por el contrario"</em> introduce una diferencia frontal.'},
+    {frase:'Mi hermana estudió enfermería, <em>mientras que</em> mi hermano se graduó de mecánico.',tipo:'contrastar',pista:'<em>"Mientras que"</em> contrasta dos elecciones profesionales distintas.'},
+    {frase:'El café contiene cafeína, <em>así como</em> el té negro.',tipo:'comparar',pista:'<em>"Así como"</em> indica que ambas bebidas comparten la característica.'},
+    {frase:'El examen de matemáticas fue difícil; <em>sin embargo</em>, el de lectura me resultó sencillo.',tipo:'contrastar',pista:'<em>"Sin embargo"</em> marca una diferencia entre las dos experiencias.'},
+    {frase:'Las ciudades grandes ofrecen muchos servicios, <em>asimismo</em>, los pueblos pequeños tienen sus ventajas.',tipo:'comparar',pista:'<em>"Asimismo"</em> añade una semejanza: en ambos lugares hay aspectos valiosos.'}
+  ];
+
+  var aciertosQCC=0;
+  var resueltasQCC={};
+  var contQCC=document.getElementById('quiz-cc');
+
+  preguntasCC.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-q-cc';
+    div.innerHTML=
+      '<div class="frase-q-cc">'+(idx+1)+'. '+item.frase+'</div>'+
+      '<div class="opciones-q-cc">'+
+        '<button type="button" class="btn-q-cc btn-q-comp" data-tipo="comparar">🟰 Comparar</button>'+
+        '<button type="button" class="btn-q-cc btn-q-cont" data-tipo="contrastar">↔️ Contrastar</button>'+
+      '</div>'+
+      '<div class="feedback-q-cc"></div>';
+    contQCC.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-q-cc');
+    var feedback=div.querySelector('.feedback-q-cc');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasQCC[idx])return;
+        var t=b.getAttribute('data-tipo');
+        if(t===item.tipo){
+          b.classList.add('correcta');
+          feedback.className='feedback-q-cc ok mostrar';
+          feedback.innerHTML='✅ Correcto. '+item.pista;
+          resueltasQCC[idx]=true;
+          aciertosQCC++;
+          actualizarPuntajeQCC();
+        }else{
+          b.classList.add('incorrecta');
+          feedback.className='feedback-q-cc no mostrar';
+          feedback.innerHTML='❌ Pregúntese: ¿el conector señala un parecido (comparar) o una diferencia (contrastar)?';
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeQCC(){
+    var el=document.getElementById('puntaje-quiz-cc');
+    el.textContent='Aciertos: '+aciertosQCC+' / '+preguntasCC.length;
+    if(aciertosQCC===preguntasCC.length){
+      el.innerHTML='🎉 ¡Excelente! Aciertos: '+aciertosQCC+' / '+preguntasCC.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // ===== Actividad 2: Diagrama de Venn rellenable =====
+  var rasgos=[
+    {id:'r1',texto:'Circula bajo tierra',col:'a'},
+    {id:'r2',texto:'Circula por las calles',col:'b'},
+    {id:'r3',texto:'Tiene horarios fijos',col:'comun'},
+    {id:'r4',texto:'No le afecta el tráfico',col:'a'},
+    {id:'r5',texto:'Su velocidad depende del tráfico',col:'b'},
+    {id:'r6',texto:'Sistema de transporte público',col:'comun'},
+    {id:'r7',texto:'Funciona con electricidad',col:'a'},
+    {id:'r8',texto:'Funciona con combustible (diésel o gas)',col:'b'},
+    {id:'r9',texto:'El boleto tiene un precio fijo',col:'comun'},
+    {id:'r10',texto:'Infraestructura subterránea costosa',col:'a'},
+    {id:'r11',texto:'Infraestructura sencilla y económica',col:'b'},
+    {id:'r12',texto:'Tiene paradas o estaciones predeterminadas',col:'comun'}
+  ];
+
+  var banco=document.getElementById('banco-rasgos');
+  var fichaActivaR=null;
+  var ubicaciones={};
+
+  function pintarBanco(){
+    banco.innerHTML='';
+    rasgos.forEach(function(r){
+      var b=document.createElement('button');
+      b.type='button';
+      b.className='ficha-rasgo';
+      b.setAttribute('data-id',r.id);
+      b.textContent=r.texto;
+      if(ubicaciones[r.id])b.classList.add('usada');
+      banco.appendChild(b);
+
+      b.addEventListener('click',function(){
+        if(b.classList.contains('usada'))return;
+        if(fichaActivaR)fichaActivaR.classList.remove('activa');
+        if(fichaActivaR===b){
+          fichaActivaR=null;
+        }else{
+          fichaActivaR=b;
+          b.classList.add('activa');
+        }
+      });
+    });
+  }
+  pintarBanco();
+
+  function colocarEnColumna(col){
+    if(!fichaActivaR)return;
+    var id=fichaActivaR.getAttribute('data-id');
+    var texto=fichaActivaR.textContent;
+    ubicaciones[id]=col;
+    fichaActivaR.classList.add('usada');
+    fichaActivaR.classList.remove('activa');
+    fichaActivaR=null;
+
+    var ul=document.getElementById('col-'+col);
+    var li=document.createElement('li');
+    li.setAttribute('data-id',id);
+    li.textContent=texto;
+    li.title='Clic para devolver al banco';
+    li.addEventListener('click',function(){
+      delete ubicaciones[id];
+      li.remove();
+      // Restaurar en banco
+      var f=banco.querySelector('.ficha-rasgo[data-id="'+id+'"]');
+      if(f)f.classList.remove('usada');
+      document.getElementById('puntaje-venn').textContent='';
+    });
+    ul.appendChild(li);
+    document.getElementById('puntaje-venn').textContent='';
+  }
+
+  document.querySelectorAll('.col-venn').forEach(function(c){
+    c.addEventListener('click',function(e){
+      // Solo colocar si hicimos clic en el contenedor (no en un li ya colocado)
+      if(e.target.tagName==='LI')return;
+      var col=c.getAttribute('data-col');
+      colocarEnColumna(col);
+    });
+  });
+
+  document.getElementById('btn-verificar-venn').addEventListener('click',function(){
+    var correctos=0;
+    var incorrectos=0;
+    var sinColocar=0;
+    rasgos.forEach(function(r){
+      var u=ubicaciones[r.id];
+      var li=document.querySelector('.col-venn li[data-id="'+r.id+'"]');
+      if(li)li.style.background='';
+      if(!u){
+        sinColocar++;
+      }else if(u===r.col){
+        correctos++;
+        if(li)li.style.background='#d4edda';
+      }else{
+        incorrectos++;
+        if(li)li.style.background='#f8d7da';
+      }
+    });
+    var el=document.getElementById('puntaje-venn');
+    if(correctos===rasgos.length){
+      el.innerHTML='🎉 ¡Excelente! Colocó los '+rasgos.length+' rasgos en el lugar correcto.';
+      el.style.color='var(--exito)';
+    }else{
+      el.innerHTML='Aciertos: '+correctos+' de '+rasgos.length+'. Errores: '+incorrectos+'. Sin colocar: '+sinColocar+'. Los marcados en rojo están en la columna incorrecta.';
+      el.style.color='var(--acento)';
+    }
+  });
+
+  document.getElementById('btn-reset-venn').addEventListener('click',function(){
+    ubicaciones={};
+    document.getElementById('col-a').innerHTML='';
+    document.getElementById('col-comun').innerHTML='';
+    document.getElementById('col-b').innerHTML='';
+    fichaActivaR=null;
+    pintarBanco();
+    document.getElementById('puntaje-venn').textContent='';
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 1: Predecir y preguntar antes de leer</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --antes:#7b1fa2;--antes-claro:#f3e5f5;
+    --durante:#1565c0;--durante-claro:#e3f2fd;
+    --despues:#e65100;--despues-claro:#fff3e0;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Ciclo de lectura: antes / durante / después */
+  .ciclo-lectura{
+    background:#fff;
+    border:2px solid var(--gris-claro);
+    border-radius:12px;
+    padding:24px 18px;
+    margin:18px 0;
+    position:relative;
+  }
+  .ciclo-lectura::before{
+    content:'';
+    position:absolute;
+    top:50%;
+    left:5%;
+    right:5%;
+    height:4px;
+    background:linear-gradient(90deg,var(--antes) 0%,var(--durante) 50%,var(--despues) 100%);
+    border-radius:2px;
+    z-index:1;
+  }
+  .puntos-ciclo{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    position:relative;
+    z-index:2;
+  }
+  .punto-ciclo{
+    background:#fff;
+    border-radius:10px;
+    padding:14px;
+    text-align:center;
+    border:3px solid;
+  }
+  .punto-ciclo.antes{border-color:var(--antes);background:var(--antes-claro)}
+  .punto-ciclo.antes h4{color:var(--antes)}
+  .punto-ciclo.durante{border-color:var(--durante);background:var(--durante-claro)}
+  .punto-ciclo.durante h4{color:var(--durante)}
+  .punto-ciclo.despues{border-color:var(--despues);background:var(--despues-claro)}
+  .punto-ciclo.despues h4{color:var(--despues)}
+  .punto-ciclo .icono{font-size:2rem;display:block;margin-bottom:6px}
+  .punto-ciclo h4{margin:0 0 6px 0}
+  .punto-ciclo .accion{font-family:'Georgia',serif;font-style:italic;font-size:0.95rem}
+  @media(max-width:640px){.puntos-ciclo{grid-template-columns:1fr}.ciclo-lectura::before{display:none}}
+
+  /* Marcadores */
+  .ant{background:var(--antes-claro);color:var(--antes);padding:1px 6px;border-radius:4px;font-weight:700}
+  .dur{background:var(--durante-claro);color:var(--durante);padding:1px 6px;border-radius:4px;font-weight:700}
+  .des{background:var(--despues-claro);color:var(--despues);padding:1px 6px;border-radius:4px;font-weight:700}
+
+  /* Tabla pistas */
+  table.pistas{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.pistas th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.pistas td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.pistas tr:last-child td{border-bottom:none}
+  table.pistas td:first-child{font-weight:700}
+
+  /* Tarjeta de título misterioso (para predicciones) */
+  .tarjeta-titulo{
+    background:#fff;
+    border:3px dashed var(--antes);
+    border-radius:12px;
+    padding:24px 20px;
+    text-align:center;
+    margin:14px 0;
+  }
+  .tarjeta-titulo .etiqueta{
+    display:inline-block;
+    background:var(--antes);
+    color:#fff;
+    padding:3px 12px;
+    border-radius:10px;
+    font-size:0.8rem;
+    font-weight:600;
+    margin-bottom:10px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .tarjeta-titulo h4{
+    font-family:'Georgia',serif;
+    font-size:1.4rem;
+    color:var(--antes);
+    margin:8px 0;
+  }
+  .tarjeta-titulo .pistas-visuales{
+    color:var(--gris);
+    font-size:0.95rem;
+    font-style:italic;
+    margin-top:8px;
+  }
+
+  /* Ejercicio: clasificar momento (antes/durante/después) */
+  .item-momento{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:12px 0}
+  .frase-momento{font-family:'Georgia',serif;font-size:1.1rem;margin-bottom:10px;text-align:center}
+  .opciones-momento{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-momento{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-momento[data-tipo="antes"]{border-color:var(--antes);color:var(--antes)}
+  .btn-momento[data-tipo="durante"]{border-color:var(--durante);color:var(--durante)}
+  .btn-momento[data-tipo="despues"]{border-color:var(--despues);color:var(--despues)}
+  .btn-momento.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-momento.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Ejercicio: predicciones razonables vs no razonables */
+  .item-prediccion{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:10px 0}
+  .titulo-contexto{background:var(--antes-claro);border-left:4px solid var(--antes);padding:10px 14px;border-radius:6px;margin-bottom:12px;font-style:italic}
+  .titulo-contexto strong{color:var(--antes)}
+  .opciones-prediccion{display:flex;flex-direction:column;gap:8px}
+  .btn-prediccion{padding:10px 14px;border:2px solid var(--cp);background:#fff;color:var(--texto);border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.95rem;text-align:left;transition:all 0.2s}
+  .btn-prediccion:hover{background:var(--cp-claro)}
+  .btn-prediccion.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-prediccion.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error)}
+
+  /* Actividades de la unidad */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+  .badge-rubrica{background:#fff3e0;color:#e65100}
+
+  /* Rúbrica */
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#b35316;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#b35316;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-3{background:#fff8e1}
+  .nivel-2{background:#fff3e0}
+  .nivel-1{background:#ffebee}
+</style>
+</head>
+<body>
+
+<h1>Clase 1: Predecir y preguntar antes de leer</h1>
+<p class="subtitulo">El detective lector se prepara · Nivel 1 · Tema 4, semana 7</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Aprender a <strong>activar los conocimientos previos</strong> y a usar las pistas del texto (título, imágenes, palabras destacadas) para <strong>predecir</strong> de qué tratará la lectura y <strong>formular preguntas</strong> que guíen la comprensión.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>En esta clase iniciamos el estudio de un proceso fundamental para la comprensión lectora: el trabajo del lector <em>antes</em> de comenzar a leer un texto. La comprensión no comienza con la primera palabra del párrafo; comienza desde el momento en que el lector observa el título, las imágenes y las palabras destacadas para <span class="palabra-clave">anticipar</span> el contenido. Al igual que un investigador examina la escena antes de actuar, el lector eficiente prepara su mente antes de entrar al texto. En los próximos cincuenta minutos, usted aprenderá a <strong>predecir</strong> y a <strong>preguntar</strong> antes de leer.</p>
+
+<details open>
+<summary>1. Introducción: el ciclo de la lectura activa <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Tres momentos del buen lector</h3>
+
+<p>El lector eficaz <strong>trabaja con el texto en tres momentos</strong>. Cada momento tiene su propia estrategia. Hoy nos enfocamos en el primer momento: <strong>antes de leer</strong>.</p>
+
+<div class="ciclo-lectura">
+  <div class="puntos-ciclo">
+    <div class="punto-ciclo antes">
+      <span class="icono">🔍</span>
+      <h4>Antes</h4>
+      <p style="margin:0;font-size:0.9rem">Predigo y pregunto</p>
+      <p class="accion">"¿De qué tratará?"</p>
+    </div>
+    <div class="punto-ciclo durante">
+      <span class="icono">📖</span>
+      <h4>Durante</h4>
+      <p style="margin:0;font-size:0.9rem">Aclaro dudas</p>
+      <p class="accion">"¿Qué significa esto?"</p>
+    </div>
+    <div class="punto-ciclo despues">
+      <span class="icono">✍️</span>
+      <h4>Después</h4>
+      <p style="margin:0;font-size:0.9rem">Resumo lo leído</p>
+      <p class="accion">"¿De qué se trató?"</p>
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>💡 Idea clave:</strong> <span class="palabra-clave">Predecir</span> es una anticipación <em>lógica</em>, no una adivinanza al azar. Se basa en pistas reales que el texto te da antes de empezar a leerlo. Cuando predices, tu cerebro <strong>se prepara</strong> para entender mejor.
+</div>
+
+<h3>¿Por qué predecir ayuda?</h3>
+
+<ul class="lista-bonita">
+  <li>Te <strong>mantiene involucrado</strong> con la lectura (querrás saber si acertaste).</li>
+  <li>Le da a tu lectura un <strong>objetivo claro</strong>: confirmar o rechazar tu predicción.</li>
+  <li>Activa lo que <strong>ya sabes</strong> del tema, y eso te ayuda a entender lo nuevo.</li>
+  <li>Convierte la lectura en una <strong>conversación</strong> con el texto, no en algo pasivo.</li>
+</ul>
+
+</div>
+</details>
+
+<details>
+<summary>2. Desarrollo: las pistas que usa el detective lector <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Dónde buscar las pistas</h3>
+
+<p>Antes de leer la primera oración, el detective lector ya tiene <strong>tres fuentes de pistas</strong>:</p>
+
+<table class="pistas">
+  <thead>
+    <tr><th>Pista</th><th>Qué observar</th><th>Qué te dice</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>🏷️ <strong>El título</strong></td>
+      <td>Las palabras del título y subtítulo</td>
+      <td>El tema general del texto</td>
+    </tr>
+    <tr>
+      <td>🖼️ <strong>Las imágenes</strong></td>
+      <td>Fotos, ilustraciones, gráficos, mapas</td>
+      <td>Contexto visual y emoción del texto</td>
+    </tr>
+    <tr>
+      <td>🔤 <strong>Vocabulario destacado</strong></td>
+      <td>Palabras en negrita, cursiva o subtítulos</td>
+      <td>Conceptos clave del contenido</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Modelaje: pensar en voz alta</h3>
+
+<p>Mira cómo el profesor hace una predicción a partir de un título. Este proceso se llama <strong>pensamiento en voz alta</strong> y es el que vas a imitar.</p>
+
+<div class="tarjeta-titulo">
+  <span class="etiqueta">Título a predecir</span>
+  <h4>"Los huracanes del Caribe: cuando la naturaleza ruge"</h4>
+  <p class="pistas-visuales">🖼️ Imagen: una palmera doblada por el viento, cielo gris oscuro</p>
+</div>
+
+<div class="tip" style="border-left-color:var(--antes);background:var(--antes-claro)">
+  <strong style="color:var(--antes)">🗣️ El profesor piensa en voz alta:</strong>
+  <p style="margin:8px 0 0 0">"A ver… veo <em>huracanes</em> y <em>Caribe</em>. Yo sé que en el Caribe hay temporada de huracanes entre junio y noviembre. También veo <em>cuando la naturaleza ruge</em> — eso suena fuerte, peligroso. Y la imagen muestra una palmera casi caída."</p>
+  <p style="margin:8px 0 0 0"><strong>Mi predicción:</strong> "Este texto va a hablar sobre el daño que causan los huracanes en las islas del Caribe. Quizás mencione tormentas famosas como María o Irma."</p>
+  <p style="margin:8px 0 0 0"><strong>Mi pregunta:</strong> "¿Cuál ha sido el huracán más fuerte del Caribe?"</p>
+</div>
+
+<h3>Frases modelo para predecir</h3>
+
+<p>Usa estas frases para empezar tus predicciones. Te dan la estructura, tú pones las pistas:</p>
+
+<table class="pistas">
+  <thead>
+    <tr><th>Frase modelo</th><th>Ejemplo completo</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>"El título me sugiere que…"</td>
+      <td>"…esto se tratará sobre cómo ahorrar dinero."</td>
+    </tr>
+    <tr>
+      <td>"La palabra ___ me hace pensar en…"</td>
+      <td>"La palabra <em>receta</em> me hace pensar en ingredientes y pasos."</td>
+    </tr>
+    <tr>
+      <td>"Creo que el texto va a explicar…"</td>
+      <td>"Creo que el texto va a explicar por qué dormir es importante."</td>
+    </tr>
+    <tr>
+      <td>"Después de leer espero saber…"</td>
+      <td>"Después de leer espero saber cómo se prepara el ajiaco."</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Práctica: ¿antes, durante o después?</h3>
+
+<p>Cada acción de un buen lector pertenece a un momento del ciclo. Clasifícala correctamente.</p>
+
+<div id="ejercicio-momento"></div>
+<div class="puntaje" id="puntaje-momento">Aciertos: 0 / 8</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica de predicciones razonables <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>No toda predicción vale lo mismo</h3>
+
+<p>Una <span class="palabra-clave">predicción razonable</span> se conecta con las pistas del título. Una predicción <em>al azar</em> ignora lo que el texto te muestra. Vamos a practicar el ojo del detective.</p>
+
+<div class="tip">
+  <strong>🎯 Regla del detective:</strong> Toda predicción debe <em>justificarse</em> con al menos una pista del título o de la imagen. Si no puedes decir <em>"pienso esto porque vi…"</em>, no es una predicción, es una adivinanza.
+</div>
+
+<h3>Ejercicio: elige la mejor predicción</h3>
+
+<p>Para cada título, elige la predicción que mejor se conecta con las pistas. Hay solo una correcta por título.</p>
+
+<div id="ejercicio-predicciones"></div>
+<div class="puntaje" id="puntaje-predicciones">Aciertos: 0 / 5</div>
+
+<h3>Actividad oral: "Mis tres preguntas"</h3>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · en parejas (think-pair-share)</h4>
+  <p>El profesor proyectará el título y la imagen de portada de un cuento corto. En parejas, cada estudiante hace tres cosas <strong>antes</strong> de leer:</p>
+  <ul class="lista-bonita">
+    <li><span class="ant">Una predicción</span> sobre el tema del cuento ("Creo que va a tratar de…").</li>
+    <li><span class="ant">Una pregunta</span> que esperas que el cuento te responda ("¿Por qué…?").</li>
+    <li><span class="ant">Una pista</span> que usaste para hacer tu predicción.</li>
+  </ul>
+  <p style="margin-bottom:0">Después comparten con la pareja. ¿Hicieron predicciones parecidas o distintas? ¿Cuál pista usaron más: el título o la imagen?</p>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor proyecta el título en el pizarrón. Los estudiantes escriben sus tres respuestas en una tarjeta de papel y la comparten con su pareja antes de leer juntos el texto.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>El profesor comparte pantalla con el título y la imagen. Los estudiantes responden por el chat o en un documento compartido, luego pasan a salas pequeñas (breakout rooms) en parejas.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre: confirmar, ajustar o rechazar <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>La predicción tiene un riesgo</h3>
+
+<p>Una predicción <strong>no es una respuesta final</strong>. Es una <em>hipótesis</em>. Mientras lees, tu trabajo es comparar lo que predijiste con lo que el texto realmente dice. Hay tres resultados posibles, y los tres son buenos:</p>
+
+<ul class="lista-bonita">
+  <li>✅ <strong>Confirmar</strong> la predicción — el texto coincide con lo que pensabas.</li>
+  <li>🔄 <strong>Ajustar</strong> la predicción — el texto cambia un poco lo que pensabas.</li>
+  <li>❌ <strong>Rechazar</strong> la predicción — el texto va por otro camino.</li>
+</ul>
+
+<div class="tip">
+  <strong>⚠️ No te frustres si fallas:</strong> Lo importante no es <em>acertar</em>, es <strong>mantenerte pensando</strong> mientras lees. Una predicción rechazada significa que aprendiste algo nuevo, y eso vale más que cualquier acierto.
+</div>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Puedes nombrar las tres pistas que usa el detective lector antes de leer?</li>
+    <li>¿Cuál es la diferencia entre una predicción razonable y una adivinanza?</li>
+    <li>Si tu predicción no se confirma, ¿es eso un problema? ¿Por qué?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Vamos a completar el ciclo. Aprenderás a <strong>aclarar</strong> lo que no entiendes <em>durante</em> la lectura, y a <strong>resumir</strong> con tus propias palabras lo que aprendiste <em>después</em> de leer.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Cuento corto auténtico (8–10 oraciones)</h4>
+  <p>El profesor selecciona un cuento corto con vocabulario controlado. Modalidad: <strong>lectura guiada con paradas</strong>:</p>
+  <ul class="lista-bonita">
+    <li><strong>Stop and Predict</strong> — antes de leer, predicción a partir del título y la imagen.</li>
+    <li><strong>Stop and Ask</strong> — durante la lectura, pausas para hacer preguntas.</li>
+    <li><strong>Stop and Summarize</strong> — al final, resumen en una oración.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> "Mis tres preguntas"</h4>
+  <p>En el foro de Brightspace, cada estudiante publica:</p>
+  <ul class="lista-bonita">
+    <li>Una <strong>predicción</strong> sobre el texto leído (antes de leer).</li>
+    <li>Una <strong>pregunta</strong> de comprensión (durante la lectura).</li>
+    <li>Un <strong>resumen</strong> en una sola oración (después de leer).</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-quiz">Quiz</span> 10 preguntas · Brightspace</h4>
+  <p>El quiz de la lección evalúa:</p>
+  <ul class="lista-bonita">
+    <li>Clasificar acciones del lector como <em>antes / durante / después</em> de leer.</li>
+    <li>Identificar una predicción válida frente a una adivinanza.</li>
+    <li>Reconocer una pregunta útil de comprensión.</li>
+    <li>Distinguir un buen resumen de uno incompleto.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Lista de cotejo del foro "Mis tres preguntas"</h4>
+  <p>Cada respuesta del foro se evalúa con esta lista de cotejo (cada criterio: ✓ cumple / ✗ no cumple):</p>
+
+  <table class="rubrica">
+    <thead>
+      <tr>
+        <th>Criterio</th>
+        <th class="nivel-4">Cumple (1 pt)</th>
+        <th class="nivel-1">No cumple (0 pt)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Predicción razonable</td>
+        <td class="nivel-4">Se conecta con alguna pista del título o imagen</td>
+        <td class="nivel-1">Es una adivinanza al azar, sin justificación</td>
+      </tr>
+      <tr>
+        <td>Pregunta de comprensión</td>
+        <td class="nivel-4">Es una pregunta abierta (qué, por qué, cómo)</td>
+        <td class="nivel-1">No es una pregunta o es de sí/no superficial</td>
+      </tr>
+      <tr>
+        <td>Resumen básico</td>
+        <td class="nivel-4">Incluye al menos quién / qué / dónde del texto</td>
+        <td class="nivel-1">No identifica los elementos básicos del texto</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje total:</strong> 3 puntos. Una respuesta completa (3/3) demuestra dominio inicial de las estrategias antes/durante/después.</p>
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Ejercicio 1: clasificar momento (antes / durante / después)
+  var accionesMomento=[
+    {frase:'Miro el título y las imágenes del texto.',correcta:'antes'},
+    {frase:'Escribo un resumen de lo que leí.',correcta:'despues'},
+    {frase:'Me pregunto qué significa una palabra desconocida.',correcta:'durante'},
+    {frase:'Predigo de qué se va a tratar el cuento.',correcta:'antes'},
+    {frase:'Cuento a un compañero lo que aprendí.',correcta:'despues'},
+    {frase:'Pauso y vuelvo a leer una oración que no entendí.',correcta:'durante'},
+    {frase:'Activo lo que ya sé sobre el tema.',correcta:'antes'},
+    {frase:'Identifico las palabras clave mientras leo.',correcta:'durante'}
+  ];
+
+  var resueltasM={};
+  var aciertosM=0;
+  var contM=document.getElementById('ejercicio-momento');
+
+  accionesMomento.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-momento';
+    div.innerHTML=
+      '<div class="frase-momento">"'+item.frase+'"</div>'+
+      '<div class="opciones-momento">'+
+        '<button type="button" class="btn-momento" data-tipo="antes">Antes</button>'+
+        '<button type="button" class="btn-momento" data-tipo="durante">Durante</button>'+
+        '<button type="button" class="btn-momento" data-tipo="despues">Después</button>'+
+      '</div>';
+    contM.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-momento');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasM[idx])return;
+        if(b.getAttribute('data-tipo')===item.correcta){
+          b.classList.add('correcta');
+          resueltasM[idx]=true;
+          aciertosM++;
+          actualizarPuntajeM();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeM(){
+    var el=document.getElementById('puntaje-momento');
+    el.textContent='Aciertos: '+aciertosM+' / '+accionesMomento.length;
+    if(aciertosM===accionesMomento.length){
+      el.innerHTML='🎉 ¡Excelente trabajo! Aciertos: '+aciertosM+' / '+accionesMomento.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Ejercicio 2: predicciones razonables
+  var predicciones=[
+    {
+      titulo:'"Cómo ahorrar dinero en el supermercado"',
+      opciones:[
+        {texto:'El texto va a dar consejos prácticos para gastar menos cuando compras comida.',correcta:true},
+        {texto:'El texto va a hablar de la historia de los supermercados en Cuba.',correcta:false},
+        {texto:'El texto va a contar la vida de un cajero famoso.',correcta:false}
+      ]
+    },
+    {
+      titulo:'"El primer día de Marta en su nuevo trabajo"',
+      opciones:[
+        {texto:'El texto va a explicar cómo se hacen los impuestos.',correcta:false},
+        {texto:'El texto va a contar lo que Marta vivió, sintió o aprendió ese primer día.',correcta:true},
+        {texto:'El texto va a comparar dos países diferentes.',correcta:false}
+      ]
+    },
+    {
+      titulo:'"Por qué dormir 8 horas cambia tu salud"',
+      opciones:[
+        {texto:'El texto va a hablar de recetas de cocina.',correcta:false},
+        {texto:'El texto va a explicar los beneficios del sueño para el cuerpo.',correcta:true},
+        {texto:'El texto va a tratar sobre los sueños y sus significados.',correcta:false}
+      ]
+    },
+    {
+      titulo:'"Receta de la abuela: arroz con pollo"',
+      opciones:[
+        {texto:'El texto va a contar la biografía de una abuela cubana.',correcta:false},
+        {texto:'El texto va a dar los ingredientes y los pasos para preparar arroz con pollo.',correcta:true},
+        {texto:'El texto va a hablar sobre la cría de pollos.',correcta:false}
+      ]
+    },
+    {
+      titulo:'"Las inundaciones de Chicago en 2024"',
+      opciones:[
+        {texto:'El texto va a explicar qué pasó con el agua en Chicago durante el 2024.',correcta:true},
+        {texto:'El texto va a hablar de los rascacielos de Chicago.',correcta:false},
+        {texto:'El texto va a contar la historia de los Bulls de Chicago.',correcta:false}
+      ]
+    }
+  ];
+
+  var resueltasP={};
+  var aciertosP=0;
+  var contP=document.getElementById('ejercicio-predicciones');
+
+  predicciones.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-prediccion';
+    var opcionesHTML=item.opciones.map(function(op,i){
+      return '<button type="button" class="btn-prediccion" data-correcta="'+op.correcta+'">'+op.texto+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="titulo-contexto"><strong>Título:</strong> '+item.titulo+'</div>'+
+      '<div class="opciones-prediccion">'+opcionesHTML+'</div>';
+    contP.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-prediccion');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasP[idx])return;
+        if(b.getAttribute('data-correcta')==='true'){
+          b.classList.add('correcta');
+          resueltasP[idx]=true;
+          aciertosP++;
+          actualizarPuntajeP();
+          botones.forEach(function(other){
+            if(other!==b)other.disabled=true;
+          });
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},600);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeP(){
+    var el=document.getElementById('puntaje-predicciones');
+    el.textContent='Aciertos: '+aciertosP+' / '+predicciones.length;
+    if(aciertosP===predicciones.length){
+      el.innerHTML='🎉 ¡Felicitaciones! Aciertos: '+aciertosP+' / '+predicciones.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

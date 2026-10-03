@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 3: A la caza de la idea principal</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --principal:#c62828;--principal-claro:#ffebee;
+    --secundario:#546e7a;--secundario-claro:#eceff1;
+    --inicio:#2e7d32;--inicio-claro:#e8f5e9;
+    --medio:#1565c0;--medio-claro:#e3f2fd;
+    --final:#6a1b9a;--final-claro:#f3e5f5;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+
+  /* Sol: idea principal con detalles alrededor */
+  .organizador-sol{background:#fff;border:2px solid var(--gris-claro);border-radius:12px;padding:24px 18px;margin:18px 0}
+  .sol-central{background:var(--principal-claro);border:4px solid var(--principal);border-radius:50%;width:200px;height:200px;display:flex;align-items:center;justify-content:center;text-align:center;margin:0 auto 18px;padding:14px;font-weight:700;color:var(--principal);font-size:1rem;line-height:1.3;box-shadow:0 4px 14px rgba(198,40,40,0.15)}
+  .rayos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:640px){.rayos{grid-template-columns:1fr}}
+  .rayo{background:#fff;border:2px solid var(--secundario);border-radius:8px;padding:12px;text-align:center;font-size:0.95rem;color:var(--secundario);position:relative}
+  .rayo::before{content:'☀';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#fff;padding:0 6px;color:var(--principal);font-size:1.1rem}
+
+  /* Texto modelo con idea principal resaltada */
+  .texto-modelo{background:#fff;border:2px solid var(--principal);border-radius:10px;padding:18px 22px;margin:14px 0;font-family:'Georgia',serif;line-height:1.9;font-size:1.05rem}
+  .idea-resaltada{background:var(--principal-claro);color:var(--principal);font-weight:700;padding:2px 6px;border-radius:4px;border-bottom:3px solid var(--principal)}
+  .detalle-resaltado{background:#fff8e1;color:#8a6d00;padding:1px 5px;border-radius:3px}
+
+  /* Posiciones de la idea principal */
+  .posiciones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+  @media(max-width:768px){.posiciones{grid-template-columns:1fr}}
+  .posicion{background:#fff;border-radius:10px;padding:14px;border-top:5px solid}
+  .posicion.inicio{border-color:var(--inicio);background:var(--inicio-claro)}
+  .posicion.medio{border-color:var(--medio);background:var(--medio-claro)}
+  .posicion.final{border-color:var(--final);background:var(--final-claro)}
+  .posicion h4{margin-top:0}
+  .posicion.inicio h4{color:var(--inicio)}
+  .posicion.medio h4{color:var(--medio)}
+  .posicion.final h4{color:var(--final)}
+  .posicion p{font-family:'Georgia',serif;font-size:0.95rem;margin-bottom:0;line-height:1.7}
+  .oracion-clave{background:rgba(255,255,255,0.7);padding:6px 8px;border-radius:4px;font-weight:600;display:inline}
+
+  /* Ejercicio: encontrar la idea principal */
+  .item-idea{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .parrafo-ejercicio{background:#f7f9fb;border-left:4px solid var(--principal);padding:12px 16px;border-radius:6px;margin-bottom:12px;font-family:'Georgia',serif;font-size:1rem;line-height:1.8}
+  .opciones-idea{display:flex;flex-direction:column;gap:8px}
+  .btn-idea{padding:12px 14px;border:2px solid var(--cp);background:#fff;color:var(--texto);border-radius:8px;cursor:pointer;font-family:'Georgia',serif;font-size:0.95rem;text-align:left;transition:all 0.2s}
+  .btn-idea:hover{background:var(--cp-claro)}
+  .btn-idea.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-idea.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error)}
+
+  /* Ejercicio: ubicar la idea principal (inicio/medio/final) */
+  .item-ubicar{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .parrafo-numerado{background:#f7f9fb;border-left:4px solid var(--medio);padding:12px 16px;border-radius:6px;margin-bottom:12px;font-family:'Georgia',serif;font-size:1rem;line-height:1.8}
+  .oracion-num{color:var(--medio);font-weight:700;margin-right:4px}
+  .opciones-ubicar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-ubicar{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-ubicar[data-pos="inicio"]{border-color:var(--inicio);color:var(--inicio)}
+  .btn-ubicar[data-pos="medio"]{border-color:var(--medio);color:var(--medio)}
+  .btn-ubicar[data-pos="final"]{border-color:var(--final);color:var(--final)}
+  .btn-ubicar.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-ubicar.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+  .badge-rubrica{background:#fff3e0;color:#e65100}
+
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#b35316;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#b35316;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-3{background:#fff8e1}
+  .nivel-2{background:#fff3e0}
+  .nivel-1{background:#ffebee}
+</style>
+</head>
+<body>
+
+<h1>Clase 3: A la caza de la idea principal</h1>
+<p class="subtitulo">Encontrar el mensaje central del párrafo · Nivel 1 · Tema 4, semana 8</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Aprender a <strong>localizar la idea principal</strong> de un párrafo o texto corto, reconociendo que esa idea puede aparecer al <strong>inicio, en el medio o al final</strong>, y separándola de las oraciones secundarias.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Una vez dominadas las cuatro estrategias de la lectura activa, esta clase aborda una habilidad central para el examen GED: la identificación de la <strong>idea principal</strong>. Todo texto bien construido posee un <em>mensaje central</em> que organiza y sostiene el resto del contenido. Si el lector no logra identificar esa idea, la comprensión global del texto resulta deficiente. Por el contrario, cuando se identifica con precisión, el resto de la información se acomoda naturalmente alrededor de ella. En esta sesión usted aprenderá a localizar la <span class="palabra-clave">idea principal</span> en cualquier párrafo, independientemente del lugar donde el autor la haya situado.</p>
+
+<details open>
+<summary>1. ¿Qué es la idea principal? <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El mensaje central del texto</h3>
+
+<p>La <span class="palabra-clave">idea principal</span> es el <strong>mensaje central</strong> de un párrafo o texto. Es la oración (o la idea) que explica de qué se trata todo lo que estás leyendo. Las demás oraciones son <strong>detalles secundarios</strong>: ejemplos, datos o descripciones que apoyan a la idea principal.</p>
+
+<div class="tip">
+  <strong>⚖️ Prueba del párrafo:</strong> Si quitas la idea principal de un párrafo, el párrafo se queda <em>vacío</em> y pierde su sentido. Si quitas un detalle secundario, el párrafo todavía se entiende. Por eso la idea principal es la oración más importante.
+</div>
+
+<h3>Idea principal y detalles: el sol con sus rayos</h3>
+
+<p>Imagina que la idea principal es el <strong>sol</strong> y los detalles son los <strong>rayos</strong> que salen de él. Los rayos no existen sin el sol; el sol no se ve sin sus rayos. Juntos forman el párrafo.</p>
+
+<div class="organizador-sol">
+  <div class="sol-central">
+    Los huracanes causan mucho daño en el Caribe
+  </div>
+  <div class="rayos">
+    <div class="rayo">Detalle 1:<br>vientos de 150 mph</div>
+    <div class="rayo">Detalle 2:<br>inundaciones</div>
+    <div class="rayo">Detalle 3:<br>árboles caídos y casas destruidas</div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>💡 Idea clave:</strong> Una buena idea principal es <strong>ni demasiado amplia</strong> ("los huracanes son malos") <strong>ni demasiado estrecha</strong> ("los vientos llegan a 150 millas por hora"). Está en el medio: lo suficientemente general para cubrir todo el párrafo, lo suficientemente específica para no perderse.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Dónde se esconde la idea principal <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Tres posiciones posibles</h3>
+
+<p>Una idea común errónea es pensar que la idea principal siempre está en la <strong>primera oración</strong>. <span class="palabra-clave">No siempre es así</span>. El autor puede colocarla en tres lugares distintos:</p>
+
+<div class="posiciones">
+  <div class="posicion inicio">
+    <h4>⬆️ Al inicio</h4>
+    <p>El autor presenta la idea principal de entrada y después la apoya con detalles. <strong>Es lo más común.</strong></p>
+  </div>
+  <div class="posicion medio">
+    <h4>↔️ En el medio</h4>
+    <p>El autor empieza con un ejemplo o una pregunta, luego presenta la idea principal, y termina con más apoyo.</p>
+  </div>
+  <div class="posicion final">
+    <h4>⬇️ Al final</h4>
+    <p>El autor da los detalles primero y reserva la idea principal como <strong>conclusión</strong> del párrafo.</p>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>👀 Pista útil:</strong> Mira también el <strong>título</strong> y los <strong>subtítulos</strong>. Muchas veces el autor te avisa cuál va a ser la idea principal antes de empezar.
+</div>
+
+<h3>Modelaje: el mismo tema, tres posiciones</h3>
+
+<p>Mira cómo el autor puede colocar la misma idea principal en tres lugares distintos:</p>
+
+<div class="texto-modelo">
+  <strong>Versión 1 — Idea al inicio:</strong>
+  <p style="margin:8px 0"><span class="idea-resaltada">Caminar todos los días tiene muchos beneficios para la salud.</span> Mejora el corazón, ayuda a dormir mejor, baja la presión arterial y mantiene el peso saludable. Caminar 30 minutos al día es suficiente para sentir la diferencia.</p>
+</div>
+
+<div class="texto-modelo" style="border-color:var(--medio)">
+  <strong>Versión 2 — Idea en el medio:</strong>
+  <p style="margin:8px 0">A muchas personas no les gusta el ejercicio fuerte ni los gimnasios. <span class="idea-resaltada">Pero caminar todos los días tiene muchos beneficios para la salud.</span> Mejora el corazón, ayuda a dormir mejor y baja la presión arterial. Lo mejor es que solo necesitas tus zapatos.</p>
+</div>
+
+<div class="texto-modelo" style="border-color:var(--final)">
+  <strong>Versión 3 — Idea al final:</strong>
+  <p style="margin:8px 0">Caminar mejora el corazón. También ayuda a dormir mejor y baja la presión arterial. Caminar 30 minutos al día mantiene el peso saludable y no necesitas equipo especial. <span class="idea-resaltada">Por todo eso, caminar todos los días tiene muchos beneficios para la salud.</span></p>
+</div>
+
+<div class="tip">
+  <strong>📌 Observa:</strong> En las tres versiones, la idea principal es <em>la misma</em>. Lo que cambia es <em>dónde</em> el autor la colocó.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: encontrar la idea principal <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Cuál es la idea principal?</h3>
+
+<p>Lee cada párrafo y elige la oración que mejor expresa la idea principal. Recuerda: ni muy amplia, ni muy estrecha.</p>
+
+<div id="ejercicio-idea"></div>
+<div class="puntaje" id="puntaje-idea">Aciertos: 0 / 5</div>
+
+<h3>¿Dónde está la idea principal?</h3>
+
+<p>Para cada párrafo, indica si la idea principal está al <strong>inicio</strong>, en el <strong>medio</strong> o al <strong>final</strong>.</p>
+
+<div id="ejercicio-ubicar"></div>
+<div class="puntaje" id="puntaje-ubicar">Aciertos: 0 / 4</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Discusión grupal: "El mapa de la idea" <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · grupos pequeños</h4>
+  <p>El profesor reparte un párrafo informativo a cada grupo (3–4 estudiantes). El grupo debe:</p>
+  <ul class="lista-bonita">
+    <li>Leer el párrafo en voz alta una vez.</li>
+    <li>Completar un <strong>organizador gráfico tipo sol</strong>: la idea principal en el centro, los detalles como rayos.</li>
+    <li>Marcar dónde aparece la idea principal: al inicio, en el medio o al final.</li>
+    <li>Presentar su mapa a la clase explicando por qué eligieron esa oración como idea principal.</li>
+  </ul>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>Los grupos trabajan con papel grande y marcadores. Dibujan el sol con sus rayos. Después pegan los carteles en la pared y la clase camina viéndolos.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>Los grupos usan una plantilla compartida en Brightspace (puede ser un Google Doc o Jamboard). Escriben la idea principal y los detalles. Cada grupo presenta su pantalla a la clase.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Cierre: lo que aprendimos hoy <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<ul class="lista-bonita">
+  <li>La <strong>idea principal</strong> es el mensaje central del párrafo.</li>
+  <li>Si quitas la idea principal, el párrafo pierde su sentido.</li>
+  <li>La idea principal puede estar al <strong>inicio, en el medio o al final</strong> del párrafo.</li>
+  <li>Una buena idea principal no es muy amplia ni muy estrecha.</li>
+  <li>El título del texto a veces te avisa cuál es la idea principal.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Qué pasa si quitas la idea principal de un párrafo?</li>
+    <li>¿En qué tres lugares puede aparecer la idea principal?</li>
+    <li>¿Cuál es la diferencia entre una idea muy amplia y una idea bien hecha?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Vamos a profundizar en los <strong>detalles de apoyo</strong> — esas oraciones que sostienen y explican la idea principal. Aprenderás a distinguirlos y a saber cuál apoya, cuál ilustra y cuál es de relleno.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Párrafos cortos informativos</h4>
+  <p>Lecturas: párrafos cortos (3–5 oraciones) sobre temas cotidianos: el clima, una receta sencilla, un anuncio. Modalidad: <strong>lectura silenciosa breve + relectura compartida</strong>.</p>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Foro asincrónico</span> Una idea principal por estudiante</h4>
+  <p>En el foro de Brightspace, el profesor publica un párrafo corto. Cada estudiante responde con <strong>la idea principal en una sola oración</strong> y, en una segunda línea, dice en qué posición está (inicio / medio / final).</p>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-quiz">Quiz</span> 12 preguntas · Brightspace</h4>
+  <p>El quiz de la Lección 4.2 evalúa:</p>
+  <ul class="lista-bonita">
+    <li>Leer un párrafo y elegir la idea principal (opción múltiple).</li>
+    <li>Identificar la posición de la idea principal (inicio, medio, final).</li>
+    <li>Emparejar detalles con la idea principal correcta.</li>
+    <li>Identificar la oración que <strong>NO</strong> apoya la idea principal.</li>
+  </ul>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Holística (escala 1–4) · Foro "Idea principal"</h4>
+  <p>La respuesta del foro se evalúa con una rúbrica holística simple:</p>
+
+  <table class="rubrica">
+    <thead>
+      <tr>
+        <th>Nivel</th>
+        <th class="nivel-4">4 — Excelente</th>
+        <th class="nivel-3">3 — Bueno</th>
+        <th class="nivel-2">2 — Aceptable</th>
+        <th class="nivel-1">1 — Inicial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Idea principal</td>
+        <td class="nivel-4">Idea correcta + un detalle de apoyo</td>
+        <td class="nivel-3">Idea correcta sin detalles</td>
+        <td class="nivel-2">Idea parcial (incompleta)</td>
+        <td class="nivel-1">Idea incorrecta</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px;margin-bottom:0"><strong>Puntaje:</strong> 1–4. Permite ver el progreso del estudiante de manera clara, sin entrar en demasiados criterios.</p>
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // Ejercicio 1: identificar la idea principal
+  var parrafosIdea=[
+    {
+      parrafo:'Los frijoles negros son un alimento muy nutritivo. Tienen mucha proteína vegetal y son ricos en fibra. También contienen hierro, magnesio y vitaminas del complejo B. Por eso son una parte fundamental de la dieta cubana.',
+      opciones:[
+        {texto:'Los frijoles negros son parte de la dieta cubana.',correcta:false},
+        {texto:'Los frijoles negros son un alimento muy nutritivo.',correcta:true},
+        {texto:'Los frijoles negros tienen hierro y magnesio.',correcta:false}
+      ]
+    },
+    {
+      parrafo:'Mi abuela tenía un jardín lleno de plantas medicinales. La sábila la usaba para las quemaduras. La manzanilla la hervía como té para el dolor de estómago. La hierbabuena la masticaba para el mal aliento. Para cada problema, mi abuela tenía una planta.',
+      opciones:[
+        {texto:'La hierbabuena sirve para el mal aliento.',correcta:false},
+        {texto:'Mi abuela conocía muchos usos de las plantas medicinales.',correcta:true},
+        {texto:'Mi abuela tenía un jardín.',correcta:false}
+      ]
+    },
+    {
+      parrafo:'Aprender un idioma nuevo abre puertas en el trabajo. Mucha gente lo usa para viajar a otros países. Otros lo aprenden por placer o para hablar con su familia. Saber un segundo idioma también mejora la memoria. Hay muchas razones para estudiar un idioma extranjero.',
+      opciones:[
+        {texto:'Aprender un idioma mejora la memoria.',correcta:false},
+        {texto:'Hay muchas razones para estudiar un idioma extranjero.',correcta:true},
+        {texto:'La gente viaja a otros países.',correcta:false}
+      ]
+    },
+    {
+      parrafo:'Las computadoras se usan en las oficinas para hacer documentos. En los hospitales sirven para guardar la información de los pacientes. En las escuelas son herramientas para aprender. Hasta en la casa las usamos para pagar facturas y hablar con la familia. Las computadoras están en todas partes de la vida moderna.',
+      opciones:[
+        {texto:'Las computadoras se usan en hospitales.',correcta:false},
+        {texto:'En la casa pagamos facturas por computadora.',correcta:false},
+        {texto:'Las computadoras están en todas partes de la vida moderna.',correcta:true}
+      ]
+    },
+    {
+      parrafo:'Caminar mejora la circulación. También ayuda a controlar el peso y bajar el estrés. Es un ejercicio gratis que no necesita equipo especial. Cualquier persona puede caminar, a cualquier edad. Por todo eso, caminar es uno de los mejores ejercicios para la salud.',
+      opciones:[
+        {texto:'Caminar es uno de los mejores ejercicios para la salud.',correcta:true},
+        {texto:'Caminar baja el estrés.',correcta:false},
+        {texto:'Caminar no necesita equipo especial.',correcta:false}
+      ]
+    }
+  ];
+
+  var resueltasI={};
+  var aciertosI=0;
+  var contI=document.getElementById('ejercicio-idea');
+
+  parrafosIdea.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-idea';
+    var opcionesHTML=item.opciones.map(function(op){
+      return '<button type="button" class="btn-idea" data-correcta="'+op.correcta+'">'+op.texto+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="parrafo-ejercicio">'+item.parrafo+'</div>'+
+      '<div class="opciones-idea">'+opcionesHTML+'</div>';
+    contI.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-idea');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasI[idx])return;
+        if(b.getAttribute('data-correcta')==='true'){
+          b.classList.add('correcta');
+          resueltasI[idx]=true;
+          aciertosI++;
+          actualizarPuntajeI();
+          botones.forEach(function(other){if(other!==b)other.disabled=true});
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},600);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeI(){
+    var el=document.getElementById('puntaje-idea');
+    el.textContent='Aciertos: '+aciertosI+' / '+parrafosIdea.length;
+    if(aciertosI===parrafosIdea.length){
+      el.innerHTML='🎉 ¡Excelente trabajo! Aciertos: '+aciertosI+' / '+parrafosIdea.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Ejercicio 2: ubicar la idea principal
+  var parrafosUbicar=[
+    {
+      parrafo:'<span class="oracion-num">(1)</span> Aprender a leer bien es muy importante para los adultos. <span class="oracion-num">(2)</span> Una persona que lee bien puede llenar formularios por su cuenta. <span class="oracion-num">(3)</span> También puede leer las recetas que le da el doctor. <span class="oracion-num">(4)</span> Y le ayuda a entender los avisos del trabajo.',
+      correcta:'inicio'
+    },
+    {
+      parrafo:'<span class="oracion-num">(1)</span> Mi vecina siempre llega temprano al trabajo. <span class="oracion-num">(2)</span> Nunca falta a una reunión y termina sus tareas a tiempo. <span class="oracion-num">(3)</span> Por todo eso, en su oficina la consideran una persona muy responsable. <span class="oracion-num">(4)</span> Ya le han ofrecido dos ascensos.',
+      correcta:'final'
+    },
+    {
+      parrafo:'<span class="oracion-num">(1)</span> Muchas personas piensan que no tienen tiempo para hacer ejercicio. <span class="oracion-num">(2)</span> Pero hacer ejercicio veinte minutos al día es suficiente para mejorar la salud. <span class="oracion-num">(3)</span> Veinte minutos caminando, subiendo escaleras o bailando ya hacen la diferencia. <span class="oracion-num">(4)</span> No hace falta ir al gimnasio.',
+      correcta:'medio'
+    },
+    {
+      parrafo:'<span class="oracion-num">(1)</span> Los días de fiesta en Cuba son inolvidables. <span class="oracion-num">(2)</span> En Navidad la familia se reúne alrededor de un puerco asado. <span class="oracion-num">(3)</span> En Nochebuena se hacen los frijoles negros y el arroz blanco. <span class="oracion-num">(4)</span> En Año Nuevo todos se abrazan a la medianoche.',
+      correcta:'inicio'
+    }
+  ];
+
+  var resueltasU={};
+  var aciertosU=0;
+  var contU=document.getElementById('ejercicio-ubicar');
+
+  parrafosUbicar.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-ubicar';
+    div.innerHTML=
+      '<div class="parrafo-numerado">'+item.parrafo+'</div>'+
+      '<div class="opciones-ubicar">'+
+        '<button type="button" class="btn-ubicar" data-pos="inicio">⬆️ Inicio</button>'+
+        '<button type="button" class="btn-ubicar" data-pos="medio">↔️ Medio</button>'+
+        '<button type="button" class="btn-ubicar" data-pos="final">⬇️ Final</button>'+
+      '</div>';
+    contU.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-ubicar');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasU[idx])return;
+        if(b.getAttribute('data-pos')===item.correcta){
+          b.classList.add('correcta');
+          resueltasU[idx]=true;
+          aciertosU++;
+          actualizarPuntajeU();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeU(){
+    var el=document.getElementById('puntaje-ubicar');
+    el.textContent='Aciertos: '+aciertosU+' / '+parrafosUbicar.length;
+    if(aciertosU===parrafosUbicar.length){
+      el.innerHTML='🎉 ¡Felicitaciones! Aciertos: '+aciertosU+' / '+parrafosUbicar.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

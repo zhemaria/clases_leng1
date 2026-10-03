@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 1: Fundamentos de la comunicación y escucha activa</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--exito-claro:#e8f5e9;--error:#c62828;--error-claro:#fdecea;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --emisor:#0277bd;--emisor-claro:#e1f5fe;--emisor-oscuro:#01486d;
+    --receptor:#ef6c00;--receptor-claro:#fff3e0;--receptor-oscuro:#a04200;
+    --escucha:#2e7d32;--escucha-claro:#e8f5e9;--escucha-oscuro:#1b5e20;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:#ffeb3b;padding:1px 6px;border-radius:3px;font-weight:600}
+
+  /* Diagrama emisor/receptor */
+  .esquema-comunicacion{background:#fff;border:2px solid var(--gris-claro);border-radius:12px;padding:22px 18px;margin:18px 0;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+  .esquema-comunicacion h4{margin-top:0;color:var(--cp-oscuro)}
+  .actores-com{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin:18px 0;max-width:600px;margin-left:auto;margin-right:auto}
+  @media(max-width:640px){.actores-com{grid-template-columns:1fr;gap:10px}}
+  .actor{border-radius:12px;padding:16px 14px;border:3px solid}
+  .actor.act-emisor{background:var(--emisor-claro);border-color:var(--emisor)}
+  .actor.act-receptor{background:var(--receptor-claro);border-color:var(--receptor)}
+  .actor .icono-act{font-size:2.2rem;display:block;margin-bottom:4px}
+  .actor .rol{font-weight:700;font-size:1.05rem;display:block;margin-bottom:4px}
+  .actor.act-emisor .rol{color:var(--emisor-oscuro)}
+  .actor.act-receptor .rol{color:var(--receptor-oscuro)}
+  .actor .desc-act{font-size:0.88rem;color:var(--texto);font-style:italic;display:block}
+  .flecha-com{font-size:1.8rem;color:var(--acento);font-weight:700}
+  @media(max-width:640px){.flecha-com{transform:rotate(90deg)}}
+  .mensaje-com{background:var(--acento-claro);border:2px dashed var(--acento);border-radius:10px;padding:10px 16px;margin:14px auto 0 auto;max-width:480px;font-style:italic;color:var(--acento-oscuro);font-weight:600}
+
+  /* Niveles de escucha */
+  .niveles-escucha{display:grid;grid-template-columns:1fr;gap:12px;margin:18px 0;max-width:680px;margin-left:auto;margin-right:auto}
+  .nivel-esc{background:#fff;border-radius:10px;padding:14px 18px;border-left:6px solid;display:flex;gap:14px;align-items:flex-start;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  .nivel-esc.n1{border-left-color:var(--gris)}
+  .nivel-esc.n2{border-left-color:var(--cp)}
+  .nivel-esc.n3{border-left-color:var(--escucha)}
+  .nivel-esc .num-niv{color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;flex-shrink:0}
+  .nivel-esc.n1 .num-niv{background:var(--gris)}
+  .nivel-esc.n2 .num-niv{background:var(--cp)}
+  .nivel-esc.n3 .num-niv{background:var(--escucha)}
+  .nivel-esc .cont-niv{flex:1}
+  .nivel-esc .nombre-niv{font-weight:700;font-size:1rem;display:block;margin-bottom:4px}
+  .nivel-esc.n1 .nombre-niv{color:var(--gris)}
+  .nivel-esc.n2 .nombre-niv{color:var(--cp-oscuro)}
+  .nivel-esc.n3 .nombre-niv{color:var(--escucha-oscuro)}
+  .nivel-esc .desc-niv{font-size:0.92rem;line-height:1.55;display:block}
+
+  /* Frases plantilla de escucha activa */
+  .frases-escucha-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+  .frase-esc{background:var(--escucha-claro);border-left:4px solid var(--escucha);border-radius:8px;padding:12px 14px}
+  .frase-esc .fr-funcion{font-size:0.78rem;font-weight:700;color:var(--escucha-oscuro);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px}
+  .frase-esc .fr-icono{font-size:1.1rem;margin-right:4px}
+  .frase-esc .fr-ejemplos{font-size:0.92rem;font-style:italic;line-height:1.6;display:block;color:var(--texto)}
+
+  /* Tabla de canales de comunicación */
+  .tabla-canales{width:100%;border-collapse:collapse;margin:18px 0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);font-size:0.93rem}
+  .tabla-canales th{padding:12px 14px;color:#fff;text-align:left;font-size:0.95rem;font-weight:700;background:var(--cp)}
+  .tabla-canales th.h-fila{background:var(--gris)}
+  .tabla-canales td{padding:12px 14px;border-bottom:1px solid var(--gris-claro);vertical-align:top;line-height:1.55}
+  .tabla-canales td:first-child{font-weight:700;background:#f9fafb;color:var(--cp-oscuro);width:35%}
+  .tabla-canales tr:last-child td{border-bottom:none}
+  .tabla-canales .canal-verbal{color:var(--emisor-oscuro)}
+  .tabla-canales .canal-no-verbal{color:var(--receptor-oscuro)}
+  .tabla-canales .canal-paraverbal{color:var(--acento-oscuro)}
+
+  /* Actividad de clasificación: buena vs mala escucha */
+  .clasif-cont{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(123,63,191,0.08)}
+  .clasif-cont h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
+  .item-clasif{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .item-clasif .texto-clasif{font-style:italic;line-height:1.6;font-size:0.93rem;margin-bottom:10px;padding:10px 12px;background:var(--gris-claro);border-radius:6px}
+  .item-clasif .opciones-clasif{display:flex;flex-wrap:wrap;gap:8px}
+  .btn-clasif{padding:10px 16px;border:2px solid;background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.93rem;transition:all 0.2s;font-weight:600;flex:1;min-width:140px}
+  .btn-clasif.bbuena{border-color:var(--exito);color:var(--exito)}
+  .btn-clasif.bbuena:hover{background:var(--exito-claro)}
+  .btn-clasif.bmala{border-color:var(--error);color:var(--error)}
+  .btn-clasif.bmala:hover{background:var(--error-claro)}
+  .btn-clasif.correcto{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-clasif.incorrecto{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-clasif{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-clasif.visible{display:block}
+  .puntaje-clasif{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.02rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Tarjetas de comunicación no verbal */
+  .gestos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+  .gesto{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 12px;text-align:center;transition:all 0.2s}
+  .gesto:hover{border-color:var(--cp);box-shadow:0 4px 12px rgba(0,137,205,0.12);transform:translateY(-2px)}
+  .gesto .icono-gesto{font-size:2.2rem;display:block;margin-bottom:6px}
+  .gesto .nombre-gesto{font-weight:700;color:var(--cp-oscuro);display:block;font-size:0.95rem;margin-bottom:4px}
+  .gesto .mensaje-gesto{font-size:0.85rem;color:var(--texto);font-style:italic;display:block;line-height:1.45}
+
+  /* Quiz final */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+</style>
+</head>
+<body>
+
+<h1>Clase 1: Fundamentos de la comunicación y escucha activa</h1>
+<p class="subtitulo">Tema 8 · Lección 8.1 · Nivel 1 · Semana 15 · 50 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <ul>
+    <li>Comprender que la <strong>comunicación interpersonal</strong> es un intercambio donde los roles de emisor y receptor se alternan.</li>
+    <li>Distinguir tres <strong>niveles de escucha</strong>: oír, escuchar y escuchar activamente.</li>
+    <li>Aprender frases plantilla de <strong>escucha activa</strong> para usar en clase y en la vida diaria.</li>
+    <li>Reconocer la importancia de la <strong>comunicación no verbal</strong> (gestos, postura, contacto visual).</li>
+  </ul>
+</div>
+
+<h2>📚 Bienvenida al Tema 8</h2>
+
+<p>Llegamos al último tema del Nivel 1. En los temas anteriores aprendimos a <strong>leer</strong> (decodificar palabras, comprender párrafos, interpretar gráficas) y a <strong>escribir</strong> (oraciones completas, párrafos de distintos tipos). Ahora completamos el círculo con las dos habilidades que faltan: <span class="palabra-clave">hablar</span> y <span class="palabra-clave">escuchar</span>.</p>
+
+<p>En esta primera clase nos centramos en una idea clave: <strong>escuchar bien es tan importante como hablar bien</strong>. Una persona que no sabe escuchar tampoco sabe responder, y una persona que no sabe responder no puede participar en una conversación, en una reunión de trabajo o en un círculo familiar.</p>
+
+<div class="clave-pedagogica">
+  <strong>🧠 Clave de la clase:</strong> La comunicación no es solo «hablar para que el otro nos entienda». Es un intercambio: <em>yo hablo, tú escuchas; tú hablas, yo escucho</em>. Quien domina ese intercambio se hace entender y entiende a los demás. Eso es lo que vamos a practicar.
+</div>
+
+<details open>
+<summary>1. ¿Qué es la comunicación interpersonal? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Una conversación es un intercambio</h3>
+
+<p>La <span class="palabra-clave">comunicación interpersonal</span> ocurre cuando dos o más personas intercambian un mensaje. Lo importante es la palabra <em>intercambio</em>: no basta con que una persona hable y la otra esté callada. En una conversación auténtica, los roles se alternan continuamente.</p>
+
+<div class="esquema-comunicacion">
+  <h4>El esquema básico de la comunicación</h4>
+  <div class="actores-com">
+    <div class="actor act-emisor">
+      <span class="icono-act">🗣️</span>
+      <span class="rol">Emisor</span>
+      <span class="desc-act">La persona que envía el mensaje</span>
+    </div>
+    <span class="flecha-com">⇄</span>
+    <div class="actor act-receptor">
+      <span class="icono-act">👂</span>
+      <span class="rol">Receptor</span>
+      <span class="desc-act">La persona que recibe el mensaje</span>
+    </div>
+  </div>
+  <div class="mensaje-com">📨 El mensaje viaja entre ambos y los roles se alternan</div>
+</div>
+
+<p>En una conversación real, las personas <strong>cambian de rol constantemente</strong>. Cuando yo hablo, soy emisor; cuando tú respondes, ahora eres tú el emisor y yo el receptor. Por eso decimos que la comunicación interpersonal es <strong>bidireccional</strong>: el mensaje va y vuelve.</p>
+
+<h3>Tres maneras de fallar en una conversación</h3>
+
+<p>Cuando una conversación no funciona, normalmente es por alguna de estas razones:</p>
+
+<ul class="lista-bonita">
+  <li>Una persona habla todo el tiempo y no deja espacio para que el otro responda.</li>
+  <li>El receptor no presta atención: piensa en otra cosa mientras el emisor habla.</li>
+  <li>Nadie pide aclaración cuando algo no se entiende, y la conversación sigue con un malentendido.</li>
+</ul>
+
+<p>Hoy vamos a aprender a <strong>evitar las tres cosas</strong>.</p>
+
+</div>
+</details>
+
+<details>
+<summary>2. Los tres niveles de escucha <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>No es lo mismo «oír» que «escuchar»</h3>
+
+<p>En español tenemos dos verbos parecidos pero distintos: <strong>oír</strong> y <strong>escuchar</strong>. Y dentro de «escuchar» hay todavía un nivel más profundo: la <span class="palabra-clave">escucha activa</span>. Veámoslos en orden:</p>
+
+<div class="niveles-escucha">
+  <div class="nivel-esc n1">
+    <span class="num-niv">1</span>
+    <div class="cont-niv">
+      <span class="nombre-niv">👂 Oír</span>
+      <span class="desc-niv">Los sonidos llegan al oído sin que la persona los procese. Es automático: oigo el tráfico de la calle, oigo el ventilador, pero no les presto atención.</span>
+    </div>
+  </div>
+  <div class="nivel-esc n2">
+    <span class="num-niv">2</span>
+    <div class="cont-niv">
+      <span class="nombre-niv">🎧 Escuchar</span>
+      <span class="desc-niv">La persona presta atención a un sonido específico y trata de entenderlo. Escucho la radio para enterarme de las noticias. Pero todavía no participo activamente.</span>
+    </div>
+  </div>
+  <div class="nivel-esc n3">
+    <span class="num-niv">3</span>
+    <div class="cont-niv">
+      <span class="nombre-niv">💡 Escucha activa</span>
+      <span class="desc-niv">La persona escucha con la intención de comprender de verdad lo que el otro dice. Hace gestos, pregunta si no entiende, no interrumpe y, al final, demuestra que entendió. Es el nivel que necesitamos en clase y en el trabajo.</span>
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 La gran diferencia:</strong> en la escucha activa, mi objetivo no es <em>responder rápido</em>, sino <em>entender bien</em>. Primero comprendo, después respondo.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Frases plantilla de escucha activa <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Cómo demuestro que estoy escuchando?</h3>
+
+<p>La escucha activa no es solo callarse mientras el otro habla. Hay que <strong>demostrar</strong> con palabras concretas que uno está siguiendo la conversación. Aquí tiene tres frases plantilla que cubren las tres funciones más importantes:</p>
+
+<div class="frases-escucha-grid">
+  <div class="frase-esc">
+    <span class="fr-funcion"><span class="fr-icono">✅</span>Mostrar acuerdo</span>
+    <span class="fr-ejemplos">«Estoy de acuerdo con…», «Comparto lo que dijo…», «Tiene razón en que…»</span>
+  </div>
+  <div class="frase-esc">
+    <span class="fr-funcion"><span class="fr-icono">➕</span>Añadir información</span>
+    <span class="fr-ejemplos">«Quiero añadir que…», «También me parece importante…», «A lo que dijo, agrego que…»</span>
+  </div>
+  <div class="frase-esc">
+    <span class="fr-funcion"><span class="fr-icono">❓</span>Pedir aclaración</span>
+    <span class="fr-ejemplos">«¿Puedes explicar…?», «No entendí bien la parte de…», «¿Podrías repetir lo último?»</span>
+  </div>
+  <div class="frase-esc">
+    <span class="fr-funcion"><span class="fr-icono">🔁</span>Parafrasear</span>
+    <span class="fr-ejemplos">«Entonces, lo que dices es…», «Si entendí bien, tú piensas que…»</span>
+  </div>
+</div>
+
+<h3>Una conversación con escucha activa</h3>
+
+<p>Veamos cómo se usan estas frases en una conversación real entre dos estudiantes que discuten sobre las metas del semestre:</p>
+
+<div class="esquema-comunicacion" style="text-align:left">
+  <p style="margin:0 0 10px 0"><strong style="color:var(--emisor-oscuro)">🗣️ María:</strong> Mi meta este semestre es terminar el nivel 1 y empezar el nivel 2 lo antes posible.</p>
+  <p style="margin:0 0 10px 0"><strong style="color:var(--receptor-oscuro)">👂 Carlos:</strong> <em>Estoy de acuerdo contigo</em>; yo también quiero avanzar rápido. <em>¿Puedes explicar</em> por qué tienes prisa?</p>
+  <p style="margin:0 0 10px 0"><strong style="color:var(--emisor-oscuro)">🗣️ María:</strong> Porque trabajo de día y solo tengo dos noches por semana para estudiar.</p>
+  <p style="margin:0"><strong style="color:var(--receptor-oscuro)">👂 Carlos:</strong> <em>Entonces, lo que dices es</em> que tu horario te limita. <em>Quiero añadir que</em> a mí me pasa igual con el segundo turno.</p>
+</div>
+
+<p>Fíjese cómo Carlos no se limita a contestar lo suyo: <strong>primero acusa recibo</strong> de lo que dijo María (con «estoy de acuerdo», con «entonces, lo que dices es») y <strong>después añade</strong> su parte. Eso es escucha activa.</p>
+
+</div>
+</details>
+
+<details>
+<summary>4. La comunicación no verbal <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El cuerpo también habla</h3>
+
+<p>Cuando uno conversa con otra persona, no solo importan las palabras. El <strong>cuerpo, la cara y la voz</strong> envían mensajes paralelos que pueden reforzar lo que decimos o, al contrario, contradecirlo. Por eso hay tres canales que conviene conocer:</p>
+
+<table class="tabla-canales">
+  <thead>
+    <tr>
+      <th class="h-fila">Canal</th>
+      <th>Qué es y para qué sirve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="canal-verbal">🔤 Verbal</td>
+      <td>Las <strong>palabras</strong> que decimos. Es el mensaje explícito: lo que el otro puede leer si escribiéramos la conversación en papel.</td>
+    </tr>
+    <tr>
+      <td class="canal-no-verbal">🙋 No verbal</td>
+      <td>Los <strong>gestos, la postura, las miradas</strong> y las expresiones de la cara. Indican si la persona está atenta, aburrida, sorprendida, en desacuerdo o cansada.</td>
+    </tr>
+    <tr>
+      <td class="canal-paraverbal">🎤 Paraverbal</td>
+      <td>El <strong>tono de voz, el volumen, la velocidad y las pausas</strong>. Una misma frase puede sonar amable o agresiva según cómo se pronuncie.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Gestos que demuestran escucha activa</h3>
+
+<p>Estos son cuatro gestos básicos que indican al hablante que lo estamos escuchando con respeto:</p>
+
+<div class="gestos-grid">
+  <div class="gesto">
+    <span class="icono-gesto">👀</span>
+    <span class="nombre-gesto">Contacto visual</span>
+    <span class="mensaje-gesto">«Te estoy mirando, te presto atención»</span>
+  </div>
+  <div class="gesto">
+    <span class="icono-gesto">🙆</span>
+    <span class="nombre-gesto">Asentir con la cabeza</span>
+    <span class="mensaje-gesto">«Te sigo, entiendo lo que dices»</span>
+  </div>
+  <div class="gesto">
+    <span class="icono-gesto">🪑</span>
+    <span class="nombre-gesto">Postura abierta</span>
+    <span class="mensaje-gesto">«Estoy disponible para escuchar»</span>
+  </div>
+  <div class="gesto">
+    <span class="icono-gesto">😊</span>
+    <span class="nombre-gesto">Expresión amable</span>
+    <span class="mensaje-gesto">«Lo que dices me interesa»</span>
+  </div>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Idea clave:</strong> Si las palabras dicen una cosa y el cuerpo dice la contraria, las personas creen siempre lo que dice el cuerpo. Por eso, una postura encorvada, brazos cruzados o mirada perdida envían el mensaje «no me interesa», aunque la boca diga «sí, claro, te escucho».
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Actividad: ¿buena o mala escucha? <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<p>A continuación tiene seis situaciones cortas. En cada una, decida si la persona descrita está practicando <strong>buena escucha</strong> (escucha activa) o <strong>mala escucha</strong> (no presta atención, interrumpe, juzga, etc.).</p>
+
+<div class="clasif-cont">
+  <h4>🎧 Clasifique cada situación</h4>
+  <div id="items-clasif"></div>
+  <div class="puntaje-clasif" id="puntaje-clasif">Aciertos: 0 / 6</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>6. Modalidades presencial y online <span class="caja-tiempo">4 min</span></summary>
+<div class="contenido-detalle">
+
+<p>La escucha activa se ve un poco distinta según si la clase es en el aula o por videoconferencia. Estas son las claves para cada caso:</p>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Modalidad presencial (sincrónica)</h4>
+    <p><span class="badge-tipo badge-discusion">Cuerpo y mirada</span></p>
+    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
+      <li>Siéntese con la espalda derecha y la mirada hacia quien habla.</li>
+      <li>Asienta con la cabeza cuando entienda y use expresiones cortas («ajá», «claro»).</li>
+      <li>Espere a que el otro termine la oración antes de tomar la palabra.</li>
+      <li>Si pide aclaración, hágalo con respeto: «¿Puedes repetir esa parte?», no «¿qué?».</li>
+    </ul>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Modalidad en línea (sincrónica)</h4>
+    <p><span class="badge-tipo badge-reflexion">Cámara y voz</span></p>
+    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
+      <li>Mantenga la <strong>cámara encendida</strong> para que el grupo le vea la cara.</li>
+      <li>Mire directamente a la <strong>lente de la cámara</strong> (no a la pantalla) cuando hable.</li>
+      <li>Use el ícono de «levantar la mano» antes de hablar para no interrumpir.</li>
+      <li>Use el chat para mostrar acuerdo o pedir aclaración sin cortar al que habla.</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>7. Quiz final de la clase <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<p>El siguiente quiz repasa los conceptos clave de esta primera clase: emisor y receptor, niveles de escucha, frases plantilla y comunicación no verbal.</p>
+
+<div class="quiz-cont">
+  <h4>📝 Quiz: escucha activa y comunicación</h4>
+  <div class="preguntas-quiz" id="preguntas-quiz1"></div>
+  <div class="puntaje" id="puntaje-quiz1">Aciertos: 0 / 6</div>
+</div>
+
+</div>
+</details>
+
+<div class="tip">
+  <strong>👉 ¿Qué viene en la próxima clase?</strong> En la <strong>Clase 2</strong> pondremos en práctica todo lo que vimos hoy con una dinámica colaborativa: la <strong>técnica 1-2-4</strong> y los círculos literarios. Llegue habiendo leído el texto que se asignó.
+</div>
+
+<p class="firma">Spanish ASE Language Arts 1 · GEDparaHispanos.com · Prof. José M. Fernández</p>
+
+<script>
+(function(){
+  /* =========================================================
+     ACTIVIDAD DE CLASIFICACIÓN: BUENA VS MALA ESCUCHA
+     ========================================================= */
+  var situaciones=[
+    {texto:'Mientras su compañero le cuenta sobre su trabajo, Pedro mira el celular y revisa los mensajes.', tipo:'mala', explica:'Es mala escucha: el celular se vuelve una distracción y envía el mensaje "lo que dices no me interesa".'},
+    {texto:'Ana mira a su compañera a los ojos, asiente con la cabeza y le pregunta: "¿Puedes contarme más sobre esa parte?".', tipo:'buena', explica:'Es escucha activa: contacto visual, asentimiento y una pregunta para profundizar.'},
+    {texto:'Luis interrumpe a su compañera a media oración para decir lo que él piensa, sin esperar que ella termine.', tipo:'mala', explica:'Es mala escucha: interrumpir corta la idea del otro y comunica "lo mío es más importante que lo tuyo".'},
+    {texto:'Después de oír a su compañero, Marta dice: "Entonces, lo que dices es que el horario te complica. ¿Entendí bien?".', tipo:'buena', explica:'Es escucha activa: Marta parafrasea lo escuchado y verifica que entendió correctamente.'},
+    {texto:'Carmen mantiene los brazos cruzados, mira al techo y suspira mientras su compañera habla.', tipo:'mala', explica:'Es mala escucha: la postura cerrada y los suspiros indican aburrimiento o desacuerdo sin palabras.'},
+    {texto:'Cuando José no entiende una palabra que usó su compañera, levanta la mano y dice: "Perdón, no conozco esa palabra, ¿podrías explicarla?".', tipo:'buena', explica:'Es escucha activa: pedir aclaración con respeto demuestra interés en entender bien.'}
+  ];
+
+  var contItems=document.getElementById('items-clasif');
+  var resueltos={};
+  var aciertosClasif=0;
+
+  situaciones.forEach(function(sit,idx){
+    var div=document.createElement('div');
+    div.className='item-clasif';
+    div.innerHTML=
+      '<div class="texto-clasif">'+sit.texto+'</div>'+
+      '<div class="opciones-clasif">'+
+        '<button type="button" class="btn-clasif bbuena" data-tipo="buena">✅ Buena escucha</button>'+
+        '<button type="button" class="btn-clasif bmala" data-tipo="mala">❌ Mala escucha</button>'+
+      '</div>'+
+      '<div class="retro-clasif" id="retro-clasif-'+idx+'"></div>';
+    contItems.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-clasif');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltos[idx])return;
+        if(b.getAttribute('data-tipo')===sit.tipo){
+          b.classList.add('correcto');
+          resueltos[idx]=true;
+          aciertosClasif++;
+          actualizarClasif();
+          var r=document.getElementById('retro-clasif-'+idx);
+          r.textContent='✅ '+sit.explica;
+          r.classList.add('visible');
+        }else{
+          b.classList.add('incorrecto');
+          setTimeout(function(){b.classList.remove('incorrecto')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarClasif(){
+    var el=document.getElementById('puntaje-clasif');
+    el.textContent='Aciertos: '+aciertosClasif+' / '+situaciones.length;
+    if(aciertosClasif===situaciones.length){
+      el.innerHTML='🎉 ¡Perfecto! Aciertos: '+aciertosClasif+' / '+situaciones.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  /* =========================================================
+     QUIZ FINAL DE LA CLASE 1
+     ========================================================= */
+  var preguntas=[
+    {
+      texto:'En una conversación entre dos personas, ¿qué significa que los roles "se alternan"?',
+      opciones:[
+        {t:'Que una persona siempre habla y la otra siempre escucha.',ok:false},
+        {t:'Que ambas personas hablan al mismo tiempo para participar más.',ok:false},
+        {t:'Que cada persona es a veces emisor y a veces receptor.',ok:true},
+        {t:'Que el más joven escucha y el mayor habla.',ok:false}
+      ],
+      explica:'En la comunicación interpersonal, ambos participantes cambian de rol: cuando uno habla, el otro escucha; después se invierten los papeles.'
+    },
+    {
+      contexto:'María está sentada en clase. Suena el ruido del aire acondicionado. Ella no le presta atención y se concentra en lo que dice el profesor.',
+      texto:'¿En qué nivel está María respecto al ruido del aire acondicionado?',
+      opciones:[
+        {t:'Oír',ok:true},
+        {t:'Escuchar',ok:false},
+        {t:'Escucha activa',ok:false},
+        {t:'No oye nada',ok:false}
+      ],
+      explica:'María "oye" el aire acondicionado porque el sonido llega a su oído, pero no le presta atención. Eso es solo oír, no escuchar.'
+    },
+    {
+      contexto:'Carlos le dice a su compañera Ana: "Mi meta es terminar el GED este año porque quiero estudiar enfermería".',
+      texto:'¿Cuál respuesta de Ana muestra mejor la escucha activa?',
+      opciones:[
+        {t:'Ah, sí. Yo también tengo metas.',ok:false},
+        {t:'¿Sabías que el GED tiene cuatro exámenes?',ok:false},
+        {t:'Entonces, lo que dices es que el GED es un paso para entrar a enfermería. ¿Es así?',ok:true},
+        {t:'A mí lo que me gusta es la cocina.',ok:false}
+      ],
+      explica:'Esta respuesta parafrasea lo que dijo Carlos ("lo que dices es...") y verifica la comprensión con una pregunta. Es escucha activa de manual.'
+    },
+    {
+      texto:'¿Cuál de estas frases sirve para PEDIR ACLARACIÓN con respeto?',
+      opciones:[
+        {t:'¿Qué? No te entiendo nada.',ok:false},
+        {t:'¿Puedes explicar esa parte un poco más, por favor?',ok:true},
+        {t:'Mejor déjalo, ya no importa.',ok:false},
+        {t:'Habla más fuerte.',ok:false}
+      ],
+      explica:'La frase "¿Puedes explicar...?" pide aclaración con respeto. Las otras tres son agresivas, evasivas o descorteses.'
+    },
+    {
+      texto:'¿Cuál de los siguientes es un ejemplo de comunicación NO VERBAL?',
+      opciones:[
+        {t:'Decir "estoy de acuerdo".',ok:false},
+        {t:'Asentir con la cabeza mientras el otro habla.',ok:true},
+        {t:'Hablar más rápido cuando uno está nervioso.',ok:false},
+        {t:'Escribir un correo electrónico.',ok:false}
+      ],
+      explica:'Asentir con la cabeza es comunicación no verbal: el cuerpo envía el mensaje "te sigo, entiendo". Hablar rápido es paraverbal, y los otros dos ejemplos son verbales.'
+    },
+    {
+      contexto:'Durante una clase por videoconferencia, Pedro tiene la cámara apagada, está comiendo y mira el celular mientras la profesora explica.',
+      texto:'¿Qué mensaje no verbal está enviando Pedro?',
+      opciones:[
+        {t:'Que está muy concentrado.',ok:false},
+        {t:'Que respeta a la profesora.',ok:false},
+        {t:'Que la clase no le interesa y está distraído.',ok:true},
+        {t:'Que está practicando escucha activa.',ok:false}
+      ],
+      explica:'La cámara apagada, comer y mirar el celular envían un mensaje claro de desinterés y falta de atención. En modalidad online, mantener la cámara encendida es la señal básica de escucha activa.'
+    }
+  ];
+
+  var resueltasQ={};
+  var aciertosQ=0;
+  var contQuiz=document.getElementById('preguntas-quiz1');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-quiz';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      contextoHtml+
+      '<div class="opciones-quiz">'+opcHtml+'</div>'+
+      '<div class="retro-quiz" id="retro-q1-'+idx+'"></div>';
+
+    contQuiz.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-quiz');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasQ[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltasQ[idx]=true;
+          aciertosQ++;
+          actualizarPuntajeQ();
+          var retro=document.getElementById('retro-q1-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeQ(){
+    var el=document.getElementById('puntaje-quiz1');
+    el.textContent='Aciertos: '+aciertosQ+' / '+preguntas.length;
+    if(aciertosQ===preguntas.length){
+      el.innerHTML='🎉 ¡Clase 1 dominada! Aciertos: '+aciertosQ+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

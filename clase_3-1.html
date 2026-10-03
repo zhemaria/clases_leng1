@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 1: Conociendo los sustantivos y los adjetivos</title>
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --sustantivo:#1565c0;--sustantivo-claro:#e3f2fd;
+    --adjetivo:#c2185b;--adjetivo-claro:#fce4ec;
+    --exito:#2e7d32;--error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .ejercicio{background:#f3f9f3;border:2px dashed #4caf50;border-radius:10px;padding:18px 22px;margin:20px 0}
+  .ejercicio h4{color:#2e7d32;margin-top:0}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+  .sust{background:var(--sustantivo-claro);color:var(--sustantivo);padding:2px 8px;border-radius:4px;font-weight:700;box-shadow:0 -3px 0 var(--sustantivo) inset}
+  .adj{background:var(--adjetivo-claro);color:var(--adjetivo);padding:2px 8px;border-radius:4px;font-weight:700;box-shadow:0 -3px 0 var(--adjetivo) inset}
+  .leyenda-colores{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.95rem}
+  .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
+  .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+  .ejemplo-oracion{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:'Georgia',serif;font-size:1.2rem;text-align:center}
+  table.tabla-sust{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-sust th{background:var(--sustantivo);color:#fff;padding:12px;text-align:left}
+  table.tabla-sust td{padding:12px;border-bottom:1px solid var(--gris-claro);font-family:'Georgia',serif}
+  table.tabla-sust tr:last-child td{border-bottom:none}
+  table.tabla-sust td:first-child{font-weight:600;color:var(--sustantivo)}
+  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:'Georgia',serif;font-size:1.08rem;line-height:2}
+  .palabra-clicable{cursor:pointer;padding:1px 4px;border-radius:3px;transition:background 0.2s;display:inline-block}
+  .palabra-clicable:hover{background:#fff3cd}
+  .palabra-clicable.marcada{background:var(--sustantivo-claro);color:var(--sustantivo);font-weight:700;box-shadow:0 -3px 0 var(--sustantivo) inset}
+  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .item-palabra{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .palabra-clasif{font-family:'Georgia',serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro)}
+  .opciones-clasif{display:flex;gap:8px;flex-wrap:wrap}
+  .btn-clasif{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-clasif.sust-btn{border-color:var(--sustantivo);color:var(--sustantivo)}
+  .btn-clasif.sust-btn:hover{background:var(--sustantivo-claro)}
+  .btn-clasif.adj-btn{border-color:var(--adjetivo);color:var(--adjetivo)}
+  .btn-clasif.adj-btn:hover{background:var(--adjetivo-claro)}
+  .btn-clasif.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-clasif.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+  .badge-rubrica{background:#fff3e0;color:#e65100}
+</style>
+</head>
+<body>
+
+<h1>Clase 1: Conociendo los sustantivos y los adjetivos</h1>
+<p class="subtitulo">Construir oraciones: gramática esencial · Nivel 1 · Tema 3, semana 4</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la clase</h2>
+  <p style="margin-bottom:0">Identificar <strong>personas, lugares, objetos o conceptos</strong> (sustantivos) y las palabras que los describen (<strong>adjetivos</strong>), para empezar a darle protagonistas y detalles a nuestras oraciones.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Asere, ya recorrimos un buen trecho: aprendiste a moverte de izquierda a derecha en el papel, a contar sílabas, a decodificar palabras y a leer con fluidez. <strong>Ahora damos el salto a construir oraciones de verdad.</strong> Para eso necesitamos conocer a los actores del lenguaje: los <em>sustantivos</em> (los protagonistas) y los <em>adjetivos</em> (los que les ponen carácter).</p>
+
+<p>Piensa en una oración como en una película: sin protagonista no hay historia. Y sin descripciones, la película queda en blanco y negro. Hoy le metemos color.</p>
+
+<details open>
+<summary>1. Introducción: los sustantivos <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El protagonista de la oración</h3>
+
+<p>Toda oración necesita un protagonista. Ese protagonista suele ser un <span class="palabra-clave">sustantivo</span>: la palabra que usamos para <strong>nombrar</strong>:</p>
+
+<ul class="lista-bonita">
+  <li>Una <strong>persona</strong> (María, profesor, hermana, doctor).</li>
+  <li>Un <strong>lugar</strong> (Chicago, parque, casa, escuela).</li>
+  <li>Un <strong>objeto</strong> (mesa, lápiz, carro, taza).</li>
+  <li>Un <strong>concepto o idea</strong> (amor, libertad, miedo, alegría).</li>
+</ul>
+
+<h3>Sustantivos comunes y propios</h3>
+
+<table class="tabla-sust">
+  <thead><tr><th>Tipo</th><th>Definición</th><th>Ejemplos</th></tr></thead>
+  <tbody>
+    <tr><td>Común</td><td>Nombra cosas en general, sin distinguir una de otra</td><td>perro, ciudad, niña, río</td></tr>
+    <tr><td>Propio</td><td>Nombra a alguien o algo específico (con mayúscula)</td><td>Rocky, Chicago, María, Misisipí</td></tr>
+  </tbody>
+</table>
+
+<div class="tip">
+  <strong>💡 Truco para reconocerlo:</strong> Si delante de la palabra puedes decir <em>"el", "la", "los", "las", "un", "una"</em>, casi seguro es un sustantivo. Por ejemplo: <em>el carro, la mesa, una sonrisa, las metas</em>.
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>2. Desarrollo: los adjetivos <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Las palabras que dan color</h3>
+
+<p>Si solo usáramos sustantivos, nuestra escritura sería gris: "el perro, la casa, la niña". Los <span class="palabra-clave">adjetivos</span> dan información sobre las cualidades de un sustantivo:</p>
+
+<ul class="lista-bonita">
+  <li><strong>Color</strong>: un suéter <em>verde</em>, una camisa <em>roja</em>.</li>
+  <li><strong>Tamaño</strong>: un carro <em>grande</em>, una taza <em>pequeña</em>.</li>
+  <li><strong>Forma</strong>: una mesa <em>redonda</em>.</li>
+  <li><strong>Estado de ánimo</strong>: un niño <em>feliz</em>.</li>
+  <li><strong>Otras cualidades</strong>: una sopa <em>caliente</em>, una persona <em>amable</em>.</li>
+</ul>
+
+<div class="leyenda-colores">
+  <span><span class="punto" style="background:var(--sustantivo)"></span> Sustantivo</span>
+  <span><span class="punto" style="background:var(--adjetivo)"></span> Adjetivo</span>
+</div>
+
+<div class="ejemplo-oracion">El <span class="sust">suéter</span> <span class="adj">verde</span></div>
+<div class="ejemplo-oracion">Un <span class="adj">pequeño</span> <span class="sust">niño</span> <span class="adj">feliz</span></div>
+<div class="ejemplo-oracion">La <span class="sust">casa</span> <span class="adj">amarilla</span> de mi <span class="sust">tía</span></div>
+
+<div class="tip">
+  <strong>💡 ¿Cómo encuentro un adjetivo?</strong> Pregúntale al sustantivo: <em>"¿Cómo es?"</em> o <em>"¿Cómo está?"</em>. ¿Cómo es la casa? → <em>amarilla</em>. ¿Cómo está el niño? → <em>feliz</em>.
+</div>
+
+<h3>Detective de sustantivos</h3>
+
+<p>Lee este texto sobre la familia y <strong>haz clic en los sustantivos</strong>. Luego verifica.</p>
+
+<div class="texto-lectura" id="texto-detective">
+<p>Mi <span class="palabra-clicable" data-tipo="sust">familia</span> vive en una <span class="palabra-clicable" data-tipo="sust">casa</span> grande. Mi <span class="palabra-clicable" data-tipo="sust">mamá</span> trabaja en un <span class="palabra-clicable" data-tipo="sust">hospital</span>. Mi <span class="palabra-clicable" data-tipo="sust">hermano</span> estudia inglés en la <span class="palabra-clicable" data-tipo="sust">escuela</span>. Tenemos un <span class="palabra-clicable" data-tipo="sust">perro</span> negro y un <span class="palabra-clicable" data-tipo="sust">gato</span> blanco. La <span class="palabra-clicable" data-tipo="sust">cocina</span> de mi mamá huele rico.</p>
+</div>
+
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="btn-verificar-detective">Verificar mi trabajo</button>
+  <button type="button" class="btn btn-secundario" id="btn-reset-detective">Limpiar</button>
+</div>
+<div class="puntaje" id="puntaje-detective"></div>
+
+<h3>Clasifica: ¿sustantivo o adjetivo?</h3>
+
+<div class="clasificador">
+  <div id="lista-clasif"></div>
+  <div class="puntaje" id="puntaje-clasif">Aciertos: 0 / 8</div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: describir con sustantivos y adjetivos <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · en parejas</h4>
+  <p><strong>"Describe a tu compañero".</strong> En clase (presencial o por videollamada), trabaja en pareja. <strong>Escribe 3 oraciones</strong> que combinen sustantivo + adjetivo describiendo a tu compañero:</p>
+  <ul class="lista-bonita">
+    <li>Ejemplo: <em>"Tienes ojos <span class="adj">castaños</span>."</em></li>
+    <li>Ejemplo: <em>"Llevas una <span class="sust">camisa</span> <span class="adj">azul</span>."</em></li>
+    <li>Ejemplo: <em>"Tu <span class="sust">pelo</span> es <span class="adj">corto</span>."</em></li>
+  </ul>
+  <p style="margin-bottom:0">Tu compañero hace lo mismo contigo. Intercambien y léanse las descripciones en voz alta.</p>
+</div>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Foro</span> Asincrónica · individual</h4>
+  <p style="margin-bottom:0">Sube al foro de la unidad <strong>una foto de un objeto de tu casa</strong> y descríbelo con al menos <strong>2 adjetivos</strong>. Ejemplo: "Mi mesa de cocina es <em>redonda</em> y <em>vieja</em>." Lee y comenta el objeto de al menos un compañero.</p>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor empareja a los estudiantes en clase. Escriben las 3 oraciones en hoja y las leen en voz alta. La actividad del foro queda de tarea.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>El profesor abre salas pequeñas (breakout rooms) de 2 personas. Trabajan las 3 oraciones por chat o micrófono. El foro queda como tarea asincrónica en Brightspace.</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Lectura compartida: textos descriptivos <span class="caja-tiempo">complemento</span></summary>
+<div class="contenido-detalle">
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Compartida · en parejas</h4>
+  <p>Lee estos textos descriptivos cortos. <strong>Uno lee en voz alta, el otro señala los sustantivos y los clasifica</strong> (persona, lugar, objeto, concepto). Después intercambian roles.</p>
+</div>
+
+<h3>Texto 1: La familia</h3>
+<div class="texto-lectura">
+<p>Mi <span class="sust">familia</span> es pequeña pero feliz. Mi <span class="sust">papá</span> trabaja en una <span class="sust">fábrica</span> en el sur de <span class="sust">Chicago</span>. Mi <span class="sust">mamá</span> cuida la <span class="sust">casa</span> y prepara <span class="sust">comida</span> deliciosa. Mi <span class="sust">hermana</span> menor estudia en la <span class="sust">escuela</span> primaria. Tenemos mucho <span class="sust">amor</span> y <span class="sust">respeto</span>.</p>
+</div>
+
+<h3>Texto 2: La casa</h3>
+<div class="texto-lectura">
+<p>Nuestra <span class="sust">casa</span> tiene tres <span class="sust">cuartos</span>. La <span class="sust">cocina</span> es grande y luminosa. En la <span class="sust">sala</span> hay un <span class="sust">sofá</span> azul y una <span class="sust">mesa</span> de madera. El <span class="sust">jardín</span> tiene <span class="sust">flores</span> de muchos colores. Mi <span class="sust">perro</span> Rocky duerme en la <span class="sust">terraza</span>.</p>
+</div>
+
+<h3>Texto 3: El trabajo</h3>
+<div class="texto-lectura">
+<p>Mi <span class="sust">trabajo</span> en el <span class="sust">restaurante</span> me gusta mucho. Mi <span class="sust">jefe</span> se llama <span class="sust">Carlos</span> y es muy amable. Trabajo con dos <span class="sust">compañeros</span>: <span class="sust">Ana</span> y <span class="sust">Luis</span>. Yo limpio las <span class="sust">mesas</span> y los <span class="sust">platos</span>. La <span class="sust">paciencia</span> y la <span class="sust">responsabilidad</span> son importantes.</p>
+</div>
+
+<div class="tip">
+  <strong>📝 Reto adicional:</strong> Cuenta cuántos sustantivos propios encontraste en el Texto 3. Pista: hay 4 (los que empiezan con mayúscula).
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>5. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<ul class="lista-bonita">
+  <li>Los <strong>sustantivos</strong> nombran personas, lugares, objetos o ideas.</li>
+  <li>Los <strong>sustantivos propios</strong> nombran cosas únicas y se escriben con mayúscula.</li>
+  <li>Los <strong>adjetivos</strong> describen cómo es o cómo está un sustantivo.</li>
+  <li>Para encontrar el adjetivo: <em>"¿Cómo es?"</em> o <em>"¿Cómo está?"</em>.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Puedes decir tres sustantivos comunes de tu cocina?</li>
+    <li>¿Puedes decir tres adjetivos que describan a tu mejor amigo?</li>
+    <li>¿Reconoces los sustantivos y adjetivos en: "El gato negro duerme en el sofá viejo"?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Aprenderemos la <em>regla de oro</em>: la <strong>concordancia</strong> de género (masculino/femenino) y número (singular/plural).
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  var palabras=document.querySelectorAll('#texto-detective .palabra-clicable');
+  var totalSust=palabras.length;
+
+  palabras.forEach(function(p){
+    p.addEventListener('click',function(){
+      p.classList.toggle('marcada');
+      document.getElementById('puntaje-detective').textContent='';
+    });
+  });
+
+  document.getElementById('btn-verificar-detective').addEventListener('click',function(){
+    var marcadas=document.querySelectorAll('#texto-detective .palabra-clicable.marcada').length;
+    var el=document.getElementById('puntaje-detective');
+    if(marcadas===totalSust){
+      el.innerHTML='🎉 ¡Bestial! Marcaste los '+totalSust+' sustantivos del texto.';
+      el.style.color='var(--exito)';
+    }else if(marcadas<totalSust){
+      el.innerHTML='Marcaste '+marcadas+' de '+totalSust+'. Te faltaron algunos.';
+      el.style.color='var(--acento)';
+    }else{
+      el.innerHTML='Marcaste '+marcadas+', pero solo hay '+totalSust+'. Revisa: algunos son adjetivos o verbos.';
+      el.style.color='var(--acento)';
+    }
+  });
+
+  document.getElementById('btn-reset-detective').addEventListener('click',function(){
+    palabras.forEach(function(p){p.classList.remove('marcada')});
+    document.getElementById('puntaje-detective').textContent='';
+  });
+
+  var palabrasClasif=[
+    {palabra:'mesa',tipo:'sust'},{palabra:'rojo',tipo:'adj'},
+    {palabra:'feliz',tipo:'adj'},{palabra:'Chicago',tipo:'sust'},
+    {palabra:'grande',tipo:'adj'},{palabra:'profesor',tipo:'sust'},
+    {palabra:'caliente',tipo:'adj'},{palabra:'libertad',tipo:'sust'}
+  ];
+
+  var aciertos=0;
+  var resueltas={};
+  var lista=document.getElementById('lista-clasif');
+
+  palabrasClasif.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-palabra';
+    div.innerHTML=
+      '<span class="palabra-clasif">'+item.palabra+'</span>'+
+      '<div class="opciones-clasif">'+
+        '<button type="button" class="btn-clasif sust-btn" data-tipo="sust">Sustantivo</button>'+
+        '<button type="button" class="btn-clasif adj-btn" data-tipo="adj">Adjetivo</button>'+
+      '</div>';
+    lista.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-clasif');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltas[idx])return;
+        var t=b.getAttribute('data-tipo');
+        if(t===item.tipo){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-clasif');
+    el.textContent='Aciertos: '+aciertos+' / '+palabrasClasif.length;
+    if(aciertos===palabrasClasif.length){
+      el.innerHTML='🎉 ¡Bestial! Acertaste todas: '+aciertos+' / '+palabrasClasif.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Clase 1: Conciencia fonológica - rimas, sílabas y fonemas</title>
+<style>
+  :root{
+    --cp:#0089cd;
+    --cp-claro:#e3f2fd;
+    --cp-oscuro:#005a8a;
+    --acento:#ff8c42;
+    --texto:#1a2332;
+    --fondo:#fafbfc;
+    --gris:#6b7785;
+    --gris-claro:#eef1f4;
+    --silaba-1:#e91e63;
+    --silaba-2:#1976d2;
+    --silaba-3:#388e3c;
+    --silaba-4:#f57c00;
+    --fonema:#7b1fa2;
+    --exito:#2e7d32;
+    --error:#c62828;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Poppins','Segoe UI',Arial,sans-serif;
+    line-height:1.7;
+    color:var(--texto);
+    background:var(--fondo);
+    max-width:960px;
+    margin:0 auto;
+    padding:24px 18px;
+  }
+  h1{
+    color:var(--cp-oscuro);
+    border-bottom:4px solid var(--cp);
+    padding-bottom:14px;
+    font-size:1.85rem;
+    margin-bottom:8px;
+  }
+  .subtitulo{
+    color:var(--gris);
+    font-style:italic;
+    margin-top:0;
+    margin-bottom:24px;
+    font-size:1.05rem;
+  }
+  h2{
+    color:var(--cp-oscuro);
+    border-left:6px solid var(--cp);
+    padding-left:14px;
+    margin-top:32px;
+    font-size:1.4rem;
+  }
+  h3{
+    color:var(--cp);
+    margin-top:24px;
+    font-size:1.15rem;
+  }
+  .caja-objetivos{
+    background:var(--cp-claro);
+    border-left:6px solid var(--cp);
+    padding:18px 22px;
+    border-radius:8px;
+    margin:18px 0 28px 0;
+  }
+  .caja-objetivos h3{
+    margin-top:0;
+    color:var(--cp-oscuro);
+  }
+  .caja-tiempo{
+    display:inline-block;
+    background:var(--acento);
+    color:#fff;
+    padding:4px 12px;
+    border-radius:14px;
+    font-size:0.85rem;
+    font-weight:600;
+    margin-left:10px;
+    vertical-align:middle;
+  }
+  details{
+    background:#fff;
+    border:1px solid #d6dde4;
+    border-radius:10px;
+    margin:14px 0;
+    padding:0;
+    overflow:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,0.04);
+  }
+  details[open]{
+    border-color:var(--cp);
+    box-shadow:0 3px 10px rgba(0,137,205,0.12);
+  }
+  summary{
+    cursor:pointer;
+    padding:16px 20px;
+    font-weight:600;
+    color:var(--cp-oscuro);
+    background:var(--gris-claro);
+    list-style:none;
+    user-select:none;
+    font-size:1.05rem;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::before{
+    content:'▶';
+    display:inline-block;
+    margin-right:10px;
+    color:var(--cp);
+    transition:transform 0.25s;
+    font-size:0.85rem;
+  }
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{
+    background:var(--cp-claro);
+    border-bottom:2px solid var(--cp);
+  }
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:16px 0;
+  }
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{
+    border-radius:10px;
+    padding:16px 18px;
+    border:2px solid;
+  }
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{
+    background:#fffbe6;
+    border-left:5px solid #f4c430;
+    padding:12px 18px;
+    border-radius:6px;
+    margin:14px 0;
+  }
+  .tip strong{color:#8a6d00}
+  .ejercicio{
+    background:#f3f9f3;
+    border:2px dashed #4caf50;
+    border-radius:10px;
+    padding:18px 22px;
+    margin:20px 0;
+  }
+  .ejercicio h4{color:#2e7d32;margin-top:0}
+  .botones{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:14px 0;
+  }
+  .btn{
+    padding:10px 22px;
+    border:none;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:0.95rem;
+    transition:all 0.2s;
+  }
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .btn-sonido{
+    background:var(--acento);
+    color:#fff;
+    padding:8px 18px;
+    border-radius:20px;
+    font-size:0.95rem;
+  }
+  .btn-sonido:hover{background:#e07020}
+  .btn-sonido::before{content:'🔊 ';margin-right:4px}
+  .firma{
+    margin-top:40px;
+    padding-top:18px;
+    border-top:2px solid var(--gris-claro);
+    text-align:center;
+    color:var(--gris);
+    font-style:italic;
+    font-size:0.9rem;
+  }
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{
+    content:'➜';
+    position:absolute;
+    left:0;
+    color:var(--cp);
+    font-weight:700;
+  }
+  .palabra-clave{
+    background:linear-gradient(transparent 60%,#ffeb3b 60%);
+    padding:0 4px;
+    font-weight:600;
+  }
+
+  /* ====== Palabra separada en sílabas ====== */
+  .palabra-silabas{
+    display:inline-flex;
+    gap:6px;
+    align-items:center;
+    margin:6px 8px;
+    font-family:'Georgia',serif;
+    font-size:1.4rem;
+  }
+  .silaba{
+    padding:8px 14px;
+    border-radius:8px;
+    color:#fff;
+    font-weight:700;
+    box-shadow:0 2px 4px rgba(0,0,0,0.15);
+  }
+  .silaba-c1{background:var(--silaba-1)}
+  .silaba-c2{background:var(--silaba-2)}
+  .silaba-c3{background:var(--silaba-3)}
+  .silaba-c4{background:var(--silaba-4)}
+  .palmada{
+    color:var(--acento);
+    font-size:1.5rem;
+    animation:pulso 1.5s infinite;
+  }
+  @keyframes pulso{
+    0%,100%{transform:scale(1);opacity:0.7}
+    50%{transform:scale(1.2);opacity:1}
+  }
+
+  /* ====== Tarjetas de palabras para contar sílabas ====== */
+  .grid-palabras{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:14px;
+    margin:18px 0;
+  }
+  .tarjeta-palabra{
+    background:#fff;
+    border:2px solid var(--gris-claro);
+    border-radius:10px;
+    padding:16px;
+    text-align:center;
+    transition:all 0.2s;
+  }
+  .tarjeta-palabra.resuelta{
+    border-color:var(--exito);
+    background:#e8f5e9;
+  }
+  .palabra-mostrar{
+    font-family:'Georgia',serif;
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--cp-oscuro);
+    margin-bottom:10px;
+  }
+  .opciones-silabas{
+    display:flex;
+    gap:6px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .btn-opcion{
+    width:38px;
+    height:38px;
+    border:2px solid var(--cp);
+    background:#fff;
+    color:var(--cp);
+    border-radius:50%;
+    font-weight:700;
+    font-size:1.05rem;
+    cursor:pointer;
+    transition:all 0.2s;
+    font-family:inherit;
+  }
+  .btn-opcion:hover{background:var(--cp-claro)}
+  .btn-opcion.correcta{
+    background:var(--exito);
+    color:#fff;
+    border-color:var(--exito);
+  }
+  .btn-opcion.incorrecta{
+    background:var(--error);
+    color:#fff;
+    border-color:var(--error);
+    animation:sacudir 0.4s;
+  }
+  @keyframes sacudir{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-4px)}
+    75%{transform:translateX(4px)}
+  }
+  .palmas-visuales{
+    font-size:1.6rem;
+    height:32px;
+    margin:8px 0 0 0;
+    min-height:32px;
+  }
+
+  /* ====== Rimas - pares ====== */
+  .area-rimas{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin:18px 0;
+  }
+  @media(max-width:640px){.area-rimas{grid-template-columns:1fr}}
+  .col-rimas h4{margin-top:0;color:var(--cp-oscuro)}
+  .tarjeta-rima{
+    background:#fff;
+    border:2px solid var(--gris-claro);
+    border-radius:10px;
+    padding:14px;
+    margin:8px 0;
+    cursor:pointer;
+    transition:all 0.2s;
+    font-family:'Georgia',serif;
+    font-size:1.15rem;
+    font-weight:600;
+    text-align:center;
+  }
+  .tarjeta-rima:hover{
+    border-color:var(--cp);
+    transform:translateY(-2px);
+  }
+  .tarjeta-rima.activa{
+    background:#fff3e0;
+    border-color:var(--acento);
+    box-shadow:0 0 0 3px rgba(255,140,66,0.2);
+  }
+  .tarjeta-rima.emparejada{
+    background:#e8f5e9;
+    border-color:var(--exito);
+    color:var(--exito);
+    cursor:default;
+  }
+  .tarjeta-rima.emparejada::after{
+    content:' ✓';
+    color:var(--exito);
+  }
+  .resaltar-fin{
+    background:#ffeb3b;
+    padding:0 3px;
+    border-radius:3px;
+  }
+
+  /* ====== Fonemas - aislar sonidos ====== */
+  .palabra-fonemas{
+    display:inline-flex;
+    gap:8px;
+    margin:14px 8px;
+    align-items:center;
+    font-family:'Georgia',serif;
+    font-size:1.5rem;
+  }
+  .fonema{
+    width:48px;
+    height:48px;
+    background:var(--fonema);
+    color:#fff;
+    border-radius:8px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    box-shadow:0 2px 5px rgba(0,0,0,0.18);
+  }
+  .fonema-inicial{
+    background:var(--acento);
+    box-shadow:0 0 0 3px #fff,0 0 0 5px var(--acento);
+  }
+
+  .feedback{
+    margin-top:14px;
+    padding:12px 16px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:600;
+    min-height:20px;
+  }
+  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+
+  .puntaje{
+    text-align:center;
+    margin-top:14px;
+    font-weight:600;
+    color:var(--cp-oscuro);
+    font-size:1.05rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Clase 1: Conciencia fonológica</h1>
+<p class="subtitulo">Rimas, sílabas y fonemas · Artes del Lenguaje · Nivel 1 · Tema 2, semana 2</p>
+
+<div class="caja-objetivos">
+  <h3>🎯 Objetivo de la clase</h3>
+  <p style="margin-bottom:0">Que tú, estudiante, <strong>reconozcas y puedas jugar con los sonidos del lenguaje hablado</strong>, preparándote así para la lectura fluida. Antes de leer letras en un papel, hay que aprender a escuchar.</p>
+</div>
+
+<h2>📚 Bienvenida</h2>
+
+<p>Asere, hoy empezamos el Tema 2 de tu curso. ¿Te acuerdas de la lección pasada? Aprendimos que la lectura avanza de izquierda a derecha y que las oraciones se hacen con sujeto y predicado. Pues hoy vamos para <em>abajo de eso</em>: vamos a meternos dentro de las palabras para ver de qué están hechas.</p>
+
+<p>Y lo más bonito es que <strong>esta clase no es de leer todavía</strong>. Es de <strong>escuchar</strong>. Vas a darte cuenta de algo importantísimo: dentro de cada palabra hay <em>bloquecitos de sonido</em> (sílabas), hay <em>palabras que terminan igual</em> (rimas) y hay <em>sonidos chiquititos</em> (fonemas) que son la materia prima de todo lo que decimos.</p>
+
+<p>Esto se llama <span class="palabra-clave">conciencia fonológica</span>, y es la base sobre la que se construye saber leer. Vamos por partes, como siempre.</p>
+
+<details open>
+<summary>1. Introducción al sonido de las palabras <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué es la conciencia fonológica?</h3>
+
+<p>Antes de poder leer letras en un papel, debemos ser capaces de <strong>escuchar y manipular los sonidos</strong> que forman las palabras. A esa capacidad se le llama <span class="palabra-clave">conciencia fonológica</span>.</p>
+
+<p>Es la base fundamental de la lectura, porque nos permite dividir una palabra en las partes que la constituyen. Mira:</p>
+
+<ul class="lista-bonita">
+  <li>La palabra <em>casa</em> son dos golpes de sonido: <strong>ca</strong> + <strong>sa</strong>.</li>
+  <li>La palabra <em>papá</em> también: <strong>pa</strong> + <strong>pá</strong>.</li>
+  <li>La palabra <em>chocolate</em> son cuatro: <strong>cho</strong> + <strong>co</strong> + <strong>la</strong> + <strong>te</strong>.</li>
+</ul>
+
+<p>Si tú puedes <em>escuchar</em> esos golpes, después vas a poder <em>verlos</em> escritos. Así de simple. Por eso esta clase empieza por el oído.</p>
+
+<div class="tip">
+  <strong>💡 De Cuba para ti:</strong> Esto que vamos a hacer hoy no es de niños chiquitos. Hasta los mejores lectores adultos a veces se traban con una palabra larga y la dividen en pedazos para entenderla. Es una herramienta, no un juego de cuna.
+</div>
+
+<h3>Escucha un ejemplo</h3>
+
+<p>Haz clic en el botón y escucha cómo se pronuncia la palabra <strong>completa</strong>, y después <strong>separada en sílabas</strong>:</p>
+
+<div class="botones">
+  <button class="btn btn-sonido" type="button" onclick="hablar('zapato')">"zapato" (entera)</button>
+  <button class="btn btn-sonido" type="button" onclick="hablar('za, pa, to', 0.6)">"za - pa - to" (separada)</button>
+</div>
+
+<p style="text-align:center;margin-top:14px">
+<span class="palabra-silabas">
+  <span class="silaba silaba-c1">za</span>
+  <span class="silaba silaba-c2">pa</span>
+  <span class="silaba silaba-c3">to</span>
+</span>
+</p>
+
+</div>
+</details>
+
+<details>
+<summary>2. Desarrollo: sílabas y rimas <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Las sílabas: bloques de sonido</h3>
+
+<p>Las palabras se pueden separar en <strong>bloques de sonido</strong>. Cada bloque tiene una vocal (a, e, i, o, u) y puede tener una o más consonantes. Esos bloques se llaman <span class="palabra-clave">sílabas</span>.</p>
+
+<p>La forma más fácil de contar las sílabas de una palabra es <strong>dando una palmada por cada bloque que escuchas</strong>:</p>
+
+<div style="text-align:center;margin:18px 0">
+  <div>
+    <span class="palabra-silabas">
+      <span class="silaba silaba-c1">ma</span>
+      <span class="silaba silaba-c2">ri</span>
+      <span class="silaba silaba-c3">a</span>
+    </span>
+    <span class="palmada">👏 👏 👏</span>
+  </div>
+  <p style="color:var(--gris);font-style:italic;margin-top:6px">María = 3 palmadas</p>
+
+  <div style="margin-top:14px">
+    <span class="palabra-silabas">
+      <span class="silaba silaba-c1">sol</span>
+    </span>
+    <span class="palmada">👏</span>
+  </div>
+  <p style="color:var(--gris);font-style:italic;margin-top:6px">Sol = 1 palmada</p>
+
+  <div style="margin-top:14px">
+    <span class="palabra-silabas">
+      <span class="silaba silaba-c1">cho</span>
+      <span class="silaba silaba-c2">co</span>
+      <span class="silaba silaba-c3">la</span>
+      <span class="silaba silaba-c4">te</span>
+    </span>
+    <span class="palmada">👏 👏 👏 👏</span>
+  </div>
+  <p style="color:var(--gris);font-style:italic;margin-top:6px">Chocolate = 4 palmadas</p>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor dice una palabra en voz alta. Tú, junto con tus compañeros, das una palmada por cada sílaba que escuchas. Sí, palmadas de verdad, con las manos. Al principio puede dar pena, pero confía: funciona.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>Cuando el profesor diga una palabra, tú das las palmadas en tu casa (con el micrófono encendido si te animas, o silencioso si prefieres). También puedes <strong>escribir el número en el chat</strong>: 1, 2, 3 o 4.</p>
+  </div>
+</div>
+
+<div class="ejercicio">
+  <h4>🎯 Actividad: cuenta las sílabas</h4>
+  <p style="text-align:center">Escucha cada palabra con el botón 🔊 y luego selecciona cuántas sílabas tiene.</p>
+
+  <div class="grid-palabras" id="grid-silabas">
+    <!-- Generadas por JS -->
+  </div>
+
+  <div class="puntaje" id="puntaje-silabas">Palabras resueltas: 0 / 6</div>
+</div>
+
+<h3>Las rimas: palabras que suenan igual al final</h3>
+
+<p>Otra cosa que podemos escuchar son las <span class="palabra-clave">rimas</span>: palabras que <strong>terminan con el mismo sonido</strong>. No tienen que escribirse igual, pero al final suenan parecido.</p>
+
+<p>Mira (y escucha) estos ejemplos:</p>
+
+<div style="text-align:center;margin:14px 0">
+  <button class="btn btn-sonido" type="button" onclick="hablar('rojo, ojo')">"rojo / ojo"</button>
+  <button class="btn btn-sonido" type="button" onclick="hablar('luna, cuna')">"luna / cuna"</button>
+  <button class="btn btn-sonido" type="button" onclick="hablar('gato, pato')">"gato / pato"</button>
+</div>
+
+<ul class="lista-bonita">
+  <li>r<span class="resaltar-fin">ojo</span> rima con <span class="resaltar-fin">ojo</span> (terminan en "ojo").</li>
+  <li>l<span class="resaltar-fin">una</span> rima con c<span class="resaltar-fin">una</span> (terminan en "una").</li>
+  <li>g<span class="resaltar-fin">ato</span> rima con p<span class="resaltar-fin">ato</span> (terminan en "ato").</li>
+</ul>
+
+<div class="ejercicio">
+  <h4>🎯 Actividad: empareja las rimas</h4>
+  <p style="text-align:center">Haz clic en una palabra de la <strong>izquierda</strong> y luego en su pareja que rima de la <strong>derecha</strong>.</p>
+
+  <div class="area-rimas">
+    <div class="col-rimas">
+      <h4>Columna A</h4>
+      <div id="col-a"></div>
+    </div>
+    <div class="col-rimas">
+      <h4>Columna B</h4>
+      <div id="col-b"></div>
+    </div>
+  </div>
+
+  <div class="puntaje" id="puntaje-rimas">Parejas encontradas: 0 / 4</div>
+
+  <div class="botones">
+    <button class="btn btn-secundario" type="button" onclick="reiniciarRimas()">Reiniciar</button>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>3. Práctica: los fonemas <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El sonido más pequeño</h3>
+
+<p>Ahora vamos a la unidad de sonido <strong>más pequeña</strong> de todas: el <span class="palabra-clave">fonema</span>. Un fonema es el sonido individual de una letra cuando la pronunciamos sola.</p>
+
+<p>Por ejemplo, la palabra <strong>sal</strong> tiene <strong>tres fonemas</strong>:</p>
+
+<div style="text-align:center;margin:18px 0">
+  <span class="palabra-fonemas">
+    <span class="fonema">s</span>
+    <span class="fonema">a</span>
+    <span class="fonema">l</span>
+  </span>
+  <p style="color:var(--gris);font-style:italic">s + a + l = sal (3 sonidos)</p>
+  <button class="btn btn-sonido" type="button" onclick="hablar('s, a, l, sal', 0.5)">Escucha "s - a - l - ¡sal!"</button>
+</div>
+
+<div class="tip">
+  <strong>⚠️ Cuidado importante:</strong> No es lo mismo el <em>nombre</em> de la letra que su <em>sonido</em>. La letra "s" se llama "ese", pero suena "sss". La letra "p" se llama "pe", pero suena "p" (corto y seco). Cuando trabajamos con fonemas, usamos el <strong>sonido</strong>, no el nombre. Esto te va a ayudar muchísimo en la próxima clase.
+</div>
+
+<h3>Aislar el primer sonido</h3>
+
+<p>Una técnica muy útil es <strong>prolongar el primer sonido</strong> de la palabra para escucharlo bien:</p>
+
+<div style="text-align:center;margin:16px 0">
+  <button class="btn btn-sonido" type="button" onclick="hablar('vvvvvvaso', 0.5)">"vvv-vaso"</button>
+  <button class="btn btn-sonido" type="button" onclick="hablar('rrrrratón', 0.5)">"rrr-ratón"</button>
+  <button class="btn btn-sonido" type="button" onclick="hablar('mmmmmesa', 0.5)">"mmm-mesa"</button>
+  <button class="btn btn-sonido" type="button" onclick="hablar('ssssssol', 0.5)">"sss-sol"</button>
+</div>
+
+<p>Cuando estiras el primer sonido, lo escuchas separado del resto. Ese es el primer fonema.</p>
+
+<div class="ejercicio">
+  <h4>🎯 Actividad: ¿cuál es el primer sonido?</h4>
+  <p style="text-align:center">Escucha la palabra y elige cuál es su <strong>primer sonido</strong>.</p>
+
+  <div id="grid-fonemas"></div>
+
+  <div class="puntaje" id="puntaje-fonemas">Aciertos: 0 / 4</div>
+</div>
+
+<div class="modalidad">
+  <div class="tarjeta-modalidad presencial">
+    <h4>🏫 Presencial</h4>
+    <p>El profesor dice una palabra y tú dices su <strong>primer sonido</strong> en voz alta (no el nombre de la letra). Luego, todos juntos repiten la palabra completa. Es un ejercicio de oído puro.</p>
+  </div>
+  <div class="tarjeta-modalidad online">
+    <h4>💻 Online</h4>
+    <p>El profesor dice la palabra por el micrófono y tú escribes el primer sonido en el chat. Por ejemplo, si dice "vaso", tú escribes "v" (no "ve"). Si dice "mesa", escribes "m".</p>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details>
+<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Lo que aprendimos hoy</h3>
+
+<p>Recoge la cosecha del día:</p>
+
+<ul class="lista-bonita">
+  <li>Las palabras tienen <strong>sílabas</strong> que podemos contar con palmadas.</li>
+  <li>Algunas palabras <strong>riman</strong> porque terminan con el mismo sonido.</li>
+  <li>Cada palabra está hecha de <strong>fonemas</strong>, que son los sonidos más pequeños.</li>
+  <li>El <strong>nombre</strong> de una letra y su <strong>sonido</strong> son cosas distintas.</li>
+</ul>
+
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h3 style="color:#b35316">✅ Antes de irte, revísate</h3>
+  <ul class="lista-bonita">
+    <li>¿Puedes contar las sílabas de tu nombre dando palmadas?</li>
+    <li>¿Se te ocurre una palabra que rime con "casa"? ¿Y una que rime con "noche"?</li>
+    <li>¿Sabes cuál es el primer sonido de la palabra "fuego"?</li>
+  </ul>
+  <p style="margin-bottom:0"><strong>Si pudiste con las tres, vas bien.</strong> Si no, repasa la sección que te costó antes de la próxima clase.</p>
+</div>
+
+<div class="tip">
+  <strong>📅 Para la próxima clase:</strong> Vamos a tomar estos sonidos que hoy escuchamos y los vamos a unir con sus letras escritas. Eso se llama <em>decodificar</em>, y es el siguiente paso para poder leer palabras de verdad sobre el papel.
+</div>
+
+</div>
+</details>
+
+<div class="firma">
+  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
+  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
+</div>
+
+<script>
+(function(){
+  // ============== Síntesis de voz (Web Speech API) ==============
+  window.hablar=function(texto,velocidad){
+    if(!('speechSynthesis' in window)){
+      alert('Tu navegador no soporta la reproducción de audio. Usa Chrome, Edge o Safari.');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(texto);
+    u.lang='es-ES';
+    u.rate=velocidad||0.85;
+    u.pitch=1;
+    // Buscar voz española
+    var voces=window.speechSynthesis.getVoices();
+    for(var i=0;i<voces.length;i++){
+      if(voces[i].lang.indexOf('es')===0){
+        u.voice=voces[i];
+        break;
+      }
+    }
+    window.speechSynthesis.speak(u);
+  };
+
+  // Pre-cargar voces (algunos navegadores las cargan asíncrono)
+  if('speechSynthesis' in window){
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged=function(){
+      window.speechSynthesis.getVoices();
+    };
+  }
+
+  // ============== Ejercicio de sílabas ==============
+  var palabrasSilabas=[
+    {palabra:'casa',silabas:2,sep:'ca-sa'},
+    {palabra:'mariposa',silabas:4,sep:'ma-ri-po-sa'},
+    {palabra:'pan',silabas:1,sep:'pan'},
+    {palabra:'pelota',silabas:3,sep:'pe-lo-ta'},
+    {palabra:'sol',silabas:1,sep:'sol'},
+    {palabra:'chocolate',silabas:4,sep:'cho-co-la-te'}
+  ];
+
+  var resueltasSilabas=0;
+  var gridSilabas=document.getElementById('grid-silabas');
+
+  palabrasSilabas.forEach(function(item,idx){
+    var card=document.createElement('div');
+    card.className='tarjeta-palabra';
+    card.setAttribute('data-idx',idx);
+
+    var opciones='';
+    for(var n=1;n<=4;n++){
+      opciones+='<button type="button" class="btn-opcion" data-num="'+n+'">'+n+'</button>';
+    }
+
+    card.innerHTML=
+      '<div class="palabra-mostrar">'+item.palabra+'</div>'+
+      '<button type="button" class="btn btn-sonido" data-accion="oir">Escuchar</button>'+
+      '<div class="palmas-visuales" data-palmas></div>'+
+      '<div style="margin-top:8px;font-size:0.85rem;color:var(--gris)">¿Cuántas sílabas tiene?</div>'+
+      '<div class="opciones-silabas">'+opciones+'</div>';
+
+    gridSilabas.appendChild(card);
+
+    // Botón escuchar
+    card.querySelector('[data-accion="oir"]').addEventListener('click',function(){
+      window.hablar(item.palabra);
+    });
+
+    // Botones de opciones
+    var botones=card.querySelectorAll('.btn-opcion');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(card.classList.contains('resuelta'))return;
+        var num=parseInt(b.getAttribute('data-num'));
+        if(num===item.silabas){
+          b.classList.add('correcta');
+          card.classList.add('resuelta');
+          // Mostrar palmadas
+          var palmas='';
+          for(var k=0;k<num;k++)palmas+='👏 ';
+          card.querySelector('[data-palmas]').textContent=palmas;
+          // Pronunciar separada
+          setTimeout(function(){
+            window.hablar(item.sep.replace(/-/g,', '),0.55);
+          },300);
+          resueltasSilabas++;
+          actualizarPuntajeSilabas();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeSilabas(){
+    var el=document.getElementById('puntaje-silabas');
+    el.textContent='Palabras resueltas: '+resueltasSilabas+' / '+palabrasSilabas.length;
+    if(resueltasSilabas===palabrasSilabas.length){
+      el.innerHTML='🎉 ¡De cine! Completaste todas las palabras: '+resueltasSilabas+' / '+palabrasSilabas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // ============== Ejercicio de rimas ==============
+  var paresRimas=[
+    {a:'gato',b:'pato',fin:'ato'},
+    {a:'luna',b:'cuna',fin:'una'},
+    {a:'flor',b:'amor',fin:'or'},
+    {a:'pino',b:'camino',fin:'ino'}
+  ];
+
+  var rimasEmparejadas=0;
+  var rimaSeleccionada=null;
+
+  function mezclar(arr){
+    var a=arr.slice();
+    for(var i=a.length-1;i>0;i--){
+      var j=Math.floor(Math.random()*(i+1));
+      var tmp=a[i];a[i]=a[j];a[j]=tmp;
+    }
+    return a;
+  }
+
+  function dibujarRimas(){
+    rimasEmparejadas=0;
+    rimaSeleccionada=null;
+    var colA=document.getElementById('col-a');
+    var colB=document.getElementById('col-b');
+    colA.innerHTML='';
+    colB.innerHTML='';
+
+    var listaA=mezclar(paresRimas);
+    var listaB=mezclar(paresRimas);
+
+    listaA.forEach(function(p){
+      var d=document.createElement('div');
+      d.className='tarjeta-rima';
+      d.setAttribute('data-palabra',p.a);
+      d.setAttribute('data-fin',p.fin);
+      d.setAttribute('data-col','a');
+      var resto=p.a.slice(0,p.a.length-p.fin.length);
+      d.innerHTML=resto+'<span class="resaltar-fin">'+p.fin+'</span>';
+      d.addEventListener('click',function(){manejarClicRima(d)});
+      colA.appendChild(d);
+    });
+
+    listaB.forEach(function(p){
+      var d=document.createElement('div');
+      d.className='tarjeta-rima';
+      d.setAttribute('data-palabra',p.b);
+      d.setAttribute('data-fin',p.fin);
+      d.setAttribute('data-col','b');
+      var resto=p.b.slice(0,p.b.length-p.fin.length);
+      d.innerHTML=resto+'<span class="resaltar-fin">'+p.fin+'</span>';
+      d.addEventListener('click',function(){manejarClicRima(d)});
+      colB.appendChild(d);
+    });
+
+    actualizarPuntajeRimas();
+  }
+
+  function manejarClicRima(tarjeta){
+    if(tarjeta.classList.contains('emparejada'))return;
+    // Pronunciar
+    window.hablar(tarjeta.getAttribute('data-palabra'));
+
+    if(!rimaSeleccionada){
+      rimaSeleccionada=tarjeta;
+      tarjeta.classList.add('activa');
+      return;
+    }
+
+    if(rimaSeleccionada===tarjeta){
+      tarjeta.classList.remove('activa');
+      rimaSeleccionada=null;
+      return;
+    }
+
+    // Verificar que sean de columnas distintas
+    if(rimaSeleccionada.getAttribute('data-col')===tarjeta.getAttribute('data-col')){
+      rimaSeleccionada.classList.remove('activa');
+      rimaSeleccionada=tarjeta;
+      tarjeta.classList.add('activa');
+      // Quitar activa de las otras de su misma columna
+      var todas=document.querySelectorAll('.tarjeta-rima.activa');
+      todas.forEach(function(t){if(t!==tarjeta)t.classList.remove('activa')});
+      return;
+    }
+
+    // Comparar finales
+    if(rimaSeleccionada.getAttribute('data-fin')===tarjeta.getAttribute('data-fin')){
+      rimaSeleccionada.classList.remove('activa');
+      rimaSeleccionada.classList.add('emparejada');
+      tarjeta.classList.add('emparejada');
+      rimaSeleccionada=null;
+      rimasEmparejadas++;
+      actualizarPuntajeRimas();
+    }else{
+      tarjeta.classList.add('activa');
+      setTimeout(function(){
+        if(rimaSeleccionada)rimaSeleccionada.classList.remove('activa');
+        tarjeta.classList.remove('activa');
+        rimaSeleccionada=null;
+      },800);
+    }
+  }
+
+  function actualizarPuntajeRimas(){
+    var el=document.getElementById('puntaje-rimas');
+    el.textContent='Parejas encontradas: '+rimasEmparejadas+' / '+paresRimas.length;
+    if(rimasEmparejadas===paresRimas.length){
+      el.innerHTML='🎉 ¡Bestial! Las encontraste todas: '+rimasEmparejadas+' / '+paresRimas.length;
+      el.style.color='var(--exito)';
+    }else{
+      el.style.color='';
+    }
+  }
+
+  window.reiniciarRimas=function(){dibujarRimas()};
+  dibujarRimas();
+
+  // ============== Ejercicio de fonemas ==============
+  var palabrasFonemas=[
+    {palabra:'vaso',primero:'v',opciones:['v','b','f','p'],prolong:'vvvvvvaso'},
+    {palabra:'mesa',primero:'m',opciones:['m','n','s','p'],prolong:'mmmmmmesa'},
+    {palabra:'sol',primero:'s',opciones:['s','c','z','x'],prolong:'ssssssol'},
+    {palabra:'foca',primero:'f',opciones:['f','v','p','j'],prolong:'fffffoca'}
+  ];
+
+  var aciertosFonemas=0;
+  var resueltasFonemas={};
+  var gridFonemas=document.getElementById('grid-fonemas');
+
+  palabrasFonemas.forEach(function(item,idx){
+    var card=document.createElement('div');
+    card.className='tarjeta-palabra';
+    card.style.marginBottom='12px';
+    card.setAttribute('data-idx',idx);
+
+    var opciones='';
+    item.opciones.forEach(function(letra){
+      opciones+='<button type="button" class="btn-opcion" data-letra="'+letra+'">'+letra+'</button>';
+    });
+
+    card.innerHTML=
+      '<div class="palabra-mostrar">'+item.palabra+'</div>'+
+      '<div style="margin-bottom:10px">'+
+        '<button type="button" class="btn btn-sonido" data-accion="normal">Escuchar normal</button> '+
+        '<button type="button" class="btn btn-sonido" data-accion="prolong">Escuchar prolongado</button>'+
+      '</div>'+
+      '<div style="margin-top:8px;font-size:0.85rem;color:var(--gris)">¿Cuál es el primer sonido?</div>'+
+      '<div class="opciones-silabas">'+opciones+'</div>';
+
+    gridFonemas.appendChild(card);
+
+    card.querySelector('[data-accion="normal"]').addEventListener('click',function(){
+      window.hablar(item.palabra);
+    });
+    card.querySelector('[data-accion="prolong"]').addEventListener('click',function(){
+      window.hablar(item.prolong,0.5);
+    });
+
+    var botones=card.querySelectorAll('.btn-opcion');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasFonemas[idx])return;
+        var letra=b.getAttribute('data-letra');
+        if(letra===item.primero){
+          b.classList.add('correcta');
+          resueltasFonemas[idx]=true;
+          aciertosFonemas++;
+          actualizarPuntajeFonemas();
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarPuntajeFonemas(){
+    var el=document.getElementById('puntaje-fonemas');
+    el.textContent='Aciertos: '+aciertosFonemas+' / '+palabrasFonemas.length;
+    if(aciertosFonemas===palabrasFonemas.length){
+      el.innerHTML='🎉 ¡Excelente oído! Aciertos: '+aciertosFonemas+' / '+palabrasFonemas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
