@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 6.6 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 6: Vocabulario de dominio y aplicación de lo aprendido</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6.6 · Vocabulario de dominio y aplicación</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -135,15 +141,84 @@
   .badge-reflexion{background:#e8f5e9;color:#2e7d32}
   .badge-quiz{background:#e8f5e9;color:#2e7d32}
   .badge-rubrica{background:#fff3e0;color:#e65100}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  button.item-empareja,button.item-ce{display:block;width:100%;text-align:left;font:inherit;color:inherit}
+  button.item-ce{font-family:'Georgia',serif}
+  button.item-empareja:focus-visible,button.item-ce:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
+
+  button.item-empareja:disabled{cursor:default;opacity:1}
 </style>
 </head>
 <body>
 
-<h1>Clase 6: Vocabulario de dominio y aplicación</h1>
-<p class="subtitulo">Aplicación de lo aprendido · Tema 6 · Lección 6.3 · Nivel 1 · Semana 12 · 50 minutos</p>
+<h1>Lección 6.6 · Vocabulario de dominio y aplicación</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 6 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Identificar y aprender <strong>vocabulario de dominio específico</strong> de ciencias y estudios sociales.</li>
     <li>Usar <strong>claves de contexto</strong> para deducir el significado de palabras desconocidas.</li>
@@ -151,33 +226,49 @@
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-vocabulario">El vocabulario de dominio</a></li>
+    <li><a href="#s-2-contexto">Claves de contexto</a></li>
+    <li><a href="#s-3-practica">Práctica escrita: describir una gráfica</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre del Tema 6</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Esta es la última clase del Tema 6. Hemos recorrido un camino notable: aprendimos a leer imágenes, mapas, tablas y gráficas. Hoy daremos el paso final que nos permite <strong>hablar y escribir</strong> sobre lo que vemos en estas herramientas visuales.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Para esto necesitamos un tipo especial de palabras: el <span class="palabra-clave">vocabulario de dominio específico</span>. Son palabras técnicas que aparecen en ciencias y estudios sociales y que debemos reconocer y entender, porque sin ellas no se puede comprender un texto académico ni responder bien las preguntas del GED.</p>
+<p>Esta es la última lección del Tema 6. Ya recorriste un buen camino: aprendiste a leer imágenes, mapas, tablas y gráficas. Ahora vas a dar el paso final: <strong>hablar y escribir</strong> sobre lo que ves en ellas.</p>
 
-<details open>
-<summary>1. Introducción: vocabulario académico <span class="caja-tiempo">10 min</span></summary>
+<p>Para eso necesitas un tipo especial de palabras: el <span class="palabra-clave">vocabulario de dominio específico</span>. Son palabras técnicas de las ciencias y de los estudios sociales. Si no las entiendes, es muy difícil comprender un texto académico o responder bien las preguntas del GED.</p>
+
+<details open id="s-1-vocabulario">
+<summary>1. El vocabulario de dominio <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué es el vocabulario de dominio?</h3>
 
-<p>Cuando hablamos en la vida diaria, usamos un vocabulario común: <em>casa, calle, comida, familia</em>. Pero cuando leemos un texto de ciencias o de historia, encontramos otro tipo de palabras: <em>población, latitud, temperatura, ecosistema, soberanía</em>. Estas son palabras de <span class="palabra-clave">dominio específico</span>: pertenecen a un campo de conocimiento particular.</p>
+<p>En la vida diaria usamos un vocabulario común: <em>casa, calle, comida, familia</em>. Pero en un texto de ciencias o de historia aparecen otras palabras: <em>población, latitud, temperatura, ecosistema, soberanía</em>. Estas son palabras de <span class="palabra-clave">dominio específico</span>: pertenecen a un campo de conocimiento particular.</p>
 
 <div class="clave-pedagogica">
-  <strong>💡 Idea central:</strong> No tenemos que aprender de memoria <em>todas</em> las palabras técnicas del mundo. Lo que sí debemos aprender es la <strong>estrategia</strong> para identificarlas en un texto y deducir su significado a partir del contexto.
+  <strong>💡 Idea central:</strong> No tienes que aprender de memoria <em>todas</em> las palabras técnicas del mundo. Lo que sí necesitas es una <strong>estrategia</strong> para reconocerlas en un texto y deducir su significado por el contexto.
 </div>
 
-<h3>Cinco palabras esenciales para empezar</h3>
+<h3>Seis palabras esenciales para empezar</h3>
 
-<p>Estas cinco palabras aparecen una y otra vez en el examen del GED. Vamos a estudiarlas con detalle:</p>
+<p>Estas seis palabras aparecen a menudo en los textos de ciencias y de estudios sociales. Estúdialas con calma:</p>
 
 <div class="dominio-grid">
 
   <div class="palabra-dominio sociales">
     <div class="icono-dom">
-      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="40" cy="28" r="10" fill="#b71c1c"/>
         <rect x="30" y="36" width="20" height="22" rx="3" fill="#b71c1c"/>
         <circle cx="20" cy="35" r="7" fill="#e57373"/>
@@ -196,13 +287,13 @@
       <span class="area-tag">Estudios sociales</span>
       <p class="pal-titulo">Población</p>
       <p class="pal-def">Número total de personas que viven en un lugar (ciudad, país, región).</p>
-      <p class="pal-ej">"La población de Chicago es de aproximadamente 2.7 millones de personas."</p>
+      <p class="pal-ej">«Según el censo de 2020, la población de Chicago es de unos 2.7 millones de personas.»</p>
     </div>
   </div>
 
   <div class="palabra-dominio sociales">
     <div class="icono-dom">
-      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="40" cy="40" r="32" fill="#90caf9" stroke="#0d47a1" stroke-width="2"/>
         <ellipse cx="40" cy="40" rx="32" ry="10" fill="none" stroke="#0d47a1" stroke-width="1.5" stroke-dasharray="3,2"/>
         <ellipse cx="40" cy="40" rx="32" ry="20" fill="none" stroke="#0d47a1" stroke-width="1" stroke-dasharray="2,2"/>
@@ -214,14 +305,14 @@
     <div class="cuerpo-dom">
       <span class="area-tag">Estudios sociales</span>
       <p class="pal-titulo">Latitud</p>
-      <p class="pal-def">Distancia desde la línea del ecuador (la línea roja que divide la Tierra en mitades). Se mide en grados (°).</p>
-      <p class="pal-ej">"Chicago está en una latitud de 41° Norte."</p>
+      <p class="pal-def">Distancia de un lugar al norte o al sur del ecuador (la línea roja que divide la Tierra en dos mitades). Se mide en grados (°).</p>
+      <p class="pal-ej">«Chicago está a casi 42° de latitud norte.»</p>
     </div>
   </div>
 
   <div class="palabra-dominio ciencias">
     <div class="icono-dom">
-      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="0" y="60" width="80" height="20" fill="#1565c0"/>
         <polygon points="0,60 20,40 35,55 50,30 65,45 80,25 80,60" fill="#8d6e63"/>
         <polygon points="35,55 50,30 65,45" fill="#5d4037"/>
@@ -236,13 +327,13 @@
       <span class="area-tag">Ciencias</span>
       <p class="pal-titulo">Altitud</p>
       <p class="pal-def">Altura de un lugar sobre el nivel del mar. Se mide en metros o en pies.</p>
-      <p class="pal-ej">"La altitud de Denver es de aproximadamente 1.600 metros."</p>
+      <p class="pal-ej">«La altitud de Denver es de unos 1600 metros: por eso la llaman la ciudad de una milla de altura.»</p>
     </div>
   </div>
 
   <div class="palabra-dominio ciencias">
     <div class="icono-dom">
-      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="32" y="10" width="16" height="50" rx="8" fill="#fff" stroke="#c62828" stroke-width="2.5"/>
         <rect x="35" y="13" width="10" height="35" fill="#ffebee"/>
         <rect x="35" y="35" width="10" height="13" fill="#c62828"/>
@@ -259,13 +350,13 @@
       <span class="area-tag">Ciencias</span>
       <p class="pal-titulo">Temperatura</p>
       <p class="pal-def">Medida de lo frío o caliente que está algo. Se mide en grados Fahrenheit (°F) o Celsius (°C).</p>
-      <p class="pal-ej">"En julio, la temperatura promedio en Miami es de 90 °F."</p>
+      <p class="pal-ej">«En julio, la temperatura máxima promedio en Miami ronda los 90 °F.»</p>
     </div>
   </div>
 
   <div class="palabra-dominio sociales">
     <div class="icono-dom">
-      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="10" y="20" width="60" height="48" fill="#fff" stroke="#1a2332" stroke-width="2"/>
         <text x="40" y="32" text-anchor="middle" font-size="8" font-weight="bold" fill="#1a2332">Leyenda</text>
         <line x1="14" y1="35" x2="66" y2="35" stroke="#1a2332" stroke-width="0.8"/>
@@ -281,13 +372,13 @@
       <span class="area-tag">Estudios sociales</span>
       <p class="pal-titulo">Leyenda</p>
       <p class="pal-def">Cuadro que explica qué significan los símbolos, colores o líneas de un mapa o gráfica.</p>
-      <p class="pal-ej">"Según la leyenda, el color verde representa las áreas boscosas."</p>
+      <p class="pal-ej">«Según la leyenda, el color verde representa las zonas de bosque.»</p>
     </div>
   </div>
 
   <div class="palabra-dominio sociales">
     <div class="icono-dom">
-      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="5" y="40" width="20" height="6" fill="#1a2332"/>
         <rect x="25" y="40" width="20" height="6" fill="#fff" stroke="#1a2332" stroke-width="1.5"/>
         <rect x="45" y="40" width="20" height="6" fill="#1a2332"/>
@@ -301,7 +392,7 @@
       <span class="area-tag">Estudios sociales</span>
       <p class="pal-titulo">Escala</p>
       <p class="pal-def">Indica la relación entre el tamaño en el mapa y la distancia real en el mundo.</p>
-      <p class="pal-ej">"La escala muestra que cada centímetro del mapa equivale a 5 kilómetros."</p>
+      <p class="pal-ej">«La escala muestra que cada centímetro del mapa equivale a 5 kilómetros.»</p>
     </div>
   </div>
 
@@ -310,44 +401,44 @@
 </div>
 </details>
 
-<details>
-<summary>2. Desarrollo: claves de contexto <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-contexto">
+<summary>2. Claves de contexto <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Aprender sin diccionario: deducir por el contexto</h3>
 
-<p>Cuando encontramos una palabra desconocida en un texto, no siempre es posible buscar en el diccionario. Por suerte, el propio texto suele dar <strong>pistas</strong> que nos permiten deducir el significado. A estas pistas las llamamos <span class="palabra-clave">claves de contexto</span>.</p>
+<p>Cuando encuentras una palabra desconocida, no siempre puedes buscarla en el diccionario. Por suerte, el propio texto suele dar <strong>pistas</strong> para deducir el significado: son las <span class="palabra-clave">claves de contexto</span> que estudiaste en la Lección 4.5. Aquí las aplicas a palabras de ciencias y de estudios sociales.</p>
 
 <h3>Tres tipos de claves comunes</h3>
 
 <div class="contexto-ejemplo">
   <h4>🔍 Clave 1: definición directa</h4>
-  <p>A veces, el autor define la palabra justo después de usarla, separándola con una coma, paréntesis o frase como "es decir...":</p>
-  <p class="frase-contexto">"La <span class="palabra-desconocida">altitud</span>, <span class="pista-contexto">es decir, la altura sobre el nivel del mar</span>, influye en la temperatura de un lugar."</p>
-  <p style="font-size:0.88rem;margin:0">La parte verde nos dice exactamente qué significa "altitud" sin tener que buscar en el diccionario.</p>
+  <p>A veces, el autor define la palabra justo después de usarla, con comas, paréntesis o expresiones como «es decir»:</p>
+  <p class="frase-contexto">«La <span class="palabra-desconocida">altitud</span>, <span class="pista-contexto">es decir, la altura sobre el nivel del mar</span>, influye en la temperatura de un lugar.»</p>
+  <p style="font-size:0.88rem;margin:0">La parte verde dice exactamente qué significa «altitud», sin tener que buscar en el diccionario.</p>
 </div>
 
 <div class="contexto-ejemplo">
   <h4>🔍 Clave 2: ejemplos</h4>
-  <p>Otras veces, el autor da ejemplos que nos ayudan a deducir el significado:</p>
-  <p class="frase-contexto">"Los <span class="palabra-desconocida">cítricos</span>, <span class="pista-contexto">como la naranja, el limón y la toronja</span>, son ricos en vitamina C."</p>
-  <p style="font-size:0.88rem;margin:0">Aunque no sepamos qué son los "cítricos", los ejemplos nos indican que son frutas ácidas con vitamina C.</p>
+  <p>Otras veces, el autor da ejemplos que ayudan a deducir el significado:</p>
+  <p class="frase-contexto">«Los <span class="palabra-desconocida">cítricos</span>, <span class="pista-contexto">como la naranja, el limón y la toronja</span>, son ricos en vitamina C.»</p>
+  <p style="font-size:0.88rem;margin:0">Aunque no sepas qué son los «cítricos», los ejemplos te indican que son frutas ácidas con vitamina C.</p>
 </div>
 
 <div class="contexto-ejemplo">
   <h4>🔍 Clave 3: contraste</h4>
-  <p>A veces el autor compara la palabra con su opuesto, usando palabras como "pero", "en cambio" o "a diferencia de":</p>
-  <p class="frase-contexto">"Algunas regiones son <span class="palabra-desconocida">áridas</span>, <span class="pista-contexto">pero otras son muy húmedas y llenas de vegetación</span>."</p>
-  <p style="font-size:0.88rem;margin:0">El contraste con "húmedas y llenas de vegetación" nos indica que "áridas" significa secas y sin vegetación.</p>
+  <p>A veces el autor pone la palabra junto a su opuesto, con palabras como «pero», «en cambio» o «a diferencia de»:</p>
+  <p class="frase-contexto">«Algunas regiones son <span class="palabra-desconocida">áridas</span>, <span class="pista-contexto">pero otras son muy húmedas y llenas de vegetación</span>.»</p>
+  <p style="font-size:0.88rem;margin:0">El contraste con «húmedas y llenas de vegetación» te indica que «áridas» significa secas y con poca vegetación.</p>
 </div>
 
-<h3>Ahora practiquemos: ¿qué significa cada palabra?</h3>
+<h3>A practicar: ¿qué significa cada palabra?</h3>
 
-<p>Empareje cada palabra de dominio con su definición correcta. Haga clic primero en una palabra de la izquierda, luego en su definición de la derecha.</p>
+<p>Empareja cada palabra de dominio con su definición. Toca primero una palabra de la izquierda y luego su definición a la derecha.</p>
 
 <div class="empareja-cont">
   <h4>🧩 Ejercicio de emparejamiento</h4>
-  <p class="empareja-instrucciones">Toque una palabra, luego toque su definición. Los pares correctos se marcarán en verde.</p>
+  <p class="empareja-instrucciones">Toca una palabra y luego su definición. Los pares correctos se marcan en verde.</p>
 
   <div class="empareja-grid">
     <div class="col-palabras">
@@ -360,75 +451,36 @@
     </div>
   </div>
 
-  <div class="puntaje-empareja" id="puntaje-empareja">Pares correctos: 0 / 6</div>
+  <div class="puntaje-empareja" id="puntaje-empareja" role="status">Pares correctos: 0 / 6</div>
 </div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l6-6.html#vocabulario" target="_blank" rel="noopener">
+  ✍️ Práctica: Palabras de ciencias y estudios sociales ↗
+  <span>Practica el vocabulario de dominio con oraciones nuevas. En la misma página practicas también <strong>a describir una gráfica</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica escrita: describir una gráfica <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica escrita: describir una gráfica <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Evaluación formativa final del tema</h3>
+<h3>Pon en práctica todo el tema</h3>
 
-<p>Llegamos al momento más importante: poner en práctica <strong>todo</strong> lo aprendido. Vamos a leer una gráfica y a escribir un párrafo corto que la describa. Este es exactamente el tipo de tarea que aparece en el examen del GED (estándar WHST adaptado para nivel 1).</p>
+<p>Llegó el momento de usar <strong>todo</strong> lo que aprendiste: vas a leer una gráfica y a escribir un párrafo corto que la describa. Describir datos con palabras es una destreza que te servirá en todo el GED, y también en el trabajo y en la vida diaria.</p>
 
 <div class="practica-escritura">
-  <h4>✍️ Tarea: describa la gráfica en 2 o 3 oraciones</h4>
+  <h4>✍️ Describe la gráfica en tres o cuatro oraciones</h4>
 
   <div class="grafica-escritura">
-    <svg viewBox="0 0 540 290" xmlns="http://www.w3.org/2000/svg">
-      <text x="270" y="22" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2332">Temperatura promedio en Chicago por estación</text>
-
-      <!-- Eje Y -->
-      <line x1="80" y1="50" x2="80" y2="220" stroke="#1a2332" stroke-width="2"/>
-      <line x1="80" y1="220" x2="510" y2="220" stroke="#1a2332" stroke-width="2"/>
-
-      <!-- Marcas eje Y (0 a 90 °F) -->
-      <text x="70" y="224" text-anchor="end" font-size="10" fill="#1a2332">0</text>
-      <line x1="76" y1="186" x2="80" y2="186" stroke="#1a2332"/>
-      <text x="70" y="190" text-anchor="end" font-size="10" fill="#1a2332">20</text>
-      <line x1="76" y1="152" x2="80" y2="152" stroke="#1a2332"/>
-      <text x="70" y="156" text-anchor="end" font-size="10" fill="#1a2332">40</text>
-      <line x1="76" y1="118" x2="80" y2="118" stroke="#1a2332"/>
-      <text x="70" y="122" text-anchor="end" font-size="10" fill="#1a2332">60</text>
-      <line x1="76" y1="84" x2="80" y2="84" stroke="#1a2332"/>
-      <text x="70" y="88" text-anchor="end" font-size="10" fill="#1a2332">80</text>
-      <line x1="76" y1="50" x2="80" y2="50" stroke="#1a2332"/>
-      <text x="70" y="54" text-anchor="end" font-size="10" fill="#1a2332">100</text>
-
-      <!-- Barras: 1.7px por unidad. Invierno 30, Primavera 55, Verano 80, Otoño 50 -->
-      <rect x="115" y="169" width="80" height="51" fill="#1976d2" stroke="#0d47a1" stroke-width="1.5"/>
-      <rect x="220" y="126" width="80" height="94" fill="#43a047" stroke="#1b5e20" stroke-width="1.5"/>
-      <rect x="325" y="84" width="80" height="136" fill="#fb8c00" stroke="#e65100" stroke-width="1.5"/>
-      <rect x="430" y="135" width="80" height="85" fill="#8d6e63" stroke="#4e342e" stroke-width="1.5"/>
-
-      <!-- Valores -->
-      <text x="155" y="162" text-anchor="middle" font-size="11" font-weight="bold" fill="#0d47a1">30 °F</text>
-      <text x="260" y="119" text-anchor="middle" font-size="11" font-weight="bold" fill="#1b5e20">55 °F</text>
-      <text x="365" y="77" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">80 °F</text>
-      <text x="470" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#4e342e">50 °F</text>
-
-      <!-- Etiquetas categorías -->
-      <text x="155" y="240" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Invierno</text>
-      <text x="260" y="240" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Primavera</text>
-      <text x="365" y="240" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Verano</text>
-      <text x="470" y="240" text-anchor="middle" font-size="11" fill="#1a2332" font-weight="bold">Otoño</text>
-
-      <!-- Rótulos ejes -->
-      <text x="295" y="265" text-anchor="middle" font-size="11" font-style="italic" font-weight="bold" fill="#1a2332">Estación del año</text>
-      <text x="30" y="135" text-anchor="middle" font-size="11" font-style="italic" font-weight="bold" fill="#1a2332" transform="rotate(-90 30 135)">Temperatura (°F)</text>
-
-      <!-- Fuente -->
-      <text x="510" y="283" text-anchor="end" font-size="8" fill="#6b7785" font-style="italic">Fuente: Servicio Meteorológico Nacional, datos 2024</text>
-    </svg>
+    <svg viewBox="0 0 540 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras: Temperatura promedio en Chicago por estación. Invierno: 28 °F; Primavera: 50 °F; Verano: 73 °F; Otoño: 54 °F. Fuente: NOAA, normales 1991-2020 (O'Hare, valores redondeados)" style="width:100%;height:auto;display:block;max-width:540px;margin:0 auto"><text x="270.0" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a2332">Temperatura promedio en Chicago por estación</text><line x1="70" y1="230.0" x2="520" y2="230.0" stroke="#eceff1"/><text x="64" y="234.0" text-anchor="end" font-size="11" fill="#1a2332">0</text><line x1="70" y1="185.0" x2="520" y2="185.0" stroke="#eceff1"/><text x="64" y="189.0" text-anchor="end" font-size="11" fill="#1a2332">20</text><line x1="70" y1="140.0" x2="520" y2="140.0" stroke="#eceff1"/><text x="64" y="144.0" text-anchor="end" font-size="11" fill="#1a2332">40</text><line x1="70" y1="95.0" x2="520" y2="95.0" stroke="#eceff1"/><text x="64" y="99.0" text-anchor="end" font-size="11" fill="#1a2332">60</text><line x1="70" y1="50.0" x2="520" y2="50.0" stroke="#eceff1"/><text x="64" y="54.0" text-anchor="end" font-size="11" fill="#1a2332">80</text><rect x="96.2" y="167.0" width="60.0" height="63.0" fill="#1565c0"/><text x="126.2" y="161.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">28 °F</text><text x="126.2" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Invierno</text><rect x="208.8" y="117.5" width="60.0" height="112.5" fill="#2e7d32"/><text x="238.8" y="111.5" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">50 °F</text><text x="238.8" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Primavera</text><rect x="321.2" y="65.8" width="60.0" height="164.2" fill="#e65100"/><text x="351.2" y="59.8" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">73 °F</text><text x="351.2" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Verano</text><rect x="433.8" y="108.5" width="60.0" height="121.5" fill="#6d4c41"/><text x="463.8" y="102.5" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">54 °F</text><text x="463.8" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Otoño</text><line x1="70" y1="44" x2="70" y2="230" stroke="#1a2332" stroke-width="2"/><line x1="70" y1="230" x2="520" y2="230" stroke="#1a2332" stroke-width="2"/><text x="295.0" y="270" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#1a2332">Estación del año</text><text x="18" y="140.0" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#1a2332" transform="rotate(-90 18 140.0)">Temperatura (°F)</text><text x="520" y="292" text-anchor="end" font-size="10" fill="#4f5b66" font-style="italic">Fuente: NOAA, normales 1991-2020 (O'Hare, valores redondeados)</text></svg>
   </div>
 
-  <h4>📋 Plantilla guiada para escribir su párrafo</h4>
+  <h4>📋 Plantilla para escribir tu párrafo</h4>
 
   <div class="plantilla-escritura">
-    <h5>Use esta plantilla como guía. Complete cada hueco con la información correcta de la gráfica.</h5>
+    <h5>Usa esta plantilla como guía. Completa en tu cuaderno cada hueco con la información de la gráfica.</h5>
     <ol>
       <li>"La gráfica muestra <span class="hueco-plantilla">________________</span> en Chicago durante las cuatro estaciones del año."</li>
       <li>"La temperatura más alta se registra en <span class="hueco-plantilla">________________</span>, con <span class="hueco-plantilla">________________</span> °F."</li>
@@ -437,28 +489,29 @@
   </div>
 
   <div class="modelo-respuesta">
-    <strong>📝 Ejemplo de respuesta de nivel "Logrado":</strong>
-    <p>"La gráfica muestra la temperatura promedio en Chicago durante las cuatro estaciones del año. La temperatura más alta se registra en verano, con 80 °F. En cambio, la temperatura más baja ocurre en invierno, con apenas 30 °F. La temperatura en primavera es mayor que en otoño."</p>
-    <p style="font-size:0.85rem;color:var(--gris);margin-top:8px"><em>Nota: este modelo usa vocabulario de comparación (más alta, más baja, mayor que) y vocabulario de dominio (temperatura, estación, °F).</em></p>
+    <strong>📝 Ejemplo de respuesta de nivel «Logrado»</strong> (léelo después de escribir el tuyo):
+    <p>«La gráfica muestra la temperatura promedio en Chicago durante las cuatro estaciones del año. La temperatura más alta se registra en verano, con 73 °F. En cambio, la temperatura más baja ocurre en invierno, con apenas 28 °F. Aunque parezca raro, el otoño (54 °F) es un poco más cálido que la primavera (50 °F).»</p>
+    <p style="font-size:0.85rem;color:var(--gris);margin-top:8px"><em>Este modelo usa vocabulario de comparación (más alta, más baja, más cálido que) y vocabulario de dominio (temperatura, estación, °F).</em></p>
   </div>
 
   <div class="tip">
-    <strong>📌 Cómo entregar la tarea:</strong> Escriba su párrafo en una hoja o en la plataforma Brightspace. Use al menos <strong>dos palabras</strong> del vocabulario de dominio aprendido (temperatura, estación, °F, mayor, menor) y oraciones completas con mayúscula inicial y punto final.
+    <strong>📌 Recuerda:</strong> escribe tu párrafo en el cuaderno. Usa al menos <strong>dos palabras</strong> de vocabulario de dominio (temperatura, estación, °F) y dos de comparación (mayor, menor, más que, menos que), en oraciones completas con mayúscula inicial y punto final.
   </div>
 </div>
 
-<h3>📋 Rúbrica de evaluación final del tema</h3>
+<h3>📋 Rúbrica para revisar tu párrafo</h3>
 
-<p>Su párrafo escrito será evaluado con esta rúbrica analítica de tres criterios:</p>
+<p>Revisa tu párrafo con esta rúbrica de tres criterios y anota en qué nivel quedó cada uno:</p>
 
 <table class="rubrica">
+  <caption class="sr-solo">Rúbrica del párrafo que describe la gráfica</caption>
   <thead>
     <tr>
-      <th>Criterio</th>
-      <th class="nivel-4">Logrado (4)</th>
-      <th class="nivel-3">En desarrollo (3)</th>
-      <th class="nivel-2">Inicial (2)</th>
-      <th class="nivel-1">Por debajo (1)</th>
+      <th scope="col">Criterio</th>
+      <th scope="col" class="nivel-4">Logrado (4)</th>
+      <th scope="col" class="nivel-3">En desarrollo (3)</th>
+      <th scope="col" class="nivel-2">Inicial (2)</th>
+      <th scope="col" class="nivel-1">Por debajo (1)</th>
     </tr>
   </thead>
   <tbody>
@@ -489,60 +542,97 @@
 </div>
 </details>
 
-<details>
-<summary>4. Actividades y quiz combinado <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-
-<p>Las actividades sincrónica y asincrónica de la Lección 6.3 se presentaron en la Clase 5. Aquí se concentra el quiz combinado.</p>
-
+<p><strong>Describe otra gráfica.</strong> Esta gráfica muestra la altitud de cuatro ciudades de América. Escribe en tu cuaderno un párrafo de <strong>tres o cuatro oraciones</strong> que la describa, igual que en la sección 3:</p>
+<div style="background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:12px;margin:12px 0">
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras: Altitud de cuatro ciudades de América. Denver: 1600 m; Ciudad de México: 2240 m; Bogotá: 2640 m; La Paz: 3640 m. Valores aproximados, en metros sobre el nivel del mar" style="width:100%;height:auto;display:block;max-width:560px;margin:0 auto"><text x="280.0" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a2332">Altitud de cuatro ciudades de América</text><line x1="70" y1="230.0" x2="540" y2="230.0" stroke="#eceff1"/><text x="64" y="234.0" text-anchor="end" font-size="11" fill="#1a2332">0</text><line x1="70" y1="185.0" x2="540" y2="185.0" stroke="#eceff1"/><text x="64" y="189.0" text-anchor="end" font-size="11" fill="#1a2332">1000</text><line x1="70" y1="140.0" x2="540" y2="140.0" stroke="#eceff1"/><text x="64" y="144.0" text-anchor="end" font-size="11" fill="#1a2332">2000</text><line x1="70" y1="95.0" x2="540" y2="95.0" stroke="#eceff1"/><text x="64" y="99.0" text-anchor="end" font-size="11" fill="#1a2332">3000</text><line x1="70" y1="50.0" x2="540" y2="50.0" stroke="#eceff1"/><text x="64" y="54.0" text-anchor="end" font-size="11" fill="#1a2332">4000</text><rect x="98.8" y="158.0" width="60.0" height="72.0" fill="#00796b"/><text x="128.8" y="152.0" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">1600 m</text><text x="128.8" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Denver</text><rect x="216.2" y="129.2" width="60.0" height="100.8" fill="#00796b"/><text x="246.2" y="123.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">2240 m</text><text x="246.2" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Ciudad de México</text><rect x="333.8" y="111.2" width="60.0" height="118.8" fill="#00796b"/><text x="363.8" y="105.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">2640 m</text><text x="363.8" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">Bogotá</text><rect x="451.2" y="66.2" width="60.0" height="163.8" fill="#00796b"/><text x="481.2" y="60.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">3640 m</text><text x="481.2" y="246" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2332">La Paz</text><line x1="70" y1="44" x2="70" y2="230" stroke="#1a2332" stroke-width="2"/><line x1="70" y1="230" x2="540" y2="230" stroke="#1a2332" stroke-width="2"/><text x="305.0" y="270" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#1a2332">Ciudad</text><text x="18" y="140.0" text-anchor="middle" font-size="12" font-style="italic" font-weight="bold" fill="#1a2332" transform="rotate(-90 18 140.0)">Altitud (metros)</text><text x="540" y="292" text-anchor="end" font-size="10" fill="#4f5b66" font-style="italic">Valores aproximados, en metros sobre el nivel del mar</text></svg>
+</div>
+<ul class="lista-bonita">
+  <li>Di qué muestra la gráfica.</li>
+  <li>Nombra la ciudad con <strong>mayor</strong> altitud y la de <strong>menor</strong> altitud, con sus datos.</li>
+  <li>Haz una comparación más («Bogotá está más alta que…»).</li>
+  <li>Usa la palabra <strong>altitud</strong> y al menos dos palabras de comparación.</li>
+</ul>
+<p>Si alguien de tu casa conoce alguna de estas ciudades, pregúntale si notó el aire distinto por la altura.</p>
 <div class="actividad-unidad">
-  <h4>📝 Quiz combinado de la Lección 6.3 <span class="badge-tipo badge-quiz">15 preguntas</span></h4>
-  <p>Al finalizar esta clase, los estudiantes completan en línea el quiz que cubre las clases 5 y 6:</p>
-  <ul style="padding-left:20px;font-size:0.92rem">
-    <li>Identificar el título, los ejes y las categorías de una gráfica de barras.</li>
-    <li>Comparar valores (¿cuál es mayor?, ¿cuál es menor?).</li>
-    <li>Elegir el título correcto para una gráfica dada.</li>
-    <li>Reconocer cuándo conviene una gráfica de pastel y cuándo una de barras.</li>
-    <li>Emparejar palabras de dominio con sus definiciones.</li>
-    <li>Calcular un porcentaje simple a partir de una gráfica.</li>
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo del párrafo sobre la altitud</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Tema</td><td class="nivel-4">Dije que la gráfica muestra la altitud de cuatro ciudades</td><td class="nivel-1">No dije de qué trata la gráfica</td></tr>
+      <tr><td>Datos</td><td class="nivel-4">Cité al menos dos datos correctos</td><td class="nivel-1">No cité datos o están equivocados</td></tr>
+      <tr><td>Comparación</td><td class="nivel-4">Usé al menos dos palabras de comparación</td><td class="nivel-1">No comparé</td></tr>
+      <tr><td>Oraciones</td><td class="nivel-4">Todas empiezan con mayúscula y terminan con punto</td><td class="nivel-1">Faltan mayúsculas o puntos</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre del Tema 6 <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>El <strong>vocabulario de dominio</strong> son las palabras propias de las ciencias y de los estudios sociales: <em>población, latitud, altitud, temperatura, leyenda, escala</em>.</li>
+  <li>Las <strong>claves de contexto</strong> (definición, ejemplos y contraste) te ayudan a deducir palabras técnicas sin diccionario.</li>
+  <li>Para describir una gráfica: di qué muestra, da los datos más importantes y compáralos.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Qué es la altitud? ¿Y la latitud?</li>
+    <li>¿Qué tres tipos de claves de contexto repasaste?</li>
+    <li>¿Qué tres cosas debe tener un párrafo que describe una gráfica?</li>
   </ul>
 </div>
-
-</div>
-</details>
-
-<details>
-<summary>5. Cierre del Tema 6 <span class="caja-tiempo">5 min</span></summary>
-<div class="contenido-detalle">
-
 <div class="cierre-tema">
   <span class="icono-grande">🎓</span>
-  <h3>¡Han completado el Tema 6!</h3>
-  <p>Estimados estudiantes: han recorrido seis clases y han adquirido una habilidad valiosísima — la <strong>alfabetización visual</strong>.</p>
-  <p>Ahora saben leer imágenes, mapas, tablas y gráficas. Saben identificar sus elementos clave y usar vocabulario académico para describirlos. Estas habilidades son fundamentales para los exámenes de <strong>Ciencias</strong> y <strong>Estudios Sociales</strong> del GED.</p>
-  <p style="margin-top:14px;font-size:1.1rem;font-weight:600">¡Felicitaciones por su esfuerzo y dedicación!</p>
+  <h3>¡Completaste el Tema 6!</h3>
+  <p>En seis lecciones adquiriste una habilidad muy valiosa: la <strong>alfabetización visual</strong>. Ahora sabes leer imágenes, pistas visuales, mapas, tablas y gráficas, reconocer sus elementos clave y usar vocabulario académico para describirlos. Estas habilidades son fundamentales para los exámenes de <strong>Ciencias</strong> y de <strong>Estudios Sociales</strong> del GED.</p>
+  <p style="margin-top:14px;font-size:1.1rem;font-weight:600">¡Felicidades por tu esfuerzo!</p>
 </div>
-
-<h3>Resumen visual del recorrido</h3>
-
+<h3>Resumen del recorrido</h3>
 <ul class="lista-bonita">
-  <li><strong>Lección 6.1</strong> · Aprendimos que las imágenes son herramientas que liberan al cerebro para comprender, y que los textos informativos tienen cuatro pistas visuales: título, subtítulo, leyenda y pie de foto.</li>
-  <li><strong>Lección 6.2</strong> · Estudiamos la anatomía del mapa (título, rosa de los vientos, leyenda, escala) y de la tabla (encabezados, filas y columnas), y aprendimos a cruzar la información.</li>
-  <li><strong>Lección 6.3</strong> · Conocimos las gráficas de barras y de pastel, su anatomía y el vocabulario de dominio específico que nos permite hablar y escribir sobre ellas.</li>
+  <li><strong>Lecciones 6.1 y 6.2</strong> · Las imágenes ayudan a comprender, y los textos informativos tienen cuatro pistas visuales: título, subtítulos, rótulos y pie de foto.</li>
+  <li><strong>Lecciones 6.3 y 6.4</strong> · La anatomía del mapa (título, rosa de los vientos, leyenda y escala) y de la tabla (título, encabezados, columnas y filas), y cómo cruzar la información.</li>
+  <li><strong>Lecciones 6.5 y 6.6</strong> · Las gráficas de barras y de pastel, y el vocabulario para hablar y escribir sobre ellas.</li>
 </ul>
-
 <div class="clave-pedagogica">
-  <strong>🌟 Una habilidad para toda la vida:</strong> La alfabetización visual no termina con el examen del GED. Estas habilidades les servirán para leer noticias, informes médicos, instrucciones de medicamentos, mapas de transporte público, gráficas económicas en el periódico, y mucho más. Han aprendido a leer un nuevo idioma: el idioma visual.
+  <strong>🌟 Una habilidad para toda la vida:</strong> leer información visual no termina con el GED. Te servirá para leer noticias, informes médicos, instrucciones de medicamentos, mapas del transporte público y gráficas de economía en el periódico.
 </div>
-
-<h3>¿Qué viene después?</h3>
-
-<p>Con el Tema 6 completamos la sección de Artes del Lenguaje de Nivel 1. El siguiente tema explorará la escritura más extendida: cómo organizar nuestras ideas en párrafos y textos más largos. Pero ya cuentan con las herramientas fundamentales: comprenden, interpretan y describen los textos visuales que dominan los exámenes académicos y la vida moderna.</p>
-
+<div class="tip">
+  <strong>📅 En el próximo tema:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_7-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 7.1 · El párrafo y la técnica de la hamburguesa</a>. Empieza el Tema 7, sobre el párrafo y los tipos de texto. Aprenderás a organizar tus ideas en un párrafo completo.
+</div>
 </div>
 </details>
 
-<p class="firma">Prof. José M. Fernández · Truman College · Tema 6, Clase 6 · Fin del tema</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 6 · Lección 6.6</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -574,7 +664,8 @@
   var contDef=document.getElementById('definiciones-empareja');
 
   pares.forEach(function(p,idx){
-    var divPal=document.createElement('div');
+    var divPal=document.createElement('button');
+    divPal.type='button';
     divPal.className='item-empareja palabra';
     divPal.setAttribute('data-pal',p.pal);
     divPal.textContent=p.pal;
@@ -582,7 +673,8 @@
   });
 
   defsRevueltas.forEach(function(p,idx){
-    var divDef=document.createElement('div');
+    var divDef=document.createElement('button');
+    divDef.type='button';
     divDef.className='item-empareja definicion';
     divDef.setAttribute('data-pal',p.pal);
     divDef.textContent=p.def;
@@ -626,6 +718,7 @@
       var palElem=document.querySelector('.item-empareja.palabra[data-pal="'+palSeleccionada+'"]');
       palElem.classList.remove('seleccionado');
       palElem.classList.add('emparejado');
+      palElem.disabled=true; item.disabled=true;
       emparejados++;
       actualizarPuntaje();
       palSeleccionada=null;
@@ -642,6 +735,73 @@
   document.querySelectorAll('.item-empareja.definicion').forEach(function(d){
     d.addEventListener('click',manejarClickDefinicion);
   });
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué es el <strong>vocabulario de dominio</strong>?", "o": ["Las palabras propias de un campo, como las ciencias o la historia", "Las palabras más cortas del español", "Las palabras que se usan en casa"], "c": 0}, {"t": "¿Qué significa <strong>población</strong>?", "o": ["El número de personas que viven en un lugar", "La altura de un lugar", "El clima de un lugar"], "c": 0}, {"t": "¿Qué significa <strong>altitud</strong>?", "o": ["La altura de un lugar sobre el nivel del mar", "La distancia al ecuador", "El número de habitantes"], "c": 0}, {"t": "¿Qué significa <strong>latitud</strong>?", "o": ["La distancia de un lugar al norte o al sur del ecuador", "La altura sobre el nivel del mar", "La temperatura promedio"], "c": 0}, {"t": "«El mapa usa una ____: un centímetro equivale a 10 kilómetros.»", "o": ["escala", "leyenda", "población"], "c": 0}, {"t": "«Según la ____ del mapa, los puntos rojos son hospitales.»", "o": ["leyenda", "escala", "altitud"], "c": 0}, {"t": "«Los <strong>roedores</strong>, como las ratas, las ardillas y los ratones, tienen dientes que no dejan de crecer.» ¿Qué clave de contexto hay?", "o": ["Ejemplos", "Contraste", "Definición"], "c": 0}, {"t": "«La <strong>sequía</strong>, es decir, un largo período sin lluvia, afectó las cosechas.» ¿Qué clave de contexto hay?", "o": ["Definición", "Ejemplos", "Contraste"], "c": 0}, {"t": "En la gráfica de Chicago, ¿qué estación tiene la temperatura promedio más alta?", "o": ["Verano", "Primavera", "Otoño"], "c": 0}, {"t": "En la gráfica de Chicago, ¿qué es más cálido: la primavera o el otoño?", "o": ["El otoño", "La primavera", "Son iguales"], "c": 0}, {"t": "¿Cuál de estas oraciones describe bien una gráfica?", "o": ["«La temperatura más baja es la de invierno, con 28 °F.»", "«La gráfica es bonita y tiene colores.»", "«Me gusta el verano.»"], "c": 0}, {"t": "Al describir una gráfica, ¿qué conviene decir primero?", "o": ["Qué muestra la gráfica", "Tu opinión sobre el tema", "El color de las barras"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"¡Terminaste el Tema 6! Puedes continuar con la Lección 7.1.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

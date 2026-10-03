@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 6.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 1: El poder de las ilustraciones para comprender</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6.1 · El poder de las ilustraciones para comprender</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -98,15 +104,80 @@
   .pasos-numerados{counter-reset:paso;padding-left:0;list-style:none;margin:14px 0}
   .pasos-numerados li{counter-increment:paso;padding:12px 14px 12px 56px;position:relative;margin-bottom:8px;background:#fff;border-radius:8px;border-left:4px solid var(--acento)}
   .pasos-numerados li::before{content:counter(paso);position:absolute;left:14px;top:50%;transform:translateY(-50%);background:var(--acento);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  .escena-svg{width:100%;max-width:380px;height:auto;display:block;margin:0 auto 12px auto;border-radius:8px;border:2px solid var(--gris-claro)}
 </style>
 </head>
 <body>
 
-<h1>Clase 1: El poder de las ilustraciones para comprender</h1>
-<p class="subtitulo">Tema 6 · Lección 6.1 · Nivel 1 · Semana 11 · 50 minutos</p>
+<h1>Lección 6.1 · El poder de las ilustraciones para comprender</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 6 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Reconocer que las imágenes <strong>no son adornos</strong>, sino herramientas de comprensión.</li>
     <li>Comprender cómo las ilustraciones <strong>liberan al cerebro</strong> del esfuerzo de decodificar.</li>
@@ -114,14 +185,30 @@
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-imagenes">Las imágenes ayudan a comprender</a></li>
+    <li><a href="#s-2-dos-lecturas">Leer la imagen primero</a></li>
+    <li><a href="#s-3-practica">Práctica: antes de leer la foto</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Estimados estudiantes: hasta ahora hemos trabajado el texto escrito. Hemos aprendido a decodificar letras, a reconocer las partes de la oración y a comprender textos narrativos e informativos. Ahora damos un paso fundamental que les abrirá las puertas del examen de Ciencias y de Estudios Sociales: aprender a <strong>leer las imágenes</strong>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Esta habilidad, que llamamos <span class="palabra-clave">alfabetización visual</span>, es tan importante como saber leer letras. En el examen de GED, gran parte de las preguntas se acompañan de fotografías, ilustraciones, mapas, tablas y gráficas. Quien no sabe leerlas pierde la mitad de la información.</p>
+<p>Hasta ahora has trabajado con el texto escrito: aprendiste a decodificar letras, a reconocer las partes de la oración y a comprender textos narrativos e informativos. Ahora vas a dar un paso que te abrirá las puertas de los exámenes de Ciencias y de Estudios Sociales: aprender a <strong>leer las imágenes</strong>.</p>
 
-<details open>
-<summary>1. Introducción: el esfuerzo cognitivo de leer <span class="caja-tiempo">15 min</span></summary>
+<p>Esta habilidad se llama <span class="palabra-clave">alfabetización visual</span>, y es tan importante como saber leer letras. En el GED, sobre todo en Ciencias y en Estudios Sociales, muchas preguntas vienen con fotografías, ilustraciones, mapas, tablas o gráficas. Si no sabes leerlas, te pierdes una parte de la información.</p>
+
+<details open id="s-1-imagenes">
+<summary>1. Las imágenes ayudan a comprender <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El cerebro tiene un presupuesto limitado de atención</h3>
@@ -133,17 +220,18 @@
   <li><strong>Asignar significado:</strong> entender qué quieren decir esas palabras juntas.</li>
 </ol>
 
-<p>El problema es que la decodificación consume una cantidad enorme de energía mental. Si el lector dedica casi todo su esfuerzo a decodificar, le queda muy poca capacidad para comprender el significado. Veamos esto con un ejemplo concreto.</p>
+<p>Decodificar consume mucha energía mental, sobre todo cuando el texto tiene palabras difíciles. Si casi todo el esfuerzo se va en decodificar, queda poca energía para entender el significado. Una buena imagen ayuda con la segunda tarea: te muestra de qué se habla, y así es más fácil darle sentido a las palabras. Mira este ejemplo.</p>
 
 <div class="comparacion-cognitiva">
   <div class="col-cognitiva sin">
     <h4>📄 Texto sin imagen</h4>
     <p style="font-family:Georgia,serif;font-size:0.9rem">"La célula procariota carece de núcleo definido y su material genético se encuentra disperso en el citoplasma, a diferencia de la célula eucariota..."</p>
-    <span class="esfuerzo">⚠️ Esfuerzo mental: ALTO</span>
+    <span class="esfuerzo">⚠️ Cuesta más entenderlo</span>
   </div>
   <div class="col-cognitiva con">
     <h4>🖼️ Texto con ilustración</h4>
-    <svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg" style="background:#f0f9ff;border-radius:6px;height:110px;width:100%">
+    <svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg" style="background:#f0f9ff;border-radius:6px;height:110px;width:100%" role="img" aria-labelledby="cel-t">
+      <title id="cel-t">Dos células: la procariota, sin núcleo, con su material genético suelto; y la eucariota, con un núcleo grande en el centro.</title>
       <ellipse cx="80" cy="55" rx="55" ry="38" fill="#ffe0b2" stroke="#e65100" stroke-width="2"/>
       <text x="80" y="30" text-anchor="middle" font-size="9" fill="#b35316" font-weight="bold">Procariota</text>
       <circle cx="65" cy="55" r="3" fill="#5a2d8f"/>
@@ -157,18 +245,20 @@
       <text x="210" y="105" text-anchor="middle" font-size="8" fill="#1b5e20">con núcleo</text>
     </svg>
     <p style="font-family:Georgia,serif;font-size:0.9rem;margin-top:8px">"La célula procariota carece de núcleo definido..."</p>
-    <span class="esfuerzo">✅ Esfuerzo mental: BAJO</span>
+    <span class="esfuerzo">✅ Cuesta menos entenderlo</span>
   </div>
 </div>
 
 <div class="clave-pedagogica">
-  <strong>💡 Idea central:</strong> La ilustración no es un adorno bonito. Es una <strong>herramienta estratégica</strong> que enfoca la atención visual y libera al cerebro del esfuerzo de decodificar, para que pueda concentrarse en lo realmente importante: <strong>comprender</strong>.
+  <strong>💡 Idea central:</strong> La ilustración no es un adorno bonito. Es una <strong>herramienta</strong> que dirige tu atención a lo importante y le da al cerebro un apoyo para <strong>comprender</strong>. Las palabras siguen ahí, pero la imagen te ayuda a darles sentido.
 </div>
 
-<h3>¿Cómo funciona este "ahorro" cognitivo?</h3>
+<h3>¿Cómo funciona esta ayuda?</h3>
 
 <div class="diagrama-proceso">
-  <svg viewBox="0 0 540 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:540px">
+  <svg viewBox="0 0 540 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:540px" role="img" aria-labelledby="dos-t dos-d">
+    <title id="dos-t">Dos caminos para llegar a la comprensión</title>
+    <desc id="dos-d">Camino 1, solo texto: decodificar, asignar significado sin apoyo y llegar a una comprensión más difícil. Camino 2, texto más imagen: decodificar, asignar significado con apoyo visual y llegar a una comprensión más fácil.</desc>
     <!-- Camino A: solo texto -->
     <text x="270" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a2332">Dos caminos para llegar a la comprensión</text>
 
@@ -182,11 +272,11 @@
 
     <rect x="290" y="40" width="110" height="40" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
     <text x="345" y="58" text-anchor="middle" font-size="10" fill="#b35316" font-weight="bold">Asignar significado</text>
-    <text x="345" y="72" text-anchor="middle" font-size="9" fill="#b35316">(poco esfuerzo restante)</text>
+    <text x="345" y="72" text-anchor="middle" font-size="9" fill="#b35316">(sin apoyo)</text>
 
     <rect x="430" y="40" width="95" height="40" rx="8" fill="#fdecea" stroke="#c62828" stroke-width="2"/>
     <text x="478" y="65" text-anchor="middle" font-size="11" fill="#c62828" font-weight="bold">Comprensión</text>
-    <text x="478" y="78" text-anchor="middle" font-size="8" fill="#c62828">parcial</text>
+    <text x="478" y="78" text-anchor="middle" font-size="8" fill="#c62828">más difícil</text>
 
     <line x1="120" y1="60" x2="148" y2="60" stroke="#6b7785" stroke-width="2" marker-end="url(#flecha)"/>
     <line x1="260" y1="60" x2="288" y2="60" stroke="#6b7785" stroke-width="2" marker-end="url(#flecha)"/>
@@ -199,7 +289,7 @@
 
     <rect x="150" y="130" width="110" height="40" rx="8" fill="#e3f2fd" stroke="#0089cd" stroke-width="2"/>
     <text x="205" y="148" text-anchor="middle" font-size="10" fill="#005a8a" font-weight="bold">Decodificar</text>
-    <text x="205" y="162" text-anchor="middle" font-size="9" fill="#005a8a">(menos esfuerzo)</text>
+    <text x="205" y="162" text-anchor="middle" font-size="9" fill="#005a8a">(las mismas letras)</text>
 
     <rect x="290" y="130" width="110" height="40" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
     <text x="345" y="148" text-anchor="middle" font-size="10" fill="#1b5e20" font-weight="bold">Asignar significado</text>
@@ -207,7 +297,7 @@
 
     <rect x="430" y="130" width="95" height="40" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
     <text x="478" y="155" text-anchor="middle" font-size="11" fill="#1b5e20" font-weight="bold">Comprensión</text>
-    <text x="478" y="168" text-anchor="middle" font-size="8" fill="#1b5e20">completa ✓</text>
+    <text x="478" y="168" text-anchor="middle" font-size="8" fill="#1b5e20">más fácil ✓</text>
 
     <line x1="120" y1="150" x2="148" y2="150" stroke="#0089cd" stroke-width="2" marker-end="url(#flechaazul)"/>
     <line x1="260" y1="150" x2="288" y2="150" stroke="#0089cd" stroke-width="2" marker-end="url(#flechaazul)"/>
@@ -222,103 +312,140 @@
       </marker>
     </defs>
   </svg>
-  <p class="leyenda-diagrama">La imagen actúa como un "atajo" cognitivo que reduce el costo de decodificar y libera atención para comprender.</p>
+  <p class="leyenda-diagrama">La imagen funciona como un apoyo: no lee por ti, pero te ayuda a entender lo que lees.</p>
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>2. Desarrollo: leer la imagen <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-dos-lecturas">
+<summary>2. Leer la imagen primero <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>La técnica de las "dos lecturas"</h3>
 
-<p>Vamos a aprender una estrategia muy poderosa que se aplica en todos los textos académicos del GED. Se llama la técnica de las <strong>dos lecturas</strong>:</p>
+<p>Vas a aprender una estrategia muy útil para cualquier texto informativo con imágenes. Se llama la técnica de las <strong>dos lecturas</strong>:</p>
 
 <ol class="pasos-numerados">
-  <li><strong>Primera lectura: leer la imagen.</strong> Antes de leer una sola palabra del texto, observamos detenidamente la fotografía o ilustración. Nos preguntamos: ¿Qué veo? ¿Qué personas, lugares u objetos aparecen? ¿Qué acción está ocurriendo?</li>
-  <li><strong>Predicción:</strong> con base en lo que vimos, predecimos de qué tratará el texto. Esta predicción crea en nuestra mente un "esquema previo" que nos ayudará a comprender mejor.</li>
-  <li><strong>Segunda lectura: leer el texto.</strong> Ahora sí leemos el texto escrito. Notamos que entendemos mucho más rápido porque la imagen ya nos preparó el cerebro.</li>
-  <li><strong>Verificación:</strong> revisamos si nuestra predicción fue correcta y la ajustamos si es necesario.</li>
+  <li><strong>Primera lectura: leer la imagen.</strong> Antes de leer una sola palabra del texto, observa con calma la fotografía o la ilustración. Pregúntate: ¿qué veo?, ¿qué personas, lugares u objetos aparecen?, ¿qué está pasando?</li>
+  <li><strong>Predicción:</strong> con lo que viste, predice de qué tratará el texto (como aprendiste en la Lección 4.1). Esa predicción prepara tu mente para lo que vas a leer.</li>
+  <li><strong>Segunda lectura: leer el texto.</strong> Ahora sí, lee el texto escrito. Verás que lo entiendes con más facilidad, porque la imagen ya te dio una idea.</li>
+  <li><strong>Verificación:</strong> revisa si tu predicción fue correcta y ajústala si hace falta.</li>
 </ol>
 
 <div class="tip">
   <strong>⚡ ¿Por qué funciona esta técnica?</strong> Porque activa el conocimiento previo del lector. Cuando vemos una imagen de un volcán, nuestro cerebro despierta todo lo que ya sabemos sobre volcanes (lava, calor, erupciones, montañas) <em>antes</em> de empezar a leer. Así, las palabras técnicas del texto ya tienen un "lugar" donde acomodarse en nuestra mente.
 </div>
 
-<h3>Práctica guiada: leamos imágenes juntos</h3>
+<h3>Práctica guiada: lee las imágenes</h3>
 
-<p>A continuación presentamos cuatro imágenes. Para cada una, observe detenidamente y elija la opción que mejor describa de qué trata. <strong>Recuerde: no hay texto. Solo la imagen.</strong></p>
+<p>Aquí tienes cuatro imágenes. Observa cada una con calma y elige la opción que mejor describe de qué tratará el texto. <strong>Recuerda: no hay texto, solo la imagen.</strong> Si usas lector de pantalla, cada imagen tiene una descripción.</p>
 
 <div id="ejercicios-prediccion"></div>
-<div class="puntaje" id="puntaje-pred">Aciertos: 0 / 4</div>
+<div class="puntaje" id="puntaje-pred" role="status">Aciertos: 0 / 4</div>
 
 </div>
 </details>
 
-<details>
-<summary>3. Actividades de la lección <span class="caja-tiempo">10 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: antes de leer la foto <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<p>Ahora veremos las actividades sincrónicas (en clase, en vivo) y asincrónicas (en casa, en la plataforma) que acompañan esta clase.</p>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">Discusión</span></p>
-    <p><strong>"Antes de leer la foto"</strong></p>
-    <p>El profesor proyecta solamente una imagen tomada de un artículo de ciencias o estudios sociales. Los estudiantes, en parejas, escriben en una hoja:</p>
-    <ul style="padding-left:20px;font-size:0.92rem">
-      <li>Tres cosas que ven en la imagen.</li>
-      <li>Una predicción de qué tratará el texto.</li>
-    </ul>
-    <p>Luego se revela el texto y se comparan las predicciones con el contenido real.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (asincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Foro</span></p>
-    <p><strong>Foro de imágenes familiares</strong></p>
-    <p>Cada estudiante sube a la plataforma:</p>
-    <ul style="padding-left:20px;font-size:0.92rem">
-      <li>Una fotografía familiar (no íntima, apropiada para compartir).</li>
-      <li>Un párrafo breve de 2 a 3 oraciones describiendo qué se ve y qué historia cuenta.</li>
-    </ul>
-    <p>Luego comentan al menos dos publicaciones de compañeros con observaciones respetuosas.</p>
-  </div>
-</div>
-
 <div class="actividad-unidad">
-  <h4>📝 Quiz de la lección (al final de la Clase 2)</h4>
-  <p>Diez preguntas en línea que pondrán a prueba lo aprendido en las clases 1 y 2 combinadas: emparejar imágenes con descripciones, predecir el contenido de un texto a partir de su ilustración, y reconocer cuándo una imagen complementa el texto.</p>
+  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · con una imagen de verdad</h4>
+  <p>Busca un artículo con una fotografía: en un periódico, una revista, un folleto de la clínica o una página de noticias en internet. <strong>Tapa el texto</strong> con una hoja o con la mano y mira solo la imagen. En tu cuaderno, escribe:</p>
+  <ul class="lista-bonita">
+    <li><strong>Tres cosas</strong> que ves en la imagen.</li>
+    <li><strong>Una predicción</strong>: «Creo que el texto va a hablar de…».</li>
+  </ul>
+  <p style="margin-bottom:0">Después destapa el texto y léelo. Escribe una última línea: «Mi predicción fue correcta / casi correcta / no fue correcta porque…». Si alguien de tu casa quiere jugar, que elija la imagen sin decirte de qué trata el artículo.</p>
 </div>
-
+<details class="ver-modelo">
+  <summary>Ver un ejemplo</summary>
+  <p><strong>Imagen:</strong> una calle con agua hasta las rodillas, un carro detenido y personas con botas de goma.</p>
+  <ul class="lista-bonita">
+    <li>Veo agua en toda la calle, un carro parado y gente caminando con botas.</li>
+    <li>Predicción: «Creo que el texto va a hablar de una inundación después de una tormenta».</li>
+    <li>Después de leer: «Mi predicción fue casi correcta: el texto habla de una tubería rota, no de una tormenta. Pero sí era sobre agua en la calle».</li>
+  </ul>
+  <p style="margin-bottom:0">Una predicción que no se cumple <strong>también sirve</strong>: te preparó para leer con atención y descubrir qué había pasado de verdad.</p>
+</details>
 </div>
 </details>
 
-<details>
-<summary>4. Cierre y tarea <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Lo que aprendimos hoy</h3>
-
+<p><strong>Mis imágenes con historia.</strong> Elige <strong>dos fotografías</strong>: una de tu familia o de tu barrio (que se pueda mostrar) y una que acompañe un artículo de periódico o de internet. Para cada una, escribe en tu cuaderno:</p>
 <ul class="lista-bonita">
-  <li>Las imágenes no son adornos: son <strong>herramientas de comprensión</strong>.</li>
-  <li>Decodificar texto consume mucha energía mental; las imágenes <strong>liberan</strong> esa energía.</li>
-  <li>La técnica de las <strong>dos lecturas</strong> (primero la imagen, luego el texto) mejora la comprensión.</li>
-  <li>En el GED, esta habilidad es clave para responder preguntas de Ciencias y Estudios Sociales.</li>
+  <li>Qué se ve en la imagen: personas, lugar, objetos y lo que está pasando.</li>
+  <li>Un párrafo breve, de dos o tres oraciones, que cuente la <strong>historia</strong> que muestra la foto.</li>
+  <li>En la foto del artículo: tu predicción antes de leer y si se cumplió después de leer.</li>
 </ul>
+<p>Si alguien de tu casa quiere participar, muéstrale la foto familiar y pregúntale qué historia ve. ¿Coincide con la tuya?</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Mis imágenes con historia»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Observación</td><td class="nivel-4">Describí personas, lugar, objetos y lo que pasa</td><td class="nivel-1">Solo escribí una palabra o dos</td></tr>
+      <tr><td>Historia</td><td class="nivel-4">Mi párrafo cuenta lo que muestra la foto en dos o tres oraciones</td><td class="nivel-1">No escribí el párrafo</td></tr>
+      <tr><td>Predicción</td><td class="nivel-4">Escribí la predicción antes de leer y la revisé después</td><td class="nivel-1">Leí el texto antes de predecir</td></tr>
+      <tr><td>Oraciones</td><td class="nivel-4">Cada oración empieza con mayúscula y termina con punto</td><td class="nivel-1">Faltan mayúsculas o puntos</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>Las imágenes no son adornos: son <strong>herramientas para comprender</strong>.</li>
+  <li>Una buena imagen te da un <strong>apoyo</strong> para entender las palabras del texto.</li>
+  <li>La técnica de las <strong>dos lecturas</strong>: primero la imagen, luego el texto, y al final comprobar la predicción.</li>
+  <li>En el GED, esta habilidad es clave para las preguntas de Ciencias y de Estudios Sociales.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Por qué decimos que una imagen no es solo un adorno?</li>
+    <li>¿Cuáles son los cuatro pasos de la técnica de las dos lecturas?</li>
+    <li>¿Qué haces si tu predicción no se cumple?</li>
+  </ul>
+</div>
 
 <div class="tip">
-  <strong>📌 Tarea para la próxima clase:</strong> En cualquier periódico, revista o libro de texto, busque <strong>tres fotografías</strong> que acompañen un artículo. Para cada una, anote: (a) qué ve en la imagen, (b) qué cree que dice el texto. Traiga sus notas a la Clase 2.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_6-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 6.2 · Las características del texto informativo visual</a>. Conocerás las otras pistas que acompañan a las imágenes: el <strong>título</strong>, los <strong>subtítulos</strong>, los <strong>rótulos</strong> y el <strong>pie de foto</strong>.
 </div>
-
-<p>En la <strong>Clase 2</strong> aprenderemos a identificar y usar los otros elementos visuales que acompañan a las imágenes: el <strong>título</strong>, el <strong>subtítulo</strong>, la <strong>leyenda</strong> y el <strong>pie de foto</strong>. Estos son las "pistas" que el autor nos deja para guiarnos por el texto.</p>
-
 </div>
 </details>
 
-<p class="firma">Prof. José M. Fernández · Truman College · Tema 6, Clase 1</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 6 · Lección 6.1</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -327,7 +454,7 @@
   // SVG generator helper
   function svgEscena(tipo){
     if(tipo==='hospital'){
-      return '<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">'+
+      return '<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Un edificio blanco con una gran cruz roja en la fachada y dos ventanas. Al lado, una persona vestida de oscuro con un maletín blanco.">'+
         '<rect width="200" height="130" fill="#e3f2fd"/>'+
         '<rect x="60" y="30" width="80" height="80" fill="#fff" stroke="#0089cd" stroke-width="2"/>'+
         '<rect x="92" y="55" width="16" height="40" fill="#c62828"/>'+
@@ -341,7 +468,7 @@
       '</svg>';
     }
     if(tipo==='agricultura'){
-      return '<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">'+
+      return '<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Un cielo azul con sol. Abajo, tierra marrón con surcos y pequeñas plantas verdes. Una persona trabaja con una herramienta.">'+
         '<rect width="200" height="80" fill="#bbdefb"/>'+
         '<rect y="80" width="200" height="50" fill="#8d6e63"/>'+
         '<circle cx="170" cy="25" r="14" fill="#ffd54f"/>'+
@@ -361,7 +488,7 @@
       '</svg>';
     }
     if(tipo==='volcan'){
-      return '<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">'+
+      return '<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Una montaña oscura de noche, con fuego naranja y amarillo que sale de la punta y chispas en el aire.">'+
         '<rect width="200" height="130" fill="#263238"/>'+
         '<polygon points="100,20 60,110 140,110" fill="#3e2723"/>'+
         '<polygon points="100,20 80,55 120,55" fill="#ff5722"/>'+
@@ -375,7 +502,7 @@
       '</svg>';
     }
     if(tipo==='ciudad'){
-      return '<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">'+
+      return '<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Muchos edificios altos, uno al lado del otro, con ventanas iluminadas, bajo un cielo azul.">'+
         '<rect width="200" height="130" fill="#90caf9"/>'+
         '<rect x="10" y="50" width="30" height="70" fill="#546e7a"/>'+
         '<rect x="45" y="30" width="25" height="90" fill="#37474f"/>'+
@@ -441,7 +568,7 @@
         {texto:'El crecimiento de las ciudades',correcto:true},
         {texto:'El desierto',correcto:false}
       ],
-      explicacion:'Edificios altos, ventanas iluminadas y skyline indican un entorno urbano denso.'
+      explicacion:'Los edificios altos, uno junto al otro, y las ventanas iluminadas indican una ciudad grande.'
     }
   ];
 
@@ -460,7 +587,7 @@
       html+='<button type="button" class="btn-pred" data-correcto="'+(op.correcto?'1':'0')+'">'+op.texto+'</button>';
     });
     html+='</div>'+
-      '<div class="retroalimentacion" id="retro-'+idx+'"></div>';
+      '<div class="retroalimentacion" id="retro-'+idx+'" role="status"></div>';
 
     div.innerHTML=html;
     // Replace the wrapper with proper SVG class
@@ -495,6 +622,7 @@
           retro.textContent='✅ Correcto. '+item.explicacion;
           retro.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-'+idx); r2.textContent='❌ Mira otra vez la imagen: ¿qué pistas ves?'; r2.classList.add('visible');
           b.classList.add('incorrecta');
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
@@ -510,6 +638,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué es la <strong>alfabetización visual</strong>?", "o": ["Saber leer imágenes, mapas, tablas y gráficas", "Saber el alfabeto de memoria", "Saber dibujar bien"], "c": 0}, {"t": "Al leer, el cerebro hace dos tareas: decodificar y…", "o": ["asignar significado", "dibujar", "memorizar el título"], "c": 0}, {"t": "¿Cómo ayuda una buena imagen a quien lee?", "o": ["Le da un apoyo para entender de qué habla el texto", "Hace que no tenga que leer nada", "Solo hace la página más bonita"], "c": 0}, {"t": "En la técnica de las dos lecturas, ¿qué se lee primero?", "o": ["La imagen", "El último párrafo", "Las preguntas del examen"], "c": 0}, {"t": "¿Cuál es el orden de la técnica de las dos lecturas?", "o": ["Leer la imagen, predecir, leer el texto, verificar", "Leer el texto, mirar la imagen, predecir", "Predecir, verificar, leer la imagen"], "c": 0, "fijo": true}, {"t": "Ves una foto de un estadio lleno de gente con camisetas del mismo color. ¿De qué tratará el texto, probablemente?", "o": ["De un partido o un evento deportivo", "De una receta de cocina", "De un problema de salud"], "c": 0}, {"t": "Ves una ilustración de una planta con flechas: el sol arriba, agua que sube desde la raíz. ¿De qué tratará el texto?", "o": ["De cómo se alimentan las plantas", "De la historia de un país", "De cómo se construye una casa"], "c": 0}, {"t": "Tu predicción no se cumplió. ¿Qué haces?", "o": ["La ajustas con lo que dice el texto: también te ayudó a leer con atención", "Dejas de leer", "Cambias el texto para que coincida"], "c": 0}, {"t": "¿Por qué funciona mirar la imagen primero?", "o": ["Porque despierta lo que ya sabes del tema", "Porque la imagen siempre dice todo", "Porque así no hay que leer"], "c": 0}, {"t": "Ves una foto de una calle cubierta de agua y casas dañadas. ¿Qué palabras esperas encontrar en el texto?", "o": ["inundación, lluvia, daños", "fiesta, música, baile", "cosecha, semillas, tractor"], "c": 0}, {"t": "¿En qué exámenes del GED es especialmente útil leer imágenes?", "o": ["En Ciencias y en Estudios Sociales", "Solo en Matemáticas", "En ninguno"], "c": 0}, {"t": "Antes de leer un artículo con foto, lo mejor es…", "o": ["mirar la foto y preguntarte qué ves", "saltarte la foto", "leer solo la última línea"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes leer la imagen antes que el texto. Puedes continuar con la Lección 6.2.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

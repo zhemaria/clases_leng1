@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 6.4 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 4: Organización de datos en tablas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6.4 · Organización de datos en tablas</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -157,15 +163,84 @@
   .nivel-4{background:#e8f5e9}
   .nivel-3{background:#fff8e1}
   .nivel-2{background:#fff3e0}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  table.tabla-demo{min-width:0;width:100%;max-width:420px}
+  .horario{border-collapse:collapse;width:100%;max-width:520px;margin:12px auto;background:#fff;font-size:0.95rem}
+  .horario caption{background:#1a2332;color:#fff;padding:10px;font-weight:700}
+  .horario th{background:#005a8a;color:#fff;padding:9px 10px;text-align:left}
+  .horario td{padding:8px 10px;border-bottom:1px solid var(--gris-claro)}
 </style>
 </head>
 <body>
 
-<h1>Clase 4: Organización de datos en tablas</h1>
-<p class="subtitulo">Tema 6 · Lección 6.2 · Nivel 1 · Semana 12 · 50 minutos</p>
+<h1>Lección 6.4 · Organización de datos en tablas</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 6 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Identificar las <strong>partes de una tabla</strong>: título, encabezados, filas y columnas.</li>
     <li>Aprender a <strong>cruzar filas y columnas</strong> para encontrar información exacta.</li>
@@ -173,14 +248,30 @@
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-tabla">¿Qué es una tabla?</a></li>
+    <li><a href="#s-2-anatomia">Anatomía de una tabla</a></li>
+    <li><a href="#s-3-practica">Práctica: tabla y mapa juntos</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En la clase pasada aprendimos a leer mapas y sus cuatro elementos clave. Hoy estudiaremos otra herramienta visual que aparece con muchísima frecuencia en el examen de GED: la <span class="palabra-clave">tabla</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Una tabla parece simple a primera vista, pero esconde una lógica poderosa: organiza datos en <strong>filas y columnas</strong> para que podamos encontrar información exacta en segundos. Vamos a aprender a usarla bien.</p>
+<p>En la lección anterior aprendiste a leer mapas y sus cuatro elementos clave. Ahora vas a estudiar otra herramienta visual que aparece con mucha frecuencia en el examen GED: la <span class="palabra-clave">tabla</span>.</p>
 
-<details open>
-<summary>1. Introducción: ¿qué es una tabla? <span class="caja-tiempo">10 min</span></summary>
+<p>Una tabla parece simple a primera vista, pero tiene una lógica muy útil: organiza los datos en <strong>filas y columnas</strong> para que encuentres información exacta en segundos.</p>
+
+<details open id="s-1-tabla">
+<summary>1. ¿Qué es una tabla? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Una herramienta para organizar información</h3>
@@ -193,86 +284,86 @@
 </ul>
 
 <div class="clave-pedagogica">
-  <strong>💡 Idea central:</strong> En una tabla, cada dato aparece en el cruce de una <strong>fila</strong> con una <strong>columna</strong>. Para encontrarlo, leemos la fila correcta y bajamos por la columna correcta hasta el punto donde se encuentran. A esto le llamaremos <strong>cruzar la información</strong>.
+  <strong>💡 Idea central:</strong> En una tabla, cada dato está en el cruce de una <strong>fila</strong> con una <strong>columna</strong>. Para encontrarlo, buscas la fila correcta y la columna correcta, y miras dónde se encuentran. A esto lo llamamos <strong>cruzar la información</strong>.
 </div>
 
 <h3>¿Por qué usamos tablas?</h3>
 
-<p>Imaginemos que queremos comparar los horarios de varias bibliotecas de Chicago. Sin tabla, tendríamos que escribir un párrafo largo. Con una tabla, todo cabe en pocos renglones y se compara de un vistazo.</p>
+<p>Imagina que quieres comparar a qué hora abren varias bibliotecas. Sin tabla, tendrías que leer un párrafo largo. Con una tabla, todo cabe en pocas líneas y se compara de un vistazo.</p>
 
 </div>
 </details>
 
-<details>
-<summary>2. Desarrollo: anatomía de una tabla <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-anatomia">
+<summary>2. Anatomía de una tabla <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Las cuatro partes de toda tabla</h3>
 
-<p>Toda tabla bien hecha tiene cuatro partes fundamentales:</p>
+<p>Toda tabla bien hecha tiene cuatro partes:</p>
 
 <div class="tabla-anatomia">
   <h4>📊 Tabla de ejemplo: horarios de bibliotecas</h4>
 
   <div class="tabla-demo-wrap">
     <table class="tabla-demo">
-      <caption>Horarios de bibliotecas en Pilsen <span style="font-size:0.8rem;opacity:0.8">⬅ 1. Título</span></caption>
+      <caption>Hora de apertura de cuatro bibliotecas (datos de ejemplo) <span style="font-size:0.8rem;opacity:0.8">⬅ 1. Título</span></caption>
       <thead>
         <tr>
-          <th class="col1">Biblioteca <span style="font-size:0.75rem;opacity:0.85">(2)</span></th>
-          <th class="col2">Hora de apertura <span style="font-size:0.75rem;opacity:0.85">(3)</span></th>
+          <th class="col1" scope="col">Biblioteca <span style="font-size:0.75rem;opacity:0.85">(2)</span></th>
+          <th class="col2" scope="col">Hora de apertura <span style="font-size:0.75rem;opacity:0.85">(2)</span></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Rudy Lozano</td>
-          <td>9:00 AM</td>
+          <td>Las Flores</td>
+          <td>9:00 a. m.</td>
         </tr>
         <tr>
-          <td>Lincoln Park</td>
-          <td>10:00 AM</td>
+          <td>Del Parque</td>
+          <td>10:00 a. m.</td>
         </tr>
         <tr>
-          <td>Harold Washington</td>
-          <td>8:00 AM</td>
+          <td>Central</td>
+          <td>8:00 a. m.</td>
         </tr>
         <tr>
-          <td>Sulzer Regional</td>
-          <td>11:00 AM</td>
+          <td>Del Lago</td>
+          <td>11:00 a. m.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <p style="text-align:center;font-size:0.88rem;color:var(--gris);font-style:italic;margin-top:6px">↑ Cada fila (4) es una biblioteca distinta con su información</p>
+  <p style="text-align:center;font-size:0.88rem;color:var(--gris);font-style:italic;margin-top:6px">↑ Cada fila (4) es una biblioteca distinta; cada columna (3) guarda un mismo tipo de dato</p>
 
   <div class="partes-tabla">
     <div class="parte-tabla p1">
       <div class="num-p">1</div>
       <div class="desc-p">
         <strong>Título</strong>
-        <span>Indica el tema general de la tabla. Va siempre arriba.</span>
+        <span>Indica el tema general de la tabla. Va arriba.</span>
       </div>
     </div>
     <div class="parte-tabla p2">
       <div class="num-p">2</div>
       <div class="desc-p">
-        <strong>Encabezado de columna 1</strong>
-        <span>Identifica qué tipo de información hay en la primera columna (aquí: nombres de bibliotecas).</span>
+        <strong>Encabezados</strong>
+        <span>Están arriba de cada columna y dicen qué tipo de información hay en ella (aquí: «Biblioteca» y «Hora de apertura»).</span>
       </div>
     </div>
     <div class="parte-tabla p3">
       <div class="num-p">3</div>
       <div class="desc-p">
-        <strong>Encabezado de columna 2</strong>
-        <span>Identifica qué tipo de información hay en la segunda columna (aquí: horarios de apertura).</span>
+        <strong>Columnas</strong>
+        <span>Van de arriba abajo. Cada una guarda un mismo tipo de dato para todos los elementos (aquí: todos los nombres, o todas las horas).</span>
       </div>
     </div>
     <div class="parte-tabla p4">
       <div class="num-p">4</div>
       <div class="desc-p">
         <strong>Filas de datos</strong>
-        <span>Cada fila representa un elemento distinto con su información correspondiente.</span>
+        <span>Van de izquierda a derecha. Cada fila representa un elemento distinto con toda su información.</span>
       </div>
     </div>
   </div>
@@ -280,23 +371,23 @@
 
 <h3>Cómo cruzar la información: paso a paso</h3>
 
-<p>Esta es la habilidad más importante de la clase. Veamos cómo responder a la pregunta: <em>"¿A qué hora abre la biblioteca Lincoln Park?"</em></p>
+<p>Esta es la habilidad más importante de la lección. Mira cómo se responde la pregunta: <em>«¿A qué hora abre la biblioteca Del Parque?»</em></p>
 
 <div class="ejemplo-cruce">
-  <h4>🎯 Pregunta: ¿A qué hora abre la biblioteca Lincoln Park?</h4>
+  <h4>🎯 Pregunta: ¿A qué hora abre la biblioteca Del Parque?</h4>
 
   <div class="pasos-cruce">
 
     <div class="paso-cruce">
       <div class="num-paso-c">1</div>
       <h5>Identificar la fila</h5>
-      <p>Buscamos en la columna 1 la fila que dice <strong>"Lincoln Park"</strong>.</p>
+      <p>Busca en la primera columna la fila que dice <strong>«Del Parque»</strong>.</p>
       <table class="tabla-resaltada">
-        <thead><tr><th>Biblioteca</th><th>Apertura</th></tr></thead>
+        <thead><tr><th scope="col">Biblioteca</th><th scope="col">Apertura</th></tr></thead>
         <tbody>
-          <tr><td>Rudy Lozano</td><td>9:00 AM</td></tr>
-          <tr class="resaltada"><td>Lincoln Park</td><td>10:00 AM</td></tr>
-          <tr><td>Harold Washington</td><td>8:00 AM</td></tr>
+          <tr><td>Las Flores</td><td>9:00 a. m.</td></tr>
+          <tr class="resaltada"><td>Del Parque</td><td>10:00 a. m.</td></tr>
+          <tr><td>Central</td><td>8:00 a. m.</td></tr>
         </tbody>
       </table>
     </div>
@@ -304,13 +395,13 @@
     <div class="paso-cruce">
       <div class="num-paso-c">2</div>
       <h5>Identificar la columna</h5>
-      <p>La pregunta es sobre la hora, así que miramos la columna <strong>"Apertura"</strong>.</p>
+      <p>La pregunta es sobre la hora, así que mira la columna <strong>«Apertura»</strong>.</p>
       <table class="tabla-resaltada">
-        <thead><tr><th>Biblioteca</th><th>Apertura</th></tr></thead>
+        <thead><tr><th scope="col">Biblioteca</th><th scope="col">Apertura</th></tr></thead>
         <tbody>
-          <tr><td>Rudy Lozano</td><td class="col-resaltada">9:00 AM</td></tr>
-          <tr><td>Lincoln Park</td><td class="col-resaltada">10:00 AM</td></tr>
-          <tr><td>Harold Washington</td><td class="col-resaltada">8:00 AM</td></tr>
+          <tr><td>Las Flores</td><td class="col-resaltada">9:00 a. m.</td></tr>
+          <tr><td>Del Parque</td><td class="col-resaltada">10:00 a. m.</td></tr>
+          <tr><td>Central</td><td class="col-resaltada">8:00 a. m.</td></tr>
         </tbody>
       </table>
     </div>
@@ -318,13 +409,13 @@
     <div class="paso-cruce">
       <div class="num-paso-c">3</div>
       <h5>Cruzar fila y columna</h5>
-      <p>En el cruce de la fila Lincoln Park y la columna Apertura: <strong>10:00 AM</strong>.</p>
+      <p>En el cruce de la fila Del Parque y la columna Apertura: <strong>10:00 a. m.</strong>.</p>
       <table class="tabla-resaltada">
-        <thead><tr><th>Biblioteca</th><th>Apertura</th></tr></thead>
+        <thead><tr><th scope="col">Biblioteca</th><th scope="col">Apertura</th></tr></thead>
         <tbody>
-          <tr><td>Rudy Lozano</td><td>9:00 AM</td></tr>
-          <tr><td>Lincoln Park</td><td class="celda-resaltada">10:00 AM</td></tr>
-          <tr><td>Harold Washington</td><td>8:00 AM</td></tr>
+          <tr><td>Las Flores</td><td>9:00 a. m.</td></tr>
+          <tr><td>Del Parque</td><td class="celda-resaltada">10:00 a. m.</td></tr>
+          <tr><td>Central</td><td>8:00 a. m.</td></tr>
         </tbody>
       </table>
     </div>
@@ -333,25 +424,26 @@
 </div>
 
 <div class="tip">
-  <strong>📌 Regla práctica:</strong> Siempre antes de buscar un dato, pregúntese: ¿qué <strong>fila</strong> necesito? y ¿qué <strong>columna</strong> necesito? El cruce de ambas es la respuesta exacta.
+  <strong>📌 Regla práctica:</strong> Antes de buscar un dato, pregúntate: ¿qué <strong>fila</strong> necesito? y ¿qué <strong>columna</strong> necesito? El cruce de las dos es la respuesta exacta.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica integradora: tabla y mapa juntos <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: tabla y mapa juntos <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Conectando dos herramientas visuales</h3>
 
-<p>En el examen de Estudios Sociales, frecuentemente debemos combinar la información de una <strong>tabla</strong> con la de un <strong>mapa</strong>. Veamos un ejemplo: la siguiente tabla muestra la temperatura promedio en distintas ciudades de Estados Unidos, junto con un mapa que indica dónde está cada una.</p>
+<p>En Estudios Sociales y en Ciencias, a veces hay que combinar la información de una <strong>tabla</strong> con la de un <strong>mapa</strong>. Mira este ejemplo: la tabla muestra la temperatura promedio de enero en cuatro ciudades de Estados Unidos, y el mapa indica dónde está cada una.</p>
 
 <div class="practica-tabla-cont">
 
   <div class="conexion-mapa-tabla">
     <div class="lado-mapa">
-      <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="us-t">
+        <title id="us-t">Mapa simplificado de Estados Unidos con el norte arriba. Chicago y Nueva York están arriba, en el norte; Chicago en el centro y Nueva York a la derecha, en el este. Los Ángeles está a la izquierda, en el oeste, un poco más abajo. Miami está abajo a la derecha, en el extremo sur.</title>
         <rect width="320" height="240" fill="#e1f5fe"/>
         <text x="160" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a2332">Mapa de Estados Unidos (simplificado)</text>
 
@@ -393,132 +485,137 @@
       <table>
         <caption style="font-weight:700;padding:8px;background:#1a2332;color:#fff;margin-bottom:0;font-size:0.92rem">Temperatura promedio en enero</caption>
         <thead>
-          <tr><th>Ciudad</th><th>Temperatura</th></tr>
+          <tr><th scope="col">Ciudad</th><th scope="col">Temperatura</th></tr>
         </thead>
         <tbody>
-          <tr><td>Chicago</td><td>30 °F</td></tr>
-          <tr><td>Nueva York</td><td>35 °F</td></tr>
-          <tr><td>Los Ángeles</td><td>60 °F</td></tr>
-          <tr><td>Miami</td><td>75 °F</td></tr>
+          <tr><td>Chicago</td><td>25 °F</td></tr>
+          <tr><td>Nueva York</td><td>34 °F</td></tr>
+          <tr><td>Los Ángeles</td><td>59 °F</td></tr>
+          <tr><td>Miami</td><td>69 °F</td></tr>
         </tbody>
       </table>
-      <p style="margin:8px 0 0 0;font-size:0.8rem;font-style:italic;color:var(--gris);text-align:center">Tabla 1: Datos del mes de enero</p>
+      <p style="margin:8px 0 0 0;font-size:0.8rem;font-style:italic;color:var(--gris);text-align:center">Tabla 1: Promedio de enero. Fuente: NOAA, normales climáticas 1991-2020 (valores redondeados).</p>
     </div>
   </div>
 
   <div class="preguntas-tabla" id="preguntas-tabla"></div>
-  <div class="puntaje" id="puntaje-tabla">Aciertos: 0 / 6</div>
+  <div class="puntaje" id="puntaje-tabla" role="status">Aciertos: 0 / 6</div>
 </div>
 
-</div>
-</details>
-
-<details>
-<summary>4. Actividades de la lección <span class="caja-tiempo">5 min</span></summary>
-<div class="contenido-detalle">
-
-<p>Las actividades sincrónica y asincrónica de la Lección 6.2 ya se presentaron en la Clase 3. Aquí se concentra el quiz combinado de la lección.</p>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">Búsqueda dirigida en tabla</span></p>
-    <p>El profesor proyecta una tabla con horarios de trenes (CTA). Lanza preguntas rápidas a la clase:</p>
-    <ul style="padding-left:20px;font-size:0.92rem">
-      <li>"¿A qué hora pasa el tren rojo por la estación Belmont?"</li>
-      <li>"¿Cuál tren llega más temprano al centro?"</li>
-      <li>"¿Qué día abre la oficina de correos más tarde?"</li>
-    </ul>
-    <p>Cada estudiante responde apuntando en su cuaderno qué <strong>fila</strong> y qué <strong>columna</strong> usó para encontrar la respuesta.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (asincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Mi tabla personal</span></p>
-    <p>Cada estudiante crea y sube al foro una tabla simple de dos columnas con información personal. Ejemplos válidos:</p>
-    <ul style="padding-left:20px;font-size:0.92rem">
-      <li>Mis comidas favoritas y a qué hora las como.</li>
-      <li>Las personas de mi familia y su lugar de nacimiento.</li>
-      <li>Los lugares que visito esta semana y el día.</li>
-    </ul>
-    <p>La tabla debe tener un <strong>título</strong>, los <strong>encabezados</strong> de las dos columnas y al menos <strong>cuatro filas</strong> de datos.</p>
-  </div>
-</div>
-
+<h3>Actividad: busca en el horario</h3>
 <div class="actividad-unidad">
-  <h4>📝 Quiz combinado de la Lección 6.2 <span class="badge-tipo badge-quiz">12 preguntas</span></h4>
-  <p>Al finalizar esta clase, los estudiantes completan el quiz en línea que cubre las clases 3 y 4 juntas:</p>
-  <ul style="padding-left:20px;font-size:0.92rem">
-    <li>Identificar los cuatro elementos del mapa (título, rosa, leyenda, escala).</li>
-    <li>Usar los puntos cardinales para describir una ubicación.</li>
-    <li>Cruzar filas y columnas para extraer un dato de una tabla.</li>
-    <li>Comparar valores en una tabla (¿cuál es mayor, cuál es menor?).</li>
-    <li>Conectar la información de una tabla con un mapa simple.</li>
-  </ul>
+  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · en tu cuaderno</h4>
+  <p style="margin-bottom:0">Contesta en tu cuaderno las tres preguntas. En cada una, anota también <strong>qué fila</strong> y <strong>qué columna</strong> usaste.</p>
 </div>
-
-<h3>📋 Rúbrica para el foro asincrónico de la Clase 3</h3>
-
-<p>Aplicada al foro "Cómo llegar a la escuela":</p>
-
-<table class="rubrica">
-  <thead>
-    <tr>
-      <th>Criterio</th>
-      <th class="nivel-4">Logrado (3)</th>
-      <th class="nivel-3">En desarrollo (2)</th>
-      <th class="nivel-2">Inicial (1)</th>
-    </tr>
-  </thead>
+<table class="horario">
+  <caption>Horario del autobús 12 (datos de ejemplo)</caption>
+  <thead><tr><th scope="col">Parada</th><th scope="col">Primer autobús</th><th scope="col">Último autobús</th></tr></thead>
   <tbody>
-    <tr>
-      <td>Claridad de la ruta</td>
-      <td class="nivel-4">La ruta se entiende sin esfuerzo y es replicable.</td>
-      <td class="nivel-3">La ruta se entiende pero falta algún detalle.</td>
-      <td class="nivel-2">La ruta es confusa o incompleta.</td>
-    </tr>
-    <tr>
-      <td>Uso de puntos cardinales</td>
-      <td class="nivel-4">Usa al menos dos puntos cardinales correctamente.</td>
-      <td class="nivel-3">Usa un punto cardinal o los usa con un pequeño error.</td>
-      <td class="nivel-2">No usa puntos cardinales o los usa incorrectamente.</td>
-    </tr>
-    <tr>
-      <td>Oraciones completas y puntuación</td>
-      <td class="nivel-4">Dos oraciones completas con mayúscula inicial y punto final.</td>
-      <td class="nivel-3">Una oración completa y otra incompleta o sin puntuación.</td>
-      <td class="nivel-2">No usa oraciones completas o falta puntuación básica.</td>
-    </tr>
+    <tr><td>Calle Roble</td><td>5:30 a. m.</td><td>11:10 p. m.</td></tr>
+    <tr><td>Biblioteca</td><td>5:38 a. m.</td><td>11:18 p. m.</td></tr>
+    <tr><td>Hospital</td><td>5:45 a. m.</td><td>11:25 p. m.</td></tr>
+    <tr><td>Centro</td><td>6:00 a. m.</td><td>11:40 p. m.</td></tr>
   </tbody>
 </table>
+<ol>
+  <li>¿A qué hora pasa el primer autobús por el hospital?</li>
+  <li>¿A qué hora pasa el último autobús por el centro?</li>
+  <li>¿Cuántos minutos tarda el primer autobús en ir de la Calle Roble al centro?</li>
+</ol>
+<details class="ver-modelo">
+  <summary>Ya contesté: ver las respuestas</summary>
+  <ol>
+    <li><strong>5:45 a. m.</strong> Fila «Hospital», columna «Primer autobús».</li>
+    <li><strong>11:40 p. m.</strong> Fila «Centro», columna «Último autobús».</li>
+    <li><strong>30 minutos.</strong> En la columna «Primer autobús», sale de Calle Roble a las 5:30 y llega al centro a las 6:00.</li>
+  </ol>
+</details>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l6-4.html#cruzar" target="_blank" rel="noopener">
+  ✍️ Práctica: Cruza filas y columnas ↗
+  <span>Tablas nuevas cada vez, con preguntas para encontrar y comparar datos. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>5. Cierre y conexión con la próxima lección <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Lo que aprendimos en esta lección</h3>
-
+<p><strong>Mi tabla personal.</strong> Crea en tu cuaderno una tabla con información de tu vida. Algunas ideas:</p>
 <ul class="lista-bonita">
-  <li>Un <strong>mapa</strong> tiene cuatro elementos: título, rosa de los vientos, leyenda y escala.</li>
-  <li>Una <strong>tabla</strong> tiene cuatro partes: título, encabezados, filas y columnas.</li>
-  <li>Para encontrar un dato exacto, <strong>cruzamos</strong> una fila con una columna.</li>
-  <li>Muchas veces, la información de una tabla se entiende mejor si la <strong>conectamos con un mapa</strong>.</li>
+  <li>Las personas de tu familia y el lugar donde nacieron.</li>
+  <li>Tus comidas de la semana y a qué hora las comes.</li>
+  <li>Los lugares que visitas esta semana y el día.</li>
 </ul>
-
-<div class="clave-pedagogica">
-  <strong>🎯 Conexión con el examen:</strong> En el GED, las preguntas de Estudios Sociales y Ciencias casi siempre presentan mapas y tablas juntos. La habilidad de cruzar la información y conectar las dos fuentes es fundamental para obtener buena puntuación.
+<p>La tabla debe tener un <strong>título</strong>, los <strong>encabezados</strong> de al menos dos columnas y al menos <strong>cuatro filas</strong> de datos. Debajo, escribe <strong>dos preguntas</strong> que se puedan contestar cruzando una fila con una columna, y sus respuestas.</p>
+<p>Si alguien de tu casa quiere participar, hazle tus dos preguntas y mira si encuentra la respuesta en tu tabla.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Mi tabla personal»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Título</td><td class="nivel-4">Mi tabla tiene un título que dice de qué trata</td><td class="nivel-1">No tiene título</td></tr>
+      <tr><td>Encabezados</td><td class="nivel-4">Cada columna tiene su encabezado</td><td class="nivel-1">Faltan encabezados</td></tr>
+      <tr><td>Filas</td><td class="nivel-4">Hay al menos cuatro filas de datos</td><td class="nivel-1">Hay menos de cuatro</td></tr>
+      <tr><td>Preguntas</td><td class="nivel-4">Escribí dos preguntas que se responden cruzando fila y columna</td><td class="nivel-1">Mis preguntas no se pueden responder con la tabla</td></tr>
+    </tbody>
+  </table>
 </div>
-
-<h3>Próxima lección</h3>
-
-<p>En la <strong>Clase 5</strong> daremos otro salto: aprenderemos a leer <strong>gráficas de barras y de pastel</strong>. Estas gráficas son aún más comunes en el examen y nos enseñarán a leer información numérica con rapidez y precisión.</p>
-
 </div>
 </details>
 
-<p class="firma">Prof. José M. Fernández · Truman College · Tema 6, Clase 4</p>
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>Una <strong>tabla</strong> organiza datos en <strong>filas</strong> (de izquierda a derecha) y <strong>columnas</strong> (de arriba abajo).</li>
+  <li>Sus partes son: <strong>título, encabezados, columnas y filas</strong>.</li>
+  <li>Para encontrar un dato exacto, <strong>cruzas</strong> una fila con una columna.</li>
+  <li>A veces, una tabla se entiende mejor si la <strong>conectas con un mapa</strong>.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuál es la diferencia entre una fila y una columna?</li>
+    <li>¿Para qué sirven los encabezados?</li>
+    <li>¿Cómo encuentras un dato exacto en una tabla?</li>
+  </ul>
+</div>
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> En Ciencias y en Estudios Sociales, muchas preguntas traen una tabla, a veces junto con un mapa o una gráfica. Saber cruzar la información y relacionar las dos fuentes es fundamental.
+</div>
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_6-5.html" style="color:var(--cp-oscuro);font-weight:700">Lección 6.5 · El duelo de las gráficas: barras y pastel</a>. Aprenderás a leer <strong>gráficas de barras y de pastel</strong>, que muestran números en forma de imagen.
+</div>
+</div>
+</details>
+
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 6 · Lección 6.4</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -528,11 +625,11 @@
     {
       texto:'¿Cuál es la temperatura promedio en Chicago durante enero?',
       opciones:[
-        {t:'30 °F',ok:true},
-        {t:'60 °F',ok:false},
-        {t:'75 °F',ok:false}
+        {t:'25 °F',ok:true},
+        {t:'59 °F',ok:false},
+        {t:'69 °F',ok:false}
       ],
-      explica:'Cruzamos la fila "Chicago" con la columna "Temperatura": 30 °F.'
+      explica:'Cruzamos la fila «Chicago» con la columna «Temperatura»: 25 °F.'
     },
     {
       texto:'¿Cuál ciudad tiene la temperatura más alta?',
@@ -542,7 +639,7 @@
         {t:'Miami',ok:true},
         {t:'Los Ángeles',ok:false}
       ],
-      explica:'Comparando todos los valores de la columna "Temperatura", Miami tiene 75 °F, el valor más alto.'
+      explica:'Al comparar todos los valores de la columna «Temperatura», Miami tiene 69 °F, el valor más alto.'
     },
     {
       texto:'¿En qué dirección está Miami con respecto a Chicago?',
@@ -556,11 +653,11 @@
     {
       texto:'Conectando mapa y tabla: ¿qué relación se observa entre la ubicación y la temperatura?',
       opciones:[
-        {t:'Las ciudades del norte son más cálidas',ok:false},
-        {t:'Las ciudades del sur son más cálidas',ok:true},
+        {t:'En estos datos, las ciudades más al norte son más cálidas',ok:false},
+        {t:'En estos datos, las ciudades más al sur son más cálidas',ok:true},
         {t:'No hay ninguna relación',ok:false}
       ],
-      explica:'Las ciudades ubicadas más al sur (Miami, Los Ángeles) tienen temperaturas más altas que las del norte (Chicago, Nueva York).'
+      explica:'Las ciudades que están más al sur (Miami, Los Ángeles) tienen temperaturas más altas que las del norte (Chicago, Nueva York). Ojo: con solo cuatro ciudades, es una tendencia, no una regla para todas.'
     },
     {
       texto:'¿Cuál ciudad tiene la temperatura más baja?',
@@ -569,7 +666,7 @@
         {t:'Los Ángeles',ok:false},
         {t:'Nueva York',ok:false}
       ],
-      explica:'Chicago tiene 30 °F, el valor más bajo de la columna "Temperatura".'
+      explica:'Chicago tiene 25 °F, el valor más bajo de la columna «Temperatura».'
     },
     {
       texto:'¿Cuántas filas de datos tiene la tabla (sin contar el encabezado)?',
@@ -599,7 +696,7 @@
       '<div><span class="num-preg">'+(idx+1)+'</span>'+
       '<span class="texto-preg">'+item.texto+'</span></div>'+
       '<div class="opciones-tabla">'+opcHtml+'</div>'+
-      '<div class="retro-tabla" id="retro-t-'+idx+'"></div>';
+      '<div class="retro-tabla" id="retro-t-'+idx+'" role="status"></div>';
 
     cont.appendChild(div);
 
@@ -617,6 +714,7 @@
           retro.textContent='✅ '+item.explica;
           retro.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-t-'+idx); r2.textContent='❌ Busca la fila y la columna que necesitas, y mira dónde se cruzan.'; r2.classList.add('visible');
           b.classList.add('incorrecta');
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
@@ -632,6 +730,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "En una tabla, ¿cómo van las <strong>filas</strong>?", "o": ["De izquierda a derecha", "De arriba abajo", "En diagonal"], "c": 0}, {"t": "En una tabla, ¿cómo van las <strong>columnas</strong>?", "o": ["De arriba abajo", "De izquierda a derecha", "En círculo"], "c": 0}, {"t": "¿Qué parte de la tabla dice qué tipo de dato hay en cada columna?", "o": ["El encabezado", "El título", "La última fila"], "c": 0}, {"t": "¿Qué significa <strong>cruzar la información</strong>?", "o": ["Buscar el dato donde se encuentran una fila y una columna", "Tachar los datos que no sirven", "Leer la tabla de abajo arriba"], "c": 0}, {"t": "Mira la tabla de las bibliotecas. ¿A qué hora abre la biblioteca Central?", "o": ["8:00 a. m.", "9:00 a. m.", "11:00 a. m."], "c": 0}, {"t": "¿Qué biblioteca abre más tarde?", "o": ["Del Lago", "Las Flores", "Central"], "c": 0}, {"t": "En la tabla de temperaturas, ¿cuál es la temperatura de enero en Nueva York?", "o": ["34 °F", "25 °F", "59 °F"], "c": 0}, {"t": "¿Cuántos grados más cálida es Miami que Chicago en enero, según la tabla?", "o": ["44 °F", "10 °F", "69 °F"], "c": 0}, {"t": "En el horario del autobús 12, ¿a qué hora pasa el primer autobús por la biblioteca?", "o": ["5:38 a. m.", "5:30 a. m.", "11:18 p. m."], "c": 0}, {"t": "Para saber a qué hora pasa el último autobús por el hospital, ¿qué fila y qué columna usas?", "o": ["Fila «Hospital», columna «Último autobús»", "Fila «Centro», columna «Primer autobús»", "Solo el título"], "c": 0}, {"t": "¿Para qué sirve el <strong>título</strong> de una tabla?", "o": ["Para decir de qué trata toda la tabla", "Para dar un dato exacto", "Para numerar las filas"], "c": 0}, {"t": "¿Por qué una tabla es mejor que un párrafo para comparar datos?", "o": ["Porque los datos están ordenados y se comparan de un vistazo", "Porque tiene más palabras", "Porque no tiene números"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes cruzar la información de una tabla. Puedes continuar con la Lección 6.5.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

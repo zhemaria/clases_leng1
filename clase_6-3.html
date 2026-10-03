@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 6.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 3: La anatomía de los mapas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6.3 · La anatomía de los mapas</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -121,15 +127,78 @@
   .pasos-numerados{counter-reset:paso;padding-left:0;list-style:none;margin:14px 0}
   .pasos-numerados li{counter-increment:paso;padding:12px 14px 12px 56px;position:relative;margin-bottom:8px;background:#fff;border-radius:8px;border-left:4px solid var(--acento)}
   .pasos-numerados li::before{content:counter(paso);position:absolute;left:14px;top:50%;transform:translateY(-50%);background:var(--acento);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 3: La anatomía de los mapas</h1>
-<p class="subtitulo">Tema 6 · Lección 6.2 · Nivel 1 · Semana 12 · 50 minutos</p>
+<h1>Lección 6.3 · La anatomía de los mapas</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 6 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Reconocer qué es un mapa y los <strong>tipos básicos</strong> que existen.</li>
     <li>Identificar los <strong>cuatro elementos esenciales</strong> de todo mapa: título, rosa de los vientos, leyenda y escala.</li>
@@ -137,28 +206,44 @@
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-mapa">¿Qué es un mapa?</a></li>
+    <li><a href="#s-2-elementos">Los cuatro elementos clave</a></li>
+    <li><a href="#s-3-practica">Práctica: leer un mapa</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Estimados estudiantes: en la Lección 6.1 aprendimos a leer imágenes y los elementos visuales de un artículo. Hoy comenzamos la Lección 6.2 con una herramienta visual fundamental para el examen de Estudios Sociales: el <span class="palabra-clave">mapa</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Un mapa es mucho más que un dibujo: es una <strong>representación organizada</strong> del mundo. Y, como todo texto informativo, tiene su propia gramática visual. Quien la conoce puede extraer información geográfica en pocos segundos.</p>
+<p>En las lecciones 6.1 y 6.2 aprendiste a leer imágenes y las pistas visuales de un artículo. Ahora vas a conocer una herramienta visual fundamental para el examen de Estudios Sociales: el <span class="palabra-clave">mapa</span>.</p>
 
-<details open>
-<summary>1. Introducción: ¿qué es un mapa? <span class="caja-tiempo">10 min</span></summary>
+<p>Un mapa es mucho más que un dibujo: es una <strong>representación organizada</strong> del mundo. Y, como todo texto informativo, tiene sus propias reglas. Quien las conoce puede sacar información de un mapa en pocos segundos.</p>
+
+<details open id="s-1-mapa">
+<summary>1. ¿Qué es un mapa? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Una vista desde arriba</h3>
 
-<p>Un <span class="palabra-clave">mapa</span> es una imagen plana que muestra un lugar <strong>visto desde arriba</strong>, como si lo observáramos desde un avión o un satélite. Su propósito es ayudarnos a entender <strong>dónde están las cosas</strong> en relación unas con otras.</p>
+<p>Un <span class="palabra-clave">mapa</span> es una imagen plana que muestra un lugar <strong>visto desde arriba</strong>, como si lo miraras desde un avión o un satélite. Sirve para entender <strong>dónde están las cosas</strong> unas respecto de otras.</p>
 
 <h3>Tipos básicos de mapas</h3>
 
-<p>No todos los mapas muestran lo mismo. Según el tipo de información que presentan, encontramos varios tipos:</p>
+<p>No todos los mapas muestran lo mismo. Según la información que presentan, hay varios tipos:</p>
 
 <div class="grid-tipos-mapas">
 
   <div class="tipo-mapa">
-    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <rect width="200" height="120" fill="#bbdefb"/>
       <polygon points="20,40 80,30 90,70 60,90 30,80" fill="#fff59d" stroke="#1a2332" stroke-width="1.5"/>
       <polygon points="90,35 160,40 170,80 120,90 95,75" fill="#a5d6a7" stroke="#1a2332" stroke-width="1.5"/>
@@ -172,7 +257,7 @@
   </div>
 
   <div class="tipo-mapa">
-    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <rect width="200" height="120" fill="#c8e6c9"/>
       <polygon points="40,20 70,15 90,40 60,50" fill="#795548"/>
       <polygon points="120,25 160,30 170,60 130,55" fill="#5d4037"/>
@@ -187,7 +272,7 @@
   </div>
 
   <div class="tipo-mapa">
-    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <rect width="200" height="120" fill="#f5f5f5"/>
       <line x1="20" y1="30" x2="180" y2="30" stroke="#37474f" stroke-width="3"/>
       <line x1="20" y1="60" x2="180" y2="60" stroke="#37474f" stroke-width="3"/>
@@ -206,7 +291,7 @@
   </div>
 
   <div class="tipo-mapa">
-    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <rect width="200" height="120" fill="#fff3e0"/>
       <polygon points="20,20 90,15 100,55 30,60" fill="#ffcc80" stroke="#e65100" stroke-width="1"/>
       <polygon points="100,20 170,30 180,70 110,65" fill="#a5d6a7" stroke="#1b5e20" stroke-width="1"/>
@@ -218,7 +303,7 @@
       <text x="145" y="90" font-size="7" fill="#4a148c" font-weight="bold">2000</text>
     </svg>
     <h4>📜 Mapa histórico</h4>
-    <p>Muestra cómo cambió un territorio a través del tiempo. Común en el examen.</p>
+    <p>Muestra cómo cambió un territorio a través del tiempo. Aparece a menudo en Estudios Sociales.</p>
   </div>
 
 </div>
@@ -226,25 +311,27 @@
 </div>
 </details>
 
-<details>
-<summary>2. Desarrollo: los cuatro elementos clave <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-elementos">
+<summary>2. Los cuatro elementos clave <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Todo mapa profesional tiene cuatro elementos</h3>
 
-<p>Para interpretar correctamente un mapa, primero debemos identificar sus cuatro componentes esenciales. Sin estos, el mapa es un dibujo sin contexto:</p>
+<p>Para interpretar bien un mapa, primero identifica sus cuatro elementos esenciales. Sin ellos, el mapa es un dibujo sin contexto:</p>
 
 <div class="mapa-anatomia-cont">
-  <h4>🗺️ Mapa del Parque Lincoln (mapa de ejemplo)</h4>
+  <h4>🗺️ Mapa del Parque del Lago (mapa de ejemplo)</h4>
 
   <div class="mapa-figura">
-    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="pq-t pq-d">
+      <title id="pq-t">Mapa del Parque del Lago, con sus cuatro elementos numerados</title>
+      <desc id="pq-d">Un parque con un lago, árboles, caminos, bancos, una zona de juegos y una estatua. 1: el título, arriba. 2: la rosa de los vientos, arriba a la derecha. 3: la leyenda, a la derecha, que explica cada símbolo. 4: la escala, abajo a la izquierda, de 0 a 100 metros.</desc>
       <!-- Fondo del mapa -->
       <rect width="600" height="360" fill="#fafafa"/>
 
       <!-- 1. TÍTULO -->
       <rect x="0" y="0" width="600" height="36" fill="#1a2332"/>
-      <text x="300" y="24" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Mapa del Parque Lincoln</text>
+      <text x="300" y="24" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">Mapa del Parque del Lago</text>
 
       <!-- Área del parque (zona principal) -->
       <rect x="30" y="60" width="430" height="240" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2"/>
@@ -334,8 +421,8 @@
       </g>
 
       <!-- Etiquetas numeradas grandes -->
-      <circle cx="300" cy="18" r="14" fill="#fff" stroke="#1a2332" stroke-width="3"/>
-      <text x="300" y="23" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2332">1</text>
+      <circle cx="150" cy="18" r="14" fill="#fff" stroke="#1a2332" stroke-width="3"/>
+      <text x="150" y="23" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a2332">1</text>
 
       <circle cx="490" cy="48" r="14" fill="#fff" stroke="#c62828" stroke-width="3"/>
       <text x="490" y="53" text-anchor="middle" font-size="14" font-weight="bold" fill="#c62828">2</text>
@@ -353,14 +440,14 @@
       <div class="num-em">1</div>
       <div class="desc-em">
         <strong>Título</strong>
-        <span>Nos indica de qué lugar o época trata el mapa. Siempre se lee primero.</span>
+        <span>Indica de qué lugar o época trata el mapa. Léelo siempre primero.</span>
       </div>
     </div>
     <div class="elem-mapa e2">
       <div class="num-em">2</div>
       <div class="desc-em">
         <strong>Rosa de los vientos</strong>
-        <span>Muestra los puntos cardinales: Norte, Sur, Este y Oeste. Nos ayuda a orientarnos.</span>
+        <span>Muestra los puntos cardinales: norte, sur, este y oeste. Te ayuda a orientarte.</span>
       </div>
     </div>
     <div class="elem-mapa e3">
@@ -374,7 +461,7 @@
       <div class="num-em">4</div>
       <div class="desc-em">
         <strong>Escala</strong>
-        <span>Indica la distancia real frente al tamaño dibujado en el papel.</span>
+        <span>Relaciona el tamaño en el papel con la distancia real.</span>
       </div>
     </div>
   </div>
@@ -382,270 +469,225 @@
 
 <h3>La rosa de los vientos: cómo orientarse</h3>
 
-<p>La rosa de los vientos es probablemente el elemento más útil para responder preguntas de mapas en el examen. Hay que aprender bien los cuatro puntos cardinales:</p>
+<p>La rosa de los vientos es uno de los elementos más útiles para responder preguntas sobre mapas. Aprende bien los cuatro puntos cardinales:</p>
 
-<svg class="rosa-grande" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="100" cy="100" r="80" fill="#fff" stroke="#1a2332" stroke-width="2"/>
-  <polygon points="100,30 88,100 100,100" fill="#c62828"/>
-  <polygon points="100,30 112,100 100,100" fill="#ef5350"/>
-  <polygon points="100,170 88,100 100,100" fill="#37474f"/>
-  <polygon points="100,170 112,100 100,100" fill="#546e7a"/>
-  <polygon points="30,100 100,88 100,100" fill="#37474f"/>
-  <polygon points="30,100 100,112 100,100" fill="#546e7a"/>
-  <polygon points="170,100 100,88 100,100" fill="#37474f"/>
-  <polygon points="170,100 100,112 100,100" fill="#546e7a"/>
-  <circle cx="100" cy="100" r="6" fill="#1a2332"/>
-  <text x="100" y="22" text-anchor="middle" font-size="18" font-weight="bold" fill="#c62828">N</text>
-  <text x="100" y="190" text-anchor="middle" font-size="18" font-weight="bold" fill="#37474f">S</text>
-  <text x="18" y="106" text-anchor="middle" font-size="18" font-weight="bold" fill="#37474f">O</text>
-  <text x="182" y="106" text-anchor="middle" font-size="18" font-weight="bold" fill="#37474f">E</text>
-  <text x="100" y="60" text-anchor="middle" font-size="9" fill="#666">arriba</text>
-  <text x="100" y="155" text-anchor="middle" font-size="9" fill="#666">abajo</text>
-  <text x="48" y="103" text-anchor="middle" font-size="9" fill="#666">izquierda</text>
-  <text x="152" y="103" text-anchor="middle" font-size="9" fill="#666">derecha</text>
+<svg class="rosa-grande" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="rosa-t">
+  <title id="rosa-t">Rosa de los vientos. La punta roja señala el Norte, arriba. El Sur está abajo, el Este a la derecha y el Oeste a la izquierda.</title>
+<g aria-hidden="true">
+  <circle cx="130" cy="130" r="70" fill="#fff" stroke="#1a2332" stroke-width="2"/>
+  <polygon points="130,64 117.4,130 142.6,130" fill="#c62828"/>
+  <polygon points="130,196 117.4,130 142.6,130" fill="#455a64"/>
+  <polygon points="196,130 130,117.4 130,142.6" fill="#90a4ae"/>
+  <polygon points="64,130 130,117.4 130,142.6" fill="#90a4ae"/>
+  <circle cx="130" cy="130" r="5.6000000000000005" fill="#1a2332"/>
+</g>
+  <text x="130" y="34" text-anchor="middle" font-size="18" font-weight="bold" fill="#c62828">N</text>
+  <text x="130" y="50" text-anchor="middle" font-size="11" fill="#1a2332">(arriba)</text>
+  <text x="130" y="226" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a2332">S</text>
+  <text x="130" y="242" text-anchor="middle" font-size="11" fill="#1a2332">(abajo)</text>
+  <text x="228" y="128" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a2332">E</text>
+  <text x="228" y="144" text-anchor="middle" font-size="10" fill="#1a2332">(derecha)</text>
+  <text x="32" y="128" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a2332">O</text>
+  <text x="32" y="144" text-anchor="middle" font-size="10" fill="#1a2332">(izquierda)</text>
 </svg>
 
 <div class="clave-pedagogica">
-  <strong>💡 Regla práctica:</strong> En casi todos los mapas, el <strong>Norte está arriba</strong>. Si el Norte está arriba, entonces el Sur está abajo, el Este a la derecha y el Oeste a la izquierda. La flecha roja de la rosa siempre apunta al Norte.
+  <strong>💡 Regla práctica:</strong> En la mayoría de los mapas, el <strong>norte está arriba</strong>. Si el norte está arriba, el sur está abajo, el este a la derecha y el oeste a la izquierda. Pero comprueba siempre la rosa: en las de esta lección, la punta roja señala el norte. Recuerda que los puntos cardinales se escriben con minúscula, salvo la N, S, E y O de la rosa.
 </div>
 
 <h3>La escala: tamaño en papel vs. distancia real</h3>
 
-<p>La escala nos dice cuánto representa cada centímetro del mapa en el mundo real. Por ejemplo:</p>
+<p>La escala te dice cuánto mide en la realidad cada centímetro del mapa. Por ejemplo:</p>
 
 <ul class="lista-bonita">
-  <li>Una <strong>escala pequeña</strong> (por ejemplo, 1 cm = 100 km) sirve para mapas de países o continentes.</li>
-  <li>Una <strong>escala grande</strong> (por ejemplo, 1 cm = 50 metros) sirve para mapas de barrios o parques.</li>
+  <li>En un mapa de un país o de un continente, 1 centímetro puede representar 100 kilómetros o más.</li>
+  <li>En un mapa de un barrio o de un parque, 1 centímetro puede representar solo 50 metros.</li>
 </ul>
 
 <div class="tip">
-  <strong>📌 En el GED nivel 1:</strong> No se exige hacer cálculos complicados con la escala. Basta con identificar que existe y comprender que el mapa es una versión "encogida" del lugar real.
+  <strong>📌 En este nivel:</strong> no vas a hacer cálculos complicados con la escala. Basta con saber que existe y comprender que el mapa es una versión «encogida» del lugar real.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: leamos un mapa juntos <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: leer un mapa <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Mapa del barrio Pilsen</h3>
+<h3>Mapa del barrio Las Flores</h3>
 
-<p>Observe el siguiente mapa de un barrio de Chicago. Después conteste las preguntas usando los <strong>cuatro elementos clave</strong>: título, rosa, leyenda y escala.</p>
+<p>Observa el mapa de este barrio. Fíjate en que los edificios no tienen nombre: para saber qué es cada uno, usa la <strong>leyenda</strong>. Después contesta las preguntas usando los <strong>cuatro elementos clave</strong>: título, rosa, leyenda y escala.</p>
 
 <div class="mapa-practica-cont">
-  <h4>🏘️ Mapa del barrio Pilsen</h4>
+  <h4>🏘️ Mapa del barrio Las Flores</h4>
 
   <div class="mapa-practica">
-    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-      <rect width="600" height="360" fill="#fafafa"/>
-
-      <!-- Título -->
-      <rect x="0" y="0" width="600" height="32" fill="#005a8a"/>
-      <text x="300" y="22" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">Mapa del barrio Pilsen, Chicago</text>
-
-      <!-- Calles horizontales -->
-      <rect x="0" y="60" width="600" height="14" fill="#cfd8dc"/>
-      <rect x="0" y="160" width="600" height="14" fill="#cfd8dc"/>
-      <rect x="0" y="260" width="600" height="14" fill="#cfd8dc"/>
-      <text x="10" y="56" font-size="9" fill="#37474f" font-weight="bold">Calle 18</text>
-      <text x="10" y="156" font-size="9" fill="#37474f" font-weight="bold">Calle 21</text>
-      <text x="10" y="256" font-size="9" fill="#37474f" font-weight="bold">Calle 26</text>
-
-      <!-- Calles verticales -->
-      <rect x="120" y="32" width="14" height="328" fill="#cfd8dc"/>
-      <rect x="280" y="32" width="14" height="328" fill="#cfd8dc"/>
-      <rect x="440" y="32" width="14" height="328" fill="#cfd8dc"/>
-      <text x="142" y="45" font-size="9" fill="#37474f" font-weight="bold">Av. Halsted</text>
-      <text x="302" y="45" font-size="9" fill="#37474f" font-weight="bold">Av. Racine</text>
-      <text x="462" y="45" font-size="9" fill="#37474f" font-weight="bold">Av. Ashland</text>
-
-      <!-- Puntos de interés con símbolos -->
-      <!-- Escuela: edificio amarillo -->
-      <rect x="40" y="90" width="60" height="50" fill="#fff59d" stroke="#f57f17" stroke-width="2"/>
-      <text x="70" y="120" text-anchor="middle" font-size="9" font-weight="bold" fill="#e65100">Escuela</text>
-
-      <!-- Biblioteca: edificio violeta -->
-      <rect x="200" y="190" width="55" height="50" fill="#ce93d8" stroke="#4a148c" stroke-width="2"/>
-      <text x="227" y="220" text-anchor="middle" font-size="9" font-weight="bold" fill="#4a148c">Biblioteca</text>
-
-      <!-- Hospital: cruz roja -->
-      <rect x="500" y="190" width="55" height="50" fill="#fff" stroke="#c62828" stroke-width="2"/>
-      <rect x="520" y="200" width="15" height="30" fill="#c62828"/>
-      <rect x="510" y="210" width="35" height="10" fill="#c62828"/>
-
-      <!-- Parque: zona verde grande -->
-      <rect x="320" y="290" width="100" height="60" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2"/>
-      <circle cx="345" cy="320" r="6" fill="#2e7d32"/>
-      <circle cx="370" cy="315" r="6" fill="#2e7d32"/>
-      <circle cx="395" cy="325" r="6" fill="#2e7d32"/>
-      <text x="370" y="345" text-anchor="middle" font-size="9" font-weight="bold" fill="#1b5e20">Parque</text>
-
-      <!-- Estación de bus: pequeño círculo azul -->
-      <circle cx="200" cy="67" r="8" fill="#0277bd" stroke="#01579b" stroke-width="1.5"/>
-      <text x="200" y="71" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">B</text>
-
-      <circle cx="500" cy="67" r="8" fill="#0277bd" stroke="#01579b" stroke-width="1.5"/>
-      <text x="500" y="71" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">B</text>
-
-      <circle cx="380" cy="267" r="8" fill="#0277bd" stroke="#01579b" stroke-width="1.5"/>
-      <text x="380" y="271" text-anchor="middle" font-size="9" font-weight="bold" fill="#fff">B</text>
-
-      <!-- Casa del estudiante -->
-      <polygon points="55,290 80,275 105,290" fill="#c62828"/>
-      <rect x="55" y="290" width="50" height="40" fill="#ffe0b2" stroke="#5d4037" stroke-width="1.5"/>
-      <rect x="73" y="305" width="12" height="25" fill="#5d4037"/>
-      <text x="80" y="345" text-anchor="middle" font-size="9" font-weight="bold" fill="#b71c1c">Mi casa</text>
-
-      <!-- Rosa de los vientos (esquina superior derecha del mapa, abajo del título) -->
-      <g transform="translate(575,55)">
-        <circle cx="0" cy="0" r="18" fill="#fff" stroke="#1a2332" stroke-width="1.5"/>
-        <polygon points="0,-14 -4,0 0,0" fill="#c62828"/>
-        <polygon points="0,-14 4,0 0,0" fill="#ef5350"/>
-        <polygon points="0,14 -4,0 0,0" fill="#37474f"/>
-        <polygon points="0,14 4,0 0,0" fill="#546e7a"/>
-        <polygon points="-14,0 0,-4 0,0" fill="#37474f"/>
-        <polygon points="-14,0 0,4 0,0" fill="#546e7a"/>
-        <polygon points="14,0 0,-4 0,0" fill="#37474f"/>
-        <polygon points="14,0 0,4 0,0" fill="#546e7a"/>
-        <text x="0" y="-7" text-anchor="middle" font-size="7" font-weight="bold" fill="#c62828">N</text>
-      </g>
-
-      <!-- Escala (esquina inferior izquierda) -->
-      <g transform="translate(15,335)">
-        <rect x="0" y="0" width="25" height="6" fill="#1a2332"/>
-        <rect x="25" y="0" width="25" height="6" fill="#fff" stroke="#1a2332" stroke-width="1"/>
-        <text x="0" y="16" font-size="8" fill="#1a2332">0</text>
-        <text x="40" y="16" font-size="8" fill="#1a2332">100 m</text>
-      </g>
-    </svg>
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="barrio-t barrio-d">
+  <title id="barrio-t">Mapa del barrio Las Flores</title>
+  <desc id="barrio-d">Mapa visto desde arriba, con el Norte arriba. Dos calles cruzan de oeste a este: Calle Roble, más al norte, y Calle Pino, más al sur. Dos avenidas van de norte a sur: Avenida Sol, al oeste, y Avenida Luna, al este. Quedan nueve cuadras. Fila de arriba, de oeste a este: la escuela, una cuadra vacía y la tienda. Fila del medio: una cuadra vacía, la biblioteca y el hospital. Fila de abajo: mi casa, el parque y una cuadra vacía. Hay tres paradas de autobús: dos en la Calle Roble y una en la Calle Pino. A la derecha están la rosa de los vientos y la leyenda; abajo a la izquierda, la escala: la barra mide 100 metros.</desc>
+  <rect width="600" height="380" fill="#fafafa"/>
+  <rect x="0" y="0" width="600" height="38" fill="#1a2332"/>
+  <text x="300" y="25" text-anchor="middle" font-size="17" font-weight="bold" fill="#fff">Mapa del barrio Las Flores</text>
+  <!-- cuadras -->
+  <rect x="20" y="50" width="410" height="310" fill="#eceff1"/>
+  <!-- calles horizontales -->
+  <rect x="20" y="138" width="410" height="18" fill="#b0bec5"/>
+  <rect x="20" y="250" width="410" height="18" fill="#b0bec5"/>
+  <text x="26" y="151" font-size="11" font-weight="bold" fill="#1a2332">Calle Roble</text>
+  <text x="26" y="263" font-size="11" font-weight="bold" fill="#1a2332">Calle Pino</text>
+  <!-- avenidas -->
+  <rect x="150" y="50" width="18" height="310" fill="#b0bec5"/>
+  <rect x="290" y="50" width="18" height="310" fill="#b0bec5"/>
+  <text x="159" y="64" text-anchor="middle" font-size="10" font-weight="bold" fill="#1a2332" transform="rotate(90 159 64)">Av. Sol</text>
+  <text x="299" y="64" text-anchor="middle" font-size="10" font-weight="bold" fill="#1a2332" transform="rotate(90 299 64)">Av. Luna</text>
+<g><rect x="67" y="88" width="36" height="26" fill="#fff59d" stroke="#f57f17" stroke-width="2"/><polygon points="63,88 85,74 107,88" fill="#f9a825"/><rect x="80" y="102" width="10" height="12" fill="#f57f17"/></g><g><rect x="211" y="189" width="36" height="30" fill="#e1bee7" stroke="#6a1b9a" stroke-width="2"/><rect x="218" y="196" width="9" height="16" fill="#6a1b9a"/><rect x="231" y="196" width="9" height="16" fill="#8e24aa"/></g><g><rect x="351" y="189" width="36" height="32" fill="#fff" stroke="#c62828" stroke-width="2"/><rect x="365" y="194" width="8" height="22" fill="#c62828"/><rect x="358" y="201" width="22" height="8" fill="#c62828"/></g><g><rect x="199" y="290" width="60" height="40" rx="6" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2"/><circle cx="215" cy="306" r="6" fill="#2e7d32"/><circle cx="231" cy="316" r="6" fill="#2e7d32"/><circle cx="245" cy="304" r="6" fill="#2e7d32"/></g><g><rect x="351" y="88" width="36" height="26" fill="#ffe0b2" stroke="#e65100" stroke-width="2"/><polygon points="349,88 389,88 385,80 353,80" fill="#ef6c00"/><circle cx="369" cy="101" r="5" fill="#e65100"/></g><g><rect x="69" y="299" width="32" height="24" fill="#ffccbc" stroke="#bf360c" stroke-width="2"/><polygon points="65,299 85,283 105,299" fill="#d84315"/><rect x="81" y="309" width="8" height="14" fill="#6d4c41"/></g>
+  <text x="85" y="345" text-anchor="middle" font-size="11" font-weight="bold" fill="#bf360c">Mi casa</text>
+<g><circle cx="229" cy="147" r="9" fill="#1565c0" stroke="#fff" stroke-width="2"/><text x="229" y="151" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">B</text></g><g><circle cx="400" cy="147" r="9" fill="#1565c0" stroke="#fff" stroke-width="2"/><text x="400" y="151" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">B</text></g><g><circle cx="369" cy="259" r="9" fill="#1565c0" stroke="#fff" stroke-width="2"/><text x="369" y="263" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">B</text></g>
+  <!-- escala -->
+  <g>
+    <rect x="30" y="364" width="34" height="7" fill="#1a2332"/><rect x="64" y="364" width="33" height="7" fill="#fff" stroke="#1a2332" stroke-width="1"/>
+    <text x="30" y="362" font-size="9" fill="#1a2332">0</text><text x="97" y="362" text-anchor="middle" font-size="9" fill="#1a2332">100 m</text>
+  </g>
+  <!-- rosa -->
+<g aria-hidden="true">
+  <circle cx="517" cy="95" r="30" fill="#fff" stroke="#1a2332" stroke-width="2"/>
+  <polygon points="517,69 511.6,95 522.4,95" fill="#c62828"/>
+  <polygon points="517,121 511.6,95 522.4,95" fill="#455a64"/>
+  <polygon points="543,95 517,89.6 517,100.4" fill="#90a4ae"/>
+  <polygon points="491,95 517,89.6 517,100.4" fill="#90a4ae"/>
+  <circle cx="517" cy="95" r="2.4" fill="#1a2332"/>
+  <text x="517" y="57.849999999999994" text-anchor="middle" font-size="13" font-weight="bold" fill="#c62828">N</text>
+  <text x="517" y="141.25" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a2332">S</text>
+  <text x="558.7" y="99.55" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a2332">E</text>
+  <text x="475.3" y="99.55" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a2332">O</text>
+</g>
+  <!-- leyenda -->
+  <rect x="445" y="150" width="145" height="215" fill="#fff" stroke="#1a2332" stroke-width="1.5" rx="4"/>
+  <text x="517" y="170" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a2332">Leyenda</text>
+<g><rect x="457.2" y="187.8" width="21.599999999999998" height="15.6" fill="#fff59d" stroke="#f57f17" stroke-width="2"/><polygon points="454.8,187.8 468,179.4 481.2,187.8" fill="#f9a825"/><rect x="465.0" y="196.2" width="6.0" height="7.199999999999999" fill="#f57f17"/></g><text x="490" y="199" font-size="11" fill="#1a2332">Escuela</text><g><rect x="457.2" y="212.4" width="21.599999999999998" height="18.0" fill="#e1bee7" stroke="#6a1b9a" stroke-width="2"/><rect x="461.4" y="216.6" width="5.3999999999999995" height="9.6" fill="#6a1b9a"/><rect x="469.2" y="216.6" width="5.3999999999999995" height="9.6" fill="#8e24aa"/></g><text x="490" y="226" font-size="11" fill="#1a2332">Biblioteca</text><g><rect x="457.2" y="239.4" width="21.599999999999998" height="19.2" fill="#fff" stroke="#c62828" stroke-width="2"/><rect x="465.6" y="242.4" width="4.8" height="13.2" fill="#c62828"/><rect x="461.4" y="246.6" width="13.2" height="4.8" fill="#c62828"/></g><text x="490" y="253" font-size="11" fill="#1a2332">Hospital</text><g><rect x="454.5" y="267.0" width="27.0" height="18.0" rx="6" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2"/><circle cx="461.7" cy="274.2" r="2.7" fill="#2e7d32"/><circle cx="468.9" cy="278.7" r="2.7" fill="#2e7d32"/><circle cx="475.2" cy="273.3" r="2.7" fill="#2e7d32"/></g><text x="490" y="280" font-size="11" fill="#1a2332">Parque</text><g><rect x="457.2" y="295.8" width="21.599999999999998" height="15.6" fill="#ffe0b2" stroke="#e65100" stroke-width="2"/><polygon points="456.0,295.8 480.0,295.8 477.6,291.0 458.4,291.0" fill="#ef6c00"/><circle cx="468" cy="303.6" r="3.0" fill="#e65100"/></g><text x="490" y="307" font-size="11" fill="#1a2332">Tienda</text><g><circle cx="468" cy="330" r="7.2" fill="#1565c0" stroke="#fff" stroke-width="2"/><text x="468" y="333.2" text-anchor="middle" font-size="8.8" font-weight="bold" fill="#fff">B</text></g><text x="490" y="334" font-size="11" fill="#1a2332">Parada de</text><text x="490" y="347" font-size="11" fill="#1a2332">autobús</text>
+</svg>
   </div>
 
   <div class="preguntas-mapa" id="preguntas-mapa"></div>
-  <div class="puntaje" id="puntaje-mapa">Aciertos: 0 / 6</div>
+  <div class="puntaje" id="puntaje-mapa" role="status">Aciertos: 0 / 7</div>
 </div>
+
+<h3>Actividad: describe una ruta</h3>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · en voz alta y en tu cuaderno</h4>
+  <p>Mira otra vez el mapa de Las Flores. Escribe en tu cuaderno cómo ir <strong>desde Mi casa hasta el hospital</strong>, usando los puntos cardinales y los nombres de las calles. Después léelo en voz alta mientras sigues la ruta con el dedo sobre el mapa. Si alguien de tu casa quiere participar, dale tus instrucciones y pídele que siga la ruta sin ayuda.</p>
+</div>
+<details class="ver-modelo">
+  <summary>Ya escribí mi ruta: ver un modelo</summary>
+  <p>«Salgo de mi casa y camino hacia el norte por la Avenida Sol hasta la Calle Pino. Doblo hacia el este por la Calle Pino y paso al lado del parque, que queda al sur. Cruzo la Avenida Luna. El hospital queda al norte de la Calle Pino, en la esquina de la Avenida Luna.»</p>
+  <p style="margin-bottom:0">Hay otras rutas posibles. Lo importante es que uses los <strong>puntos cardinales</strong> y que alguien pueda seguir tu ruta sin perderse.</p>
+</details>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l6-3.html#direcciones" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Hacia dónde queda? ↗
+  <span>Más preguntas sobre el mapa de Las Flores. En la misma página practicas también <strong>los elementos del mapa</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Actividades de la lección <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-
-<p>Estas son las actividades sincrónicas y asincrónicas que acompañan las clases 3 y 4 (Lección 6.2). El quiz combinado se entrega al final de la Clase 4.</p>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">"Llegar a casa"</span></p>
-    <p>Actividad en parejas con un mapa impreso del barrio. Un estudiante (el "guía") describe verbalmente una ruta usando los puntos cardinales:</p>
-    <p style="font-style:italic;color:var(--gris);padding-left:14px;border-left:3px solid var(--cp)">"Desde la escuela, camina dos cuadras al sur, luego una cuadra al este..."</p>
-    <p>El compañero (el "explorador") traza la ruta con el dedo y termina en el destino correcto. Después intercambian roles.</p>
-    <p><strong>Tiempo:</strong> 12 minutos por pareja.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (asincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Foro de ruta</span></p>
-    <p><strong>"Cómo llegar a la escuela"</strong></p>
-    <p>Cada estudiante escribe en el foro:</p>
-    <ul style="padding-left:20px;font-size:0.92rem">
-      <li>Una descripción de <strong>2 oraciones completas</strong> sobre cómo llegar desde su casa a la escuela.</li>
-      <li>Debe usar al menos <strong>dos puntos cardinales</strong> (Norte, Sur, Este u Oeste).</li>
-      <li>Debe incluir <strong>una referencia visual</strong> ("paso frente a la biblioteca", "doblo donde está el parque").</li>
-    </ul>
-  </div>
+<p><strong>Cómo llegar a un lugar que conoces.</strong> Elige un recorrido que haces a menudo: de tu casa a la tienda, a la parada del autobús, al trabajo o a la escuela de tus hijos.</p>
+<ul class="lista-bonita">
+  <li>Dibuja en tu cuaderno un <strong>mapa sencillo</strong> del recorrido, con sus cuatro elementos: <strong>título</strong>, <strong>rosa de los vientos</strong>, una <strong>leyenda</strong> con al menos tres símbolos y una <strong>escala</strong> aproximada (por ejemplo, «una cuadra»).</li>
+  <li>Escribe <strong>dos o tres oraciones completas</strong> que expliquen cómo llegar. Usa al menos <strong>dos puntos cardinales</strong> y una referencia que se vea por el camino («paso frente a la biblioteca»).</li>
+</ul>
+<p>Si no sabes hacia dónde queda el norte, puedes buscar tu calle en un mapa del celular: casi todos muestran el norte arriba.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta rúbrica</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Rúbrica de «Cómo llegar a un lugar que conoces»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Logrado</th><th scope="col">En desarrollo</th><th scope="col" class="nivel-1">Inicial</th></tr></thead>
+    <tbody>
+      <tr><td>Mi mapa</td><td class="nivel-4">Tiene título, rosa, leyenda y escala</td><td>Le falta uno de los cuatro elementos</td><td class="nivel-1">Le faltan dos o más elementos</td></tr>
+      <tr><td>Claridad de la ruta</td><td class="nivel-4">Otra persona podría seguirla sin preguntar</td><td>Se entiende, pero falta algún detalle</td><td class="nivel-1">Es confusa o está incompleta</td></tr>
+      <tr><td>Puntos cardinales</td><td class="nivel-4">Uso al menos dos, bien</td><td>Uso uno, o dos con un error</td><td class="nivel-1">No uso puntos cardinales</td></tr>
+      <tr><td>Oraciones</td><td class="nivel-4">Completas, con mayúscula y punto</td><td>Una está incompleta o sin puntuación</td><td class="nivel-1">No son oraciones completas</td></tr>
+    </tbody>
+  </table>
 </div>
-
 </div>
 </details>
 
-<details>
-<summary>5. Cierre y conexión con la próxima clase <span class="caja-tiempo">5 min</span></summary>
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
 
-<h3>Lo que aprendimos hoy</h3>
-
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
 <ul class="lista-bonita">
   <li>Un mapa es una vista del mundo <strong>desde arriba</strong>.</li>
   <li>Hay varios tipos de mapas: <strong>políticos, físicos, de calles e históricos</strong>.</li>
   <li>Todo mapa tiene cuatro elementos clave: <strong>título, rosa de los vientos, leyenda y escala</strong>.</li>
-  <li>La rosa de los vientos nos permite describir <strong>rutas</strong> usando los puntos cardinales.</li>
-  <li>La leyenda traduce los <strong>símbolos</strong> del mapa al lenguaje escrito.</li>
+  <li>La rosa de los vientos te permite describir <strong>rutas</strong> con los puntos cardinales.</li>
+  <li>La leyenda explica qué significa cada <strong>símbolo</strong> del mapa.</li>
 </ul>
-
-<div class="clave-pedagogica">
-  <strong>🎯 Conexión con el examen:</strong> Los mapas aparecen constantemente en el examen de Estudios Sociales del GED, tanto en preguntas de historia (mapas históricos), como de geografía (mapas físicos y políticos). Saber leer sus cuatro elementos es indispensable.
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuáles son los cuatro elementos de un mapa?</li>
+    <li>Si el norte está arriba, ¿hacia dónde queda el oeste?</li>
+    <li>¿Para qué sirve la leyenda?</li>
+  </ul>
 </div>
-
-<h3>Próxima clase</h3>
-
-<p>En la <strong>Clase 4</strong> conoceremos otra herramienta visual fundamental: las <strong>tablas de dos columnas</strong>. Aprenderemos a cruzar la información de filas y columnas para encontrar respuestas exactas y a conectar las tablas con los mapas que ya conocemos.</p>
-
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> Los mapas aparecen a menudo en Estudios Sociales: en preguntas de historia (mapas históricos) y de geografía (mapas físicos y políticos). Saber leer sus cuatro elementos es indispensable.
+</div>
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_6-4.html" style="color:var(--cp-oscuro);font-weight:700">Lección 6.4 · Organización de datos en tablas</a>. Conocerás otra herramienta visual: las <strong>tablas</strong>. Aprenderás a cruzar filas y columnas para encontrar datos exactos y a usar una tabla junto con un mapa.
+</div>
 </div>
 </details>
 
-<p class="firma">Prof. José M. Fernández · Truman College · Tema 6, Clase 3</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 6 · Lección 6.3</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
   'use strict';
 
   var preguntas=[
-    {
-      texto:'¿Cuál es el título del mapa?',
-      opciones:[
-        {t:'Mapa del barrio Pilsen, Chicago',ok:true},
-        {t:'Mapa de Illinois',ok:false},
-        {t:'Mapa del Parque Lincoln',ok:false}
-      ],
-      explica:'El título siempre se ubica arriba del mapa, en una franja destacada.'
-    },
-    {
-      texto:'¿En qué dirección está el hospital con respecto a la biblioteca?',
-      opciones:[
-        {t:'Al norte',ok:false},
-        {t:'Al este',ok:true},
-        {t:'Al oeste',ok:false},
-        {t:'Al sur',ok:false}
-      ],
-      explica:'La biblioteca está a la izquierda y el hospital a la derecha. La derecha en un mapa es el Este (cuando el Norte está arriba).'
-    },
-    {
-      texto:'¿Qué símbolo se usa para las paradas de bus?',
-      opciones:[
-        {t:'Una cruz roja',ok:false},
-        {t:'Un círculo azul con la letra B',ok:true},
-        {t:'Un edificio amarillo',ok:false}
-      ],
-      explica:'En el mapa se ven tres círculos azules con la letra B que marcan las paradas de bus.'
-    },
-    {
-      texto:'Si camino desde "Mi casa" hacia el norte por dos cuadras, ¿qué encuentro?',
-      opciones:[
-        {t:'El parque',ok:false},
-        {t:'La biblioteca',ok:false},
-        {t:'La escuela',ok:true}
-      ],
-      explica:'"Mi casa" está en la parte inferior izquierda. Al ir al Norte (hacia arriba) dos cuadras, llegamos a la zona de la escuela.'
-    },
-    {
-      texto:'¿Cuántas paradas de bus aparecen en el mapa?',
-      opciones:[
-        {t:'Una',ok:false},
-        {t:'Dos',ok:false},
-        {t:'Tres',ok:true}
-      ],
-      explica:'Hay tres círculos azules con la letra B: dos en la calle 18 y uno en la calle 26.'
-    },
-    {
-      texto:'¿Qué representa la barra negra y blanca en la esquina inferior izquierda?',
-      opciones:[
-        {t:'La leyenda',ok:false},
-        {t:'La escala',ok:true},
-        {t:'La rosa de los vientos',ok:false}
-      ],
-      explica:'La barra dividida en segmentos con la marca "100 m" es la escala del mapa. Indica las distancias reales.'
-    }
+    {texto:'¿Cuál es el título del mapa?',opciones:[{t:'Mapa del barrio Las Flores',ok:true},{t:'Mapa de Chicago',ok:false},{t:'Mapa del Parque del Lago',ok:false}],
+     explica:'El título está arriba del mapa, en la franja oscura.'},
+    {texto:'Según la leyenda, ¿qué edificio está al este de la biblioteca?',opciones:[{t:'El hospital',ok:true},{t:'La escuela',ok:false},{t:'La tienda',ok:false},{t:'El parque',ok:false}],
+     explica:'A la derecha de la biblioteca hay un cuadro con una cruz roja. La leyenda dice que es el hospital. La derecha es el este.'},
+    {texto:'¿Qué símbolo marca las paradas de autobús?',opciones:[{t:'Un círculo azul con la letra B',ok:true},{t:'Una cruz roja',ok:false},{t:'Un cuadro amarillo',ok:false}],
+     explica:'La leyenda lo dice: el círculo azul con la B es la parada de autobús.'},
+    {texto:'Si sales de Mi casa y caminas hacia el norte dos cuadras, ¿a qué llegas?',opciones:[{t:'A la escuela',ok:true},{t:'A la biblioteca',ok:false},{t:'Al parque',ok:false}],
+     explica:'Mi casa está abajo a la izquierda. Hacia el norte (arriba) cruzas la Calle Pino y la Calle Roble, y llegas a la escuela.'},
+    {texto:'¿Cuántas paradas de autobús hay en el mapa?',opciones:[{t:'Una',ok:false},{t:'Dos',ok:false},{t:'Tres',ok:true}],
+     explica:'Hay tres círculos azules con la B: dos en la Calle Roble y una en la Calle Pino.'},
+    {texto:'¿Qué está al sur de la biblioteca?',opciones:[{t:'El parque',ok:true},{t:'La tienda',ok:false},{t:'La escuela',ok:false}],
+     explica:'Debajo de la biblioteca, al otro lado de la Calle Pino, está el parque. Abajo es el sur.'},
+    {texto:'¿Qué representa la barra blanca y negra de abajo a la izquierda?',opciones:[{t:'La leyenda',ok:false},{t:'La escala',ok:true},{t:'La rosa de los vientos',ok:false}],
+     explica:'La barra con la marca «100 m» es la escala: indica cuánto mide en la realidad esa distancia del mapa.'}
   ];
 
   var resueltas={};
@@ -665,7 +707,7 @@
       '<div><span class="num-preg">'+(idx+1)+'</span>'+
       '<span class="texto-preg">'+item.texto+'</span></div>'+
       '<div class="opciones-mapa">'+opcHtml+'</div>'+
-      '<div class="retro-mapa" id="retro-m-'+idx+'"></div>';
+      '<div class="retro-mapa" id="retro-m-'+idx+'" role="status"></div>';
 
     cont.appendChild(div);
 
@@ -683,6 +725,7 @@
           retro.textContent='✅ '+item.explica;
           retro.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-m-'+idx); r2.textContent='❌ Mira otra vez el mapa: usa la leyenda y la rosa.'; r2.classList.add('visible');
           b.classList.add('incorrecta');
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
@@ -698,6 +741,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué es un mapa?", "o": ["Una imagen plana de un lugar visto desde arriba", "Una foto de una persona", "Una lista de calles en orden alfabético"], "c": 0}, {"t": "¿Qué tipo de mapa muestra montañas, ríos y valles?", "o": ["Físico", "Político", "De calles"], "c": 0}, {"t": "¿Qué tipo de mapa muestra las fronteras entre países o estados?", "o": ["Político", "Físico", "Histórico"], "c": 0}, {"t": "¿Cuáles son los cuatro elementos clave de un mapa?", "o": ["Título, rosa de los vientos, leyenda y escala", "Autor, fecha, precio y página", "Filas, columnas, ejes y barras"], "c": 0}, {"t": "¿Qué elemento explica lo que significan los símbolos del mapa?", "o": ["La leyenda", "La escala", "El título"], "c": 0}, {"t": "¿Qué elemento indica los puntos cardinales?", "o": ["La rosa de los vientos", "La leyenda", "La escala"], "c": 0}, {"t": "¿Qué elemento relaciona el tamaño del mapa con la distancia real?", "o": ["La escala", "El título", "La rosa de los vientos"], "c": 0}, {"t": "Si el norte está arriba, ¿dónde está el este?", "o": ["A la derecha", "A la izquierda", "Abajo"], "c": 0}, {"t": "Si el norte está arriba, ¿dónde está el oeste?", "o": ["A la izquierda", "A la derecha", "Arriba"], "c": 0}, {"t": "En el mapa de Las Flores, ¿qué queda al norte de Mi casa, al otro lado de dos calles?", "o": ["La escuela", "El hospital", "La tienda"], "c": 0}, {"t": "Un mapa muestra cómo cambiaron las fronteras de un país entre 1800 y 1900. ¿Qué tipo de mapa es?", "o": ["Histórico", "De calles", "Físico"], "c": 0}, {"t": "¿Qué es lo primero que conviene leer en un mapa?", "o": ["El título", "La escala", "El nombre de una calle cualquiera"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes leer un mapa. Puedes continuar con la Lección 6.4.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

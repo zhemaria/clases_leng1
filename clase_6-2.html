@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 6.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 2: Las características del texto informativo visual</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 6.2 · Las características del texto informativo visual</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -139,59 +145,138 @@
   table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
   table.rubrica tr:last-child td{border-bottom:none}
   table.rubrica td:first-child{font-weight:600;color:var(--naranja-oscuro);background:var(--naranja-claro);text-align:center;width:30%}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 2: Las características del texto informativo visual</h1>
-<p class="subtitulo">Tema 6 · Lección 6.1 · Nivel 1 · Semana 11 · 50 minutos</p>
+<h1>Lección 6.2 · Las características del texto informativo visual</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 6 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
-    <li>Identificar los <strong>cuatro elementos visuales clave</strong> de un texto informativo: título, subtítulos, leyendas (de imágenes) y pies de foto.</li>
+    <li>Identificar los <strong>cuatro elementos visuales clave</strong> de un texto informativo: título, subtítulos, rótulos de las imágenes y pies de foto.</li>
     <li>Distinguir la <strong>función</strong> que cumple cada elemento.</li>
-    <li>Aplicar la técnica de <strong>"búsqueda del tesoro"</strong> para localizar información sin leer todo el texto.</li>
+    <li>Aplicar la técnica de la <strong>«búsqueda del tesoro»</strong> para encontrar información sin leer todo el texto.</li>
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-pistas">Las pistas visuales del texto</a></li>
+    <li><a href="#s-2-anatomia">Anatomía de un artículo informativo</a></li>
+    <li><a href="#s-3-practica">Práctica: búsqueda del tesoro</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En la clase anterior aprendimos que las imágenes no son adornos: son herramientas estratégicas que ayudan a comprender. Hoy vamos un paso más allá. Vamos a estudiar las <strong>"pistas visuales"</strong> que el autor coloca en un artículo para guiar al lector.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Estas pistas se llaman <span class="palabra-clave">características del texto informativo</span> y son universales: aparecen en libros de texto, revistas, periódicos, sitios web y, por supuesto, en el examen de GED. Quien las reconoce puede localizar información en segundos. Quien no las reconoce tiene que leer línea por línea, perdiendo tiempo valioso.</p>
+<p>En la lección anterior aprendiste que las imágenes no son adornos: son herramientas que ayudan a comprender. Ahora vas un paso más allá: vas a estudiar las <strong>pistas visuales</strong> que el autor coloca en un artículo para guiar a quien lee.</p>
 
-<details open>
-<summary>1. Introducción: las pistas visuales del texto <span class="caja-tiempo">10 min</span></summary>
+<p>Estas pistas se llaman <span class="palabra-clave">características del texto informativo</span> y aparecen en todas partes: libros de texto, revistas, periódicos, páginas de internet y, por supuesto, el examen GED. Quien las reconoce encuentra la información rápido. Quien no las reconoce tiene que leer línea por línea y pierde tiempo.</p>
+
+<details open id="s-1-pistas">
+<summary>1. Las pistas visuales del texto <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué son las características del texto informativo?</h3>
 
-<p>Cuando un autor escribe un artículo informativo, no quiere que el lector se pierda. Por eso coloca <strong>señales visuales</strong> que funcionan como letreros en una carretera: indican dónde estamos, qué viene a continuación y qué es importante.</p>
+<p>Quien escribe un artículo informativo no quiere que te pierdas. Por eso coloca <strong>señales visuales</strong> que funcionan como letreros en una carretera: te indican dónde estás, qué viene después y qué es importante.</p>
 
 <p>Los cuatro elementos visuales más importantes son:</p>
 
 <ul class="lista-bonita">
   <li>El <strong>título</strong> principal del artículo.</li>
   <li>Los <strong>subtítulos</strong> de cada sección.</li>
-  <li>La <strong>leyenda</strong> de la imagen (rótulo breve sobre o dentro de la ilustración).</li>
-  <li>El <strong>pie de foto</strong> (texto pequeño debajo de la imagen).</li>
+  <li>Los <strong>rótulos</strong> de la imagen (palabras cortas escritas dentro de la ilustración, que nombran lo que se ve).</li>
+  <li>El <strong>pie de foto</strong> (texto pequeño debajo de la imagen). También se le llama <em>leyenda</em>.</li>
 </ul>
 
 <div class="clave-pedagogica">
-  <strong>💡 Idea central:</strong> Estos elementos están diseñados para ser leídos <strong>antes</strong> que el texto principal. Funcionan como un mapa que nos dice dónde encontrar cada cosa. Si los ignoramos, perdemos la guía y nos cuesta mucho más comprender.
+  <strong>💡 Idea central:</strong> Estos elementos están pensados para leerse <strong>antes</strong> que el texto principal. Funcionan como un mapa que te dice dónde encontrar cada cosa. Si los ignoras, pierdes la guía y te cuesta más comprender.<br><br><strong>Ojo con la palabra «leyenda»:</strong> en un artículo, a veces se usa para el pie de foto. En un mapa, la leyenda es otra cosa: el cuadro que explica los símbolos. Lo verás en la Lección 6.3.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>2. Desarrollo: anatomía de un artículo informativo <span class="caja-tiempo">25 min</span></summary>
+<details id="s-2-anatomia">
+<summary>2. Anatomía de un artículo informativo <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Veamos un artículo por dentro</h3>
+<h3>Un artículo por dentro</h3>
 
-<p>A continuación se muestra un artículo típico de revista, con sus cuatro elementos visuales marcados con números:</p>
+<p>Este es un artículo típico de revista, con sus cuatro elementos visuales marcados con números:</p>
 
 <div class="anatomia-articulo">
   <h4>📰 Anatomía de un artículo informativo</h4>
@@ -206,7 +291,7 @@
       <span class="num-etiqueta n2">2</span>
     </div>
     <div class="demo-imagen">
-      <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dibujo de una abeja y una flor rosada, con el rótulo: Abeja polinizando una flor.">
         <rect width="400" height="140" fill="#fff9c4"/>
         <circle cx="80" cy="50" r="22" fill="#fdd835" stroke="#000" stroke-width="1.5"/>
         <rect x="68" y="40" width="24" height="20" fill="#1a1a1a"/>
@@ -255,15 +340,15 @@
     <div class="item-leyenda t3">
       <div class="num-leyenda">3</div>
       <div class="desc-leyenda">
-        <strong>Leyenda (rótulo de la imagen)</strong>
-        <span>Texto colocado <em>sobre o dentro</em> de la imagen que identifica lo que se muestra.</span>
+        <strong>Rótulo de la imagen</strong>
+        <span>Palabras cortas colocadas <em>dentro</em> de la imagen, que nombran lo que se muestra.</span>
       </div>
     </div>
     <div class="item-leyenda t4">
       <div class="num-leyenda">4</div>
       <div class="desc-leyenda">
         <strong>Pie de foto</strong>
-        <span>Texto colocado <em>debajo</em> de la imagen que explica el contexto o aporta información adicional.</span>
+        <span>Texto colocado <em>debajo</em> de la imagen que explica lo que se ve o aporta información. También se llama <em>leyenda</em>.</span>
       </div>
     </div>
   </div>
@@ -271,11 +356,12 @@
 
 <h3>Título y pie de foto: dos pistas, dos funciones</h3>
 
-<p>Es importante no confundir el título con el pie de foto. Aunque ambos son textos cortos, cumplen funciones muy distintas:</p>
+<p>No confundas el título con el pie de foto. Los dos son textos cortos, pero cumplen funciones muy distintas:</p>
 
 <table class="comparativa">
+  <caption class="sr-solo">Diferencias entre el título y el pie de foto</caption>
   <thead>
-    <tr><th>Característica</th><th>Título</th><th>Pie de foto</th></tr>
+    <tr><th scope="col">Característica</th><th scope="col">Título</th><th scope="col">Pie de foto</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -302,24 +388,24 @@
 </table>
 
 <div class="tip">
-  <strong>📌 Pista de examen:</strong> En el GED, muchas preguntas se contestan leyendo <strong>solo el pie de foto</strong>, sin necesidad de leer el texto principal completo. Si la pregunta dice "según la imagen…", el pie de foto suele tener la respuesta.
+  <strong>📌 Pista de examen:</strong> Cuando una pregunta dice «según la imagen…» o «según la figura…», lee con atención el <strong>pie de foto</strong> y los <strong>rótulos</strong>: muchas veces ahí está el dato que necesitas.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: búsqueda del tesoro <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: búsqueda del tesoro <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Encuentre la información sin leer todo el artículo</h3>
+<h3>Encuentra la información sin leer todo el artículo</h3>
 
-<p>A continuación se presenta un artículo de revista sobre el agua potable. Su tarea es responder cinco preguntas <strong>leyendo únicamente</strong> los títulos, subtítulos, leyendas y pies de foto. <strong>No es necesario</strong> leer el cuerpo principal del texto.</p>
+<p>Este es un artículo de una revista del barrio sobre el agua potable. Tu reto es responder cinco preguntas <strong>leyendo solamente</strong> el título, los subtítulos, los rótulos y los pies de foto. <strong>No hace falta</strong> leer el cuerpo del texto.</p>
 
 <div class="articulo-tesoro">
   <div class="tit-tesoro">El agua potable en nuestra ciudad</div>
   <div class="sub-tesoro">De dónde viene y cómo llega a su llave</div>
-  <div class="meta-tesoro">Revista comunitaria · Año 2024 · Sección Salud Pública</div>
+  <div class="meta-tesoro">Revista comunitaria · Sección Salud Pública</div>
 
   <div class="cuerpo-tesoro">
 
@@ -328,7 +414,7 @@
       <p>El agua que sale de su llave hace un viaje largo antes de llegar a su casa. Pasa por varias etapas en las que se limpia y se prueba para asegurar que sea segura para beber.</p>
 
       <div class="figura-articulo">
-        <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Esquema con flechas y cuatro rótulos: Lago Michigan, Planta de tratamiento, Tubería y Su casa.">
           <rect width="400" height="140" fill="#e1f5fe"/>
           <!-- Lago -->
           <ellipse cx="50" cy="85" rx="40" ry="20" fill="#0277bd"/>
@@ -363,22 +449,23 @@
     </div>
 
     <div class="seccion-articulo">
-      <h5>2. La importancia del agua limpia</h5>
-      <p>Cada persona necesita aproximadamente dos litros de agua al día para mantenerse saludable. El agua limpia previene enfermedades graves y permite preparar alimentos de forma segura.</p>
+      <h5>2. Cuidar el agua en casa</h5>
+      <p>Una llave que gotea parece un problema pequeño, pero gota a gota se pierde mucha agua. Revisar y reparar las fugas ayuda a cuidar este recurso y a pagar menos en la factura.</p>
 
       <div class="figura-articulo">
-        <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Dibujo de una llave de agua que gotea sobre un lavabo, con el rótulo: una gota por segundo.">
           <rect width="400" height="140" fill="#fff3e0"/>
-          <!-- Vaso de agua -->
-          <path d="M 150 30 L 165 110 L 235 110 L 250 30 Z" fill="#bbdefb" stroke="#1565c0" stroke-width="2"/>
-          <path d="M 150 30 L 250 30" stroke="#1565c0" stroke-width="2"/>
-          <ellipse cx="200" cy="32" rx="50" ry="6" fill="#90caf9"/>
-          <circle cx="180" cy="60" r="4" fill="#fff" opacity="0.7"/>
-          <circle cx="210" cy="75" r="3" fill="#fff" opacity="0.7"/>
-          <circle cx="195" cy="90" r="3" fill="#fff" opacity="0.7"/>
-          <text x="200" y="135" text-anchor="middle" font-size="11" font-weight="bold" fill="#01579b">2 litros al día</text>
+          <rect x="120" y="30" width="90" height="18" rx="6" fill="#90a4ae" stroke="#37474f" stroke-width="2"/>
+          <rect x="190" y="30" width="22" height="40" rx="6" fill="#90a4ae" stroke="#37474f" stroke-width="2"/>
+          <rect x="140" y="18" width="30" height="12" rx="3" fill="#607d8b"/>
+          <path d="M 201 80 q -6 9 0 13 q 6 -4 0 -13 z" fill="#1e88e5"/>
+          <path d="M 201 98 q -5 8 0 11 q 5 -3 0 -11 z" fill="#42a5f5"/>
+          <path d="M 120 118 L 290 118 L 275 134 L 135 134 Z" fill="#cfd8dc" stroke="#78909c" stroke-width="2"/>
+          <text x="300" y="70" font-size="12" font-weight="bold" fill="#01579b">una gota</text>
+          <text x="300" y="86" font-size="12" font-weight="bold" fill="#01579b">por segundo</text>
+          <path d="M 296 76 L 215 88" stroke="#01579b" stroke-width="1.5"/>
         </svg>
-        <div class="pie-figura">Figura 2: Un adulto sano debe beber al menos dos litros de agua cada día.</div>
+        <div class="pie-figura">Figura 2: Una llave que gotea una vez por segundo puede desperdiciar más de 3000 galones de agua en un año.</div>
       </div>
     </div>
 
@@ -386,112 +473,98 @@
 </div>
 
 <div class="preguntas-tesoro" id="preguntas-tesoro"></div>
-<div class="puntaje" id="puntaje-tesoro">Aciertos: 0 / 5</div>
+<div class="puntaje" id="puntaje-tesoro" role="status">Aciertos: 0 / 5</div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l6-2.html#partes" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Título, subtítulo, rótulo o pie de foto? ↗
+  <span>Practica a reconocer cada pista visual. En la misma página practicas también <strong>a buscar datos sin leer todo el texto</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Actividades de la lección <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">Búsqueda del tesoro</span></p>
-    <p>El profesor entrega a cada pareja de estudiantes una página de revista impresa. En 7 minutos, deben:</p>
-    <ul style="padding-left:20px;font-size:0.92rem">
-      <li>Subrayar con amarillo el <strong>título</strong>.</li>
-      <li>Subrayar con verde los <strong>subtítulos</strong>.</li>
-      <li>Encerrar en círculo las <strong>leyendas</strong> de las imágenes.</li>
-      <li>Marcar con un asterisco los <strong>pies de foto</strong>.</li>
-    </ul>
-    <p>Después, cada pareja presenta su página y comparten las dificultades que encontraron.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (asincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Foro guiado</span></p>
-    <p><strong>Mi foto con leyenda y pie</strong></p>
-    <p>Cada estudiante sube a la plataforma:</p>
-    <ul style="padding-left:20px;font-size:0.92rem">
-      <li>Una fotografía familiar o de su barrio (apropiada para compartir).</li>
-      <li>Una <strong>leyenda</strong> breve de 3 a 5 palabras (como rótulo).</li>
-      <li>Un <strong>pie de foto</strong> de 1 a 2 oraciones que explique el contexto.</li>
-    </ul>
-    <p>El estudiante debe rotular claramente cuál es la leyenda y cuál el pie de foto.</p>
-  </div>
-</div>
-
+<p><strong>Mi foto con rótulo y pie.</strong> Esta tarea tiene dos partes.</p>
+<p><strong>Parte 1 · Busca las pistas.</strong> Toma una página de revista, de periódico o de un folleto (también sirve una página de noticias en internet). Si es de papel, márcala con colores; si es en pantalla, anótalo en tu cuaderno:</p>
+<ul class="lista-bonita">
+  <li>Subraya con un color el <strong>título</strong> y con otro los <strong>subtítulos</strong>.</li>
+  <li>Encierra en un círculo los <strong>rótulos</strong> de las imágenes, si los hay.</li>
+  <li>Marca con un asterisco (*) los <strong>pies de foto</strong>.</li>
+</ul>
+<p><strong>Parte 2 · Crea las tuyas.</strong> Elige una fotografía de tu familia o de tu barrio y escribe en tu cuaderno:</p>
+<ul class="lista-bonita">
+  <li>Un <strong>título</strong> para la foto, de 3 a 8 palabras.</li>
+  <li>Un <strong>pie de foto</strong> de una o dos oraciones que explique qué se ve, dónde y cuándo.</li>
+</ul>
+<p>Si alguien de tu casa quiere participar, léele solo el pie de foto y pídele que adivine cómo es la imagen.</p>
 <div class="actividad-unidad">
-  <h4>📝 Quiz de la lección <span class="badge-tipo badge-quiz">10 preguntas</span></h4>
-  <p>Al finalizar esta clase, los estudiantes completan en línea el quiz que cubre las dos clases de la Lección 6.1:</p>
-  <ul style="padding-left:20px;font-size:0.92rem">
-    <li>Emparejar imágenes con su leyenda correcta.</li>
-    <li>Identificar si un fragmento es título o pie de foto.</li>
-    <li>Responder preguntas de comprensión cuya respuesta está únicamente en la imagen.</li>
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Mi foto con rótulo y pie»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Pistas encontradas</td><td class="nivel-4">Marqué título, subtítulos, rótulos y pies de foto</td><td class="nivel-1">Confundí el título con el pie de foto</td></tr>
+      <tr><td>Mi título</td><td class="nivel-4">Es corto y anuncia el tema de la foto</td><td class="nivel-1">Es una oración larga o no tiene relación</td></tr>
+      <tr><td>Mi pie de foto</td><td class="nivel-4">Explica qué se ve, dónde y cuándo, en una o dos oraciones</td><td class="nivel-1">Solo repite el título</td></tr>
+      <tr><td>Coherencia</td><td class="nivel-4">Lo que escribí corresponde a lo que se ve en la foto</td><td class="nivel-1">El texto no corresponde a la imagen</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>Los textos informativos tienen <strong>cuatro pistas visuales</strong>: título, subtítulos, rótulos y pie de foto.</li>
+  <li>Cada pista tiene una <strong>función distinta</strong> y un lugar propio en la página.</li>
+  <li>El <strong>título</strong> anuncia el tema; el <strong>pie de foto</strong> explica una imagen concreta.</li>
+  <li>Leer las pistas <strong>antes</strong> del texto principal te ahorra tiempo y te ayuda a encontrar datos.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuáles son las cuatro pistas visuales de un texto informativo?</li>
+    <li>¿En qué se diferencia el título del pie de foto?</li>
+    <li>Si una pregunta dice «según la figura», ¿dónde buscas primero?</li>
   </ul>
 </div>
-
-<h3>📋 Rúbrica del foro asincrónico</h3>
-
-<p>Lista de cotejo que se aplicará al foro de la modalidad en línea:</p>
-
-<table class="rubrica">
-  <thead>
-    <tr>
-      <th>Criterio</th>
-      <th>Cumplido ✓</th>
-      <th>Por mejorar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Incluyó leyenda (rótulo de la imagen)</td>
-      <td>Hay un rótulo breve de 3 a 5 palabras claramente identificado.</td>
-      <td>No incluyó leyenda o no la rotuló como tal.</td>
-    </tr>
-    <tr>
-      <td>Incluyó pie de foto</td>
-      <td>Hay 1 o 2 oraciones que explican el contexto de la imagen.</td>
-      <td>No incluyó pie de foto o lo confundió con leyenda.</td>
-    </tr>
-    <tr>
-      <td>Ambos describen la imagen</td>
-      <td>Leyenda y pie son coherentes con lo que se ve en la foto.</td>
-      <td>El texto no corresponde a la imagen subida.</td>
-    </tr>
-  </tbody>
-</table>
-
-</div>
-</details>
-
-<details>
-<summary>5. Cierre y conexión con el GED <span class="caja-tiempo">5 min</span></summary>
-<div class="contenido-detalle">
-
-<h3>Lo que aprendimos en esta lección</h3>
-
-<ul class="lista-bonita">
-  <li>Las imágenes son herramientas que <strong>liberan al cerebro</strong> del esfuerzo de decodificar.</li>
-  <li>La técnica de las <strong>dos lecturas</strong> (imagen primero, texto después) mejora la comprensión.</li>
-  <li>Los textos informativos tienen <strong>cuatro pistas visuales</strong>: título, subtítulo, leyenda y pie de foto.</li>
-  <li>Cada pista tiene una <strong>función distinta</strong> y se ubica en un lugar específico de la página.</li>
-  <li>En el GED, leer las pistas visuales <strong>antes</strong> del texto principal ahorra tiempo y mejora la puntuación.</li>
-</ul>
-
 <div class="clave-pedagogica">
-  <strong>🎯 Conexión con el examen:</strong> Las preguntas de Ciencias y Estudios Sociales del GED casi siempre incluyen una imagen, gráfica o diagrama con su pie de foto. Quien sabe leer esas pistas responde más rápido y con mayor precisión.
+  <strong>🎯 Conexión con el examen:</strong> En Ciencias y en Estudios Sociales, muchas preguntas traen una imagen, una gráfica o un diagrama con su pie de foto. Quien sabe leer esas pistas responde con más rapidez y precisión.
 </div>
-
-<h3>Próxima lección</h3>
-
-<p>En la <strong>Clase 3</strong> daremos el siguiente paso: aprenderemos a leer un tipo especial de imagen visual que es fundamental en el examen: el <strong>mapa</strong>. Veremos cómo identificar sus cuatro elementos clave (título, leyenda, rosa de los vientos y escala) para extraer información geográfica con facilidad.</p>
-
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_6-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 6.3 · La anatomía de los mapas</a>. Aprenderás a leer un tipo especial de imagen: el <strong>mapa</strong>, con sus cuatro elementos clave: título, rosa de los vientos, leyenda y escala.
+</div>
 </div>
 </details>
 
-<p class="firma">Prof. José M. Fernández · Truman College · Tema 6, Clase 2</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 6 · Lección 6.2</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -500,7 +573,7 @@
   var preguntas=[
     {
       texto:'¿Cuál es el tema general del artículo?',
-      pista:'Pista: léase solo el título',
+      pista:'Pista: lee solo el título',
       opciones:[
         {t:'El agua potable en nuestra ciudad',ok:true},
         {t:'Los lagos de Norteamérica',ok:false},
@@ -510,7 +583,7 @@
     },
     {
       texto:'¿Cuál es el enfoque específico del artículo?',
-      pista:'Pista: léase solo el subtítulo',
+      pista:'Pista: lee solo el subtítulo',
       opciones:[
         {t:'La historia del agua en Chicago',ok:false},
         {t:'De dónde viene el agua y cómo llega a la llave',ok:true},
@@ -520,33 +593,33 @@
     },
     {
       texto:'¿De dónde sale el agua antes de ser tratada?',
-      pista:'Pista: léase solo la leyenda de la Figura 1',
+      pista:'Pista: lee solo los rótulos de la Figura 1',
       opciones:[
         {t:'Del río Mississippi',ok:false},
         {t:'Del Lago Michigan',ok:true},
         {t:'De un pozo subterráneo',ok:false}
       ],
-      explica:'La leyenda dentro de la imagen identifica directamente la fuente del agua: el Lago Michigan.'
+      explica:'El rótulo dentro de la imagen nombra la fuente del agua: el Lago Michigan.'
     },
     {
-      texto:'¿Cuánta agua debe beber un adulto cada día?',
-      pista:'Pista: léase solo el pie de la Figura 2',
+      texto:'¿Cuánta agua puede desperdiciar en un año una llave que gotea?',
+      pista:'Pista: lee solo el pie de la Figura 2',
       opciones:[
-        {t:'Un litro',ok:false},
-        {t:'Dos litros',ok:true},
-        {t:'Cinco litros',ok:false}
+        {t:'Unos 30 galones',ok:false},
+        {t:'Más de 3000 galones',ok:true},
+        {t:'Medio galón',ok:false}
       ],
-      explica:'El pie de foto de la Figura 2 dice claramente "al menos dos litros de agua cada día".'
+      explica:'El pie de foto de la Figura 2 lo dice: «más de 3000 galones de agua en un año».'
     },
     {
       texto:'¿Cuántas secciones principales tiene el artículo?',
-      pista:'Pista: cuéntense los subtítulos numerados',
+      pista:'Pista: cuenta los subtítulos numerados',
       opciones:[
         {t:'Una sola sección',ok:false},
         {t:'Dos secciones',ok:true},
         {t:'Cuatro secciones',ok:false}
       ],
-      explica:'Hay dos subtítulos: "1. El recorrido del agua" y "2. La importancia del agua limpia".'
+      explica:'Hay dos subtítulos: «1. El recorrido del agua» y «2. Cuidar el agua en casa».'
     }
   ];
 
@@ -568,7 +641,7 @@
       '<span class="texto-preg">'+item.texto+'</span>'+
       '<span class="pista-busqueda">'+item.pista+'</span></div>'+
       '<div class="opciones-tesoro">'+opcionesHtml+'</div>'+
-      '<div class="retro-tes" id="retro-tes-'+idx+'"></div>';
+      '<div class="retro-tes" id="retro-tes-'+idx+'" role="status"></div>';
 
     cont.appendChild(div);
 
@@ -586,6 +659,7 @@
           retro.textContent='✅ '+item.explica;
           retro.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-tes-'+idx); r2.textContent='❌ Vuelve a mirar la pista que indica la pregunta.'; r2.classList.add('visible');
           b.classList.add('incorrecta');
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
@@ -601,6 +675,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuáles son las cuatro pistas visuales de un texto informativo?", "o": ["Título, subtítulos, rótulos y pie de foto", "Autor, fecha, página e índice", "Sujeto, verbo, adjetivo y punto"], "c": 0}, {"t": "¿Qué pista anuncia el <strong>tema general</strong> del artículo?", "o": ["El título", "El pie de foto", "El rótulo"], "c": 0}, {"t": "¿Dónde está el <strong>pie de foto</strong>?", "o": ["Debajo de la imagen", "Arriba de todo el artículo", "Dentro de la imagen"], "c": 0}, {"t": "¿Para qué sirven los <strong>subtítulos</strong>?", "o": ["Para dividir el artículo en partes y decir de qué trata cada una", "Para explicar una foto", "Para firmar el artículo"], "c": 0}, {"t": "Dentro de un dibujo del cuerpo humano, la palabra «corazón» con una flecha es…", "o": ["un rótulo", "el título", "un subtítulo"], "c": 0}, {"t": "«Vecinos limpian el parque Las Flores el sábado 5 de abril.» Está debajo de una foto. ¿Qué es?", "o": ["Un pie de foto", "Un título", "Un rótulo"], "c": 0}, {"t": "«El reciclaje en nuestra ciudad», en letra grande arriba del artículo. ¿Qué es?", "o": ["El título", "El pie de foto", "Un rótulo"], "c": 0}, {"t": "¿Cuál suele ser más largo?", "o": ["El pie de foto: una o dos oraciones", "El título: un párrafo entero"], "c": 0}, {"t": "Una pregunta dice: «Según la Figura 1, ¿de dónde viene el agua?». ¿Dónde buscas primero?", "o": ["En la Figura 1, sus rótulos y su pie", "En el último párrafo", "En el título de otra página"], "c": 0}, {"t": "¿Qué significa hacer una «búsqueda del tesoro» en un artículo?", "o": ["Encontrar datos leyendo las pistas visuales, sin leer todo", "Leer el artículo dos veces completo", "Buscar palabras en el diccionario"], "c": 0}, {"t": "En un <strong>mapa</strong>, ¿qué es la leyenda?", "o": ["El cuadro que explica los símbolos", "El nombre del autor", "La foto principal"], "c": 0}, {"t": "¿Por qué conviene leer las pistas visuales <strong>antes</strong> que el texto?", "o": ["Porque te dan una idea general y te dicen dónde está cada cosa", "Porque el texto no importa", "Porque así el artículo es más corto"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya reconoces las pistas visuales de un texto. Puedes continuar con la Lección 6.3.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 
