@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 8.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 2: Técnica 1-2-4 y círculos literarios</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 8.2 · Leer y conversar: la técnica 1-2-4</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -165,110 +171,196 @@
   .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
   .badge-discusion{background:#f3e5f5;color:#6a1b9a}
   .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 2: Técnica 1-2-4 y círculos literarios</h1>
-<p class="subtitulo">Tema 8 · Lección 8.1 · Nivel 1 · Semana 15 · 50 minutos</p>
+<h1>Lección 8.2 · Leer y conversar: la técnica 1-2-4</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 8 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
-    <li>Aplicar la <strong>técnica 1-2-4</strong> para discutir un texto en tres fases: individual, en pareja y en grupo de cuatro.</li>
-    <li>Participar en un <strong>círculo literario</strong> asumiendo uno de los cuatro roles: quien empieza, quien resume, quien pregunta, quien cierra.</li>
-    <li>Respetar los <strong>acuerdos de turnos</strong> y aplicar las frases plantilla de escucha activa vistas en la Clase 1.</li>
+    <li>Aplicar la <strong>técnica 1-2-4</strong> para pensar un texto en tres fases: solo, comparando con otra persona y sacando una conclusión.</li>
+    <li>Leer un texto pasando por los <strong>cuatro papeles del lector</strong>: quien empieza, quien resume, quien pregunta y quien cierra.</li>
+    <li>Aplicar los <strong>acuerdos para conversar</strong> y las frases de escucha activa de la Lección 8.1.</li>
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-tecnica">La técnica 1-2-4: pensar, comparar, concluir</a></li>
+    <li><a href="#s-2-texto">El texto de hoy</a></li>
+    <li><a href="#s-3-roles">Los cuatro papeles del lector</a></li>
+    <li><a href="#s-4-actividad">Actividad: ¿qué papel es?</a></li>
+    <li><a href="#s-5-acuerdos">Acuerdos para conversar</a></li>
+    <li><a href="#s-6-por-escrito">Responder por escrito</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En la <strong>Clase 1</strong> aprendimos qué es la escucha activa, los tres niveles de escucha y las frases plantilla para mostrar acuerdo, añadir información o pedir aclaración. Hoy ponemos todo eso en práctica con <strong>dos dinámicas concretas</strong> que se usan en aulas de todo el mundo: la <span class="palabra-clave">técnica 1-2-4</span> y el <span class="palabra-clave">círculo literario simple</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Estas dos dinámicas comparten un principio: nadie aprende solo. Discutir un texto con otros estudiantes le obliga a uno a <strong>organizar el pensamiento</strong>, <strong>defender una idea</strong> y <strong>escuchar a quien piensa distinto</strong>. Esas tres habilidades son las que el examen GED evalúa en su respuesta extendida, y son las que se necesitan en cualquier reunión de trabajo o conversación familiar.</p>
+<p>En la lección anterior aprendiste qué es la escucha activa y las frases para mostrar acuerdo, añadir información o pedir aclaración. Ahora vas a usar todo eso para algo muy útil: <strong>conversar sobre un texto</strong>.</p>
+
+<p>Hablar de lo que leíste con otra persona te obliga a <strong>ordenar tu pensamiento</strong>, <strong>defender una idea</strong> y <strong>escuchar a quien piensa distinto</strong>. Son las mismas habilidades que pide la respuesta extendida del GED, y las que se necesitan en una reunión de trabajo o en una conversación familiar. Vas a aprender dos herramientas: la <span class="palabra-clave">técnica 1-2-4</span> y los <span class="palabra-clave">cuatro papeles del lector</span>. Las dos nacieron para usarse en grupo, pero aquí las adaptas para que funcionen aunque estudies por tu cuenta.</p>
 
 <div class="clave-pedagogica">
-  <strong>🧠 Clave de la clase:</strong> El aprendizaje cooperativo no es «trabajar en grupo» en el sentido de que uno trabaja y los demás miran. Es un sistema donde <em>todos tenemos algo que aportar y todos somos responsables del resultado</em>. La técnica 1-2-4 está diseñada precisamente para que nadie se quede callado.
+  <strong>🧠 Clave de la lección:</strong> primero piensas tú, después comparas tu idea con la de otros y al final sacas una conclusión. Así tu opinión es tuya, pero sale más fuerte después de escuchar otras.
 </div>
 
-<details open>
-<summary>1. La técnica 1-2-4: pensar, dialogar, consensuar <span class="caja-tiempo">10 min</span></summary>
+<details open id="s-1-tecnica">
+<summary>1. La técnica 1-2-4: pensar, comparar, concluir <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué es la técnica 1-2-4?</h3>
 
-<p>Es una dinámica de aprendizaje cooperativo en <strong>tres fases sucesivas</strong>. El nombre viene del número de personas en cada fase: primero <strong>1</strong> (yo solo), después <strong>2</strong> (mi pareja y yo), y al final <strong>4</strong> (mi cuarteto y yo). Cada fase tiene un tiempo limitado y una tarea concreta.</p>
+<p>Es una técnica para pensar un texto en <strong>tres fases</strong>. En un salón de clases, el nombre viene del número de personas en cada fase: primero <strong>1</strong> (yo solo), después <strong>2</strong> (en pareja) y al final <strong>4</strong> (en grupo). Estudiando por tu cuenta, la idea es la misma: primero tu idea, después la comparas, y al final concluyes.</p>
 
 <div class="flujo-124">
   <div class="fase-124 fase-1">
     <span class="num-fase">1</span>
     <span class="titulo-fase">Pensar solo</span>
     <span class="tiempo-fase">⏱️ 3 minutos</span>
-    <span class="accion-fase">Cada estudiante responde la pregunta por escrito, de manera <strong>individual</strong>, sin consultar con nadie.</span>
+    <span class="accion-fase">Respondes la pregunta <strong>por escrito</strong>, en tu cuaderno, sin consultar con nadie.</span>
   </div>
   <div class="flecha-fase">➡️</div>
   <div class="fase-124 fase-2">
     <span class="num-fase">2</span>
-    <span class="titulo-fase">Dialogar en pareja</span>
-    <span class="tiempo-fase">⏱️ 4 minutos</span>
-    <span class="accion-fase">Cada estudiante comparte su respuesta con un compañero. Juntos <strong>consensúan</strong> una sola respuesta.</span>
+    <span class="titulo-fase">Comparar</span>
+    <span class="tiempo-fase">⏱️ 5 minutos</span>
+    <span class="accion-fase">Compartes tu respuesta con <strong>otra persona</strong> (alguien de tu casa, un amigo por teléfono) y escuchas la suya. Si estás solo, compárala con la <strong>respuesta modelo</strong>.</span>
   </div>
   <div class="flecha-fase">➡️</div>
   <div class="fase-124 fase-4">
     <span class="num-fase">4</span>
-    <span class="titulo-fase">Consensuar en grupo</span>
+    <span class="titulo-fase">Concluir</span>
     <span class="tiempo-fase">⏱️ 5 minutos</span>
-    <span class="accion-fase">Dos parejas se unen. El grupo de cuatro elige la <strong>mejor respuesta</strong> para presentar a toda la clase.</span>
+    <span class="accion-fase">Escribes una <strong>conclusión final</strong> que tome lo mejor de las dos respuestas.</span>
   </div>
 </div>
 
-<h3>¿Por qué funciona esta técnica?</h3>
-
-<p>La técnica 1-2-4 se apoya en dos pilares del aprendizaje cooperativo:</p>
+<h3>¿Por qué funciona?</h3>
 
 <ul class="lista-bonita">
-  <li><strong>Interdependencia positiva:</strong> el éxito del grupo depende de la contribución de cada uno. Si una persona no aporta, el grupo de cuatro no llega a una buena respuesta.</li>
-  <li><strong>Responsabilidad individual:</strong> nadie se puede esconder. Ya pensó solo, ya dialogó en pareja; cuando llega al cuarteto, tiene algo concreto que aportar.</li>
+  <li><strong>Tu idea va primero.</strong> Si empiezas escuchando a otros, es fácil que solo repitas lo que oíste. La fase 1 te da tiempo para formar tu propia opinión.</li>
+  <li><strong>Comparar enriquece.</strong> Otra persona puede ver algo que tú no viste. No se trata de quién tiene razón, sino de mejorar la respuesta.</li>
+  <li><strong>Concluir ordena.</strong> Al escribir la conclusión, decides qué ideas te quedan y por qué.</li>
 </ul>
-
-<div class="tip">
-  <strong>📝 Por qué empezamos solos:</strong> Si arrancáramos directamente en grupo, los más callados se quedarían callados y los más extrovertidos hablarían por todos. La fase individual le da a cada estudiante <strong>tiempo para formar su propia idea</strong> antes de exponerse al grupo.
-</div>
 
 </div>
 </details>
 
-<details>
+<details id="s-2-texto">
 <summary>2. El texto que vamos a discutir hoy <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Lectura inicial</h3>
 
-<p>Antes de discutir, todos necesitamos haber leído lo mismo. Lea con calma el siguiente texto. Subraye las palabras que no entienda y forme una opinión sobre la pregunta que aparece al final.</p>
+<p>Lee con calma este texto. Anota las palabras que no entiendas y piensa en la pregunta que aparece al final. Si quieres, puedes escucharlo con el botón de tu celular o computadora que lee el texto en voz alta.</p>
 
 <div class="texto-discusion">
   <span class="etiq-lectura">📖 Texto modelo</span>
   <p class="titulo-lectura">Los abuelos como maestros de la familia</p>
   <p>En muchas familias hispanas, los abuelos no son solo los miembros mayores: son los <strong>guardianes de la memoria</strong>. Cuando una familia emigra a otro país, los abuelos suelen quedarse en casa o en su pueblo natal mientras los hijos y los nietos viven lejos. Aun así, los abuelos siguen siendo el puente con la cultura, la lengua y las costumbres de origen.</p>
   <p>Una llamada semanal, una visita en vacaciones o una receta enseñada por teléfono son maneras en que los abuelos transmiten lo que saben. Hay nietos que aprendieron a cocinar arroz con frijoles escuchando a su abuela paso a paso desde mil kilómetros de distancia. Hay otros que conocen la historia de su pueblo solo porque su abuelo se la contó.</p>
-  <p>El problema es que, con el ritmo de vida moderno, esas conversaciones se hacen cada vez más cortas. La generación más joven habla menos con sus mayores que las generaciones anteriores. Y cuando los abuelos se van, se va con ellos un pedazo de la historia familiar que nadie escribió.</p>
-  <p><strong>Pregunta para discutir:</strong> ¿Cuál es la idea más importante que el autor quiere transmitir, y qué podría hacer su familia para fortalecer la conexión con los abuelos?</p>
+  <p>El problema es que, con el ritmo de vida moderno, muchas familias sienten que esas conversaciones se hacen cada vez más cortas. Y cuando los abuelos se van, se va con ellos un pedazo de la historia familiar que nadie escribió.</p>
+  <p><strong>Pregunta para pensar:</strong> ¿cuál es la idea más importante que el autor quiere transmitir, y qué podría hacer tu familia para fortalecer la conexión con los abuelos?</p>
 </div>
 
-<p>Este es el texto sobre el que aplicaremos la técnica 1-2-4 en la siguiente sección, y también el que usaremos para el círculo literario.</p>
+<h3>Aplica la técnica 1-2-4</h3>
+<ol class="lista-bonita">
+  <li><strong>Pensar solo:</strong> escribe en tu cuaderno tu respuesta a la pregunta, en dos o tres oraciones.</li>
+  <li><strong>Comparar:</strong> léesela a alguien y escucha su respuesta, o compárala con el modelo de abajo.</li>
+  <li><strong>Concluir:</strong> escribe una conclusión final con lo mejor de las dos.</li>
+</ol>
+<details class="ver-modelo">
+  <summary>Ya escribí mi respuesta: ver una respuesta modelo</summary>
+  <p style="margin-bottom:0">«El autor quiere decir que los abuelos guardan la memoria de la familia y que, si no hablamos con ellos, esa historia se pierde. Mi familia podría hacer una videollamada cada domingo y pedirle a la abuela que nos cuente una historia o nos enseñe una receta. También podríamos escribir esas historias en un cuaderno.»</p>
+</details>
 
 </div>
 </details>
 
-<details>
-<summary>3. El círculo literario y sus cuatro roles <span class="caja-tiempo">12 min</span></summary>
+<details id="s-3-roles">
+<summary>3. Los cuatro papeles del lector <span class="caja-tiempo">12 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>¿Qué es un círculo literario?</h3>
+<h3>Del círculo de lectura a tu cuaderno</h3>
 
-<p>Un <span class="palabra-clave">círculo literario</span> es una discusión estructurada sobre un texto en la que cada participante tiene un <strong>rol asignado</strong>. El rol no es opcional: cada persona sabe de antemano qué tiene que hacer, y eso garantiza que todos participen.</p>
+<p>Un <span class="palabra-clave">círculo literario</span> o círculo de lectura es una conversación ordenada sobre un texto, en la que cada participante tiene un <strong>papel</strong>. Cuando estudias por tu cuenta, puedes hacer <strong>los cuatro papeles tú mismo, uno después del otro</strong>, como si te pusieras cuatro sombreros distintos. Si alguien de tu casa lee el texto contigo, pueden repartirse los papeles.</p>
 
-<p>En este nivel usamos un círculo literario <strong>simple</strong>, con cuatro roles. Los cuatro estudiantes de un grupo se reparten las tarjetas y discuten el texto durante unos diez minutos:</p>
+<p>Estos son los cuatro papeles:</p>
 
 <div class="roles-grid">
   <div class="rol r-inicio">
@@ -298,38 +390,38 @@
 </div>
 
 <div class="tip">
-  <strong>📝 Lo importante de los roles:</strong> En la siguiente discusión grupal, los roles <strong>rotan</strong>. Si hoy le tocó «quien pregunta», la próxima vez le tocará otro rol. Así todos los estudiantes desarrollan las cuatro habilidades a lo largo del curso.
+  <strong>📝 Por qué cuatro papeles:</strong> cada uno ejercita una habilidad distinta: anticipar, resumir, preguntar y concluir. Si conversas con otras personas, cambien de papel cada vez para que todos practiquen las cuatro.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>4. Actividad: ¿qué rol haría esto? <span class="caja-tiempo">7 min</span></summary>
+<details id="s-4-actividad">
+<summary>4. Actividad: ¿qué papel es? <span class="caja-tiempo">7 min</span></summary>
 <div class="contenido-detalle">
 
-<p>A continuación tiene seis intervenciones reales que podrían darse en un círculo literario. Para cada una, elija a qué rol corresponde la intervención:</p>
+<p>Aquí tienes seis intervenciones que podrían darse en una conversación sobre el texto. Para cada una, elige a qué papel corresponde:</p>
 
 <div class="empar-cont">
-  <h4>🎭 Empareje cada intervención con su rol</h4>
+  <h4>🎭 Elige el papel de cada intervención</h4>
   <div id="items-empar"></div>
-  <div class="puntaje-empar" id="puntaje-empar">Aciertos: 0 / 6</div>
+  <div class="puntaje-empar" id="puntaje-empar" role="status">Aciertos: 0 / 6</div>
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>5. Acuerdos del grupo: nuestro contrato <span class="caja-tiempo">5 min</span></summary>
+<details id="s-5-acuerdos">
+<summary>5. Acuerdos para conversar <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Reglas básicas de convivencia en la discusión</h3>
+<h3>Reglas básicas para cualquier conversación</h3>
 
-<p>Para que la técnica 1-2-4 y los círculos literarios funcionen, el grupo debe <strong>acordar reglas comunes</strong> antes de empezar. Estos seis acuerdos son los que adoptamos en este curso:</p>
+<p>Una conversación funciona mejor cuando todos siguen unas reglas sencillas. Sirven igual para comentar un texto en familia, para una reunión de trabajo o para la junta de padres de la escuela:</p>
 
 <div class="acuerdos-cont">
-  <h4>📜 Acuerdos del grupo</h4>
-  <p class="subtitulo-acuerdo">Los siguientes acuerdos rigen todas las discusiones de la clase</p>
+  <h4>📜 Seis acuerdos para conversar</h4>
+  <p class="subtitulo-acuerdo">Puedes proponerlos en tu casa o en tu trabajo</p>
   <ul class="acuerdos-lista">
     <li><strong>Una voz a la vez.</strong> Cuando alguien habla, los demás escuchan. Nadie interrumpe.</li>
     <li><strong>Todos hablamos al menos una vez.</strong> Si alguien todavía no ha participado, el grupo le invita con respeto.</li>
@@ -341,98 +433,121 @@
 </div>
 
 <div class="clave-pedagogica">
-  <strong>💡 ¿Por qué firmamos un contrato?:</strong> Cuando todos sabemos las reglas <em>antes</em> de discutir, es más fácil reconducir el grupo si algo se descontrola. Si alguien interrumpe, el grupo no le riñe: le recuerda el acuerdo número uno.
+  <strong>💡 ¿Por qué ponerse de acuerdo antes?</strong> Cuando todos conocen las reglas <em>antes</em> de conversar, es más fácil volver al orden si algo se descontrola. Si alguien interrumpe, nadie lo regaña: solo se le recuerda el acuerdo número uno.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>6. Foro asincrónico con frases plantilla <span class="caja-tiempo">6 min</span></summary>
+<details id="s-6-por-escrito">
+<summary>6. Responder por escrito <span class="caja-tiempo">6 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>La discusión continúa en Brightspace</h3>
+<h3>Las frases de escucha activa también se escriben</h3>
 
-<p>La parte sincrónica termina cuando suena el timbre, pero la discusión sobre los abuelos como maestros de la familia sigue en el foro de Brightspace. En el foro, cada estudiante <strong>responde al post de un compañero</strong> usando obligatoriamente una de las frases plantilla de escucha activa que vimos en la Clase 1.</p>
+<p>Muchas conversaciones hoy son por escrito: el grupo de mensajes de la familia, los comentarios de una noticia, un correo del trabajo. Ahí también se nota quién escucha. Mira este ejemplo: tres personas comentan el texto de los abuelos en un grupo de mensajes, y cada respuesta <strong>empieza con una frase de escucha activa</strong>.</p>
 
 <div class="foro-modelo">
-  <h4>💬 Ejemplo de hilo en el foro</h4>
+  <h4>💬 Ejemplo de conversación por escrito</h4>
 
   <div class="post-foro" style="background:var(--rol-resumen-claro);border-left-color:var(--rol-resumen)">
-    <span class="usuario-post">🗣️ María C. — post inicial</span>
+    <span class="usuario-post">🗣️ María — primer mensaje</span>
     <p class="texto-post">El texto dice que los abuelos son los guardianes de la memoria familiar. En mi caso es cierto: mi abuela me enseñó las recetas cubanas por teléfono cuando yo ya vivía en Chicago. Pienso que el problema más grande es que los nietos pequeños no se sienten cercanos a sus abuelos porque viven lejos.</p>
   </div>
 
   <div class="post-foro">
-    <span class="usuario-post">↪️ Luis R. — respuesta a María</span>
+    <span class="usuario-post">↪️ Luis — responde a María</span>
     <p class="texto-post"><span class="frase-resaltada">Estoy de acuerdo con María</span> en que la distancia es un problema grande. <span class="frase-resaltada">Quiero añadir que</span> en mi familia hacemos videollamadas los domingos justamente para que los nietos vean la cara de los abuelos y no solo escuchen una voz al teléfono.</p>
   </div>
 
   <div class="post-foro">
-    <span class="usuario-post">↪️ Ana M. — respuesta a María</span>
+    <span class="usuario-post">↪️ Ana — responde a María</span>
     <p class="texto-post"><span class="frase-resaltada">Estoy de acuerdo</span> en que los abuelos son guardianes de la memoria, pero <span class="frase-resaltada">quiero añadir que</span> también los padres podemos transmitir esas historias. <span class="frase-resaltada">¿Puedes explicar</span> qué recetas te enseñó tu abuela? Me interesa saber.</p>
   </div>
 </div>
 
 <div class="tip">
-  <strong>📝 Regla del foro:</strong> Cada respuesta debe empezar con una frase plantilla de escucha activa <em>(de acuerdo, añadir o pedir aclaración)</em>. No vale escribir solo «buen post» o «coincido». Hay que demostrar que se leyó al compañero.
+  <strong>📝 Buena costumbre:</strong> empieza tus respuestas escritas con una frase de escucha activa <em>(de acuerdo, añadir o pedir aclaración)</em>. Escribir solo «ok» o «👍» no demuestra que leíste a la otra persona.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>7. Modalidades presencial y online <span class="caja-tiempo">3 min</span></summary>
+<details id="s-tarea">
+<summary>7. Tarea <span class="caja-tiempo">40 min</span></summary>
 <div class="contenido-detalle">
-
-<p>La técnica 1-2-4 y el círculo literario funcionan en ambas modalidades, pero los recursos físicos cambian:</p>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">Movimiento físico</span></p>
-    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
-      <li>Los estudiantes se levantan y se mueven para formar parejas, después cuartetos.</li>
-      <li>Cada grupo recibe sus tarjetas de roles impresas en cartulina.</li>
-      <li>El profesor cronometra cada fase con un temporizador visible para todos.</li>
-      <li>Al final, un grupo presenta a toda la clase desde su mesa, en voz alta.</li>
-    </ul>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (sincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Salas pequeñas</span></p>
-    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
-      <li>El profesor usa <strong>«breakout rooms»</strong> (salas pequeñas) para crear las parejas y los cuartetos.</li>
-      <li>Las tarjetas de roles se comparten por chat o por documento digital.</li>
-      <li>Cada grupo escribe su respuesta consensuada en un documento compartido (Google Docs).</li>
-      <li>Al regresar a la sala principal, un estudiante por grupo comparte pantalla.</li>
-    </ul>
-  </div>
+<p><strong>Los cuatro papeles con un texto nuevo.</strong> Elige un texto corto que te interese: una noticia, un artículo de una revista o un texto de la Lección 7.3. Léelo y escribe en tu cuaderno, poniéndote los cuatro sombreros:</p>
+<ul class="lista-bonita">
+  <li>🚀 <strong>Quien empieza:</strong> por el título, ¿de qué crees que trata? (una oración).</li>
+  <li>📋 <strong>Quien resume:</strong> la idea principal del texto en dos o tres oraciones, sin opinar.</li>
+  <li>❓ <strong>Quien pregunta:</strong> dos preguntas abiertas sobre el texto (que no se respondan con «sí» o «no»).</li>
+  <li>🎯 <strong>Quien cierra:</strong> tu conclusión: qué piensas del texto y por qué.</li>
+</ul>
+<p>Si alguien de tu casa quiere participar, léanlo juntos y háganle tus dos preguntas. Escribe al final una oración con lo que esa persona respondió.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Los cuatro papeles»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Quien empieza</td><td class="nivel-4">Hice una predicción a partir del título</td><td class="nivel-1">No escribí la predicción</td></tr>
+      <tr><td>Quien resume</td><td class="nivel-4">Resumí la idea principal sin opinar</td><td class="nivel-1">Mezclé mi opinión con el resumen</td></tr>
+      <tr><td>Quien pregunta</td><td class="nivel-4">Escribí dos preguntas abiertas</td><td class="nivel-1">Mis preguntas se responden con sí o no</td></tr>
+      <tr><td>Quien cierra</td><td class="nivel-4">Di mi conclusión con al menos una razón</td><td class="nivel-1">Solo escribí «me gustó»</td></tr>
+    </tbody>
+  </table>
 </div>
-
 </div>
 </details>
 
-<details>
-<summary>8. Quiz final de la lección 8.1 <span class="caja-tiempo">5 min</span></summary>
+<details id="s-quiz">
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<p>El siguiente quiz combina lo aprendido en las <strong>Clases 1 y 2</strong>: niveles de escucha, frases plantilla, técnica 1-2-4, círculo literario y acuerdos del grupo. Es el quiz de cierre de la <strong>Lección 8.1 · Conversaciones colaborativas y escucha activa</strong>.</p>
-
-<div class="quiz-cont">
-  <h4>📝 Quiz: lección 8.1</h4>
-  <div class="preguntas-quiz" id="preguntas-quiz2"></div>
-  <div class="puntaje" id="puntaje-quiz2">Aciertos: 0 / 6</div>
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
-
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
 </div>
 </details>
+
+<details id="s-cierre">
+<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>La <strong>técnica 1-2-4</strong> tiene tres fases: pensar solo, comparar con otra respuesta y concluir.</li>
+  <li>Los <strong>cuatro papeles del lector</strong> son: quien empieza, quien resume, quien pregunta y quien cierra.</li>
+  <li>Los acuerdos para conversar (una voz a la vez, criticar ideas y no personas…) sirven en cualquier conversación.</li>
+  <li>Las frases de escucha activa también se usan por escrito.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Por qué la técnica 1-2-4 empieza pensando solo?</li>
+    <li>¿Qué diferencia hay entre resumir y cerrar?</li>
+    <li>¿Qué es una pregunta abierta?</li>
+  </ul>
+</div>
 
 <div class="tip">
-  <strong>👉 ¿Qué viene en la próxima clase?</strong> En la <strong>Clase 3</strong> entramos en la <strong>Lección 8.2: alfabetización tecnológica</strong>. Aprenderemos el vocabulario digital básico (ventana, pestaña, copiar, pegar, enviar) y las partes de la computadora. Es la base para preparar la presentación oral de la Clase 4.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_8-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.3 · Alfabetización tecnológica y vocabulario digital</a>. Aprenderás el vocabulario de la computadora y los pasos para moverte por GEDparaHispanos y por GED.com.
 </div>
+</div>
+</details>
 
-<p class="firma">Spanish ASE Language Arts 1 · GEDparaHispanos.com · Prof. José M. Fernández</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 8 · Lección 8.2</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -463,7 +578,7 @@
         '<button type="button" class="btn-empar b-pregunta" data-rol="pregunta">❓ Quien pregunta</button>'+
         '<button type="button" class="btn-empar b-cierre" data-rol="cierre">🎯 Quien cierra</button>'+
       '</div>'+
-      '<div class="retro-empar" id="retro-empar-'+idx+'"></div>';
+      '<div class="retro-empar" id="retro-empar-'+idx+'" role="status"></div>';
     contEmpar.appendChild(div);
 
     var botones=div.querySelectorAll('.btn-empar');
@@ -479,6 +594,7 @@
           r.textContent='✅ '+it.explica;
           r.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-empar-'+idx); r2.textContent='❌ Pregúntate: ¿abre la conversación, resume el texto, pregunta o saca la conclusión?'; r2.classList.add('visible');
           b.classList.add('incorrecto');
           setTimeout(function(){b.classList.remove('incorrecto')},500);
         }
@@ -495,128 +611,73 @@
     }
   }
 
-  /* =========================================================
-     QUIZ FINAL DE LA LECCIÓN 8.1
-     ========================================================= */
-  var preguntas=[
-    {
-      texto:'¿Por qué la técnica 1-2-4 empieza con una fase individual de pensar en silencio?',
-      opciones:[
-        {t:'Para que el profesor pueda descansar unos minutos.',ok:false},
-        {t:'Para que cada estudiante forme su propia idea antes de exponerse al grupo.',ok:true},
-        {t:'Porque es la fase más rápida y se puede saltar si hay poco tiempo.',ok:false},
-        {t:'Para que solo participen los estudiantes que terminan primero.',ok:false}
-      ],
-      explica:'La fase individual garantiza que cada estudiante tenga algo propio que aportar antes del grupo. Sin esa fase, los más callados se quedarían sin opinión y los más extrovertidos hablarían por todos.'
-    },
-    {
-      contexto:'En un círculo literario, Mariana dice al grupo: «¿Y qué pasaría si en nuestras familias dejáramos de hablar con los abuelos por completo?»',
-      texto:'¿Qué rol está cumpliendo Mariana?',
-      opciones:[
-        {t:'Quien empieza',ok:false},
-        {t:'Quien resume',ok:false},
-        {t:'Quien pregunta',ok:true},
-        {t:'Quien cierra',ok:false}
-      ],
-      explica:'Mariana formula una pregunta abierta del tipo "¿qué pasaría si…?" para profundizar la discusión. Ese es el rol de "quien pregunta".'
-    },
-    {
-      contexto:'En el foro de Brightspace, Pedro escribe debajo del post de Carmen: «Buen post.»',
-      texto:'¿Por qué esta respuesta no cumple con la regla del foro?',
-      opciones:[
-        {t:'Porque está mal escrita.',ok:false},
-        {t:'Porque no usa una frase plantilla de escucha activa ni demuestra que leyó a Carmen.',ok:true},
-        {t:'Porque debería haber escrito en mayúsculas.',ok:false},
-        {t:'Porque Pedro debería haber escrito un post propio, no responder.',ok:false}
-      ],
-      explica:'La regla del foro es que cada respuesta debe usar una frase plantilla de escucha activa (de acuerdo, añadir o pedir aclaración). "Buen post" no demuestra que Pedro leyó realmente lo que dijo Carmen.'
-    },
-    {
-      texto:'En la fase 2 de la técnica 1-2-4, ¿qué deben hacer los estudiantes con su respuesta individual?',
-      opciones:[
-        {t:'Entregarla al profesor sin compartirla con nadie más.',ok:false},
-        {t:'Compartirla con un compañero y consensuar una respuesta común entre los dos.',ok:true},
-        {t:'Copiarla en la pizarra para que toda la clase la vea.',ok:false},
-        {t:'Borrarla y empezar de nuevo en grupo.',ok:false}
-      ],
-      explica:'En la fase 2 (pareja), los dos estudiantes comparten sus respuestas individuales y consensúan una sola respuesta común. Es el primer paso del trabajo colaborativo.'
-    },
-    {
-      contexto:'Durante una discusión en grupo, Roberto está hablando hace cinco minutos seguidos sin dar oportunidad a sus tres compañeros de intervenir.',
-      texto:'¿Cuál acuerdo del grupo está rompiendo Roberto?',
-      opciones:[
-        {t:'Pedimos aclaración si no entendemos.',ok:false},
-        {t:'Criticamos ideas, no personas.',ok:false},
-        {t:'Todos hablamos al menos una vez y cuidamos el tiempo.',ok:true},
-        {t:'Una voz a la vez.',ok:false}
-      ],
-      explica:'Roberto rompe el acuerdo de cuidar el tiempo y permitir que todos participen. "Una voz a la vez" se refiere a no interrumpir, no a monopolizar; el problema aquí es que monopoliza el turno.'
-    },
-    {
-      texto:'¿Cuál es la diferencia principal entre el rol de «quien resume» y el rol de «quien cierra»?',
-      opciones:[
-        {t:'No hay diferencia, los dos hacen lo mismo.',ok:false},
-        {t:'Quien resume habla del texto del autor; quien cierra recoge la conclusión común del grupo.',ok:true},
-        {t:'Quien resume habla al principio y quien cierra escribe en el pizarrón.',ok:false},
-        {t:'Quien resume hace preguntas y quien cierra las contesta.',ok:false}
-      ],
-      explica:'Quien resume expone lo que el autor dice en el texto. Quien cierra, en cambio, recoge las ideas que aportó el grupo durante la discusión y formula la conclusión común. Son dos momentos distintos: el primero es sobre el texto, el segundo es sobre el grupo.'
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuáles son las tres fases de la técnica 1-2-4?", "o": ["Pensar solo, comparar y concluir", "Leer, copiar y entregar", "Escuchar, callar y repetir"], "c": 0}, {"t": "¿Por qué la técnica empieza con una fase en la que piensas solo?", "o": ["Para formar tu propia idea antes de escuchar a otros", "Porque es la fase más corta", "Para no tener que hablar con nadie"], "c": 0}, {"t": "Si estudias solo, ¿con qué puedes comparar tu respuesta en la fase 2?", "o": ["Con la respuesta modelo o con la de alguien de tu casa", "Con nada", "Con el título del texto"], "c": 0}, {"t": "«¿Y qué pasaría si dejáramos de hablar con los abuelos?» ¿Qué papel cumple esa intervención?", "o": ["Quien pregunta", "Quien resume", "Quien empieza", "Quien cierra"], "c": 0}, {"t": "«El texto dice que los abuelos guardan la memoria de la familia.» ¿Qué papel es?", "o": ["Quien resume", "Quien pregunta", "Quien cierra"], "c": 0}, {"t": "¿Qué diferencia hay entre «quien resume» y «quien cierra»?", "o": ["Quien resume cuenta lo que dice el texto; quien cierra da la conclusión", "Ninguna", "Quien resume hace preguntas"], "c": 0}, {"t": "¿Cuál es una pregunta <strong>abierta</strong>?", "o": ["¿Por qué crees que las conversaciones con los abuelos son más cortas?", "¿Te gustó el texto?", "¿Tienes abuelos?"], "c": 0}, {"t": "En una conversación, alguien habla cinco minutos sin dejar participar a nadie. ¿Qué acuerdo rompe?", "o": ["Cuidar el tiempo y dejar que todos hablen", "Pedir aclaración si no entendemos", "Criticar ideas, no personas"], "c": 0}, {"t": "«Criticamos ideas, no personas» significa que…", "o": ["se puede no estar de acuerdo con una idea sin atacar a quien la dijo", "nunca hay que estar en desacuerdo", "solo se critica a las personas"], "c": 0}, {"t": "En el grupo de mensajes de la familia, ¿qué respuesta muestra que leíste el mensaje?", "o": ["«Estoy de acuerdo con lo de las videollamadas; quiero añadir que…»", "«ok»", "«👍»"], "c": 0}, {"t": "Según el texto, ¿qué papel cumplen los abuelos en muchas familias hispanas?", "o": ["Son los guardianes de la memoria familiar", "Son los que más usan la tecnología", "Son los que menos hablan"], "c": 0}, {"t": "Antes de leer, por el título, haces una predicción. ¿Qué papel cumples?", "o": ["Quien empieza", "Quien cierra", "Quien resume"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
-  ];
-
-  var resueltasQ={};
-  var aciertosQ=0;
-  var contQuiz=document.getElementById('preguntas-quiz2');
-
-  preguntas.forEach(function(item,idx){
-    var div=document.createElement('div');
-    div.className='preg-quiz';
-
-    var opcHtml='';
-    item.opciones.forEach(function(op){
-      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
-    });
-
-    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
-
-    div.innerHTML=
-      '<div><span class="num-preg">'+(idx+1)+'</span>'+
-      '<span class="texto-preg">'+item.texto+'</span></div>'+
-      contextoHtml+
-      '<div class="opciones-quiz">'+opcHtml+'</div>'+
-      '<div class="retro-quiz" id="retro-q2-'+idx+'"></div>';
-
-    contQuiz.appendChild(div);
-
-    var botones=div.querySelectorAll('.opt-quiz');
-    botones.forEach(function(b){
-      b.addEventListener('click',function(){
-        if(resueltasQ[idx])return;
-        var correcto=(b.getAttribute('data-correcto')==='1');
-        if(correcto){
-          b.classList.add('correcta');
-          resueltasQ[idx]=true;
-          aciertosQ++;
-          actualizarPuntajeQ();
-          var retro=document.getElementById('retro-q2-'+idx);
-          retro.textContent='✅ '+item.explica;
-          retro.classList.add('visible');
-        }else{
-          b.classList.add('incorrecta');
-          setTimeout(function(){b.classList.remove('incorrecta')},500);
-        }
-      });
-    });
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
   });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes pensar y conversar sobre un texto. Puedes continuar con la Lección 8.3.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 3 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
 
-  function actualizarPuntajeQ(){
-    var el=document.getElementById('puntaje-quiz2');
-    el.textContent='Aciertos: '+aciertosQ+' / '+preguntas.length;
-    if(aciertosQ===preguntas.length){
-      el.innerHTML='🎉 ¡Lección 8.1 dominada! Aciertos: '+aciertosQ+' / '+preguntas.length;
-      el.style.color='var(--exito)';
-    }
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!-- Evaluación final · Artes del Lenguaje Nivel 1: Iniciación a la Lectura y la Escritura · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0
+     Página reutilizable: los datos están en PREGUNTAS (tema, enunciado, opciones, lección y ancla que la explica). -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluación final · Artes del Lenguaje Nivel 1: Iniciación a la Lectura y la Escritura</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root{--cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;--acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;--gris:#4f5b66;--gris-claro:#eef1f4;--exito:#2e7d32;--error:#c62828}
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;border-left:none;padding-left:0;font-size:1.2rem}
+  fieldset.ex-tema{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:18px 0}
+  fieldset.ex-tema legend{font-weight:700;color:var(--cp-oscuro);padding:0 8px;font-size:1.05rem}
+  .ex-preg{border-top:1px solid var(--gris-claro);padding:12px 0}
+  .ex-preg:first-of-type{border-top:none}
+  .ex-enun{font-weight:600;margin:0 0 8px}
+  .ex-num{display:inline-block;min-width:30px;height:30px;line-height:30px;text-align:center;border-radius:50%;background:var(--cp);color:#fff;font-size:0.85rem;margin-right:8px}
+  .ex-ops{display:flex;flex-direction:column;gap:8px}
+  .ex-op{font:inherit;text-align:left;background:#fff;border:2px solid #cfd8dc;border-radius:8px;padding:10px 14px;cursor:pointer;color:inherit}
+  .ex-op:hover{border-color:var(--cp)}
+  .ex-op:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
+  .ex-op[aria-pressed="true"]{border-color:var(--cp-oscuro);background:var(--cp-claro);font-weight:600}
+  .ex-op.correcta{border-color:var(--exito);background:#e8f5e9}
+  .ex-op.incorrecta{border-color:var(--error);background:#ffebee;text-decoration:line-through}
+  .ex-explica{display:none;margin-top:8px;padding:8px 12px;border-radius:6px;background:#f5f7f9;font-size:0.95rem}
+  .ex-explica.visible{display:block}
+  .botones{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .btn{font:inherit;font-weight:600;border:none;border-radius:8px;padding:12px 20px;cursor:pointer}
+  .btn-primario{background:var(--cp-oscuro);color:#fff}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .aviso{background:#fff3cd;color:#5c3900;border-radius:8px;padding:10px 14px;font-weight:600}
+  #resultado{display:none}
+  #resultado.visible{display:block}
+  .res-total{font-size:1.3rem;font-weight:700;padding:14px 18px;border-radius:10px;margin:14px 0}
+  .res-tabla{width:100%;border-collapse:collapse;background:#fff;margin:12px 0}
+  .res-tabla th,.res-tabla td{padding:8px 10px;border-bottom:1px solid var(--gris-claro);text-align:left;vertical-align:middle}
+  .res-tabla th{background:var(--cp-oscuro);color:#fff}
+  .barra{height:12px;background:var(--gris-claro);border-radius:6px;overflow:hidden;min-width:80px}
+  .barra span{display:block;height:100%;background:var(--exito)}
+  .barra.baja span{background:var(--acento)}
+  .repaso{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:14px 18px;margin:14px 0}
+  .repaso h3{margin-top:0;color:#8a3d0c}
+  .repaso ul{padding-left:20px}
+  .repaso li{margin-bottom:10px}
+  .repaso .preg-fallada{display:block;font-size:0.92rem;color:var(--gris)}
+  .imprimir-datos{display:none}
+  @media print{
+    body{background:#fff;max-width:none;padding:0;font-size:11pt}
+    .no-imprimir,#examen,.botones,nav,.volver-indice,footer .no-imprimir{display:none!important}
+    #resultado{display:block!important}
+    .imprimir-datos{display:block}
+    .repaso{break-inside:avoid-page;border-color:#999}
+    a{color:#000;text-decoration:none}
+    .repaso a::after{content:" — " attr(href);font-size:9pt;color:#444;word-break:break-all}
+    .res-tabla th{background:#ddd;color:#000}
+  }
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+</style>
+</head>
+<body>
+
+<h1 id="indice">Evaluación final del Nivel 1</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · 32 preguntas · sin límite de tiempo</p>
+
+<div class="imprimir-datos">
+  <p><strong>Nombre:</strong> ______________________________ &nbsp; <strong>Fecha:</strong> <span id="fecha-imp"></span></p>
+</div>
+
+<div class="caja-objetivos no-imprimir">
+  <h2>🎯 Cómo funciona</h2>
+  <ul>
+    <li>Son <strong>32 preguntas</strong>, cuatro de cada tema del nivel. Tómate el tiempo que necesites.</li>
+    <li>Elige una respuesta en cada pregunta. Cuando termines, pulsa <strong>«Ver mi resultado»</strong>.</li>
+    <li>Verás tu puntaje por tema y un <strong>resumen para repasar</strong>: cada pregunta que falles te lleva a la lección y a la sección exacta que la explica.</li>
+    <li>Puedes <strong>imprimir</strong> el resumen (o guardarlo como PDF) y repetir la evaluación cuando quieras. La meta es acertar al menos el 80 %.</li>
+  </ul>
+</div>
+
+<div id="examen">
+<fieldset class="ex-tema" id="tema-1">
+  <legend>Tema 1 · El alfabeto y la dirección de la lectura</legend>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e0" data-i="0">
+    <p class="ex-enun" id="ex-e0"><span class="ex-num">1</span>¿Cuál es la letra mayúscula de «ñ»?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e1" data-i="1">
+    <p class="ex-enun" id="ex-e1"><span class="ex-num">2</span>¿Cuántas letras tiene el abecedario español?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e2" data-i="2">
+    <p class="ex-enun" id="ex-e2"><span class="ex-num">3</span>En español, ¿en qué dirección se lee una línea de texto?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e3" data-i="3">
+    <p class="ex-enun" id="ex-e3"><span class="ex-num">4</span>En «Mi hermana cocina arroz con pollo», ¿cuál es el sujeto?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+</fieldset>
+<fieldset class="ex-tema" id="tema-2">
+  <legend>Tema 2 · Conciencia fonológica y fluidez</legend>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e4" data-i="4">
+    <p class="ex-enun" id="ex-e4"><span class="ex-num">5</span>¿Cuántas sílabas tiene «mariposa»?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e5" data-i="5">
+    <p class="ex-enun" id="ex-e5"><span class="ex-num">6</span>¿Qué palabra rima con «canción»?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e6" data-i="6">
+    <p class="ex-enun" id="ex-e6"><span class="ex-num">7</span>¿Qué es decodificar?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e7" data-i="7">
+    <p class="ex-enun" id="ex-e7"><span class="ex-num">8</span>¿Qué ayuda más a leer con fluidez?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+</fieldset>
+<fieldset class="ex-tema" id="tema-3">
+  <legend>Tema 3 · La oración: sustantivo, adjetivo, verbo y puntuación</legend>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e8" data-i="8">
+    <p class="ex-enun" id="ex-e8"><span class="ex-num">9</span>En «El perro negro duerme», ¿cuál es el adjetivo?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e9" data-i="9">
+    <p class="ex-enun" id="ex-e9"><span class="ex-num">10</span>¿Cuál está bien?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e10" data-i="10">
+    <p class="ex-enun" id="ex-e10"><span class="ex-num">11</span>«Mañana ____ a la clínica.» ¿Qué forma está en futuro?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e11" data-i="11">
+    <p class="ex-enun" id="ex-e11"><span class="ex-num">12</span>¿Cuál es un fragmento (no es una oración completa)?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+</fieldset>
+<fieldset class="ex-tema" id="tema-4">
+  <legend>Tema 4 · Estrategias de comprensión y vocabulario</legend>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e12" data-i="12">
+    <p class="ex-enun" id="ex-e12"><span class="ex-num">13</span>Antes de leer un cuento, miras el título y la imagen y dices de qué tratará. ¿Qué estrategia usas?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e13" data-i="13">
+    <p class="ex-enun" id="ex-e13"><span class="ex-num">14</span>«Las frutas tienen vitaminas. El mango tiene vitamina C. La naranja también.» ¿Cuál es la idea principal?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e14" data-i="14">
+    <p class="ex-enun" id="ex-e14"><span class="ex-num">15</span>«El médico recetó un analgésico, es decir, una medicina para el dolor.» ¿Qué clave de contexto hay?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e15" data-i="15">
+    <p class="ex-enun" id="ex-e15"><span class="ex-num">16</span>¿Qué significa el prefijo «des-» en «deshacer»?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+</fieldset>
+<fieldset class="ex-tema" id="tema-5">
+  <legend>Tema 5 · El texto narrativo y las relaciones entre ideas</legend>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e16" data-i="16">
+    <p class="ex-enun" id="ex-e16"><span class="ex-num">17</span>Rosa tiene miedo de hablar en las reuniones. ¿Qué tipo de conflicto es?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e17" data-i="17">
+    <p class="ex-enun" id="ex-e17"><span class="ex-num">18</span>«Pongo el arroz a cocinar. ____, pico la cebolla.» Las dos cosas pasan a la vez.</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e18" data-i="18">
+    <p class="ex-enun" id="ex-e18"><span class="ex-num">19</span>«Las calles se inundaron porque llovió toda la noche.» ¿Cuál es la causa?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e19" data-i="19">
+    <p class="ex-enun" id="ex-e19"><span class="ex-num">20</span>«Yo trabajo de día, ____ mi esposo trabaja de noche.» ¿Qué conector marca la diferencia?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+</fieldset>
+<fieldset class="ex-tema" id="tema-6">
+  <legend>Tema 6 · Información visual: imágenes, mapas, tablas y gráficas</legend>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e20" data-i="20">
+    <p class="ex-enun" id="ex-e20"><span class="ex-num">21</span>En un artículo, ¿qué texto va debajo de una foto y la explica?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e21" data-i="21">
+    <p class="ex-enun" id="ex-e21"><span class="ex-num">22</span>En un mapa, ¿qué elemento explica lo que significa cada símbolo?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e22" data-i="22">
+    <p class="ex-enun" id="ex-e22"><span class="ex-num">23</span>Si el norte está arriba en un mapa, ¿dónde está el este?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e23" data-i="23">
+    <p class="ex-enun" id="ex-e23"><span class="ex-num">24</span>En una gráfica de barras, ¿qué indica la altura de cada barra?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+</fieldset>
+<fieldset class="ex-tema" id="tema-7">
+  <legend>Tema 7 · El párrafo y los tipos de texto</legend>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e24" data-i="24">
+    <p class="ex-enun" id="ex-e24"><span class="ex-num">25</span>¿Cuáles son las tres partes de un párrafo?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e25" data-i="25">
+    <p class="ex-enun" id="ex-e25"><span class="ex-num">26</span>«Quería salir, ____ empezó a llover.»</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e26" data-i="26">
+    <p class="ex-enun" id="ex-e26"><span class="ex-num">27</span>«Creo que la ciudad necesita más parques porque los niños necesitan jugar.» ¿Qué tipo de texto es?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e27" data-i="27">
+    <p class="ex-enun" id="ex-e27"><span class="ex-num">28</span>«Los niños juega en el parque.» ¿Qué error tiene?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+</fieldset>
+<fieldset class="ex-tema" id="tema-8">
+  <legend>Tema 8 · Comunicación, tecnología y proyecto final</legend>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e28" data-i="28">
+    <p class="ex-enun" id="ex-e28"><span class="ex-num">29</span>«Entonces, lo que dices es que tu horario te complica.» ¿Qué hace esta frase de escucha activa?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e29" data-i="29">
+    <p class="ex-enun" id="ex-e29"><span class="ex-num">30</span>¿Qué atajo de teclado deshace la última acción?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e30" data-i="30">
+    <p class="ex-enun" id="ex-e30"><span class="ex-num">31</span>En una presentación de 3 minutos, ¿cuánto dura más o menos la apertura?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+  <div class="ex-preg" role="group" aria-labelledby="ex-e31" data-i="31">
+    <p class="ex-enun" id="ex-e31"><span class="ex-num">32</span>¿Qué conviene hacer en lugar de decir «eh…» mientras piensas?</p>
+    <div class="ex-ops"></div>
+    <div class="ex-explica" role="status"></div>
+  </div>
+</fieldset>
+
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="ver-resultado">Ver mi resultado</button>
+</div>
+<p class="aviso" id="aviso-faltan" role="status" hidden></p>
+</div>
+
+<section id="resultado" aria-labelledby="titulo-res" tabindex="-1">
+  <h2 id="titulo-res">Mi resultado</h2>
+  <div class="res-total" id="res-total"></div>
+  <table class="res-tabla">
+    <caption class="sr-solo">Aciertos por tema</caption>
+    <thead><tr><th scope="col">Tema</th><th scope="col">Aciertos</th><th scope="col" class="no-imprimir">Progreso</th></tr></thead>
+    <tbody id="res-temas"></tbody>
+  </table>
+  <div id="res-repaso"></div>
+  <div class="botones">
+    <button type="button" class="btn btn-primario" id="imprimir">🖨️ Imprimir mi resumen</button>
+    <button type="button" class="btn btn-secundario" id="ver-respuestas">Ver las preguntas corregidas</button>
+    <button type="button" class="btn btn-secundario" id="reintentar">Volver a empezar</button>
+  </div>
+</section>
+
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Evaluación final</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+  <p class="no-imprimir"><a href="https://zhemaria.github.io/clases_leng1/clase_8-6.html">← Volver a la Lección 8.6</a></p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al comienzo de la evaluación"><span aria-hidden="true">↑</span> Inicio</a>
+
+<script>
+(function(){
+  var P=[{"tema": 1, "t": "¿Cuál es la letra mayúscula de «ñ»?", "o": ["Ñ", "N", "M"], "c": 0, "lec": "1.1", "ancla": "s-1-el-abecedario-espanol", "sec": "El abecedario español", "e": "La ñ mayúscula es Ñ: conserva la virgulilla.", "url": "https://zhemaria.github.io/clases_leng1/clase_1-1.html#s-1-el-abecedario-espanol", "titulo": "Lección 1.1 · El alfabeto: letras mayúsculas y minúsculas"}, {"tema": 1, "t": "¿Cuántas letras tiene el abecedario español?", "o": ["27", "26", "30"], "c": 0, "lec": "1.1", "ancla": "s-1-el-abecedario-espanol", "sec": "El abecedario español", "e": "Son 27 letras: las 26 del abecedario latino más la ñ.", "url": "https://zhemaria.github.io/clases_leng1/clase_1-1.html#s-1-el-abecedario-espanol", "titulo": "Lección 1.1 · El alfabeto: letras mayúsculas y minúsculas"}, {"tema": 1, "t": "En español, ¿en qué dirección se lee una línea de texto?", "o": ["De izquierda a derecha", "De derecha a izquierda", "De abajo hacia arriba"], "c": 0, "lec": "1.2", "ancla": "s-1-direccion-de-la-lectura", "sec": "La dirección de la lectura", "e": "Se lee de izquierda a derecha y de arriba abajo.", "url": "https://zhemaria.github.io/clases_leng1/clase_1-2.html#s-1-direccion-de-la-lectura", "titulo": "Lección 1.2 · La dirección de la lectura y la estructura de la oración"}, {"tema": 1, "t": "En «Mi hermana cocina arroz con pollo», ¿cuál es el sujeto?", "o": ["Mi hermana", "cocina arroz", "con pollo"], "c": 0, "lec": "1.2", "ancla": "s-2-sujeto-y-predicado", "sec": "Sujeto y predicado", "e": "El sujeto es quien hace la acción: «Mi hermana». Lo demás es el predicado.", "url": "https://zhemaria.github.io/clases_leng1/clase_1-2.html#s-2-sujeto-y-predicado", "titulo": "Lección 1.2 · La dirección de la lectura y la estructura de la oración"}, {"tema": 2, "t": "¿Cuántas sílabas tiene «mariposa»?", "o": ["4", "3", "5"], "c": 0, "lec": "2.1", "ancla": "s-2-silabas-y-rimas", "sec": "Sílabas y rimas", "e": "ma-ri-po-sa: cuatro sílabas.", "url": "https://zhemaria.github.io/clases_leng1/clase_2-1.html#s-2-silabas-y-rimas", "titulo": "Lección 2.1 · Conciencia fonológica: rimas, sílabas y fonemas"}, {"tema": 2, "t": "¿Qué palabra rima con «canción»?", "o": ["corazón", "cantar", "canasta"], "c": 0, "lec": "2.1", "ancla": "s-2-silabas-y-rimas", "sec": "Sílabas y rimas", "e": "«Canción» y «corazón» terminan con el mismo sonido: -ón.", "url": "https://zhemaria.github.io/clases_leng1/clase_2-1.html#s-2-silabas-y-rimas", "titulo": "Lección 2.1 · Conciencia fonológica: rimas, sílabas y fonemas"}, {"tema": 2, "t": "¿Qué es decodificar?", "o": ["Convertir las letras en sonidos y unirlos para leer una palabra", "Escribir muy rápido", "Copiar un texto"], "c": 0, "lec": "2.2", "ancla": "s-1-decodificar", "sec": "¿Qué es decodificar?", "e": "Decodificar es pasar de las letras a los sonidos y unirlos.", "url": "https://zhemaria.github.io/clases_leng1/clase_2-2.html#s-1-decodificar", "titulo": "Lección 2.2 · Decodificación de palabras de una y dos sílabas"}, {"tema": 2, "t": "¿Qué ayuda más a leer con fluidez?", "o": ["Leer en voz alta y repetir el mismo texto varias veces", "Leer cada palabra letra por letra siempre", "Saltarse las palabras cortas"], "c": 0, "lec": "2.3", "ancla": "s-2-fluidez", "sec": "Estrategias para la fluidez", "e": "La lectura repetida y en voz alta da ritmo y seguridad.", "url": "https://zhemaria.github.io/clases_leng1/clase_2-3.html#s-2-fluidez", "titulo": "Lección 2.3 · Palabras de uso frecuente y fluidez inicial"}, {"tema": 3, "t": "En «El perro negro duerme», ¿cuál es el adjetivo?", "o": ["negro", "perro", "duerme"], "c": 0, "lec": "3.1", "ancla": "s-2-adjetivos", "sec": "Los adjetivos", "e": "«Negro» dice cómo es el perro: es un adjetivo.", "url": "https://zhemaria.github.io/clases_leng1/clase_3-1.html#s-2-adjetivos", "titulo": "Lección 3.1 · Conociendo los sustantivos y los adjetivos"}, {"tema": 3, "t": "¿Cuál está bien?", "o": ["Las casas blancas", "Las casas blanco", "La casas blancas"], "c": 0, "lec": "3.2", "ancla": "s-1-genero-numero", "sec": "El género y el número", "e": "Artículo, sustantivo y adjetivo concuerdan: femenino y plural.", "url": "https://zhemaria.github.io/clases_leng1/clase_3-2.html#s-1-genero-numero", "titulo": "Lección 3.2 · La regla de oro: la concordancia"}, {"tema": 3, "t": "«Mañana ____ a la clínica.» ¿Qué forma está en futuro?", "o": ["iré", "fui", "voy"], "c": 0, "lec": "3.4", "ancla": "s-1-tiempo-verbal", "sec": "El tiempo verbal", "e": "«Iré» es futuro; «fui», pasado; «voy», presente.", "url": "https://zhemaria.github.io/clases_leng1/clase_3-4.html#s-1-tiempo-verbal", "titulo": "Lección 3.4 · Los tiempos verbales: presente, pasado y futuro"}, {"tema": 3, "t": "¿Cuál es un fragmento (no es una oración completa)?", "o": ["Después de la reunión del martes.", "Llegué tarde.", "Comimos juntos."], "c": 0, "lec": "3.5", "ancla": "s-2-fragmento", "sec": "¿Qué es un fragmento?", "e": "No tiene verbo ni expresa una idea completa.", "url": "https://zhemaria.github.io/clases_leng1/clase_3-5.html#s-2-fragmento", "titulo": "Lección 3.5 · Oración completa frente a fragmento"}, {"tema": 4, "t": "Antes de leer un cuento, miras el título y la imagen y dices de qué tratará. ¿Qué estrategia usas?", "o": ["Predecir", "Resumir", "Aclarar"], "c": 0, "lec": "4.1", "ancla": "s-1-ciclo", "sec": "El ciclo de la lectura activa", "e": "Anticipar el contenido antes de leer es predecir.", "url": "https://zhemaria.github.io/clases_leng1/clase_4-1.html#s-1-ciclo", "titulo": "Lección 4.1 · Predecir y preguntar antes de leer"}, {"tema": 4, "t": "«Las frutas tienen vitaminas. El mango tiene vitamina C. La naranja también.» ¿Cuál es la idea principal?", "o": ["Las frutas tienen vitaminas.", "El mango tiene vitamina C.", "La naranja también."], "c": 0, "lec": "4.3", "ancla": "s-1-idea", "sec": "¿Qué es la idea principal?", "e": "Es la más general: las otras son ejemplos.", "url": "https://zhemaria.github.io/clases_leng1/clase_4-3.html#s-1-idea", "titulo": "Lección 4.3 · A la caza de la idea principal"}, {"tema": 4, "t": "«El médico recetó un analgésico, es decir, una medicina para el dolor.» ¿Qué clave de contexto hay?", "o": ["Definición", "Antónimo", "Ejemplo"], "c": 0, "lec": "4.5", "ancla": "s-2-tipos", "sec": "Los tipos de claves de contexto", "e": "«Es decir» introduce una definición.", "url": "https://zhemaria.github.io/clases_leng1/clase_4-5.html#s-2-tipos", "titulo": "Lección 4.5 · Descubrir significados con claves de contexto"}, {"tema": 4, "t": "¿Qué significa el prefijo «des-» en «deshacer»?", "o": ["Lo contrario", "Otra vez", "Antes"], "c": 0, "lec": "4.6", "ancla": "s-2-prefijos", "sec": "Prefijos comunes", "e": "«Deshacer» es lo contrario de hacer.", "url": "https://zhemaria.github.io/clases_leng1/clase_4-6.html#s-2-prefijos", "titulo": "Lección 4.6 · La anatomía de las palabras: raíces y afijos"}, {"tema": 5, "t": "Rosa tiene miedo de hablar en las reuniones. ¿Qué tipo de conflicto es?", "o": ["Interno", "Externo"], "c": 0, "lec": "5.1", "ancla": "s-2-roles", "sec": "Roles, rasgos y conflictos", "e": "La lucha está dentro de ella: es interno.", "url": "https://zhemaria.github.io/clases_leng1/clase_5-1.html#s-2-roles", "titulo": "Lección 5.1 · Los personajes y sus conflictos"}, {"tema": 5, "t": "«Pongo el arroz a cocinar. ____, pico la cebolla.» Las dos cosas pasan a la vez.", "o": ["Mientras tanto", "Primero", "Finalmente"], "c": 0, "lec": "5.3", "ancla": "s-2-cinco", "sec": "Los cinco conectores principales", "e": "«Mientras tanto» indica acciones simultáneas.", "url": "https://zhemaria.github.io/clases_leng1/clase_5-3.html#s-2-cinco", "titulo": "Lección 5.3 · El orden de los eventos: palabras de secuencia"}, {"tema": 5, "t": "«Las calles se inundaron porque llovió toda la noche.» ¿Cuál es la causa?", "o": ["Llovió toda la noche", "Las calles se inundaron"], "c": 0, "lec": "5.5", "ancla": "s-1-causa", "sec": "La causa y el efecto", "e": "La causa produce el efecto, aunque se mencione después.", "url": "https://zhemaria.github.io/clases_leng1/clase_5-5.html#s-1-causa", "titulo": "Lección 5.5 · La relación de causa y efecto"}, {"tema": 5, "t": "«Yo trabajo de día, ____ mi esposo trabaja de noche.» ¿Qué conector marca la diferencia?", "o": ["mientras que", "al igual que", "asimismo"], "c": 0, "lec": "5.6", "ancla": "s-2-venn", "sec": "Las palabras de transición", "e": "«Mientras que» es un conector de contraste.", "url": "https://zhemaria.github.io/clases_leng1/clase_5-6.html#s-2-venn", "titulo": "Lección 5.6 · Comparar y contrastar información"}, {"tema": 6, "t": "En un artículo, ¿qué texto va debajo de una foto y la explica?", "o": ["El pie de foto", "El título", "El subtítulo"], "c": 0, "lec": "6.2", "ancla": "s-2-anatomia", "sec": "Anatomía de un artículo", "e": "El pie de foto explica la imagen.", "url": "https://zhemaria.github.io/clases_leng1/clase_6-2.html#s-2-anatomia", "titulo": "Lección 6.2 · Las características del texto informativo visual"}, {"tema": 6, "t": "En un mapa, ¿qué elemento explica lo que significa cada símbolo?", "o": ["La leyenda", "La escala", "La rosa de los vientos"], "c": 0, "lec": "6.3", "ancla": "s-2-elementos", "sec": "Los cuatro elementos clave", "e": "La leyenda traduce los símbolos.", "url": "https://zhemaria.github.io/clases_leng1/clase_6-3.html#s-2-elementos", "titulo": "Lección 6.3 · La anatomía de los mapas"}, {"tema": 6, "t": "Si el norte está arriba en un mapa, ¿dónde está el este?", "o": ["A la derecha", "A la izquierda", "Abajo"], "c": 0, "lec": "6.3", "ancla": "s-2-elementos", "sec": "La rosa de los vientos", "e": "Norte arriba, sur abajo, este a la derecha, oeste a la izquierda.", "url": "https://zhemaria.github.io/clases_leng1/clase_6-3.html#s-2-elementos", "titulo": "Lección 6.3 · La anatomía de los mapas"}, {"tema": 6, "t": "En una gráfica de barras, ¿qué indica la altura de cada barra?", "o": ["El valor de esa categoría", "El nombre de la categoría", "El título"], "c": 0, "lec": "6.5", "ancla": "s-2-duelo", "sec": "Anatomía de la gráfica de barras", "e": "A mayor altura, mayor valor.", "url": "https://zhemaria.github.io/clases_leng1/clase_6-5.html#s-2-duelo", "titulo": "Lección 6.5 · El duelo de las gráficas: barras y pastel"}, {"tema": 7, "t": "¿Cuáles son las tres partes de un párrafo?", "o": ["Oración principal, oraciones de apoyo y oración de cierre", "Título, foto y pie", "Sujeto, verbo y punto"], "c": 0, "lec": "7.1", "ancla": "s-2-hamburguesa", "sec": "La técnica de la hamburguesa", "e": "Pan de arriba, relleno y pan de abajo.", "url": "https://zhemaria.github.io/clases_leng1/clase_7-1.html#s-2-hamburguesa", "titulo": "Lección 7.1 · El párrafo y la técnica de la hamburguesa"}, {"tema": 7, "t": "«Quería salir, ____ empezó a llover.»", "o": ["pero", "y", "porque"], "c": 0, "lec": "7.2", "ancla": "s-2-conectores", "sec": "Los conectores básicos", "e": "«Pero» marca un contraste.", "url": "https://zhemaria.github.io/clases_leng1/clase_7-2.html#s-2-conectores", "titulo": "Lección 7.2 · Cualidades del párrafo y conectores básicos"}, {"tema": 7, "t": "«Creo que la ciudad necesita más parques porque los niños necesitan jugar.» ¿Qué tipo de texto es?", "o": ["De opinión", "Narrativo", "Informativo"], "c": 0, "lec": "7.4", "ancla": "s-1-opinion", "sec": "El texto de opinión", "e": "Expresa lo que alguien piensa y da una razón.", "url": "https://zhemaria.github.io/clases_leng1/clase_7-4.html#s-1-opinion", "titulo": "Lección 7.4 · El texto de opinión y la comparación de los tres tipos"}, {"tema": 7, "t": "«Los niños juega en el parque.» ¿Qué error tiene?", "o": ["De concordancia", "Falta la mayúscula", "Falta el punto"], "c": 0, "lec": "7.6", "ancla": "s-2-proceso", "sec": "El proceso de revisión", "e": "Debe ser «los niños juegan»: sujeto plural, verbo plural.", "url": "https://zhemaria.github.io/clases_leng1/clase_7-6.html#s-2-proceso", "titulo": "Lección 7.6 · El proceso de revisión"}, {"tema": 8, "t": "«Entonces, lo que dices es que tu horario te complica.» ¿Qué hace esta frase de escucha activa?", "o": ["Parafrasear", "Interrumpir", "Cambiar de tema"], "c": 0, "lec": "8.1", "ancla": "s-3-frases", "sec": "Frases de escucha activa", "e": "Repetir con tus palabras para comprobar que entendiste.", "url": "https://zhemaria.github.io/clases_leng1/clase_8-1.html#s-3-frases", "titulo": "Lección 8.1 · Fundamentos de la comunicación y escucha activa"}, {"tema": 8, "t": "¿Qué atajo de teclado deshace la última acción?", "o": ["Ctrl + Z", "Ctrl + C", "Ctrl + V"], "c": 0, "lec": "8.3", "ancla": "s-3-atajos", "sec": "Atajos de teclado", "e": "Ctrl + Z deshace.", "url": "https://zhemaria.github.io/clases_leng1/clase_8-3.html#s-3-atajos", "titulo": "Lección 8.3 · Alfabetización tecnológica y vocabulario digital"}, {"tema": 8, "t": "En una presentación de 3 minutos, ¿cuánto dura más o menos la apertura?", "o": ["30 segundos", "2 minutos", "10 segundos"], "c": 0, "lec": "8.4", "ancla": "s-1-estructura", "sec": "La estructura del discurso", "e": "Regla del 30-120-30.", "url": "https://zhemaria.github.io/clases_leng1/clase_8-4.html#s-1-estructura", "titulo": "Lección 8.4 · Presentación oral breve"}, {"tema": 8, "t": "¿Qué conviene hacer en lugar de decir «eh…» mientras piensas?", "o": ["Hacer un silencio breve", "Hablar más rápido", "Repetir la última palabra"], "c": 0, "lec": "8.4", "ancla": "s-4-muletillas", "sec": "Las muletillas", "e": "Un silencio breve se ve como reflexión, no como duda.", "url": "https://zhemaria.github.io/clases_leng1/clase_8-4.html#s-4-muletillas", "titulo": "Lección 8.4 · Presentación oral breve"}], TEMAS={"1": "El alfabeto y la dirección de la lectura", "2": "Conciencia fonológica y fluidez", "3": "La oración: sustantivo, adjetivo, verbo y puntuación", "4": "Estrategias de comprensión y vocabulario", "5": "El texto narrativo y las relaciones entre ideas", "6": "Información visual: imágenes, mapas, tablas y gráficas", "7": "El párrafo y los tipos de texto", "8": "Comunicación, tecnología y proyecto final"}, META=0.8;
+  var elegidas={}, corregido=false;
+  function barajar(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function pintar(){
+    document.querySelectorAll('.ex-preg').forEach(function(d){
+      var i=+d.dataset.i, p=P[i], g=d.querySelector('.ex-ops'); g.innerHTML='';
+      barajar(p.o.map(function(_,j){return j;})).forEach(function(j){
+        var b=document.createElement('button'); b.type='button'; b.className='ex-op'; b.innerHTML=p.o[j]; b.dataset.j=j; b.setAttribute('aria-pressed','false');
+        b.addEventListener('click',function(){
+          if(corregido)return;
+          g.querySelectorAll('.ex-op').forEach(function(x){x.setAttribute('aria-pressed','false');});
+          b.setAttribute('aria-pressed','true'); elegidas[i]=j;
+        });
+        g.appendChild(b);
+      });
+      var ex=d.querySelector('.ex-explica'); ex.className='ex-explica'; ex.innerHTML='';
+    });
+  }
+  function esc(s){return String(s).replace(/<[^>]+>/g,'');}
+  document.getElementById('ver-resultado').addEventListener('click',function(){
+    var faltan=P.length-Object.keys(elegidas).length, aviso=document.getElementById('aviso-faltan');
+    if(faltan>0 && !aviso.dataset.avisado){
+      aviso.hidden=false; aviso.dataset.avisado='1';
+      aviso.textContent='Te '+(faltan===1?'falta 1 pregunta':'faltan '+faltan+' preguntas')+' por contestar. Si quieres ver el resultado así, pulsa otra vez «Ver mi resultado»; las que no contestes cuentan como no acertadas.';
+      return;
+    }
+    corregido=true;
+    var bien=0, porTema={}, falladas=[];
+    Object.keys(TEMAS).forEach(function(t){porTema[t]={b:0,n:0};});
+    P.forEach(function(p,i){
+      var ok=elegidas[i]===p.c; porTema[p.tema].n++; if(ok){bien++;porTema[p.tema].b++;} else falladas.push(i);
+      var d=document.querySelector('.ex-preg[data-i="'+i+'"]');
+      d.querySelectorAll('.ex-op').forEach(function(x){var j=+x.dataset.j; x.disabled=true; if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');});
+      var ex=d.querySelector('.ex-explica'); ex.classList.add('visible');
+      ex.innerHTML=(ok?'✅ ':'❌ ')+p.e+(ok?'':' <a href="'+p.url+'" target="_blank" rel="noopener">Repasa: '+p.titulo+' → '+p.sec+'</a>');
+    });
+    var pct=bien/P.length, tot=document.getElementById('res-total');
+    tot.textContent=(pct>=META?'🎉 ':'📘 ')+'Acertaste '+bien+' de '+P.length+' ('+Math.round(pct*100)+' %). '+(pct>=META?'¡Dominas el Nivel 1! Puedes seguir adelante con confianza.':'Vas por buen camino. Repasa las lecciones de tu resumen y vuelve a intentarlo.');
+    tot.style.background=pct>=META?'#e8f5e9':'#fff3e0'; tot.style.color=pct>=META?'#155724':'#5c3900';
+    var tb=document.getElementById('res-temas'); tb.innerHTML='';
+    Object.keys(TEMAS).forEach(function(t){
+      var r=porTema[t], baja=r.b/r.n<META;
+      tb.insertAdjacentHTML('beforeend','<tr><td>Tema '+t+' · '+TEMAS[t]+'</td><td>'+r.b+' de '+r.n+'</td><td class="no-imprimir"><div class="barra'+(baja?' baja':'')+'" aria-hidden="true"><span style="width:'+(100*r.b/r.n)+'%"></span></div></td></tr>');
+    });
+    var rep=document.getElementById('res-repaso');
+    if(!falladas.length){ rep.innerHTML='<div class="repaso"><h3>🌟 No hay nada que repasar</h3><p style="margin:0">Acertaste todas las preguntas. ¡Felicidades!</p></div>'; }
+    else{
+      var grupos={}, orden=[];
+      falladas.forEach(function(i){var p=P[i]; if(!grupos[p.lec]){grupos[p.lec]=[];orden.push(p.lec);} grupos[p.lec].push(i);});
+      orden.sort(function(a,b){var x=a.split('.'),y=b.split('.');return (x[0]-y[0])||(x[1]-y[1]);});
+      var h='<div class="repaso"><h3>📌 Lo que me conviene repasar</h3><p>Cada enlace te lleva a la sección exacta de la lección que explica ese punto.</p><ul>';
+      orden.forEach(function(l){
+        grupos[l].forEach(function(i){var p=P[i];
+          h+='<li><a href="'+p.url+'" target="_blank" rel="noopener"><strong>'+p.titulo+'</strong> → '+p.sec+'</a><span class="preg-fallada">Pregunta: '+esc(p.t)+'</span></li>';
+        });
+      });
+      rep.innerHTML=h+'</ul></div>';
+    }
+    document.getElementById('fecha-imp').textContent=new Date().toLocaleDateString('es-US',{year:'numeric',month:'long',day:'numeric'});
+    document.getElementById('examen').hidden=true;
+    var res=document.getElementById('resultado'); res.classList.add('visible'); res.focus(); res.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  document.getElementById('imprimir').addEventListener('click',function(){window.print();});
+  document.getElementById('ver-respuestas').addEventListener('click',function(){var ex=document.getElementById('examen'); ex.hidden=false; document.querySelector('#examen .botones').style.display='none'; ex.scrollIntoView({behavior:'smooth'});});
+  document.getElementById('reintentar').addEventListener('click',function(){
+    elegidas={}; corregido=false; pintar();
+    var ex=document.getElementById('examen'); ex.hidden=false; document.querySelector('#examen .botones').style.display='';
+    var av=document.getElementById('aviso-faltan'); av.hidden=true; delete av.dataset.avisado;
+    document.getElementById('resultado').classList.remove('visible'); window.scrollTo({top:0,behavior:'smooth'});
+  });
+  pintar();
+})();
+</script>
+
+</body>
+</html>

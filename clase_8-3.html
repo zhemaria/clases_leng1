@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 8.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 3: Alfabetización tecnológica y vocabulario digital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 8.3 · Alfabetización tecnológica y vocabulario digital</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -152,40 +158,123 @@
   .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
   .badge-discusion{background:#f3e5f5;color:#6a1b9a}
   .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  button.paso-orden{width:100%;text-align:left;font:inherit;color:inherit}
+  button.paso-orden:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
 </style>
 </head>
 <body>
 
-<h1>Clase 3: Alfabetización tecnológica y vocabulario digital</h1>
-<p class="subtitulo">Tema 8 · Lección 8.2 · Nivel 1 · Semana 16 · 50 minutos</p>
+<h1>Lección 8.3 · Alfabetización tecnológica y vocabulario digital</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 8 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Reconocer las <strong>partes básicas de la computadora</strong> con su nombre correcto.</li>
     <li>Aprender el <strong>vocabulario digital</strong> esencial: ventana, pestaña, ícono, cursor, archivo, carpeta.</li>
     <li>Usar los <strong>atajos de teclado</strong> más comunes: copiar, pegar, deshacer, guardar.</li>
-    <li>Subir una tarea y participar en un foro dentro de <strong>Brightspace</strong>.</li>
+    <li>Moverte por las lecciones de <strong>GEDparaHispanos</strong> y conocer los pasos para crear tu cuenta en <strong>GED.com</strong>.</li>
   </ul>
 </div>
 
-<h2>📚 Bienvenida a la Lección 8.2</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-partes">Las partes de la computadora</a></li>
+    <li><a href="#s-2-vocabulario">Vocabulario digital esencial</a></li>
+    <li><a href="#s-3-atajos">Atajos de teclado</a></li>
+    <li><a href="#s-4-paso-a-paso">GEDparaHispanos y GED.com paso a paso</a></li>
+    <li><a href="#s-5-emparejar">Actividad: empareja cada elemento</a></li>
+    <li><a href="#s-6-correo">Actividad: ordena los pasos de un correo</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Hoy abrimos la <strong>Lección 8.2: Alfabetización tecnológica y presentación oral breve</strong>. En esta clase nos enfocamos en la primera mitad: la tecnología. En la próxima clase usaremos lo aprendido para preparar una <strong>presentación oral</strong> con apoyo digital.</p>
+<h2>📚 Para empezar</h2>
 
-<p>La <span class="palabra-clave">alfabetización tecnológica</span> es la capacidad de usar herramientas digitales con propósito. No se trata de ser un experto en computación, sino de manejar lo básico con confianza: <em>abrir una ventana, copiar un texto, enviar un archivo, subir una tarea</em>. Estas habilidades ya son necesarias en cualquier trabajo, y sobre todo lo serán para el examen GED, que se realiza en computadora.</p>
+<p>La <span class="palabra-clave">alfabetización tecnológica</span> es la capacidad de usar herramientas digitales con un propósito. No se trata de ser un experto en computación, sino de manejar lo básico con confianza: <em>abrir una ventana, copiar un texto, enviar un correo, guardar un archivo</em>. Estas habilidades ya son necesarias en casi cualquier trabajo, y lo serán también el día del examen GED, que se hace en computadora.</p>
 
 <div class="clave-pedagogica">
-  <strong>🧠 Clave de la clase:</strong> No hace falta saberlo todo. Lo que sí hace falta es <em>conocer las palabras correctas</em> para describir lo que vemos en la pantalla. Si sé decir «se cerró la ventana» en lugar de «se cerró eso», puedo pedir ayuda con precisión y entender un manual o un video tutorial.
+  <strong>🧠 Clave de la lección:</strong> no hace falta saberlo todo. Lo que sí hace falta es <em>conocer las palabras correctas</em> para describir lo que ves en la pantalla. Si sabes decir «se cerró la ventana» en lugar de «se cerró eso», puedes pedir ayuda con precisión y entender un manual o un video tutorial.
 </div>
 
-<details open>
+<details open id="s-1-partes">
 <summary>1. Las partes de la computadora <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Hardware: lo que se puede tocar</h3>
 
-<p>La palabra <span class="palabra-clave">hardware</span> se refiere a las partes <strong>físicas</strong> de la computadora: lo que se puede tocar con la mano. Estas son las cinco partes que todo estudiante debe poder nombrar:</p>
+<p>La palabra <span class="palabra-clave">hardware</span> se refiere a las partes <strong>físicas</strong> de la computadora: lo que se puede tocar con la mano. Estas son las partes que conviene saber nombrar:</p>
 
 <div class="computadora-diag">
   <h4>🖥️ Partes principales de una computadora de escritorio</h4>
@@ -207,8 +296,8 @@
     </div>
     <div class="parte">
       <span class="icono-parte">📦</span>
-      <span class="nombre-parte">Torre o CPU</span>
-      <span class="desc-parte">La caja que contiene el «cerebro» y la memoria de la computadora.</span>
+      <span class="nombre-parte">Torre</span>
+      <span class="desc-parte">La caja que guarda el procesador (el «cerebro») y la memoria. Mucha gente la llama «el CPU», aunque el CPU es solo el procesador que va adentro.</span>
     </div>
     <div class="parte">
       <span class="icono-parte">🖨️</span>
@@ -228,25 +317,25 @@
 <p>En una <strong>laptop</strong>, el monitor, el teclado y el ratón (en forma de <em>touchpad</em>) están todos integrados en un solo aparato. En un <strong>celular o tablet</strong>, la pantalla es a la vez el monitor y el «teclado» (toque virtual). El vocabulario sigue siendo el mismo: aunque en un celular no haya teclado físico, igual decimos «el teclado del celular» cuando hablamos de las letras que aparecen al fondo.</p>
 
 <div class="tip">
-  <strong>📝 Software:</strong> Mientras el <em>hardware</em> es lo físico, el <span class="palabra-clave">software</span> es lo que no se toca: los programas, aplicaciones y archivos que viven dentro de la computadora. Brightspace es software. Word es software. Internet Explorer es software.
+  <strong>📝 Software:</strong> Mientras el <em>hardware</em> es lo físico, el <span class="palabra-clave">software</span> es lo que no se toca: los programas, aplicaciones y archivos que viven dentro de la computadora. Esta página es parte de un software (el navegador). Word es software. Chrome es software.
 </div>
 
 </div>
 </details>
 
-<details>
+<details id="s-2-vocabulario">
 <summary>2. Vocabulario digital esencial <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Diez palabras que todo estudiante debe conocer</h3>
+<h3>Diez palabras que conviene conocer</h3>
 
-<p>Estas son las diez palabras del vocabulario digital que más usaremos en clase y en el examen GED. Léalas con atención: en el quiz final aparecerán varias.</p>
+<p>Estas son diez palabras del vocabulario digital que vas a usar a menudo, también el día del examen GED. Léelas con atención: varias aparecen en el quiz.</p>
 
 <div class="glosario-grid">
   <div class="termino-glos">
     <span class="palabra"><span class="icono-glos">🪟</span>Ventana</span>
     <span class="definicion">El marco rectangular donde se ve un programa o documento.</span>
-    <span class="ej-glos"><em>Abrí dos ventanas: una con el correo y otra con Brightspace.</em></span>
+    <span class="ej-glos"><em>Abrí dos ventanas: una con el correo y otra con esta lección.</em></span>
   </div>
   <div class="termino-glos">
     <span class="palabra"><span class="icono-glos">📑</span>Pestaña</span>
@@ -256,7 +345,7 @@
   <div class="termino-glos">
     <span class="palabra"><span class="icono-glos">🔘</span>Ícono</span>
     <span class="definicion">Una imagen pequeña que representa un programa o archivo.</span>
-    <span class="ej-glos"><em>Haz doble clic en el ícono de Brightspace.</em></span>
+    <span class="ej-glos"><em>Haz doble clic en el ícono del navegador.</em></span>
   </div>
   <div class="termino-glos">
     <span class="palabra"><span class="icono-glos">➡️</span>Cursor</span>
@@ -291,15 +380,15 @@
   <div class="termino-glos">
     <span class="palabra"><span class="icono-glos">📤</span>Subir / 📥 Descargar</span>
     <span class="definicion">Subir: enviar un archivo a internet. Descargar: traer un archivo de internet a la computadora.</span>
-    <span class="ej-glos"><em>Sube la tarea a Brightspace. Descarga el PDF del profesor.</em></span>
+    <span class="ej-glos"><em>Sube la foto de tu documento al formulario. Descarga el PDF de la escuela.</em></span>
   </div>
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>3. Atajos de teclado: trucos que ahorran tiempo <span class="caja-tiempo">8 min</span></summary>
+<details id="s-3-atajos">
+<summary>3. Atajos de teclado <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué es un atajo de teclado?</h3>
@@ -311,8 +400,8 @@
   <table class="atajos-tabla">
     <thead>
       <tr>
-        <th>Atajo</th>
-        <th>¿Qué hace?</th>
+        <th scope="col">Atajo</th>
+        <th scope="col">¿Qué hace?</th>
       </tr>
     </thead>
     <tbody>
@@ -350,145 +439,164 @@
 
 <h3>En la Mac es diferente</h3>
 
-<p>Si su computadora es una <strong>Mac</strong> (de la marca Apple), use la tecla <span class="tecla">⌘ Cmd</span> en lugar de <span class="tecla">Ctrl</span>. Por ejemplo, <strong>copiar</strong> en Mac se hace con <span class="tecla">⌘</span><span class="mas">+</span><span class="tecla">C</span>. Las letras son las mismas; solo cambia la tecla principal.</p>
+<p>Si tu computadora es una <strong>Mac</strong> (de la marca Apple), usa la tecla <span class="tecla">⌘ Cmd</span> en lugar de <span class="tecla">Ctrl</span>. Por ejemplo, <strong>copiar</strong> en Mac se hace con <span class="tecla">⌘</span><span class="mas">+</span><span class="tecla">C</span>. Las letras son las mismas; solo cambia la tecla principal.</p>
 
 </div>
 </details>
 
-<details>
-<summary>4. Brightspace paso a paso <span class="caja-tiempo">10 min</span></summary>
+<details id="s-4-paso-a-paso">
+<summary>4. GEDparaHispanos y GED.com paso a paso <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Las dos acciones más importantes en Brightspace</h3>
-
-<p>En este curso, las dos cosas que harás constantemente en Brightspace son: <strong>subir una tarea</strong> y <strong>participar en un foro</strong>. Veamos los pasos exactos para cada una.</p>
-
-<h4 style="color:var(--brightspace-oscuro)">📤 Cómo subir una tarea</h4>
-
+<h3>Cómo moverte por una lección de GEDparaHispanos</h3>
+<p>Ya llevas muchas lecciones, así que muchas de estas cosas te sonarán. Ahora vas a ponerles nombre:</p>
 <div class="proc-cont">
-  <h4>Procedimiento: subir un archivo a una tarea</h4>
+  <h4>Procedimiento: estudiar una lección</h4>
   <ol class="pasos-lista">
-    <li>Abre el <strong>navegador</strong> y entra a Brightspace con tu usuario y contraseña.</li>
-    <li>En el menú superior, haz clic en el nombre del curso <em>(Spanish ASE Language Arts 1)</em>.</li>
-    <li>En el menú lateral, haz clic en <strong>«Actividades»</strong> y luego en <strong>«Tareas»</strong>.</li>
-    <li>Haz clic en el <strong>nombre de la tarea</strong> que tu profesor asignó.</li>
-    <li>Haz clic en el botón <strong>«Agregar un archivo»</strong> o <strong>«Add a File»</strong>.</li>
-    <li>Selecciona el archivo desde tu computadora y haz clic en <strong>«Cargar»</strong>.</li>
-    <li>Cuando veas el nombre del archivo en la pantalla, haz clic en el botón <strong>«Enviar»</strong>.</li>
-    <li>Verifica que aparezca el mensaje <em>«Entrega exitosa»</em>. Si no aparece, la tarea no se envió.</li>
+    <li>Abre el <strong>navegador</strong> y entra a la dirección de la lección (o toca el <strong>enlace</strong> que te llevó a ella).</li>
+    <li>Lee los <strong>objetivos</strong> y mira el <strong>índice</strong>: te dice qué partes tiene la lección.</li>
+    <li>Toca una parte del índice para ir directo a ella. Las partes se <strong>abren y se cierran</strong> al tocar su título.</li>
+    <li>Si te pierdes, toca el botón <strong>↑ Índice</strong>, abajo a la derecha, para volver arriba.</li>
+    <li>Los enlaces de <strong>práctica</strong> se abren en otra <strong>pestaña</strong>. Cuando termines, cierra esa pestaña y sigues donde estabas.</li>
+    <li>Al final, haz la <strong>tarea</strong> en tu cuaderno y el <strong>quiz</strong>. Puedes repetir el quiz las veces que quieras.</li>
   </ol>
 </div>
 
-<h4 style="color:var(--brightspace-oscuro)">💬 Cómo participar en un foro</h4>
-
+<h3>Cómo crear tu cuenta en GED.com</h3>
+<p>Para inscribirte en el examen GED, necesitas una cuenta en la página oficial, <strong>GED.com</strong>. Las pantallas pueden cambiar con el tiempo, pero los pasos generales son estos:</p>
 <div class="proc-cont">
-  <h4>Procedimiento: publicar un post en el foro</h4>
+  <h4>Procedimiento: crear tu cuenta</h4>
   <ol class="pasos-lista">
-    <li>Dentro del curso en Brightspace, haz clic en <strong>«Comunicación»</strong> en el menú lateral.</li>
-    <li>Haz clic en <strong>«Foros de discusión»</strong> o <strong>«Discussions»</strong>.</li>
-    <li>Elige el foro de esta semana (por ejemplo, <em>«Lección 8.1 — Mi opinión sobre el texto»</em>).</li>
-    <li>Haz clic en <strong>«Comenzar un nuevo hilo»</strong> o <strong>«Start a New Thread»</strong>.</li>
-    <li>Escribe un <strong>título</strong> corto y claro para tu post.</li>
-    <li>Escribe tu mensaje en el cuadro principal. Recuerda usar oraciones completas.</li>
-    <li>Antes de enviar, lee tu post de nuevo para corregir errores.</li>
-    <li>Haz clic en el botón <strong>«Publicar»</strong> o <strong>«Post»</strong>.</li>
+    <li>Abre el navegador y escribe la dirección <strong>ged.com</strong>. Fíjate bien en que sea la página oficial.</li>
+    <li>Busca la opción para cambiar el <strong>idioma</strong> a español, si aparece.</li>
+    <li>Toca el botón para <strong>crear una cuenta</strong> (en inglés suele decir <em lang="en">Sign up</em>).</li>
+    <li>Escribe tus datos con cuidado: nombre completo tal como aparece en tu identificación, fecha de nacimiento y un <strong>correo electrónico</strong> que revises a menudo.</li>
+    <li>Crea una <strong>contraseña</strong> segura y anótala en un lugar seguro.</li>
+    <li>Revisa tu correo: te llegará un mensaje para <strong>confirmar</strong> la cuenta. Toca el enlace del mensaje.</li>
+    <li>Entra a tu cuenta: desde ahí puedes ver los exámenes de práctica y, cuando estés listo, programar tu examen.</li>
   </ol>
 </div>
+<div class="tip"><strong>📝 Cuidado:</strong> crear la cuenta en GED.com es gratis. Desconfía de páginas que te cobren por crearla o que te prometan el diploma sin presentar el examen.</div>
 
 <div class="clave-pedagogica">
-  <strong>💡 Lectura procedimental:</strong> Estos pasos siguen lo que llamamos <em>lectura procedimental</em>: leer un paso, ejecutarlo en pantalla, comprobar que salió bien y solo entonces leer el siguiente. No se trata de leer los ocho pasos seguidos y después intentar recordar.
+  <strong>💡 Lectura de instrucciones:</strong> estos pasos se leen como aprendiste en la Lección 5.4: lees un paso, lo haces en la pantalla, compruebas que salió bien y solo entonces lees el siguiente.
 </div>
-
 </div>
 </details>
 
-<details>
-<summary>5. Actividad: empareja la imagen con su nombre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-5-emparejar">
+<summary>5. Actividad: empareja cada elemento <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<p>Veamos si ya tiene firme el vocabulario nuevo. Para cada elemento de la pantalla, elija el nombre correcto:</p>
+<p>Comprueba si ya tienes firme el vocabulario nuevo. Para cada elemento de la pantalla, elige el nombre correcto:</p>
 
 <div class="empar-cont">
-  <h4>🔤 Empareje cada elemento con su nombre</h4>
+  <h4>🔤 Empareja cada elemento con su nombre</h4>
   <div id="items-empar"></div>
-  <div class="puntaje-empar" id="puntaje-empar">Aciertos: 0 / 6</div>
+  <div class="puntaje-empar" id="puntaje-empar" role="status">Aciertos: 0 / 6</div>
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>6. Actividad: ordene los pasos para enviar un correo <span class="caja-tiempo">5 min</span></summary>
+<details id="s-6-correo">
+<summary>6. Actividad: ordena los pasos de un correo <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<p>Los siguientes seis pasos sirven para enviar un correo electrónico, pero están en desorden. Haga clic en cada paso siguiendo el <strong>orden correcto</strong>, desde el primero hasta el último. Cuando termine los seis, pulse <strong>«Verificar»</strong>.</p>
+<p>Estos seis pasos sirven para enviar un correo electrónico, pero están en desorden. Toca cada paso en el <strong>orden correcto</strong>, del primero al último. Si te equivocas, toca otra vez el paso para quitarlo. Cuando termines los seis, pulsa <strong>«Verificar orden»</strong>.</p>
 
 <div class="orden-cont">
-  <h4>📧 Ordene los pasos para enviar un correo</h4>
-  <p class="orden-instruc">Haga clic en los pasos en el orden correcto (1, 2, 3, 4, 5, 6).</p>
+  <h4>📧 Ordena los pasos para enviar un correo</h4>
+  <p class="orden-instruc">Toca los pasos en el orden correcto (1, 2, 3, 4, 5, 6).</p>
   <div class="pasos-desordenados" id="pasos-orden"></div>
   <div class="botones-orden">
     <button type="button" class="btn-accion-orden btn-verificar" id="btn-verificar">✓ Verificar orden</button>
     <button type="button" class="btn-accion-orden btn-reset" id="btn-reset-orden">↺ Reiniciar</button>
   </div>
-  <div class="retro-orden" id="retro-orden"></div>
+  <div class="retro-orden" id="retro-orden" role="status"></div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l8-3.html#vocabulario-digital" target="_blank" rel="noopener">
+  ✍️ Práctica: Vocabulario digital ↗
+  <span>Más práctica con las palabras de la computadora. En la misma página practicas también <strong>los atajos de teclado</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>7. Modalidades presencial y online <span class="caja-tiempo">3 min</span></summary>
+<details id="s-tarea">
+<summary>7. Tarea <span class="caja-tiempo">40 min</span></summary>
 <div class="contenido-detalle">
-
-<p>Esta clase es particularmente útil para los estudiantes que llevan poco tiempo usando computadoras. Por eso ambas modalidades se enfocan en la <strong>práctica directa</strong>:</p>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">Te enseño a usarlo</span></p>
-    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
-      <li>El profesor proyecta su pantalla y muestra cada paso en vivo.</li>
-      <li>Los estudiantes se sientan en parejas y se turnan: uno hace, otro mira y corrige.</li>
-      <li>Quien ya sabe le explica al compañero con el ratón en mano.</li>
-      <li>Se trabaja en las computadoras del laboratorio de Truman.</li>
-    </ul>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (sincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Compartir pantalla</span></p>
-    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
-      <li>El profesor comparte pantalla y demuestra cada procedimiento.</li>
-      <li>Después, cada estudiante hace lo mismo en su propia computadora.</li>
-      <li>Si alguien se traba, puede pedir ayuda por el chat sin interrumpir.</li>
-      <li>Tarea asincrónica: subir una <strong>captura de pantalla</strong> al foro con una breve descripción.</li>
-    </ul>
-  </div>
+<p><strong>Mi práctica digital.</strong> Haz estas tres cosas en una computadora (la de tu casa, la de la biblioteca o la de un centro comunitario). Si solo tienes celular, haz las que puedas.</p>
+<ul class="lista-bonita">
+  <li><strong>Copiar y pegar:</strong> abre esta lección en una pestaña y un documento en blanco (Word, Google Docs o el bloc de notas) en otra. Copia con <span class="tecla">Ctrl</span>+<span class="tecla">C</span> el párrafo de bienvenida y pégalo con <span class="tecla">Ctrl</span>+<span class="tecla">V</span>. Guarda el documento con un nombre claro, por ejemplo «practica-nivel1».</li>
+  <li><strong>Un correo:</strong> envíale un correo corto a alguien de tu familia o a ti mismo. Escribe un asunto y tres oraciones completas.</li>
+  <li><strong>GED.com:</strong> entra a ged.com y busca la opción para crear una cuenta. Si ya estás listo, créala siguiendo los pasos de la sección 4.</li>
+</ul>
+<p>En tu cuaderno, escribe qué hiciste, qué te costó y qué palabra del vocabulario digital usaste en cada paso.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Mi práctica digital»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Copiar y pegar</td><td class="nivel-4">Copié, pegué y guardé el documento con un nombre claro</td><td class="nivel-1">No pude guardar el documento</td></tr>
+      <tr><td>Correo</td><td class="nivel-4">Envié el correo con asunto y oraciones completas</td><td class="nivel-1">No lo envié o no tenía asunto</td></tr>
+      <tr><td>GED.com</td><td class="nivel-4">Encontré la opción de crear cuenta (o la creé)</td><td class="nivel-1">No entré a la página</td></tr>
+      <tr><td>Vocabulario</td><td class="nivel-4">Anoté las palabras digitales que usé</td><td class="nivel-1">No anoté nada</td></tr>
+    </tbody>
+  </table>
 </div>
-
 </div>
 </details>
 
-<details>
-<summary>8. Quiz final de la clase <span class="caja-tiempo">3 min</span></summary>
+<details id="s-quiz">
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<p>El siguiente quiz repasa el vocabulario y los procedimientos vistos hoy: partes de la computadora, vocabulario digital, atajos de teclado y pasos en Brightspace.</p>
-
-<div class="quiz-cont">
-  <h4>📝 Quiz: vocabulario y procedimientos digitales</h4>
-  <div class="preguntas-quiz" id="preguntas-quiz3"></div>
-  <div class="puntaje" id="puntaje-quiz3">Aciertos: 0 / 6</div>
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
-
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
 </div>
 </details>
+
+<details id="s-cierre">
+<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>El <strong>hardware</strong> es lo que se toca (monitor, teclado, ratón); el <strong>software</strong>, los programas.</li>
+  <li>Conocer el <strong>vocabulario digital</strong> (ventana, pestaña, ícono, enlace, archivo, carpeta) te ayuda a pedir ayuda con precisión.</li>
+  <li>Los <strong>atajos de teclado</strong> (Ctrl + C, V, X, Z, S, A) ahorran tiempo.</li>
+  <li>Para crear tu cuenta en <strong>GED.com</strong>, sigue los pasos uno a uno y guarda tu contraseña.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Qué diferencia hay entre una ventana y una pestaña?</li>
+    <li>¿Qué atajo deshace la última acción?</li>
+    <li>¿Qué significa subir y descargar?</li>
+  </ul>
+</div>
 
 <div class="tip">
-  <strong>👉 ¿Qué viene en la próxima clase?</strong> En la <strong>Clase 4</strong> usaremos todo lo aprendido hoy para preparar una <strong>presentación oral breve</strong> sobre un tema personal o un texto de clase. Veremos cómo organizar un guion, controlar la voz y apoyarnos en la tecnología (compartir pantalla, mostrar una imagen) sin perder el contacto con el público.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_8-4.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.4 · Presentación oral breve</a>. Prepararás una presentación oral de tres minutos y aprenderás a grabarte con el celular para mejorarla.
 </div>
+</div>
+</details>
 
-<p class="firma">Spanish ASE Language Arts 1 · GEDparaHispanos.com · Prof. José M. Fernández</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 8 · Lección 8.3</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -528,7 +636,7 @@
     div.innerHTML=
       '<div class="desc-empar"><span class="icono-grande">'+it.icono+'</span>'+it.desc+'</div>'+
       '<div class="opciones-empar">'+opcHtml+'</div>'+
-      '<div class="retro-empar" id="retro-empar-'+idx+'"></div>';
+      '<div class="retro-empar" id="retro-empar-'+idx+'" role="status"></div>';
     contEmpar.appendChild(div);
 
     var botones=div.querySelectorAll('.btn-empar');
@@ -544,6 +652,7 @@
           r.textContent='✅ '+it.explica;
           r.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-empar-'+idx); r2.textContent='❌ Lee otra vez la descripción y piensa en el vocabulario de la sección 2.'; r2.classList.add('visible');
           b.classList.add('incorrecto');
           setTimeout(function(){b.classList.remove('incorrecto')},500);
         }
@@ -581,7 +690,8 @@
   function renderPasos(){
     contOrden.innerHTML='';
     pasosMezclados.forEach(function(paso,idx){
-      var div=document.createElement('div');
+      var div=document.createElement('button');
+      div.type='button';
       div.className='paso-orden';
       div.setAttribute('data-pos',paso.pos);
       div.setAttribute('data-idx',idx);
@@ -613,7 +723,7 @@
     if(seleccionados.length<pasosCorreo.length){
       var r=document.getElementById('retro-orden');
       r.className='retro-orden visible fallo';
-      r.textContent='Aún faltan pasos por elegir. Marque los '+pasosCorreo.length+' pasos antes de verificar.';
+      r.textContent='Aún faltan pasos por elegir. Marca los '+pasosCorreo.length+' pasos antes de verificar.';
       return;
     }
     var todoBien=true;
@@ -636,7 +746,7 @@
       verificado=true;
     }else{
       r.className='retro-orden visible fallo';
-      r.innerHTML='Algunos pasos están en posición incorrecta (en rojo). Pulse «Reiniciar» e intente de nuevo.';
+      r.innerHTML='Algunos pasos están en una posición incorrecta (en rojo). Pulsa «Reiniciar» e inténtalo de nuevo.';
     }
   });
 
@@ -648,127 +758,73 @@
     renderPasos();
   });
 
-  /* =========================================================
-     QUIZ FINAL DE LA CLASE 3
-     ========================================================= */
-  var preguntas=[
-    {
-      texto:'¿Cómo se llama el aparato físico que mueve el cursor por la pantalla?',
-      opciones:[
-        {t:'Teclado',ok:false},
-        {t:'Monitor',ok:false},
-        {t:'Ratón (o mouse)',ok:true},
-        {t:'Impresora',ok:false}
-      ],
-      explica:'El ratón (mouse) es el dispositivo que controla el cursor. El teclado escribe letras, el monitor muestra la imagen, la impresora pasa al papel.'
-    },
-    {
-      contexto:'Ana abrió Brightspace en una pestaña y, sin cerrarla, abrió Google en otra pestaña diferente del mismo navegador.',
-      texto:'¿Cuántas ventanas y cuántas pestañas tiene abiertas Ana?',
-      opciones:[
-        {t:'Dos ventanas, una pestaña en cada una.',ok:false},
-        {t:'Una ventana, dos pestañas.',ok:true},
-        {t:'Una ventana, una pestaña.',ok:false},
-        {t:'Dos ventanas, dos pestañas en cada una.',ok:false}
-      ],
-      explica:'Ana tiene una sola ventana del navegador abierta, con dos pestañas dentro: una con Brightspace y otra con Google. Las pestañas viven dentro de una misma ventana.'
-    },
-    {
-      texto:'Pedro escribió un párrafo entero y, al final, borró sin querer toda la página. ¿Qué atajo le ayuda a recuperar lo que escribió?',
-      opciones:[
-        {t:'Ctrl + C',ok:false},
-        {t:'Ctrl + V',ok:false},
-        {t:'Ctrl + Z',ok:true},
-        {t:'Ctrl + S',ok:false}
-      ],
-      explica:'Ctrl+Z deshace la última acción. Ctrl+C copia, Ctrl+V pega y Ctrl+S guarda. Para "rescatar" lo que se borró por error, hay que deshacer.'
-    },
-    {
-      texto:'¿Cuál es la diferencia entre «subir» y «descargar» un archivo?',
-      opciones:[
-        {t:'Subir es enviar un archivo a internet; descargar es traerlo de internet a la computadora.',ok:true},
-        {t:'Subir es abrir un archivo; descargar es cerrarlo.',ok:false},
-        {t:'Subir es imprimir; descargar es escribir.',ok:false},
-        {t:'Son sinónimos: significan exactamente lo mismo.',ok:false}
-      ],
-      explica:'Subir (upload) es mandar un archivo desde mi computadora hacia internet, por ejemplo al subir una tarea a Brightspace. Descargar (download) es traer un archivo desde internet a mi computadora, por ejemplo cuando bajo un PDF del profesor.'
-    },
-    {
-      contexto:'María va a subir su tarea a Brightspace. Ya entró al curso, encontró la tarea y cargó el archivo.',
-      texto:'¿Cuál es el último paso que NO debe olvidar para que la tarea se considere entregada?',
-      opciones:[
-        {t:'Cerrar el navegador inmediatamente.',ok:false},
-        {t:'Imprimir el archivo en papel.',ok:false},
-        {t:'Hacer clic en «Enviar» y verificar que aparezca «Entrega exitosa».',ok:true},
-        {t:'Apagar la computadora.',ok:false}
-      ],
-      explica:'Cargar el archivo no es lo mismo que entregar. Hay que hacer clic en "Enviar" y verificar que aparece el mensaje "Entrega exitosa". Si no aparece, la tarea no llegó al profesor.'
-    },
-    {
-      texto:'¿Cuál de los siguientes términos se refiere al SOFTWARE y no al hardware?',
-      opciones:[
-        {t:'Monitor',ok:false},
-        {t:'Teclado',ok:false},
-        {t:'Impresora',ok:false},
-        {t:'Brightspace',ok:true}
-      ],
-      explica:'Brightspace es software: un programa que no se puede tocar. El monitor, el teclado y la impresora son hardware: partes físicas de la computadora.'
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cómo se llama el aparato que mueve el cursor por la pantalla?", "o": ["Ratón (o mouse)", "Teclado", "Monitor"], "c": 0}, {"t": "Ana abrió esta lección en una pestaña y, sin cerrarla, abrió su correo en otra pestaña del mismo navegador. ¿Qué tiene abierto?", "o": ["Una ventana con dos pestañas", "Dos ventanas con una pestaña cada una", "Una ventana con una pestaña"], "c": 0}, {"t": "Pedro borró sin querer todo su párrafo. ¿Qué atajo le ayuda a recuperarlo?", "o": ["Ctrl + Z", "Ctrl + C", "Ctrl + S"], "c": 0}, {"t": "¿Qué atajo sirve para <strong>guardar</strong>?", "o": ["Ctrl + S", "Ctrl + V", "Ctrl + A"], "c": 0}, {"t": "¿Cuál es la diferencia entre <strong>subir</strong> y <strong>descargar</strong>?", "o": ["Subir es enviar un archivo a internet; descargar es traerlo a tu computadora", "Son lo mismo", "Subir es imprimir; descargar es borrar"], "c": 0}, {"t": "¿Cuál de estos es <strong>software</strong>?", "o": ["El navegador Chrome", "El monitor", "El teclado"], "c": 0}, {"t": "¿Qué es un <strong>enlace</strong>?", "o": ["Una palabra o imagen que, al tocarla, te lleva a otra página", "Una carpeta con archivos", "La flecha del ratón"], "c": 0}, {"t": "En una Mac, ¿qué tecla se usa en lugar de Ctrl para los atajos?", "o": ["⌘ Cmd", "Shift", "Enter"], "c": 0}, {"t": "En una lección de GEDparaHispanos, ¿para qué sirve el botón «↑ Índice»?", "o": ["Para volver al índice, arriba de la página", "Para cerrar la página", "Para imprimir"], "c": 0}, {"t": "¿Dónde se crea la cuenta para inscribirse en el examen GED?", "o": ["En la página oficial, ged.com", "En cualquier página que lo ofrezca", "No hace falta cuenta"], "c": 0}, {"t": "Una página te ofrece el diploma GED sin presentar el examen, a cambio de un pago. ¿Qué haces?", "o": ["Desconfío: el GED se obtiene aprobando el examen", "Pago enseguida", "Le doy mi contraseña"], "c": 0}, {"t": "Para seguir los pasos de un procedimiento en la pantalla, conviene…", "o": ["leer un paso, hacerlo, comprobarlo y luego leer el siguiente", "leer todos los pasos rápido y hacerlos de memoria", "saltarse los pasos difíciles"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
-  ];
-
-  var resueltasQ={};
-  var aciertosQ=0;
-  var contQuiz=document.getElementById('preguntas-quiz3');
-
-  preguntas.forEach(function(item,idx){
-    var div=document.createElement('div');
-    div.className='preg-quiz';
-
-    var opcHtml='';
-    item.opciones.forEach(function(op){
-      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
-    });
-
-    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
-
-    div.innerHTML=
-      '<div><span class="num-preg">'+(idx+1)+'</span>'+
-      '<span class="texto-preg">'+item.texto+'</span></div>'+
-      contextoHtml+
-      '<div class="opciones-quiz">'+opcHtml+'</div>'+
-      '<div class="retro-quiz" id="retro-q3-'+idx+'"></div>';
-
-    contQuiz.appendChild(div);
-
-    var botones=div.querySelectorAll('.opt-quiz');
-    botones.forEach(function(b){
-      b.addEventListener('click',function(){
-        if(resueltasQ[idx])return;
-        var correcto=(b.getAttribute('data-correcto')==='1');
-        if(correcto){
-          b.classList.add('correcta');
-          resueltasQ[idx]=true;
-          aciertosQ++;
-          actualizarPuntajeQ();
-          var retro=document.getElementById('retro-q3-'+idx);
-          retro.textContent='✅ '+item.explica;
-          retro.classList.add('visible');
-        }else{
-          b.classList.add('incorrecta');
-          setTimeout(function(){b.classList.remove('incorrecta')},500);
-        }
-      });
-    });
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
   });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya manejas el vocabulario digital básico. Puedes continuar con la Lección 8.4.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 2 y 3, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
 
-  function actualizarPuntajeQ(){
-    var el=document.getElementById('puntaje-quiz3');
-    el.textContent='Aciertos: '+aciertosQ+' / '+preguntas.length;
-    if(aciertosQ===preguntas.length){
-      el.innerHTML='🎉 ¡Clase 3 dominada! Aciertos: '+aciertosQ+' / '+preguntas.length;
-      el.style.color='var(--exito)';
-    }
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

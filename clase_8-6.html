@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<!-- Lección 8.6 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 8.6 · Evaluación final y camino al GED</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--exito-claro:#e8f5e9;--error:#c62828;--error-claro:#fdecea;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    /* GED y áreas del sumativo */
+    --ged:#5a2d8f;--ged-claro:#f3e8ff;--ged-oscuro:#3d1c64;
+    --area1:#0277bd;--area1-claro:#e1f5fe;
+    --area2:#7b3fbf;--area2-claro:#f3e8ff;
+    --area3:#2e7d32;--area3-claro:#e8f5e9;
+    --area4:#ef6c00;--area4-claro:#fff3e0;
+    --area5:#c2185b;--area5-claro:#fce4ec;
+    /* Camino del GED */
+    --nivel-actual:#0089cd;
+    --nivel-futuro:#7b3fbf;
+    --nivel-meta:#2e7d32;
+    /* Celebración */
+    --celebracion:#fbbf24;--celebracion-claro:#fef3c7;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:#ffeb3b;padding:1px 6px;border-radius:3px;font-weight:600}
+
+  /* Caja de celebración (cierre del nivel) */
+  .celebracion{background:var(--celebracion-claro);border:3px solid var(--celebracion);border-radius:14px;padding:20px 24px;margin:20px 0;text-align:center;box-shadow:0 4px 14px rgba(251,191,36,0.18)}
+  .celebracion .icono-cel{font-size:2.6rem;display:block;margin-bottom:8px}
+  .celebracion .titulo-cel{font-weight:700;color:#92400e;font-size:1.25rem;margin:0 0 8px 0}
+  .celebracion p{margin:6px 0;font-size:0.96rem;line-height:1.65;color:#7c2d12}
+
+  /* Protocolo de presentaciones (timeline visual) */
+  .protocolo-cont{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px 22px;margin:18px 0;box-shadow:0 2px 10px rgba(0,137,205,0.08)}
+  .protocolo-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .tiempo-pres{background:var(--cp-claro);border-left:5px solid var(--cp);padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0;display:flex;gap:14px;align-items:flex-start}
+  .tiempo-pres .min-pres{background:var(--cp);color:#fff;padding:4px 12px;border-radius:14px;font-weight:700;font-size:0.85rem;white-space:nowrap;flex-shrink:0}
+  .tiempo-pres .desc-pres{flex:1;font-size:0.94rem;line-height:1.6}
+  .tiempo-pres .desc-pres strong{color:var(--cp-oscuro)}
+
+  /* Rúbrica entre pares */
+  .pares-cont{background:#fff;border:2px solid var(--celebracion);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 2px 10px rgba(251,191,36,0.12)}
+  .pares-cont h4{margin-top:0;text-align:center;color:#92400e}
+  .pares-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
+  .crit-par{background:var(--celebracion-claro);border:2px solid var(--celebracion);border-radius:10px;padding:14px}
+  .crit-par .titulo-par{font-weight:700;color:#92400e;display:block;margin-bottom:6px;font-size:0.98rem}
+  .crit-par .escala-par{display:flex;justify-content:space-between;gap:4px;margin:8px 0}
+  .estrella{font-size:1.4rem;color:#fbbf24}
+  .crit-par .desc-par{font-size:0.86rem;line-height:1.5;color:var(--texto)}
+
+  /* Mapa del recorrido del Nivel 1 */
+  .mapa-recorrido{background:#fff;border:2px solid var(--acento);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 2px 10px rgba(123,63,191,0.08)}
+  .mapa-recorrido h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
+  .temas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px}
+  .tema-card{background:var(--acento-claro);border:2px solid var(--acento);border-radius:10px;padding:12px 10px;text-align:center;transition:all 0.2s}
+  .tema-card:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(123,63,191,0.18)}
+  .tema-card .num-tema{background:var(--acento);color:#fff;width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;margin-bottom:6px}
+  .tema-card .icono-tema{font-size:1.8rem;display:block;margin-bottom:4px}
+  .tema-card .nombre-tema{font-weight:700;color:var(--acento-oscuro);font-size:0.84rem;display:block;line-height:1.35}
+
+  /* ¿Qué es el GED? - 4 exámenes */
+  .ged-info{background:#fff;border:2px solid var(--ged);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 3px 12px rgba(90,45,143,0.1)}
+  .ged-info h4{margin-top:0;text-align:center;color:var(--ged)}
+  .examenes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:14px}
+  .examen-ged{background:var(--ged-claro);border:2px solid var(--ged);border-radius:10px;padding:14px;text-align:center}
+  .examen-ged .icono-ex{font-size:2rem;display:block;margin-bottom:6px}
+  .examen-ged .nombre-ex{font-weight:700;color:var(--ged);font-size:0.96rem;display:block;margin-bottom:4px}
+  .examen-ged .detalles-ex{font-size:0.84rem;line-height:1.5;color:var(--texto)}
+  .examen-ged .duracion-ex{display:inline-block;background:#fff;color:var(--ged);padding:2px 10px;border-radius:10px;font-size:0.78rem;font-weight:700;border:1px solid var(--ged);margin-top:8px}
+
+  /* Sumativo: panel de áreas */
+  .sumativo-cont{background:#fff;border:3px solid var(--cp);border-radius:14px;padding:18px;margin:20px 0;box-shadow:0 4px 16px rgba(0,137,205,0.1)}
+  .sumativo-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro);font-size:1.15rem}
+  .sumativo-intro{text-align:center;font-style:italic;color:var(--gris);font-size:0.92rem;margin-bottom:14px}
+  .areas-panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:14px 0;padding:12px;background:var(--cp-claro);border-radius:10px}
+  .area-cont{background:#fff;border:2px solid;border-radius:8px;padding:10px;text-align:center}
+  .area-cont.a1{border-color:var(--area1)}
+  .area-cont.a2{border-color:var(--area2)}
+  .area-cont.a3{border-color:var(--area3)}
+  .area-cont.a4{border-color:var(--area4)}
+  .area-cont.a5{border-color:var(--area5)}
+  .area-cont .icono-area{font-size:1.4rem;display:block;margin-bottom:2px}
+  .area-cont .nombre-area{font-weight:700;font-size:0.82rem;display:block;line-height:1.3}
+  .area-cont.a1 .nombre-area{color:var(--area1)}
+  .area-cont.a2 .nombre-area{color:var(--area2)}
+  .area-cont.a3 .nombre-area{color:var(--area3)}
+  .area-cont.a4 .nombre-area{color:var(--area4)}
+  .area-cont.a5 .nombre-area{color:var(--area5)}
+  .area-cont .puntaje-area{font-size:0.85rem;font-weight:700;margin-top:4px;display:block}
+
+  /* Preguntas sumativo */
+  .seccion-sumativo{background:#fff;border-left:5px solid;border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0}
+  .seccion-sumativo.s1{border-left-color:var(--area1);background:var(--area1-claro)}
+  .seccion-sumativo.s2{border-left-color:var(--area2);background:var(--area2-claro)}
+  .seccion-sumativo.s3{border-left-color:var(--area3);background:var(--area3-claro)}
+  .seccion-sumativo.s4{border-left-color:var(--area4);background:var(--area4-claro)}
+  .seccion-sumativo.s5{border-left-color:var(--area5);background:var(--area5-claro)}
+  .titulo-seccion-sum{font-weight:700;font-size:1.02rem;margin-top:0;margin-bottom:10px}
+  .seccion-sumativo.s1 .titulo-seccion-sum{color:var(--area1)}
+  .seccion-sumativo.s2 .titulo-seccion-sum{color:var(--area2)}
+  .seccion-sumativo.s3 .titulo-seccion-sum{color:var(--area3)}
+  .seccion-sumativo.s4 .titulo-seccion-sum{color:var(--area4)}
+  .seccion-sumativo.s5 .titulo-seccion-sum{color:var(--area5)}
+  .preg-sum{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:12px 14px;margin:10px 0}
+  .preg-sum .num-sum{color:#fff;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:8px;font-size:0.85rem;vertical-align:middle}
+  .preg-sum.s1 .num-sum{background:var(--area1)}
+  .preg-sum.s2 .num-sum{background:var(--area2)}
+  .preg-sum.s3 .num-sum{background:var(--area3)}
+  .preg-sum.s4 .num-sum{background:var(--area4)}
+  .preg-sum.s5 .num-sum{background:var(--area5)}
+  .preg-sum .texto-sum{font-weight:600;color:var(--texto);font-size:0.94rem;display:inline}
+  .contexto-sum{background:var(--gris-claro);padding:10px 12px;border-radius:5px;margin:8px 0;font-style:italic;font-size:0.92rem;line-height:1.55;color:var(--texto)}
+  .opciones-sum{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+  .opt-sum{padding:8px 12px;border:2px solid var(--gris-claro);background:#fff;border-radius:5px;cursor:pointer;font-family:inherit;font-size:0.9rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-sum:hover{background:#f8f9fb}
+  .opt-sum.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-sum.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-sum{margin-top:8px;padding:8px 12px;border-radius:5px;background:#fff;color:var(--texto);font-size:0.86rem;display:none;border-left:3px solid var(--cp)}
+  .retro-sum.visible{display:block}
+
+  /* Camino del GED - visual progresivo */
+  .camino-ged{background:#fff;border:2px solid var(--ged);border-radius:12px;padding:20px;margin:18px 0;box-shadow:0 3px 12px rgba(90,45,143,0.1)}
+  .camino-ged h4{margin-top:0;text-align:center;color:var(--ged)}
+  .camino-visual{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:18px 0;align-items:stretch}
+  @media(max-width:720px){.camino-visual{grid-template-columns:1fr 1fr}}
+  .paso-camino{border-radius:10px;padding:12px 8px;text-align:center;border:2px solid;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:130px}
+  .paso-camino.actual{background:var(--cp-claro);border-color:var(--cp);box-shadow:0 0 0 4px rgba(0,137,205,0.18)}
+  .paso-camino.futuro{background:#fff;border-color:var(--ged);border-style:dashed}
+  .paso-camino.meta{background:var(--exito-claro);border-color:var(--exito)}
+  .paso-camino .icono-paso{font-size:1.8rem;display:block;margin-bottom:6px}
+  .paso-camino .num-paso{font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;display:block}
+  .paso-camino.actual .num-paso{color:var(--cp-oscuro)}
+  .paso-camino.futuro .num-paso{color:var(--ged)}
+  .paso-camino.meta .num-paso{color:var(--exito)}
+  .paso-camino .nombre-paso{font-size:0.84rem;font-weight:600;line-height:1.35;display:block}
+  .paso-camino.actual .nombre-paso{color:var(--cp-oscuro)}
+  .paso-camino.futuro .nombre-paso{color:var(--ged-oscuro)}
+  .paso-camino.meta .nombre-paso{color:var(--exito)}
+  .badge-aqui{background:var(--cp);color:#fff;font-size:0.66rem;padding:2px 8px;border-radius:8px;margin-top:6px;font-weight:700;text-transform:uppercase}
+
+  /* Mensaje de cierre del profesor */
+  .mensaje-prof{background:var(--cp-claro);border:2px solid var(--cp);border-radius:12px;padding:22px 26px;margin:22px 0;box-shadow:0 3px 14px rgba(0,137,205,0.12);position:relative}
+  .mensaje-prof::before{content:'❝';position:absolute;top:-12px;left:18px;font-size:2.4rem;color:var(--cp);background:#fff;padding:0 8px;line-height:1}
+  .mensaje-prof p{margin:8px 0;font-size:0.96rem;line-height:1.7;color:var(--cp-oscuro)}
+  .firma-prof{text-align:right;font-style:italic;color:var(--gris);margin-top:14px;font-size:0.92rem}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  .puntaje-sumativo{text-align:center;margin-top:18px;padding:14px;background:var(--cp-claro);border-radius:10px;font-weight:700;color:var(--cp-oscuro);font-size:1.08rem;border:2px solid var(--cp)}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  .btn-examen{display:inline-block;background:var(--cp-oscuro);color:#fff!important;font-weight:700;padding:14px 24px;border-radius:10px;text-decoration:none;font-size:1.08rem}
+  .btn-examen:hover,.btn-examen:focus-visible{background:#003f63;outline:3px solid var(--acento);outline-offset:2px}
+  .temas-lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;list-style:none;padding:0;margin:14px 0}
+  .temas-lista li{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start}
+  .temas-lista .num-t{flex-shrink:0;width:30px;height:30px;line-height:30px;text-align:center;border-radius:50%;background:var(--cp);color:#fff;font-weight:700}
+  .autoev{width:100%;border-collapse:collapse;background:#fff;margin:12px 0}
+  .autoev th,.autoev td{border:1px solid var(--gris-claro);padding:8px 10px;text-align:left;vertical-align:top}
+  .autoev thead th{background:var(--cp-oscuro);color:#fff}
+</style>
+</head>
+<body>
+
+<h1>Lección 8.6 · Evaluación final y camino al GED</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 8 · Unas 2 horas y media, a tu ritmo</p>
+
+<div class="celebracion">
+  <span class="icono-cel">🎓</span>
+  <p class="titulo-cel">¡Llegaste al final del Nivel 1!</p>
+  <p>Esta es la última lección del nivel. Vas a presentar tu proyecto, hacer la evaluación final y mirar el camino que sigue: el Nivel 2, el GED y el certificado.</p>
+</div>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la lección</h2>
+  <ul>
+    <li><strong>Presentar</strong> tu proyecto final y evaluar tu propia presentación.</li>
+    <li>Hacer la <strong>evaluación final del nivel</strong> y usar tu resumen para repasar lo que falle.</li>
+    <li>Comprender qué es el <strong>GED</strong>, sus cuatro exámenes y el camino para alcanzarlo.</li>
+    <li>Conocer lo que viene en el <strong>Nivel 2</strong>.</li>
+  </ul>
+</div>
+
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-presentacion">Tu presentación final</a></li>
+    <li><a href="#s-2-autoevaluacion">Evalúa tu presentación</a></li>
+    <li><a href="#s-3-recorrido">El recorrido del Nivel 1</a></li>
+    <li><a href="#s-4-evaluacion">La evaluación final del nivel</a></li>
+    <li><a href="#s-5-ged">¿Qué es el GED?</a></li>
+    <li><a href="#s-6-camino">El camino que sigue</a></li>
+    <li><a href="#s-7-mensaje">Un mensaje para ti</a></li>
+    <li><a href="#s-tarea">Tarea: tu plan de estudio</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre del nivel</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
+
+<h2>📚 Para empezar</h2>
+
+<p>Cuando empezaste este nivel, quizá te preguntabas <em>qué es el GED</em> y si podrías prepararlo. Quizá dudabas al leer un párrafo largo o nunca habías escrito un texto de opinión. Hoy vas a presentar un proyecto que reúne todo eso, vas a responder una evaluación que cubre los ocho temas y vas a ver con claridad el camino que sigue.</p>
+
+<p>La lección tiene tres momentos: <strong>tu presentación</strong>, <strong>la evaluación final</strong> y <strong>la mirada al futuro</strong>. Llegaste hasta aquí; ahora toca celebrar y seguir.</p>
+
+<details open id="s-1-presentacion">
+<summary>1. Tu presentación final <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<h3>Presenta tu proyecto «Mi historia, mis metas»</h3>
+<p>Ya tienes tu texto, tu gráfica y tu guion de la Lección 8.5. Ahora toca presentarlo. Puedes <strong>grabarte con el celular</strong> (como practicaste en la Lección 8.4) o presentarlo ante alguien de tu casa. Sigue estos tiempos:</p>
+
+<div class="protocolo-cont">
+  <h4>⏱️ Tiempos de tu presentación</h4>
+  <div class="tiempo-pres">
+    <span class="min-pres">0:00 – 0:30</span>
+    <span class="desc-pres"><strong>Apertura:</strong> te presentas, dices el título de tu proyecto y conectas con quien te escucha.</span>
+  </div>
+  <div class="tiempo-pres">
+    <span class="min-pres">0:30 – 2:30</span>
+    <span class="desc-pres"><strong>Desarrollo:</strong> tres ideas (mi historia, dónde estoy ahora, mis metas). Muestra tu gráfica en este momento.</span>
+  </div>
+  <div class="tiempo-pres">
+    <span class="min-pres">2:30 – 3:00</span>
+    <span class="desc-pres"><strong>Cierre:</strong> un mensaje final que se recuerde y un agradecimiento.</span>
+  </div>
+  <div class="tiempo-pres">
+    <span class="min-pres">3:00 – 4:00</span>
+    <span class="desc-pres"><strong>Preguntas:</strong> si alguien te escucha, pídele que te haga dos preguntas. Si te grabas solo, piensa qué te preguntarían y respóndelo en voz alta.</span>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Consejo:</strong> no busques la grabación perfecta. Haz una toma completa, mírala, y si quieres, haz una segunda. Lo importante es terminarla.
+</div>
+</div>
+</details>
+
+<details id="s-2-autoevaluacion">
+<summary>2. Evalúa tu presentación <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+<h3>Mírate con ojos de evaluador</h3>
+<p>Mira tu grabación (o piensa en cómo te fue) y date de <strong>una a cinco estrellas</strong> en cada criterio. Si alguien de tu casa te escuchó, pídele también su opinión con estos mismos criterios.</p>
+
+<table class="autoev">
+  <caption>Autoevaluación de la presentación: de 1 a 5 estrellas por criterio</caption>
+  <thead><tr><th scope="col">Criterio</th><th scope="col">Pregúntate</th><th scope="col">Mis estrellas</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">🎤 Claridad al hablar</th><td>¿Se entiende bien lo que digo? ¿Hablo con buen volumen y sin muchas muletillas?</td><td>☆ ☆ ☆ ☆ ☆</td></tr>
+    <tr><th scope="row">📊 Apoyo visual</th><td>¿Mi gráfica es clara? ¿Apoya lo que digo o solo decora?</td><td>☆ ☆ ☆ ☆ ☆</td></tr>
+    <tr><th scope="row">💡 Mensaje memorable</th><td>¿Mi presentación deja una idea que alguien recordaría mañana?</td><td>☆ ☆ ☆ ☆ ☆</td></tr>
+  </tbody>
+</table>
+
+<div class="clave-pedagogica">
+  <strong>💡 Cómo evaluarte bien:</strong> evalúa la presentación, no a la persona. Sé honesto y amable contigo, como lo serías con un amigo: anota <em>una cosa que hiciste bien</em> y <em>una cosa que mejorarías</em>. Nadie se pone menos de una estrella: presentar ya es un esfuerzo.
+</div>
+</div>
+</details>
+
+<details id="s-3-recorrido">
+<summary>3. El recorrido del Nivel 1 <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste en ocho temas</h3>
+<p>Antes de la evaluación final, mira atrás y ve el camino recorrido. Estos son los ocho temas del Nivel 1:</p>
+<ul class="temas-lista">
+  <li><span class="num-t" aria-hidden="true">1</span><span><span aria-hidden="true">🔤</span> <strong>Tema 1</strong> · El alfabeto y la dirección de la lectura</span></li>
+  <li><span class="num-t" aria-hidden="true">2</span><span><span aria-hidden="true">🔊</span> <strong>Tema 2</strong> · Conciencia fonológica y fluidez</span></li>
+  <li><span class="num-t" aria-hidden="true">3</span><span><span aria-hidden="true">📝</span> <strong>Tema 3</strong> · La oración: sustantivo, adjetivo, verbo y puntuación</span></li>
+  <li><span class="num-t" aria-hidden="true">4</span><span><span aria-hidden="true">🔍</span> <strong>Tema 4</strong> · Estrategias de comprensión y vocabulario</span></li>
+  <li><span class="num-t" aria-hidden="true">5</span><span><span aria-hidden="true">📖</span> <strong>Tema 5</strong> · El texto narrativo y las relaciones entre ideas</span></li>
+  <li><span class="num-t" aria-hidden="true">6</span><span><span aria-hidden="true">📊</span> <strong>Tema 6</strong> · Información visual: imágenes, mapas, tablas y gráficas</span></li>
+  <li><span class="num-t" aria-hidden="true">7</span><span><span aria-hidden="true">✍️</span> <strong>Tema 7</strong> · El párrafo y los tipos de texto</span></li>
+  <li><span class="num-t" aria-hidden="true">8</span><span><span aria-hidden="true">🎤</span> <strong>Tema 8</strong> · Comunicación, tecnología y proyecto final</span></li>
+</ul>
+<p>La evaluación final toma <strong>cuatro preguntas de cada tema</strong>: 32 en total.</p>
+</div>
+</details>
+
+<details id="s-4-evaluacion">
+<summary>4. La evaluación final del nivel <span class="caja-tiempo">40 min</span></summary>
+<div class="contenido-detalle">
+<h3>Una evaluación que te dice qué repasar</h3>
+<p>La evaluación final está en una página aparte. Funciona así:</p>
+<ol class="lista-bonita">
+  <li>Respondes <strong>32 preguntas</strong>, cuatro de cada tema, sin límite de tiempo.</li>
+  <li>Al terminar, ves tu <strong>puntaje por tema</strong>: así sabes qué temas dominas y cuáles necesitan otro repaso.</li>
+  <li>Recibes un <strong>resumen para repasar</strong>: cada pregunta que falles tiene un enlace que te lleva a la lección y a la <strong>sección exacta</strong> que explica ese punto.</li>
+  <li>Puedes <strong>imprimir</strong> el resumen (o guardarlo como PDF) y usarlo como guía de estudio. Después, repite la evaluación.</li>
+</ol>
+<p style="text-align:center;margin:22px 0"><a class="btn-examen" href="https://zhemaria.github.io/clases_leng1/examen_nivel1.html" target="_blank" rel="noopener">📝 Ir a la evaluación final del Nivel 1</a></p>
+<div class="clave-pedagogica">
+  <strong>🧠 La meta es el 80 %:</strong> si aciertas 26 preguntas o más, dominas el Nivel 1. Si no, no pasa nada: el resumen te dice exactamente qué repasar. Un error bien estudiado vale más que un acierto por suerte.
+</div>
+</div>
+</details>
+
+<details id="s-5-ged">
+<summary>5. ¿Qué es el GED? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+<h3>El examen GED en cuatro partes</h3>
+<p><strong>GED</strong> son las siglas de <em lang="en">General Educational Development</em>. Es una credencial que demuestra que tienes las competencias de una persona graduada de la <em lang="en">high school</em> en Estados Unidos. Tiene <strong>cuatro exámenes independientes</strong>, que se pueden tomar en español o en inglés:</p>
+
+<div class="ged-info">
+  <h4>📘 Los cuatro exámenes del GED</h4>
+  <div class="examenes-grid">
+    <div class="examen-ged">
+      <span class="icono-ex" aria-hidden="true">📖</span>
+      <span class="nombre-ex">Razonamiento a través de las Artes del Lenguaje</span>
+      <span class="detalles-ex">Lectura, gramática y un ensayo escrito. Es el área que prepara este curso.</span>
+      <span class="duracion-ex">⏱️ 150 minutos</span>
+    </div>
+    <div class="examen-ged">
+      <span class="icono-ex" aria-hidden="true">🔢</span>
+      <span class="nombre-ex">Razonamiento Matemático</span>
+      <span class="detalles-ex">Números, álgebra, geometría y datos. Se puede usar calculadora en la mayor parte del examen.</span>
+      <span class="duracion-ex">⏱️ 115 minutos</span>
+    </div>
+    <div class="examen-ged">
+      <span class="icono-ex" aria-hidden="true">🔬</span>
+      <span class="nombre-ex">Ciencia</span>
+      <span class="detalles-ex">Ciencias de la vida, física y química, y la Tierra y el espacio. Mucha lectura de experimentos y datos.</span>
+      <span class="duracion-ex">⏱️ 90 minutos</span>
+    </div>
+    <div class="examen-ged">
+      <span class="icono-ex" aria-hidden="true">🌎</span>
+      <span class="nombre-ex">Estudios Sociales</span>
+      <span class="detalles-ex">Educación cívica, historia de EE. UU., economía y geografía. Muchos mapas, tablas y gráficas.</span>
+      <span class="duracion-ex">⏱️ 70 minutos</span>
+    </div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Datos prácticos:</strong> los cuatro exámenes se pueden tomar por separado y en el orden que quieras. Para aprobar cada uno se necesitan <strong>145 puntos de 200</strong>. Cuando apruebas los cuatro, recibes tu credencial GED. Los precios, las reglas y las fechas cambian según el estado y con el tiempo: consulta siempre la información oficial en <a href="https://ged.com/es/" target="_blank" rel="noopener">ged.com</a>.
+</div>
+
+<h3>¿Por qué este nivel es importante para el GED?</h3>
+<p>Este Nivel 1 es el <strong>primer escalón</strong> hacia el examen de Artes del Lenguaje. Aquí construiste la base: leer con comprensión, escribir oraciones y párrafos, interpretar una gráfica y dar una opinión con razones. En los niveles siguientes profundizarás todo eso hasta llegar al ensayo del examen real.</p>
+<p>Además, lo que aprendiste en el <strong>Tema 6</strong> (mapas, tablas y gráficas) y en el <strong>Tema 7</strong> (tipos de texto) te sirve también para los exámenes de Ciencia y de Estudios Sociales. Este nivel no prepara solo para un examen: te da herramientas para los cuatro.</p>
+</div>
+</details>
+
+<details id="s-6-camino">
+<summary>6. El camino que sigue <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Cuatro niveles hasta el GED</h3>
+<p>Artes del Lenguaje en GEDparaHispanos tiene <strong>cuatro niveles</strong>. Este es el camino completo:</p>
+
+<div class="camino-ged">
+  <h4>🛤️ El camino hacia el GED</h4>
+  <div class="camino-visual">
+    <div class="paso-camino actual">
+      <span class="icono-paso" aria-hidden="true">✅</span>
+      <span class="num-paso">Nivel 1</span>
+      <span class="nombre-paso">Iniciación a la Lectura y la Escritura</span>
+      <span class="badge-aqui">Estás aquí</span>
+    </div>
+    <div class="paso-camino futuro">
+      <span class="icono-paso" aria-hidden="true">📘</span>
+      <span class="num-paso">Nivel 2</span>
+      <span class="nombre-paso">Conectando Ideas y Textos</span>
+    </div>
+    <div class="paso-camino futuro">
+      <span class="icono-paso" aria-hidden="true">📗</span>
+      <span class="num-paso">Nivel 3</span>
+      <span class="nombre-paso">Exploración del Análisis y la Argumentación</span>
+    </div>
+    <div class="paso-camino futuro">
+      <span class="icono-paso" aria-hidden="true">📕</span>
+      <span class="num-paso">Nivel 4</span>
+      <span class="nombre-paso">Dominio del GED y Escritura Argumentativa</span>
+    </div>
+    <div class="paso-camino meta">
+      <span class="icono-paso" aria-hidden="true">🎓</span>
+      <span class="num-paso">Meta</span>
+      <span class="nombre-paso">Credencial GED</span>
+    </div>
+  </div>
+</div>
+
+<h3>¿Qué viene en el Nivel 2?</h3>
+<p>El Nivel 2, «Conectando Ideas y Textos», toma lo que aprendiste aquí y lo lleva más lejos. Por ejemplo:</p>
+<ul class="lista-bonita">
+  <li><strong>Textos más largos:</strong> noticias completas, biografías cortas, capítulos de libros.</li>
+  <li><strong>Varios párrafos:</strong> textos con introducción, desarrollo y conclusión.</li>
+  <li><strong>Relacionar textos:</strong> comparar lo que dicen dos fuentes sobre un mismo tema.</li>
+  <li><strong>Más vocabulario:</strong> palabras de ciencia, de estudios sociales y para argumentar.</li>
+</ul>
+</div>
+</details>
+
+<details id="s-7-mensaje">
+<summary>7. Un mensaje para ti <span class="caja-tiempo">2 min</span></summary>
+<div class="contenido-detalle">
+<div class="mensaje-prof">
+  <p>Llegar hasta aquí ya es un logro que merece reconocimiento. Quizá al empezar no te sentías seguro frente a una computadora; hoy guardaste un proyecto con texto, gráfica y grabación. Quizá te daba miedo hablar en voz alta; hoy contaste tu historia.</p>
+  <p>Este Nivel 1 no es el final del camino: es el primer escalón. Lo que aprendiste lo vas a usar en el Nivel 2, en el GED, en una entrevista de trabajo, en una cita con el médico o en una reunión de la escuela de tus hijos. Lo que se aprende no se queda en la página.</p>
+  <p>Cuida lo que ya tienes: sigue leyendo, sigue escribiendo, sigue hablando con confianza. Y cuando estés listo, continúa con el Nivel 2. Aquí te esperamos.</p>
+</div>
+</div>
+</details>
+
+<details id="s-tarea">
+<summary>8. Tarea: tu plan de estudio <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p>Con tu resumen de la evaluación final en la mano, prepara tu <strong>plan de estudio</strong> en el cuaderno:</p>
+<ol class="lista-bonita">
+  <li><strong>Mis fortalezas:</strong> escribe los dos temas en los que te fue mejor. ¿Qué te ayudó a aprenderlos?</li>
+  <li><strong>Lo que voy a repasar:</strong> copia de tu resumen las lecciones que tienes que repasar. Ponles una fecha a cada una.</li>
+  <li><strong>Mi segundo intento:</strong> cuando termines de repasar, repite la evaluación y anota tu nuevo puntaje junto al primero.</li>
+  <li><strong>Mi meta para el Nivel 2:</strong> escribe un párrafo con la técnica de la hamburguesa: ¿qué quieres lograr en el próximo nivel y por qué?</li>
+</ol>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Autoevaluación de la tarea</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Fortalezas</td><td class="nivel-4">Nombro dos temas en los que me fue bien y explico qué me ayudó.</td><td class="nivel-1">No sé en qué temas me fue mejor.</td></tr>
+      <tr><td>Repaso</td><td class="nivel-4">Copio las lecciones del resumen y les pongo fecha.</td><td class="nivel-1">No uso el resumen o no planifico cuándo repasar.</td></tr>
+      <tr><td>Segundo intento</td><td class="nivel-4">Repito la evaluación y comparo los dos puntajes.</td><td class="nivel-1">No repito la evaluación.</td></tr>
+      <tr><td>Párrafo de meta</td><td class="nivel-4">Tiene oración principal, dos razones, cierre y conectores.</td><td class="nivel-1">Es una sola oración o le falta una parte.</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>9. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>10. Cierre del nivel <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>Una presentación se puede <strong>evaluar</strong> con criterios claros: claridad, apoyo visual y mensaje.</li>
+  <li>La evaluación final te dice <strong>qué dominas</strong> y te lleva a la sección exacta que debes repasar.</li>
+  <li>El GED tiene <strong>cuatro exámenes</strong>; para aprobar cada uno se necesitan 145 puntos de 200.</li>
+  <li>Artes del Lenguaje tiene <strong>cuatro niveles</strong>, y acabas de terminar el primero.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Presentaste tu proyecto y te autoevaluaste?</li>
+    <li>¿Hiciste la evaluación final y guardaste tu resumen?</li>
+    <li>¿Cuáles son los cuatro exámenes del GED?</li>
+  </ul>
+</div>
+<div class="celebracion">
+  <span class="icono-cel" aria-hidden="true">🎓</span>
+  <p class="titulo-cel">¡Felicitaciones! Terminaste el Nivel 1</p>
+  <p>El próximo paso es el <strong>Nivel 2: Conectando Ideas y Textos</strong>. Antes de empezarlo, repasa con tu resumen y repite la evaluación final hasta llegar al 80 %.</p>
+</div>
+</div>
+</details>
+
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 8 · Lección 8.6</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
+
+<script>
+(function(){
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuántos exámenes tiene el GED?", "o": ["Cuatro", "Dos", "Ocho"], "c": 0}, {"t": "¿Cuántos puntos se necesitan para aprobar cada examen del GED?", "o": ["145 de 200", "100 de 200", "60 de 100"], "c": 0}, {"t": "¿Cuál es el examen del GED que prepara este curso?", "o": ["Razonamiento a través de las Artes del Lenguaje", "Razonamiento Matemático", "Ciencia"], "c": 0}, {"t": "¿Cuánto dura el examen de Artes del Lenguaje del GED?", "o": ["150 minutos", "70 minutos", "30 minutos"], "c": 0}, {"t": "¿Se pueden tomar los cuatro exámenes del GED por separado?", "o": ["Sí, por separado y en el orden que quieras", "No, hay que hacerlos todos el mismo día", "Solo en orden alfabético"], "c": 0}, {"t": "¿Dónde conviene consultar los precios y las reglas del GED?", "o": ["En la página oficial, ged.com", "En un anuncio de la calle", "No hace falta consultarlos"], "c": 0}, {"t": "¿Qué temas del Nivel 1 ayudan también en Ciencia y en Estudios Sociales?", "o": ["La información visual y los tipos de texto", "Solo el alfabeto", "Ninguno"], "c": 0}, {"t": "¿Cómo se llama el Nivel 2 de Artes del Lenguaje?", "o": ["Conectando Ideas y Textos", "Dominio del GED y Escritura Argumentativa", "Iniciación a la Lectura y la Escritura"], "c": 0}, {"t": "En la evaluación final fallaste una pregunta. ¿Qué te ofrece el resumen?", "o": ["Un enlace a la sección exacta de la lección que la explica", "La respuesta para memorizar", "Nada: solo el puntaje"], "c": 0}, {"t": "¿Qué porcentaje indica que dominas el Nivel 1?", "o": ["80 % o más", "20 %", "100 %, sin ningún error"], "c": 0}, {"t": "Al autoevaluar tu presentación, ¿qué criterio pregunta si tu gráfica apoya lo que dices?", "o": ["Apoyo visual", "Claridad al hablar", "Mensaje memorable"], "c": 0}, {"t": "En tu presentación de 3 minutos, ¿cuándo muestras la gráfica?", "o": ["En el desarrollo", "En la apertura", "Después de despedirte"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"¡Terminaste el Nivel 1! Ve a la evaluación final si aún no la has hecho.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 4, 5 y 6 y repite el quiz.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
+})();
+</script>
+
+</body>
+</html>

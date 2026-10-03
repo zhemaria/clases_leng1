@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 8.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 1: Fundamentos de la comunicación y escucha activa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 8.1 · Fundamentos de la comunicación y escucha activa</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -151,34 +157,116 @@
   .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
   .badge-discusion{background:#f3e5f5;color:#6a1b9a}
   .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 1: Fundamentos de la comunicación y escucha activa</h1>
-<p class="subtitulo">Tema 8 · Lección 8.1 · Nivel 1 · Semana 15 · 50 minutos</p>
+<h1>Lección 8.1 · Fundamentos de la comunicación y escucha activa</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 8 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Comprender que la <strong>comunicación interpersonal</strong> es un intercambio donde los roles de emisor y receptor se alternan.</li>
     <li>Distinguir tres <strong>niveles de escucha</strong>: oír, escuchar y escuchar activamente.</li>
-    <li>Aprender frases plantilla de <strong>escucha activa</strong> para usar en clase y en la vida diaria.</li>
+    <li>Aprender frases de <strong>escucha activa</strong> para usar en la vida diaria.</li>
     <li>Reconocer la importancia de la <strong>comunicación no verbal</strong> (gestos, postura, contacto visual).</li>
   </ul>
 </div>
 
-<h2>📚 Bienvenida al Tema 8</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-comunicacion">¿Qué es la comunicación interpersonal?</a></li>
+    <li><a href="#s-2-niveles">Los tres niveles de escucha</a></li>
+    <li><a href="#s-3-frases">Frases de escucha activa</a></li>
+    <li><a href="#s-4-no-verbal">La comunicación no verbal</a></li>
+    <li><a href="#s-5-actividad">Actividad: ¿buena o mala escucha?</a></li>
+    <li><a href="#s-6-vida-diaria">La escucha en la vida diaria</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Llegamos al último tema del Nivel 1. En los temas anteriores aprendimos a <strong>leer</strong> (decodificar palabras, comprender párrafos, interpretar gráficas) y a <strong>escribir</strong> (oraciones completas, párrafos de distintos tipos). Ahora completamos el círculo con las dos habilidades que faltan: <span class="palabra-clave">hablar</span> y <span class="palabra-clave">escuchar</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>En esta primera clase nos centramos en una idea clave: <strong>escuchar bien es tan importante como hablar bien</strong>. Una persona que no sabe escuchar tampoco sabe responder, y una persona que no sabe responder no puede participar en una conversación, en una reunión de trabajo o en un círculo familiar.</p>
+<p>Llegaste al último tema del Nivel 1. En los temas anteriores aprendiste a <strong>leer</strong> (decodificar palabras, comprender párrafos, interpretar gráficas) y a <strong>escribir</strong> (oraciones completas, párrafos de distintos tipos). Ahora completas el círculo con las dos habilidades que faltan: <span class="palabra-clave">hablar</span> y <span class="palabra-clave">escuchar</span>.</p>
+
+<p>En esta lección te centras en una idea clave: <strong>escuchar bien es tan importante como hablar bien</strong>. Quien no sabe escuchar tampoco sabe responder, y quien no sabe responder no puede participar en una conversación, en una cita con el médico, en una entrevista de trabajo o en una reunión familiar.</p>
 
 <div class="clave-pedagogica">
-  <strong>🧠 Clave de la clase:</strong> La comunicación no es solo «hablar para que el otro nos entienda». Es un intercambio: <em>yo hablo, tú escuchas; tú hablas, yo escucho</em>. Quien domina ese intercambio se hace entender y entiende a los demás. Eso es lo que vamos a practicar.
+  <strong>🧠 Clave de la lección:</strong> la comunicación no es solo «hablar para que el otro me entienda». Es un intercambio: <em>yo hablo, tú escuchas; tú hablas, yo escucho</em>. Quien domina ese intercambio se hace entender y entiende a los demás.
 </div>
 
-<details open>
+<details open id="s-1-comunicacion">
 <summary>1. ¿Qué es la comunicación interpersonal? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
@@ -204,7 +292,7 @@
   <div class="mensaje-com">📨 El mensaje viaja entre ambos y los roles se alternan</div>
 </div>
 
-<p>En una conversación real, las personas <strong>cambian de rol constantemente</strong>. Cuando yo hablo, soy emisor; cuando tú respondes, ahora eres tú el emisor y yo el receptor. Por eso decimos que la comunicación interpersonal es <strong>bidireccional</strong>: el mensaje va y vuelve.</p>
+<p>En una conversación real, las personas <strong>cambian de rol todo el tiempo</strong>. Cuando yo hablo, soy emisor; cuando tú respondes, tú eres el emisor y yo el receptor. Por eso se dice que la comunicación interpersonal es <strong>bidireccional</strong>: el mensaje va y vuelve.</p>
 
 <h3>Tres maneras de fallar en una conversación</h3>
 
@@ -216,18 +304,18 @@
   <li>Nadie pide aclaración cuando algo no se entiende, y la conversación sigue con un malentendido.</li>
 </ul>
 
-<p>Hoy vamos a aprender a <strong>evitar las tres cosas</strong>.</p>
+<p>En esta lección vas a aprender a <strong>evitar las tres cosas</strong>.</p>
 
 </div>
 </details>
 
-<details>
+<details id="s-2-niveles">
 <summary>2. Los tres niveles de escucha <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>No es lo mismo «oír» que «escuchar»</h3>
 
-<p>En español tenemos dos verbos parecidos pero distintos: <strong>oír</strong> y <strong>escuchar</strong>. Y dentro de «escuchar» hay todavía un nivel más profundo: la <span class="palabra-clave">escucha activa</span>. Veámoslos en orden:</p>
+<p>En español tenemos dos verbos parecidos pero distintos: <strong>oír</strong> y <strong>escuchar</strong>. Y dentro de «escuchar» hay todavía un nivel más profundo: la <span class="palabra-clave">escucha activa</span>. Aquí van en orden:</p>
 
 <div class="niveles-escucha">
   <div class="nivel-esc n1">
@@ -248,7 +336,7 @@
     <span class="num-niv">3</span>
     <div class="cont-niv">
       <span class="nombre-niv">💡 Escucha activa</span>
-      <span class="desc-niv">La persona escucha con la intención de comprender de verdad lo que el otro dice. Hace gestos, pregunta si no entiende, no interrumpe y, al final, demuestra que entendió. Es el nivel que necesitamos en clase y en el trabajo.</span>
+      <span class="desc-niv">La persona escucha con la intención de comprender de verdad lo que el otro dice. Hace gestos, pregunta si no entiende, no interrumpe y, al final, demuestra que entendió. Es el nivel que necesitas en el trabajo, en el médico y en casa.</span>
     </div>
   </div>
 </div>
@@ -260,13 +348,13 @@
 </div>
 </details>
 
-<details>
-<summary>3. Frases plantilla de escucha activa <span class="caja-tiempo">10 min</span></summary>
+<details id="s-3-frases">
+<summary>3. Frases de escucha activa <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Cómo demuestro que estoy escuchando?</h3>
 
-<p>La escucha activa no es solo callarse mientras el otro habla. Hay que <strong>demostrar</strong> con palabras concretas que uno está siguiendo la conversación. Aquí tiene tres frases plantilla que cubren las tres funciones más importantes:</p>
+<p>La escucha activa no es solo callarse mientras el otro habla. Hay que <strong>demostrar</strong> con palabras concretas que uno está siguiendo la conversación. Aquí tienes frases para cuatro funciones importantes:</p>
 
 <div class="frases-escucha-grid">
   <div class="frase-esc">
@@ -289,7 +377,7 @@
 
 <h3>Una conversación con escucha activa</h3>
 
-<p>Veamos cómo se usan estas frases en una conversación real entre dos estudiantes que discuten sobre las metas del semestre:</p>
+<p>Mira cómo se usan estas frases en una conversación entre dos personas que estudian para el GED y hablan de sus metas:</p>
 
 <div class="esquema-comunicacion" style="text-align:left">
   <p style="margin:0 0 10px 0"><strong style="color:var(--emisor-oscuro)">🗣️ María:</strong> Mi meta este semestre es terminar el nivel 1 y empezar el nivel 2 lo antes posible.</p>
@@ -298,24 +386,24 @@
   <p style="margin:0"><strong style="color:var(--receptor-oscuro)">👂 Carlos:</strong> <em>Entonces, lo que dices es</em> que tu horario te limita. <em>Quiero añadir que</em> a mí me pasa igual con el segundo turno.</p>
 </div>
 
-<p>Fíjese cómo Carlos no se limita a contestar lo suyo: <strong>primero acusa recibo</strong> de lo que dijo María (con «estoy de acuerdo», con «entonces, lo que dices es») y <strong>después añade</strong> su parte. Eso es escucha activa.</p>
+<p>Fíjate en que Carlos no se limita a contestar lo suyo: <strong>primero acusa recibo</strong> de lo que dijo María (con «estoy de acuerdo», con «entonces, lo que dices es») y <strong>después añade</strong> su parte. Eso es escucha activa.</p>
 
 </div>
 </details>
 
-<details>
+<details id="s-4-no-verbal">
 <summary>4. La comunicación no verbal <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El cuerpo también habla</h3>
 
-<p>Cuando uno conversa con otra persona, no solo importan las palabras. El <strong>cuerpo, la cara y la voz</strong> envían mensajes paralelos que pueden reforzar lo que decimos o, al contrario, contradecirlo. Por eso hay tres canales que conviene conocer:</p>
+<p>Cuando conversas con otra persona, no solo importan las palabras. El <strong>cuerpo, la cara y la voz</strong> envían mensajes paralelos que pueden reforzar lo que decimos o, al contrario, contradecirlo. Por eso hay tres canales que conviene conocer:</p>
 
 <table class="tabla-canales">
   <thead>
     <tr>
-      <th class="h-fila">Canal</th>
-      <th>Qué es y para qué sirve</th>
+      <th scope="col" class="h-fila">Canal</th>
+      <th scope="col">Qué es y para qué sirve</th>
     </tr>
   </thead>
   <tbody>
@@ -362,79 +450,114 @@
 </div>
 
 <div class="clave-pedagogica">
-  <strong>💡 Idea clave:</strong> Si las palabras dicen una cosa y el cuerpo dice la contraria, las personas creen siempre lo que dice el cuerpo. Por eso, una postura encorvada, brazos cruzados o mirada perdida envían el mensaje «no me interesa», aunque la boca diga «sí, claro, te escucho».
+  <strong>💡 Idea clave:</strong> si las palabras dicen una cosa y el cuerpo dice la contraria, la gente suele creerle más al cuerpo. Por eso, una postura encorvada, brazos cruzados o mirada perdida envían el mensaje «no me interesa», aunque la boca diga «sí, claro, te escucho».
 </div>
 
 </div>
 </details>
 
-<details>
+<details id="s-5-actividad">
 <summary>5. Actividad: ¿buena o mala escucha? <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
-<p>A continuación tiene seis situaciones cortas. En cada una, decida si la persona descrita está practicando <strong>buena escucha</strong> (escucha activa) o <strong>mala escucha</strong> (no presta atención, interrumpe, juzga, etc.).</p>
+<p>Aquí tienes seis situaciones cortas. En cada una, decide si la persona está practicando <strong>buena escucha</strong> (escucha activa) o <strong>mala escucha</strong> (no presta atención, interrumpe, juzga, etc.).</p>
 
 <div class="clasif-cont">
-  <h4>🎧 Clasifique cada situación</h4>
+  <h4>🎧 Clasifica cada situación</h4>
   <div id="items-clasif"></div>
-  <div class="puntaje-clasif" id="puntaje-clasif">Aciertos: 0 / 6</div>
+  <div class="puntaje-clasif" id="puntaje-clasif" role="status">Aciertos: 0 / 6</div>
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>6. Modalidades presencial y online <span class="caja-tiempo">4 min</span></summary>
+<details id="s-6-vida-diaria">
+<summary>6. La escucha en la vida diaria <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-
-<p>La escucha activa se ve un poco distinta según si la clase es en el aula o por videoconferencia. Estas son las claves para cada caso:</p>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">Cuerpo y mirada</span></p>
-    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
-      <li>Siéntese con la espalda derecha y la mirada hacia quien habla.</li>
-      <li>Asienta con la cabeza cuando entienda y use expresiones cortas («ajá», «claro»).</li>
-      <li>Espere a que el otro termine la oración antes de tomar la palabra.</li>
-      <li>Si pide aclaración, hágalo con respeto: «¿Puedes repetir esa parte?», no «¿qué?».</li>
-    </ul>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (sincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Cámara y voz</span></p>
-    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
-      <li>Mantenga la <strong>cámara encendida</strong> para que el grupo le vea la cara.</li>
-      <li>Mire directamente a la <strong>lente de la cámara</strong> (no a la pantalla) cuando hable.</li>
-      <li>Use el ícono de «levantar la mano» antes de hablar para no interrumpir.</li>
-      <li>Use el chat para mostrar acuerdo o pedir aclaración sin cortar al que habla.</li>
-    </ul>
-  </div>
-</div>
-
+<p>La escucha activa se ve un poco distinta según la situación. Estas son algunas claves para cuatro momentos muy comunes:</p>
+<ul class="lista-bonita">
+  <li><strong>🩺 En una cita médica:</strong> lleva tus preguntas escritas. Cuando el médico termine, repite con tus palabras lo que entendiste: «Entonces, debo tomar la pastilla dos veces al día, ¿es así?». Si usa una palabra que no conoces, pide que te la explique.</li>
+  <li><strong>💼 En una entrevista de trabajo:</strong> mira a la persona, espera a que termine la pregunta antes de responder y, si no la entendiste, pide con respeto: «¿Podría repetir la pregunta, por favor?».</li>
+  <li><strong>📞 En una llamada por teléfono:</strong> como no hay gestos, usa palabras cortas para mostrar que sigues la conversación («sí», «entiendo», «claro») y anota los datos importantes: nombres, fechas, números.</li>
+  <li><strong>💻 En una videollamada:</strong> mira a la cámara cuando hables, apaga el micrófono cuando no hablas para evitar ruidos, y no hagas otras cosas al mismo tiempo: se nota.</li>
+</ul>
+<div class="tip"><strong>📝 Usted o tú:</strong> con el médico, en una entrevista o con alguien que no conoces, lo normal es tratar de <strong>usted</strong>: «¿Podría explicarme…?». Con la familia y los amigos, de <strong>tú</strong>: «¿Puedes explicarme…?».</div>
 </div>
 </details>
 
-<details>
-<summary>7. Quiz final de la clase <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>7. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-
-<p>El siguiente quiz repasa los conceptos clave de esta primera clase: emisor y receptor, niveles de escucha, frases plantilla y comunicación no verbal.</p>
-
-<div class="quiz-cont">
-  <h4>📝 Quiz: escucha activa y comunicación</h4>
-  <div class="preguntas-quiz" id="preguntas-quiz1"></div>
-  <div class="puntaje" id="puntaje-quiz1">Aciertos: 0 / 6</div>
+<p><strong>Una conversación con escucha activa.</strong> Elige una de estas dos opciones:</p>
+<ul class="lista-bonita">
+  <li><strong>Opción A:</strong> conversa unos cinco minutos con alguien de tu casa, un amigo o un compañero de trabajo sobre cómo le fue en el día o sobre sus metas. Usa al menos <strong>tres frases de escucha activa</strong> distintas (acuerdo, añadir, pedir aclaración o parafrasear).</li>
+  <li><strong>Opción B:</strong> si no tienes con quién conversar, mira una entrevista corta en la televisión o en internet. Cada vez que la persona termine una idea, detén el video y escribe una paráfrasis: «Entonces, lo que dice es que…».</li>
+</ul>
+<p>Después, escribe en tu cuaderno un párrafo corto: qué frases usaste, qué gestos hiciste y qué aprendiste de la otra persona que no sabías.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Una conversación con escucha activa»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Frases</td><td class="nivel-4">Usé al menos tres frases de escucha activa</td><td class="nivel-1">Usé una o ninguna</td></tr>
+      <tr><td>No interrumpir</td><td class="nivel-4">Esperé a que la otra persona terminara antes de hablar</td><td class="nivel-1">Interrumpí varias veces</td></tr>
+      <tr><td>Paráfrasis</td><td class="nivel-4">Repetí con mis palabras al menos una idea de la otra persona</td><td class="nivel-1">No comprobé si había entendido</td></tr>
+      <tr><td>Mi párrafo</td><td class="nivel-4">Cuenta qué hice y qué aprendí, con oraciones completas</td><td class="nivel-1">No escribí el párrafo</td></tr>
+    </tbody>
+  </table>
 </div>
-
 </div>
 </details>
+
+<details id="s-quiz">
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>La comunicación interpersonal es un <strong>intercambio</strong>: los roles de emisor y receptor se alternan.</li>
+  <li>Hay tres niveles de escucha: <strong>oír</strong>, <strong>escuchar</strong> y <strong>escuchar activamente</strong>.</li>
+  <li>Las frases de escucha activa sirven para mostrar acuerdo, añadir, pedir aclaración y parafrasear.</li>
+  <li>El cuerpo y la voz también comunican: contacto visual, postura abierta, tono amable.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Qué diferencia hay entre oír y escuchar?</li>
+    <li>¿Qué frase usas para comprobar que entendiste bien?</li>
+    <li>¿Qué gestos muestran que escuchas?</li>
+  </ul>
+</div>
 
 <div class="tip">
-  <strong>👉 ¿Qué viene en la próxima clase?</strong> En la <strong>Clase 2</strong> pondremos en práctica todo lo que vimos hoy con una dinámica colaborativa: la <strong>técnica 1-2-4</strong> y los círculos literarios. Llegue habiendo leído el texto que se asignó.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_8-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.2 · Leer y conversar: la técnica 1-2-4</a>. Pondrás en práctica la escucha activa para hablar de un texto, pensándolo primero tú solo y luego conversándolo con otros.
 </div>
+</div>
+</details>
 
-<p class="firma">Spanish ASE Language Arts 1 · GEDparaHispanos.com · Prof. José M. Fernández</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 8 · Lección 8.1</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -442,12 +565,12 @@
      ACTIVIDAD DE CLASIFICACIÓN: BUENA VS MALA ESCUCHA
      ========================================================= */
   var situaciones=[
-    {texto:'Mientras su compañero le cuenta sobre su trabajo, Pedro mira el celular y revisa los mensajes.', tipo:'mala', explica:'Es mala escucha: el celular se vuelve una distracción y envía el mensaje "lo que dices no me interesa".'},
-    {texto:'Ana mira a su compañera a los ojos, asiente con la cabeza y le pregunta: "¿Puedes contarme más sobre esa parte?".', tipo:'buena', explica:'Es escucha activa: contacto visual, asentimiento y una pregunta para profundizar.'},
-    {texto:'Luis interrumpe a su compañera a media oración para decir lo que él piensa, sin esperar que ella termine.', tipo:'mala', explica:'Es mala escucha: interrumpir corta la idea del otro y comunica "lo mío es más importante que lo tuyo".'},
-    {texto:'Después de oír a su compañero, Marta dice: "Entonces, lo que dices es que el horario te complica. ¿Entendí bien?".', tipo:'buena', explica:'Es escucha activa: Marta parafrasea lo escuchado y verifica que entendió correctamente.'},
-    {texto:'Carmen mantiene los brazos cruzados, mira al techo y suspira mientras su compañera habla.', tipo:'mala', explica:'Es mala escucha: la postura cerrada y los suspiros indican aburrimiento o desacuerdo sin palabras.'},
-    {texto:'Cuando José no entiende una palabra que usó su compañera, levanta la mano y dice: "Perdón, no conozco esa palabra, ¿podrías explicarla?".', tipo:'buena', explica:'Es escucha activa: pedir aclaración con respeto demuestra interés en entender bien.'}
+    {texto:'Mientras su amigo le cuenta sobre su trabajo, Pedro mira el celular y revisa los mensajes.', tipo:'mala', explica:'Es mala escucha: el celular se vuelve una distracción y envía el mensaje "lo que dices no me interesa".'},
+    {texto:'Ana mira a su vecina a los ojos, asiente con la cabeza y le pregunta: "¿Puedes contarme más sobre esa parte?".', tipo:'buena', explica:'Es escucha activa: contacto visual, asentimiento y una pregunta para profundizar.'},
+    {texto:'Luis interrumpe a su esposa a media oración para decir lo que él piensa, sin esperar que ella termine.', tipo:'mala', explica:'Es mala escucha: interrumpir corta la idea del otro y comunica "lo mío es más importante que lo tuyo".'},
+    {texto:'Después de oír a su hermano, Marta dice: "Entonces, lo que dices es que el horario te complica. ¿Entendí bien?".', tipo:'buena', explica:'Es escucha activa: Marta parafrasea lo escuchado y verifica que entendió correctamente.'},
+    {texto:'Carmen mantiene los brazos cruzados, mira al techo y suspira mientras su supervisora habla.', tipo:'mala', explica:'Es mala escucha: la postura cerrada y los suspiros indican aburrimiento o desacuerdo sin palabras.'},
+    {texto:'Cuando José no entiende una palabra que usó la doctora, le dice con calma: "Perdón, no conozco esa palabra, ¿podrías explicarla?".', tipo:'buena', explica:'Es escucha activa: pedir aclaración con respeto demuestra interés en entender bien.'}
   ];
 
   var contItems=document.getElementById('items-clasif');
@@ -463,7 +586,7 @@
         '<button type="button" class="btn-clasif bbuena" data-tipo="buena">✅ Buena escucha</button>'+
         '<button type="button" class="btn-clasif bmala" data-tipo="mala">❌ Mala escucha</button>'+
       '</div>'+
-      '<div class="retro-clasif" id="retro-clasif-'+idx+'"></div>';
+      '<div class="retro-clasif" id="retro-clasif-'+idx+'" role="status"></div>';
     contItems.appendChild(div);
 
     var botones=div.querySelectorAll('.btn-clasif');
@@ -479,6 +602,7 @@
           r.textContent='✅ '+sit.explica;
           r.classList.add('visible');
         }else{
+          var r2=document.getElementById('retro-clasif-'+idx); r2.textContent='❌ Pregúntate: ¿esa persona está atenta y trata de entender al otro?'; r2.classList.add('visible');
           b.classList.add('incorrecto');
           setTimeout(function(){b.classList.remove('incorrecto')},500);
         }
@@ -495,128 +619,73 @@
     }
   }
 
-  /* =========================================================
-     QUIZ FINAL DE LA CLASE 1
-     ========================================================= */
-  var preguntas=[
-    {
-      texto:'En una conversación entre dos personas, ¿qué significa que los roles "se alternan"?',
-      opciones:[
-        {t:'Que una persona siempre habla y la otra siempre escucha.',ok:false},
-        {t:'Que ambas personas hablan al mismo tiempo para participar más.',ok:false},
-        {t:'Que cada persona es a veces emisor y a veces receptor.',ok:true},
-        {t:'Que el más joven escucha y el mayor habla.',ok:false}
-      ],
-      explica:'En la comunicación interpersonal, ambos participantes cambian de rol: cuando uno habla, el otro escucha; después se invierten los papeles.'
-    },
-    {
-      contexto:'María está sentada en clase. Suena el ruido del aire acondicionado. Ella no le presta atención y se concentra en lo que dice el profesor.',
-      texto:'¿En qué nivel está María respecto al ruido del aire acondicionado?',
-      opciones:[
-        {t:'Oír',ok:true},
-        {t:'Escuchar',ok:false},
-        {t:'Escucha activa',ok:false},
-        {t:'No oye nada',ok:false}
-      ],
-      explica:'María "oye" el aire acondicionado porque el sonido llega a su oído, pero no le presta atención. Eso es solo oír, no escuchar.'
-    },
-    {
-      contexto:'Carlos le dice a su compañera Ana: "Mi meta es terminar el GED este año porque quiero estudiar enfermería".',
-      texto:'¿Cuál respuesta de Ana muestra mejor la escucha activa?',
-      opciones:[
-        {t:'Ah, sí. Yo también tengo metas.',ok:false},
-        {t:'¿Sabías que el GED tiene cuatro exámenes?',ok:false},
-        {t:'Entonces, lo que dices es que el GED es un paso para entrar a enfermería. ¿Es así?',ok:true},
-        {t:'A mí lo que me gusta es la cocina.',ok:false}
-      ],
-      explica:'Esta respuesta parafrasea lo que dijo Carlos ("lo que dices es...") y verifica la comprensión con una pregunta. Es escucha activa de manual.'
-    },
-    {
-      texto:'¿Cuál de estas frases sirve para PEDIR ACLARACIÓN con respeto?',
-      opciones:[
-        {t:'¿Qué? No te entiendo nada.',ok:false},
-        {t:'¿Puedes explicar esa parte un poco más, por favor?',ok:true},
-        {t:'Mejor déjalo, ya no importa.',ok:false},
-        {t:'Habla más fuerte.',ok:false}
-      ],
-      explica:'La frase "¿Puedes explicar...?" pide aclaración con respeto. Las otras tres son agresivas, evasivas o descorteses.'
-    },
-    {
-      texto:'¿Cuál de los siguientes es un ejemplo de comunicación NO VERBAL?',
-      opciones:[
-        {t:'Decir "estoy de acuerdo".',ok:false},
-        {t:'Asentir con la cabeza mientras el otro habla.',ok:true},
-        {t:'Hablar más rápido cuando uno está nervioso.',ok:false},
-        {t:'Escribir un correo electrónico.',ok:false}
-      ],
-      explica:'Asentir con la cabeza es comunicación no verbal: el cuerpo envía el mensaje "te sigo, entiendo". Hablar rápido es paraverbal, y los otros dos ejemplos son verbales.'
-    },
-    {
-      contexto:'Durante una clase por videoconferencia, Pedro tiene la cámara apagada, está comiendo y mira el celular mientras la profesora explica.',
-      texto:'¿Qué mensaje no verbal está enviando Pedro?',
-      opciones:[
-        {t:'Que está muy concentrado.',ok:false},
-        {t:'Que respeta a la profesora.',ok:false},
-        {t:'Que la clase no le interesa y está distraído.',ok:true},
-        {t:'Que está practicando escucha activa.',ok:false}
-      ],
-      explica:'La cámara apagada, comer y mirar el celular envían un mensaje claro de desinterés y falta de atención. En modalidad online, mantener la cámara encendida es la señal básica de escucha activa.'
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "En una conversación, ¿qué significa que los roles «se alternan»?", "o": ["Que cada persona es a veces emisor y a veces receptor", "Que una persona siempre habla y la otra siempre escucha", "Que las dos hablan al mismo tiempo"], "c": 0}, {"t": "¿Quién es el <strong>emisor</strong>?", "o": ["La persona que envía el mensaje", "La persona que recibe el mensaje", "El teléfono"], "c": 0}, {"t": "María está en una cita médica. Se oye el ruido del aire acondicionado, pero ella se concentra en lo que dice la doctora. ¿Qué hace María con el ruido?", "o": ["Lo oye", "Lo escucha activamente", "No lo oye"], "c": 0}, {"t": "Carlos dice: «Quiero terminar el GED este año para estudiar enfermería». ¿Qué respuesta muestra escucha activa?", "o": ["Entonces, el GED es un paso para entrar a enfermería, ¿es así?", "Ah, sí. Yo también tengo metas.", "A mí me gusta la cocina."], "c": 0}, {"t": "¿Cuál frase sirve para <strong>pedir aclaración</strong> con respeto?", "o": ["¿Puedes explicar esa parte un poco más, por favor?", "¿Qué? No te entiendo nada.", "Habla más fuerte."], "c": 0}, {"t": "«Si entendí bien, tú piensas que…» sirve para…", "o": ["parafrasear", "cambiar de tema", "interrumpir"], "c": 0}, {"t": "¿Cuál es un ejemplo de comunicación <strong>no verbal</strong>?", "o": ["Asentir con la cabeza", "Decir «estoy de acuerdo»", "Escribir un correo"], "c": 0}, {"t": "El tono, el volumen y la velocidad de la voz forman el canal…", "o": ["paraverbal", "verbal", "escrito"], "c": 0}, {"t": "En una videollamada de trabajo, Pedro tiene la cámara apagada, come y mira el celular. ¿Qué mensaje envía?", "o": ["Que la reunión no le interesa", "Que está muy concentrado", "Que practica la escucha activa"], "c": 0}, {"t": "En la escucha activa, ¿qué es primero?", "o": ["Entender bien", "Responder rápido", "Dar mi opinión"], "c": 0}, {"t": "En una llamada telefónica, como no hay gestos, conviene…", "o": ["usar palabras cortas como «entiendo» y anotar los datos importantes", "quedarse callado todo el tiempo", "hablar al mismo tiempo que la otra persona"], "c": 0}, {"t": "Con el médico o en una entrevista de trabajo, lo normal es tratar de…", "o": ["usted: «¿Podría repetir, por favor?»", "tú, siempre", "no hablar"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
-  ];
-
-  var resueltasQ={};
-  var aciertosQ=0;
-  var contQuiz=document.getElementById('preguntas-quiz1');
-
-  preguntas.forEach(function(item,idx){
-    var div=document.createElement('div');
-    div.className='preg-quiz';
-
-    var opcHtml='';
-    item.opciones.forEach(function(op){
-      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
-    });
-
-    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
-
-    div.innerHTML=
-      '<div><span class="num-preg">'+(idx+1)+'</span>'+
-      '<span class="texto-preg">'+item.texto+'</span></div>'+
-      contextoHtml+
-      '<div class="opciones-quiz">'+opcHtml+'</div>'+
-      '<div class="retro-quiz" id="retro-q1-'+idx+'"></div>';
-
-    contQuiz.appendChild(div);
-
-    var botones=div.querySelectorAll('.opt-quiz');
-    botones.forEach(function(b){
-      b.addEventListener('click',function(){
-        if(resueltasQ[idx])return;
-        var correcto=(b.getAttribute('data-correcto')==='1');
-        if(correcto){
-          b.classList.add('correcta');
-          resueltasQ[idx]=true;
-          aciertosQ++;
-          actualizarPuntajeQ();
-          var retro=document.getElementById('retro-q1-'+idx);
-          retro.textContent='✅ '+item.explica;
-          retro.classList.add('visible');
-        }else{
-          b.classList.add('incorrecta');
-          setTimeout(function(){b.classList.remove('incorrecta')},500);
-        }
-      });
-    });
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
   });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes escuchar activamente. Puedes continuar con la Lección 8.2.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 2 y 3 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
 
-  function actualizarPuntajeQ(){
-    var el=document.getElementById('puntaje-quiz1');
-    el.textContent='Aciertos: '+aciertosQ+' / '+preguntas.length;
-    if(aciertosQ===preguntas.length){
-      el.innerHTML='🎉 ¡Clase 1 dominada! Aciertos: '+aciertosQ+' / '+preguntas.length;
-      el.style.color='var(--exito)';
-    }
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 8.4 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 4: Presentación oral breve</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 8.4 · Presentación oral breve</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -186,35 +192,119 @@
   .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
   .badge-discusion{background:#f3e5f5;color:#6a1b9a}
   .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
 
-<h1>Clase 4: Presentación oral breve</h1>
-<p class="subtitulo">Tema 8 · Lección 8.2 · Nivel 1 · Semana 16 · 50 minutos</p>
+<h1>Lección 8.4 · Presentación oral breve</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 8 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <ul>
     <li>Construir el <strong>guion</strong> de una presentación oral breve en tres partes: apertura, desarrollo y cierre.</li>
     <li>Controlar el <strong>canal vocal</strong>: volumen, velocidad, modulación y pausas.</li>
     <li>Identificar y reducir las <strong>muletillas</strong> y otros ruidos de la comunicación.</li>
-    <li>Conocer la <strong>rúbrica analítica</strong> con la que se evalúan las presentaciones del curso.</li>
+    <li>Usar una <strong>rúbrica</strong> para evaluar tu propia presentación, grabada con el celular.</li>
   </ul>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-estructura">La estructura del discurso</a></li>
+    <li><a href="#s-2-guion">Un guion modelo</a></li>
+    <li><a href="#s-3-voz">El canal vocal</a></li>
+    <li><a href="#s-4-muletillas">Las muletillas</a></li>
+    <li><a href="#s-5-plantilla">Mi plantilla: preparo mi guion</a></li>
+    <li><a href="#s-6-diagnostico">Actividad: diagnostica el problema</a></li>
+    <li><a href="#s-7-rubrica">La rúbrica de la presentación</a></li>
+    <li><a href="#s-8-grabarte">Grabarte con el celular</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>En la <strong>Clase 3</strong> aprendimos a manejar el vocabulario digital y los procedimientos básicos de Brightspace. Hoy damos el siguiente paso: usar todo eso para preparar una <span class="palabra-clave">presentación oral breve</span> de unos tres minutos sobre un tema personal o un texto leído en clase. Esta presentación será el ensayo general del <strong>proyecto final integrador</strong> que defenderemos en las Clases 5 y 6.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Hablar en público no es solo «saber lo que vas a decir». Es <strong>tener un guion claro, controlar la voz y no perder al público</strong>. En esta clase trabajamos esos tres pilares, y al final conocerá exactamente la rúbrica con la que su profesor evaluará la presentación.</p>
+<p>En la lección anterior aprendiste el vocabulario digital y los pasos básicos en la computadora. Ahora vas a preparar una <span class="palabra-clave">presentación oral breve</span> de unos tres minutos sobre un tema personal. Será el ensayo general del <strong>proyecto final</strong> de la Lección 8.5.</p>
+
+<p>Hablar en público no es solo «saber lo que vas a decir». Es <strong>tener un guion claro, controlar la voz y no perder a quien te escucha</strong>. En esta lección trabajas esos tres pilares. Como estudias por tu cuenta, tu público será tu propio celular: te vas a <strong>grabar</strong>, te vas a mirar y te vas a evaluar con la rúbrica. Si alguien de tu casa quiere ser tu público, ¡mejor todavía!</p>
 
 <div class="clave-pedagogica">
-  <strong>🧠 Clave de la clase:</strong> No se memoriza palabra por palabra. Se prepara un <em>esquema o libreto</em> escrito y se ensaya en voz alta varias veces. Si tratamos de memorizar, en el momento del nervio se nos olvida una palabra y se cae todo el discurso. Si dominamos la estructura, podemos improvisar las palabras sin perder el rumbo.
+  <strong>🧠 Clave de la lección:</strong> no se memoriza palabra por palabra. Se prepara un <em>esquema</em> escrito y se ensaya en voz alta varias veces. Si intentas memorizarlo todo, con los nervios se te olvida una palabra y se cae el discurso. Si dominas la estructura, puedes cambiar las palabras sin perder el rumbo.
 </div>
 
-<details open>
-<summary>1. La estructura del discurso: tres partes <span class="caja-tiempo">10 min</span></summary>
+<details open id="s-1-estructura">
+<summary>1. La estructura del discurso <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El esqueleto de cualquier presentación</h3>
@@ -227,7 +317,7 @@
     <div class="cont-pd">
       <span class="titulo-pd">1. Apertura</span>
       <span class="tiempo-pd">⏱️ 30 segundos</span>
-      <p class="desc-pd">Salude al público, preséntese, y diga claramente sobre qué va a hablar. La apertura debe «enganchar» a quien escucha en los primeros segundos.</p>
+      <p class="desc-pd">Saluda, preséntate y di claramente de qué vas a hablar. La apertura debe «enganchar» a quien escucha en los primeros segundos.</p>
       <div class="ejemplo-pd"><em>«Buenos días, soy María Pérez. Hoy les voy a contar por qué decidí volver a estudiar a los cincuenta años.»</em></div>
     </div>
   </div>
@@ -236,7 +326,7 @@
     <div class="cont-pd">
       <span class="titulo-pd">2. Desarrollo</span>
       <span class="tiempo-pd">⏱️ 2 minutos</span>
-      <p class="desc-pd">Explique <strong>dos o tres ideas principales</strong> sobre su tema. Use ejemplos concretos. No trate de meterlo todo: mejor pocas ideas, bien explicadas.</p>
+      <p class="desc-pd">Explica <strong>dos o tres ideas principales</strong> sobre tu tema. Usa ejemplos concretos. No intentes meterlo todo: mejor pocas ideas, bien explicadas.</p>
       <div class="ejemplo-pd"><em>«Mi primera razón fue darle el ejemplo a mis hijos. La segunda, conseguir un mejor trabajo. La tercera, demostrarme a mí misma que aún puedo aprender…»</em></div>
     </div>
   </div>
@@ -245,26 +335,26 @@
     <div class="cont-pd">
       <span class="titulo-pd">3. Cierre</span>
       <span class="tiempo-pd">⏱️ 30 segundos</span>
-      <p class="desc-pd">Recoja en una frase la idea principal y termine con una frase memorable o una invitación. Nunca cierre con un débil «bueno… eso es todo».</p>
+      <p class="desc-pd">Recoge en una frase la idea principal y termina con una frase memorable o una invitación. Nunca cierres con un débil «bueno… eso es todo».</p>
       <div class="ejemplo-pd"><em>«Por eso digo siempre: nunca es tarde para volver a estudiar. Muchas gracias.»</em></div>
     </div>
   </div>
 </div>
 
 <div class="tip">
-  <strong>📝 Regla del 30-120-30:</strong> En una presentación de 3 minutos, dedique unos <strong>30 segundos</strong> a abrir, unos <strong>120 segundos</strong> a desarrollar y otros <strong>30 segundos</strong> a cerrar. Esa proporción mantiene el equilibrio: ni demasiado preámbulo ni un cierre apresurado.
+  <strong>📝 Regla del 30-120-30:</strong> en una presentación de 3 minutos, dedica unos <strong>30 segundos</strong> a abrir, unos <strong>120 segundos</strong> a desarrollar y otros <strong>30 segundos</strong> a cerrar. Esa proporción mantiene el equilibrio: ni demasiado preámbulo ni un cierre apresurado.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>2. Un guion modelo: "Mi historia, mis metas" <span class="caja-tiempo">7 min</span></summary>
+<details id="s-2-guion">
+<summary>2. Un guion modelo <span class="caja-tiempo">7 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Cómo se ve un guion completo</h3>
 
-<p>Veamos un ejemplo real: el guion de una presentación de tres minutos titulada «Mi historia, mis metas». Fíjese cómo el guion tiene <strong>las palabras que diré</strong> y, en cursiva, <strong>notas técnicas</strong> sobre la voz y el gesto.</p>
+<p>Mira un ejemplo: el guion de una presentación de tres minutos titulada «Mi historia, mis metas». Fíjate en que el guion tiene <strong>las palabras que diré</strong> y, en cursiva, <strong>notas técnicas</strong> sobre la voz y el gesto.</p>
 
 <div class="guion-modelo">
   <span class="etiq-guion">📝 Guion completo</span>
@@ -279,7 +369,7 @@
   <div class="guion-seccion gs-desarrollo">
     <span class="marca-gs">💡 Desarrollo (2 min)</span>
     <p style="margin:4px 0"><strong>Idea 1 — De dónde vengo:</strong> «Nací en Michoacán, México. Llegué a Chicago a los veinticinco años. Trabajé muchos años en construcción y nunca tuve oportunidad de terminar la escuela.»</p>
-    <p style="margin:4px 0"><strong>Idea 2 — Dónde estoy:</strong> «Hoy estoy en el nivel 1 de español para el GED. Mi familia me apoya. Aprender a usar la computadora ha sido un reto, pero ya subo mis tareas a Brightspace.»</p>
+    <p style="margin:4px 0"><strong>Idea 2 — Dónde estoy:</strong> «Hoy estoy en el Nivel 1 de Artes del Lenguaje, preparándome para el GED. Mi familia me apoya. Aprender a usar la computadora ha sido un reto, pero ya estudio mis lecciones en línea.»</p>
     <p style="margin:4px 0"><strong>Idea 3 — A dónde quiero llegar:</strong> «Mi meta es terminar el GED en dos años y entrar al programa de enfermería. Quiero ayudar a otros hispanos que llegan a este país sin saber el sistema.»</p>
     <span class="nota-tecnica">🎙️ <em>Bajar un poco el ritmo al decir «nunca tuve oportunidad». Hacer pausa breve antes de cada nueva idea.</em></span>
   </div>
@@ -291,13 +381,13 @@
   </div>
 </div>
 
-<p>Fíjese cómo el guion no es un texto seguido: son <strong>frases cortas y notas</strong> que José puede mirar durante la presentación si se traba. Pero el contenido lo lleva en la cabeza, no lee párrafo por párrafo.</p>
+<p>Fíjate en que el guion no es un texto seguido: son <strong>frases cortas y notas</strong> que José puede mirar durante la presentación si se traba. Pero el contenido lo lleva en la cabeza, no lee párrafo por párrafo.</p>
 
 </div>
 </details>
 
-<details>
-<summary>3. El canal vocal: cómo suena lo que decimos <span class="caja-tiempo">8 min</span></summary>
+<details id="s-3-voz">
+<summary>3. El canal vocal <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Más allá de las palabras</h3>
@@ -311,38 +401,38 @@
       <span class="icono-asp">🔊</span>
       <span class="titulo-asp">Volumen</span>
       <span class="desc-asp">Qué tan alto o bajo se habla. Debe oírse claramente desde la última fila, pero sin gritar.</span>
-      <span class="consejo-asp"><strong>Consejo:</strong> mire a la persona más lejana del aula y hable como si solo le hablara a ella.</span>
+      <span class="consejo-asp"><strong>Consejo:</strong> imagina a una persona al fondo del cuarto y háblale a ella.</span>
     </div>
     <div class="aspecto">
       <span class="icono-asp">⏩</span>
       <span class="titulo-asp">Velocidad</span>
       <span class="desc-asp">Qué tan rápido o lento se habla. Los nervios nos hacen acelerar; conviene bajar el ritmo deliberadamente.</span>
-      <span class="consejo-asp"><strong>Consejo:</strong> haga una pausa de un segundo después de cada idea importante.</span>
+      <span class="consejo-asp"><strong>Consejo:</strong> haz una pausa de un segundo después de cada idea importante.</span>
     </div>
     <div class="aspecto">
       <span class="icono-asp">🎵</span>
       <span class="titulo-asp">Modulación</span>
       <span class="desc-asp">Los cambios de tono. Una voz que siempre suena igual aburre. Subir y bajar el tono ayuda a marcar lo importante.</span>
-      <span class="consejo-asp"><strong>Consejo:</strong> diga las palabras clave con un tono un poco más alto y firme.</span>
+      <span class="consejo-asp"><strong>Consejo:</strong> di las palabras clave con un tono un poco más alto y firme.</span>
     </div>
     <div class="aspecto">
       <span class="icono-asp">⏸️</span>
       <span class="titulo-asp">Pausas y silencios</span>
       <span class="desc-asp">El silencio bien usado es una herramienta poderosa. Una pausa antes de la idea principal hace que el público preste atención.</span>
-      <span class="consejo-asp"><strong>Consejo:</strong> respire profundo y haga silencio en lugar de decir «eh…» o «mmm…».</span>
+      <span class="consejo-asp"><strong>Consejo:</strong> respira profundo y haz silencio en lugar de decir «eh…» o «mmm…».</span>
     </div>
   </div>
 </div>
 
 <div class="clave-pedagogica">
-  <strong>💡 El silencio no es vacío:</strong> Muchos estudiantes le tienen miedo al silencio y lo llenan con muletillas. Pero una pausa breve y deliberada <em>aumenta</em> la atención del público. El silencio dice: «lo que sigue es importante, escuchen».
+  <strong>💡 El silencio no es vacío:</strong> A mucha gente le da miedo el silencio y lo llena con muletillas. Pero una pausa breve y deliberada <em>aumenta</em> la atención del público. El silencio dice: «lo que sigue es importante, escuchen».
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>4. Las muletillas y otros ruidos de la comunicación <span class="caja-tiempo">5 min</span></summary>
+<details id="s-4-muletillas">
+<summary>4. Las muletillas <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué son las muletillas?</h3>
@@ -362,7 +452,7 @@
     <span class="muletilla">«bueno…»</span>
   </div>
   <div class="alternativa-muletilla">
-    <strong>✅ Alternativa:</strong> en lugar de decir «eh…», respire profundo, haga silencio durante un segundo y siga. El público lee el silencio como reflexión, no como duda. Las muletillas, en cambio, comunican inseguridad.
+    <strong>✅ Alternativa:</strong> en lugar de decir «eh…», respira profundo, haz silencio durante un segundo y sigue. El público lee el silencio como reflexión, no como duda. Las muletillas, en cambio, comunican inseguridad.
   </div>
 </div>
 
@@ -380,20 +470,20 @@
 </div>
 </details>
 
-<details>
-<summary>5. Mi plantilla guiada: preparo mi guion <span class="caja-tiempo">8 min</span></summary>
+<details id="s-5-plantilla">
+<summary>5. Mi plantilla: preparo mi guion <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Su turno: prepare el guion de su presentación</h3>
+<h3>Tu turno: prepara el guion de tu presentación</h3>
 
-<p>Use la siguiente plantilla para preparar el guion de una presentación de tres minutos sobre un tema personal (su historia, sus metas, su familia, su trabajo) o sobre un texto leído en clase. Escriba en cada espacio frases cortas y notas. Recuerde: <strong>no se escribe palabra por palabra</strong>.</p>
+<p>Usa esta plantilla para preparar en tu cuaderno el guion de una presentación de tres minutos sobre un tema personal (tu historia, tus metas, tu familia, tu trabajo) o sobre un texto que leíste. Escribe en cada parte frases cortas y notas. Recuerda: <strong>no se escribe palabra por palabra</strong>.</p>
 
 <div class="plantilla-pres">
   <h4>📝 Plantilla del guion (3 minutos)</h4>
 
   <div class="seccion-plantilla sp-apertura">
     <h5>🚀 1. Apertura (30 segundos)</h5>
-    <span class="indicacion-sp">Salude, preséntese, anuncie su tema. Una o dos frases cortas.</span>
+    <span class="indicacion-sp">Saluda, preséntate, anuncia tu tema. Una o dos frases cortas.</span>
     <span class="linea-escritura"></span>
     <span class="linea-escritura"></span>
   </div>
@@ -421,52 +511,52 @@
 
   <div class="seccion-plantilla sp-cierre">
     <h5>🎯 3. Cierre (30 segundos)</h5>
-    <span class="indicacion-sp">Resuma en una frase y termine con una invitación o frase memorable.</span>
+    <span class="indicacion-sp">Resume en una frase y termina con una invitación o una frase memorable.</span>
     <span class="linea-escritura"></span>
     <span class="linea-escritura"></span>
   </div>
 </div>
 
 <div class="tip">
-  <strong>📝 Ensayo:</strong> Una vez tenga el guion, léalo en voz alta <strong>al menos tres veces</strong>. La primera vez, leyendo. La segunda, mirando solo de reojo. La tercera, sin mirar, solo recordando la estructura. Cronométrese: si pasa de 3 minutos y 30 segundos, recorte algo.
+  <strong>📝 Ensayo:</strong> cuando tengas el guion, dilo en voz alta <strong>al menos tres veces</strong>. La primera, leyendo. La segunda, mirando solo de reojo. La tercera, sin mirar, recordando la estructura. Mide el tiempo con el celular: si pasa de 3 minutos y 30 segundos, recorta algo.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>6. Actividad: diagnostique el problema <span class="caja-tiempo">5 min</span></summary>
+<details id="s-6-diagnostico">
+<summary>6. Actividad: diagnostica el problema <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<p>A continuación tiene seis situaciones de estudiantes presentando. Para cada una, elija cuál es el <strong>problema principal</strong> que está afectando su presentación:</p>
+<p>Aquí tienes seis personas que presentan. Para cada una, elige el <strong>problema principal</strong> de su presentación:</p>
 
 <div class="diag-cont">
-  <h4>🩺 Diagnostique cada caso</h4>
+  <h4>🩺 Diagnostica cada caso</h4>
   <div id="items-diag"></div>
-  <div class="puntaje-diag" id="puntaje-diag">Aciertos: 0 / 6</div>
+  <div class="puntaje-diag" id="puntaje-diag" role="status">Aciertos: 0 / 6</div>
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>7. La rúbrica de la presentación oral <span class="caja-tiempo">4 min</span></summary>
+<details id="s-7-rubrica">
+<summary>7. La rúbrica de la presentación <span class="caja-tiempo">4 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Así se evaluará su presentación</h3>
+<h3>Así vas a evaluar tu presentación</h3>
 
-<p>El profesor evaluará su presentación con la siguiente <strong>rúbrica analítica</strong> de cuatro criterios por cuatro niveles. Cada criterio vale hasta 4 puntos, para un máximo de <strong>16 puntos</strong>. Léala con atención antes de ensayar: lo que aquí se pide es exactamente lo que se va a calificar.</p>
+<p>Vas a evaluar tu propia grabación con esta <strong>rúbrica</strong> de cuatro criterios y cuatro niveles. Cada criterio vale hasta 4 puntos, para un máximo de <strong>16 puntos</strong>. Léela antes de ensayar: así sabes a qué quieres llegar.</p>
 
 <div class="rubrica-cont">
   <h4>📊 Rúbrica analítica · Presentación oral breve</h4>
   <table class="rubrica-tabla">
     <thead>
       <tr>
-        <th class="h-crit">Criterio</th>
-        <th class="h-n1">Inicial</th>
-        <th class="h-n2">En desarrollo</th>
-        <th class="h-n3">Competente</th>
-        <th class="h-n4">Avanzado</th>
+        <th scope="col" class="h-crit">Criterio</th>
+        <th scope="col" class="h-n1">Inicial</th>
+        <th scope="col" class="h-n2">En desarrollo</th>
+        <th scope="col" class="h-n3">Competente</th>
+        <th scope="col" class="h-n4">Avanzado</th>
       </tr>
     </thead>
     <tbody>
@@ -503,64 +593,91 @@
 </div>
 
 <div class="clave-pedagogica">
-  <strong>💡 Cómo aprovechar la rúbrica:</strong> Antes de ensayar, lea las descripciones del nivel <em>«avanzado»</em> (4 puntos) en cada criterio. Eso le da el objetivo claro: a qué quiere llegar. Luego ensaye y compárese con la rúbrica.
+  <strong>💡 Cómo aprovechar la rúbrica:</strong> antes de ensayar, lee las descripciones del nivel <em>«Avanzado»</em> (4 puntos) en cada criterio. Ese es tu objetivo. Después de grabarte, mira el video y date una puntuación honesta en cada criterio.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>8. Modalidades presencial y online <span class="caja-tiempo">3 min</span></summary>
+<details id="s-8-grabarte">
+<summary>8. Grabarte con el celular <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-
-<p>La presentación oral funciona en ambas modalidades, pero hay diferencias importantes en cómo se ejecuta:</p>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Modalidad presencial (sincrónica)</h4>
-    <p><span class="badge-tipo badge-discusion">Cuerpo y proyector</span></p>
-    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
-      <li>Se presenta de pie, mirando al auditorio, con los pies firmes en el suelo.</li>
-      <li>Se proyecta la voz para que llegue a la última fila sin amplificación.</li>
-      <li>Se puede usar el proyector del aula o un cartel impreso como apoyo visual.</li>
-      <li>Las manos se usan para gesticular, no para apoyarse en la mesa o esconderlas.</li>
-    </ul>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Modalidad en línea (sincrónica)</h4>
-    <p><span class="badge-tipo badge-reflexion">Cámara y micrófono</span></p>
-    <ul style="padding-left:20px;font-size:0.94rem;margin:8px 0">
-      <li>Se presenta sentado, con la cámara a la altura de los ojos.</li>
-      <li>Se mira a la <strong>lente de la cámara</strong>, no a la pantalla, para simular contacto visual.</li>
-      <li>Se controla el volumen del micrófono y se evita el ruido de fondo.</li>
-      <li>Se usa <strong>«compartir pantalla»</strong> para mostrar el apoyo visual (foto, gráfica, presentación).</li>
-    </ul>
-  </div>
-</div>
-
+<p>Grabarte es la mejor manera de verte como te ve tu público. Al principio da un poco de vergüenza, pero en pocos minutos descubres cosas que nunca habrías notado: una muletilla que repites, un gesto con las manos, una idea que se entiende poco.</p>
+<ul class="lista-bonita">
+  <li><strong>Prepara el lugar:</strong> busca un sitio tranquilo, con luz de frente (no detrás de ti) y sin ruido de televisión.</li>
+  <li><strong>Coloca el celular</strong> a la altura de tus ojos, apoyado en libros o en una mesa, y en posición horizontal.</li>
+  <li><strong>Mira a la cámara</strong>, no a la pantalla: así parece que miras a tu público.</li>
+  <li><strong>Graba de una vez,</strong> sin detenerte aunque te equivoques. Como en una presentación real, si te trabas, haz una pausa y sigue.</li>
+  <li><strong>Mírate dos veces:</strong> la primera, solo para acostumbrarte a verte; la segunda, con la rúbrica en la mano.</li>
+  <li><strong>Graba otra vez</strong> después de corregir una o dos cosas, y compara las dos versiones.</li>
+</ul>
+<div class="tip"><strong>📝 Si prefieres no grabar video,</strong> graba solo el audio con la grabadora de voz del celular. Podrás evaluar todo menos el contacto visual.</div>
 </div>
 </details>
 
-<details>
-<summary>9. Quiz final de la Lección 8.2 <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>9. Tarea <span class="caja-tiempo">40 min</span></summary>
 <div class="contenido-detalle">
-
-<p>El siguiente quiz combina lo aprendido en las <strong>Clases 3 y 4</strong>: alfabetización tecnológica, vocabulario digital, atajos, estructura del discurso, canal vocal, muletillas y rúbrica. Es el quiz de cierre de la <strong>Lección 8.2 · Alfabetización tecnológica y presentación oral breve</strong>.</p>
-
-<div class="quiz-cont">
-  <h4>📝 Quiz: lección 8.2</h4>
-  <div class="preguntas-quiz" id="preguntas-quiz4"></div>
-  <div class="puntaje" id="puntaje-quiz4">Aciertos: 0 / 8</div>
-</div>
-
+<p><strong>Mi primera presentación grabada.</strong></p>
+<ul class="lista-bonita">
+  <li>Termina en tu cuaderno el <strong>guion</strong> de la sección 5 sobre un tema personal: tu historia, tus metas, tu familia o tu trabajo.</li>
+  <li>Ensáyalo tres veces, como dice la sección 5.</li>
+  <li><strong>Grábate</strong> con el celular siguiendo los consejos de la sección 8. Debe durar unos tres minutos.</li>
+  <li>Mira la grabación y date una puntuación en cada criterio de la <strong>rúbrica</strong> de la sección 7. Anota en tu cuaderno tu total (de 16) y <strong>dos cosas que vas a mejorar</strong>.</li>
+</ul>
+<p>Si alguien de tu casa quiere participar, preséntale en vivo y pídele que use la rúbrica también. Compara su puntuación con la tuya. Guarda tu guion y tu grabación: los vas a usar en el proyecto final de la Lección 8.5.</p>
 </div>
 </details>
+
+<details id="s-quiz">
+<summary>10. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>11. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>Una presentación tiene tres partes: <strong>apertura, desarrollo y cierre</strong> (regla del 30-120-30).</li>
+  <li>Se prepara un <strong>guion</strong> con frases cortas y notas, no un texto para memorizar.</li>
+  <li>El <strong>canal vocal</strong> tiene cuatro aspectos: volumen, velocidad, modulación y pausas.</li>
+  <li>Las <strong>muletillas</strong> («eh», «este», «o sea») se sustituyen por un silencio breve.</li>
+  <li>Grabarte con el celular y usar la rúbrica te ayuda a mejorar.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuánto dura cada parte en una presentación de 3 minutos?</li>
+    <li>¿Qué haces en lugar de decir «eh…»?</li>
+    <li>¿Por qué conviene mirar a la cámara y no a la pantalla?</li>
+  </ul>
+</div>
 
 <div class="tip">
-  <strong>👉 ¿Qué viene en la próxima clase?</strong> En la <strong>Clase 5</strong> empezamos la <strong>Lección 8.3</strong>: el proyecto final integrador <strong>«Mi historia, mis metas»</strong>. Combinará todo lo aprendido en el curso: lectura, escritura, gráfica simple y presentación oral. Llegue a clase con su guion ya preparado.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_8-5.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.5 · Proyecto final: «Mi historia, mis metas»</a>. Prepararás el proyecto final del nivel, que reúne todo lo que aprendiste: escribir, hacer una gráfica, presentar y revisar.
 </div>
+</div>
+</details>
 
-<p class="firma">Spanish ASE Language Arts 1 · GEDparaHispanos.com · Prof. José M. Fernández</p>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 8 · Lección 8.4</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -662,148 +779,73 @@
     }
   }
 
-  /* =========================================================
-     QUIZ FINAL DE LA LECCIÓN 8.2
-     ========================================================= */
-  var preguntas=[
-    {
-      texto:'¿Cuál es la regla del 30-120-30 para una presentación de 3 minutos?',
-      opciones:[
-        {t:'30 segundos para la apertura, 2 minutos para el desarrollo y 30 segundos para el cierre.',ok:true},
-        {t:'30 minutos para preparar, 120 minutos para ensayar y 30 minutos para presentar.',ok:false},
-        {t:'30 palabras por minuto, 120 ideas principales y 30 ejemplos.',ok:false},
-        {t:'30 muletillas máximo, 120 palabras clave y 30 segundos de silencio.',ok:false}
-      ],
-      explica:'La regla del 30-120-30 distribuye el tiempo de una presentación de 3 minutos: apertura corta (30 s), desarrollo amplio (120 s = 2 min) y cierre breve (30 s).'
-    },
-    {
-      contexto:'Antes de subir la tarea a Brightspace, María quiere asegurarse de no perder lo que escribió. ¿Qué atajo debe usar?',
-      texto:'¿Cuál es el atajo correcto?',
-      opciones:[
-        {t:'Ctrl + Z',ok:false},
-        {t:'Ctrl + C',ok:false},
-        {t:'Ctrl + S',ok:true},
-        {t:'Ctrl + V',ok:false}
-      ],
-      explica:'Ctrl+S guarda el archivo. Ctrl+Z deshace la última acción, Ctrl+C copia y Ctrl+V pega. Para no perder el trabajo hay que guardarlo.'
-    },
-    {
-      texto:'¿Por qué NO debemos memorizar palabra por palabra una presentación?',
-      opciones:[
-        {t:'Porque memorizar es de mala educación.',ok:false},
-        {t:'Porque si nos olvidamos de una palabra, los nervios nos hacen perder todo el discurso.',ok:true},
-        {t:'Porque las reglas del GED lo prohíben.',ok:false},
-        {t:'Porque hablar memorizado es ilegal.',ok:false}
-      ],
-      explica:'Si memorizamos palabra por palabra y se nos olvida una sola palabra, los nervios pueden hacernos perder todo el hilo. En cambio, si dominamos la estructura, podemos improvisar las palabras sin perder el rumbo.'
-    },
-    {
-      contexto:'Pedro está nervioso y entre frase y frase llena los silencios con «eh…», «este…» y «como que…».',
-      texto:'¿Qué problema tiene Pedro y cuál es la mejor solución?',
-      opciones:[
-        {t:'Problema de volumen; debe hablar más alto.',ok:false},
-        {t:'Problema de muletillas; debe respirar profundo y hacer silencio en lugar de decir "eh".',ok:true},
-        {t:'Problema de estructura; debe cambiar el orden de las ideas.',ok:false},
-        {t:'Problema de cierre; debe terminar con una frase memorable.',ok:false}
-      ],
-      explica:'Pedro tiene un problema clásico de muletillas. La solución es entrenar el silencio: hacer una pausa en silencio en lugar de llenarla con "eh" o "este". El público lee el silencio como reflexión, no como duda.'
-    },
-    {
-      texto:'En la rúbrica de presentación oral, el nivel "Avanzado" en el criterio "Contacto visual o apoyo visual" significa que el estudiante:',
-      opciones:[
-        {t:'Lee toda la presentación de un papel.',ok:false},
-        {t:'Mira al público de vez en cuando.',ok:false},
-        {t:'Mantiene contacto visual constante y usa apoyo visual con destreza.',ok:true},
-        {t:'No usa ningún apoyo visual.',ok:false}
-      ],
-      explica:'El nivel "Avanzado" (4 puntos) requiere contacto visual constante con el público y uso adecuado del apoyo visual (foto, gráfica, presentación). Es el objetivo al que apuntar.'
-    },
-    {
-      texto:'¿Cuál de los siguientes aspectos NO forma parte del canal vocal?',
-      opciones:[
-        {t:'El volumen de la voz',ok:false},
-        {t:'La velocidad al hablar',ok:false},
-        {t:'El color de la ropa que se lleva',ok:true},
-        {t:'Las pausas y los silencios',ok:false}
-      ],
-      explica:'El canal vocal abarca todo lo relacionado con la voz: volumen, velocidad, modulación y pausas. El color de la ropa pertenece a otro plano (la imagen personal o el canal visual), no al canal vocal.'
-    },
-    {
-      contexto:'Carmen está presentando en línea por videoconferencia y quiere demostrar contacto visual con la clase.',
-      texto:'¿Qué debe hacer Carmen?',
-      opciones:[
-        {t:'Mirar fijamente a la pantalla.',ok:false},
-        {t:'Mirar directamente a la lente de la cámara mientras habla.',ok:true},
-        {t:'Cerrar los ojos para concentrarse.',ok:false},
-        {t:'Apagar la cámara para no distraerse.',ok:false}
-      ],
-      explica:'En línea, mirar a la lente de la cámara da la sensación de contacto visual a quien está al otro lado. Mirar a la pantalla, aunque parezca natural, hace que el público vea los ojos desviados hacia abajo.'
-    },
-    {
-      texto:'Su profesor le dice: «Su presentación está bien estructurada, pero llegó al nivel 2 en volumen y ritmo». Según la rúbrica del curso, esto significa que:',
-      opciones:[
-        {t:'Tiene volumen y ritmo controlados durante toda la presentación.',ok:false},
-        {t:'No se le oye nada o habla demasiado rápido para entender.',ok:false},
-        {t:'El volumen o la velocidad fallan en momentos largos de la presentación.',ok:true},
-        {t:'Tiene un volumen audible y un ritmo adecuado la mayor parte del tiempo.',ok:false}
-      ],
-      explica:'El nivel 2 ("En desarrollo") corresponde a 2 puntos: el volumen o la velocidad fallan en momentos largos. El nivel 1 ("Inicial") es no oírse o hablar muy rápido. Los niveles 3 y 4 describen un manejo adecuado o sobresaliente.'
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuál es la regla del 30-120-30 para una presentación de 3 minutos?", "o": ["30 segundos de apertura, 2 minutos de desarrollo y 30 segundos de cierre", "30 minutos para preparar y 120 para ensayar", "30 palabras por minuto"], "c": 0}, {"t": "¿Qué se hace en la <strong>apertura</strong>?", "o": ["Saludar, presentarse y decir de qué se va a hablar", "Contar todas las ideas", "Despedirse"], "c": 0}, {"t": "¿Cuántas ideas principales conviene tener en el desarrollo?", "o": ["Dos o tres, bien explicadas", "Diez o más", "Ninguna"], "c": 0}, {"t": "¿Por qué <strong>no</strong> conviene memorizar palabra por palabra?", "o": ["Porque si se olvida una palabra, los nervios pueden hacer perder todo el discurso", "Porque está prohibido", "Porque es de mala educación"], "c": 0}, {"t": "¿Cuál <strong>no</strong> es parte del canal vocal?", "o": ["El color de la ropa", "El volumen", "Las pausas"], "c": 0}, {"t": "Pedro dice «eh…», «este…» y «como que…» entre frase y frase. ¿Qué problema tiene?", "o": ["Muletillas", "Volumen muy bajo", "Falta de cierre"], "c": 0}, {"t": "¿Qué conviene hacer en lugar de decir «eh…»?", "o": ["Respirar y hacer un silencio breve", "Hablar más rápido", "Repetir la última palabra"], "c": 0}, {"t": "Ana termina con «bueno, eso es todo, ya me callo». ¿Qué parte falla?", "o": ["El cierre", "La apertura", "El volumen"], "c": 0}, {"t": "Al grabarte con el celular, ¿adónde debes mirar?", "o": ["A la cámara", "A la pantalla", "Al suelo"], "c": 0}, {"t": "En la rúbrica, «el volumen o la velocidad fallan en momentos largos» corresponde al nivel…", "o": ["En desarrollo (2 puntos)", "Avanzado (4 puntos)", "Competente (3 puntos)"], "c": 0}, {"t": "¿Cuál es el máximo de puntos de la rúbrica de la presentación?", "o": ["16", "4", "100"], "c": 0}, {"t": "¿Para qué sirve mirar la grabación con la rúbrica en la mano?", "o": ["Para evaluarte con honestidad y saber qué mejorar", "Para borrarla", "Para memorizarla"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
-  ];
-
-  var resueltasQ={};
-  var aciertosQ=0;
-  var contQuiz=document.getElementById('preguntas-quiz4');
-
-  preguntas.forEach(function(item,idx){
-    var div=document.createElement('div');
-    div.className='preg-quiz';
-
-    var opcHtml='';
-    item.opciones.forEach(function(op){
-      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
-    });
-
-    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
-
-    div.innerHTML=
-      '<div><span class="num-preg">'+(idx+1)+'</span>'+
-      '<span class="texto-preg">'+item.texto+'</span></div>'+
-      contextoHtml+
-      '<div class="opciones-quiz">'+opcHtml+'</div>'+
-      '<div class="retro-quiz" id="retro-q4-'+idx+'"></div>';
-
-    contQuiz.appendChild(div);
-
-    var botones=div.querySelectorAll('.opt-quiz');
-    botones.forEach(function(b){
-      b.addEventListener('click',function(){
-        if(resueltasQ[idx])return;
-        var correcto=(b.getAttribute('data-correcto')==='1');
-        if(correcto){
-          b.classList.add('correcta');
-          resueltasQ[idx]=true;
-          aciertosQ++;
-          actualizarPuntajeQ();
-          var retro=document.getElementById('retro-q4-'+idx);
-          retro.textContent='✅ '+item.explica;
-          retro.classList.add('visible');
-        }else{
-          b.classList.add('incorrecta');
-          setTimeout(function(){b.classList.remove('incorrecta')},500);
-        }
-      });
-    });
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
   });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes preparar y evaluar una presentación oral. Puedes continuar con la Lección 8.5.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1, 3 y 4 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
 
-  function actualizarPuntajeQ(){
-    var el=document.getElementById('puntaje-quiz4');
-    el.textContent='Aciertos: '+aciertosQ+' / '+preguntas.length;
-    if(aciertosQ===preguntas.length){
-      el.innerHTML='🎉 ¡Lección 8.2 dominada! Aciertos: '+aciertosQ+' / '+preguntas.length;
-      el.style.color='var(--exito)';
-    }
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

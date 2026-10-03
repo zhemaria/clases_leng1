@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<!-- Lección 8.5 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 8.5 · Proyecto final: «Mi historia, mis metas»</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--exito-claro:#e8f5e9;--error:#c62828;--error-claro:#fdecea;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    /* Colores para los 5 componentes del proyecto */
+    --c1:#0277bd;--c1-claro:#e1f5fe;--c1-oscuro:#01486d;
+    --c2:#7b3fbf;--c2-claro:#f3e8ff;--c2-oscuro:#5a2d8f;
+    --c3:#ef6c00;--c3-claro:#fff3e0;--c3-oscuro:#a04200;
+    --c4:#2e7d32;--c4-claro:#e8f5e9;--c4-oscuro:#1b5e20;
+    --c5:#c2185b;--c5-claro:#fce4ec;--c5-oscuro:#7a0c3a;
+    /* Rúbrica niveles */
+    --nivel1:#c62828;--nivel1-claro:#fdecea;
+    --nivel2:#ef6c00;--nivel2-claro:#fff3e0;
+    --nivel3:#0277bd;--nivel3-claro:#e1f5fe;
+    --nivel4:#2e7d32;--nivel4-claro:#e8f5e9;
+    /* GED badge */
+    --ged:#5a2d8f;--ged-claro:#f3e8ff;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:#ffeb3b;padding:1px 6px;border-radius:3px;font-weight:600}
+
+  /* Los 5 componentes del proyecto */
+  .componentes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:18px 0}
+  .componente{border-radius:12px;padding:16px 14px;border:3px solid;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-align:center;transition:all 0.2s}
+  .componente:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.1)}
+  .componente.cmp-1{border-color:var(--c1);background:var(--c1-claro)}
+  .componente.cmp-2{border-color:var(--c2);background:var(--c2-claro)}
+  .componente.cmp-3{border-color:var(--c3);background:var(--c3-claro)}
+  .componente.cmp-4{border-color:var(--c4);background:var(--c4-claro)}
+  .componente.cmp-5{border-color:var(--c5);background:var(--c5-claro)}
+  .componente .icono-cmp{font-size:2.2rem;display:block;margin-bottom:6px}
+  .componente .num-cmp{color:#fff;width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:0.92rem;margin-bottom:6px}
+  .componente.cmp-1 .num-cmp{background:var(--c1)}
+  .componente.cmp-2 .num-cmp{background:var(--c2)}
+  .componente.cmp-3 .num-cmp{background:var(--c3)}
+  .componente.cmp-4 .num-cmp{background:var(--c4)}
+  .componente.cmp-5 .num-cmp{background:var(--c5)}
+  .componente .nombre-cmp{font-weight:700;font-size:1rem;display:block;margin-bottom:6px}
+  .componente.cmp-1 .nombre-cmp{color:var(--c1-oscuro)}
+  .componente.cmp-2 .nombre-cmp{color:var(--c2-oscuro)}
+  .componente.cmp-3 .nombre-cmp{color:var(--c3-oscuro)}
+  .componente.cmp-4 .nombre-cmp{color:var(--c4-oscuro)}
+  .componente.cmp-5 .nombre-cmp{color:var(--c5-oscuro)}
+  .componente .desc-cmp{font-size:0.84rem;line-height:1.5;color:var(--texto);display:block}
+
+  /* Modelo del profesor */
+  .modelo-prof{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:20px 24px;margin:18px 0;box-shadow:0 3px 12px rgba(0,137,205,0.1);position:relative}
+  .modelo-prof .etiq-modelo{position:absolute;top:-13px;left:18px;background:var(--cp);color:#fff;padding:3px 14px;border-radius:14px;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+  .modelo-prof .titulo-mod{font-weight:700;color:var(--cp-oscuro);font-size:1.2rem;margin:6px 0 4px 0;text-align:center}
+  .modelo-prof .autor-mod{text-align:center;color:var(--gris);font-style:italic;margin:0 0 16px 0;font-size:0.9rem}
+  .modelo-prof p{margin:8px 0;line-height:1.75;font-size:0.95rem}
+  .modelo-prof .seccion-mod{margin:14px 0}
+  .modelo-prof .marca-sec{font-weight:700;color:var(--cp-oscuro);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px;background:var(--cp-claro);padding:4px 10px;border-radius:5px;border-left:4px solid var(--cp)}
+
+  /* Gráfica SVG */
+  .grafica-cont{background:var(--cp-claro);border:2px solid var(--cp);border-radius:10px;padding:16px;margin:14px 0;text-align:center}
+  .grafica-cont .titulo-graf{font-weight:700;color:var(--cp-oscuro);margin-bottom:10px;font-size:0.95rem}
+  .grafica-cont svg{max-width:100%;height:auto}
+  .grafica-cont .pie-graf{font-size:0.82rem;color:var(--gris);font-style:italic;margin-top:8px}
+
+  /* Preguntas tipo GED */
+  .ged-cont{background:#fff;border:2px solid var(--ged);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 3px 12px rgba(90,45,143,0.1)}
+  .ged-cont h4{margin-top:0;text-align:center;color:var(--ged)}
+  .ged-badge{display:inline-block;background:var(--ged);color:#fff;padding:3px 12px;border-radius:14px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+  .preg-ged{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .preg-ged .num-ged{background:var(--ged);color:#fff;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-ged .texto-ged{font-weight:600;color:var(--ged);font-size:0.97rem;display:inline}
+  .opciones-ged{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-ged{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-ged:hover{border-color:var(--ged);background:var(--ged-claro)}
+  .opt-ged.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-ged.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-ged{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--ged-claro);color:var(--ged);font-size:0.9rem;display:none;border-left:4px solid var(--ged)}
+  .retro-ged.visible{display:block}
+  .puntaje-ged{text-align:center;margin-top:14px;font-weight:600;color:var(--ged);font-size:1.02rem;padding:10px;background:var(--ged-claro);border-radius:8px}
+
+  /* Análisis del modelo: aciertos */
+  .aciertos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0}
+  .acierto-mod{background:var(--exito-claro);border-left:4px solid var(--exito);border-radius:8px;padding:12px 14px}
+  .acierto-mod .titulo-ac{font-weight:700;color:var(--exito);font-size:0.95rem;display:block;margin-bottom:4px}
+  .acierto-mod .desc-ac{font-size:0.88rem;line-height:1.55;color:var(--texto);display:block}
+
+  /* Rúbrica analítica 5x4 */
+  .rubrica-cont{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 2px 10px rgba(0,137,205,0.08);overflow-x:auto}
+  .rubrica-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .rubrica-tabla{width:100%;border-collapse:collapse;font-size:0.86rem;min-width:720px}
+  .rubrica-tabla th{padding:10px 8px;color:#fff;text-align:center;font-weight:700;font-size:0.85rem}
+  .rubrica-tabla th.h-crit{background:var(--gris);text-align:left}
+  .rubrica-tabla th.h-n1{background:var(--nivel1)}
+  .rubrica-tabla th.h-n2{background:var(--nivel2)}
+  .rubrica-tabla th.h-n3{background:var(--nivel3)}
+  .rubrica-tabla th.h-n4{background:var(--nivel4)}
+  .rubrica-tabla td{padding:10px 10px;border:1px solid var(--gris-claro);vertical-align:top;line-height:1.5;font-size:0.82rem}
+  .rubrica-tabla td:first-child{font-weight:700;color:var(--cp-oscuro);background:#f9fafb;width:18%}
+  .rubrica-tabla td.n1{background:var(--nivel1-claro)}
+  .rubrica-tabla td.n2{background:var(--nivel2-claro)}
+  .rubrica-tabla td.n3{background:var(--nivel3-claro)}
+  .rubrica-tabla td.n4{background:var(--nivel4-claro)}
+  .puntos-rub{font-size:0.76rem;font-weight:700;display:block;margin-bottom:4px}
+  .puntos-rub.p-n1{color:var(--nivel1)}
+  .puntos-rub.p-n2{color:var(--nivel2)}
+  .puntos-rub.p-n3{color:var(--nivel3)}
+  .puntos-rub.p-n4{color:var(--nivel4)}
+  .total-rub{background:var(--cp-claro);border:2px solid var(--cp);border-radius:8px;padding:12px 16px;margin-top:12px;text-align:center;color:var(--cp-oscuro);font-weight:600;font-size:0.95rem}
+
+  /* Checklist autoevaluable */
+  .checklist-cont{background:#fff;border:2px solid var(--exito);border-radius:12px;padding:18px;margin:18px 0;box-shadow:0 2px 10px rgba(46,125,50,0.1)}
+  .checklist-cont h4{margin-top:0;text-align:center;color:var(--exito)}
+  .check-item{background:var(--exito-claro);border-left:4px solid var(--exito);border-radius:6px;padding:10px 12px 10px 48px;margin:8px 0;cursor:pointer;font-size:0.93rem;line-height:1.55;position:relative;transition:all 0.2s;user-select:none}
+  .check-item::before{content:'';position:absolute;left:14px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:2px solid var(--exito);border-radius:4px;background:#fff;transition:all 0.2s}
+  .check-item.marcado::before{background:var(--exito);content:'✓';color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.92rem;line-height:1}
+  .check-item.marcado{text-decoration:line-through;opacity:0.75}
+  .progreso-check{text-align:center;margin-top:14px;font-weight:600;color:var(--exito);font-size:1rem;padding:10px;background:var(--exito-claro);border-radius:8px}
+
+  /* Quiz final */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+
+  label.check-item{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+  label.check-item input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--exito)}
+  label.check-item:focus-within{outline:3px solid var(--cp-oscuro);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<h1>Lección 8.5 · Proyecto final: «Mi historia, mis metas»</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 8 · Unas 2 horas, a tu ritmo</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 Objetivos de la lección</h2>
+  <ul>
+    <li>Conocer los <strong>cinco componentes</strong> del proyecto final integrador.</li>
+    <li>Analizar un <strong>proyecto modelo</strong> de «Mi historia, mis metas».</li>
+    <li>Responder cinco <strong>preguntas tipo GED</strong> de nivel básico sobre el modelo (texto y gráfica).</li>
+    <li>Preparar tu propio proyecto y evaluarlo con la <strong>rúbrica</strong>: 5 criterios × 4 niveles = 20 puntos.</li>
+  </ul>
+</div>
+
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-componentes">Los cinco componentes del proyecto</a></li>
+    <li><a href="#s-2-modelo">Un proyecto modelo</a></li>
+    <li><a href="#s-3-preguntas">Cinco preguntas tipo GED</a></li>
+    <li><a href="#s-4-que-hace-bien">¿Qué hace bien el modelo?</a></li>
+    <li><a href="#s-5-rubrica">La rúbrica del proyecto</a></li>
+    <li><a href="#s-6-lista">Lista de verificación</a></li>
+    <li><a href="#s-tarea">Tarea: tu proyecto</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
+
+<h2>📚 Para empezar</h2>
+
+<p>Llegaste al proyecto final del Nivel 1. Aquí reúnes todo lo que aprendiste: leer, escribir, hacer una gráfica, usar la tecnología, presentar en voz alta y revisar tu trabajo. El proyecto es personal y se titula <strong>«Mi historia, mis metas»</strong>.</p>
+
+<p>En esta lección vas a analizar primero un <strong>proyecto modelo</strong>, para ver con tus propios ojos cómo se ve un trabajo bien hecho. Después conocerás la rúbrica y prepararás el tuyo.</p>
+
+<div class="clave-pedagogica">
+  <strong>🧠 Clave de la lección:</strong> un proyecto integrador no es «otra tarea más»: es la oportunidad de mostrarte a ti mismo todo lo que sabes hacer. Tómate tu tiempo; puedes trabajarlo en varios días.
+</div>
+
+<details open id="s-1-componentes">
+<summary>1. Los cinco componentes del proyecto <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>¿Qué incluye el proyecto final?</h3>
+
+<p>El proyecto «Mi historia, mis metas» tiene cinco componentes. Cada uno se evalúa por separado, pero todos forman un solo trabajo:</p>
+
+<div class="componentes-grid">
+  <div class="componente cmp-1">
+    <span class="icono-cmp">📝</span>
+    <span class="num-cmp">1</span>
+    <span class="nombre-cmp">Texto escrito</span>
+    <span class="desc-cmp">Media página (200-300 palabras) sobre su historia personal y sus metas.</span>
+  </div>
+  <div class="componente cmp-2">
+    <span class="icono-cmp">📊</span>
+    <span class="num-cmp">2</span>
+    <span class="nombre-cmp">Gráfica simple</span>
+    <span class="desc-cmp">Una gráfica de barras, línea o pastel con datos personales relevantes.</span>
+  </div>
+  <div class="componente cmp-3">
+    <span class="icono-cmp">🎤</span>
+    <span class="num-cmp">3</span>
+    <span class="nombre-cmp">Presentación oral</span>
+    <span class="desc-cmp">3 a 4 minutos, grabada con el celular o ante alguien de tu casa, con el guion de la Lección 8.4.</span>
+  </div>
+  <div class="componente cmp-4">
+    <span class="icono-cmp">💻</span>
+    <span class="num-cmp">4</span>
+    <span class="nombre-cmp">Uso de tecnología</span>
+    <span class="desc-cmp">Pasar el texto a la computadora o al celular y guardar todo, con nombres claros, en una carpeta.</span>
+  </div>
+  <div class="componente cmp-5">
+    <span class="icono-cmp">🔄</span>
+    <span class="num-cmp">5</span>
+    <span class="nombre-cmp">Respuesta a la retroalimentación</span>
+    <span class="desc-cmp">Revisar el borrador (con la lista de la Lección 7.6 y, si se puede, con los comentarios de otra persona) y hacer una versión final.</span>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 ¿Por qué cinco componentes?</strong> Cada uno refleja una habilidad del Nivel 1: <em>escribir</em> párrafos (Tema 7), <em>hacer y leer gráficas</em> (Tema 6), <em>hablar en público</em> (Lección 8.4), <em>usar la tecnología</em> (Lección 8.3) y <em>revisar</em> para mejorar (Lección 7.6).
+</div>
+
+</div>
+</details>
+
+<details id="s-2-modelo">
+<summary>2. Un proyecto modelo <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>«Mi historia, mis metas» — un modelo completo</h3>
+
+<p>Antes de escribir el tuyo, lee con atención este proyecto modelo. Ana Rodríguez es un personaje inventado, pero su historia se parece a la de muchas personas. Léelo una primera vez completo, sin detenerte. En la sección 3 responderás preguntas tipo GED sobre él.</p>
+
+<div class="modelo-prof">
+  <span class="etiq-modelo">📘 Proyecto modelo</span>
+  <p class="titulo-mod">Mi historia, mis metas</p>
+  <p class="autor-mod">por Ana Rodríguez (personaje de ejemplo) · Nivel 1</p>
+
+  <div class="seccion-mod">
+    <span class="marca-sec">📝 Texto escrito (1 — Mi historia)</span>
+    <p>Nací en Puebla, México, en el año 1975. Desde niña me gustó la escuela, pero a los catorce años tuve que dejar los estudios para ayudar a mi familia. Trabajé en la tienda de mis padres durante muchos años. En 2003 me casé y, dos años después, mi esposo y yo decidimos emigrar a Chicago en busca de mejores oportunidades para nuestros futuros hijos.</p>
+    <p>Durante quince años trabajé en una panadería en el barrio de Pilsen. Tuve dos hijos, Mateo y Sofía, y los crié sola los últimos cinco años, después de quedar viuda. Mis hijos terminaron la <em lang="en">high school</em> el año pasado y ahora estudian en un colegio comunitario. Verlos a ellos avanzar me dio el valor para regresar yo también a las aulas.</p>
+  </div>
+
+  <div class="seccion-mod">
+    <span class="marca-sec">🎯 Texto escrito (2 — Mis metas)</span>
+    <p>Hoy estudio el Nivel 1 de Artes del Lenguaje para preparar el GED en español. Mi primera meta es terminar los cuatro niveles y aprobar el GED en dos años. Mi segunda meta es entrar a un programa de Asistente Médico, una carrera corta, para trabajar en una clínica del barrio.</p>
+    <p>A largo plazo, sueño con dar charlas en mi iglesia a otras mujeres hispanas que, como yo, dejaron los estudios y creen que es tarde para volver. Les voy a decir lo que ahora sé: nunca es tarde, y cada día en clase es un paso hacia adelante.</p>
+  </div>
+
+  <div class="seccion-mod">
+    <span class="marca-sec">📊 Gráfica simple (componente 2)</span>
+    <div class="grafica-cont">
+      <div class="titulo-graf">Mis horas de estudio por semana (desde que empecé el nivel 1)</div>
+      <svg viewBox="0 0 480 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de barras: horas de estudio por semana en cada mes. Enero 8, febrero 12, marzo 15, abril 18 y mayo 22.">
+        
+        <line x1="60" y1="20" x2="60" y2="230" stroke="#01486d" stroke-width="2"/>
+        <line x1="60" y1="230" x2="460" y2="230" stroke="#01486d" stroke-width="2"/>
+        
+        <text x="40" y="234" text-anchor="end" font-family="Poppins,Arial" font-size="11" fill="#1a2332">0</text>
+        <text x="40" y="194" text-anchor="end" font-family="Poppins,Arial" font-size="11" fill="#1a2332">5</text>
+        <text x="40" y="154" text-anchor="end" font-family="Poppins,Arial" font-size="11" fill="#1a2332">10</text>
+        <text x="40" y="114" text-anchor="end" font-family="Poppins,Arial" font-size="11" fill="#1a2332">15</text>
+        <text x="40" y="74" text-anchor="end" font-family="Poppins,Arial" font-size="11" fill="#1a2332">20</text>
+        <text x="40" y="34" text-anchor="end" font-family="Poppins,Arial" font-size="11" fill="#1a2332">25</text>
+        
+        <line x1="60" y1="190" x2="460" y2="190" stroke="#e3f2fd" stroke-width="1"/>
+        <line x1="60" y1="150" x2="460" y2="150" stroke="#e3f2fd" stroke-width="1"/>
+        <line x1="60" y1="110" x2="460" y2="110" stroke="#e3f2fd" stroke-width="1"/>
+        <line x1="60" y1="70" x2="460" y2="70" stroke="#e3f2fd" stroke-width="1"/>
+        <line x1="60" y1="30" x2="460" y2="30" stroke="#e3f2fd" stroke-width="1"/>
+        
+        <rect x="85" y="166" width="50" height="64" fill="#0089cd"/>
+        <text x="110" y="248" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#1a2332" font-weight="600">Enero</text>
+        <text x="110" y="158" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#01486d" font-weight="700">8</text>
+        <rect x="160" y="134" width="50" height="96" fill="#0089cd"/>
+        <text x="185" y="248" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#1a2332" font-weight="600">Febrero</text>
+        <text x="185" y="126" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#01486d" font-weight="700">12</text>
+        <rect x="235" y="110" width="50" height="120" fill="#0089cd"/>
+        <text x="260" y="248" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#1a2332" font-weight="600">Marzo</text>
+        <text x="260" y="102" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#01486d" font-weight="700">15</text>
+        <rect x="310" y="86" width="50" height="144" fill="#0089cd"/>
+        <text x="335" y="248" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#1a2332" font-weight="600">Abril</text>
+        <text x="335" y="78" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#01486d" font-weight="700">18</text>
+        <rect x="385" y="54" width="50" height="176" fill="#0089cd"/>
+        <text x="410" y="248" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#1a2332" font-weight="600">Mayo</text>
+        <text x="410" y="46" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#01486d" font-weight="700">22</text>
+        
+        <text x="20" y="130" font-family="Poppins,Arial" font-size="11" fill="#1a2332" font-weight="600" transform="rotate(-90,20,130)">Horas semanales</text>
+        
+        <text x="260" y="272" text-anchor="middle" font-family="Poppins,Arial" font-size="11" fill="#1a2332" font-weight="600">Mes</text>
+      </svg>
+      <div class="pie-graf">Fuente: registro personal de Ana Rodríguez (de enero a mayo)</div>
+    </div>
+  </div>
+
+  <div class="seccion-mod">
+    <span class="marca-sec">🎤 Plantilla de presentación oral (componente 3)</span>
+    <p><strong>Apertura (30 s):</strong> «Buenas tardes. Soy Ana Rodríguez y hoy quiero contarles mi historia: de dónde vengo, dónde estoy, y a dónde voy.»</p>
+    <p><strong>Desarrollo (2 min):</strong> Las tres ideas del texto escrito: (1) mi historia en Puebla y la salida temprana de la escuela; (2) los quince años de panadería y la viudez; (3) el regreso a las aulas viendo el ejemplo de mis hijos. Mostrar la gráfica en este momento para ilustrar el progreso del estudio.</p>
+    <p><strong>Cierre (30 s):</strong> «Vengo de lejos, estoy avanzando, y voy a ser Asistente Médico. Si yo puedo, ustedes también pueden. Muchas gracias.»</p>
+  </div>
+</div>
+
+<p>Tómate unos minutos para releer el modelo y anotar lo que más te gustó o lo que te sirve como ejemplo para tu propio proyecto.</p>
+
+</div>
+</details>
+
+<details id="s-3-preguntas">
+<summary>3. Cinco preguntas tipo GED <span class="caja-tiempo">12 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Primer contacto con el formato GED</h3>
+
+<p>El examen GED hace preguntas sobre <strong>textos</strong> y, a veces, sobre <strong>gráficas o tablas</strong>. Estas cinco preguntas siguen ese formato, a nivel básico, con el proyecto de Ana como texto.</p>
+
+<div class="ged-cont">
+  <span class="ged-badge">📋 Formato examen GED · Nivel básico</span>
+  <h4>Preguntas sobre «Mi historia, mis metas»</h4>
+  <div id="preguntas-ged"></div>
+  <div class="puntaje-ged" id="puntaje-ged" role="status">Aciertos: 0 / 5</div>
+</div>
+
+<div class="tip">
+  <strong>📝 ¿Por qué preguntas tipo GED?</strong> El examen real se hace en computadora, con el texto a un lado y las preguntas al otro. Estas preguntas son una versión sencilla de ese formato, para que te familiarices con el estilo. En los niveles siguientes verás preguntas más difíciles.
+</div>
+
+</div>
+</details>
+
+<details id="s-4-que-hace-bien">
+<summary>4. ¿Qué hace bien el modelo? <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Análisis: qué aprendemos del modelo de Ana</h3>
+
+<p>Antes de escribir tu proyecto, conviene ver qué hace bien el modelo para aprovecharlo en el tuyo:</p>
+
+<div class="aciertos-grid">
+  <div class="acierto-mod">
+    <span class="titulo-ac">✅ Estructura clara en tres tiempos</span>
+    <span class="desc-ac">Ana organiza el texto en tres tiempos lógicos: pasado (Puebla), presente (el regreso a clase) y futuro (Asistente Médico). El lector sigue la historia sin perderse.</span>
+  </div>
+  <div class="acierto-mod">
+    <span class="titulo-ac">✅ Datos concretos, no generalidades</span>
+    <span class="desc-ac">No dice «trabajé muchos años». Dice «quince años en una panadería en Pilsen», un barrio de Chicago. Los datos concretos hacen creíble la historia y la vuelven memorable.</span>
+  </div>
+  <div class="acierto-mod">
+    <span class="titulo-ac">✅ Gráfica con datos personales reales</span>
+    <span class="desc-ac">La gráfica no es decorativa: muestra el aumento real de horas de estudio mes a mes. Es información que apoya el texto, no que lo repite.</span>
+  </div>
+  <div class="acierto-mod">
+    <span class="titulo-ac">✅ Cierre con mensaje al público</span>
+    <span class="desc-ac">El cierre no es «eso es todo». Es una invitación: «si yo puedo, ustedes también pueden». Da motivo para que el público recuerde la presentación.</span>
+  </div>
+  <div class="acierto-mod">
+    <span class="titulo-ac">✅ Metas en dos niveles</span>
+    <span class="desc-ac">Ana distingue meta a mediano plazo (terminar el GED) y meta a largo plazo (dar charlas a otras mujeres). Mostrar dos horizontes da seriedad al proyecto.</span>
+  </div>
+  <div class="acierto-mod">
+    <span class="titulo-ac">✅ Conexión con la audiencia</span>
+    <span class="desc-ac">Habla de cosas que cualquier estudiante hispano puede reconocer: dejar la escuela joven, emigrar, criar hijos, regresar a las aulas. El público se identifica.</span>
+  </div>
+</div>
+
+</div>
+</details>
+
+<details id="s-5-rubrica">
+<summary>5. La rúbrica del proyecto <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Así vas a evaluar tu proyecto</h3>
+
+<p>Vas a evaluar tu proyecto con esta <strong>rúbrica</strong> de cinco criterios y cuatro niveles. Cada criterio vale hasta 4 puntos, para un total de <strong>20 puntos</strong>. Léela antes de empezar: el nivel «Avanzado» de cada criterio es tu objetivo.</p>
+
+<div class="rubrica-cont">
+  <h4>📊 Rúbrica analítica · Proyecto final integrador</h4>
+  <table class="rubrica-tabla">
+    <thead>
+      <tr>
+        <th scope="col" class="h-crit">Criterio</th>
+        <th scope="col" class="h-n1">Inicial</th>
+        <th scope="col" class="h-n2">En desarrollo</th>
+        <th scope="col" class="h-n3">Competente</th>
+        <th scope="col" class="h-n4">Avanzado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Texto escrito coherente</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>Oraciones sueltas, sin orden lógico.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>Hay orden, pero faltan conectores o ejemplos.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>Texto bien estructurado con buenos ejemplos.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>Texto sólido, organizado y con datos concretos.</td>
+      </tr>
+      <tr>
+        <td>Presentación visual (gráfica)</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>No incluye gráfica o está vacía.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>Incluye gráfica, pero sin título o sin datos claros.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>Gráfica correcta con título y datos legibles.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>Gráfica clara, bien titulada y conectada con el texto.</td>
+      </tr>
+      <tr>
+        <td>Oralidad y claridad</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>No se le entiende o lee todo del papel.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>Se entiende a ratos; depende mucho del papel.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>Buen volumen y ritmo, contacto visual frecuente.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>Habla con claridad, controla la voz y mantiene al público.</td>
+      </tr>
+      <tr>
+        <td>Uso de tecnología</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>Todo quedó solo en papel.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>Pasé el texto a la computadora o al celular, pero no lo guardé bien.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>Pasé el texto y lo guardé con un nombre claro; grabé la presentación.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>Texto, gráfica y grabación guardados juntos en una carpeta con nombres claros.</td>
+      </tr>
+      <tr>
+        <td>Revisión</td>
+        <td class="n1"><span class="puntos-rub p-n1">1 punto</span>Entregué el primer borrador, sin revisar.</td>
+        <td class="n2"><span class="puntos-rub p-n2">2 puntos</span>Corregí algunos errores.</td>
+        <td class="n3"><span class="puntos-rub p-n3">3 puntos</span>Revisé con la lista de la Lección 7.6 y corregí casi todo.</td>
+        <td class="n4"><span class="puntos-rub p-n4">4 puntos</span>Revisé con la lista, usé los comentarios de otra persona y anoté qué cambié.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="total-rub">📊 <strong>Total máximo: 20 puntos</strong> · Una buena meta es llegar al menos a 12 puntos (60 %). Si quedas por debajo, revisa los criterios más bajos y mejora esa parte.</div>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Cómo usar la rúbrica:</strong> léela completa <em>antes</em> de empezar el proyecto, no después. Saber qué describe el nivel «Avanzado» en cada criterio te da un objetivo claro.
+</div>
+
+</div>
+</details>
+
+<details id="s-6-lista">
+<summary>6. Lista de verificación <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Antes de dar por terminado tu proyecto</h3>
+
+<p>Usa esta lista para asegurarte de que tu proyecto tiene los cinco componentes. Marca cada paso al completarlo:</p>
+
+<div class="checklist-cont">
+  <h4>✅ Lista de verificación final</h4>
+    <label class="check-item" data-check="1"><input type="checkbox"> <span>📝 Mi texto escrito tiene entre 200 y 300 palabras y está organizado en pasado, presente y futuro.</span></label>
+  <label class="check-item" data-check="2"><input type="checkbox"> <span>📝 Revisé la ortografía y la puntuación de mi texto con la lista de la Lección 7.6.</span></label>
+  <label class="check-item" data-check="3"><input type="checkbox"> <span>📊 Incluí una gráfica sencilla (de barras, por ejemplo) con título, ejes y datos claros.</span></label>
+  <label class="check-item" data-check="4"><input type="checkbox"> <span>📊 Los datos de mi gráfica son míos y reales (no inventados).</span></label>
+  <label class="check-item" data-check="5"><input type="checkbox"> <span>🎤 Preparé mi guion con la estructura 30-120-30 (apertura, desarrollo y cierre).</span></label>
+  <label class="check-item" data-check="6"><input type="checkbox"> <span>🎤 Ensayé mi presentación en voz alta al menos tres veces y me grabé.</span></label>
+  <label class="check-item" data-check="7"><input type="checkbox"> <span>💻 Pasé mi texto a la computadora o al celular y lo guardé con un nombre claro.</span></label>
+  <label class="check-item" data-check="8"><input type="checkbox"> <span>💻 Guardé el texto, la foto de la gráfica y la grabación juntos en una carpeta.</span></label>
+  <label class="check-item" data-check="9"><input type="checkbox"> <span>🔄 Pedí a alguien que leyera mi texto o viera mi presentación (si fue posible).</span></label>
+  <label class="check-item" data-check="10"><input type="checkbox"> <span>🔄 Hice al menos tres mejoras a partir de mi revisión y anoté cuáles.</span></label>
+  <div class="progreso-check" id="progreso-check" role="status">Pasos completados: 0 / 10</div>
+</div>
+
+</div>
+</details>
+
+<details id="s-tarea">
+<summary>7. Tarea: tu proyecto <span class="caja-tiempo">120 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>«Mi historia, mis metas».</strong> Ahora te toca a ti. Puedes hacerlo en varios días, un componente por día:</p>
+<ol class="lista-bonita">
+  <li><strong>Texto escrito</strong> (200 a 300 palabras): dos o tres párrafos sobre tu historia (de dónde vienes), tu presente (dónde estás) y tus metas (a dónde vas). Usa la técnica de la hamburguesa en cada párrafo y conectores.</li>
+  <li><strong>Gráfica:</strong> una gráfica de barras con datos tuyos y reales: tus horas de estudio por semana, los idiomas que se hablan en tu casa, tus metas por año… Con título, ejes y números.</li>
+  <li><strong>Presentación oral</strong> de 3 a 4 minutos, con el guion de la Lección 8.4. Grábate o preséntala ante alguien de tu casa.</li>
+  <li><strong>Tecnología:</strong> pasa el texto a la computadora o al celular, toma una foto de tu gráfica y guarda todo junto, con la grabación, en una carpeta llamada «Mi proyecto Nivel 1».</li>
+  <li><strong>Revisión:</strong> revisa el texto con la lista de la Lección 7.6, corrige, y anota en tu cuaderno qué cambiaste.</li>
+</ol>
+<p>Al final, evalúate con la <strong>rúbrica de la sección 5</strong> y repasa la <strong>lista de la sección 6</strong>. Anota tu puntuación total. Este proyecto es tuyo: guárdalo, porque dentro de un tiempo te gustará ver cuánto has avanzado.</p>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+<h3>Lo que aprendiste</h3>
+<ul class="lista-bonita">
+  <li>El proyecto final tiene <strong>cinco componentes</strong>: texto, gráfica, presentación, tecnología y revisión.</li>
+  <li>Un buen texto personal tiene <strong>datos concretos</strong> y se ordena en pasado, presente y futuro.</li>
+  <li>La gráfica debe <strong>apoyar</strong> el texto con datos reales, no solo decorar.</li>
+  <li>La <strong>rúbrica</strong> te dice a qué nivel quieres llegar antes de empezar.</li>
+</ul>
+<div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <ul class="lista-bonita">
+    <li>¿Cuáles son los cinco componentes del proyecto?</li>
+    <li>¿Qué hace bien el modelo de Ana?</li>
+    <li>¿Cuántos puntos tiene la rúbrica y cuál es una buena meta?</li>
+  </ul>
+</div>
+
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_8-6.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.6 · Evaluación final y camino al GED</a>. La última lección: tu presentación final, la evaluación del nivel con su resumen para imprimir, y el camino que sigue hacia el GED.
+</div>
+</div>
+</details>
+
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 8 · Lección 8.5</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
+
+<script>
+(function(){
+  /* =========================================================
+     PREGUNTAS TIPO GED SOBRE EL MODELO
+     ========================================================= */
+  var preguntasGed=[
+    {
+      texto:'Según el texto, ¿en qué año Ana Rodríguez emigró a Chicago con su esposo?',
+      opciones:[
+        {t:'En 1975, el año en que nació.',ok:false},
+        {t:'En 2003, el año en que se casó.',ok:false},
+        {t:'En 2005, dos años después de casarse.',ok:true},
+        {t:'En 2020, cuando empezó a estudiar.',ok:false}
+      ],
+      explica:'El texto dice: «en 2003 me casé y, dos años después, mi esposo y yo decidimos emigrar a Chicago». 2003 + 2 años = 2005.'
+    },
+    {
+      texto:'Según el texto, ¿por qué Ana decidió regresar a estudiar?',
+      opciones:[
+        {t:'Porque su esposo le pidió que estudiara.',ok:false},
+        {t:'Porque vio a sus hijos avanzar en sus estudios.',ok:true},
+        {t:'Porque la panadería cerró y se quedó sin trabajo.',ok:false},
+        {t:'Porque vivía sola y necesitaba compañía.',ok:false}
+      ],
+      explica:'El texto dice claramente: «Verlos a ellos avanzar me dio el valor para regresar yo también a las aulas». La razón principal fue el ejemplo de sus hijos.'
+    },
+    {
+      texto:'Según la gráfica, ¿en qué mes Ana dedicó más horas semanales al estudio?',
+      opciones:[
+        {t:'Enero',ok:false},
+        {t:'Marzo',ok:false},
+        {t:'Abril',ok:false},
+        {t:'Mayo',ok:true}
+      ],
+      explica:'La gráfica muestra que en mayo Ana dedicó 22 horas semanales, la barra más alta de las cinco. Es el último mes registrado y el de mayor dedicación.'
+    },
+    {
+      texto:'Según la gráfica, ¿cuántas horas más por semana estudiaba Ana en mayo respecto a enero?',
+      opciones:[
+        {t:'8 horas más',ok:false},
+        {t:'14 horas más',ok:true},
+        {t:'22 horas más',ok:false},
+        {t:'4 horas más',ok:false}
+      ],
+      explica:'En mayo estudiaba 22 horas y en enero estudiaba 8 horas. La diferencia es 22 - 8 = 14 horas más por semana. La gráfica muestra un aumento sostenido mes a mes.'
+    },
+    {
+      texto:'¿Cuál de las siguientes es una meta a LARGO plazo de Ana, según el texto?',
+      opciones:[
+        {t:'Terminar el nivel 1 en español.',ok:false},
+        {t:'Conseguir el certificado del GED en dos años.',ok:false},
+        {t:'Dar charlas en su iglesia a otras mujeres hispanas.',ok:true},
+        {t:'Estudiar 22 horas por semana.',ok:false}
+      ],
+      explica:'El texto distingue dos tipos de metas. Las dos primeras (GED y Asistente Médico) son metas a mediano plazo. Dar charlas a otras mujeres es la meta a largo plazo, explícitamente mencionada como sueño.'
+    }
+  ];
+
+  var contGed=document.getElementById('preguntas-ged');
+  var resueltasG={};
+  var aciertosG=0;
+
+  preguntasGed.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-ged';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-ged" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    div.innerHTML=
+      '<div><span class="num-ged">'+(idx+1)+'</span>'+
+      '<span class="texto-ged">'+item.texto+'</span></div>'+
+      '<div class="opciones-ged">'+opcHtml+'</div>'+
+      '<div class="retro-ged" id="retro-ged-'+idx+'" role="status"></div>';
+
+    contGed.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-ged');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasG[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltasG[idx]=true;
+          aciertosG++;
+          actualizarGed();
+          var retro=document.getElementById('retro-ged-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
+        }else{
+          var r2=document.getElementById('retro-ged-'+idx); r2.textContent='❌ Vuelve al texto o a la gráfica y busca el dato exacto.'; r2.classList.add('visible');
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
+        }
+      });
+    });
+  });
+
+  function actualizarGed(){
+    var el=document.getElementById('puntaje-ged');
+    el.textContent='Aciertos: '+aciertosG+' / '+preguntasGed.length;
+    if(aciertosG===preguntasGed.length){
+      el.innerHTML='🎉 ¡Excelente! 5 / 5 en el formato GED';
+      el.style.color='var(--exito)';
+    }
+  }
+
+  /* =========================================================
+     CHECKLIST INTERACTIVO
+     ========================================================= */
+  var totalChecks=10;
+  var marcados=0;
+  var checkItems=document.querySelectorAll('.check-item');
+
+  checkItems.forEach(function(item){
+    item.querySelector('input').addEventListener('change',function(){
+      if(this.checked){ item.classList.add('marcado'); marcados++; }
+      else{ item.classList.remove('marcado'); marcados--; }
+      actualizarProgresoCheck();
+    });
+  });
+
+  function actualizarProgresoCheck(){
+    var el=document.getElementById('progreso-check');
+    el.textContent='Pasos completados: '+marcados+' / '+totalChecks;
+    if(marcados===totalChecks){
+      el.innerHTML='🎉 ¡Proyecto terminado! '+marcados+' / '+totalChecks;
+    }
+  }
+
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuáles son los cinco componentes del proyecto final?", "o": ["Texto escrito, gráfica, presentación oral, tecnología y revisión", "Lectura, gramática, ortografía, vocabulario y dictado", "Apertura, desarrollo, cierre, ensayo y entrega"], "c": 0}, {"t": "¿Cuántas palabras debe tener el texto escrito?", "o": ["Entre 200 y 300", "Entre 20 y 30", "Más de 2000"], "c": 0}, {"t": "Según el texto de Ana, ¿en qué año emigró a Chicago?", "o": ["En 2005", "En 2003", "En 1975"], "c": 0}, {"t": "Según la gráfica de Ana, ¿en qué mes estudió más horas por semana?", "o": ["Mayo", "Enero", "Marzo"], "c": 0}, {"t": "¿Cuántas horas más por semana estudiaba Ana en mayo que en enero?", "o": ["14", "22", "8"], "c": 0}, {"t": "¿Cuál es una meta a <strong>largo plazo</strong> de Ana?", "o": ["Dar charlas a otras mujeres hispanas", "Terminar el Nivel 1", "Estudiar 22 horas por semana"], "c": 0}, {"t": "¿Por qué funciona bien la gráfica del modelo?", "o": ["Porque muestra datos reales que apoyan el texto sin repetirlo", "Porque tiene muchos colores", "Porque ocupa media página"], "c": 0}, {"t": "El texto de Ana se organiza en tres tiempos. ¿Cuáles?", "o": ["Pasado, presente y futuro", "Mañana, tarde y noche", "Lunes, miércoles y viernes"], "c": 0}, {"t": "Carmen escribió un texto excelente, pero no hizo la gráfica. ¿Qué nivel tiene en «Presentación visual»?", "o": ["Inicial (1 punto)", "Avanzado (4 puntos)", "Competente (3 puntos)"], "c": 0}, {"t": "¿Para qué sirve analizar un modelo antes de hacer tu proyecto?", "o": ["Para ver cómo se ve un trabajo bien hecho", "Para copiarlo", "Para no tener que escribir"], "c": 0}, {"t": "¿Cuántos puntos tiene en total la rúbrica del proyecto?", "o": ["20", "16", "100"], "c": 0}, {"t": "En el criterio «Revisión», ¿qué describe el nivel Avanzado?", "o": ["Revisar con la lista, usar comentarios de otra persona y anotar qué cambié", "Entregar el primer borrador", "Corregir solo una palabra"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya conoces tu proyecto final. Puedes continuar con la Lección 8.6.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1, 2 y 5 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
+})();
+</script>
+
+</body>
+</html>
