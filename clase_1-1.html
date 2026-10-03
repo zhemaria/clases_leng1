@@ -500,26 +500,56 @@
     'X':'equis','Y':'ye','Z':'zeta'
   };
 
-  // Cómo debe decirlas la voz: «cu» con tilde para que no la lea como sigla
+  // Cómo debe decirlas la voz. Es igual que el nombre escrito, salvo las letras
+  // que la voz lee como sílaba del inglés o como sigla («bi», «segú»).
+  // Probado con la página prueba_voz.html. Si otra letra suena mal, se añade aquí.
   var vozLetras={};
   Object.keys(nombresLetras).forEach(function(k){vozLetras[k]=nombresLetras[k];});
-  vozLetras['Q']='cú';
+  var ajustes={'B':'beh','C':'ceh','G':'geh','P':'peh','Q':'ku'};
+  Object.keys(ajustes).forEach(function(k){vozLetras[k]=ajustes[k];});
 
   // Web Speech API
   var hablando=false;
   var leyendoTodo=false;
 
+  // Buscar una voz en español; si no, el navegador usa la voz en inglés
+  var vozES=null;
+  function elegirVoz(){
+    if(!('speechSynthesis' in window))return;
+    var vs=speechSynthesis.getVoices(),pref=['es-US','es-MX','es-ES'];
+    for(var i=0;i<pref.length&&!vozES;i++){
+      vozES=vs.filter(function(v){return v.lang.replace('_','-')===pref[i];})[0]||null;
+    }
+    if(!vozES)vozES=vs.filter(function(v){return /^es/i.test(v.lang);})[0]||null;
+  }
+  if('speechSynthesis' in window){elegirVoz();speechSynthesis.onvoiceschanged=elegirVoz;}
+
   function hablar(texto,callback){
     if(!('speechSynthesis' in window))return callback&&callback();
     var utter=new SpeechSynthesisUtterance(texto);
-    utter.lang='es-ES';
+    utter.lang=vozES?vozES.lang:'es-US';
+    if(vozES)utter.voice=vozES;
     utter.rate=0.85;
     utter.pitch=1;
     if(callback)utter.onend=callback;
     speechSynthesis.speak(utter);
   }
 
+  // Nombre de la letra, una pausa, y después «ene de nube»
+  var pausaLetra=null,turno=0;
+  function decirLetra(L,callback){
+    var n=vozLetras[L.mayus],t=turno;
+    hablar(n,function(){
+      if(t!==turno)return;   // se pulsó Detener u otra letra
+      pausaLetra=setTimeout(function(){
+        if(t===turno)hablar(n+' de '+L.palabra,callback);
+      },450);
+    });
+  }
+
   function detenerAudio(){
+    turno++;
+    clearTimeout(pausaLetra);
     if('speechSynthesis' in window)speechSynthesis.cancel();
     leyendoTodo=false;
     document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
@@ -542,7 +572,7 @@
       if(leyendoTodo)return;
       detenerAudio();
       card.classList.add('sonando');
-      hablar(vozLetras[L.mayus]+'. '+vozLetras[L.mayus]+' de '+L.palabra,function(){
+      decirLetra(L,function(){
         card.classList.remove('sonando');
       });
     });
@@ -565,7 +595,7 @@
       document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
       card.classList.add('sonando');
       card.scrollIntoView({behavior:'smooth',block:'center'});
-      hablar(vozLetras[L.mayus]+'. '+vozLetras[L.mayus]+' de '+L.palabra,function(){
+      decirLetra(L,function(){
         i++;
         setTimeout(siguiente,300);
       });
