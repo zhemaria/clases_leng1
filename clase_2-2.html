@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 2.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 2: Decodificación de palabras de 1 y 2 sílabas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 2.2 · Decodificación de palabras de una y dos sílabas</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;
@@ -427,29 +433,89 @@
     color:var(--cp-oscuro);
     font-size:1.05rem;
   }
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  button.bloque-silaba,button.silaba-construida{border:none}
+  .area-palabra:empty::before{content:'(toca las sílabas en orden)';color:var(--gris);font-style:italic;font-size:1rem}
 </style>
 </head>
 <body>
 
-<h1>Clase 2: Decodificación de palabras de 1 y 2 sílabas</h1>
-<p class="subtitulo">Conectando sonidos con letras escritas · Tema 2, semana 2 · Nivel 1</p>
+<h1>Lección 2.2 · Decodificación de palabras de una y dos sílabas</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 2 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h3>🎯 Objetivo de la clase</h3>
-  <p style="margin-bottom:0">Conectar los sonidos que aprendiste en la Clase 1 con sus <strong>letras escritas</strong> (esto se llama <em>principio alfabético</em>), para que puedas leer palabras sencillas de manera precisa.</p>
+  <h3>🎯 Objetivo de la lección</h3>
+  <p style="margin-bottom:0">Conectar los sonidos que aprendiste en la <a href="https://zhemaria.github.io/clases_leng1/clase_2-1.html">Lección 2.1</a> con sus <strong>letras escritas</strong> (esto se llama <em>principio alfabético</em>), para que puedas leer palabras sencillas de manera precisa.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-decodificar">Repaso: ¿qué es decodificar?</a></li>
+    <li><a href="#s-2-una-y-dos-silabas">Palabras de una y dos sílabas</a></li>
+    <li><a href="#s-3-lectura-independiente">Práctica de lectura independiente</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Asere, ya tienes el oído entrenado. Ya sabes contar sílabas con palmadas, identificar rimas y aislar los sonidos individuales (fonemas). <strong>Hoy damos el gran salto</strong>: vas a unir esos sonidos que tienes en el oído con las letras que ves en el papel.</p>
+<h2>📚 Para empezar</h2>
+
+<p>Ya tienes el oído entrenado. Ya sabes contar sílabas con palmadas, identificar rimas y aislar los sonidos individuales (fonemas). <strong>Hoy damos el gran salto</strong>: vas a unir esos sonidos que tienes en el oído con las letras que ves en el papel.</p>
 
 <p>A ese proceso de mirar una letra y producir el sonido que le corresponde se le llama <span class="palabra-clave">decodificación</span>. Es como traducir: ves un símbolo (la letra) y le pones su sonido. Cuando juntas varios sonidos seguidos, sale una palabra. ¡Eso es leer!</p>
 
-<details open>
-<summary>1. Repaso e introducción a la decodificación <span class="caja-tiempo">10 min</span></summary>
+<details open id="s-1-decodificar">
+<summary>1. Repaso: ¿qué es decodificar? <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Recuerda la clase anterior</h3>
+<h3>Recuerda la lección anterior</h3>
 
 <ul class="lista-bonita">
   <li>Las palabras tienen <strong>sílabas</strong> (bloques de sonido).</li>
@@ -462,7 +528,7 @@
 <p><strong>Decodificar</strong> significa relacionar los sonidos que ya escuchas en tu oído con las letras que ves en el papel. Es como armar un rompecabezas: cada letra es una pieza, y la palabra completa es el dibujo final.</p>
 
 <div class="tip">
-  <strong>⚠️ Regla de oro:</strong> Cuando enseñamos a leer, usamos el <em>sonido</em> de la letra, NO el nombre. En lugar de decir "la pe", decimos cómo suena: "p" (corto y seco). En lugar de decir "la ese", decimos "ssss". Si dices el nombre, la palabra se complica. Si dices el sonido, todo encaja.
+  <strong>⚠️ Regla de oro:</strong> Para aprender a leer, usamos el <em>sonido</em> de la letra, NO el nombre. En lugar de decir "la pe", decimos cómo suena: "p" (corto y seco). En lugar de decir "la ese", decimos "ssss". Si dices el nombre, la palabra se complica. Si dices el sonido, todo encaja.
 </div>
 
 <h3>Letras: nombre vs. sonido</h3>
@@ -470,12 +536,13 @@
 <p>Mira esta tabla. Haz clic en el botón 🔊 para escuchar la diferencia entre el <em>nombre</em> de la letra y su <em>sonido</em>.</p>
 
 <table class="tabla-letras">
+  <caption class="sr-solo">Nombre y sonido de seis letras</caption>
   <thead>
     <tr>
-      <th>Letra</th>
-      <th>Nombre (cómo se llama)</th>
-      <th>Sonido (cómo suena)</th>
-      <th>Escuchar</th>
+      <th scope="col">Letra</th>
+      <th scope="col">Nombre (cómo se llama)</th>
+      <th scope="col">Sonido (cómo suena)</th>
+      <th scope="col">Escuchar</th>
     </tr>
   </thead>
   <tbody>
@@ -539,8 +606,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. Palabras de una y dos sílabas <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-una-y-dos-silabas">
+<summary>2. Palabras de una y dos sílabas <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Empezamos con un solo paso de baile</h3>
@@ -590,39 +657,32 @@
 
 <div style="text-align:center;margin:20px 0">
   <div class="bloques-decodifica">
-    <span class="bloque-silaba bloque-c1" onclick="hablar('va', 0.55)">va</span>
+    <button type="button" class="bloque-silaba bloque-c1" onclick="hablar('va', 0.55)">va</button>
     <span class="signo-mas">+</span>
-    <span class="bloque-silaba bloque-c2" onclick="hablar('ca', 0.55)">ca</span>
+    <button type="button" class="bloque-silaba bloque-c2" onclick="hablar('ca', 0.55)">ca</button>
     <span class="signo-igual">=</span>
-    <span class="palabra-final" onclick="hablar('vaca')">¡vaca!</span>
+    <button type="button" class="palabra-final" onclick="hablar('vaca')">¡vaca!</button>
   </div>
 
   <div class="bloques-decodifica">
-    <span class="bloque-silaba bloque-c1" onclick="hablar('lá', 0.55)">lá</span>
+    <button type="button" class="bloque-silaba bloque-c1" onclick="hablar('lá', 0.55)">lá</button>
     <span class="signo-mas">+</span>
-    <span class="bloque-silaba bloque-c2" onclick="hablar('piz', 0.55)">piz</span>
+    <button type="button" class="bloque-silaba bloque-c2" onclick="hablar('piz', 0.55)">piz</button>
     <span class="signo-igual">=</span>
-    <span class="palabra-final" onclick="hablar('lápiz')">¡lápiz!</span>
+    <button type="button" class="palabra-final" onclick="hablar('lápiz')">¡lápiz!</button>
   </div>
 
   <div class="bloques-decodifica">
-    <span class="bloque-silaba bloque-c1" onclick="hablar('be', 0.55)">be</span>
+    <button type="button" class="bloque-silaba bloque-c1" onclick="hablar('be', 0.55)">be</button>
     <span class="signo-mas">+</span>
-    <span class="bloque-silaba bloque-c2" onclick="hablar('bé', 0.55)">bé</span>
+    <button type="button" class="bloque-silaba bloque-c2" onclick="hablar('bé', 0.55)">bé</button>
     <span class="signo-igual">=</span>
-    <span class="palabra-final" onclick="hablar('bebé')">¡bebé!</span>
+    <button type="button" class="palabra-final" onclick="hablar('bebé')">¡bebé!</button>
   </div>
 </div>
 
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>El profesor usa dos bloques o tarjetas de colores diferentes sobre la mesa. Toca el primero y dice la primera sílaba, toca el segundo y dice la segunda. Al unirlos físicamente, todos juntos leen la palabra. Tú puedes hacer lo mismo con dos lápices de colores en tu pupitre.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>Aquí en la página tienes los bloques digitales. Haz clic en cada uno para escuchar su sílaba y luego en la palabra completa. Repite varias veces hasta que tu boca pueda hacerlo sin la ayuda del audio.</p>
-  </div>
+<div class="tip">
+  <strong>✏️ Con papel también funciona:</strong> toma dos lápices o dos papelitos de colores distintos. Toca el primero y di la primera sílaba; toca el segundo y di la segunda. Después júntalos y di la palabra completa. Prueba con <em>mesa</em>, <em>casa</em> y <em>luna</em>. Repite hasta que tu boca pueda hacerlo sin la ayuda del audio.
 </div>
 
 <div class="ejercicio">
@@ -661,8 +721,8 @@
 </div>
 </details>
 
-<details>
-<summary>3. Práctica de lectura independiente <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-lectura-independiente">
+<summary>3. Práctica de lectura independiente <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Tu lista de palabras bisílabas</h3>
@@ -740,22 +800,45 @@
   <strong>📝 Estrategia de práctica:</strong> Lee cada palabra primero <em>por sílabas</em> (despacito) y después <em>entera</em>. Repítela tres veces. Con la práctica, esa pausa entre sílabas va a desaparecer y leerás la palabra de un solo golpe. <strong>No te apures.</strong>
 </div>
 
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>El profesor te entrega una hoja impresa con la lista. Tú lees en voz alta cada palabra, primero separando las sílabas y después junta. Si te trabas, el profesor te ayuda. No te apenes: <em>todos pasamos por ahí</em>.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>Aquí en esta misma página tienes las palabras. Practícalas en voz alta. Si quieres, enciende tu micrófono y léelas para que tus compañeros también escuchen. Si tienes vergüenza, léelas en silencio para ti: también vale.</p>
-  </div>
+<div class="tip">
+  <strong>🗣️ Lee en voz alta:</strong> lee la lista completa en voz alta, primero separando las sílabas y después de corrido. Si te trabas, toca «por sílabas» y vuelve a intentarlo. No te apenes: todos los lectores pasamos por ahí. Si alguien de tu casa quiere escucharte, mejor todavía.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+<ul class="lista-bonita">
+  <li><strong>Mis diez palabras.</strong> Copia en tu cuaderno las ocho palabras de la <a href="#s-3-lectura-independiente">sección 3</a> y agrega dos más que conozcas. Sepáralas en sílabas con guiones (<em>me-sa</em>) y léelas en voz alta tres veces: por sílabas, de corrido y otra vez de corrido.</li>
+  <li><strong>Arma palabras.</strong> Usa el constructor de la <a href="#s-2-una-y-dos-silabas">sección 2</a> y encuentra por lo menos <strong>seis palabras reales</strong>. Escríbelas en el cuaderno.</li>
+  <li><strong>Palabras de la casa.</strong> Busca cinco cosas en tu casa cuyo nombre tenga una o dos sílabas (por ejemplo: <em>sal</em>, <em>taza</em>, <em>silla</em>). Escribe cada nombre y al lado cuántas sílabas tiene.</li>
+  <li><strong>Lee un empaque.</strong> Toma una caja o una lata de tu cocina y busca tres palabras cortas. Léelas decodificando sílaba por sílaba.</li>
+</ul>
+<div class="tip"><strong>🎯 Antes del quiz:</strong> asegúrate de saber la diferencia entre el <em>nombre</em> de una letra y su <em>sonido</em>. Si dudas, vuelve a la tabla de la <a href="#s-1-decodificar">sección 1</a>.</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Lo que ya puedes hacer</h3>
@@ -767,7 +850,7 @@
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h3 style="color:#b35316">✅ Antes de irte, prueba</h3>
+  <h3 style="color:#8a3d0c">✅ Antes de irte, prueba</h3>
   <p>Mira estas palabras nuevas (no las hemos practicado) y trata de leerlas decodificando sílaba por sílaba. Después usa el botón para confirmar:</p>
   <div class="lista-leer" style="margin-top:14px">
     <div class="tarjeta-leer">
@@ -786,38 +869,48 @@
 </div>
 
 <div class="tip">
-  <strong>🐢 Importante:</strong> Es completamente normal si tu lectura suena un poco separada o lenta al principio. Es como aprender a manejar un carro de cambios: al principio sientes cada movimiento, pero con el tiempo se vuelve natural. En la <strong>próxima clase</strong> vamos a aprender trucos para leer más rápido y con más naturalidad.
+  <strong>🐢 Importante:</strong> Es completamente normal si tu lectura suena un poco separada o lenta al principio. Es como aprender a manejar: al principio sientes cada movimiento, pero con el tiempo se vuelve natural.
+</div>
+
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_2-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 2.3 · Palabras de uso frecuente y fluidez inicial</a>. Vas a aprender trucos para leer más rápido y con más naturalidad.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 2 · Lección 2.2</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
   // ============== Síntesis de voz ==============
   window.hablar=function(texto,velocidad){
     if(!('speechSynthesis' in window)){
-      alert('Tu navegador no soporta la reproducción de audio. Usa Chrome, Edge o Safari.');
+      alert('Tu navegador no puede reproducir el audio. Prueba con Chrome, Edge o Safari.');
       return;
     }
     window.speechSynthesis.cancel();
     var u=new SpeechSynthesisUtterance(texto);
-    u.lang='es-ES';
+    u.lang='es-US';
     u.rate=velocidad||0.85;
     u.pitch=1;
-    var voces=window.speechSynthesis.getVoices();
-    for(var i=0;i<voces.length;i++){
-      if(voces[i].lang.indexOf('es')===0){
-        u.voice=voces[i];
-        break;
-      }
-    }
+    var v=window.vozEspanol&&window.vozEspanol(); if(v)u.voice=v;
     window.speechSynthesis.speak(u);
+  };
+  /* Se prefiere una voz latinoamericana: en las voces de España la «z» y la «c»
+     suenan distinto de la «s», y eso confunde los ejercicios de sonidos. */
+  window.vozEspanol=function(){
+    var vs=window.speechSynthesis.getVoices().filter(function(x){return /^es/i.test(x.lang);});
+    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-PR','es-CU'];
+    for(var k=0;k<pref.length;k++){for(var i=0;i<vs.length;i++){if(vs[i].lang.replace('_','-').toLowerCase()===pref[k].toLowerCase())return vs[i];}}
+    for(var i=0;i<vs.length;i++){if(!/es[-_]ES/i.test(vs[i].lang))return vs[i];}
+    return vs[0]||null;
   };
   if('speechSynthesis' in window){
     window.speechSynthesis.getVoices();
@@ -827,10 +920,9 @@
   }
 
   // ============== Constructor de palabras ==============
-  var palabrasReales=[
-    'casa','sala','mesa','masa','mapa','pasa','pata','pato','lota','loma',
-    'capa','cama','meta','mete','sapo','sopa','tasa','tomate','sacar','maleta',
-    'patata','sabor','tame','mato','toma','meto','salto','sapote','samba','poco'
+  var palabrasReales=[ /* solo palabras que se pueden armar con ca, sa, me, ma, lo, pa, ta, to */
+    'casa','cama','capa','cata','saca','mesa','meta','masa','mapa','mata','mato','malo',
+    'pasa','pata','pato','palo','tapa','tasa','toma','loma','loca'
   ];
 
   var areaPalabra=document.getElementById('area-palabra');
@@ -852,10 +944,12 @@
   function renderConstruida(){
     areaPalabra.innerHTML='';
     construida.forEach(function(item,idx){
-      var d=document.createElement('span');
+      var d=document.createElement('button');
+      d.type='button';
       d.className='silaba-construida';
       d.textContent=item.silaba;
       d.title='Quitar';
+      d.setAttribute('aria-label','Quitar la sílaba '+item.silaba);
       d.addEventListener('click',function(){
         item.origen.classList.remove('usada');
         construida.splice(idx,1);
@@ -884,7 +978,7 @@
 
     // Verificar si es palabra real
     if(palabrasReales.indexOf(palabra.toLowerCase())!==-1){
-      feedback.innerHTML='✅ ¡<strong>'+palabra+'</strong>! Eso sí es una palabra real en español. ¡De cine!';
+      feedback.innerHTML='✅ ¡<strong>'+palabra+'</strong>! Eso sí es una palabra real en español. ¡Excelente!';
       feedback.className='feedback correcto';
     }else{
       feedback.innerHTML='🤔 "<strong>'+palabra+'</strong>" no es una palabra común, pero la decodificación está bien. Prueba otra combinación.';
@@ -899,6 +993,73 @@
     feedback.textContent='';
     feedback.className='feedback';
   });
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué significa <strong>decodificar</strong>?", "o": ["Relacionar cada letra que ves con el sonido que le corresponde", "Copiar una palabra sin leerla", "Aprender de memoria el nombre de las letras"], "c": 0}, {"t": "Para leer, ¿qué usamos de cada letra?", "o": ["Su sonido", "Su nombre", "Su tamaño"], "c": 0}, {"t": "La letra «m» se llama «eme». ¿Cómo suena?", "o": ["«mmm»", "«eme»", "No suena"], "c": 0}, {"t": "¿Cuál de estas palabras tiene <strong>una sola sílaba</strong>?", "o": ["sol", "mesa", "pato"], "c": 0}, {"t": "¿Cuál de estas palabras es <strong>bisílaba</strong> (tiene dos sílabas)?", "o": ["luz", "casa", "mariposa"], "c": 1}, {"t": "Une las sílabas. ¿Qué palabra se forma?", "x": "va + ca", "a": "va, ca", "o": ["vaca", "cava", "vaso"], "c": 0}, {"t": "Une las sílabas. ¿Qué palabra se forma?", "x": "lá + piz", "a": "lá, piz", "o": ["pizla", "lápiz", "lazo"], "c": 1}, {"t": "¿Cómo se separa en sílabas la palabra «tigre»?", "o": ["ti - gre", "tig - re", "t - igre"], "c": 0}, {"t": "¿Cómo se separa en sílabas la palabra «bebé»?", "o": ["beb - é", "be - bé", "b - ebé"], "c": 1}, {"t": "¿Cuál de estas combinaciones forma una palabra real?", "o": ["me + sa", "sa + me", "ta + me"], "c": 0}, {"t": "¿Cuál es la mejor forma de practicar una palabra nueva?", "o": ["Leerla primero por sílabas y después de corrido", "Adivinarla por la primera letra", "Saltarla y seguir leyendo"], "c": 0}, {"t": "Si al principio tu lectura suena lenta y separada, eso…", "o": ["Es normal: con práctica se vuelve natural", "Significa que no puedes aprender a leer", "Se arregla leyendo más rápido aunque te equivoques"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya decodificas palabras de una y dos sílabas. Puedes continuar con la Lección 2.3.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la tabla de la sección 1 y a los bloques de la sección 2, y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

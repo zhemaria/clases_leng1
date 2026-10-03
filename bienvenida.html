@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!-- Bienvenida · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenida · ¿Qué es el GED?</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+<style>
+  :root{
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;--acento:#ff8c42;
+    --texto:#1a2332;--fondo:#fafbfc;--gris:#5f6b78;--gris-claro:#eef1f4;
+    --sujeto:#c2185b;--predicado:#1b5e20;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro)}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px}
+  .caja-objetivos h2{margin-top:0;border:none;padding-left:0}
+  .caja-objetivos h3{margin-top:0}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform .25s;font-size:.85rem}
+  details[open] summary::before{transform:rotate(90deg)}
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
+  .contenido-detalle{padding:18px 22px}
+  .ejemplo-oracion{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0;font-size:1.15rem;text-align:center;font-family:Georgia,serif}
+  .sujeto{color:var(--sujeto);font-weight:700}
+  .predicado{color:var(--predicado);font-weight:700}
+  .sujeto,.predicado{text-decoration-line:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+  .sujeto{text-decoration-style:solid}
+  .predicado{text-decoration-style:wavy}
+  .leyenda{display:flex;gap:18px;justify-content:center;margin:10px 0 16px;font-size:.95rem;flex-wrap:wrap}
+  .leyenda span{display:inline-flex;align-items:center;gap:6px}
+  .leyenda .punto{width:14px;height:14px;border-radius:50%;display:inline-block}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#6b5400}
+  .ejercicio{background:#f3f9f3;border:2px dashed #4caf50;border-radius:10px;padding:18px 22px;margin:20px 0}
+  .ejercicio h4{color:#2e7d32;margin-top:0}
+  .opciones-arrastrar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
+  .pieza{padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer;border:2px solid;transition:all .2s;font-family:inherit;font-size:1rem}
+  .pieza-sujeto{background:#fce4ec;border-color:var(--sujeto);color:var(--sujeto)}
+  .pieza-predicado{background:#e8f5e9;border-color:var(--predicado);color:var(--predicado)}
+  .pieza:hover{transform:translateY(-2px);box-shadow:0 3px 8px rgba(0,0,0,.15)}
+  .pieza[aria-pressed="true"]{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--acento)}
+  .area-construccion{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:14px 0;min-height:60px;text-align:center;font-size:1.2rem;font-family:Georgia,serif}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.95rem;transition:all .2s}
+  .btn-primario{background:var(--cp-oscuro);color:#fff}
+  .btn-primario:hover{background:#003f63}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .retroalimentacion{margin-top:14px;padding:12px 16px;border-radius:8px;text-align:center;font-weight:600;min-height:20px}
+  .retroalimentacion:empty{padding:0;min-height:0}
+  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+  .aviso{background:#fff3cd;color:#5c3900;border:1px solid #ffeaa7}
+  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+  .flecha-lectura{display:block;margin:18px auto;max-width:100%;height:auto}
+  .texto-demo{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.2rem;line-height:2.1}
+  .texto-demo .pal{border-radius:4px;padding:0 2px;transition:background .15s}
+  .texto-demo .pal.marcada{background:#ffe08a;outline:2px solid var(--acento)}
+  .texto-demo .pal.leida{color:#555}
+  .control-guia{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;margin:10px 0}
+  .control-guia label{font-size:.95rem}
+  ul.lista-bonita{list-style:none;padding-left:0}
+  ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+  table.estructura{width:100%;border-collapse:collapse;margin:18px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+  table.estructura caption{text-align:left;font-weight:600;padding:0 0 6px;color:var(--cp-oscuro)}
+  table.estructura th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.estructura td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.estructura tr:last-child td{border-bottom:none}
+  table.estructura td:first-child{font-weight:600;color:var(--sujeto)}
+  table.estructura td:last-child{color:var(--predicado)}
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .indice a:focus-visible,.volver-indice:focus-visible,summary:focus-visible,.btn:focus-visible,.btn-letra:focus-visible,.pieza:focus-visible,.enlace-practica:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  @media print{.indice,.volver-indice,.abrir-cerrar,.control-guia{display:none}details{border:none}}
+  /* ── Quiz de la lección ── */
+  .actividad-unidad{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .actividad-unidad h4{margin:0 0 6px}
+  .quiz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .quiz-preg .enunciado{font-weight:600;margin:0 0 10px}
+  .quiz-preg .num-preg{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .quiz-preg .oracion-preg{display:block;font-family:Georgia,serif;font-size:1.15rem;text-align:center;margin:6px 0 10px;font-weight:400}
+  .opciones-letra{display:flex;flex-direction:column;gap:8px}
+  .btn-letra{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .btn-letra:hover:not(:disabled){border-color:var(--cp)}
+  .btn-letra.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .btn-letra.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .btn-letra.correcta::before{content:'✓ '}
+  .btn-letra.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .btn-letra.incorrecta::before{content:'✗ '}
+  .btn-letra:disabled{cursor:default}
+  .resultado-quiz{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .resultado-quiz.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  .frase-central{background:var(--cp-claro);border-left:5px solid var(--cp-oscuro);border-right:5px solid var(--cp-oscuro);border-radius:6px;padding:14px 18px;margin:18px 0;text-align:center;font-size:1.08rem}
+  .materias{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+  .materia{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;font-size:.97rem}
+  .materia strong{display:block;color:var(--cp-oscuro);font-size:1.02rem}
+  .materia span[lang]{display:block;color:var(--gris);font-size:.88rem;font-style:italic;margin-bottom:6px}
+  .materia-icono{font-size:1.8rem;display:block}
+  .lista-temas li{margin:4px 0}
+  .explicacion{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);border-left:4px solid var(--cp-oscuro);font-size:.96rem}
+  .siguiente{margin-top:24px}
+</style>
+</head>
+<body>
+<h1>Bienvenida · ¿Qué es el GED y por qué es importante?</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Antes de empezar · Unos 30 minutos</p>
+
+<div class="caja-objetivos">
+  <h2>🎯 En esta bienvenida vas a</h2>
+  <ul class="lista-bonita">
+    <li>Conocer qué es el <span class="palabra-clave">GED</span> y qué materias evalúa.</li>
+    <li>Pensar en <strong>por qué</strong> decidiste estudiar y qué quieres lograr.</li>
+    <li>Saber <strong>cómo funciona este curso</strong> para estudiar por tu cuenta, a tu ritmo.</li>
+  </ul>
+</div>
+
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la bienvenida</h2>
+  <ol>
+    <li><a href="#b-que-es">¿Qué es el GED?</a></li>
+    <li><a href="#b-materias">Las cuatro materias del GED</a></li>
+    <li><a href="#b-puertas">Las puertas que abre el GED</a></li>
+    <li><a href="#b-piensa">Piensa por un momento</a></li>
+    <li><a href="#b-curso">Cómo funciona este curso</a></li>
+    <li><a href="#b-cuestionario">Cuestionario de bienvenida</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
+
+<details open id="b-que-es">
+<summary>1. ¿Qué es el GED? <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+  <p>El <strong>GED</strong> significa <em lang="en">General Educational Development</em> (Desarrollo Educativo General). Es un conjunto de exámenes que demuestra que una persona tiene los mismos conocimientos y habilidades que alguien que terminó la escuela secundaria (<em lang="en">high school</em>) en Estados Unidos.</p>
+  <p>En otras palabras, el GED es una segunda oportunidad para obtener el equivalente al diploma de secundaria.</p>
+  <p>Muchas personas no pudieron terminar la escuela por diferentes razones: el trabajo, las responsabilidades familiares, un cambio de país, dificultades económicas o personales. Pero no haber terminado en ese momento no significa que no puedan lograrlo ahora.</p>
+  <div class="frase-central">El GED te dice: <strong>«Tengo lo necesario para seguir adelante».</strong></div>
+</div>
+</details>
+
+<details id="b-materias">
+<summary>2. Las cuatro materias del GED <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+  <p>El examen del GED evalúa cuatro áreas principales:</p>
+  <div class="materias">
+    <div class="materia"><span class="materia-icono" aria-hidden="true">📖</span><strong>Razonamiento a través del lenguaje</strong><span lang="en">(Reasoning Through Language Arts)</span>Comprensión de lectura y escritura. <em>Es la materia de este curso.</em></div>
+    <div class="materia"><span class="materia-icono" aria-hidden="true">🔢</span><strong>Matemáticas</strong><span lang="en">(Mathematical Reasoning)</span>Problemas, álgebra básica, números y razonamiento lógico.</div>
+    <div class="materia"><span class="materia-icono" aria-hidden="true">🔬</span><strong>Ciencias</strong><span lang="en">(Science)</span>Biología, física, química y cómo interpretar información científica.</div>
+    <div class="materia"><span class="materia-icono" aria-hidden="true">🌎</span><strong>Estudios Sociales</strong><span lang="en">(Social Studies)</span>Historia, gobierno, economía y geografía.</div>
+  </div>
+  <p>No se trata solo de memorizar información. El GED evalúa si puedes <strong>pensar, analizar y resolver problemas</strong>, habilidades que también se usan en el trabajo y en la vida diaria.</p>
+  <div class="tip"><strong>💡 ¿Por qué empezar por el lenguaje?</strong> Porque leer bien te ayuda en todas las demás materias: en Matemáticas hay que entender el problema, y en Ciencias y en Estudios Sociales hay que leer textos, tablas y gráficas.</div>
+</div>
+</details>
+
+<details id="b-puertas">
+<summary>3. Las puertas que abre el GED <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+  <p>Obtener el GED puede abrirte muchas puertas:</p>
+  <ul class="lista-bonita">
+    <li>Mejores oportunidades de empleo.</li>
+    <li>La posibilidad de estudiar en un colegio comunitario (<em lang="en">community college</em>).</li>
+    <li>Acceso a programas técnicos o universitarios.</li>
+    <li>Más confianza en ti mismo.</li>
+    <li>Ser un ejemplo para tus hijos y tu familia.</li>
+  </ul>
+  <p>Para muchos estudiantes hispanos en Estados Unidos, el GED representa más que un examen. Representa sacrificio, esfuerzo y esperanza. Representa la decisión de no rendirse.</p>
+  <div class="frase-central">El GED no significa que fracasaste.<br>No significa que eres menos capaz.<br>No significa que es demasiado tarde.<br><strong>Al contrario: significa que estás tomando el control de tu futuro.</strong></div>
+</div>
+</details>
+
+<details id="b-piensa">
+<summary>4. Piensa por un momento <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+  <p>Toma tu cuaderno. En la primera página, responde estas tres preguntas con tus propias palabras. No hay respuestas buenas ni malas: son solo para ti.</p>
+  <ul class="lista-bonita">
+    <li>¿Por qué decidí estudiar para el GED?</li>
+    <li>¿Qué cambiará en mi vida cuando lo obtenga?</li>
+    <li>¿Qué ejemplo quiero dar a mi familia?</li>
+  </ul>
+  <div class="tip"><strong>📌 Guarda esta página del cuaderno.</strong> El día que estés cansado o con ganas de dejarlo, vuelve a leer lo que escribiste hoy.</div>
+  <p>El GED no es solo un certificado. Es una meta alcanzada. Es una prueba de perseverancia. Es un paso más hacia una vida con más oportunidades.</p>
+  <div class="frase-central"><strong>Y cada día que estudias, estás más cerca de lograrlo.</strong></div>
+</div>
+</details>
+
+<details id="b-curso">
+<summary>5. Cómo funciona este curso <span class="caja-tiempo">5 min</span></summary>
+<div class="contenido-detalle">
+  <p>Este curso está hecho para que puedas estudiar <strong>por tu cuenta, a tu ritmo</strong>, desde la computadora o desde el celular. Así está organizado:</p>
+  <ul class="lista-bonita">
+    <li><strong>8 temas</strong>, y cada tema tiene varias <strong>lecciones</strong>. Conviene seguirlas en orden, porque cada una se apoya en la anterior.</li>
+    <li>Cada lección empieza con sus <strong>objetivos</strong> y un <strong>índice</strong>. Toca cualquier parte del índice para ir directo a ella. El botón <strong>↑ Índice</strong>, abajo a la derecha, te devuelve arriba.</li>
+    <li>Las partes de la lección se abren y se cierran al tocarlas. Al lado de cada título verás cuánto tiempo te puede llevar: es solo una orientación.</li>
+    <li>Cada lección termina con una <strong>tarea</strong> para el cuaderno y un <strong>quiz</strong> que puedes repetir las veces que quieras. Cuando aciertes la mayoría de las preguntas, pasa a la lección siguiente.</li>
+    <li>En muchas lecciones hay <strong>prácticas interactivas</strong> y botones para <strong>escuchar</strong> el texto.</li>
+  </ul>
+  <h3>Lo que necesitas</h3>
+  <ul class="lista-bonita">
+    <li>Un <strong>cuaderno</strong> y un lápiz. Si puedes, dos lápices o resaltadores de colores distintos.</li>
+    <li>Un rato tranquilo cada día. Es mejor estudiar media hora todos los días que cuatro horas un solo día.</li>
+  </ul>
+  <h3>Los ocho temas del Nivel 1</h3>
+  <ol class="lista-temas">
+    <li>El alfabeto y la dirección de la lectura</li>
+    <li>Conciencia fonológica y fluidez</li>
+    <li>La oración: sustantivo, adjetivo, verbo y puntuación</li>
+    <li>Estrategias de comprensión y vocabulario</li>
+    <li>El texto narrativo y las relaciones entre ideas</li>
+    <li>Información visual: imágenes, mapas, tablas y gráficas</li>
+    <li>El párrafo y los tipos de texto</li>
+    <li>Comunicación, tecnología y proyecto final</li>
+  </ol>
+</div>
+</details>
+
+<details id="b-cuestionario">
+<summary>6. Cuestionario de bienvenida <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+  <div class="actividad-unidad">
+    <h4>📋 Para conocerte mejor · sin nota</h4>
+    <p style="margin:0">Este cuestionario <strong>no tiene nota</strong>. Sirve para que descubras lo que ya sabes sobre el GED. Responde con tranquilidad: al elegir una respuesta verás una breve explicación.</p>
+  </div>
+  <div id="cuestionario"></div>
+  <div class="frase-central" id="cierre-cuestionario" hidden>🌟 ¡Te damos la bienvenida al curso! Lo importante no es cuántas acertaste, sino que ya diste el primer paso.</div>
+  <div class="botones"><button type="button" class="btn btn-secundario" id="btn-repetir-cuest" hidden>Volver a empezar el cuestionario</button></div>
+</div>
+</details>
+
+<div class="tip siguiente"><strong>📅 Ahora sí, a empezar:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_1-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 1.1 · El alfabeto: letras mayúsculas y minúsculas</a>. Es la primera lección del Tema 1.</div>
+
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Bienvenida</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido"><span aria-hidden="true">↑</span> Índice</a>
+<script>
+/* ===== Cuestionario de bienvenida (sin nota: muestra la explicación al responder) ===== */
+(function(){
+  var P=[["¿Qué significan las siglas GED?", ["Graduación Educativa de Diploma", "General Educational Development (Desarrollo Educativo General)", "Grupo de Estudios Diarios", "Garantía de Educación a Distancia"], 1, "GED significa <em lang=\"en\">General Educational Development</em>. Es un examen oficial en Estados Unidos que certifica conocimientos equivalentes a los de la escuela secundaria."], ["¿Cuántas materias o áreas evalúa el examen del GED?", ["Dos materias", "Tres materias", "Cuatro materias", "Seis materias"], 2, "El GED evalúa cuatro áreas: Razonamiento a través del lenguaje, Matemáticas, Ciencias y Estudios Sociales."], ["¿Qué representa el GED para una persona que lo obtiene?", ["Un título universitario", "El equivalente al diploma de escuela secundaria (<em lang=\"en\">high school</em>)", "Un certificado de inglés como segundo idioma", "Una licencia profesional de trabajo"], 1, "El GED equivale al diploma de escuela secundaria. Con él puedes acceder a oportunidades de trabajo y de estudio que piden ese nivel."], ["¿En qué idiomas se puede presentar el examen del GED?", ["Solo en inglés", "En inglés y en español", "En cualquier idioma", "Solo en español"], 1, "El examen del GED está disponible en inglés y en español. Así, muchos estudiantes hispanos pueden presentarlo en su lengua materna."], ["¿Dónde se toma el examen del GED?", ["En la casa, sin supervisión", "En centros oficiales autorizados, o en línea con supervisión", "En cualquier biblioteca pública", "Únicamente en universidades"], 1, "El GED se toma en centros oficiales autorizados, en persona, o en línea con supervisión a distancia. Así el certificado es válido y reconocido."], ["¿Cuál de estas oportunidades se abre al obtener el GED?", ["Únicamente trabajar en restaurantes", "Solamente seguir estudiando inglés", "Acceso a colegios comunitarios, programas técnicos y mejores empleos", "La ciudadanía estadounidense automáticamente"], 2, "El GED abre las puertas a colegios comunitarios, programas técnicos y mejores empleos. No da la ciudadanía, pero amplía mucho las posibilidades de estudio y de trabajo."], ["¿Qué tipo de habilidades evalúa principalmente el GED?", ["Solo memorizar datos", "Pensar, analizar y resolver problemas", "Habilidades artísticas y deportivas", "El conocimiento de un oficio específico"], 1, "El GED evalúa el pensamiento crítico: comprender, analizar, razonar y resolver problemas. Son las mismas habilidades que se necesitan en el trabajo y en la vida diaria."], ["Si una persona no terminó la escuela secundaria, ¿qué significa que estudie para el GED?", ["Que fracasó en la vida", "Que ya es demasiado tarde para aprender", "Que está tomando el control de su futuro y aprovecha una nueva oportunidad", "Que solo busca un papel sin valor"], 2, "Estudiar para el GED es una decisión valiente. Representa esfuerzo, perseverancia y ganas de mejorar. Es una segunda oportunidad real."]], L='ABCD';
+  var caja=document.getElementById('cuestionario'), resp=0;
+  function pintar(){
+    resp=0; caja.innerHTML='';
+    P.forEach(function(p,i){
+      var d=document.createElement('div'); d.className='quiz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','cb-'+i);
+      var h='<p class="enunciado" id="cb-'+i+'"><span class="num-preg">'+(i+1)+'</span>'+p[0]+'</p><div class="opciones-letra">';
+      p[1].forEach(function(o,j){h+='<button type="button" class="btn-letra" data-i="'+i+'" data-j="'+j+'"><strong>'+L[j]+'.</strong> '+o+'</button>';});
+      h+='</div><div class="explicacion" id="exp-'+i+'" hidden role="status"></div>';
+      d.innerHTML=h; caja.appendChild(d);
+    });
+    document.getElementById('cierre-cuestionario').hidden=true;
+    document.getElementById('btn-repetir-cuest').hidden=true;
+  }
+  caja.addEventListener('click',function(ev){
+    var b=ev.target.closest('.btn-letra'); if(!b||b.disabled)return;
+    var i=+b.getAttribute('data-i'), j=+b.getAttribute('data-j'), p=P[i];
+    caja.querySelectorAll('.btn-letra[data-i="'+i+'"]').forEach(function(x){
+      x.disabled=true; var k=+x.getAttribute('data-j');
+      if(k===p[2])x.classList.add('correcta'); else if(k===j)x.classList.add('incorrecta');
+    });
+    var e=document.getElementById('exp-'+i);
+    e.innerHTML='<strong>'+(j===p[2]?'¡Bien! ':'')+'Respuesta correcta: '+L[p[2]]+'.</strong> '+p[3]; e.hidden=false;
+    if(++resp===P.length){document.getElementById('cierre-cuestionario').hidden=false;document.getElementById('btn-repetir-cuest').hidden=false;}
+  });
+  document.getElementById('btn-repetir-cuest').addEventListener('click',function(){pintar();caja.scrollIntoView({behavior:'smooth',block:'start'});});
+  pintar();
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id);if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
+})();
+</script>
+</body>
+</html>

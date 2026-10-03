@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 2.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 3: Palabras de uso frecuente y fluidez inicial</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 2.3 · Palabras de uso frecuente y fluidez inicial</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;
@@ -481,32 +487,92 @@
     color:var(--acento);
     margin-bottom:6px;
   }
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  button.palabra-frec{border:none;width:100%}
+  button.palabra-en-frase{border:none;font:inherit;font-weight:700}
 </style>
 </head>
 <body>
 
-<h1>Clase 3: Palabras de uso frecuente y fluidez inicial</h1>
-<p class="subtitulo">El motor de la lectura · Tema 2, semana 2 · Nivel 1</p>
+<h1>Lección 2.3 · Palabras de uso frecuente y fluidez inicial</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 2 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h3>🎯 Objetivo de la clase</h3>
+  <h3>🎯 Objetivo de la lección</h3>
   <p style="margin-bottom:0">Reconocer <strong>palabras de alta frecuencia</strong> de forma automática y unirlas a las palabras decodificadas para crear frases con <strong>fluidez básica</strong>.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-palabras-frecuentes">¿Qué son las palabras de alta frecuencia?</a></li>
+    <li><a href="#s-2-fluidez">Estrategias de lectura para la fluidez</a></li>
+    <li><a href="#s-3-frases-de-apoyo">Práctica: de palabras a oraciones</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre del Tema 2</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Asere, hoy cerramos el Tema 2 y vamos a sentir cómo se acomoda todo lo aprendido. Hasta ahora:</p>
+<h2>📚 Para empezar</h2>
+
+<p>Con esta lección cierras el Tema 2, y vas a sentir cómo se acomoda todo lo aprendido. Hasta ahora:</p>
 
 <ul class="lista-bonita">
-  <li>En la Clase 1 entrenaste el <strong>oído</strong> con sílabas, rimas y fonemas.</li>
-  <li>En la Clase 2 aprendiste a <strong>decodificar</strong> palabras de 1 y 2 sílabas.</li>
+  <li>En la <a href="https://zhemaria.github.io/clases_leng1/clase_2-1.html">Lección 2.1</a> entrenaste el <strong>oído</strong> con sílabas, rimas y fonemas.</li>
+  <li>En la <a href="https://zhemaria.github.io/clases_leng1/clase_2-2.html">Lección 2.2</a> aprendiste a <strong>decodificar</strong> palabras de 1 y 2 sílabas.</li>
   <li>Hoy le vamos a poner <strong>velocidad y naturalidad</strong> a esa lectura.</li>
 </ul>
 
 <p>El secreto está en dos cosas. Primero, hay un grupo de palabras que aparecen <em>todo el tiempo</em> en el español; si las memorizas de un solo golpe, te ahorras el trabajo de decodificarlas. Segundo, hay técnicas de práctica que te ayudan a que tu voz suene natural, no como un robot. <strong>Vamos a verlas.</strong></p>
 
-<details open>
-<summary>1. Introducción: ¿qué son las palabras de alta frecuencia? <span class="caja-tiempo">10 min</span></summary>
+<details open id="s-1-palabras-frecuentes">
+<summary>1. ¿Qué son las palabras de alta frecuencia? <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Las palabras que aparecen todo el tiempo</h3>
@@ -520,33 +586,38 @@
 <p>Aquí tienes las más comunes. Haz clic en cada tarjeta para escucharla. Léelas todas varias veces hasta que tu vista las reconozca de un golpe:</p>
 
 <div class="mural-frecuentes">
-  <div class="palabra-frec" onclick="hablar('el')">el</div>
-  <div class="palabra-frec" onclick="hablar('la')">la</div>
-  <div class="palabra-frec" onclick="hablar('de')">de</div>
-  <div class="palabra-frec" onclick="hablar('un')">un</div>
-  <div class="palabra-frec" onclick="hablar('una')">una</div>
-  <div class="palabra-frec" onclick="hablar('para')">para</div>
-  <div class="palabra-frec" onclick="hablar('tú')">tú</div>
-  <div class="palabra-frec" onclick="hablar('yo')">yo</div>
-  <div class="palabra-frec" onclick="hablar('con')">con</div>
-  <div class="palabra-frec" onclick="hablar('en')">en</div>
-  <div class="palabra-frec" onclick="hablar('lado')">lado</div>
-  <div class="palabra-frec" onclick="hablar('otro')">otro</div>
-  <div class="palabra-frec" onclick="hablar('mucho')">mucho</div>
-  <div class="palabra-frec" onclick="hablar('que')">que</div>
-  <div class="palabra-frec" onclick="hablar('por')">por</div>
-  <div class="palabra-frec" onclick="hablar('mi')">mi</div>
+  <button type="button" class="palabra-frec" onclick="hablar('el')">el</button>
+  <button type="button" class="palabra-frec" onclick="hablar('la')">la</button>
+  <button type="button" class="palabra-frec" onclick="hablar('de')">de</button>
+  <button type="button" class="palabra-frec" onclick="hablar('un')">un</button>
+  <button type="button" class="palabra-frec" onclick="hablar('una')">una</button>
+  <button type="button" class="palabra-frec" onclick="hablar('para')">para</button>
+  <button type="button" class="palabra-frec" onclick="hablar('tú')">tú</button>
+  <button type="button" class="palabra-frec" onclick="hablar('yo')">yo</button>
+  <button type="button" class="palabra-frec" onclick="hablar('con')">con</button>
+  <button type="button" class="palabra-frec" onclick="hablar('en')">en</button>
+  <button type="button" class="palabra-frec" onclick="hablar('lado')">lado</button>
+  <button type="button" class="palabra-frec" onclick="hablar('otro')">otro</button>
+  <button type="button" class="palabra-frec" onclick="hablar('mucho')">mucho</button>
+  <button type="button" class="palabra-frec" onclick="hablar('que')">que</button>
+  <button type="button" class="palabra-frec" onclick="hablar('por')">por</button>
+  <button type="button" class="palabra-frec" onclick="hablar('mi')">mi</button>
 </div>
 
 <div class="tip">
-  <strong>💡 Estrategia:</strong> Pídele a alguien de tu familia (o usa los botones de audio) que te diga estas palabras al azar. Tú apuntas a la palabra correcta. Cuando puedas hacerlo sin equivocarte y rápido, ya las dominaste.
+  <strong>💡 Estrategia:</strong> Pídele a alguien de tu familia que te diga estas palabras al azar, y tú señala la palabra correcta. Cuando puedas hacerlo rápido y sin equivocarte, ya las dominaste. Si estudias solo, usa la práctica de abajo: ella te dice la palabra y tú la buscas.
 </div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l2-3.html#palabras" target="_blank" rel="noopener">
+  ⚡ Práctica: Palabras al instante ↗
+  <span>Unas cincuenta palabras frecuentes que aparecen y desaparecen, y un juego para encontrar la palabra que escuchas. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>2. Estrategias de lectura para la fluidez <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-fluidez">
+<summary>2. Estrategias de lectura para la fluidez <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué es la fluidez?</h3>
@@ -575,11 +646,11 @@
 
 <h3>Dos técnicas para entrenar la fluidez</h3>
 
-<p>Hay dos técnicas muy útiles que vamos a usar:</p>
+<p>Hay dos técnicas muy útiles que puedes hacer con el audio de esta página:</p>
 
 <div class="caja-lectura">
   <h3 style="margin-top:0">🦜 Lectura en eco</h3>
-  <p>El profesor (o el audio) lee una frase con buena entonación. Tú la repites exactamente igual, imitando hasta los gestos de la voz. Como un loro elegante.</p>
+  <p>El audio lee una frase con buena entonación. Tú la repites exactamente igual, imitando hasta los gestos de la voz. Como un loro elegante.</p>
 
   <p style="font-weight:600;color:var(--cp-oscuro);margin-top:14px">Prueba con estas frases. Primero escucha, después repítelas tú:</p>
 
@@ -600,10 +671,10 @@
 </div>
 
 <div class="caja-lectura" style="border-color:var(--acento)">
-  <h3 style="margin-top:0;color:#b35316">👥 Lectura a coro</h3>
-  <p>Todos leen al mismo tiempo, en voz alta. Es como cantar el himno: si tú vas más despacio, te apoyas en los demás; si vas más rápido, los demás te frenan. Al final, todos llegan al mismo ritmo.</p>
+  <h3 style="margin-top:0;color:#8a3d0c">🎧 Lectura acompañada</h3>
+  <p>Lees en voz alta <strong>al mismo tiempo</strong> que el audio. Es como cantar una canción junto con la radio: si vas más despacio, la voz te jala; si vas más rápido, te frena. Al final, llegas a su ritmo.</p>
 
-  <p style="font-weight:600;color:var(--cp-oscuro);margin-top:14px">Esta versión es para hacerla con tus compañeros. Aquí te dejamos las frases para practicar:</p>
+  <p style="font-weight:600;color:var(--cp-oscuro);margin-top:14px">Pulsa el botón y lee las tres frases junto con la voz, sin detenerte. Si te quedas atrás, no pasa nada: alcánzala en la frase siguiente.</p>
 
   <div class="frase-modelo">El sol sale por el este.</div>
   <div class="frase-modelo">Mi mamá hace un café muy rico.</div>
@@ -614,33 +685,27 @@
   </div>
 </div>
 
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>El profesor lee una frase con entonación marcada. La clase entera la repite (lectura en eco). Después, el profesor da la señal y todos leen una lista a la vez (lectura a coro). Si te trabas, sigue: nadie va a notar.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>El profesor lee por el micrófono. Tú repites en voz alta en tu casa. Para la lectura a coro, el profesor cuenta "uno, dos, tres" y todos leen al mismo tiempo con micrófono encendido. Te vas a divertir.</p>
-  </div>
-</div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l2-3.html#lectura" target="_blank" rel="noopener">
+  📖 Práctica: Lectura con guía ↗
+  <span>Un texto corto con una guía que va marcando las palabras a la velocidad que elijas. Léelo tres veces seguidas y compara tus tiempos. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: de palabras a oraciones organizadas <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-frases-de-apoyo">
+<summary>3. Práctica: de palabras a oraciones <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Frases de apoyo: ahora todo se conecta</h3>
 
-<p>Ahora vamos a unir las dos clases anteriores. Tomamos las <strong>palabras frecuentes</strong> de hoy y las <strong>palabras bisílabas</strong> que decodificamos en la Clase 2, y armamos <span class="palabra-clave">frases de apoyo</span>.</p>
+<p>Ahora vas a unir todo lo del tema. Tomas las <strong>palabras frecuentes</strong> de hoy y las <strong>palabras bisílabas</strong> que decodificaste en la Lección 2.2, y armas <span class="palabra-clave">frases de apoyo</span>.</p>
 
 <p>Las frases de apoyo son oraciones <strong>simples y repetitivas</strong> que te ayudan a leer sin sonar como robot. La estructura es siempre parecida, y eso le quita esfuerzo a tu cerebro para que pueda concentrarse en la entonación.</p>
 
 <div class="leyenda-colores">
-  <span><span class="punto" style="background:var(--frecuente)"></span> Palabra frecuente (de memoria)</span>
-  <span><span class="punto" style="background:var(--bisilaba)"></span> Palabra bisílaba (decodificada)</span>
+  <span><span class="punto" style="background:var(--frecuente)" aria-hidden="true"></span> Palabra frecuente (de memoria)</span>
+  <span><span class="punto" style="background:var(--bisilaba)" aria-hidden="true"></span> Palabra bisílaba (decodificada)</span>
 </div>
 
 <h3>Ejemplos de frases de apoyo</h3>
@@ -688,7 +753,7 @@
 
 <h3>Conexión con el tema anterior</h3>
 
-<p>¿Te acuerdas de la primera lección, cuando aprendimos que toda oración tiene <strong>sujeto</strong> y <strong>predicado</strong>? Pues mira: estas frases de apoyo también lo tienen. La información sigue fluyendo de <strong>izquierda a derecha</strong>, y cada frase tiene sentido completo.</p>
+<p>¿Te acuerdas de la <a href="https://zhemaria.github.io/clases_leng1/clase_1-2.html#s-2-sujeto-y-predicado">Lección 1.2</a>, cuando aprendiste que toda oración tiene <strong>sujeto</strong> y <strong>predicado</strong>? Pues mira: estas frases de apoyo también lo tienen. La información sigue fluyendo de <strong>izquierda a derecha</strong>, y cada frase tiene sentido completo.</p>
 
 <div class="oracion-analizada">
   <span class="marca-sujeto">Yo</span> &nbsp;<span class="marca-predicado">veo un perro</span>.
@@ -742,22 +807,45 @@
   </div>
 </div>
 
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>El profesor te entrega tarjetas con palabras frecuentes (de un color) y palabras bisílabas (de otro). En tu pupitre o en grupo, las combinan para formar frases de apoyo y las leen en voz alta.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>Usa el constructor digital de arriba. Arma al menos cinco frases distintas. Léelas en voz alta. Si te animas, copia tres en el chat para que el profesor las vea.</p>
-  </div>
+<div class="tip">
+  <strong>✂️ Versión en papel:</strong> escribe en papelitos cinco palabras frecuentes (yo, tú, el, la, un) y cinco bisílabas (mesa, casa, perro, leche, bota). Combínalas para formar frases de apoyo y léelas en voz alta. Copia en tu cuaderno las tres que más te gusten.
 </div>
 
 </div>
 </details>
 
-<details>
-<summary>4. Cierre y evaluación del Tema 2 <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+<ul class="lista-bonita">
+  <li><strong>Mis 16 palabras.</strong> Copia en tu cuaderno las 16 palabras frecuentes de la <a href="#s-1-palabras-frecuentes">sección 1</a>. Léelas en voz alta todos los días de esta semana, hasta reconocerlas de un golpe.</li>
+  <li><strong>Cinco frases de apoyo.</strong> Arma cinco frases con el constructor de la <a href="#s-3-frases-de-apoyo">sección 3</a> y cópialas. En cada una, subraya el sujeto con una raya recta y el predicado con una ondulada.</li>
+  <li><strong>Las señales de todos los días.</strong> Haz la estación de señales del entrenador (<a href="https://zhemaria.github.io/gramatica/n1-l2-3.html#senales" target="_blank" rel="noopener">abrir las señales ↗</a>). Después, camino a casa o al trabajo, busca tres de esas señales y léelas en voz alta.</li>
+  <li><strong>Tres lecturas.</strong> En la estación de lectura del entrenador, lee el mismo texto tres veces seguidas. Anota tus tres tiempos en el cuaderno.</li>
+</ul>
+<div class="tip"><strong>🎯 Antes del quiz:</strong> repasa los tres pilares de la fluidez en la <a href="#s-2-fluidez">sección 2</a>: velocidad, precisión y prosodia.</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre del Tema 2 <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El motor de la lectura</h3>
@@ -767,15 +855,15 @@
 <div class="escalera">
   <div class="escalera-paso">
     <span class="numero">1</span>
-    Sonidos<br>(Clase 1)
+    Sonidos<br>(Lección 2.1)
   </div>
   <div class="escalera-paso">
     <span class="numero">2</span>
-    Decodificación<br>(Clase 2)
+    Decodificación<br>(Lección 2.2)
   </div>
   <div class="escalera-paso">
     <span class="numero">3</span>
-    Fluidez<br>(Clase 3)
+    Fluidez<br>(Lección 2.3)
   </div>
 </div>
 
@@ -788,7 +876,7 @@
 </div>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h3 style="color:#b35316">✅ Autoevaluación del Tema 2</h3>
+  <h3 style="color:#8a3d0c">✅ Autoevaluación del Tema 2</h3>
   <ul class="lista-bonita">
     <li>¿Reconoces 10 palabras frecuentes sin tener que decodificarlas sonido por sonido?</li>
     <li>¿Puedes leer palabras bisílabas (como "mesa", "pato", "tigre") sin pausa larga entre sílabas?</li>
@@ -798,40 +886,45 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Hacia adelante:</strong> Con el Tema 2 ya en tu mochila, en las próximas clases vamos a leer textos cortos completos, identificar la idea principal y empezar a hacer preguntas de comprensión, que es lo que el GED te pedirá.
+  <strong>📅 En la próxima lección:</strong> empieza el Tema 3 con la <a href="https://zhemaria.github.io/clases_leng1/clase_3-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.1 · Conociendo los sustantivos y los adjetivos</a>. Vas a mirar por dentro las oraciones que ya sabes leer: qué palabras nombran las cosas y cuáles dicen cómo son.
 </div>
 
-<p style="text-align:center;margin-top:20px;font-style:italic;color:var(--cp-oscuro)">Recuerda revisar todos los materiales y tareas en <strong>brightspace.ccc.edu</strong>.</p>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 2 · Lección 2.3</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
   // ============== Síntesis de voz ==============
   window.hablar=function(texto,velocidad){
     if(!('speechSynthesis' in window)){
-      alert('Tu navegador no soporta la reproducción de audio. Usa Chrome, Edge o Safari.');
+      alert('Tu navegador no puede reproducir el audio. Prueba con Chrome, Edge o Safari.');
       return;
     }
     window.speechSynthesis.cancel();
     var u=new SpeechSynthesisUtterance(texto);
-    u.lang='es-ES';
-    u.rate=velocidad||0.9;
+    u.lang='es-US';
+    u.rate=velocidad||0.85;
     u.pitch=1;
-    var voces=window.speechSynthesis.getVoices();
-    for(var i=0;i<voces.length;i++){
-      if(voces[i].lang.indexOf('es')===0){
-        u.voice=voces[i];
-        break;
-      }
-    }
+    var v=window.vozEspanol&&window.vozEspanol(); if(v)u.voice=v;
     window.speechSynthesis.speak(u);
+  };
+  /* Se prefiere una voz latinoamericana: en las voces de España la «z» y la «c»
+     suenan distinto de la «s», y eso confunde los ejercicios de sonidos. */
+  window.vozEspanol=function(){
+    var vs=window.speechSynthesis.getVoices().filter(function(x){return /^es/i.test(x.lang);});
+    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-PR','es-CU'];
+    for(var k=0;k<pref.length;k++){for(var i=0;i<vs.length;i++){if(vs[i].lang.replace('_','-').toLowerCase()===pref[k].toLowerCase())return vs[i];}}
+    for(var i=0;i<vs.length;i++){if(!/es[-_]ES/i.test(vs[i].lang))return vs[i];}
+    return vs[0]||null;
   };
   if('speechSynthesis' in window){
     window.speechSynthesis.getVoices();
@@ -851,12 +944,9 @@
     function siguiente(){
       if(idx>=frases.length)return;
       var u=new SpeechSynthesisUtterance(frases[idx]);
-      u.lang='es-ES';
+      u.lang='es-US';
       u.rate=0.85;
-      var voces=window.speechSynthesis.getVoices();
-      for(var i=0;i<voces.length;i++){
-        if(voces[i].lang.indexOf('es')===0){u.voice=voces[i];break}
-      }
+      var v=window.vozEspanol(); if(v)u.voice=v;
       u.onend=function(){
         idx++;
         setTimeout(siguiente,600);
@@ -890,10 +980,12 @@
   function renderFrase(){
     areaFrase.innerHTML='';
     fraseConstruida.forEach(function(item,idx){
-      var sp=document.createElement('span');
+      var sp=document.createElement('button');
+      sp.type='button';
       sp.className='palabra-en-frase '+(item.tipo==='frec'?'frec-tipo':'bisil-tipo');
       sp.textContent=item.palabra;
       sp.title='Quitar';
+      sp.setAttribute('aria-label','Quitar '+item.palabra);
       sp.addEventListener('click',function(){
         item.origen.classList.remove('usada');
         fraseConstruida.splice(idx,1);
@@ -917,13 +1009,13 @@
     var tieneBisil=fraseConstruida.some(function(c){return c.tipo==='bisil'});
 
     if(tieneFrec && tieneBisil && fraseConstruida.length>=3){
-      feedback.innerHTML='✅ ¡Bestial! "<strong>'+frase+'</strong>" combina palabras frecuentes y bisílabas. Eso es una frase de apoyo.';
+      feedback.innerHTML='✅ ¡Muy bien! "<strong>'+frase+'</strong>" combina palabras frecuentes y bisílabas. Eso es una frase de apoyo.';
       feedback.className='feedback correcto';
     }else if(!tieneFrec){
       feedback.innerHTML='🤔 Te faltó incluir alguna palabra <strong>frecuente</strong> (las moradas). Prueba a agregar una.';
       feedback.className='feedback neutral';
     }else if(!tieneBisil){
-      feedback.innerHTML='🤔 Te faltó incluir alguna palabra <strong>bisílaba</strong> (las verdes). Prueba a agregar una.';
+      feedback.innerHTML='🤔 Te faltó incluir alguna palabra <strong>bisílaba</strong> (las de color verde azulado). Prueba a agregar una.';
       feedback.className='feedback neutral';
     }else{
       feedback.innerHTML='🤔 Tu frase es muy corta. Intenta armar una con al menos 3 palabras.';
@@ -938,6 +1030,73 @@
     feedback.textContent='';
     feedback.className='feedback';
   });
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué son las <strong>palabras de alta frecuencia</strong>?", "o": ["Palabras que aparecen muchísimo en lo que leemos", "Palabras muy largas y difíciles", "Palabras que solo se usan en el GED"], "c": 0}, {"t": "¿Cuál es la mejor estrategia con las palabras frecuentes?", "o": ["Reconocerlas de un golpe, sin decodificarlas cada vez", "Deletrearlas letra por letra cada vez", "Saltarlas al leer"], "c": 0}, {"t": "¿Cuál de estas es una palabra frecuente?", "o": ["para", "mariposa", "tigre"], "c": 0}, {"t": "¿Cuál de estas es una palabra frecuente?", "o": ["chocolate", "con", "lápiz"], "c": 1}, {"t": "La <strong>fluidez</strong> en la lectura es…", "o": ["Leer solo muy rápido", "Leer con buena velocidad, con precisión y con buena entonación", "Leer sin hacer pausas"], "c": 1}, {"t": "La <strong>prosodia</strong> es…", "o": ["La entonación: subir y bajar la voz y hacer pausas en las comas y puntos", "La velocidad a la que lees", "El número de palabras de un texto"], "c": 0}, {"t": "Leer con <strong>precisión</strong> significa…", "o": ["Leer las palabras correctamente, sin inventar ni saltarse letras", "Leer en voz muy alta", "Leer siempre en silencio"], "c": 0}, {"t": "En la <strong>lectura en eco</strong>, tú…", "o": ["Escuchas una frase y la repites imitando la entonación", "Lees la frase al revés", "Lees sin escuchar ningún modelo"], "c": 0}, {"t": "En la <strong>lectura acompañada</strong>, tú…", "o": ["Lees al mismo tiempo que el audio", "Lees solo después de que termina el audio", "Escribes lo que dice el audio"], "c": 0}, {"t": "Escucha. ¿Cómo debe sonar esta frase?", "x": "¿Tú quieres un café?", "a": "¿Tú quieres un café?", "o": ["Como una pregunta: la voz cambia al final", "Igual que una frase que afirma algo", "Como un grito"], "c": 0}, {"t": "En la frase «El bebé toma la leche», ¿cuál es el <strong>sujeto</strong>?", "o": ["El bebé", "toma la leche", "la leche"], "c": 0}, {"t": "¿Cuál de estas es una <strong>frase de apoyo</strong> bien armada?", "o": ["Yo veo un perro.", "perro un veo Yo", "Veo yo un."], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Terminaste el Tema 2. Puedes continuar con la Lección 3.1.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el entrenador de lectura y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 
