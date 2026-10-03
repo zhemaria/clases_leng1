@@ -443,6 +443,8 @@
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
   button.tarjeta-rima{display:block;width:100%;font:inherit;text-align:center}
+  [hidden]{display:none!important}
+  .nota-audio{background:#f3e5f5;border-left:5px solid var(--fonema);padding:10px 14px;border-radius:6px;margin:10px auto;max-width:640px;text-align:left;font-style:normal;color:var(--texto)}
 </style>
 </head>
 <body>
@@ -507,7 +509,7 @@
 
 <div class="botones">
   <button class="btn btn-sonido" type="button" onclick="hablar('zapato')">"zapato" (entera)</button>
-  <button class="btn btn-sonido" type="button" onclick="hablar('za, pa, to', 0.6)">"za - pa - to" (separada)</button>
+  <button class="btn btn-sonido" type="button" onclick="hablar('za... pa... toh', 0.6)">"za - pa - to" (separada)</button>
 </div>
 
 <p style="text-align:center;margin-top:14px">
@@ -637,7 +639,8 @@
     <span class="fonema">l</span>
   </span>
   <p style="color:var(--gris);font-style:italic">s + a + l = sal (3 sonidos)</p>
-  <button class="btn btn-sonido" type="button" onclick="hablar('s, a, l, sal', 0.5)">Escucha "s - a - l - ¡sal!"</button>
+  <button class="btn btn-sonido" type="button" data-sonido="sal" hidden>Escucha "s - a - l - ¡sal!"</button>
+  <p class="nota-audio" data-nota="sal">🗣️ <strong>Dilo tú en voz alta, despacio:</strong> «sss… a… lll… ¡sal!». Estira cada sonido sin decir el nombre de la letra.</p>
 </div>
 
 <div class="tip">
@@ -649,10 +652,11 @@
 <p>Una técnica muy útil es <strong>prolongar el primer sonido</strong> de la palabra para escucharlo bien:</p>
 
 <div style="text-align:center;margin:16px 0">
-  <button class="btn btn-sonido" type="button" onclick="hablar('nnnnnube', 0.5)">"nnn-nube"</button>
-  <button class="btn btn-sonido" type="button" onclick="hablar('rrrrratón', 0.5)">"rrr-ratón"</button>
-  <button class="btn btn-sonido" type="button" onclick="hablar('mmmmmesa', 0.5)">"mmm-mesa"</button>
-  <button class="btn btn-sonido" type="button" onclick="hablar('ssssssol', 0.5)">"sss-sol"</button>
+  <button class="btn btn-sonido" type="button" data-sonido="nube" hidden>"nnn-nube"</button>
+  <button class="btn btn-sonido" type="button" data-sonido="raton" hidden>"rrr-ratón"</button>
+  <button class="btn btn-sonido" type="button" data-sonido="mesa" hidden>"mmm-mesa"</button>
+  <button class="btn btn-sonido" type="button" data-sonido="sol" hidden>"sss-sol"</button>
+  <p class="nota-audio" data-nota="nube raton mesa sol">🗣️ <strong>Dilo tú en voz alta:</strong> estira el primer sonido de cada palabra sin añadirle ninguna vocal: «nnn-nube», «rrr-ratón», «mmm-mesa», «sss-sol».</p>
 </div>
 
 <p>Cuando estiras el primer sonido, lo escuchas separado del resto. Ese es el primer fonema.</p>
@@ -832,7 +836,8 @@
           card.querySelector('[data-palmas]').textContent=palmas;
           // Pronunciar separada
           setTimeout(function(){
-            window.hablar(item.sep.replace(/-/g,', '),0.55);
+            /* Puntos suspensivos: la voz deja más espacio entre sílabas (probado con prueba_silabas.html) */
+            window.hablar(item.sep.replace(/-/g,'... '),0.6);
           },300);
           resueltasSilabas++;
           actualizarPuntajeSilabas();
@@ -975,10 +980,10 @@
 
   // ============== Ejercicio de fonemas ==============
   var palabrasFonemas=[
-    {palabra:'luna',primero:'l',opciones:['l','r','n','m'],prolong:'llllluna'},
-    {palabra:'mesa',primero:'m',opciones:['m','n','s','p'],prolong:'mmmmmmesa'},
-    {palabra:'sol',primero:'s',opciones:['s','m','l','r'],prolong:'ssssssol'},
-    {palabra:'foca',primero:'f',opciones:['f','p','t','j'],prolong:'fffffoca'}
+    {palabra:'luna',primero:'l',opciones:['l','r','n','m'],son:'luna'},
+    {palabra:'mesa',primero:'m',opciones:['m','n','s','p'],son:'mesa'},
+    {palabra:'sol',primero:'s',opciones:['s','m','l','r'],son:'sol'},
+    {palabra:'foca',primero:'f',opciones:['f','p','t','j'],son:'foca'}
   ];
 
   var aciertosFonemas=0;
@@ -1000,7 +1005,7 @@
       '<div class="palabra-mostrar">'+item.palabra+'</div>'+
       '<div style="margin-bottom:10px">'+
         '<button type="button" class="btn btn-sonido" data-accion="normal">Escuchar normal</button> '+
-        '<button type="button" class="btn btn-sonido" data-accion="prolong">Escuchar prolongado</button>'+
+        '<button type="button" class="btn btn-sonido" data-accion="prolong" data-sonido="'+item.son+'" hidden>Escuchar prolongado</button>'+
       '</div>'+
       '<div style="margin-top:8px;font-size:0.85rem;color:var(--gris)">¿Cuál es el primer sonido?</div>'+
       '<div class="opciones-silabas">'+opciones+'</div>';
@@ -1009,9 +1014,6 @@
 
     card.querySelector('[data-accion="normal"]').addEventListener('click',function(){
       window.hablar(item.palabra);
-    });
-    card.querySelector('[data-accion="prolong"]').addEventListener('click',function(){
-      window.hablar(item.prolong,0.5);
     });
 
     var botones=card.querySelectorAll('.btn-opcion');
@@ -1044,7 +1046,7 @@
 
 /* ===== Quiz de la lección ===== */
 (function(){
-  var P=[{"t": "¿Qué es la <strong>conciencia fonológica</strong>?", "o": ["La capacidad de escuchar y manejar los sonidos que forman las palabras", "Saber escribir sin faltas de ortografía", "Leer en voz alta muy rápido"], "c": 0}, {"t": "¿Cuántas sílabas tiene esta palabra?", "x": "mariposa", "a": "mariposa", "o": ["2", "3", "4"], "c": 2, "fijo": true}, {"t": "¿Cuántas sílabas tiene esta palabra?", "x": "pan", "a": "pan", "o": ["1", "2", "3"], "c": 0, "fijo": true}, {"t": "¿Cuántas sílabas tiene esta palabra?", "x": "pelota", "a": "pelota", "o": ["2", "3", "4"], "c": 1, "fijo": true}, {"t": "¿Cómo se separa «zapato» en sílabas?", "o": ["za - pa - to", "zap - a - to", "z - a - pato"], "c": 0}, {"t": "¿Qué palabra rima con «luna»?", "o": ["cuna", "lana", "luz"], "c": 0}, {"t": "¿Qué palabra rima con «gato»?", "o": ["gota", "pato", "gallo"], "c": 1}, {"t": "¿Qué es una <strong>rima</strong>?", "o": ["Dos palabras que terminan con el mismo sonido", "Dos palabras que empiezan con la misma letra", "Una palabra con muchas sílabas"], "c": 0}, {"t": "¿Qué es un <strong>fonema</strong>?", "o": ["El sonido más pequeño de una palabra", "Una palabra corta", "Un grupo de sílabas"], "c": 0}, {"t": "¿Cuántos fonemas (sonidos) tiene la palabra «sal»?", "x": "sal", "a": "s, a, l, sal", "o": ["1", "2", "3"], "c": 2, "fijo": true}, {"t": "Escucha la palabra. ¿Cuál es su <strong>primer sonido</strong>?", "x": "mesa", "a": "mmmmmesa", "o": ["/m/", "/n/", "/s/"], "c": 0}, {"t": "La letra «s» se llama «ese». ¿Cómo <strong>suena</strong> dentro de una palabra?", "o": ["«sss», un sonido que se puede estirar", "«ese», igual que su nombre", "No suena, es muda"], "c": 0}], META=10, N=P.length;
+  var P=[{"t": "¿Qué es la <strong>conciencia fonológica</strong>?", "o": ["La capacidad de escuchar y manejar los sonidos que forman las palabras", "Saber escribir sin faltas de ortografía", "Leer en voz alta muy rápido"], "c": 0}, {"t": "¿Cuántas sílabas tiene esta palabra?", "x": "mariposa", "a": "mariposa", "o": ["2", "3", "4"], "c": 2, "fijo": true}, {"t": "¿Cuántas sílabas tiene esta palabra?", "x": "pan", "a": "pan", "o": ["1", "2", "3"], "c": 0, "fijo": true}, {"t": "¿Cuántas sílabas tiene esta palabra?", "x": "pelota", "a": "pelota", "o": ["2", "3", "4"], "c": 1, "fijo": true}, {"t": "¿Cómo se separa «zapato» en sílabas?", "o": ["za - pa - to", "zap - a - to", "z - a - pato"], "c": 0}, {"t": "¿Qué palabra rima con «luna»?", "o": ["cuna", "lana", "luz"], "c": 0}, {"t": "¿Qué palabra rima con «gato»?", "o": ["gota", "pato", "gallo"], "c": 1}, {"t": "¿Qué es una <strong>rima</strong>?", "o": ["Dos palabras que terminan con el mismo sonido", "Dos palabras que empiezan con la misma letra", "Una palabra con muchas sílabas"], "c": 0}, {"t": "¿Qué es un <strong>fonema</strong>?", "o": ["El sonido más pequeño de una palabra", "Una palabra corta", "Un grupo de sílabas"], "c": 0}, {"t": "¿Cuántos fonemas (sonidos) tiene la palabra «sal»?", "x": "sal", "a": "sal", "son": "sal", "o": ["1", "2", "3"], "c": 2, "fijo": true}, {"t": "Escucha la palabra. ¿Cuál es su <strong>primer sonido</strong>?", "x": "mesa", "a": "mesa", "son": "mesa", "o": ["/m/", "/n/", "/s/"], "c": 0}, {"t": "La letra «s» se llama «ese». ¿Cómo <strong>suena</strong> dentro de una palabra?", "o": ["«sss», un sonido que se puede estirar", "«ese», igual que su nombre", "No suena, es muda"], "c": 0}], META=10, N=P.length;
   var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
@@ -1063,7 +1065,9 @@
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    if(oir){ var q=P[+oir.getAttribute('data-oir')];
+      if(q.son&&window.tocarSonido&&window.tocarSonido(q.son))return;
+      if(window.hablar) window.hablar(q.a); return; }
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -1092,6 +1096,47 @@
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Sonidos grabados por el profesor =====
+   La voz sintética no sabe decir un sonido suelto («sss» lo lee «ese ese ese»).
+   Esos sonidos son grabaciones en la carpeta audio/ junto a esta página:
+   sal, nube, raton, mesa, sol, luna y foca (.mp3, .m4a o .wav).
+   Mientras una grabación no exista, su botón queda oculto y se ve la nota
+   «Dilo tú en voz alta». Al subir el archivo, el botón aparece solo. */
+(function(){
+  var EXT=['mp3','m4a','wav'],grab={};
+  function cargar(clave,cb){
+    if(clave in grab)return cb(!!grab[clave]);
+    var i=0;
+    (function probar(){
+      if(i>=EXT.length){grab[clave]=null;return cb(false);}
+      var a=new Audio();a.preload='auto';
+      a.addEventListener('loadedmetadata',function(){grab[clave]=a;cb(true);},{once:true});
+      a.addEventListener('error',function(){i++;probar();},{once:true});
+      a.src='audio/'+clave+'.'+EXT[i];
+    })();
+  }
+  window.tocarSonido=function(clave){
+    var a=grab[clave];if(!a)return false;
+    if('speechSynthesis' in window)speechSynthesis.cancel();
+    Object.keys(grab).forEach(function(k){if(grab[k]){grab[k].pause();}});
+    a.currentTime=0;a.play();return true;
+  };
+  document.querySelectorAll('[data-sonido]').forEach(function(b){
+    var clave=b.getAttribute('data-sonido');
+    cargar(clave,function(ok){
+      if(!ok)return;
+      b.hidden=false;
+      document.querySelectorAll('[data-nota]').forEach(function(n){
+        var todas=n.getAttribute('data-nota').split(' ').every(function(k){return grab[k];});
+        if(todas)n.hidden=true;
+      });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-sonido]');if(b)window.tocarSonido(b.getAttribute('data-sonido'));
   });
 })();
 
