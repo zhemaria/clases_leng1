@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 3.6 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 6: Puntuación básica y uso de mayúsculas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.6 · Puntuación básica y uso de mayúsculas</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -120,37 +126,96 @@
   .nivel-3{background:#e8f5e9}
   .nivel-2{background:#fff8e1}
   .nivel-1{background:#ffebee}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  textarea.editor-area{width:100%;min-height:120px;font:inherit;font-family:Georgia,serif;font-size:1.05rem;line-height:1.7}
 </style>
 </head>
 <body>
 
-<h1>Clase 6: Puntuación básica y uso de mayúsculas</h1>
-<p class="subtitulo">La mecánica de la escritura cuidada · Nivel 1 · Tema 3, semana 3</p>
+<h1>Lección 3.6 · Puntuación básica y uso de mayúsculas</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 3 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aplicar correctamente las <strong>mayúsculas</strong> al inicio de oración y en nombres propios, y los <strong>signos de puntuación básicos</strong>: punto (.), coma (,), signos de interrogación (¿?) y exclamación (¡!).</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-mayusculas">Uso de mayúsculas</a></li>
+    <li><a href="#s-2-puntuacion">La puntuación básica</a></li>
+    <li><a href="#s-3-practica">Práctica: elige el signo correcto</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre del Tema 3</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Asere, ya tenemos oraciones completas. Pero falta algo: <strong>cómo se viste una oración para salir a la calle</strong>. Una oración sin mayúscula inicial es como una persona sin zapatos: la idea está, pero falta el detalle que muestra cuidado.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Hoy vamos a aprender las reglas básicas para que tu escritura <strong>luzca profesional</strong>: mayúsculas donde tocan, punto al final, comas en su lugar, y signos de interrogación y exclamación que abren y cierran bien.</p>
+<p>Ya sabes escribir oraciones completas. Pero falta algo: <strong>cómo se viste una oración para salir a la calle</strong>. Una oración sin mayúscula inicial es como una persona sin zapatos: la idea está, pero falta el detalle que muestra cuidado.</p>
 
-<details open>
-<summary>1. Uso de mayúsculas <span class="caja-tiempo">15 min</span></summary>
+<p>En esta lección vas a aprender las reglas básicas para que tu escritura <strong>luzca profesional</strong>: mayúsculas donde tocan, punto al final, comas en su lugar, y signos de interrogación y exclamación que abren y cierran bien.</p>
+
+<details open id="s-1-mayusculas">
+<summary>1. Uso de mayúsculas <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Cuándo SÍ se usa mayúscula</h3>
 
-<p>Las <span class="palabra-clave">mayúsculas</span> muestran cuidado en la escritura. Hay tres reglas grandes que cubren la mayor parte de los casos:</p>
+<p>Las <span class="palabra-clave">mayúsculas</span> muestran cuidado en la escritura. Estas reglas cubren la mayor parte de los casos:</p>
 
 <ul class="lista-bonita">
   <li><strong>Primera palabra de cada oración</strong>. Después de un punto, siempre va mayúscula.</li>
   <li><strong>Nombres propios de personas</strong>: María, Carlos, doctor Ramírez, mi tía Lucía.</li>
   <li><strong>Nombres de lugares</strong>: Chicago, Cuba, México, América, Truman College.</li>
-  <li><strong>Puntos cardinales como región</strong>: el Norte (de Chicago), el Sur, América del Sur.</li>
+  <li><strong>Nombres de lugares que incluyen un punto cardinal</strong>: América del Sur, Corea del Norte. (Solos, los puntos cardinales van con minúscula: <em>el norte de Chicago</em>.)</li>
 </ul>
 
 <div class="ejemplo-oracion" style="background:#fff;border:2px solid var(--mayus);border-radius:8px;padding:14px;font-family:'Georgia',serif;font-size:1.15rem;text-align:center;margin:14px 0">
@@ -164,8 +229,8 @@
 <table class="tabla-comparar">
   <thead>
     <tr>
-      <th class="col-si">✅ SÍ mayúscula (español)</th>
-      <th class="col-no">❌ NO mayúscula (español)</th>
+      <th scope="col" class="col-si">✅ SÍ mayúscula (español)</th>
+      <th scope="col" class="col-no">❌ NO mayúscula (español)</th>
     </tr>
   </thead>
   <tbody>
@@ -182,8 +247,12 @@
       <td class="celda-no">Estaciones: <em>primavera, verano, otoño, invierno</em></td>
     </tr>
     <tr>
-      <td class="celda-si">Puntos cardinales como región: <strong>el Sur</strong></td>
+      <td class="celda-si">Nombres de lugares con un punto cardinal: <strong>América del Sur</strong></td>
       <td class="celda-no">Idiomas y nacionalidades: <em>español, cubano, americano</em></td>
+    </tr>
+    <tr>
+      <td class="celda-si">Fiestas: <strong>Navidad, Año Nuevo</strong></td>
+      <td class="celda-no">Puntos cardinales: <em>el norte de Chicago, el sur</em></td>
     </tr>
   </tbody>
 </table>
@@ -198,11 +267,16 @@
   </ul>
 </div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-6.html#mayusculas" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Dónde va la mayúscula? ↗
+  <span>Oraciones escritas todo en minúscula: toca las palabras que deben llevar mayúscula. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>2. La puntuación básica <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-puntuacion">
+<summary>2. La puntuación básica <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Los signos indican pausas</h3>
@@ -222,7 +296,7 @@
     <div class="signo-grande">,</div>
     <p><strong>Pausa breve.</strong> Sirve para separar elementos de una lista, o después de una frase introductoria.</p>
     <p style="font-family:'Georgia',serif;font-style:italic">Compré harina<span class="marca-coma">,</span> tomates<span class="marca-coma">,</span> queso y pan.</p>
-    <p style="font-family:'Georgia',serif;font-style:italic">Después de cenar<span class="marca-coma">,</span> vimos televisión.</p>
+    <p style="font-family:'Georgia',serif;font-style:italic">Después de cenar con la familia<span class="marca-coma">,</span> vimos televisión.</p>
   </div>
 
   <div class="signo-card inter">
@@ -248,7 +322,7 @@
 
 <ul class="lista-bonita">
   <li><strong>Enumeración (serie):</strong> "Tengo dos hermanos, una hermana y un sobrino."</li>
-  <li><strong>Frase introductoria:</strong> "Por la mañana, voy al trabajo."</li>
+  <li><strong>Frase al comienzo:</strong> "Después de terminar el trabajo, voy a la escuela." Si la frase del comienzo es muy corta, la coma se puede omitir: "Hoy voy al trabajo".</li>
   <li><strong>Fechas:</strong> "Hoy es lunes, 18 de mayo de 2026."</li>
   <li><strong>Vocativo (llamar a alguien):</strong> "María, ¿puedes venir?"</li>
 </ul>
@@ -257,11 +331,16 @@
   <strong>⚠️ Diferencia con el inglés:</strong> En inglés se usa la "coma de Oxford" (antes de "and"). En español <strong>NO</strong>. Antes de "y" en el último elemento de la lista, no se pone coma. Ejemplo: "Compré pan, leche <strong>y</strong> queso" (sin coma antes de "y").
 </div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-6.html#signos" target="_blank" rel="noopener">
+  ✍️ Práctica: Signos de pregunta y exclamación ↗
+  <span>Elige la forma bien escrita, y en la misma página practica también las comas. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: elige el signo correcto <span class="caja-tiempo">10 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: elige el signo correcto <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Completa con el signo apropiado</h3>
@@ -280,7 +359,8 @@
   <div class="texto-original">mi mamá se llama luisa y vive en chicago ella trabaja en un hospital los lunes martes y miércoles mi hermano carlos estudia en truman college quiere ser doctor</div>
 
   <p style="margin:14px 0 6px 0;color:var(--gris);font-size:0.9rem">✏️ Reescríbelo aquí (corrigiendo todo):</p>
-  <div class="editor-area" contenteditable="true" id="editor-area">Escribe aquí tu versión corregida...</div>
+  <label class="sr-solo" for="editor-area">Tu versión corregida</label>
+  <textarea class="editor-area" id="editor-area" placeholder="Escribe aquí tu versión corregida…" spellcheck="false" autocapitalize="off"></textarea>
 
   <div class="botones">
     <button type="button" class="btn btn-primario" id="btn-ver-modelo">Ver modelo correcto</button>
@@ -303,77 +383,75 @@
   </div>
 </div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l1-2.html" target="_blank" rel="noopener">
+  ✍️ Práctica: Mayúscula al inicio, punto al final ↗
+  <span>Doce párrafos para poner mayúsculas y puntos. La página te muestra dónde está cada error. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>4. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto. Escribe <strong>5 oraciones</strong> distintas:</p>
+<ul class="lista-bonita">
+  <li>Una oración <strong>que afirme algo</strong>: <em>«Mi mamá cocina arroz.»</em></li>
+  <li>Una <strong>pregunta</strong>: <em>«¿Dónde está la escuela?»</em></li>
+  <li>Una <strong>exclamación</strong>: <em>«¡Qué bonito día!»</em></li>
+  <li>Una oración con una <strong>lista</strong> separada por comas: <em>«Compré leche, pan y queso.»</em></li>
+  <li>Una oración con una <strong>fecha</strong>: <em>«Hoy es martes, 6 de octubre de 2026.»</em></li>
+</ul>
+<p>Además, busca en tu casa un papel escrito (una nota, una lista, un mensaje) y revisa sus mayúsculas y sus signos. Si encuentras errores, cópialo corregido.</p>
 
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-quiz">Quiz</span> 20 preguntas · Brightspace · 2 intentos</h4>
-  <p>El quiz final del tema integra todo lo de las clases 5 y 6:</p>
-  <ul class="lista-bonita">
-    <li>Identificar si una oración es completa o fragmento.</li>
-    <li>Elegir el signo de puntuación correcto (. , ¿? ¡!).</li>
-    <li>Elegir dónde va la coma en la oración.</li>
-    <li>Identificar qué palabras deben llevar mayúscula (nombres propios, inicio de oración).</li>
-  </ul>
-  <p style="margin-bottom:0">Tienes <strong>2 intentos</strong>. Te recomendamos hacer el primer intento sin mirar tus apuntes, y el segundo después de repasar tus errores.</p>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Las 5 oraciones del foro</h4>
-  <p>Las 5 oraciones que subiste al foro (declarativa, interrogativa, exclamativa, con coma en serie, con fecha) se evaluarán con esta rúbrica de mecánica de la escritura:</p>
-
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tus 5 oraciones con esta rúbrica</h4>
   <table class="rubrica">
+    <caption class="sr-solo">Rúbrica de mecánica de la escritura</caption>
     <thead>
       <tr>
-        <th>Criterio</th>
-        <th class="nivel-3">Logrado (3)</th>
-        <th class="nivel-2">En proceso (2)</th>
-        <th class="nivel-1">Inicial (1)</th>
+        <th scope="col">Criterio</th>
+        <th scope="col" class="nivel-3">Logrado (3)</th>
+        <th scope="col" class="nivel-2">En proceso (2)</th>
+        <th scope="col" class="nivel-1">Inicial (1)</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Mayúscula al inicio</td>
-        <td class="nivel-3">Las 5 oraciones empiezan con mayúscula</td>
-        <td class="nivel-2">3 o 4 lo hacen</td>
-        <td class="nivel-1">Menos de 3</td>
-      </tr>
-      <tr>
-        <td>Punto al final</td>
-        <td class="nivel-3">Todas terminan con punto, signo o exclamación adecuada</td>
-        <td class="nivel-2">3 o 4 lo hacen</td>
-        <td class="nivel-1">Menos de 3</td>
-      </tr>
-      <tr>
-        <td>Signos correctos (¿?¡!)</td>
-        <td class="nivel-3">Abre y cierra correctamente la pregunta y la exclamación</td>
-        <td class="nivel-2">Olvida abrir uno</td>
-        <td class="nivel-1">Sin signos de apertura</td>
-      </tr>
-      <tr>
-        <td>Coma en serie / fecha</td>
-        <td class="nivel-3">Usa la coma correctamente en serie y fecha</td>
-        <td class="nivel-2">Uso parcial</td>
-        <td class="nivel-1">No usa coma o la pone mal</td>
-      </tr>
+      <tr><td>Mayúscula al inicio</td><td class="nivel-3">Las 5 oraciones empiezan con mayúscula</td><td class="nivel-2">3 o 4 lo hacen</td><td class="nivel-1">Menos de 3</td></tr>
+      <tr><td>Cierre de cada oración</td><td class="nivel-3">Todas terminan con punto o con el signo adecuado</td><td class="nivel-2">3 o 4 lo hacen</td><td class="nivel-1">Menos de 3</td></tr>
+      <tr><td>Signos dobles (¿? ¡!)</td><td class="nivel-3">Abre y cierra bien la pregunta y la exclamación</td><td class="nivel-2">Olvida abrir uno</td><td class="nivel-1">No pone los signos de apertura</td></tr>
+      <tr><td>Coma en la lista y en la fecha</td><td class="nivel-3">Usa bien la coma en las dos</td><td class="nivel-2">La usa bien en una</td><td class="nivel-1">No la usa o la pone mal</td></tr>
     </tbody>
   </table>
+  <p style="margin-bottom:0">Si en algún criterio te quedaste en 1, corrige esas oraciones y vuelve a puntuarte.</p>
 </div>
-
 </div>
 </details>
 
-<details>
-<summary>5. Cierre del tema <span class="caja-tiempo">5 min</span></summary>
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 15 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>12 de 15</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+
+<details id="s-cierre">
+<summary>6. Cierre del Tema 3 <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¡Llegaste al final del Tema 3!</h3>
 
-<p>Asere, <strong>de cine</strong>. Recorriste un camino bien grande en estas 6 clases:</p>
+<p><strong>¡Excelente trabajo!</strong> Recorriste un camino muy grande en estas seis lecciones:</p>
 
 <ul class="lista-bonita">
   <li>Conociste a los <strong>sustantivos</strong> y a los <strong>adjetivos</strong>, y aprendiste la regla de la <strong>concordancia</strong>.</li>
@@ -382,10 +460,10 @@
   <li>Dominaste la mecánica básica: <strong>mayúsculas, puntos, comas, signos de interrogación y exclamación</strong>.</li>
 </ul>
 
-<p>Con estas herramientas, ya estás listo para construir <strong>párrafos eficaces</strong> en las próximas semanas del curso. Y lo mejor: estás preparándote bien para la parte escrita del GED.</p>
+<p>Con estas herramientas ya estás construyendo escritura de verdad, y más adelante en el curso las usarás para escribir <strong>párrafos</strong>. Y lo mejor: estás preparándote bien para la parte escrita del GED.</p>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Qué palabras llevan mayúscula en: "el lunes voy a chicago con maría"?</li>
     <li>¿Cómo se puntúa una pregunta en español?</li>
@@ -395,16 +473,19 @@
 </div>
 
 <div class="tip">
-  <strong>🎓 ¡Felicitaciones!</strong> Con el dominio de sustantivos, verbos, oraciones completas y puntuación, ya estás construyendo escritura de verdad. En el próximo tema vamos a juntar oraciones para formar <strong>párrafos</strong>. ¡Nos vemos allá, asere!
+  <strong>🎓 ¡Felicitaciones!</strong> Terminaste el Tema 3. <strong>En la próxima lección</strong> empieza el Tema 4 con la <a href="https://zhemaria.github.io/clases_leng1/clase_4-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 4.1 · Predecir y preguntar antes de leer</a>: vas a aprender estrategias para entender mejor lo que lees.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 3 · Lección 3.6</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -414,7 +495,7 @@
     {antes:'Compré pan',correcta:',',despues:' leche y queso.'},
     {antes:'Qué bonito día',correcta:'!',despues:''},
     {antes:'Mi mamá cocina',correcta:'.',despues:' Yo limpio la mesa.'},
-    {antes:'Por la mañana',correcta:',',despues:' voy al trabajo.'},
+    {antes:'Después de terminar el trabajo',correcta:',',despues:' voy a la escuela.'},
     {antes:'Dónde está la escuela',correcta:'?',despues:''},
     {antes:'Felicidades por tu cumpleaños',correcta:'!',despues:''},
     {antes:'El examen es el lunes',correcta:'.',despues:''}
@@ -467,27 +548,88 @@
     var el=document.getElementById('puntaje-signos');
     el.textContent='Aciertos: '+aciertos+' / '+ejercicios.length;
     if(aciertos===ejercicios.length){
-      el.innerHTML='🎉 ¡Bestial! Aciertos: '+aciertos+' / '+ejercicios.length;
+      el.innerHTML='🎉 ¡Muy bien! Aciertos: '+aciertos+' / '+ejercicios.length;
       el.style.color='var(--exito)';
     }
   }
 
   // Editor
   var editorArea=document.getElementById('editor-area');
-  editorArea.addEventListener('focus',function(){
-    if(editorArea.textContent.trim()==='Escribe aquí tu versión corregida...'){
-      editorArea.textContent='';
-    }
-  });
-
   document.getElementById('btn-ver-modelo').addEventListener('click',function(){
     document.getElementById('modelo-container').style.display='block';
   });
-
   document.getElementById('btn-limpiar-editor').addEventListener('click',function(){
-    editorArea.textContent='Escribe aquí tu versión corregida...';
+    editorArea.value='';
     document.getElementById('modelo-container').style.display='none';
+    editorArea.focus();
   });
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuál está bien escrita?", "o": ["María vive en Chicago.", "maría vive en chicago.", "María vive en chicago."], "c": 0}, {"t": "¿Cuál está bien escrita?", "o": ["El lunes voy al doctor.", "El Lunes voy al doctor.", "el lunes voy al Doctor."], "c": 0}, {"t": "¿Cuál está bien escrita?", "o": ["Yo hablo español.", "Yo hablo Español.", "yo hablo Español."], "c": 0}, {"t": "¿Cuál está bien escrita?", "o": ["Nací en septiembre.", "Nací en Septiembre.", "nací en Septiembre."], "c": 0}, {"t": "¿Cuál está bien escrita?", "o": ["Mi vecina es cubana.", "Mi vecina es Cubana.", "mi Vecina es cubana."], "c": 0}, {"t": "¿Cuál está bien escrita?", "o": ["Vivo en el norte de Chicago.", "Vivo en el Norte de chicago.", "Vivo en el Norte de Chicago."], "c": 0}, {"t": "¿Cómo se escribe una pregunta en español?", "o": ["¿Dónde vives?", "Dónde vives?", "¿Dónde vives."], "c": 0}, {"t": "¿Cómo se escribe una exclamación en español?", "o": ["¡Qué bonito día!", "Qué bonito día!", "¡Qué bonito día."], "c": 0}, {"t": "¿Dónde van las comas?", "o": ["Compré pan, leche y queso.", "Compré pan leche y queso.", "Compré pan, leche, y queso."], "c": 0}, {"t": "¿Cuál está bien puntuada?", "o": ["María, ¿puedes venir?", "María ¿puedes venir?", "María, ¿puedes venir."], "c": 0}, {"t": "¿Cuál está bien puntuada?", "o": ["Hoy es lunes, 18 de mayo de 2026.", "Hoy es lunes 18, de mayo, de 2026.", "Hoy, es lunes 18 de mayo de 2026."], "c": 0}, {"t": "¿Qué signo va al final de «Mi mamá cocina arroz»?", "o": ["Un punto", "Un signo de pregunta", "Una coma"], "c": 0}, {"t": "Después de un punto, la palabra siguiente va…", "o": ["con mayúscula", "con minúscula", "entre comas"], "c": 0}, {"t": "En español, antes de la «y» final de una lista…", "o": ["no se pone coma", "siempre se pone coma", "se pone punto"], "c": 0}, {"t": "¿Cuál de estas palabras va siempre con mayúscula?", "o": ["Honduras", "martes", "invierno"], "c": 0}], META=12, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"¡Terminaste el Tema 3! Puedes continuar con la Lección 4.1.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 3.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 3: El corazón de la oración - el verbo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.3 · El corazón de la oración: el verbo</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -103,26 +109,99 @@
   .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
   .badge-lectura{background:#e3f2fd;color:#0277bd}
   .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+
+  /* ── Tocar palabras: todas las palabras son botones; solo algunas son la respuesta ── */
+  .marcable{font-family:Georgia,serif;font-size:1.15rem;line-height:2.3;background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0}
+  .marcable p{margin:0 0 8px}
+  .pal-m{font:inherit;background:none;border:2px solid transparent;border-radius:6px;padding:0 3px;color:inherit;cursor:pointer}
+  .pal-m:hover{border-color:#b6dcf3}
+  .marcable .punt{margin-left:-4px}
+  .pal-m[aria-pressed="true"]{background:#fff3cd;border-color:#b35316}
+  .pal-m.bien{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .pal-m.mal{background:#f8d7da;border-color:#c62828;color:#721c24;text-decoration:line-through}
+  .pal-m.falto{border-color:#b35316;border-style:dashed}
+  .resultado-marcar:not(:empty){margin:10px 0;padding:10px 14px;border-radius:8px;font-weight:600}
+  .resultado-marcar.correcto{background:#d4edda;color:#155724}
+  .resultado-marcar.incorrecto{background:#fff3cd;color:#5c3900}
+  .pal-m.bien{text-decoration:underline double;text-underline-offset:5px}
 </style>
 </head>
 <body>
 
-<h1>Clase 3: El corazón de la oración</h1>
-<p class="subtitulo">Verbos de acción y de enlace · Nivel 1 · Tema 3, semana 5</p>
+<h1>Lección 3.3 · El corazón de la oración: el verbo</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 3 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Reconocer que el <strong>verbo</strong> es la acción o el enlace dentro del predicado de una oración, y distinguir entre <strong>verbos de acción</strong> y <strong>verbos de enlace</strong> (copulativos).</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-verbo">¿Qué es el verbo?</a></li>
+    <li><a href="#s-2-accion-enlace">Verbos de acción y verbos de enlace</a></li>
+    <li><a href="#s-3-subraya">Práctica: encuentra el verbo</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Asere, ya sabes que el sustantivo es el protagonista de la oración. Pero un protagonista parado, sin hacer nada, no cuenta una historia. <strong>Aquí entra el verbo</strong>: la palabra que dice <em>qué hace</em> el protagonista, o <em>cómo es</em>.</p>
+<h2>📚 Para empezar</h2>
 
-<p>El verbo es el <span class="palabra-clave">corazón de la oración</span>. Sin verbo, no hay oración. Es así de simple. Hoy lo vamos a reconocer y a entender los dos grandes tipos que existen.</p>
+<p>Ya sabes que el sustantivo es el protagonista de la oración. Pero un protagonista parado, sin hacer nada, no cuenta una historia. <strong>Aquí entra el verbo</strong>: la palabra que dice <em>qué hace</em> el protagonista, o <em>cómo es</em>.</p>
 
-<details open>
-<summary>1. Introducción al verbo <span class="caja-tiempo">15 min</span></summary>
+<p>El verbo es el <span class="palabra-clave">corazón de la oración</span>. Sin verbo, no hay oración. Es así de simple. En esta lección vas a aprender a reconocerlo y a distinguir sus dos grandes tipos.</p>
+
+<details open id="s-1-verbo">
+<summary>1. ¿Qué es el verbo? <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>¿Qué hace el protagonista?</h3>
@@ -130,9 +209,9 @@
 <p>Recuerda: el <strong>sustantivo</strong> es el protagonista (el sujeto). El <span class="palabra-clave">verbo</span> es la palabra que muestra <strong>lo que el sujeto está haciendo</strong> o <strong>cómo es / cómo está</strong>.</p>
 
 <div class="leyenda-colores">
-  <span><span class="punto" style="background:var(--sujeto)"></span> Sujeto</span>
-  <span><span class="punto" style="background:var(--verbo-accion)"></span> Verbo de acción</span>
-  <span><span class="punto" style="background:var(--verbo-enlace)"></span> Verbo de enlace</span>
+  <span><span class="punto" style="background:var(--sujeto)" aria-hidden="true"></span> Sujeto</span>
+  <span><span class="punto" style="background:var(--verbo-accion)" aria-hidden="true"></span> Verbo de acción</span>
+  <span><span class="punto" style="background:var(--verbo-enlace)" aria-hidden="true"></span> Verbo de enlace</span>
 </div>
 
 <div class="ejemplo-oracion">
@@ -158,8 +237,8 @@
 </div>
 </details>
 
-<details>
-<summary>2. Acción vs. enlace <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-accion-enlace">
+<summary>2. Verbos de acción y verbos de enlace <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Verbos de acción</h3>
@@ -195,11 +274,12 @@
 <h3>Tabla de comparación</h3>
 
 <table class="tabla-verbos">
+  <caption class="sr-solo">Comparación de los verbos de acción y de enlace</caption>
   <thead>
     <tr>
-      <th>Tipo</th>
-      <th>Función</th>
-      <th>Ejemplos</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Función</th>
+      <th scope="col">Ejemplos</th>
     </tr>
   </thead>
   <tbody>
@@ -223,29 +303,21 @@
 </div>
 </details>
 
-<details>
-<summary>3. Práctica: subraya el verbo <span class="caja-tiempo">10 min</span></summary>
+<details id="s-3-subraya">
+<summary>3. Práctica: encuentra el verbo <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El doble subrayado</h3>
 
-<p>Tradicionalmente, cuando trabajamos a mano, se subraya el sujeto con una raya simple y el verbo con doble raya. Aquí vas a <strong>hacer clic en el verbo</strong> de cada oración para subrayarlo. Cuidado: solo en el verbo.</p>
+<p>Cuando trabajas a mano, se acostumbra subrayar el sujeto con una raya y el verbo con doble raya. Aquí vas a <strong>tocar el verbo</strong> de cada oración. Puedes tocar cualquier palabra, así que piensa bien: solo una palabra de cada oración es el verbo.</p>
 
-<div class="texto-subrayar" id="texto-subrayar">
-<p style="margin:0 0 14px 0;color:var(--gris);font-size:0.9rem;text-align:center">Haz clic en la palabra que sea verbo en cada oración.</p>
-<p><span class="suj">El maestro</span> <span class="palabra-verb" data-tipo="verbo">explica</span> la lección.</p>
-<p><span class="suj">Mi abuela</span> <span class="palabra-verb" data-tipo="verbo">es</span> muy cariñosa.</p>
-<p><span class="suj">Los niños</span> <span class="palabra-verb" data-tipo="verbo">juegan</span> en el parque.</p>
-<p><span class="suj">El agua</span> <span class="palabra-verb" data-tipo="verbo">está</span> fría.</p>
-<p><span class="suj">Mi hermano</span> <span class="palabra-verb" data-tipo="verbo">estudia</span> matemáticas.</p>
-<p><span class="suj">La comida</span> <span class="palabra-verb" data-tipo="verbo">parece</span> deliciosa.</p>
-</div>
+<div class="marcable" id="texto-subrayar" data-texto="El maestro [explica] la lección.|Mi abuela [es] muy cariñosa.|Los niños [juegan] en el parque.|El agua [está] fría.|Mi hermano [estudia] matemáticas.|La comida [parece] deliciosa.|Mis vecinos [venden] tamales los domingos.|Tú [eres] muy paciente."></div>
 
 <div class="botones">
   <button type="button" class="btn btn-primario" id="btn-verificar-verb">Verificar</button>
-  <button type="button" class="btn btn-secundario" id="btn-reset-verb">Limpiar</button>
+  <button type="button" class="btn btn-secundario" id="btn-reset-verb">Empezar de nuevo</button>
 </div>
-<div class="puntaje" id="puntaje-verb"></div>
+<div class="resultado-marcar" id="puntaje-verb" role="status" aria-live="polite"></div>
 
 <h3>Clasifica: ¿acción o enlace?</h3>
 
@@ -257,11 +329,40 @@
 </div>
 </details>
 
-<details>
-<summary>4. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+<ul class="lista-bonita">
+  <li><strong>Mi día en verbos.</strong> Escribe 5 oraciones con <strong>verbos de acción</strong> sobre lo que haces en un día normal (<em>Me levanto a las seis. Preparo el café.</em>). Subraya el verbo con doble raya.</li>
+  <li><strong>Cómo soy, cómo estoy.</strong> Escribe 3 oraciones con <strong>verbos de enlace</strong>: una con <em>ser</em>, una con <em>estar</em> y una con <em>parecer</em> (<em>Soy trabajador. Hoy estoy cansado. Mi jefe parece contento.</em>).</li>
+  <li><strong>Verbos en la cocina.</strong> Busca una receta (en un empaque, en un libro o en internet) y copia 5 verbos de acción que aparezcan en ella (<em>mezcle, corte, hierva…</em>).</li>
+</ul>
+<div class="tip"><strong>🎯 Antes del quiz:</strong> recuerda la pregunta clave. Para encontrar el verbo, pregúntate «¿qué hace el sujeto?» o «¿cómo es o cómo está?».</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste en esta lección</h3>
 
 <ul class="lista-bonita">
   <li>Toda oración necesita un <strong>verbo</strong>.</li>
@@ -271,7 +372,7 @@
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Puedes encontrar el verbo en: "Mi vecino canta en la iglesia"?</li>
     <li>¿Es "es" un verbo de acción o de enlace?</li>
@@ -280,46 +381,23 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Los verbos también nos dicen <strong>cuándo</strong> ocurre la acción. Aprenderemos los tres tiempos básicos: <em>presente, pasado y futuro</em>.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_3-4.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.4 · Los tiempos verbales: presente, pasado y futuro</a>. Los verbos también dicen <strong>cuándo</strong> pasa algo, y vas a aprender los tres tiempos básicos.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 3 · Lección 3.3</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
-  // Subrayar verbo
-  var palabrasVerb=document.querySelectorAll('#texto-subrayar .palabra-verb');
-  var totalVerb=palabrasVerb.length;
-
-  palabrasVerb.forEach(function(p){
-    p.addEventListener('click',function(){
-      p.classList.toggle('subrayado-doble');
-      document.getElementById('puntaje-verb').textContent='';
-    });
-  });
-
-  document.getElementById('btn-verificar-verb').addEventListener('click',function(){
-    var marcadas=document.querySelectorAll('#texto-subrayar .palabra-verb.subrayado-doble').length;
-    var el=document.getElementById('puntaje-verb');
-    if(marcadas===totalVerb){
-      el.innerHTML='🎉 ¡Bestial! Subrayaste los '+totalVerb+' verbos.';
-      el.style.color='var(--exito)';
-    }else{
-      el.innerHTML='Subrayaste '+marcadas+' de '+totalVerb+'. Recuerda: el verbo dice qué hace o cómo es el sujeto.';
-      el.style.color='var(--acento)';
-    }
-  });
-
-  document.getElementById('btn-reset-verb').addEventListener('click',function(){
-    palabrasVerb.forEach(function(p){p.classList.remove('subrayado-doble')});
-    document.getElementById('puntaje-verb').textContent='';
-  });
+  prepararMarcable('texto-subrayar','btn-verificar-verb','btn-reset-verb','puntaje-verb',['verbo','verbos']);
 
   // Clasificar acción vs enlace
   var fraseVerbos=[
@@ -380,6 +458,114 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Tocar palabras ===== */
+/* <div class="marcable" data-texto="Mi [familia] vive en una [casa] grande."> ;
+   cada línea del texto (separada por «|») es un párrafo. */
+function prepararMarcable(id, idRevisar, idLimpiar, idResultado, queBusca){
+  var caja=document.getElementById(id), res=document.getElementById(idResultado);
+  function pintar(){
+    caja.innerHTML='';
+    caja.getAttribute('data-texto').split('|').forEach(function(linea){
+      var p=document.createElement('p');
+      linea.trim().split(/\s+/).forEach(function(tok,k){
+        var m=tok.match(/^([¿¡«(]*)(\[?)([^\]\s.,;:!?»)]+)(\]?)([.,;:!?»)]*)$/);
+        if(k) p.appendChild(document.createTextNode(' '));
+        if(!m){ p.appendChild(document.createTextNode(tok)); return; }
+        if(m[1]) p.appendChild(document.createTextNode(m[1]));
+        var b=document.createElement('button'); b.type='button'; b.className='pal-m'; b.textContent=m[3];
+        b.setAttribute('aria-pressed','false'); if(m[2]==='[') b.dataset.ok='1';
+        b.addEventListener('click',function(){ if(b.disabled)return; b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true'); res.textContent=''; res.className='resultado-marcar'; });
+        p.appendChild(b);
+        if(m[5]){ var sg=document.createElement('span'); sg.className='punt'; sg.textContent=m[5]; p.appendChild(sg); }
+      });
+      caja.appendChild(p);
+    });
+    res.textContent=''; res.className='resultado-marcar';
+  }
+  document.getElementById(idRevisar).addEventListener('click',function(){
+    var bien=0,mal=0,falta=0,total=0;
+    caja.querySelectorAll('.pal-m').forEach(function(b){
+      var marcada=b.getAttribute('aria-pressed')==='true', obj=b.dataset.ok==='1';
+      if(obj) total++;
+      b.classList.remove('bien','mal','falto');
+      if(marcada&&obj){b.classList.add('bien');bien++;}
+      else if(marcada&&!obj){b.classList.add('mal');mal++;}
+      else if(!marcada&&obj){b.classList.add('falto');falta++;}
+    });
+    if(!mal&&!falta){ res.textContent='🎉 ¡Excelente! Encontraste '+(total===1?'el '+queBusca[0]:'los '+total+' '+queBusca[1])+'.'; res.className='resultado-marcar correcto'; }
+    else{ res.textContent='Encontraste '+bien+' de '+total+'.'+(mal?' Marcaste '+mal+' que no '+(mal===1?'es '+queBusca[0]:'son '+queBusca[1])+' (en rojo).':'')+(falta?' Te '+(falta===1?'faltó':'faltaron')+' '+falta+' (con borde naranja).':'')+' Puedes corregir y volver a revisar.'; res.className='resultado-marcar incorrecto'; }
+  });
+  document.getElementById(idLimpiar).addEventListener('click',pintar);
+  pintar();
+}
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué hace el <strong>verbo</strong> en una oración?", "o": ["Dice qué hace el sujeto, o cómo es o cómo está", "Nombra a una persona o una cosa", "Describe el color o el tamaño"], "c": 0}, {"t": "¿Cuál es el verbo?", "x": "María cocina arroz.", "o": ["María", "cocina", "arroz"], "c": 1, "fijo": true}, {"t": "¿Cuál es el verbo?", "x": "El niño corre en el parque.", "o": ["niño", "corre", "parque"], "c": 1, "fijo": true}, {"t": "¿Cuál es el verbo?", "x": "Mi vecino canta en la iglesia.", "o": ["vecino", "canta", "iglesia"], "c": 1, "fijo": true}, {"t": "¿Cuál es el verbo?", "x": "La sopa está caliente.", "o": ["sopa", "está", "caliente"], "c": 1, "fijo": true}, {"t": "Un verbo de <strong>acción</strong>…", "o": ["muestra algo que el sujeto hace", "conecta al sujeto con una descripción", "nombra un lugar"], "c": 0}, {"t": "Un verbo de <strong>enlace</strong>…", "o": ["conecta al sujeto con una descripción o un estado", "muestra un movimiento", "siempre está en futuro"], "c": 0}, {"t": "¿Cuáles son los tres verbos de enlace principales?", "o": ["ser, estar y parecer", "correr, comer y dormir", "hablar, escribir y leer"], "c": 0}, {"t": "En «Mi hermana es enfermera», el verbo es…", "o": ["de enlace", "de acción"], "c": 0, "fijo": true}, {"t": "En «Los perros corren en el patio», el verbo es…", "o": ["de acción", "de enlace"], "c": 0, "fijo": true}, {"t": "En «Tú pareces cansado», el verbo es…", "o": ["de enlace", "de acción"], "c": 0, "fijo": true}, {"t": "¿Puede haber una oración sin verbo?", "o": ["No: sin verbo no hay oración", "Sí, si tiene un sustantivo", "Sí, si es muy corta"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya reconoces el verbo y sus dos tipos. Puedes continuar con la Lección 3.4.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

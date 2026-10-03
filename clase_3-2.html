@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 3.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 2: La regla de oro - la concordancia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.2 · La regla de oro: la concordancia</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -173,31 +179,90 @@
   .nivel-3{background:#fff8e1}
   .nivel-2{background:#fff3e0}
   .nivel-1{background:#ffebee}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  button.sust-target{display:block;width:100%;font:inherit;text-align:left}
 </style>
 </head>
 <body>
 
-<h1>Clase 2: La regla de oro: la concordancia</h1>
-<p class="subtitulo">Sustantivos y adjetivos en pareja · Nivel 1 · Tema 3, semana 4</p>
+<h1>Lección 3.2 · La regla de oro: la concordancia</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 3 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aplicar la <strong>concordancia correcta de género y número</strong> entre sustantivos y adjetivos, para que las oraciones suenen naturales y no confundan al lector.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-genero-numero">El género y el número</a></li>
+    <li><a href="#s-2-cuadrante">El cuadrante de la concordancia</a></li>
+    <li><a href="#s-3-practica">Práctica: elige el adjetivo correcto</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Asere, en la clase pasada conocimos a los sustantivos y a los adjetivos. Hoy vamos a aprender la regla de oro que los hace funcionar juntos: <strong>tienen que coincidir en género y en número</strong>. Como una pareja de baile: si uno va en una dirección, el otro tiene que seguirle el paso.</p>
+<h2>📚 Para empezar</h2>
+
+<p>En la <a href="https://zhemaria.github.io/clases_leng1/clase_3-1.html">Lección 3.1</a> conociste a los sustantivos y a los adjetivos. Ahora vas a aprender la regla de oro que los hace funcionar juntos: <strong>tienen que coincidir en género y en número</strong>. Como una pareja de baile: si uno va en una dirección, el otro tiene que seguirle el paso.</p>
 
 <p>El español es un idioma de <strong>parejas</strong>. No podemos decir <em>"el casa blancos"</em>; suena raro porque las palabras no concuerdan. Lo correcto es <em>"la casa blanca"</em>. Vamos a ver por qué.</p>
 
-<details open>
-<summary>1. Introducción al género y número <span class="caja-tiempo">15 min</span></summary>
+<details open id="s-1-genero-numero">
+<summary>1. El género y el número <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El género: masculino o femenino</h3>
 
-<p>En español, todos los sustantivos tienen <strong>género</strong>: o son masculinos o son femeninos. No tiene nada que ver con que la palabra sea "macho" o "hembra" — es simplemente una etiqueta gramatical.</p>
+<p>En español, todos los sustantivos tienen <strong>género</strong>: o son masculinos o son femeninos. No tiene nada que ver con que la cosa sea «macho» o «hembra»: es una etiqueta gramatical. La mesa no es mujer ni el libro es hombre.</p>
 
 <ul class="lista-bonita">
   <li><span class="masc">Masculinos</span>: usan los artículos <em>el / un / los / unos</em>. Ejemplos: <em>el carro, un libro, el árbol</em>.</li>
@@ -213,7 +278,8 @@
 <p>Los sustantivos también tienen <strong>número</strong>: pueden ser <span class="sing">singulares</span> (uno solo) o <span class="plur">plurales</span> (varios).</p>
 
 <table class="tabla-articulos">
-  <thead><tr><th>Género</th><th>Singular</th><th>Plural</th></tr></thead>
+  <caption class="sr-solo">Artículos según el género y el número</caption>
+  <thead><tr><th scope="col">Género</th><th scope="col">Singular</th><th scope="col">Plural</th></tr></thead>
   <tbody>
     <tr><td><span class="masc">Masculino</span></td><td>el gato, un carro</td><td>los gatos, unos carros</td></tr>
     <tr><td><span class="fem">Femenino</span></td><td>la gata, una casa</td><td>las gatas, unas casas</td></tr>
@@ -229,11 +295,16 @@
   <li>En el <strong>mismo número</strong> (los dos singulares o los dos plurales).</li>
 </ul>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-2.html#genero-numero" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Masculino o femenino? ¿Singular o plural? ↗
+  <span>Cuarenta sustantivos para reconocer su género y su número, con las excepciones más comunes (<em>el día, la mano</em>). Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>2. Desarrollo visual: el cuadrante de la concordancia <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-cuadrante">
+<summary>2. El cuadrante de la concordancia <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Mira cómo cambia un adjetivo</h3>
@@ -241,11 +312,12 @@
 <p>Tomemos el sustantivo <em>gato</em> y el adjetivo <em>negro</em>. Mira las cuatro combinaciones posibles:</p>
 
 <table class="cuadrante">
+  <caption class="sr-solo">Las cuatro formas según el género y el número</caption>
   <thead>
     <tr>
-      <th></th>
-      <th><span class="sing">Singular</span></th>
-      <th><span class="plur">Plural</span></th>
+      <td></td>
+      <th scope="col"><span class="sing">Singular</span></th>
+      <th scope="col"><span class="plur">Plural</span></th>
     </tr>
   </thead>
   <tbody>
@@ -267,11 +339,12 @@
 <h3>Otro ejemplo: la palabra "rojo"</h3>
 
 <table class="cuadrante">
+  <caption class="sr-solo">Las cuatro formas según el género y el número</caption>
   <thead>
     <tr>
-      <th></th>
-      <th><span class="sing">Singular</span></th>
-      <th><span class="plur">Plural</span></th>
+      <td></td>
+      <th scope="col"><span class="sing">Singular</span></th>
+      <th scope="col"><span class="plur">Plural</span></th>
     </tr>
   </thead>
   <tbody>
@@ -295,8 +368,8 @@
 </div>
 </details>
 
-<details>
-<summary>3. Práctica integradora: elige el adjetivo correcto <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: elige el adjetivo correcto <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Ejercicio: completar con concordancia</h3>
@@ -309,7 +382,7 @@
 
 <h3>Ejercicio: empareja sustantivos con adjetivos</h3>
 
-<p>Haz clic primero en un <strong>sustantivo</strong> y luego en el <strong>adjetivo</strong> que concuerda con él (mismo género y número).</p>
+<p>Toca primero un <strong>sustantivo</strong> y luego un <strong>adjetivo</strong> que concuerde con él (mismo género y mismo número). Puede haber más de un adjetivo que sirva: lo importante es que concuerden.</p>
 
 <div class="area-dragdrop">
   <div class="columnas-dd">
@@ -333,106 +406,96 @@
   </div>
 </div>
 
+<div class="enlace-practica" style="cursor:default"><a  href="https://zhemaria.github.io/gramatica/n1-l3-2.html#elige-adjetivo" target="_blank" rel="noopener" style="color:inherit">
+  ✍️ Práctica: Elige el adjetivo que concuerda ↗</a>
+  <span>Setenta frases para completar. En la misma página puedes después <a href="https://zhemaria.github.io/gramatica/n1-l3-2.html#escribe-adjetivo" target="_blank" rel="noopener">escribir tú el adjetivo</a> y <a href="https://zhemaria.github.io/gramatica/n1-l3-2.html#detecta-error" target="_blank" rel="noopener">detectar errores</a>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</div>
+
 </div>
 </details>
 
-<details>
-<summary>4. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+<ul class="lista-bonita">
+  <li><strong>Las cuatro formas.</strong> Escribe las cuatro formas de <em>perro grande</em>, <em>casa bonita</em> y <em>niño feliz</em> (masculino o femenino, singular o plural), como en el cuadrante de la <a href="#s-2-cuadrante">sección 2</a>.</li>
+  <li><strong>Mi objeto, en plural.</strong> Vuelve a las 3 oraciones que escribiste en la tarea de la <a href="https://zhemaria.github.io/clases_leng1/clase_3-1.html#s-tarea">Lección 3.1</a> sobre un objeto de tu casa. Escríbelas otra vez, ahora en plural (<em>Mis mesas de cocina son redondas y viejas.</em>), y revisa que todo concuerde.</li>
+  <li><strong>Atento a la calle.</strong> En carteles, anuncios o mensajes, busca dos frases con un error de concordancia (pasa más de lo que crees) y escríbelas corregidas.</li>
+</ul>
 
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-quiz">Quiz</span> 15 preguntas · Brightspace</h4>
-  <p>El quiz de la unidad evalúa tu dominio de sustantivos, adjetivos y concordancia. Incluye:</p>
-  <ul class="lista-bonita">
-    <li>Clasificar sustantivos por género y número (masc/fem, sing/plur).</li>
-    <li>Elegir el adjetivo que concuerda (ejemplo: <em>"La casa _____ : blanca / blanco / blancas"</em>).</li>
-    <li>Arrastrar adjetivos a los sustantivos correctos.</li>
-  </ul>
-  <p style="margin-bottom:0"><strong>Encuéntralo en Brightspace</strong> bajo la unidad correspondiente. Tienes 2 intentos.</p>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Tarea del foro</h4>
-  <p>Las 3 oraciones que subiste al foro (descripción de un objeto de tu casa con adjetivos) se evaluarán con esta rúbrica analítica simple:</p>
-
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tus oraciones con esta rúbrica</h4>
   <table class="rubrica">
+    <caption class="sr-solo">Rúbrica para revisar la concordancia de tus oraciones</caption>
     <thead>
       <tr>
-        <th>Criterio</th>
-        <th class="nivel-4">Excelente (4)</th>
-        <th class="nivel-3">Bueno (3)</th>
-        <th class="nivel-2">Aceptable (2)</th>
-        <th class="nivel-1">Inicial (1)</th>
+        <th scope="col">Criterio</th>
+        <th scope="col" class="nivel-4">Excelente (4)</th>
+        <th scope="col" class="nivel-3">Bueno (3)</th>
+        <th scope="col" class="nivel-2">Aceptable (2)</th>
+        <th scope="col" class="nivel-1">Inicial (1)</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Concordancia de género</td>
-        <td class="nivel-4">Todas las oraciones concuerdan en género</td>
-        <td class="nivel-3">2 de 3 concuerdan</td>
-        <td class="nivel-2">1 de 3 concuerda</td>
-        <td class="nivel-1">Ninguna concuerda</td>
-      </tr>
-      <tr>
-        <td>Concordancia de número</td>
-        <td class="nivel-4">Todas las oraciones concuerdan en número</td>
-        <td class="nivel-3">2 de 3 concuerdan</td>
-        <td class="nivel-2">1 de 3 concuerda</td>
-        <td class="nivel-1">Ninguna concuerda</td>
-      </tr>
-      <tr>
-        <td>Ortografía básica</td>
-        <td class="nivel-4">Sin errores de ortografía</td>
-        <td class="nivel-3">1–2 errores menores</td>
-        <td class="nivel-2">3–4 errores menores</td>
-        <td class="nivel-1">Muchos errores</td>
-      </tr>
+      <tr><td>Concordancia de género</td><td class="nivel-4">Todas las oraciones concuerdan en género</td><td class="nivel-3">2 de 3 concuerdan</td><td class="nivel-2">1 de 3 concuerda</td><td class="nivel-1">Ninguna concuerda</td></tr>
+      <tr><td>Concordancia de número</td><td class="nivel-4">Todas las oraciones concuerdan en número</td><td class="nivel-3">2 de 3 concuerdan</td><td class="nivel-2">1 de 3 concuerda</td><td class="nivel-1">Ninguna concuerda</td></tr>
+      <tr><td>Ortografía básica</td><td class="nivel-4">Sin errores de ortografía</td><td class="nivel-3">1 o 2 errores menores</td><td class="nivel-2">3 o 4 errores menores</td><td class="nivel-1">Muchos errores</td></tr>
     </tbody>
   </table>
+  <p style="margin-bottom:0">Si en algún criterio te quedaste en 1 o 2, corrige esas oraciones y vuelve a puntuarte.</p>
 </div>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>El quiz se puede tomar en clase (laptop o teléfono) durante el último tramo de la sesión, o como tarea en casa.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>El quiz y el foro se completan en Brightspace de forma asincrónica antes de la próxima clase.</p>
-  </div>
-</div>
-
 </div>
 </details>
 
-<details>
-<summary>5. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 15 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>12 de 15</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Por qué la concordancia importa</h3>
 
-<p>La concordancia <strong>evita la confusión al leer</strong>. Cuando escribes <em>"las mesas roja"</em>, el lector tropieza: ¿una mesa? ¿muchas? ¿qué color? Pero cuando escribes <em>"las mesas rojas"</em>, todo fluye. Esto vale tanto para el día a día como para el examen de GED.</p>
+<p>La concordancia <strong>evita la confusión al leer</strong>. Cuando escribes <em>"las mesas roja"</em>, el lector tropieza: ¿una mesa? ¿muchas? ¿qué color? Pero cuando escribes <em>"las mesas rojas"</em>, todo fluye. Esto vale tanto para el día a día como para el examen del GED.</p>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Puedes completar las 4 formas de "perro grande" (masc-sing, masc-plur, fem-sing, fem-plur)?</li>
+    <li>¿Puedes decir las 4 formas de «perro grande» (masculino y femenino, en singular y en plural)?</li>
     <li>¿Sabes por qué decimos "el día soleado" (no "la día soleada")?</li>
     <li>¿Identificas cuál está mal: "las flores bonitas" o "las flores bonito"?</li>
   </ul>
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Conoceremos a otro actor fundamental de la oración: el <strong>verbo</strong>. Sin verbo, no hay acción. Y sin acción, no hay oración completa.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_3-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.3 · El corazón de la oración: el verbo</a>. Conocerás a otro actor fundamental: sin verbo no hay acción, y sin acción no hay oración completa.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 3 · Lección 3.2</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -488,114 +551,141 @@
     var el=document.getElementById('puntaje-completar');
     el.textContent='Aciertos: '+aciertos+' / '+ejercicios.length;
     if(aciertos===ejercicios.length){
-      el.innerHTML='🎉 ¡Bestial! Concordancia perfecta: '+aciertos+' / '+ejercicios.length;
+      el.innerHTML='🎉 ¡Excelente! Concordancia perfecta: '+aciertos+' / '+ejercicios.length;
       el.style.color='var(--exito)';
     }
   }
 
-  // ============== Empareja sust ↔ adj ==============
-  var paresDD=[
-    {sust:'el niño',gen:'masc',num:'sing',adj:'simpático'},
-    {sust:'la mesa',gen:'fem',num:'sing',adj:'redonda'},
-    {sust:'los gatos',gen:'masc',num:'plur',adj:'negros'},
-    {sust:'las flores',gen:'fem',num:'plur',adj:'rojas'},
-    {sust:'la profesora',gen:'fem',num:'sing',adj:'amable'}
+  // ============== Empareja sustantivo y adjetivo ==============
+  /* Se acepta cualquier adjetivo que concuerde en género y número.
+     gen 'x' = el adjetivo sirve para los dos géneros (amable, feliz…). */
+  var SUSTS=[
+    {sust:'el niño',gen:'m',num:'s'},{sust:'la mesa',gen:'f',num:'s'},{sust:'los gatos',gen:'m',num:'p'},
+    {sust:'las flores',gen:'f',num:'p'},{sust:'la profesora',gen:'f',num:'s'}
   ];
-
-  var sustActivo=null;
-  var emparejados=0;
-  var emparejadosSet={};
+  var ADJS=[
+    {adj:'simpático',gen:'m',num:'s'},{adj:'redonda',gen:'f',num:'s'},{adj:'negros',gen:'m',num:'p'},{adj:'rojas',gen:'f',num:'p'},
+    {adj:'amable',gen:'x',num:'s'},{adj:'cansada',gen:'f',num:'s'},{adj:'simpáticas',gen:'f',num:'p'},{adj:'cansados',gen:'m',num:'p'}
+  ];
+  var NOM={m:'masculino',f:'femenino',s:'singular',p:'plural'};
+  var sustActivo=null, emparejados=0, hechos={};
+  var fb=document.getElementById('feedback-dd');
+  function aviso(t,c){ fb.innerHTML=t; fb.className='feedback '+c; }
 
   function dibujarDD(){
-    sustActivo=null;
-    emparejados=0;
-    emparejadosSet={};
-    var listaSusts=document.getElementById('lista-susts');
-    var listaEmp=document.getElementById('lista-emparejados');
-    var adjsDisp=document.getElementById('adjs-disponibles');
-    listaSusts.innerHTML='';
-    listaEmp.innerHTML='';
-    adjsDisp.innerHTML='';
-
-    paresDD.forEach(function(p,i){
-      var d=document.createElement('div');
-      d.className='sust-target';
-      if(p.gen==='fem')d.classList.add('fem-style');
-      d.textContent=p.sust;
-      d.setAttribute('data-idx',i);
+    sustActivo=null; emparejados=0; hechos={};
+    var listaSusts=document.getElementById('lista-susts'), listaEmp=document.getElementById('lista-emparejados'), adjsDisp=document.getElementById('adjs-disponibles');
+    listaSusts.innerHTML=''; listaEmp.innerHTML=''; adjsDisp.innerHTML=''; aviso('','');
+    SUSTS.forEach(function(p,i){
+      var d=document.createElement('button'); d.type='button';
+      d.className='sust-target'+(p.gen==='f'?' fem-style':''); d.textContent=p.sust; d.setAttribute('aria-pressed','false');
       d.addEventListener('click',function(){
-        if(emparejadosSet[i])return;
-        document.querySelectorAll('.sust-target').forEach(function(s){s.classList.remove('activo')});
-        d.classList.add('activo');
-        sustActivo=i;
-        document.getElementById('feedback-dd').textContent='Ahora elige el adjetivo que concuerda con "'+p.sust+'".';
-        document.getElementById('feedback-dd').className='feedback neutral';
+        if(hechos[i])return;
+        listaSusts.querySelectorAll('.sust-target').forEach(function(x){x.classList.remove('activo');x.setAttribute('aria-pressed','false');});
+        d.classList.add('activo'); d.setAttribute('aria-pressed','true'); sustActivo=i;
+        aviso('Ahora elige un adjetivo que concuerde con «'+p.sust+'».','neutral');
       });
       listaSusts.appendChild(d);
     });
-
-    // Mezclar adjetivos + algunos distractores
-    var todosAdj=paresDD.map(function(p){return p.adj}).slice();
-    todosAdj.push('simpáticas','rojo');
-    todosAdj.sort(function(){return Math.random()-0.5});
-
-    todosAdj.forEach(function(a){
-      var b=document.createElement('button');
-      b.type='button';
-      b.className='adj-elegible';
-      b.textContent=a;
-      b.setAttribute('data-adj',a);
+    ADJS.slice().sort(function(){return Math.random()-0.5;}).forEach(function(a){
+      var b=document.createElement('button'); b.type='button'; b.className='adj-elegible'; b.textContent=a.adj;
       b.addEventListener('click',function(){
         if(b.classList.contains('usada'))return;
-        if(sustActivo===null){
-          document.getElementById('feedback-dd').textContent='Primero elige un sustantivo de la columna izquierda.';
-          document.getElementById('feedback-dd').className='feedback neutral';
-          return;
-        }
-        var par=paresDD[sustActivo];
-        if(a===par.adj){
-          // Correcto
-          b.classList.add('usada');
-          var movido=document.createElement('div');
-          movido.className='sust-target';
-          if(par.gen==='fem')movido.classList.add('fem-style');
-          movido.style.background='#d4edda';
-          movido.style.color='var(--exito)';
-          movido.style.borderColor='var(--exito)';
-          movido.innerHTML=par.sust+' <strong>'+par.adj+'</strong> ✓';
-          document.getElementById('lista-emparejados').appendChild(movido);
-
-          var origen=document.querySelector('.sust-target.activo');
-          if(origen)origen.style.display='none';
-
-          emparejadosSet[sustActivo]=true;
-          emparejados++;
-          sustActivo=null;
-          document.getElementById('feedback-dd').textContent='✅ ¡Concordancia correcta!';
-          document.getElementById('feedback-dd').className='feedback correcto';
+        if(sustActivo===null){ aviso('Primero elige un sustantivo de la columna izquierda.','neutral'); return; }
+        var par=SUSTS[sustActivo];
+        if((a.gen==='x'||a.gen===par.gen)&&a.num===par.num){
+          b.classList.add('usada'); b.disabled=true;
+          var m=document.createElement('div'); m.className='sust-target'+(par.gen==='f'?' fem-style':'');
+          m.style.background='#d4edda'; m.style.color='var(--exito)'; m.style.borderColor='var(--exito)';
+          m.innerHTML=par.sust+' <strong>'+a.adj+'</strong> ✓'; listaEmp.appendChild(m);
+          var origen=document.querySelector('#lista-susts .sust-target.activo'); if(origen) origen.style.display='none';
+          hechos[sustActivo]=true; emparejados++; sustActivo=null;
+          aviso('✅ ¡Concordancia correcta! «'+par.sust+' '+a.adj+'»: los dos van en '+NOM[par.gen]+' '+NOM[par.num]+'.','correcto');
           actualizarPuntajeDD();
         }else{
-          document.getElementById('feedback-dd').innerHTML='❌ "'+a+'" no concuerda con "'+par.sust+'". Revisa el género y número.';
-          document.getElementById('feedback-dd').className='feedback incorrecto';
+          var fallaG=(a.gen!=='x'&&a.gen!==par.gen), fallaN=(a.num!==par.num);
+          var falla=fallaG&&fallaN?'el género y el número':(fallaN?'el número (uno es singular y el otro plural)':'el género (uno es masculino y el otro femenino)');
+          aviso('❌ «'+a.adj+'» no concuerda con «'+par.sust+'»: falla '+falla+'.','incorrecto');
         }
       });
       adjsDisp.appendChild(b);
     });
-
     actualizarPuntajeDD();
   }
-
   function actualizarPuntajeDD(){
     var el=document.getElementById('puntaje-dd');
-    el.textContent='Parejas correctas: '+emparejados+' / '+paresDD.length;
-    if(emparejados===paresDD.length){
-      el.innerHTML='🎉 ¡Bestial! Emparejaste todos: '+emparejados+' / '+paresDD.length;
-      el.style.color='var(--exito)';
-    }
+    el.textContent='Parejas correctas: '+emparejados+' / '+SUSTS.length; el.style.color='';
+    if(emparejados===SUSTS.length){ el.innerHTML='🎉 ¡Muy bien! Emparejaste todos: '+emparejados+' / '+SUSTS.length; el.style.color='var(--exito)'; }
   }
-
   document.getElementById('btn-reset-dd').addEventListener('click',dibujarDD);
   dibujarDD();
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué significa que dos palabras <strong>concuerdan</strong>?", "o": ["Que tienen el mismo género y el mismo número", "Que empiezan con la misma letra", "Que riman"], "c": 0}, {"t": "¿De qué género es «la mesa»?", "o": ["Femenino", "Masculino"], "c": 0, "fijo": true}, {"t": "¿De qué género es «el día»?", "o": ["Masculino", "Femenino"], "c": 0, "fijo": true}, {"t": "¿De qué género es «la mano»?", "o": ["Femenino", "Masculino"], "c": 0, "fijo": true}, {"t": "¿En qué número está «los gatos»?", "o": ["Plural", "Singular"], "c": 0, "fijo": true}, {"t": "Completa: «La casa ___»", "o": ["blanca", "blanco", "blancas"], "c": 0}, {"t": "Completa: «Los carros ___»", "o": ["nuevos", "nuevo", "nuevas"], "c": 0}, {"t": "Completa: «Las flores ___»", "o": ["amarillas", "amarillo", "amarillos"], "c": 0}, {"t": "Completa: «Las niñas ___»", "o": ["felices", "feliz", "felizes"], "c": 0}, {"t": "Completa: «El perro ___»", "o": ["negro", "negra", "negros"], "c": 0}, {"t": "¿Cuál tiene buena concordancia?", "o": ["las mesas rojas", "las mesas roja", "la mesas rojas"], "c": 0}, {"t": "¿Cuál tiene buena concordancia?", "o": ["el niño simpático", "el niño simpática", "los niño simpático"], "c": 0}, {"t": "¿Cuál de estos adjetivos <strong>no cambia</strong> con el género?", "o": ["grande", "bonito", "rojo"], "c": 0}, {"t": "¿Cuál es el plural de «el lápiz azul»?", "o": ["los lápices azules", "los lápiz azules", "los lápices azul"], "c": 0}, {"t": "¿Cuál está mal escrita?", "o": ["la día soleado", "el día soleado", "los días soleados"], "c": 0}], META=12, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Dominas la concordancia. Puedes continuar con la Lección 3.3.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve al cuadrante de la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

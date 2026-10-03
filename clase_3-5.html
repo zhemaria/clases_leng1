@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 3.5 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 5: Oración completa vs. fragmentos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.5 · Oración completa frente a fragmento</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -118,26 +124,86 @@
   .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
   .badge-lectura{background:#e3f2fd;color:#0277bd}
   .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
+  .btn-que-falta{margin:4px}
 </style>
 </head>
 <body>
 
-<h1>Clase 5: La oración completa vs. los fragmentos</h1>
-<p class="subtitulo">Construir ideas completas · Nivel 1 · Tema 3, semana 3</p>
+<h1>Lección 3.5 · Oración completa frente a fragmento</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 3 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Distinguir y escribir <strong>oraciones completas con sentido propio</strong>, evitando los <em>fragmentos</em> (grupos de palabras incompletos). Aplicar la estrategia GED: <strong>oraciones cortas y claras</strong> (sujeto + verbo + complemento + punto).</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-oracion-completa">¿Qué es una oración completa?</a></li>
+    <li><a href="#s-2-fragmento">¿Qué es un fragmento?</a></li>
+    <li><a href="#s-3-estrategia-ged">Estrategia para el GED: oraciones cortas</a></li>
+    <li><a href="#s-4-practica">Práctica: ¿completa o fragmento?</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Asere, llegamos al punto donde se junta todo. Ya tenemos sustantivos (los protagonistas), adjetivos (los detalles), y verbos (las acciones). <strong>Hoy vamos a unirlos para formar oraciones completas</strong> — las que de verdad expresan una idea, no las que se quedan a medias.</p>
+<h2>📚 Para empezar</h2>
 
-<p>Esta clase es <em>clave para el GED</em>: el ensayo evalúa fuerte la calidad de tus oraciones. Si escribes oraciones rotas o frases sueltas, te bajan la nota aunque la idea sea buena. Hoy te doy una receta sencilla y poderosa.</p>
+<p>Llegaste al punto donde se junta todo. Ya tienes sustantivos (los protagonistas), adjetivos (los detalles), y verbos (las acciones). <strong>Ahora vas a unirlos para formar oraciones completas</strong>: las que de verdad expresan una idea, no las que se quedan a medias.</p>
 
-<details open>
-<summary>1. Introducción: ¿qué es una oración completa? <span class="caja-tiempo">10 min</span></summary>
+<p>Esta lección es <em>clave para el GED</em>: en la parte escrita del examen cuenta mucho la calidad de tus oraciones. Si escribes oraciones rotas o frases sueltas, baja la nota aunque la idea sea buena. Aquí tienes una receta sencilla y poderosa.</p>
+
+<details open id="s-1-oracion-completa">
+<summary>1. ¿Qué es una oración completa? <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>La regla básica</h3>
@@ -145,13 +211,13 @@
 <p>Una <span class="palabra-clave">oración completa</span> expresa una idea o mensaje completo. Para estar completa, necesita dos cosas mínimas:</p>
 
 <div class="leyenda-colores">
-  <span><span class="punto" style="background:var(--sujeto)"></span> Sujeto (quién)</span>
-  <span><span class="punto" style="background:var(--verbo)"></span> Verbo (qué hace)</span>
+  <span><span class="punto" style="background:var(--sujeto)" aria-hidden="true"></span> Sujeto (quién)</span>
+  <span><span class="punto" style="background:var(--verbo)" aria-hidden="true"></span> Verbo (qué hace)</span>
 </div>
 
 <ul class="lista-bonita">
-  <li>Un <strong>sujeto</strong>: <em>quién</em> hace algo.</li>
-  <li>Un <strong>verbo</strong>: <em>qué</em> hace o cómo está.</li>
+  <li>Un <strong>sujeto</strong>: <em>quién</em> hace algo. Puede estar escrito (<em>Mi mamá cocina</em>) o sobreentendido (<em>Cocino</em>: el sujeto es <em>yo</em>). Ya lo viste en la <a href="https://zhemaria.github.io/clases_leng1/clase_1-2.html#s-2-sujeto-y-predicado">Lección 1.2</a>: es el sujeto tácito.</li>
+  <li>Un <strong>verbo</strong> conjugado: <em>qué</em> hace, o cómo es o cómo está.</li>
 </ul>
 
 <p>Y al final, debe llevar un <strong>punto</strong> (.) que cierre la idea.</p>
@@ -171,13 +237,13 @@
 </div>
 </details>
 
-<details>
+<details id="s-2-fragmento">
 <summary>2. ¿Qué es un fragmento? <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>El fragmento: la oración rota</h3>
 
-<p>Un <span class="palabra-clave">fragmento</span> es un grupo de palabras al que le falta el sujeto, el verbo, o ambos. Por eso no expresa una idea completa. El lector se queda esperando "¿y qué pasó?".</p>
+<p>Un <span class="palabra-clave">fragmento</span> es un grupo de palabras al que le falta algo: el verbo, el sujeto y el verbo, o el final de la idea. Por eso no expresa una idea completa. El lector se queda esperando "¿y qué pasó?".</p>
 
 <div class="caja-ejemplo fragmento">
   <h4>❌ Fragmentos típicos</h4>
@@ -194,7 +260,7 @@
 <div class="caja-ejemplo completa">
   <h4>✅ Versiones completas (arregladas)</h4>
   <p class="frase-ejemplo"><span class="suj">Los niños</span> <span class="vbo">ayudan</span> en la cocina.</p>
-  <p class="frase-ejemplo"><span class="suj">Cuando llegó mi mamá</span>, <span class="vbo">cenamos</span> juntos.</p>
+  <p class="frase-ejemplo">Cuando llegó mi mamá, <span class="vbo">cenamos</span> juntos. <span class="nota-ejemplo" style="display:block">(La idea ya está cerrada. El sujeto de <em>cenamos</em> es <em>nosotros</em>, sobreentendido.)</span></p>
   <p class="frase-ejemplo"><span class="suj">El carro rojo de mi tío</span> <span class="vbo">es</span> muy bonito.</p>
 </div>
 
@@ -205,8 +271,8 @@
 </div>
 </details>
 
-<details>
-<summary>3. Estrategia para el GED: escriban oraciones cortas <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-estrategia-ged">
+<summary>3. Estrategia para el GED: oraciones cortas <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>La receta de oro</h3>
@@ -244,12 +310,12 @@
 
 <div class="actividad-unidad">
   <h4><span class="badge-tipo badge-lectura">Lectura</span> Activa · "Detective gramatical"</h4>
-  <p>Lee este texto que contiene errores intencionados (fragmentos sin sujeto o verbo). <strong>Encuentra las palabras o frases que no forman una oración completa</strong>. La versión limpia está debajo para comparar después.</p>
+  <p>Este texto tiene <strong>tres fragmentos</strong> escondidos. Léelo despacio y copia en tu cuaderno los grupos de palabras que no forman una oración completa. Después abre la versión correcta para comparar.</p>
 </div>
 
 <div class="texto-detective">
 <p style="margin:0 0 10px 0;color:var(--gris);font-size:0.85rem">⚠️ Texto con fragmentos:</p>
-<p>Mi familia vive en Chicago. <span class="error-marca">Una casa grande con jardín.</span> Mi papá trabaja en una fábrica. <span class="error-marca">Cuando llega del trabajo.</span> Mi mamá lo recibe con café caliente. <span class="error-marca">Comiendo juntos en la cocina.</span> Mis hermanos hacen la tarea.</p>
+<p>Mi familia vive en Chicago. Una casa grande con jardín. Mi papá trabaja en una fábrica. Cuando llega del trabajo. Mi mamá lo recibe con café caliente. Comiendo juntos en la cocina. Mis hermanos hacen la tarea.</p>
 </div>
 
 <details style="margin:8px 0">
@@ -267,113 +333,127 @@
 </div>
 </details>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-5.html#en-el-texto" target="_blank" rel="noopener">
+  ✍️ Práctica: Busca los fragmentos en un texto ↗
+  <span>Cinco textos más para encontrar los fragmentos escondidos. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>4. Práctica: ¿completa o fragmento? <span class="caja-tiempo">5 min</span></summary>
+<details id="s-4-practica">
+<summary>4. Práctica: ¿completa o fragmento? <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Decide en cada caso</h3>
 
-<p>Para cada frase, decide si es una <strong>oración completa</strong> o un <strong>fragmento</strong>. Pista: pregúntate <em>"¿quién? ¿qué hace?"</em>. Si falta uno, es fragmento.</p>
+<p>Para cada frase, decide si es una <strong>oración completa</strong> o un <strong>fragmento</strong>. Pista: pregúntate <em>«¿quién?, ¿qué hace?, ¿la idea queda cerrada?»</em>. Recuerda que el sujeto puede estar sobreentendido.</p>
 
 <div id="ejercicio-detect"></div>
 <div class="puntaje" id="puntaje-detect">Aciertos: 0 / 8</div>
 
 <h3>Repara los fragmentos</h3>
 
-<p>Para cada fragmento, identifica <strong>qué le falta</strong>: ¿sujeto o verbo?</p>
+<p>Para cada fragmento, identifica <strong>qué le falta</strong>: el verbo, el sujeto y el verbo, o terminar la idea.</p>
 
 <div class="reparador" id="reparador"></div>
 <div class="puntaje" id="puntaje-reparar">Aciertos: 0 / 5</div>
 
-</div>
-</details>
-
-<details>
-<summary>5. Discusión: "Corrijamos juntos" <span class="caja-tiempo">complemento</span></summary>
-<div class="contenido-detalle">
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · grupal</h4>
-  <p>El profesor proyecta oraciones con errores (fragmentos, sin sujeto, sin verbo). <strong>Los estudiantes proponen correcciones en voz alta</strong>. Trabajan como detectives gramaticales en equipo.</p>
-  <p style="margin-bottom:0">Cada estudiante debe identificar el error y proponer al menos una forma de arreglarlo. No hay una sola respuesta correcta: lo importante es que la oración quede completa.</p>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Foro</span> Asincrónica · individual</h4>
-  <p>Cada estudiante escribe en el foro <strong>5 oraciones</strong> distintas:</p>
-  <ul class="lista-bonita">
-    <li>Una oración <strong>declarativa</strong> (afirma algo): "Mi mamá cocina arroz."</li>
-    <li>Una oración <strong>interrogativa</strong> (pregunta): "¿Dónde está la escuela?"</li>
-    <li>Una oración <strong>exclamativa</strong> (expresa emoción): "¡Qué bonito día!"</li>
-    <li>Una oración con <strong>coma en serie</strong>: "Compré leche, pan y queso."</li>
-    <li>Una oración con <strong>fecha</strong>: "El examen es el 15 de mayo de 2026."</li>
-  </ul>
-  <p style="margin-bottom:0"><strong>Tarea adicional:</strong> revisa la publicación de al menos un compañero y comenta si todas sus oraciones están completas (con sujeto y verbo).</p>
-</div>
-
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>El profesor proyecta oraciones en la pizarra. Los estudiantes proponen correcciones a mano alzada. El foro queda como tarea para casa.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>El profesor comparte pantalla con las oraciones. Los estudiantes proponen correcciones por chat o micrófono. El foro se completa en Brightspace.</p>
-  </div>
-</div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-5.html#completa-o-fragmento" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Oración completa o fragmento? ↗
+  <span>Casi treinta frases más, y en la misma página puedes practicar qué le falta a cada fragmento y cómo repararlo. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-tarea">
+<summary>5. Tarea <span class="caja-tiempo">30 min</span></summary>
+<div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+<ul class="lista-bonita">
+  <li><strong>Corrige los fragmentos.</strong> Convierte estos fragmentos en oraciones completas. No hay una sola respuesta correcta: lo importante es que la idea quede cerrada.
+    <ul class="lista-bonita">
+      <li><em>Mi tío en el carro.</em></li>
+      <li><em>Caminando hacia el trabajo.</em></li>
+      <li><em>Porque llovía mucho.</em></li>
+      <li><em>El perro de la vecina.</em></li>
+      <li><em>Después del trabajo.</em></li>
+    </ul>
+  </li>
+  <li><strong>Con la fórmula.</strong> Escribe 5 oraciones sobre tu trabajo o tu familia usando la fórmula <strong>sujeto + verbo + complemento + punto</strong>. Subraya el sujeto con una raya y el verbo con dos.</li>
+  <li><strong>Revisa un mensaje.</strong> Busca un mensaje de texto que hayas escrito esta semana. ¿Tiene fragmentos? Escríbelo otra vez con oraciones completas.</li>
+</ul>
+<div class="tip"><strong>📝 Revisa tu trabajo:</strong> lee cada oración en voz alta. Si al terminar te quedas esperando que diga algo más, todavía es un fragmento.</div>
+</div>
+</details>
+
+<details id="s-quiz">
+<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+
+<details id="s-cierre">
+<summary>7. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste en esta lección</h3>
 
 <ul class="lista-bonita">
-  <li>Una <strong>oración completa</strong> tiene sujeto + verbo + idea cerrada con punto.</li>
+  <li>Una <strong>oración completa</strong> tiene un verbo conjugado y una idea cerrada con punto. El sujeto puede estar escrito o sobreentendido.</li>
   <li>Un <strong>fragmento</strong> es un grupo de palabras al que le falta algo. No expresa idea completa.</li>
   <li>Para el GED: <strong>oraciones cortas</strong> (sujeto + verbo + complemento + punto).</li>
-  <li>Si te falta sujeto o verbo, no es una oración. Es un fragmento.</li>
+  <li>Si falta el verbo o la idea queda a medias, no es una oración: es un fragmento.</li>
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Puedes decir si "Caminando hacia el trabajo" es oración o fragmento?</li>
     <li>¿Puedes arreglar el fragmento "Mi tío en el carro" para hacerlo completo?</li>
-    <li>¿Por qué los profesores del GED recomiendan oraciones cortas?</li>
+    <li>¿Por qué conviene escribir oraciones cortas en el GED?</li>
   </ul>
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Vamos a aprender a vestir bien las oraciones: <strong>mayúsculas, puntos, comas, signos de interrogación y exclamación</strong>. La mecánica que separa una escritura descuidada de una profesional.
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_3-6.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.6 · Puntuación básica y uso de mayúsculas</a>. Aprenderás a vestir bien tus oraciones: mayúsculas, puntos, comas y signos de pregunta y de exclamación.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 3 · Lección 3.5</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
   // Detective: completa o fragmento
   var oraciones=[
     {frase:'Los estudiantes leen el libro.',tipo:'completa',explicacion:'Tiene sujeto (los estudiantes) y verbo (leen).'},
-    {frase:'Caminando por la calle.',tipo:'fragmento',explicacion:'No tiene verbo conjugado. "Caminando" es gerundio, no verbo principal.'},
+    {frase:'Caminando por la calle.',tipo:'fragmento',explicacion:'No tiene verbo conjugado. «Caminando» no dice quién ni cuándo.'},
     {frase:'Mi hermana es enfermera.',tipo:'completa',explicacion:'Tiene sujeto (mi hermana) y verbo (es).'},
     {frase:'Cuando llegó la maestra.',tipo:'fragmento',explicacion:'Empieza una idea pero no la cierra. ¿Qué pasó cuando llegó?'},
     {frase:'El gato negro de la vecina.',tipo:'fragmento',explicacion:'Solo es un grupo de palabras con sustantivos. Falta el verbo.'},
     {frase:'Yo trabajo todos los días.',tipo:'completa',explicacion:'Tiene sujeto (yo) y verbo (trabajo).'},
-    {frase:'En el parque del barrio.',tipo:'fragmento',explicacion:'Es una frase preposicional. No tiene ni sujeto ni verbo.'},
-    {frase:'Mañana cocinaré para la familia.',tipo:'completa',explicacion:'Sujeto tácito (yo) + verbo (cocinaré).'}
+    {frase:'En el parque del barrio.',tipo:'fragmento',explicacion:'Solo dice dónde. No tiene ni sujeto ni verbo.'},
+    {frase:'Mañana cocinaré para la familia.',tipo:'completa',explicacion:'El sujeto está sobreentendido (yo) y el verbo es «cocinaré». Es una oración completa.'}
   ];
 
   var aciertosD=0;
@@ -418,20 +498,21 @@
     var el=document.getElementById('puntaje-detect');
     el.textContent='Aciertos: '+aciertosD+' / '+oraciones.length;
     if(aciertosD===oraciones.length){
-      el.innerHTML='🎉 ¡Bestial detective! Aciertos: '+aciertosD+' / '+oraciones.length;
+      el.innerHTML='🎉 ¡Excelente, detective! Aciertos: '+aciertosD+' / '+oraciones.length;
       el.style.color='var(--exito)';
     }
   }
 
   // Reparar fragmentos
+  /* «Compró pan en la tienda» no es un fragmento: su sujeto está sobreentendido (él o ella).
+     Por eso se clasifican tres tipos: falta el verbo, faltan sujeto y verbo, o falta terminar la idea. */
   var fragmentos=[
-    {frase:'El carro nuevo de mi tío.',falta:'verbo'},
-    {frase:'Caminando hacia el trabajo.',falta:'verbo'},
-    {frase:'En la cocina con mi mamá.',falta:'sujeto'},
-    {frase:'Mi hermana y yo.',falta:'verbo'},
-    {frase:'Compró pan en la tienda.',falta:'sujeto'}
+    {frase:'El carro nuevo de mi tío.',falta:'verbo',nota:'Dice qué cosa, pero no qué hace ni cómo es.'},
+    {frase:'Caminando hacia el trabajo.',falta:'verbo',nota:'«Caminando» no es un verbo conjugado.'},
+    {frase:'En la cocina con mi mamá.',falta:'ambos',nota:'Solo dice dónde y con quién: no hay ni sujeto ni verbo.'},
+    {frase:'Mi hermana y yo.',falta:'verbo',nota:'Dice quiénes, pero no qué hacen.'},
+    {frase:'Porque estaba cansado.',falta:'idea',nota:'Da una razón, pero falta la idea principal: ¿qué pasó porque estaba cansado?'}
   ];
-
   var aciertosR=0;
   var resueltasR={};
   var contR=document.getElementById('reparador');
@@ -443,22 +524,27 @@
       '<div class="frase-rota">"'+item.frase+'"</div>'+
       '<p style="text-align:center;margin:6px 0 8px 0;font-size:0.9rem;color:var(--gris)">¿Qué le falta?</p>'+
       '<div class="que-falta">'+
-        '<button type="button" class="btn-que-falta" data-falta="sujeto">Falta sujeto (quién)</button>'+
-        '<button type="button" class="btn-que-falta" data-falta="verbo">Falta verbo (qué hace)</button>'+
-      '</div>';
+        '<button type="button" class="btn-que-falta" data-falta="verbo">Falta el verbo</button>'+
+        '<button type="button" class="btn-que-falta" data-falta="ambos">Faltan el sujeto y el verbo</button>'+
+        '<button type="button" class="btn-que-falta" data-falta="idea">Falta terminar la idea</button>'+
+      '</div>'+
+      '<div class="feedback-detect" style="margin-top:6px"></div>';
     contR.appendChild(div);
 
     var botones=div.querySelectorAll('.btn-que-falta');
     botones.forEach(function(b){
       b.addEventListener('click',function(){
         if(resueltasR[idx])return;
+        var fbR=div.querySelector('.feedback-detect');
         if(b.getAttribute('data-falta')===item.falta){
           b.classList.add('correcta');
+          fbR.className='feedback-detect correcto mostrar'; fbR.innerHTML='✅ Correcto. '+item.nota;
           resueltasR[idx]=true;
           aciertosR++;
           actualizarPuntajeR();
         }else{
           b.classList.add('incorrecta');
+          fbR.className='feedback-detect incorrecto mostrar'; fbR.innerHTML='❌ Inténtalo de nuevo. Pista: '+item.nota;
           setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
       });
@@ -473,6 +559,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué necesita como mínimo una oración completa?", "o": ["Un verbo conjugado y una idea cerrada", "Muchos adjetivos", "Más de diez palabras"], "c": 0}, {"t": "¿Es oración completa o fragmento?", "x": "Los niños juegan en el parque.", "o": ["Oración completa", "Fragmento"], "c": 0, "fijo": true}, {"t": "¿Es oración completa o fragmento?", "x": "Niños jugando en el parque.", "o": ["Oración completa", "Fragmento"], "c": 1, "fijo": true}, {"t": "¿Es oración completa o fragmento?", "x": "Cuando llegó la maestra.", "o": ["Oración completa", "Fragmento"], "c": 1, "fijo": true}, {"t": "¿Es oración completa o fragmento?", "x": "Estudio todos los días.", "o": ["Oración completa", "Fragmento"], "c": 0, "fijo": true}, {"t": "¿Es oración completa o fragmento?", "x": "El carro rojo de mi tío.", "o": ["Oración completa", "Fragmento"], "c": 1, "fijo": true}, {"t": "¿Qué le falta a «El gato negro de la vecina»?", "o": ["El verbo", "Un adjetivo", "Un artículo"], "c": 0}, {"t": "¿Qué le falta a «Porque estaba cansado»?", "o": ["Terminar la idea", "Un sustantivo", "Un punto"], "c": 0}, {"t": "¿Cuál repara el fragmento «Caminando hacia el trabajo»?", "o": ["Camino hacia el trabajo.", "Caminando hacia el trabajo por la mañana.", "Hacia el trabajo caminando."], "c": 0}, {"t": "¿Cuál es la fórmula para oraciones claras en el GED?", "o": ["Sujeto + verbo + complemento + punto", "Adjetivo + adjetivo + coma", "Una sola oración muy larga por párrafo"], "c": 0}, {"t": "«Compró pan en la tienda.» ¿Es una oración completa?", "o": ["Sí: el sujeto (él o ella) está sobreentendido", "No: le falta el sujeto", "No: le falta el verbo"], "c": 0}, {"t": "¿Por qué conviene escribir oraciones cortas en el GED?", "o": ["Porque son claras y es más difícil perder el sujeto y el verbo", "Porque el examen no acepta oraciones largas", "Porque así se escribe menos"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya distingues oraciones completas y fragmentos. Puedes continuar con la Lección 3.6.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 

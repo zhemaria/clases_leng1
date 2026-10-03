@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<!-- Lección 3.4 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Clase 4: Los tiempos verbales - presente, pasado, futuro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lección 3.4 · Los tiempos verbales: presente, pasado y futuro</title>
+<meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
+<meta name="license" content="CC BY-NC-SA 4.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
     --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
@@ -164,24 +170,82 @@
   .nivel-3{background:#fff8e1}
   .nivel-2{background:#fff3e0}
   .nivel-1{background:#ffebee}
+
+  /* ── Índice de la lección ── */
+  .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
+  .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
+  .indice ol{margin:0;padding-left:1.4em}
+  .indice li{margin:4px 0}
+  .indice a{color:var(--cp-oscuro)}
+  .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+  .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .volver-indice:hover{background:var(--cp);color:#fff}
+  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
+  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
+  .enlace-practica:hover{background:var(--cp-claro)}
+  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
+  /* ── Quiz de la lección ── */
+  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
+  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .qz-enun{font-weight:600;margin:0 0 10px}
+  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
+  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
+  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
+  .qz-ops{display:flex;flex-direction:column;gap:8px}
+  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
+  .qz-op:hover:not(:disabled){border-color:var(--cp)}
+  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .qz-op.correcta::before{content:'✓ '}
+  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
+  .qz-op.incorrecta::before{content:'✗ '}
+  .qz-op:disabled{cursor:default}
+  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .qz-resultado.visible{display:block}
+  /* ── Pie ── */
+  footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
+  footer.pie p{margin:4px 0}
+  footer.pie a{color:var(--cp-oscuro)}
 </style>
 </head>
 <body>
 
-<h1>Clase 4: Los tiempos verbales</h1>
-<p class="subtitulo">Presente, pasado, futuro · Nivel 1 · Tema 3, semana 5</p>
+<h1>Lección 3.4 · Los tiempos verbales: presente, pasado y futuro</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 3 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h2>🎯 Objetivos de la clase</h2>
+  <h2>🎯 Objetivos de la lección</h2>
   <p style="margin-bottom:0">Aprender a contar <strong>cuándo</strong> ocurre la acción usando los tres tiempos básicos del verbo: <strong>presente</strong>, <strong>pasado</strong> (pretérito) y <strong>futuro</strong>.</p>
 </div>
 
-<h2>📚 Bienvenida</h2>
+<nav class="indice" id="indice" aria-labelledby="indice-titulo">
+  <h2 id="indice-titulo">Contenido de la lección</h2>
+  <ol>
+    <li><a href="#s-1-tiempo-verbal">¿Qué es el tiempo verbal?</a></li>
+    <li><a href="#s-2-linea-de-tiempo">La línea de tiempo en acción</a></li>
+    <li><a href="#s-3-conjugacion">Práctica de conjugación</a></li>
+    <li><a href="#s-tarea">Tarea</a></li>
+    <li><a href="#s-quiz">Quiz de la lección</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
+  </ol>
+  <div class="abrir-cerrar">
+    <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
+    <button type="button" class="btn btn-secundario" id="cerrar-todo">Cerrar todo</button>
+  </div>
+</nav>
 
-<p>Asere, ya sabes que el verbo es el corazón de la oración. Hoy le vamos a agregar un superpoder: el verbo no solo dice <em>qué pasa</em>, también dice <em>cuándo pasa</em>. Una acción puede haber sido <strong>ayer</strong>, estar pasando <strong>ahora</strong>, o que vaya a ocurrir <strong>mañana</strong>. Esa "máquina del tiempo" que tiene el verbo se llama <span class="palabra-clave">tiempo verbal</span>.</p>
+<h2>📚 Para empezar</h2>
 
-<details open>
-<summary>1. Introducción al tiempo verbal <span class="caja-tiempo">10 min</span></summary>
+<p>Ya sabes que el verbo es el corazón de la oración. Ahora vas a descubrir su superpoder: el verbo no solo dice <em>qué pasa</em>, también dice <em>cuándo pasa</em>. Una acción puede haber sido <strong>ayer</strong>, estar pasando <strong>ahora</strong>, o que vaya a ocurrir <strong>mañana</strong>. Esa "máquina del tiempo" que tiene el verbo se llama <span class="palabra-clave">tiempo verbal</span>.</p>
+
+<details open id="s-1-tiempo-verbal">
+<summary>1. ¿Qué es el tiempo verbal? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Los verbos viajan en el tiempo</h3>
@@ -215,11 +279,16 @@
   <strong>⚠️ Regla importante:</strong> Dentro de un mismo párrafo, los tiempos deben mantenerse <strong>coherentes</strong>. No conviene saltar de pasado a futuro sin avisar. Si estás contando algo que pasó ayer, mantén el pasado a lo largo del relato.
 </div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-4.html#mismo-tiempo" target="_blank" rel="noopener">
+  ✍️ Práctica: Un relato, un mismo tiempo ↗
+  <span>Relatos cortos con un verbo que se salió del tiempo: encuéntralo. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>2. Desarrollo: línea de tiempo en acción <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-linea-de-tiempo">
+<summary>2. La línea de tiempo en acción <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Tres versiones de la misma acción</h3>
@@ -228,7 +297,7 @@
 
 <table class="pistas">
   <thead>
-    <tr><th>Tiempo</th><th>Ejemplo</th><th>Verbo conjugado</th></tr>
+    <tr><th scope="col">Tiempo</th><th scope="col">Ejemplo</th><th scope="col">Verbo conjugado</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -255,7 +324,7 @@
 
 <table class="pistas">
   <thead>
-    <tr><th>Tiempo</th><th>Palabras pista</th></tr>
+    <tr><th scope="col">Tiempo</th><th scope="col">Palabras pista</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -276,8 +345,8 @@
 <h3>Lectura comparativa: el mismo día en tres tiempos</h3>
 
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-lectura">Lectura</span> Comparativa · individual o en pareja</h4>
-  <p>Lee las tres versiones del mismo párrafo sobre la rutina diaria. <strong>Subraya los verbos en cada versión</strong> y nota cómo cambian según el tiempo.</p>
+  <h4><span class="badge-tipo badge-lectura">Lectura</span> Comparativa · en voz alta</h4>
+  <p>Lee en voz alta las tres versiones del mismo párrafo sobre la rutina de Marta. Fíjate en los verbos marcados: <strong>cómo cambia la terminación</strong> según el tiempo. Después copia en tu cuaderno los cinco verbos de cada versión, en tres columnas.</p>
 </div>
 
 <div class="comparacion-versiones">
@@ -306,11 +375,16 @@
 <div id="ejercicio-tiempos"></div>
 <div class="puntaje" id="puntaje-tiempos">Aciertos: 0 / 8</div>
 
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-4.html#identificar-tiempo" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Pasado, presente o futuro? ↗
+  <span>Casi cuarenta oraciones más para identificar el tiempo del verbo. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
-<details>
-<summary>3. Práctica de conjugación <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-conjugacion">
+<summary>3. Práctica de conjugación <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
 <h3>Conjuga los verbos</h3>
@@ -320,95 +394,83 @@
 <div id="ejercicio-conjugar"></div>
 <div class="puntaje" id="puntaje-conjugar">Aciertos: 0 / 6</div>
 
-<h3>Actividad oral: "Ayer, hoy, mañana"</h3>
+<h3>Actividad oral: «Ayer, hoy, mañana»</h3>
 
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Discusión</span> Sincrónica · en grupos de 3</h4>
-  <p>En grupos de 3, cada estudiante <strong>cuenta una acción suya en los tres tiempos</strong>:</p>
+  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · en voz alta</h4>
+  <p>Elige tres acciones de tu rutina (cocinar, estudiar, manejar, llamar…) y <strong>di cada una en los tres tiempos</strong>, en voz alta:</p>
   <ul class="lista-bonita">
     <li><span class="pas">Ayer</span> caminé al trabajo.</li>
     <li><span class="pre">Hoy</span> camino al trabajo.</li>
     <li><span class="fut">Mañana</span> caminaré al trabajo.</li>
   </ul>
-  <p style="margin-bottom:0">Cada uno escoge una acción de su rutina (cocinar, estudiar, manejar, comer, llamar...) y la dice en los tres tiempos. Los otros dos escuchan y confirman que los verbos están bien conjugados.</p>
+  <p style="margin-bottom:0">Si puedes, grábate con el celular y escúchate: ¿se nota la diferencia entre <em>caminé</em>, <em>camino</em> y <em>caminaré</em>? Si alguien de tu casa quiere jugar, que te diga una acción y tú la conjugas en los tres tiempos.</p>
 </div>
 
-<div class="modalidad">
-  <div class="tarjeta-modalidad presencial">
-    <h4>🏫 Presencial</h4>
-    <p>El profesor forma grupos de 3 en clase. Hacen el ejercicio en voz alta, turnándose. Si alguien se equivoca, el grupo le ayuda a corregir.</p>
-  </div>
-  <div class="tarjeta-modalidad online">
-    <h4>💻 Online</h4>
-    <p>El profesor abre salas pequeñas (breakout rooms) de 3 personas. Hacen el ejercicio con micrófono encendido. Después regresan al grupo grande para compartir las acciones más curiosas.</p>
-  </div>
-</div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-4.html#escribe-verbo" target="_blank" rel="noopener">
+  ✍️ Práctica: Escribe el verbo ↗
+  <span>Conjuga tú los verbos en pasado, presente y futuro. Si te equivocas solo en la tilde, la página te avisa. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
 
 </div>
 </details>
 
-<details>
-<summary>4. Actividades de la unidad <span class="caja-tiempo">complemento</span></summary>
+<details id="s-tarea">
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
+<ul class="lista-bonita">
+  <li><strong>Mi día de ayer.</strong> Escribe un párrafo corto, de <strong>3 a 5 oraciones</strong>, sobre lo que hiciste ayer. Todos los verbos deben ir en pasado. Subraya cada verbo con doble raya.</li>
+  <li><strong>Mi día de mañana.</strong> Vuelve a escribir el mismo párrafo, ahora en futuro: <em>Mañana me levantaré…</em></li>
+  <li><strong>Tres verbos, tres tiempos.</strong> Conjuga <em>hablar</em>, <em>comer</em> y <em>vivir</em> con <em>yo</em>, <em>tú</em> y <em>ella</em> en presente, pasado y futuro.</li>
+</ul>
 
 <div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-quiz">Quiz</span> 15 preguntas · Brightspace</h4>
-  <p>El quiz de la unidad evalúa los tiempos verbales:</p>
-  <ul class="lista-bonita">
-    <li>Identificar el tiempo verbal de cada oración.</li>
-    <li>Completar con la forma correcta del verbo.</li>
-    <li>Conjugar 5 verbos comunes (<em>hablar, comer, vivir</em>) en las tres personas básicas (yo, tú, él/ella).</li>
-  </ul>
-</div>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Rúbrica</span> Escritura: "Mi día de ayer"</h4>
-  <p>Escribirás un <strong>párrafo corto (3–5 oraciones)</strong> describiendo qué hiciste ayer. Se evaluará con esta rúbrica analítica:</p>
-
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa «Mi día de ayer» con esta rúbrica</h4>
   <table class="rubrica">
+    <caption class="sr-solo">Rúbrica para revisar el párrafo «Mi día de ayer»</caption>
     <thead>
       <tr>
-        <th>Criterio</th>
-        <th class="nivel-4">Excelente (4)</th>
-        <th class="nivel-3">Bueno (3)</th>
-        <th class="nivel-2">Aceptable (2)</th>
-        <th class="nivel-1">Inicial (1)</th>
+        <th scope="col">Criterio</th>
+        <th scope="col" class="nivel-4">Excelente (4)</th>
+        <th scope="col" class="nivel-3">Bueno (3)</th>
+        <th scope="col" class="nivel-2">Aceptable (2)</th>
+        <th scope="col" class="nivel-1">Inicial (1)</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Uso correcto del tiempo verbal</td>
-        <td class="nivel-4">Todos los verbos en pasado, consistentes</td>
-        <td class="nivel-3">La mayoría en pasado, 1 desliz</td>
-        <td class="nivel-2">Mezcla tiempos sin razón clara</td>
-        <td class="nivel-1">Tiempos verbales incorrectos</td>
-      </tr>
-      <tr>
-        <td>Concordancia sujeto-verbo</td>
-        <td class="nivel-4">Todas las oraciones concuerdan</td>
-        <td class="nivel-3">1 desliz menor</td>
-        <td class="nivel-2">2–3 deslices</td>
-        <td class="nivel-1">Concordancia ausente</td>
-      </tr>
-      <tr>
-        <td>Oraciones completas</td>
-        <td class="nivel-4">Todas las oraciones son completas</td>
-        <td class="nivel-3">1 fragmento</td>
-        <td class="nivel-2">2 fragmentos</td>
-        <td class="nivel-1">Múltiples fragmentos</td>
-      </tr>
+      <tr><td>Uso del tiempo verbal</td><td class="nivel-4">Todos los verbos en pasado</td><td class="nivel-3">La mayoría en pasado, con un desliz</td><td class="nivel-2">Mezcla tiempos sin razón</td><td class="nivel-1">Tiempos incorrectos</td></tr>
+      <tr><td>Concordancia sujeto y verbo</td><td class="nivel-4">Todas las oraciones concuerdan</td><td class="nivel-3">Un desliz menor</td><td class="nivel-2">2 o 3 deslices</td><td class="nivel-1">Casi ninguna concuerda</td></tr>
+      <tr><td>Oraciones completas</td><td class="nivel-4">Todas son oraciones completas</td><td class="nivel-3">1 fragmento</td><td class="nivel-2">2 fragmentos</td><td class="nivel-1">Varios fragmentos</td></tr>
     </tbody>
   </table>
+  <p style="margin-bottom:0">Si en algún criterio te quedaste en 1 o 2, corrige el párrafo y vuelve a puntuarte.</p>
 </div>
-
 </div>
 </details>
 
-<details>
-<summary>5. Cierre <span class="caja-tiempo">5 min</span></summary>
+<details id="s-quiz">
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<div class="qz-intro">
+  <h4>✅ Quiz · 15 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>12 de 15</strong>.</p>
+</div>
+<div id="qz-cuerpo"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+</div>
+<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+</div>
+</details>
+
+
+<details id="s-cierre">
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Lo que aprendimos hoy</h3>
+<h3>Lo que aprendiste en esta lección</h3>
 
 <ul class="lista-bonita">
   <li>Los verbos tienen <strong>tiempo</strong>: dicen <em>cuándo</em> ocurre la acción.</li>
@@ -418,7 +480,7 @@
 </ul>
 
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
     <li>¿Puedes decir "yo trabajo" en pasado, presente y futuro?</li>
     <li>Si una oración empieza con "Mañana...", ¿qué tiempo verbal debe seguir?</li>
@@ -427,16 +489,19 @@
 </div>
 
 <div class="tip">
-  <strong>📅 Para la próxima clase:</strong> Vamos a combinar todo lo aprendido (sustantivos + adjetivos + verbos) para escribir <strong>oraciones completas</strong>, y vamos a aprender a detectar los <em>fragmentos</em> (oraciones rotas).
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_3-5.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.5 · Oración completa frente a fragmento</a>. Vas a juntar todo (sustantivos, adjetivos y verbos) para escribir <strong>oraciones completas</strong>, y aprenderás a reconocer los <em>fragmentos</em>.
 </div>
 
 </div>
 </details>
 
-<div class="firma">
-  Prof. José M. Fernández (Zhema) · ABE/ASE Math Master Teacher · Harry S. Truman College<br>
-  Artes del Lenguaje Nivel 1 · GEDparaHispanos.com · brightspace.ccc.edu
-</div>
+<footer class="pie">
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1 · Tema 3 · Lección 3.4</strong></p>
+  <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
+  <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
+</footer>
+<a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
+
 
 <script>
 (function(){
@@ -489,14 +554,14 @@
     var el=document.getElementById('puntaje-tiempos');
     el.textContent='Aciertos: '+aciertosT+' / '+oracionesTiempo.length;
     if(aciertosT===oracionesTiempo.length){
-      el.innerHTML='🎉 ¡Bestial! Aciertos: '+aciertosT+' / '+oracionesTiempo.length;
+      el.innerHTML='🎉 ¡Muy bien! Aciertos: '+aciertosT+' / '+oracionesTiempo.length;
       el.style.color='var(--exito)';
     }
   }
 
   // Conjugación
   var conjugar=[
-    {frase:'Mañana es mi examen,',inf:'estudiar',opciones:['estudié','estudio','estudiaré','estudiando'],correcta:'estudiaré',resto:'toda la noche.'},
+    {frase:'La semana que viene yo',inf:'estudiar',opciones:['estudié','estudio','estudiaré','estudiando'],correcta:'estudiaré',resto:'para el GED.'},
     {frase:'Ayer mi mamá',inf:'cocinar',opciones:['cocinó','cocina','cocinará','cocinando'],correcta:'cocinó',resto:'arroz con pollo.'},
     {frase:'Todos los días yo',inf:'caminar',opciones:['caminé','camino','caminaré','caminando'],correcta:'camino',resto:'al trabajo.'},
     {frase:'La semana pasada nosotros',inf:'comer',opciones:['comimos','comemos','comeremos','comiendo'],correcta:'comimos',resto:'en un restaurante.'},
@@ -547,6 +612,73 @@
       el.style.color='var(--exito)';
     }
   }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué nos dice el <strong>tiempo verbal</strong>?", "o": ["Cuándo ocurre la acción", "Quién hace la acción", "Dónde ocurre la acción"], "c": 0}, {"t": "«Ayer caminé al trabajo.» ¿En qué tiempo está?", "o": ["Pasado", "Presente", "Futuro"], "c": 0, "fijo": true}, {"t": "«Hoy estudio matemáticas.» ¿En qué tiempo está?", "o": ["Pasado", "Presente", "Futuro"], "c": 1, "fijo": true}, {"t": "«El año próximo terminaré el GED.» ¿En qué tiempo está?", "o": ["Pasado", "Presente", "Futuro"], "c": 2, "fijo": true}, {"t": "¿Cuál de estas palabras es una pista de <strong>pasado</strong>?", "o": ["anoche", "mañana", "ahora"], "c": 0}, {"t": "¿Cuál de estas palabras es una pista de <strong>futuro</strong>?", "o": ["la semana que viene", "la semana pasada", "todos los días"], "c": 0}, {"t": "Completa: «Ayer mi mamá ___ arroz con pollo.» (cocinar)", "o": ["cocinó", "cocina", "cocinará"], "c": 0}, {"t": "Completa: «Todos los días yo ___ al trabajo.» (caminar)", "o": ["camino", "caminé", "caminaré"], "c": 0}, {"t": "Completa: «Más tarde tú ___ con el doctor.» (hablar)", "o": ["hablarás", "hablaste", "hablas"], "c": 0}, {"t": "Completa: «La semana pasada nosotros ___ en un restaurante.» (comer)", "o": ["comimos", "comemos", "comeremos"], "c": 0}, {"t": "Completa: «Mañana mis hijos ___ la tienda temprano.» (abrir)", "o": ["abrirán", "abrieron", "abren"], "c": 0}, {"t": "¿Cómo se dice «yo trabajo» en pasado?", "o": ["yo trabajé", "yo trabajaré", "yo trabajaba mañana"], "c": 0}, {"t": "¿Cómo se dice «ella vive» en futuro?", "o": ["ella vivirá", "ella vivió", "ella viva"], "c": 0}, {"t": "¿Qué parte del verbo cambia para decir cuándo?", "o": ["La terminación (camin<strong>ó</strong>, camin<strong>a</strong>, camin<strong>ará</strong>)", "La primera letra", "Ninguna: el verbo no cambia"], "c": 0}, {"t": "En un relato que empieza con «Ayer…», los verbos deben ir…", "o": ["en pasado, de principio a fin", "en futuro", "mezclando los tres tiempos"], "c": 0}], META=12, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  P.forEach(function(p,i){
+    var d=document.createElement('div');
+    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
+    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.x||p.a){
+      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+    }
+    h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
+    var orden=p.o.map(function(_,j){return j;});
+    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
+    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
+    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  });
+  cuerpo.addEventListener('click',function(ev){
+    var oir=ev.target.closest('.qz-oir');
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var i=b.getAttribute('data-i');
+    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+  });
+  var res=document.getElementById('qz-resultado');
+  document.getElementById('qz-calificar').addEventListener('click',function(){
+    var bien=0;
+    P.forEach(function(p,i){
+      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
+        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+      });
+      if(elegidas[i]===p.c)bien++;
+    });
+    var msg,fondo,color;
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya manejas los tres tiempos. Puedes continuar con la Lección 3.5.";fondo='#d4edda';color='#155724';}
+    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
+    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('qz-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={}; res.classList.remove('visible'); res.textContent='';
+    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+    cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
+(function(){
+  function abrir(id){
+    var el=id&&document.getElementById(id); if(!el)return;
+    var d=el.tagName==='DETAILS'?el:el.closest('details');
+    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
+  abrir(decodeURIComponent(location.hash.slice(1)));
 })();
 </script>
 
