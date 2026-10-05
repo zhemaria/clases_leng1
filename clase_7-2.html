@@ -1,176 +1,91 @@
 <!DOCTYPE html>
-<!-- Lección 7.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
-     José M. Fernández · CC BY-NC-SA 4.0 -->
+<!-- Lección 7.2 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
+     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
+     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 7.2 · Cualidades del párrafo y conectores básicos</title>
+<title>Lección 7.2 · Texto informativo: categorías, datos y conclusión</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
-    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
-    --texto:#1a2332;--fondo:#fafbfc;
-    --gris:#6b7785;--gris-claro:#eef1f4;
+    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#555;--gris-claro:#eef1f4;
+    --dip:#1565c0;--dip-claro:#e3f2fd;
+    --hia:#ad1457;--hia-claro:#fce4ec;
+    --grp:#5c3900;--grp-claro:#fff3cd;
     --exito:#2e7d32;--error:#c62828;
-    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
-    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
-    --unidad:#1976d2;--unidad-claro:#e3f2fd;
-    --cohesion:#7b3fbf;--cohesion-claro:#f3e8ff;
-    --coherencia:#2e7d32;--coherencia-claro:#e8f5e9;
-    --conector-y:#0277bd;--conector-pero:#c62828;--conector-porque:#7b3fbf;--conector-entonces:#ef6c00;
   }
   *{box-sizing:border-box}
   body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
   h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
   .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
   h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
-  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
-  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
-  .caja-objetivos li{margin-bottom:6px}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
-  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
-  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
-  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
-  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
-  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
-  .online{background:#eef5fb;border-color:var(--cp)}
-  .online h4{color:var(--cp-oscuro);margin-top:0}
-  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#8a6d00}
-  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
-  .clave-pedagogica strong{color:var(--acento-oscuro)}
-  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#6b5400}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
+  .btn-primario{background:var(--cp);color:#fff}
+  .btn-primario:hover{background:var(--cp-oscuro)}
+  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
+  .btn-secundario:hover{background:#d6dde4}
+  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
   .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-
-  /* Las tres cualidades del párrafo */
-  .cualidades-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
-  .cualidad-card{border-radius:10px;padding:16px 18px;border:2px solid;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  .cualidad-card.unidad{border-color:var(--unidad);background:linear-gradient(180deg,var(--unidad-claro) 0%,#fff 30%)}
-  .cualidad-card.cohesion{border-color:var(--cohesion);background:linear-gradient(180deg,var(--cohesion-claro) 0%,#fff 30%)}
-  .cualidad-card.coherencia{border-color:var(--coherencia);background:linear-gradient(180deg,var(--coherencia-claro) 0%,#fff 30%)}
-  .cualidad-card h4{margin-top:0;margin-bottom:8px;font-size:1.1rem}
-  .cualidad-card.unidad h4{color:var(--unidad)}
-  .cualidad-card.cohesion h4{color:var(--cohesion)}
-  .cualidad-card.coherencia h4{color:var(--coherencia)}
-  .cualidad-card .icono-cual{font-size:1.6rem;margin-right:6px;vertical-align:middle}
-  .cualidad-card p{margin:6px 0;font-size:0.92rem;line-height:1.55}
-  .cualidad-card .definicion{font-weight:600;font-size:0.95rem}
-
-  /* Comparación: con y sin la cualidad */
-  .comparacion-cual{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
-  @media(max-width:640px){.comparacion-cual{grid-template-columns:1fr}}
-  .col-comp{background:#fff;border-radius:10px;padding:14px 16px;border:2px solid}
-  .col-comp.mal{border-color:var(--error);background:#fdecea}
-  .col-comp.bien{border-color:var(--exito);background:#e8f5e9}
-  .col-comp h5{margin:0 0 8px 0;font-size:0.95rem}
-  .col-comp.mal h5{color:var(--error)}
-  .col-comp.bien h5{color:var(--exito)}
-  .col-comp p{margin:0;font-size:0.92rem;line-height:1.6}
-  .resaltar-problema{background:#ffe0e0;padding:1px 4px;border-radius:3px;text-decoration:line-through;text-decoration-color:var(--error)}
-
-  /* Conectores */
-  .conectores-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
-  .conector-card{background:#fff;border-radius:10px;padding:14px;border-top:5px solid;box-shadow:0 2px 6px rgba(0,0,0,0.07)}
-  .conector-card.conec-y{border-color:var(--conector-y)}
-  .conector-card.conec-y .pal{color:var(--conector-y)}
-  .conector-card.conec-pero{border-color:var(--conector-pero)}
-  .conector-card.conec-pero .pal{color:var(--conector-pero)}
-  .conector-card.conec-porque{border-color:var(--conector-porque)}
-  .conector-card.conec-porque .pal{color:var(--conector-porque)}
-  .conector-card.conec-entonces{border-color:var(--conector-entonces)}
-  .conector-card.conec-entonces .pal{color:var(--conector-entonces)}
-  .conector-card .pal{font-size:1.3rem;font-weight:700;display:block;text-align:center;margin-bottom:4px}
-  .conector-card .funcion{font-size:0.85rem;color:var(--gris);text-align:center;font-style:italic;margin-bottom:8px;display:block}
-  .conector-card .ejemplo{font-size:0.88rem;line-height:1.5;background:var(--gris-claro);padding:8px 10px;border-radius:6px;display:block}
-
-  /* Actividad: ordenar oraciones */
-  .ordenar-cont{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(123,63,191,0.08)}
-  .ordenar-cont h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
-  .instruccion-ord{background:var(--acento-claro);padding:10px 14px;border-radius:6px;font-size:0.93rem;margin:10px 0;border-left:4px solid var(--acento)}
-  .oraciones-desordenadas{display:flex;flex-direction:column;gap:8px;margin:14px 0}
-  .oracion-mover{background:#fff;border:2px solid var(--gris-claro);padding:10px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:12px;font-size:0.92rem;transition:all 0.2s;user-select:none}
-  .oracion-mover:hover{border-color:var(--acento);background:var(--acento-claro)}
-  .oracion-mover.seleccionada{border-color:var(--acento);background:var(--acento-claro);box-shadow:0 0 0 3px rgba(123,63,191,0.15)}
-  .oracion-mover .etiq-orig{background:var(--gris);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0}
-  .oracion-mover .texto-or{flex:1}
-  .botones-ord{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
-  .btn-orden{padding:9px 18px;border-radius:6px;border:none;font-family:inherit;font-weight:600;cursor:pointer;font-size:0.92rem;transition:all 0.2s}
-  .btn-subir{background:var(--cp);color:#fff}
-  .btn-subir:hover{background:var(--cp-oscuro)}
-  .btn-bajar{background:var(--acento);color:#fff}
-  .btn-bajar:hover{background:var(--acento-oscuro)}
-  .btn-verificar{background:var(--exito);color:#fff;padding:10px 22px}
-  .btn-verificar:hover{filter:brightness(0.92)}
-  .btn-reiniciar{background:var(--gris);color:#fff}
-  .btn-reiniciar:hover{background:#4a5560}
-  .resultado-ord{padding:14px 18px;border-radius:8px;margin-top:14px;display:none;font-size:0.95rem;line-height:1.6}
-  .resultado-ord.correcto{background:#d4edda;border:2px solid var(--exito);color:var(--exito);display:block}
-  .resultado-ord.incorrecto{background:#fdecea;border:2px solid var(--error);color:var(--error);display:block}
-
-  /* Plantilla guiada para escribir */
-  .plantilla-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:20px;margin:18px 0;box-shadow:0 3px 12px rgba(0,137,205,0.1)}
-  .plantilla-cont h4{margin-top:0;color:var(--cp-oscuro)}
-  .paso-plantilla{margin:14px 0;padding:14px 16px;border-radius:8px;background:#fafbfc;border-left:5px solid var(--cp)}
-  .paso-plantilla.p1{border-color:#d4a056;background:#fdf6e8}
-  .paso-plantilla.p2{border-color:#c0392b;background:#fdecea}
-  .paso-plantilla.p3{border-color:#d4a056;background:#fdf6e8}
-  .paso-plantilla h5{margin:0 0 6px 0;font-size:0.98rem}
-  .paso-plantilla.p1 h5{color:#8a5a00}
-  .paso-plantilla.p2 h5{color:var(--error)}
-  .paso-plantilla.p3 h5{color:#8a5a00}
-  .paso-plantilla .indicacion{font-size:0.88rem;font-style:italic;color:var(--gris);margin-bottom:8px}
-  .linea-escritura{display:block;border-bottom:2px solid #aab2bd;height:28px;margin:6px 0;background:repeating-linear-gradient(180deg,transparent 0,transparent 27px,#aab2bd 27px,#aab2bd 28px)}
-
-  /* Quiz */
-  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
-  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
-  .preguntas-quiz{margin:14px 0}
-  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
-  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
-  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
-  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
-  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
-  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
-  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
-  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
-  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
-  .retro-quiz.visible{display:block}
-  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
-
-  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
-  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
-  .badge-quiz{background:#e8f5e9;color:#2e7d32}
-
-  /* Párrafo con conectores resaltados */
-  .parrafo-con-conectores{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:14px 0;line-height:1.85;font-size:0.95rem}
-  .conec-marca{padding:1px 6px;border-radius:4px;font-weight:700;color:#fff}
-  .conec-marca.y{background:var(--conector-y)}
-  .conec-marca.pero{background:var(--conector-pero)}
-  .conec-marca.porque{background:var(--conector-porque)}
-  .conec-marca.entonces{background:var(--conector-entonces)}
-
-  /* ── Índice de la lección ── */
+  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
+  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
+  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
+  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.tabla tr:last-child td{border-bottom:none}
+  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad h4{color:#8a3d0c;margin-top:0}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0d47a1}
+  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
+  /* Clasificadores */
+  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
+  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
+  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
+  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
+  .item-fb:empty{display:none}
+  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
+  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
+  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
+  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
+  .btn-op:disabled{cursor:default}
+  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
+  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
+  /* Lectura con marcas */
+  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
+  .texto-lectura p{margin:0 0 10px}
+  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
+  .leyenda span{display:inline-flex;align-items:center;gap:6px}
+  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
+  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
+  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
+  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
+  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
+  /* Índice */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -180,17 +95,13 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  .caja-tiempo{color:#1a2332!important}
-  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
-  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
-  details:not([open])>summary::before{transform:none}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  /* ── Quiz de la lección ── */
+  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
+  .aviso-voz.visible{display:block}
+  /* Quiz */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -210,54 +121,96 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
-  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 
-  /* ── Tarea y autoevaluación ── */
-  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
-  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
-  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
-  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
-  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
-  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.rubrica tr:last-child td{border-bottom:none}
-  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
-  .nivel-4{background:#e8f5e9}
-  .nivel-1{background:#ffebee}
-  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
-  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
-  .ver-modelo[open]>summary{background:none}
-  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
+  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
+  .qz-repaso a{color:#004d44;font-weight:700}
+  /* ── Comunes desde el Tema 4 ── */
+  .item-ops{flex-wrap:wrap}
+  .apilado .item{flex-direction:column;align-items:stretch}
+  .apilado .item-ops{flex-direction:column}
+  .apilado .btn-op{text-align:left;font-weight:400}
+  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
+  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
+  .pasaje p{margin:0 0 6px}
+  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
+  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
+  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
+  /* Taller de escritura (Tema 7) */
+  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
+  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
+  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
+  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
+  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
+  .tl-conect{font-size:.95rem;margin:4px 0 8px}
+  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
+  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
+  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
+  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
+  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
+  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
+  .rubrica{font-size:.92rem}
+  .rubrica td,.rubrica th{vertical-align:top}
+  .marca{border-radius:3px;padding:0 2px;font-weight:700}
+  .m-postura{background:#e3f2fd;color:#0d3c78}
+  .m-razon{background:#fff3e0;color:#7a3a00}
+  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
+  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
+  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
+  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
+  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
+  .oculta-marcas .marca::before{content:none}
+  @media(max-width:640px){
+    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
+    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
+    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
+    .rubrica td{border:none;border-top:1px solid #d5dde3}
+    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
+  }
 
-  button.oracion-mover{width:100%;text-align:left;font:inherit;color:inherit;margin-bottom:8px}
-  button.oracion-mover:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
+  .esquema{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0}
+  .esquema div{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:10px 14px}
+  .esquema h4{margin:0 0 6px;color:var(--cp-oscuro)}
+  .esquema ul{margin:0;padding-left:18px}
+  .tema-c{background:var(--cp-oscuro);color:#fff;border-radius:10px;padding:8px 14px;text-align:center;font-weight:700}
+  .plantilla{background:#fff;border:2px dashed var(--cp);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .plantilla p{margin:6px 0}
+  .dif{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:600px){.dif{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
-<h1>Lección 7.2 · Cualidades del párrafo y conectores básicos</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 7 · Unas 2 horas, a tu ritmo</p>
+<h1>Lección 7.2 · Texto informativo: categorías, datos y conclusión</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 7: Escribir con estructura · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <ul>
-    <li>Distinguir las tres <strong>cualidades</strong> de un buen párrafo: unidad, cohesión y coherencia.</li>
-    <li>Aplicar los <strong>conectores básicos</strong> <em>y, pero, porque, entonces</em> para unir oraciones.</li>
-    <li>Escribir un primer <strong>párrafo informativo</strong> corto siguiendo una plantilla guiada.</li>
+  <ul class="lista-bonita" style="margin:0">
+    <li>Organizar la información en <strong>categorías</strong>, un párrafo para cada una.</li>
+    <li>Incluir <strong>datos, detalles y definiciones</strong>, y distinguir un dato de una opinión.</li>
+    <li>Usar <strong>conectores</strong> para explicar y ordenar.</li>
+    <li>Cerrar con una <strong>conclusión ligada al tema</strong>.</li>
+    <li>Escribir un párrafo informativo sobre un tema de ciencias o de historia.</li>
   </ul>
+  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.W.TT.2 · 2.W.PD.2 · WHST.6-8.2 · WHST.6-8.4</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-cualidades">Las tres cualidades del párrafo</a></li>
-    <li><a href="#s-2-conectores">Los conectores básicos</a></li>
-    <li><a href="#s-3-ordenar">Actividad: ordena un párrafo</a></li>
-    <li><a href="#s-4-plantilla">Plantilla: escribo mi primer párrafo</a></li>
+    <li><a href="#s-1-que-es">Opinar frente a informar</a></li>
+    <li><a href="#s-2-modelo">Texto modelo: la biblioteca pública</a></li>
+    <li><a href="#s-3-categorias">Agrupar en categorías</a></li>
+    <li><a href="#s-4-dato">Dato u opinión</a></li>
+    <li><a href="#s-5-materia">Un texto de ciencias: los estados de la materia</a></li>
+    <li><a href="#s-6-conclusion">Conectores y conclusión</a></li>
+    <li><a href="#s-7-taller">Taller: escribe tu texto informativo</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -269,260 +222,171 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
+<p>Imagina que un vecino recién llegado te pregunta qué servicios hay en el barrio. No le dirías todo de golpe y en desorden: le hablarías primero de las escuelas, luego de las clínicas y después del transporte. Sin darte cuenta, estarías organizando la información en <strong>categorías</strong>. Eso es un texto informativo: explicar un tema con orden para que el lector lo entienda. En el GED de Ciencias y de Estudios Sociales vas a leer muchos textos así, y en esta lección aprenderás a escribirlos.</p>
+<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán.</p>
 
-<p>En la lección anterior aprendiste la estructura del párrafo con la <strong>técnica de la hamburguesa</strong>: pan de arriba, relleno y pan de abajo. Ahora vas a dar el siguiente paso. Saber dónde va cada parte no basta: también hace falta que las oraciones se sostengan unas a otras y que el conjunto tenga sentido.</p>
-
-<p>Para lograrlo, vas a estudiar las tres <span class="palabra-clave">cualidades</span> de un buen párrafo y a usar <span class="palabra-clave">conectores</span>, las palabras que enlazan las ideas. Al final, escribirás tu primer párrafo.</p>
-
-<details open id="s-1-cualidades">
-<summary>1. Las tres cualidades del párrafo <span class="caja-tiempo">15 min</span></summary>
+<details open id="s-1-que-es">
+<summary>1. Opinar frente a informar <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Un buen párrafo se sostiene por tres cualidades</h3>
-
-<p>Un párrafo puede tener las tres partes que ya conoces, pero si le falta alguna de estas cualidades, quien lee se confunde. Estas son las tres condiciones de un párrafo bien escrito:</p>
-
-<div class="cualidades-grid">
-  <div class="cualidad-card unidad">
-    <h4><span class="icono-cual">🎯</span>Unidad</h4>
-    <p class="definicion">Hablar de un solo tema.</p>
-    <p>Todas las oraciones deben referirse al mismo asunto. Si una oración se aparta del tema, rompe la unidad.</p>
-  </div>
-  <div class="cualidad-card cohesion">
-    <h4><span class="icono-cual">🔗</span>Cohesión</h4>
-    <p class="definicion">Conectar las oraciones entre sí.</p>
-    <p>Las oraciones deben enlazarse con palabras de unión (conectores) para que fluyan como un río, no como piedras sueltas.</p>
-  </div>
-  <div class="cualidad-card coherencia">
-    <h4><span class="icono-cual">🧠</span>Coherencia</h4>
-    <p class="definicion">Que las ideas tengan sentido lógico.</p>
-    <p>El orden de las oraciones debe seguir un razonamiento que el lector pueda entender sin esfuerzo.</p>
-  </div>
+<div class="dif">
+  <div class="pasaje"><strong>Texto de opinión (Lección 7.1)</strong><br>Quiere <strong>convencer</strong>. Tiene una postura y razones. Usa «creo que», «debería».</div>
+  <div class="pasaje"><strong>Texto informativo (esta lección)</strong><br>Quiere <strong>explicar</strong>. Tiene un tema y categorías. Usa hechos, datos y definiciones, sin opiniones del autor.</div>
 </div>
-
-<h3>Cuando falta la <span style="color:var(--unidad)">unidad</span></h3>
-
-<p>Mira este párrafo, que pierde la unidad porque una oración se sale del tema:</p>
-
-<div class="comparacion-cual">
-  <div class="col-comp mal">
-    <h5>❌ Sin unidad</h5>
-    <p>El mercado de mi barrio abre todos los días desde las siete de la mañana. Allí venden frutas, verduras y carne fresca. <span class="resaltar-problema">Mi sobrino estudia en una universidad de California.</span> Los precios son bajos comparados con los del supermercado.</p>
-  </div>
-  <div class="col-comp bien">
-    <h5>✅ Con unidad</h5>
-    <p>El mercado de mi barrio abre todos los días desde las siete de la mañana. Allí venden frutas, verduras y carne fresca. Los precios son bajos comparados con los del supermercado. Por eso prefiero comprar allí.</p>
-  </div>
-</div>
-
-<h3>Cuando falta la <span style="color:var(--cohesion)">cohesión</span></h3>
-
-<p>En este, las oraciones están sueltas, sin conectores que las unan:</p>
-
-<div class="comparacion-cual">
-  <div class="col-comp mal">
-    <h5>❌ Sin cohesión</h5>
-    <p>El invierno en Chicago es muy frío. Cae mucha nieve. Las personas usan abrigo, guantes y gorro. Los carros llevan llantas especiales. Es importante salir bien preparado.</p>
-  </div>
-  <div class="col-comp bien">
-    <h5>✅ Con cohesión</h5>
-    <p>El invierno en Chicago es muy frío <strong>y</strong> cae mucha nieve. <strong>Por eso</strong>, las personas usan abrigo, guantes y gorro. <strong>Además</strong>, los carros llevan llantas especiales. <strong>Entonces</strong>, es importante salir bien preparado.</p>
-  </div>
-</div>
-
-<h3>Cuando falta la <span style="color:var(--coherencia)">coherencia</span></h3>
-
-<p>Aquí el problema es que las oraciones están desordenadas y no se entiende la secuencia:</p>
-
-<div class="comparacion-cual">
-  <div class="col-comp mal">
-    <h5>❌ Sin coherencia</h5>
-    <p>Comimos pastel de cumpleaños. Mi hija sopló las velas. Compramos un pastel de chocolate. Ayer fue el cumpleaños de mi hija. Cantamos las mañanitas todos juntos.</p>
-  </div>
-  <div class="col-comp bien">
-    <h5>✅ Con coherencia</h5>
-    <p>Ayer fue el cumpleaños de mi hija. Compramos un pastel de chocolate. Cantamos las mañanitas todos juntos. Mi hija sopló las velas. Después comimos pastel de cumpleaños.</p>
-  </div>
-</div>
-
-<div class="clave-pedagogica">
-  <strong>💡 Resumen visual:</strong> La <strong>unidad</strong> es el <em>tema único</em>; la <strong>cohesión</strong> es el <em>pegamento</em> entre oraciones; la <strong>coherencia</strong> es el <em>orden lógico</em>. Las tres juntas hacen que un párrafo funcione.
-</div>
-
+<p>La estructura de un texto informativo:</p>
+<ol class="lista-bonita">
+  <li><strong>Introducción:</strong> presenta el tema y anuncia las categorías.</li>
+  <li><strong>Un párrafo por categoría:</strong> empieza con una oración temática y sigue con datos, detalles, ejemplos o definiciones.</li>
+  <li><strong>Conclusión:</strong> vuelve al tema y resume lo más importante, sin añadir información nueva.</li>
+</ol>
 </div>
 </details>
 
-<details id="s-2-conectores">
-<summary>2. Los conectores básicos: el pegamento de las ideas <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-modelo">
+<summary>2. Texto modelo: la biblioteca pública <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>¿Qué son los conectores?</h3>
-
-<p>Los <span class="palabra-clave">conectores</span> son palabras pequeñas con un trabajo muy importante: unen oraciones e indican la relación que existe entre ellas. Sin conectores, las oraciones son como ladrillos sueltos; con conectores, esos ladrillos forman una pared.</p>
-
-<p>En este nivel vas a trabajar con cuatro conectores básicos. Cada uno tiene una función distinta:</p>
-
-<div class="conectores-grid">
-  <div class="conector-card conec-y">
-    <span class="pal">Y</span>
-    <span class="funcion">Añadir información</span>
-    <span class="ejemplo">Compré pan <strong>y</strong> leche en la tienda.</span>
-  </div>
-  <div class="conector-card conec-pero">
-    <span class="pal">Pero</span>
-    <span class="funcion">Contraste / oposición</span>
-    <span class="ejemplo">Quería ir al cine, <strong>pero</strong> estaba lloviendo.</span>
-  </div>
-  <div class="conector-card conec-porque">
-    <span class="pal">Porque</span>
-    <span class="funcion">Dar una razón / causa</span>
-    <span class="ejemplo">Llegué tarde <strong>porque</strong> perdí el autobús.</span>
-  </div>
-  <div class="conector-card conec-entonces">
-    <span class="pal">Entonces</span>
-    <span class="funcion">Consecuencia / resultado</span>
-    <span class="ejemplo">No había azúcar; <strong>entonces</strong> compré una bolsa.</span>
-  </div>
+<div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="leer-bib">🔊 Escuchar el texto</button></div>
+<div class="texto-lectura" id="texto-bib">
+<p><strong>Mucho más que libros</strong></p>
+<p><span class="num-p" aria-hidden="true">1</span>La biblioteca pública ofrece muchos servicios gratuitos que no todos conocen. Se pueden agrupar en tres categorías: los préstamos, la tecnología y los programas para la comunidad.</p>
+<p><span class="num-p" aria-hidden="true">2</span>En primer lugar, la biblioteca presta materiales. Con una tarjeta gratuita, cualquier residente puede llevarse libros, películas y audiolibros. Muchas bibliotecas también tienen libros en español y en otros idiomas.</p>
+<p><span class="num-p" aria-hidden="true">3</span>En segundo lugar, la biblioteca ofrece tecnología. Hay computadoras con internet, impresoras y, en muchas sucursales, conexión inalámbrica, es decir, internet sin cables para usar con el teléfono o la computadora portátil.</p>
+<p><span class="num-p" aria-hidden="true">4</span>Por último, la biblioteca organiza programas para la comunidad. Por ejemplo, hay horas de cuentos para niños, clases de inglés para adultos y talleres para buscar empleo.</p>
+<p><span class="num-p" aria-hidden="true">5</span>En resumen, gracias a sus préstamos, su tecnología y sus programas, la biblioteca pública es un recurso valioso y gratuito para toda la familia.</p>
 </div>
-
-<h3>Conectores en acción dentro de un párrafo</h3>
-
-<p>Observa los cuatro conectores dentro de un párrafo completo:</p>
-
-<div class="parrafo-con-conectores">
-Los sábados son mi día favorito de la semana <span class="conec-marca porque">porque</span> no trabajo. Me levanto tarde, desayuno con calma <span class="conec-marca y">y</span> leo el periódico. A veces planeo salir al parque, <span class="conec-marca pero">pero</span> si hace mal tiempo, me quedo en casa viendo películas. Ese día no tengo prisa; <span class="conec-marca entonces">entonces</span>, sea cual sea el clima, siempre lo disfruto.
+<p style="font-size:.9rem;color:#555">Textos escritos para esta lección.</p>
+<h3>El esquema del texto</h3>
+<div class="tema-c">Tema: los servicios gratuitos de la biblioteca</div>
+<div class="esquema">
+  <div><h4>Préstamos</h4><ul><li>Tarjeta gratuita</li><li>Libros, películas, audiolibros</li><li>Libros en otros idiomas</li></ul></div>
+  <div><h4>Tecnología</h4><ul><li>Computadoras con internet</li><li>Impresoras</li><li>Conexión inalámbrica (definición)</li></ul></div>
+  <div><h4>Programas</h4><ul><li>Cuentos para niños</li><li>Clases de inglés</li><li>Talleres de empleo</li></ul></div>
 </div>
-
-<div class="tip">
-  <strong>📝 Reglas de puntuación importantes:</strong>
-  <ul style="margin:8px 0 0 0;padding-left:22px">
-    <li><strong>Antes de "pero"</strong> casi siempre va una coma: <em>"Estudié mucho, pero el examen fue difícil."</em></li>
-    <li><strong>"Y" no lleva coma antes</strong> en oraciones simples: <em>"Comí arroz y frijoles."</em></li>
-    <li><strong>"Porque" normalmente no lleva coma</strong>: <em>"Estoy cansado porque trabajé doce horas."</em> Tampoco suele ir al comienzo de la oración: en ese lugar se usa <em>como</em> («Como no trabajo, me levanto tarde»).</li>
-    <li><strong>"Entonces" suele ir con coma después</strong>: <em>"Entonces, decidí descansar."</em></li>
-  </ul>
-</div>
-
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l7-2.html#conectores" target="_blank" rel="noopener">
-  ✍️ Práctica: ¿Y, pero, porque o entonces? ↗
-  <span>Veinte oraciones para elegir el conector. En la misma página practicas también <strong>las tres cualidades del párrafo</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
-</a>
-
+<div class="tip"><strong>💡 Fíjate:</strong> la introducción anuncia las tres categorías, cada párrafo trata solo una y empieza con su oración temática, y la conclusión repite las tres sin añadir nada nuevo. En todo el texto no aparece ni una opinión del tipo «creo que».</div>
+<div class="clasificador apilado" id="clasif-bib"></div>
+<div class="puntaje" id="puntaje-bib" role="status" aria-live="polite"></div>
 </div>
 </details>
 
-<details id="s-3-ordenar">
-<summary>3. Actividad: ordena un párrafo <span class="caja-tiempo">10 min</span></summary>
+<details id="s-3-categorias">
+<summary>3. Agrupar en categorías <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Pon las oraciones en el orden correcto</h3>
-
-<p>Estas cuatro oraciones de un párrafo están desordenadas. Tu reto es <strong>reordenarlas</strong> para que formen un párrafo con las tres cualidades: unidad, cohesión y coherencia. Recuerda: la oración principal anuncia el tema y la de cierre cierra la idea.</p>
-
-<div class="ordenar-cont">
-  <h4>🧩 Arma el párrafo</h4>
-
-  <div class="instruccion-ord">
-    <strong>Instrucciones:</strong> toca una oración para seleccionarla. Luego usa los botones <em>Subir</em> o <em>Bajar</em> para moverla. Cuando creas que el orden es correcto, pulsa <em>Verificar orden</em>.
-  </div>
-
-  <div class="oraciones-desordenadas" id="oraciones-list"></div>
-
-  <div class="botones-ord">
-    <button type="button" class="btn-orden btn-subir" id="btn-subir">↑ Subir</button>
-    <button type="button" class="btn-orden btn-bajar" id="btn-bajar">↓ Bajar</button>
-    <button type="button" class="btn-orden btn-verificar" id="btn-verificar">✓ Verificar orden</button>
-    <button type="button" class="btn-orden btn-reiniciar" id="btn-reiniciar">↻ Reiniciar</button>
-  </div>
-
-  <div class="resultado-ord" id="resultado-ord" role="status"></div>
-</div>
-
+<p>Antes de escribir, se reúnen los datos y se agrupan. Pregúntate: <strong>«¿De qué trata este dato?»</strong>. Los datos que responden lo mismo van juntos.</p>
+<p>Tema: <strong>los tres poderes del gobierno de los Estados Unidos</strong>. ¿A qué categoría pertenece cada dato?</p>
+<div class="clasificador" id="clasif-poderes"></div>
+<div class="puntaje" id="puntaje-poderes" role="status" aria-live="polite"></div>
+<div class="tip"><strong>💡 Así nace el texto:</strong> con esos datos ya agrupados, el texto se escribe casi solo: un párrafo para el poder legislativo, otro para el ejecutivo y otro para el judicial. Repasa el vocabulario de la Lección 6.3 si alguna palabra te resulta nueva.</div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l7-2.html#categorias" target="_blank" rel="noopener noreferrer">🗂️ Practica más: agrupar en categorías</a>
 </div>
 </details>
 
-<details id="s-4-plantilla">
-<summary>4. Plantilla: escribo mi primer párrafo <span class="caja-tiempo">15 min</span></summary>
+<details id="s-4-dato">
+<summary>4. Dato u opinión <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Mi tema favorito en cinco oraciones</h3>
-
-<p>Ahora te toca escribir. Usa esta plantilla para construir en tu cuaderno un párrafo corto sobre un tema que conozcas bien: tu trabajo, tu barrio, una comida que te gusta, tu rutina del fin de semana o una persona importante en tu vida.</p>
-
-<div class="plantilla-cont">
-  <h4>✍️ Plantilla del primer párrafo</h4>
-
-  <div class="paso-plantilla p1">
-    <h5>🍞 Pan de arriba — Oración principal</h5>
-    <p class="indicacion">Escribe una oración que anuncie tu tema. Empieza con mayúscula y termina con punto.</p>
-    <span class="linea-escritura"></span>
-    <span class="linea-escritura"></span>
-  </div>
-
-  <div class="paso-plantilla p2">
-    <h5>🥩 Relleno — Oraciones de apoyo (2 o 3)</h5>
-    <p class="indicacion">Escribe 2 o 3 oraciones con detalles. Usa al menos uno de estos conectores: <strong>y, pero, porque, entonces</strong>.</p>
-    <span class="linea-escritura"></span>
-    <span class="linea-escritura"></span>
-    <span class="linea-escritura"></span>
-    <span class="linea-escritura"></span>
-    <span class="linea-escritura"></span>
-    <span class="linea-escritura"></span>
-  </div>
-
-  <div class="paso-plantilla p3">
-    <h5>🍞 Pan de abajo — Oración de cierre</h5>
-    <p class="indicacion">Termina el párrafo con una oración que resuma o cierre la idea. Puedes empezar con <em>«Por eso»</em>, <em>«Sin duda»</em> o <em>«En conclusión»</em>.</p>
-    <span class="linea-escritura"></span>
-    <span class="linea-escritura"></span>
-  </div>
+<p>Un <span class="palabra-clave">dato</span> se puede comprobar: con un número, un documento, un experimento o una fuente. Una <span class="palabra-clave">opinión</span> dice lo que alguien piensa o siente, y otra persona puede pensar distinto. En un texto informativo solo van datos.</p>
+<table class="tabla">
+  <caption class="sr-solo">Ejemplos de datos y opiniones</caption>
+  <thead><tr><th scope="col">Dato</th><th scope="col">Opinión</th></tr></thead>
+  <tbody>
+    <tr><td>El lago Míchigan es uno de los cinco Grandes Lagos.</td><td>El lago Míchigan es el más bonito de todos.</td></tr>
+    <tr><td>El agua hierve a 212 °F al nivel del mar.</td><td>El té sabe mejor con el agua muy caliente.</td></tr>
+  </tbody>
+</table>
+<div class="tip"><strong>💡 Palabras que delatan una opinión:</strong> <em>mejor, peor, bonito, feo, increíble, terrible, debería, creo, me parece</em>. Si una oración tiene una de ellas, revisa si es un dato.</div>
+<div class="clasificador apilado" id="clasif-dato"></div>
+<div class="puntaje" id="puntaje-dato" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l7-2.html#dato-opinion" target="_blank" rel="noopener noreferrer">⚖️ Practica más: dato u opinión</a>
 </div>
+</details>
 
-<div class="tip">
-  <strong>📝 Antes de terminar, revisa:</strong>
-  <ul style="margin:8px 0 0 0;padding-left:22px">
-    <li>¿Todas mis oraciones hablan del mismo tema? (unidad)</li>
-    <li>¿Usé al menos un conector (<em>y, pero, porque, entonces</em>)? (cohesión)</li>
-    <li>¿El orden de las oraciones tiene sentido? (coherencia)</li>
-    <li>¿Cada oración comienza con mayúscula y termina con punto?</li>
-  </ul>
+<details id="s-5-materia">
+<summary>5. Un texto de ciencias: los estados de la materia <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+<p>La misma estructura sirve para las materias del GED. Lee este texto y busca las categorías.</p>
+<div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="leer-mat">🔊 Escuchar el texto</button></div>
+<div class="texto-lectura" id="texto-mat">
+<p><span class="num-p" aria-hidden="true">1</span>La materia es todo lo que ocupa un lugar y tiene masa. En la naturaleza aparece principalmente en tres estados: sólido, líquido y gaseoso.</p>
+<p><span class="num-p" aria-hidden="true">2</span>Los sólidos tienen forma y volumen propios. Sus partículas están muy juntas y casi no se mueven. Una piedra, una cuchara y el hielo son sólidos.</p>
+<p><span class="num-p" aria-hidden="true">3</span>Los líquidos, en cambio, tienen volumen propio, pero toman la forma del recipiente que los contiene. Sus partículas se deslizan unas sobre otras. El agua, la leche y el aceite son líquidos.</p>
+<p><span class="num-p" aria-hidden="true">4</span>Los gases no tienen forma ni volumen propios: se expanden hasta llenar todo el espacio disponible. El aire que respiramos y el vapor de agua son gases.</p>
+<p><span class="num-p" aria-hidden="true">5</span>Una misma sustancia puede pasar de un estado a otro. Por ejemplo, el agua se congela a 32 °F (0 °C) y hierve a 212 °F (100 °C) al nivel del mar. En conclusión, conocer los tres estados de la materia ayuda a entender fenómenos cotidianos, como el hielo que se derrite o la ropa que se seca al sol.</p>
 </div>
+<div class="clasificador apilado" id="clasif-mat"></div>
+<div class="puntaje" id="puntaje-mat" role="status" aria-live="polite"></div>
+</div>
+</details>
 
+<details id="s-6-conclusion">
+<summary>6. Conectores y conclusión <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+<table class="tabla">
+  <caption class="sr-solo">Conectores del texto informativo</caption>
+  <thead><tr><th scope="col">Para…</th><th scope="col">Conectores</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Ordenar categorías</strong></td><td>en primer lugar, en segundo lugar, por último, por un lado, por otro lado</td></tr>
+    <tr><td><strong>Definir o aclarar</strong></td><td>es decir, o sea, esto significa que</td></tr>
+    <tr><td><strong>Dar ejemplos</strong></td><td>por ejemplo, como, entre ellos</td></tr>
+    <tr><td><strong>Comparar</strong></td><td>en cambio, a diferencia de, al igual que</td></tr>
+    <tr><td><strong>Concluir</strong></td><td>en resumen, en conclusión, en síntesis</td></tr>
+  </tbody>
+</table>
+<p>Una buena <span class="palabra-clave">conclusión informativa</span>:</p>
+<ul class="lista-bonita">
+  <li>vuelve al <strong>tema</strong> del texto, con otras palabras;</li>
+  <li>recuerda las <strong>categorías</strong> o la idea más importante;</li>
+  <li><strong>no</strong> añade datos nuevos ni opiniones.</li>
+</ul>
+<h3>¿Cuál es la mejor conclusión?</h3>
+<div class="clasificador apilado" id="clasif-conc"></div>
+<div class="puntaje" id="puntaje-conc" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l7-2.html#conclusion" target="_blank" rel="noopener noreferrer">🏁 Practica más: la conclusión</a>
+</div>
+</details>
+
+<details id="s-7-taller">
+<summary>7. Taller: escribe tu texto informativo <span class="caja-tiempo">35 min</span></summary>
+<div class="contenido-detalle">
+<p><strong>Elige un tema de una materia</strong> (o propón uno tuyo): los tres poderes del gobierno · los estados de la materia · el ciclo del agua · una festividad de tu país · los servicios de tu barrio.</p>
+<div class="plantilla">
+  <p><strong>Introducción:</strong> ______ se puede explicar en (dos / tres) partes: ______, ______ y ______.</p>
+  <p><strong>Categoría 1:</strong> En primer lugar, ______. Por ejemplo, ______.</p>
+  <p><strong>Categoría 2:</strong> En segundo lugar, ______, es decir, ______.</p>
+  <p><strong>Categoría 3:</strong> Por último, ______.</p>
+  <p><strong>Conclusión:</strong> En resumen, ______.</p>
+</div>
+<div class="taller" id="taller-72"></div>
+<h3>Rúbrica: así se evaluará tu texto</h3>
+<table class="tabla rubrica">
+  <caption class="sr-solo">Rúbrica del texto informativo: cuatro criterios en cuatro niveles</caption>
+  <thead><tr><th scope="col">Criterio</th><th scope="col">4 · Excelente</th><th scope="col">3 · Bien</th><th scope="col">2 · En camino</th><th scope="col">1 · Inicial</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">Categorías</th><td>Dos o tres categorías claras, cada una en su lugar</td><td>Categorías claras, con algún dato fuera de lugar</td><td>Las categorías se mezclan</td><td>Información sin orden</td></tr>
+    <tr><th scope="row">Datos y definiciones</th><td>Varios datos y al menos una definición, sin opiniones</td><td>Dos datos; quizás una opinión</td><td>Un dato</td><td>Solo opiniones</td></tr>
+    <tr><th scope="row">Conectores</th><td>Ordenan, definen y dan ejemplos</td><td>Algunos, bien usados</td><td>Pocos o repetidos</td><td>Ninguno</td></tr>
+    <tr><th scope="row">Conclusión</th><td>Vuelve al tema y resume sin datos nuevos</td><td>Vuelve al tema, pero no resume</td><td>Añade información nueva</td><td>No hay conclusión</td></tr>
+  </tbody>
+</table>
+<p style="font-size:.92rem">Total: 16 puntos.</p>
+<div class="tip"><strong>👨‍👩‍👧 «Organiza la información»:</strong> si tienes con quién practicar, escriban en papelitos diez datos sobre un tema (por ejemplo, su país de origen) y repártanlos en tres montones según su categoría: geografía, comida, fiestas.</div>
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>5. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>8. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-<p><strong>Mi primer párrafo, en limpio.</strong> Toma el borrador que escribiste con la plantilla de la sección 4 y pásalo en limpio en tu cuaderno. Mientras lo copias, mejóralo:</p>
 <ul class="lista-bonita">
-  <li>Revisa que <strong>todas las oraciones hablen del mismo tema</strong> (unidad). Si alguna se sale, quítala.</li>
-  <li>Usa <strong>al menos dos conectores distintos</strong> (y, pero, porque, entonces) y enciérralos en un círculo (cohesión).</li>
-  <li>Lee el párrafo en voz alta: ¿el orden tiene sentido? (coherencia).</li>
+  <li><strong>Para el foro.</strong> Termina tu texto informativo del taller: con al menos dos datos y una conclusión. Cópialo y publícalo en el foro del curso.</li>
+  <li><strong>Esquema de un texto real.</strong> Lee un artículo corto de una revista o de un sitio de noticias. Dibuja su esquema: el tema arriba y sus categorías debajo, con dos datos en cada una.</li>
+  <li><strong>Caza de opiniones.</strong> En ese mismo artículo, busca una oración que sea opinión, si la hay. Explica qué palabra la delata.</li>
 </ul>
-<p>Si alguien de tu casa quiere participar, léele las dos versiones, el borrador y la versión en limpio, y pregúntale cuál se entiende mejor.</p>
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
-  <table class="rubrica">
-    <caption class="sr-solo">Lista de cotejo de «Mi primer párrafo»</caption>
-    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
-    <tbody>
-      <tr><td>Unidad</td><td class="nivel-4">Todas las oraciones hablan del mismo tema</td><td class="nivel-1">Hay una oración que se sale del tema</td></tr>
-      <tr><td>Cohesión</td><td class="nivel-4">Usé al menos dos conectores distintos, bien puntuados</td><td class="nivel-1">Usé uno o ninguno</td></tr>
-      <tr><td>Coherencia</td><td class="nivel-4">El orden de las oraciones tiene sentido</td><td class="nivel-1">Hay oraciones fuera de lugar</td></tr>
-      <tr><td>Estructura</td><td class="nivel-4">Tiene oración principal, apoyo y cierre</td><td class="nivel-1">Falta alguna de las tres partes</td></tr>
-    </tbody>
-  </table>
-</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>9. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Al final pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -534,148 +398,113 @@ Los sábados son mi día favorito de la semana <span class="conec-marca porque">
 </details>
 
 <details id="s-cierre">
-<summary>7. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>10. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-<h3>Lo que aprendiste</h3>
+<h3>Lo que aprendiste en esta lección</h3>
 <ul class="lista-bonita">
-  <li>Un buen párrafo tiene tres cualidades: <strong>unidad</strong> (un solo tema), <strong>cohesión</strong> (oraciones conectadas) y <strong>coherencia</strong> (orden lógico).</li>
-  <li>Los <strong>conectores básicos</strong> (<em>y, pero, porque, entonces</em>) son el pegamento de las ideas.</li>
-  <li>Cada conector tiene una función: añadir, contrastar, dar una razón o expresar una consecuencia.</li>
-  <li>Antes de terminar un párrafo, conviene <strong>revisarlo</strong> con una lista.</li>
+  <li>El texto informativo <strong>explica</strong>; el de opinión <strong>convence</strong>.</li>
+  <li>Estructura: introducción con el tema, <strong>un párrafo por categoría</strong> y conclusión.</li>
+  <li>Solo lleva <strong>datos</strong>, detalles, ejemplos y definiciones; las opiniones se quedan fuera.</li>
+  <li>La conclusión vuelve al tema y resume, <strong>sin datos nuevos</strong>.</li>
 </ul>
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Qué es la unidad de un párrafo?</li>
-    <li>¿Qué conector usas para dar una razón? ¿Y para un contraste?</li>
-    <li>¿Lleva coma antes de «pero»?</li>
+    <li>¿Qué diferencia hay entre un dato y una opinión? Da un ejemplo de cada uno.</li>
+    <li>¿Qué debe anunciar la introducción de un texto informativo?</li>
+    <li>¿Por qué una conclusión no debe traer datos nuevos?</li>
   </ul>
 </div>
-<div class="clave-pedagogica">
-  <strong>🎯 Conexión con el examen:</strong> En el GED de Razonamiento a través del lenguaje, la respuesta extendida (el ensayo) se califica, entre otras cosas, por la organización de las ideas y el uso de palabras de transición. Practicar los conectores desde ahora es una buena inversión.
-</div>
-<div class="tip">
-  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_7-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 7.3 · Tres tipos de texto: narrativo e informativo</a>. Aprenderás a distinguir los textos según su propósito: <strong>contar</strong> lo que pasó, <strong>informar</strong> sobre un tema u <strong>opinar</strong>.
-</div>
+<div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_7-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 7.3 · Narración con escenario y diálogo; proceso de revisión</a>. Contarás una historia y aprenderás a mejorarla con la ayuda de otra persona.</div>
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 7 · Lección 7.2</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 7 · Lección 7.2</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-
 <script>
+/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
 (function(){
-  'use strict';
-
-  /* =========================================================
-     ACTIVIDAD: ORDENAR PÁRRAFO
-     Orden correcto: 3, 1, 4, 2
-     (3) Tema (principal) → (1) detalle → (4) detalle → (2) cierre
-     ========================================================= */
-
-  var oracionesOriginales=[
-    {id:1,letra:'A',texto:'Por ejemplo, ayudan a calmar los nervios después de un día difícil.'},
-    {id:2,letra:'B',texto:'Por todo eso, recomiendo siempre tener una mascota en casa.'},
-    {id:3,letra:'C',texto:'Tener una mascota en casa trae muchos beneficios.'},
-    {id:4,letra:'D',texto:'Además, los niños aprenden a ser responsables cuando cuidan al animal.'}
-  ];
-  var ordenCorrecto=[3,1,4,2];
-
-  var estadoActual=[];
-  var seleccionado=null;
-
-  function inicializar(){
-    estadoActual=[2,4,3,1]; // orden inicial desordenado (no es el correcto)
-    seleccionado=null;
-    renderizar();
-    document.getElementById('resultado-ord').style.display='none';
-    document.getElementById('resultado-ord').className='resultado-ord';
+  var voz=null, hay=('speechSynthesis' in window);
+  function elegir(){
+    if(!hay)return;
+    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
+    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
+    voz=null;
+    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
+    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
   }
-
-  function renderizar(){
-    var cont=document.getElementById('oraciones-list');
-    cont.innerHTML='';
-    estadoActual.forEach(function(idOr,pos){
-      var or=oracionesOriginales.find(function(o){return o.id===idOr;});
-      var div=document.createElement('button');
-      div.type='button';
-      div.className='oracion-mover';
-      div.setAttribute('aria-pressed',seleccionado===idOr?'true':'false');
-      if(seleccionado===idOr)div.className+=' seleccionada';
-      div.setAttribute('data-id',idOr);
-      div.innerHTML='<span class="etiq-orig">'+or.letra+'</span><span class="texto-or">'+or.texto+'</span>';
-      div.addEventListener('click',function(){
-        seleccionado=parseInt(this.getAttribute('data-id'),10);
-        renderizar();
-        var s=document.querySelector('.oracion-mover[data-id="'+seleccionado+'"]'); if(s) s.focus();
-      });
-      cont.appendChild(div);
-    });
-  }
-
-  function moverArriba(){
-    if(seleccionado===null)return;
-    var idx=estadoActual.indexOf(seleccionado);
-    if(idx<=0)return;
-    var temp=estadoActual[idx-1];
-    estadoActual[idx-1]=estadoActual[idx];
-    estadoActual[idx]=temp;
-    renderizar();
-    var s=document.querySelector('.oracion-mover[data-id="'+seleccionado+'"]'); if(s) s.focus();
-  }
-  function moverAbajo(){
-    if(seleccionado===null)return;
-    var idx=estadoActual.indexOf(seleccionado);
-    if(idx<0||idx>=estadoActual.length-1)return;
-    var temp=estadoActual[idx+1];
-    estadoActual[idx+1]=estadoActual[idx];
-    estadoActual[idx]=temp;
-    renderizar();
-  }
-
-  function verificar(){
-    var res=document.getElementById('resultado-ord');
-    var ok=true;
-    for(var i=0;i<ordenCorrecto.length;i++){
-      if(estadoActual[i]!==ordenCorrecto[i]){ok=false;break;}
-    }
-    if(ok){
-      res.className='resultado-ord correcto';
-      res.innerHTML='✅ <strong>¡Orden correcto!</strong><br>El párrafo armado es:<br><br><em>"Tener una mascota en casa trae muchos beneficios. Por ejemplo, ayudan a calmar los nervios después de un día difícil. Además, los niños aprenden a ser responsables cuando cuidan al animal. Por todo eso, recomiendo siempre tener una mascota en casa."</em><br><br>Fíjate en que la oración (C) es la principal (anuncia el tema), las oraciones (A) y (D) dan detalles, y la oración (B) cierra el párrafo.';
-    }else{
-      res.className='resultado-ord incorrecto';
-      res.innerHTML='❌ El orden todavía no es el correcto. <br><strong>Pista:</strong> busca primero la oración más general (la que anuncia «muchos beneficios»). Luego pon los detalles que apoyan esa idea. La oración de cierre suele comenzar con expresiones como <em>"Por todo eso"</em>, <em>"Por eso"</em> o <em>"En conclusión"</em>.';
-    }
-  }
-
-  document.getElementById('btn-subir').addEventListener('click',moverArriba);
-  document.getElementById('btn-bajar').addEventListener('click',moverAbajo);
-  document.getElementById('btn-verificar').addEventListener('click',verificar);
-  document.getElementById('btn-reiniciar').addEventListener('click',inicializar);
-
-  inicializar();
-
+  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
+  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
+  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
+  /* hablar(texto, velocidad, alTerminar) */
+  window.hablar=function(texto,vel,fin){
+    if(!hay||!texto){aviso();return;}
+    speechSynthesis.cancel();
+    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
+    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
+    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
+  };
+  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
+  window.hablarPalabras=function(texto){
+    if(!hay){aviso();return;}
+    speechSynthesis.cancel();
+    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
+  };
+  window.callar=function(){if(hay)speechSynthesis.cancel();};
+  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
 })();
 
-/* ===== Quiz de la lección ===== */
-(function(){
-  var P=[{"t": "¿Qué significa que un párrafo tiene <strong>unidad</strong>?", "o": ["Que todas sus oraciones hablan del mismo tema", "Que tiene una sola oración", "Que no usa conectores"], "c": 0}, {"t": "¿Qué significa que un párrafo tiene <strong>cohesión</strong>?", "o": ["Que sus oraciones están conectadas entre sí", "Que es muy largo", "Que tiene un título"], "c": 0}, {"t": "¿Qué significa que un párrafo tiene <strong>coherencia</strong>?", "o": ["Que sus ideas siguen un orden lógico", "Que no tiene errores de ortografía", "Que habla de muchos temas"], "c": 0}, {"t": "«(1) El café cubano es muy popular en mi familia. (2) Lo tomamos después del desayuno. (3) También lo ofrecemos a las visitas. (4) Por eso, en mi casa nunca falta una cafetera.» ¿Cuál es la oración principal?", "o": ["(1)", "(2)", "(3)", "(4)"], "c": 0, "fijo": true}, {"t": "El parque de mi barrio es agradable. Tiene árboles grandes. Hay bancos para descansar. Mi tía vive en California. Por eso me gusta caminar allí. ¿Qué oración rompe la unidad?", "o": ["Mi tía vive en California.", "Tiene árboles grandes.", "Hay bancos para descansar."], "c": 0}, {"t": "«Quería salir a caminar, ___ empezó a llover.»", "o": ["pero", "y", "porque", "entonces"], "c": 0, "fijo": true}, {"t": "«Llegué muy cansada ___ trabajé doce horas seguidas.»", "o": ["y", "pero", "porque", "entonces"], "c": 2, "fijo": true}, {"t": "«No había leche en la nevera; ___ fui a la tienda de la esquina.»", "o": ["y", "pero", "porque", "entonces"], "c": 3, "fijo": true}, {"t": "«En el desayuno tomé café ___ un pan con mantequilla.»", "o": ["y", "pero", "porque", "entonces"], "c": 0, "fijo": true}, {"t": "¿Qué función tiene el conector <strong>pero</strong>?", "o": ["Marcar un contraste", "Añadir información", "Dar una razón"], "c": 0}, {"t": "¿Cuál está bien puntuada?", "o": ["Estudié mucho, pero el examen fue difícil.", "Estudié mucho pero, el examen fue difícil.", "Estudié mucho, pero, el examen fue difícil."], "c": 0}, {"t": "«Ayer fue el cumpleaños de mi hija. Comimos pastel. Compramos el pastel por la mañana.» ¿Qué cualidad le falta?", "o": ["Coherencia: el orden no es lógico", "Unidad: habla de varios temas", "Ninguna"], "c": 0}], META=10, N=P.length;
-  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
+function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
+  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
+  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
+  items.forEach(function(it,i){
+    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
+    var ops=it.ops||opciones;
+    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
+      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
+      '<span class="item-fb" aria-live="polite"></span>';
+    caja.appendChild(d);
+    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
+    var fb=d.querySelector('.item-fb');
+    d.querySelectorAll('.btn-op').forEach(function(b){
+      b.addEventListener('click',function(){
+        if(hechas[i])return;
+        if(+b.getAttribute('data-j')===it.c){
+          b.classList.add('correcta'); hechas[i]=true; bien++;
+          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
+          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+        }else{
+          b.classList.add('incorrecta'); b.disabled=true;
+          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+        }
+      });
+    });
+  });
+  marcador();
+}
+
+/* ===== Quiz de la lección =====
+   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
+        ae:audio entrecortado opcional, fijo:no barajar,
+        r:enlace de repaso que aparece si la respuesta es incorrecta}]
+   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
+function iniciarQuiz(P,cfg){
+  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a){
+    if(p.x||p.a||p.ae){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
-    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -683,7 +512,7 @@ Los sábados son mi día favorito de la semana <span class="conec-marca porque">
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -698,37 +527,168 @@ Los sábados son mi día favorito de la semana <span class="conec-marca porque">
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
+      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes escribir un párrafo con unidad, cohesión y coherencia. Puedes continuar con la Lección 7.3.";fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-})();
+}
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
+  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-})();
-</script>
+});
 
+/* ===== Taller de escritura (Tema 7) =====
+   tallerEscritura('id-caja',{clave:'n2-7-1', conectores:[...], meta:{oraciones:6, palabras:60}, lista:['…','…']})
+   Arma: área de texto, contadores, conectores detectados, lista de revisión, escuchar, copiar y borrar.
+   El borrador se guarda en este navegador (si el navegador lo permite). */
+function tallerEscritura(id,o){
+  var caja=document.getElementById(id), k='gph-borrador-'+o.clave;
+  var h='<label class="tl-etq" for="'+id+'-txt">'+(o.etiqueta||'Escribe aquí tu texto')+'</label>'+
+    '<textarea class="tl-txt" id="'+id+'-txt" rows="10" spellcheck="true" lang="es"'+(o.guia?' placeholder="'+o.guia.replace(/"/g,'&quot;')+'"':'')+'></textarea>'+
+    '<div class="tl-cuenta" id="'+id+'-cuenta" aria-live="polite"></div>';
+  if(o.conectores)h+='<div class="tl-conect" id="'+id+'-con" aria-live="polite"></div>';
+  h+='<div class="botones" style="justify-content:flex-start">'+
+    '<button type="button" class="btn btn-secundario" id="'+id+'-oir">🔊 Escuchar mi texto</button>'+
+    '<button type="button" class="btn btn-secundario" id="'+id+'-copiar">📋 Copiar mi texto</button>'+
+    '<button type="button" class="btn btn-secundario" id="'+id+'-borrar">🗑️ Borrar</button></div>'+
+    '<div class="tl-aviso" id="'+id+'-aviso" role="status" aria-live="polite"></div>';
+  if(o.lista){
+    h+='<fieldset class="tl-lista"><legend>✅ Revisa tu texto antes de entregarlo</legend>'+
+      o.lista.map(function(t,i){return '<label><input type="checkbox" id="'+id+'-c'+i+'"> '+t+'</label>';}).join('')+
+      '<p class="tl-listo" id="'+id+'-listo" aria-live="polite"></p></fieldset>';
+  }
+  caja.innerHTML=h;
+  var ta=document.getElementById(id+'-txt'), cu=document.getElementById(id+'-cuenta'), co=document.getElementById(id+'-con'), av=document.getElementById(id+'-aviso');
+  try{var g=localStorage.getItem(k); if(g)ta.value=g;}catch(e){}
+  function avisar(t){av.textContent=t; clearTimeout(avisar.t); avisar.t=setTimeout(function(){av.textContent='';},4000);}
+  function contar(){
+    var t=ta.value.trim(), pal=t?t.split(/\s+/).length:0, ora=(t.match(/[^.!?…]+[.!?…]+/g)||[]).length;
+    var m=o.meta||{}, s='Palabras: '+pal+(m.palabras?' (meta: '+m.palabras+' o más)':'')+' · Oraciones: '+ora+(m.oraciones?' (meta: '+m.oraciones+' o más)':'');
+    if(m.oraciones&&ora>=m.oraciones&&(!m.palabras||pal>=m.palabras))s+=' · 🎯 ¡Llegaste a la meta de extensión!';
+    cu.textContent=s;
+    if(co){
+      var low=' '+t.toLowerCase().replace(/[.,;:¡!¿?«»"()—]/g,' ')+' ', us=o.conectores.filter(function(c){return low.indexOf(' '+c.toLowerCase()+' ')>=0;});
+      co.innerHTML=us.length?'Conectores que usaste: '+us.map(function(c){return '<span class="tl-chip">'+c+'</span>';}).join(' '):'Todavía no aparece ningún conector de la lista. Recuerda unir tus ideas con ellos.';
+    }
+    try{localStorage.setItem(k,ta.value);}catch(e){}
+  }
+  ta.addEventListener('input',contar); contar();
+  document.getElementById(id+'-oir').addEventListener('click',function(){
+    if(!ta.value.trim()){avisar('Primero escribe algo para poder escucharlo.');return;}
+    hablar(ta.value,0.9);
+  });
+  document.getElementById(id+'-copiar').addEventListener('click',function(){
+    if(!ta.value.trim()){avisar('Todavía no hay texto para copiar.');return;}
+    function ok(){avisar('✓ Texto copiado. Ya puedes pegarlo en el foro o en un correo.');}
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(ta.value).then(ok,function(){ta.select();document.execCommand('copy');ok();});
+    else{ta.select();document.execCommand('copy');ok();}
+  });
+  var borrarListo=false;
+  document.getElementById(id+'-borrar').addEventListener('click',function(){
+    if(!borrarListo){borrarListo=true;avisar('¿Seguro? Pulsa «Borrar» otra vez para borrar todo el texto.');setTimeout(function(){borrarListo=false;},4000);return;}
+    borrarListo=false; ta.value=''; contar(); avisar('Texto borrado.'); ta.focus();
+  });
+  if(o.lista){
+    var cbs=caja.querySelectorAll('.tl-lista input'), li=document.getElementById(id+'-listo');
+    function rev(){var n=Array.prototype.filter.call(cbs,function(c){return c.checked;}).length;var t=ta.value.trim(),m=o.meta||{},pal=t?t.split(/\s+/).length:0,ora=(t.match(/[^.!?…]+[.!?…]+/g)||[]).length,corto=(m.oraciones&&ora<m.oraciones)||(m.palabras&&pal<m.palabras);
+    li.textContent=n<cbs.length?'Revisado: '+n+' de '+cbs.length:(corto?'Marcaste toda la lista, pero tu texto todavía no llega a la meta de extensión. Añade algo más.':'🎉 ¡Todo revisado! Tu texto está listo para compartir.');}
+    ta.addEventListener('input',rev);
+    cbs.forEach(function(c){c.addEventListener('change',rev);}); rev();
+  }
+}
+/* Rúbricas: cada celda recibe el nombre de su nivel para mostrarlo en el móvil */
+document.querySelectorAll('table.rubrica').forEach(function(t){
+  var cab=Array.prototype.map.call(t.querySelectorAll('thead th'),function(th){return th.textContent;});
+  t.querySelectorAll('tbody tr').forEach(function(tr){Array.prototype.forEach.call(tr.children,function(c,i){if(c.tagName==='TD')c.setAttribute('data-et',cab[i]);});});
+});
+
+function lector(boton,texto){document.getElementById(boton).addEventListener('click',function(){hablar(document.getElementById(texto).textContent.trim(),0.85);});}
+lector('leer-bib','texto-bib'); lector('leer-mat','texto-mat');
+
+clasificador('clasif-bib','puntaje-bib',[
+  {p:'¿Qué hace el párrafo 1?',ops:['Presenta el tema y anuncia las categorías','Da la primera categoría con sus datos','Resume todo lo que dice el texto'],c:0,n:'Anuncia: préstamos, tecnología y programas.'},
+  {p:'¿Cuál es la oración temática del párrafo 3?',ops:['«Hay computadoras con internet, impresoras…»','«En segundo lugar, la biblioteca ofrece tecnología.»','«…es decir, internet sin cables…»'],c:1,n:'La primera oración dice de qué trata el párrafo.'},
+  {p:'¿Qué palabra se define en el texto?',ops:['Audiolibros','Inalámbrica','Talleres'],c:1,n:'«…conexión inalámbrica, es decir, internet sin cables…».'},
+  {p:'¿Qué hace la conclusión?',ops:['Da un dato nuevo sobre los horarios','Recuerda las tres categorías y el tema','Da la opinión del autor sobre los libros'],c:1,n:'Vuelve al tema sin añadir datos.'}
+],null,false);
+
+clasificador('clasif-poderes','puntaje-poderes',[
+  {p:'Está formado por el Senado y la Cámara de Representantes.',c:0,n:'Es el Congreso.'},
+  {p:'Lo encabeza el presidente.',c:1,n:'El presidente dirige el poder ejecutivo.'},
+  {p:'La Corte Suprema es su tribunal más alto.',c:2,n:'Judicial = tribunales.'},
+  {p:'Escribe y aprueba las leyes.',c:0,n:'Legislar = hacer leyes.'},
+  {p:'Decide si una ley respeta la Constitución.',c:2,n:'Interpreta las leyes.'},
+  {p:'Aplica las leyes y dirige el gobierno federal.',c:1,n:'Ejecutar = llevar a cabo.'}
+],['Legislativo','Ejecutivo','Judicial'],false);
+
+clasificador('clasif-dato','puntaje-dato',[
+  {p:'«Chicago está a orillas del lago Míchigan.»',c:0,n:'Se comprueba en un mapa.'},
+  {p:'«Chicago es la ciudad más agradable del país.»',c:1,n:'«Más agradable» es una opinión.'},
+  {p:'«Las plantas necesitan luz para hacer la fotosíntesis.»',c:0,n:'Se comprueba con experimentos.'},
+  {p:'«Las rosas son las flores más hermosas.»',c:1,n:'«Más hermosas» depende del gusto.'},
+  {p:'«La Constitución de los Estados Unidos se firmó en 1787.»',c:0,n:'Lo dicen los documentos.'},
+  {p:'«El invierno es la peor estación del año.»',c:1,n:'«La peor» es una opinión.'}
+],['Dato','Opinión'],false);
+
+clasificador('clasif-mat','puntaje-mat',[
+  {p:'¿Cuáles son las categorías del texto?',ops:['Sólido, líquido y gaseoso','Agua, leche y aceite','Hielo, piedra y cuchara'],c:0,n:'Las anuncia el párrafo 1.'},
+  {p:'¿Qué palabra se define en el párrafo 1?',ops:['Materia','Volumen','Partícula'],c:0,n:'«La materia es todo lo que ocupa un lugar y tiene masa».'},
+  {p:'¿Qué conector usa el párrafo 3 para comparar con los sólidos?',ops:['En cambio','Por ejemplo','En conclusión'],c:0,n:'«Los líquidos, en cambio…».'},
+  {p:'¿Qué dato aparece en el párrafo 5?',ops:['El agua hierve a 212 °F al nivel del mar','El aire es el gas más importante','Los sólidos son más pesados que los gases'],c:0,n:'Es un dato que se puede comprobar.'}
+],null,false);
+
+clasificador('clasif-conc','puntaje-conc',[
+  {p:'Texto sobre <strong>los tres poderes del gobierno</strong>:',ops:['En resumen, el poder legislativo hace las leyes, el ejecutivo las aplica y el judicial las interpreta.','En resumen, el presidente actual me parece un buen líder para el país.','En resumen, el Congreso se reúne en el Capitolio, que tiene una gran cúpula blanca.'],c:0,n:'Vuelve al tema y resume las tres categorías. La segunda es una opinión y la tercera trae un dato nuevo.'},
+  {p:'Texto sobre <strong>el ciclo del agua</strong>:',ops:['En conclusión, la lluvia es lo mejor para las plantas y los jardines.','En conclusión, el agua pasa por la evaporación, la condensación y la precipitación sin parar.','En conclusión, los océanos cubren la mayor parte de la superficie de la Tierra.'],c:1,n:'Resume las etapas del ciclo. Las otras opinan o añaden un dato nuevo.'},
+  {p:'Texto sobre <strong>los servicios del centro comunitario</strong>:',ops:['En síntesis, el centro abrió sus puertas en 1998 gracias a un grupo de vecinos.','En síntesis, el centro es el lugar más divertido de todo el barrio.','En síntesis, con sus clases, su comedor y su guardería, el centro apoya a las familias.'],c:2,n:'Recuerda las categorías y el tema.'}
+],null,false);
+
+tallerEscritura('taller-72',{clave:'7-2',etiqueta:'Tu texto informativo (8 a 10 oraciones)',
+  guia:'Tema y categorías…  En primer lugar, …  En segundo lugar, …  Por último, …  En resumen, …',
+  meta:{oraciones:8,palabras:90},
+  conectores:['en primer lugar','en segundo lugar','por último','por un lado','por otro lado','es decir','o sea','esto significa que','por ejemplo','como','entre ellos','en cambio','a diferencia de','al igual que','en resumen','en conclusión','en síntesis','además','también'],
+  lista:['La introducción presenta el tema y anuncia las categorías.','Cada párrafo o grupo de oraciones trata una sola categoría.','Incluyo al menos dos datos que se pueden comprobar.','Incluyo una definición (es decir…, o sea…).','No hay opiniones: quité «creo», «mejor», «bonito»…','La conclusión vuelve al tema y no añade datos nuevos.','Escuché mi texto en voz alta y revisé la ortografía y la puntuación.']});
+
+iniciarQuiz([
+  {t:'El propósito de un texto informativo es…',o:['Explicar un tema','Convencer al lector','Contar una historia'],c:0,fijo:true,r:'<a href="#s-1-que-es">1. Opinar frente a informar</a>'},
+  {t:'En un texto informativo, cada párrafo del cuerpo…',o:['Trata una sola categoría','Mezcla todas las categorías','Da la opinión del autor'],c:0,r:'<a href="#s-1-que-es">1. Opinar frente a informar</a>'},
+  {t:'¿Qué debe hacer la introducción?',o:['Presentar el tema y anunciar las categorías','Dar todos los datos del texto','Repetir la conclusión palabra por palabra'],c:0,r:'<a href="#s-2-modelo">2. Texto modelo</a>'},
+  {t:'Tema: <strong>la alimentación saludable</strong>. ¿En qué categoría va «las manzanas tienen fibra»?',o:['Frutas','Ejercicio','Horas de sueño'],c:0,r:'<a href="#s-3-categorias">3. Agrupar en categorías</a>'},
+  {t:'Tema: <strong>los tres poderes</strong>. «Puede vetar una ley» es un dato del poder…',o:['Ejecutivo','Judicial','Legislativo'],c:0,r:'<a href="#s-3-categorias">3. Agrupar en categorías</a>'},
+  {t:'¿Cuál de estas oraciones es un <strong>dato</strong>?',o:['La Tierra gira alrededor del Sol.','El verano es la mejor época del año.','Los gatos son más simpáticos que los perros.'],c:0,r:'<a href="#s-4-dato">4. Dato u opinión</a>'},
+  {t:'¿Cuál de estas oraciones es una <strong>opinión</strong>?',o:['El museo de ciencias es el más interesante de la ciudad.','El museo de ciencias abre a las nueve y media.','El museo de ciencias está junto al lago.'],c:0,r:'<a href="#s-4-dato">4. Dato u opinión</a>'},
+  {t:'Según el texto de la materia, los líquidos…',o:['Toman la forma del recipiente','Tienen forma propia','No tienen volumen propio'],c:0,r:'<a href="#s-5-materia">5. Los estados de la materia</a>'},
+  {t:'«La fotosíntesis, ___, el proceso con el que las plantas fabrican su alimento, necesita luz.»',o:['es decir','por último','en cambio'],c:0,r:'<a href="#s-6-conclusion">6. Conectores y conclusión</a>'},
+  {t:'«Hay muchos animales herbívoros, ___ la vaca, el caballo y el conejo.»',o:['como','en resumen','en cambio'],c:0,r:'<a href="#s-6-conclusion">6. Conectores y conclusión</a>'},
+  {t:'Una buena conclusión informativa…',o:['Vuelve al tema y resume sin datos nuevos','Presenta un dato nuevo y sorprendente','Termina con la opinión del autor'],c:0,r:'<a href="#s-6-conclusion">6. Conectores y conclusión</a>'},
+  {t:'Al revisar tu texto informativo encuentras «creo que es la mejor fiesta». ¿Qué haces?',o:['La cambio por un dato sobre la fiesta','La dejo, porque da más fuerza al texto','La paso a la introducción del texto'],c:0,r:'<a href="#s-4-dato">4. Dato u opinión</a>'}
+],{meta:10,
+   bien:'Ya sabes organizar un texto informativo con categorías, datos y una conclusión ligada al tema. Puedes continuar con la Lección 7.3.',
+   repaso:'Vuelve a las secciones que te indica cada pregunta y repite el quiz: con práctica sale.'});
+</script>
 </body>
 </html>

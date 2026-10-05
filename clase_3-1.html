@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<!-- Lección 3.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
-     José M. Fernández · CC BY-NC-SA 4.0 -->
+<!-- Lección 3.1 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
+     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
+     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 3.1 · Conociendo los sustantivos y los adjetivos</title>
+<title>Lección 3.1 · Mayúsculas, comas, dos puntos y raya</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
     --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#6b7785;--gris-claro:#eef1f4;
-    --sustantivo:#1565c0;--sustantivo-claro:#e3f2fd;
-    --adjetivo:#c2185b;--adjetivo-claro:#fce4ec;
+    --gris:#555;--gris-claro:#eef1f4;
+    --dip:#1565c0;--dip-claro:#e3f2fd;
+    --hia:#ad1457;--hia-claro:#fce4ec;
+    --grp:#5c3900;--grp-claro:#fff3cd;
     --exito:#2e7d32;--error:#c62828;
   }
   *{box-sizing:border-box}
@@ -26,74 +28,64 @@
   h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
-  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
-  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
-  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
-  .presencial{background:#fff8ee;border-color:var(--acento)}
-  .presencial h4{color:#b35316;margin-top:0}
-  .online{background:#eef5fb;border-color:var(--cp)}
-  .online h4{color:var(--cp-oscuro);margin-top:0}
   .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#8a6d00}
-  .ejercicio{background:#f3f9f3;border:2px dashed #4caf50;border-radius:10px;padding:18px 22px;margin:20px 0}
-  .ejercicio h4{color:#2e7d32;margin-top:0}
+  .tip strong{color:#6b5400}
   .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
   .btn-primario{background:var(--cp);color:#fff}
   .btn-primario:hover{background:var(--cp-oscuro)}
   .btn-secundario{background:var(--gris-claro);color:var(--texto)}
   .btn-secundario:hover{background:#d6dde4}
-  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
   .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .sust{background:var(--sustantivo-claro);color:var(--sustantivo);padding:2px 8px;border-radius:4px;font-weight:700;box-shadow:0 -3px 0 var(--sustantivo) inset}
-  .adj{background:var(--adjetivo-claro);color:var(--adjetivo);padding:2px 8px;border-radius:4px;font-weight:700;box-shadow:0 -3px 0 var(--adjetivo) inset}
-  .leyenda-colores{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.95rem}
-  .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
-  .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
-  .ejemplo-oracion{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:'Georgia',serif;font-size:1.2rem;text-align:center}
-  table.tabla-sust{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla-sust th{background:var(--sustantivo);color:#fff;padding:12px;text-align:left}
-  table.tabla-sust td{padding:12px;border-bottom:1px solid var(--gris-claro);font-family:'Georgia',serif}
-  table.tabla-sust tr:last-child td{border-bottom:none}
-  table.tabla-sust td:first-child{font-weight:600;color:var(--sustantivo)}
-  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:'Georgia',serif;font-size:1.08rem;line-height:2}
-  .palabra-clicable{cursor:pointer;padding:1px 4px;border-radius:3px;transition:background 0.2s;display:inline-block}
-  .palabra-clicable:hover{background:#fff3cd}
-  .palabra-clicable.marcada{background:var(--sustantivo-claro);color:var(--sustantivo);font-weight:700;box-shadow:0 -3px 0 var(--sustantivo) inset}
-  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
-  .item-palabra{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .palabra-clasif{font-family:'Georgia',serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro)}
-  .opciones-clasif{display:flex;gap:8px;flex-wrap:wrap}
-  .btn-clasif{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
-  .btn-clasif.sust-btn{border-color:var(--sustantivo);color:var(--sustantivo)}
-  .btn-clasif.sust-btn:hover{background:var(--sustantivo-claro)}
-  .btn-clasif.adj-btn{border-color:var(--adjetivo);color:var(--adjetivo)}
-  .btn-clasif.adj-btn:hover{background:var(--adjetivo-claro)}
-  .btn-clasif.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
-  .btn-clasif.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
-  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
-  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad-unidad h4{color:#b35316;margin-top:0}
-  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-lectura{background:#e3f2fd;color:#0277bd}
-  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
-  .badge-quiz{background:#e8f5e9;color:#2e7d32}
-  .badge-rubrica{background:#fff3e0;color:#e65100}
-
-  /* ── Índice de la lección ── */
+  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
+  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
+  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
+  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.tabla tr:last-child td{border-bottom:none}
+  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad h4{color:#8a3d0c;margin-top:0}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0d47a1}
+  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
+  /* Clasificadores */
+  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
+  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
+  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
+  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
+  .item-fb:empty{display:none}
+  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
+  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
+  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
+  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
+  .btn-op:disabled{cursor:default}
+  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
+  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
+  /* Lectura con marcas */
+  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
+  .texto-lectura p{margin:0 0 10px}
+  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
+  .leyenda span{display:inline-flex;align-items:center;gap:6px}
+  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
+  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
+  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
+  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
+  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
+  /* Índice */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -103,14 +95,13 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  .caja-tiempo{color:#1a2332!important}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  /* ── Quiz de la lección ── */
+  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
+  .aviso-voz.visible{display:block}
+  /* Quiz */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -130,44 +121,94 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
-  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 
-  /* ── Tocar palabras: todas las palabras son botones; solo algunas son la respuesta ── */
-  .marcable{font-family:Georgia,serif;font-size:1.15rem;line-height:2.3;background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0}
-  .marcable p{margin:0 0 8px}
-  .pal-m{font:inherit;background:none;border:2px solid transparent;border-radius:6px;padding:0 3px;color:inherit;cursor:pointer}
-  .pal-m:hover{border-color:#b6dcf3}
-  .marcable .punt{margin-left:-4px}
-  .pal-m[aria-pressed="true"]{background:#fff3cd;border-color:#b35316}
-  .pal-m.bien{background:#d4edda;border-color:#2e7d32;color:#155724}
-  .pal-m.mal{background:#f8d7da;border-color:#c62828;color:#721c24;text-decoration:line-through}
-  .pal-m.falto{border-color:#b35316;border-style:dashed}
-  .resultado-marcar:not(:empty){margin:10px 0;padding:10px 14px;border-radius:8px;font-weight:600}
-  .resultado-marcar.correcto{background:#d4edda;color:#155724}
-  .resultado-marcar.incorrecto{background:#fff3cd;color:#5c3900}
-  .ocultar-sust .sust{color:inherit!important;background:none!important;font-weight:inherit!important;border:none!important;padding:0!important;box-shadow:none!important}
+  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
+  .qz-repaso a{color:#004d44;font-weight:700}
+  /* ── Comunes desde el Tema 4 ── */
+  .item-ops{flex-wrap:wrap}
+  .apilado .item{flex-direction:column;align-items:stretch}
+  .apilado .item-ops{flex-direction:column}
+  .apilado .btn-op{text-align:left;font-weight:400}
+  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
+  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
+  .pasaje p{margin:0 0 6px}
+  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
+  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
+  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
+  /* Taller de escritura (Tema 7) */
+  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
+  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
+  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
+  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
+  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
+  .tl-conect{font-size:.95rem;margin:4px 0 8px}
+  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
+  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
+  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
+  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
+  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
+  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
+  .rubrica{font-size:.92rem}
+  .rubrica td,.rubrica th{vertical-align:top}
+  .marca{border-radius:3px;padding:0 2px;font-weight:700}
+  .m-postura{background:#e3f2fd;color:#0d3c78}
+  .m-razon{background:#fff3e0;color:#7a3a00}
+  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
+  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
+  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
+  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
+  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
+  .oculta-marcas .marca::before{content:none}
+  @media(max-width:640px){
+    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
+    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
+    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
+    .rubrica td{border:none;border-top:1px solid #d5dde3}
+    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
+  }
+
+  .item-ops{flex-wrap:wrap}
+  .apilado .item{flex-direction:column;align-items:stretch}
+  .apilado .item-ops{flex-direction:column}
+  .apilado .btn-op{text-align:left;font-family:Georgia,serif;font-size:1rem;font-weight:400}
+  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#555}
+  .carta{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.08rem;line-height:1.9}
+  .carta p{margin:0 0 10px}
+  .carta .der{text-align:right}
+  .sg{background:#fff3cd;color:#5c3900;font-weight:700;padding:0 3px;border-radius:3px}
+  .ingles{font-size:.92rem;color:#555}
 </style>
 </head>
 <body>
-
-<h1>Lección 3.1 · Conociendo los sustantivos y los adjetivos</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 3 · Unas 2 horas, a tu ritmo</p>
+<h1>Lección 3.1 · Mayúsculas, comas, dos puntos y raya</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 3: Puntuación, ortografía y registro · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <p style="margin-bottom:0">Identificar <strong>personas, lugares, objetos o conceptos</strong> (sustantivos) y las palabras que los describen (<strong>adjetivos</strong>), para empezar a darles protagonistas y detalles a tus oraciones.</p>
+  <ul class="lista-bonita" style="margin:0">
+    <li>Usar la <strong>mayúscula</strong> en nombres propios, lugares, instituciones y festividades, y la minúscula donde el español la pide.</li>
+    <li>Colocar la <strong>coma</strong> en enumeraciones, al llamar a alguien, en las explicaciones y en las fechas.</li>
+    <li>Escribir los <strong>dos puntos</strong> del saludo de una carta y la <strong>raya</strong> del diálogo según la norma del español.</li>
+  </ul>
+  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.W.CS.2</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-sustantivos">Los sustantivos</a></li>
-    <li><a href="#s-2-adjetivos">Los adjetivos</a></li>
-    <li><a href="#s-3-describir">Práctica: describir con sustantivos y adjetivos</a></li>
-    <li><a href="#s-4-lectura">Lectura: textos descriptivos</a></li>
+    <li><a href="#s-1-mayusculas">Mayúscula y minúscula</a></li>
+    <li><a href="#s-2-coma">La coma</a></li>
+    <li><a href="#s-3-dos-puntos">Los dos puntos y el saludo de una carta</a></li>
+    <li><a href="#s-4-raya">La raya en el diálogo</a></li>
+    <li><a href="#s-5-lectura">Lectura: una nota a la maestra</a></li>
+    <li><a href="#s-6-corrige">Práctica: corrige el mensaje</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -179,175 +220,178 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
+<p>Quien vive en Estados Unidos lee inglés todos los días: en el trabajo, en la escuela de los hijos, en los letreros. Y el inglés tiene sus propias reglas de puntuación, que a veces se nos pegan cuando escribimos en español. En inglés se escribe <em>Monday</em>, <em>January</em> y <em>Spanish</em> con mayúscula; una carta empieza con <em>Dear Mr. Smith,</em>; y el diálogo va entre comillas. <strong>En español, las tres cosas se hacen de otra manera.</strong> Esta lección te enseña la norma del español, que es la que se usa en el examen GED en español.</p>
+<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán.</p>
 
-<p>Con el Tema 3 empieza una etapa nueva. Ya recorriste un buen trecho: aprendiste a moverte de izquierda a derecha en el papel, a contar sílabas, a decodificar palabras y a leer con fluidez. <strong>Ahora damos el salto a construir oraciones de verdad.</strong> Para eso necesitas conocer a los actores del lenguaje: los <em>sustantivos</em> (los protagonistas) y los <em>adjetivos</em> (los que les ponen carácter).</p>
-
-<p>Piensa en una oración como en una película: sin protagonista no hay historia. Y sin descripciones, la película queda en blanco y negro. En esta lección le pones color.</p>
-
-<details open id="s-1-sustantivos">
-<summary>1. Los sustantivos <span class="caja-tiempo">15 min</span></summary>
+<details open id="s-1-mayusculas">
+<summary>1. Mayúscula y minúscula <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>El protagonista de la oración</h3>
-
-<p>Toda oración necesita un protagonista. Ese protagonista suele ser un <span class="palabra-clave">sustantivo</span>: la palabra que usamos para <strong>nombrar</strong>:</p>
-
-<ul class="lista-bonita">
-  <li>Una <strong>persona</strong> (María, profesor, hermana, doctor).</li>
-  <li>Un <strong>lugar</strong> (Chicago, parque, casa, escuela).</li>
-  <li>Un <strong>objeto</strong> (mesa, lápiz, carro, taza).</li>
-  <li>Un <strong>concepto o idea</strong> (amor, libertad, miedo, alegría).</li>
-</ul>
-
-<h3>Sustantivos comunes y propios</h3>
-
-<table class="tabla-sust">
-  <caption class="sr-solo">Sustantivos comunes y propios</caption>
-  <thead><tr><th scope="col">Tipo</th><th scope="col">Definición</th><th scope="col">Ejemplos</th></tr></thead>
+<p>Ya sabes del Nivel 1 que la mayúscula va al <strong>comienzo</strong> de un texto y <strong>después de un punto</strong>. Además, se escriben con mayúscula inicial:</p>
+<table class="tabla">
+  <caption class="sr-solo">Palabras que llevan mayúscula</caption>
+  <thead><tr><th scope="col">Con mayúscula</th><th scope="col">Ejemplos</th></tr></thead>
   <tbody>
-    <tr><td>Común</td><td>Nombra cosas en general, sin distinguir una de otra</td><td>perro, ciudad, niña, río</td></tr>
-    <tr><td>Propio</td><td>Nombra a alguien o algo específico (con mayúscula)</td><td>Rocky, Chicago, María, Misisipi</td></tr>
+    <tr><td>Nombres y apellidos de personas</td><td>Lucía Pérez · Daniel · el doctor <strong>R</strong>amírez</td></tr>
+    <tr><td>Nombres de lugares: ciudades, países, ríos, montañas</td><td>Chicago · México · el río <strong>B</strong>ravo · los <strong>A</strong>ndes</td></tr>
+    <tr><td>Instituciones, empresas y organismos</td><td>Truman College · Departamento de Salud · Cruz Roja</td></tr>
+    <tr><td>Festividades</td><td>Navidad · Año Nuevo · Día de Acción de Gracias · Día de los Muertos</td></tr>
   </tbody>
 </table>
-
-<div class="tip">
-  <strong>💡 Truco para reconocerlo:</strong> Si delante de la palabra puedes decir <em>"el", "la", "los", "las", "un", "una"</em>, casi seguro es un sustantivo. Por ejemplo: <em>el carro, la mesa, una sonrisa, las metas</em>.
-</div>
-
-</div>
-</details>
-
-<details id="s-2-adjetivos">
-<summary>2. Los adjetivos <span class="caja-tiempo">25 min</span></summary>
-<div class="contenido-detalle">
-
-<h3>Las palabras que dan color</h3>
-
-<p>Si solo usáramos sustantivos, nuestra escritura sería gris: "el perro, la casa, la niña". Los <span class="palabra-clave">adjetivos</span> dan información sobre las cualidades de un sustantivo:</p>
-
-<ul class="lista-bonita">
-  <li><strong>Color</strong>: un suéter <em>verde</em>, una camisa <em>roja</em>.</li>
-  <li><strong>Tamaño</strong>: un carro <em>grande</em>, una taza <em>pequeña</em>.</li>
-  <li><strong>Forma</strong>: una mesa <em>redonda</em>.</li>
-  <li><strong>Estado de ánimo</strong>: un niño <em>feliz</em>.</li>
-  <li><strong>Otras cualidades</strong>: una sopa <em>caliente</em>, una persona <em>amable</em>.</li>
-</ul>
-
-<div class="leyenda-colores">
-  <span><span class="punto" style="background:var(--sustantivo)" aria-hidden="true"></span> Sustantivo</span>
-  <span><span class="punto" style="background:var(--adjetivo)" aria-hidden="true"></span> Adjetivo</span>
-</div>
-
-<div class="ejemplo-oracion">El <span class="sust">suéter</span> <span class="adj">verde</span></div>
-<div class="ejemplo-oracion">Un <span class="adj">pequeño</span> <span class="sust">niño</span> <span class="adj">feliz</span></div>
-<div class="ejemplo-oracion">La <span class="sust">casa</span> <span class="adj">amarilla</span> de mi <span class="sust">tía</span></div>
-
-<div class="tip">
-  <strong>💡 ¿Cómo encuentro un adjetivo?</strong> Pregúntale al sustantivo: <em>"¿Cómo es?"</em> o <em>"¿Cómo está?"</em>. ¿Cómo es la casa? → <em>amarilla</em>. ¿Cómo está el niño? → <em>feliz</em>.
-</div>
-
-<h3>Detective de sustantivos</h3>
-
-<p>Lee este texto sobre una familia y <strong>toca todos los sustantivos</strong>. Ojo: puedes tocar cualquier palabra, así que piensa bien antes de marcar. Después pulsa «Verificar mi trabajo».</p>
-
-<div class="marcable" id="texto-detective" data-texto="Mi [familia] vive en una [casa] grande. Mi [mamá] trabaja en un [hospital]. Mi [hermano] estudia en la [escuela] por la [noche]. Tenemos un [perro] negro y un [gato] blanco. La [cocina] de mi [mamá] huele rico."></div>
-
-<div class="botones">
-  <button type="button" class="btn btn-primario" id="btn-verificar-detective">Verificar mi trabajo</button>
-  <button type="button" class="btn btn-secundario" id="btn-reset-detective">Empezar de nuevo</button>
-</div>
-<div class="resultado-marcar" id="puntaje-detective" role="status" aria-live="polite"></div>
-
-<h3>Clasifica: ¿sustantivo o adjetivo?</h3>
-
-<div class="clasificador">
-  <div id="lista-clasif"></div>
-  <div class="puntaje" id="puntaje-clasif">Aciertos: 0 / 8</div>
-</div>
-
+<p>En cambio, el español escribe con <strong>minúscula</strong> muchas palabras que el inglés escribe con mayúscula:</p>
+<table class="tabla">
+  <caption class="sr-solo">Palabras que van con minúscula en español</caption>
+  <thead><tr><th scope="col">En español, con minúscula</th><th scope="col">Ejemplos</th><th scope="col" class="ingles">En inglés</th></tr></thead>
+  <tbody>
+    <tr><td>Días de la semana</td><td>el <strong>l</strong>unes, el <strong>s</strong>ábado</td><td class="ingles">Monday, Saturday</td></tr>
+    <tr><td>Meses</td><td>en <strong>e</strong>nero, el 5 de <strong>o</strong>ctubre</td><td class="ingles">January, October</td></tr>
+    <tr><td>Idiomas y nacionalidades</td><td>hablo <strong>e</strong>spañol · es <strong>m</strong>exicano · la comida <strong>c</strong>ubana</td><td class="ingles">Spanish, Mexican, Cuban</td></tr>
+    <tr><td>Estaciones del año</td><td>en <strong>v</strong>erano, este <strong>i</strong>nvierno</td><td class="ingles">summer, winter</td></tr>
+    <tr><td>Palabras como <em>calle</em>, <em>río</em> o <em>doctor</em> delante del nombre</td><td>la <strong>c</strong>alle Ashland · el <strong>r</strong>ío Misisipi · la <strong>d</strong>octora López</td><td class="ingles">Ashland Street, Dr. López</td></tr>
+  </tbody>
+</table>
+<div class="tip"><strong>💡 Las mayúsculas llevan tilde:</strong> si la palabra lleva tilde, la lleva también en mayúscula: <em>Ángela</em>, <em>Óscar</em>, <em>ATENCIÓN</em>, <em>ÁREA DE ESPERA</em>.</div>
+<h3>¿Cuál está bien escrita?</h3>
+<div class="clasificador apilado" id="clasif-may"></div>
+<div class="puntaje" id="puntaje-may" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-1.html#mayusculas" target="_blank" rel="noopener noreferrer">🔠 Practica más: mayúscula o minúscula
+  <span>Rondas con oraciones nuevas. Se abre en una pestaña nueva.</span></a>
 </div>
 </details>
 
-<details id="s-3-describir">
-<summary>3. Práctica: describir con sustantivos y adjetivos <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-coma">
+<summary>2. La coma <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · en tu cuaderno</h4>
-  <p><strong>«Así soy yo».</strong> Escribe <strong>3 oraciones</strong> que te describan a ti mismo, combinando sustantivo + adjetivo:</p>
-  <ul class="lista-bonita">
-    <li>Ejemplo: <em>«Tengo <span class="sust">ojos</span> <span class="adj">castaños</span>.»</em></li>
-    <li>Ejemplo: <em>«Hoy llevo una <span class="sust">camisa</span> <span class="adj">azul</span>.»</em></li>
-    <li>Ejemplo: <em>«Mi <span class="sust">pelo</span> es <span class="adj">corto</span>.»</em></li>
+<table class="tabla">
+  <caption class="sr-solo">Usos de la coma</caption>
+  <thead><tr><th scope="col">Se usa coma…</th><th scope="col">Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td><strong>En una enumeración</strong>, entre los elementos. Antes del último, si va <em>y</em>, <em>o</em> o <em>ni</em>, <strong>no</strong> se pone coma.</td><td>Compré pan<span class="sg">,</span> leche<span class="sg">,</span> huevos y café.</td></tr>
+    <tr><td><strong>Al llamar a alguien</strong> por su nombre o su cargo.</td><td>Ana<span class="sg">,</span> ven a comer. · Gracias<span class="sg">,</span> doctora.</td></tr>
+    <tr><td><strong>Para encerrar una explicación</strong> que se podría quitar.</td><td>Mi vecino<span class="sg">,</span> que es electricista<span class="sg">,</span> arregló la luz.</td></tr>
+    <tr><td><strong>Después de expresiones</strong> como <em>sin embargo</em>, <em>por eso</em>, <em>además</em>, <em>es decir</em>, al comienzo.</td><td>Llovía mucho. Sin embargo<span class="sg">,</span> salimos.</td></tr>
+    <tr><td><strong>Después de la parte que depende</strong>, si va primero (Lección 2.3).</td><td>Cuando llegué<span class="sg">,</span> todos dormían.</td></tr>
+    <tr><td><strong>En las fechas</strong>, entre el lugar y el día.</td><td>Chicago<span class="sg">,</span> 5 de octubre de 2026</td></tr>
+  </tbody>
+</table>
+<div class="tip"><strong>⚠️ Dos comas que no van:</strong>
+  <ul class="lista-bonita" style="margin:4px 0 0">
+    <li><strong>Entre el sujeto y el verbo:</strong> «Mis hermanos mayores<del>,</del> viven en Texas» está mal, aunque el sujeto sea largo.</li>
+    <li><strong>Antes de la <em>y</em> final de una enumeración:</strong> en inglés se escribe <em>bread, milk, and eggs</em>; en español, <em>pan, leche y huevos</em>.</li>
   </ul>
-  <p style="margin-bottom:0">Después escribe otras 3 sobre alguien de tu familia. Léelas en voz alta y, en cada una, encierra el sustantivo en un círculo y subraya el adjetivo.</p>
 </div>
-
-<div class="tip">
-  <strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> lee tus oraciones a alguien de tu casa sin decirle de quién hablas. ¿Adivina quién es? Si lo adivina, tus adjetivos funcionaron.
-</div>
-
+<h3>¿Dónde va la coma?</h3>
+<div class="clasificador apilado" id="clasif-coma"></div>
+<div class="puntaje" id="puntaje-coma" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-1.html#comas" target="_blank" rel="noopener noreferrer">✍️ Practica más: las comas
+  <span>Eliges la versión con las comas en su lugar.</span></a>
 </div>
 </details>
 
-<details id="s-4-lectura">
-<summary>4. Lectura: textos descriptivos <span class="caja-tiempo">20 min</span></summary>
+<details id="s-3-dos-puntos">
+<summary>3. Los dos puntos y el saludo de una carta <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-lectura">Lectura</span> Individual · en voz alta</h4>
-  <p>Lee en voz alta estos tres textos cortos. En tu cuaderno, haz una tabla con cuatro columnas (<strong>persona, lugar, objeto, idea</strong>) y anota en ella los sustantivos de cada texto. Cuando termines, pulsa el botón para comprobar.</p>
+<p>Los <span class="palabra-clave">dos puntos</span> ( : ) detienen la lectura para anunciar lo que viene. Se usan:</p>
+<ul class="lista-bonita">
+  <li><strong>Después del saludo de una carta o un correo.</strong> <em>Estimada señora Morales<span class="sg">:</span></em> · <em>Querida Ana<span class="sg">:</span></em> · <em>Hola, Pedro<span class="sg">:</span></em> El texto empieza en la línea siguiente, <strong>con mayúscula</strong>.</li>
+  <li><strong>Antes de una enumeración anunciada.</strong> <em>Necesito tres cosas<span class="sg">:</span> paciencia, tiempo y práctica.</em> Lo que sigue va con minúscula.</li>
+  <li><strong>Antes de las palabras exactas de alguien.</strong> <em>Mi madre siempre decía<span class="sg">:</span> «Estudia, que nadie te lo quita».</em></li>
+</ul>
+<div class="tip"><strong>⚠️ El saludo con coma es inglés:</strong> <em>Dear Mrs. Morales,</em> lleva coma en inglés, pero en español el saludo lleva dos puntos. En el saludo <em>Hola, Pedro:</em> hay una coma porque se llama a Pedro (sección 2), y los dos puntos al final.</div>
+<div class="tip"><strong>💡 La despedida:</strong> las despedidas como <em>Atentamente</em>, <em>Saludos cordiales</em> o <em>Un abrazo</em> van seguidas de coma, y la firma va en la línea siguiente.</div>
 </div>
+</details>
 
-<div class="botones" style="justify-content:flex-start">
-  <button type="button" class="btn btn-secundario" id="btn-mostrar-sust" aria-pressed="false">Mostrar los sustantivos</button>
+<details id="s-4-raya">
+<summary>4. La raya en el diálogo <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+<p>En español, el diálogo de una historia se escribe con <span class="palabra-clave">raya</span> ( — ), una línea más larga que el guion ( - ). Tres reglas:</p>
+<ol>
+  <li>Cada vez que habla un personaje, la línea empieza con raya, <strong>pegada</strong> a la primera palabra: <em>—Ya llegué.</em></li>
+  <li>Las palabras del narrador van <strong>entre rayas</strong>, y si son un verbo de decir (<em>dijo, preguntó, respondió</em>) empiezan con minúscula: <em>—Ya llegué —dijo Ana.</em></li>
+  <li>Si el personaje sigue hablando después del narrador, el signo de puntuación va <strong>después de la segunda raya</strong>: <em>—Ya llegué —dijo Ana—. ¿Hay café?</em></li>
+</ol>
+<div class="tip"><strong>💡 ¿Y las comillas?</strong> Las comillas ( « » o " " ) se usan para <strong>citar</strong> las palabras de alguien dentro de un texto: <em>El letrero decía «Cerrado los domingos»</em>. Para los diálogos de una historia, el español usa la raya.</div>
+<h3>¿Cuál está bien escrita?</h3>
+<div class="clasificador apilado" id="clasif-raya"></div>
+<div class="puntaje" id="puntaje-raya" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-1.html#dialogo" target="_blank" rel="noopener noreferrer">💬 Practica más: saludos, despedidas y diálogos
+  <span>Eliges la versión puntuada según la norma del español.</span></a>
 </div>
+</details>
 
-<div class="ocultar-sust" id="textos-descriptivos">
-
-<h3>Texto 1: La familia</h3>
-<div class="texto-lectura">
-<p>Mi <span class="sust">familia</span> es pequeña pero feliz. Mi <span class="sust">papá</span> trabaja en una <span class="sust">fábrica</span> en el sur de <span class="sust">Chicago</span>. Mi <span class="sust">mamá</span> cuida la <span class="sust">casa</span> y prepara <span class="sust">comida</span> deliciosa. Mi <span class="sust">hermana</span> menor estudia en la <span class="sust">escuela</span> primaria. Tenemos mucho <span class="sust">amor</span> y <span class="sust">respeto</span>.</p>
+<details id="s-5-lectura">
+<summary>5. Lectura: una nota a la maestra <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+<div class="actividad">
+  <h4><span class="badge badge-lectura">Lectura</span> Individual · «detective de puntuación»</h4>
+  <p style="margin:0">Lee la nota y el diálogo. En tu cuaderno, explica por qué lleva mayúscula cada palabra que la tiene en medio de una oración, y para qué sirven los dos puntos, las comas y las rayas. Luego compara con las respuestas.</p>
 </div>
-
-<h3>Texto 2: La casa</h3>
-<div class="texto-lectura">
-<p>Nuestra <span class="sust">casa</span> tiene tres <span class="sust">cuartos</span>. La <span class="sust">cocina</span> es grande y luminosa. En la <span class="sust">sala</span> hay un <span class="sust">sofá</span> azul y una <span class="sust">mesa</span> de madera. El <span class="sust">jardín</span> tiene <span class="sust">flores</span> de muchos colores. Mi <span class="sust">perro</span> <span class="sust">Rocky</span> duerme en la <span class="sust">terraza</span>.</p>
+<div class="carta" id="texto-nota">
+<p class="der">Chicago, 5 de octubre de 2026</p>
+<p>Estimada señora Morales:</p>
+<p>Le escribo para informarle que mi hijo, Daniel Pérez, no podrá asistir a clases el lunes 12 y el martes 13 de octubre. Viajaremos a Milwaukee para visitar a su abuela, que está enferma. Daniel llevará sus libros, su cuaderno y las tareas de la semana.</p>
+<p>Le agradezco su comprensión.</p>
+<p>Atentamente,<br>Lucía Pérez</p>
 </div>
-
-<h3>Texto 3: El trabajo</h3>
-<div class="texto-lectura">
-<p>Mi <span class="sust">trabajo</span> en el <span class="sust">restaurante</span> me gusta mucho. Mi <span class="sust">jefe</span> se llama <span class="sust">Carlos</span> y es muy amable. Trabajo con dos <span class="sust">compañeros</span>: <span class="sust">Ana</span> y <span class="sust">Luis</span>. Yo limpio las <span class="sust">mesas</span> y los <span class="sust">platos</span>. La <span class="sust">paciencia</span> y la <span class="sust">responsabilidad</span> son importantes.</p>
+<div class="carta" id="texto-dialogo">
+<p>—Mamá, ¿ya le escribiste a la maestra? —preguntó Daniel.</p>
+<p>—Sí, ya le mandé la nota —respondió Lucía—. Le dije que volvemos el miércoles.</p>
+<p>—¿Y qué te contestó?</p>
+<p>—Que no hay problema, pero que no olvides la tarea.</p>
 </div>
-
+<div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-primario" id="btn-leer">🔊 Escuchar el diálogo</button></div>
+<details><summary>Ver las respuestas</summary><div class="contenido-detalle">
+<ul class="lista-bonita" style="margin:0">
+  <li><strong>Mayúsculas:</strong> Chicago, Milwaukee (lugares); Morales, Daniel Pérez, Lucía Pérez (personas). Van en minúscula <em>señora</em>, <em>lunes</em>, <em>martes</em> y <em>octubre</em>.</li>
+  <li><strong>Comas:</strong> <em>Chicago, 5 de octubre</em> (fecha); <em>mi hijo, Daniel Pérez, no podrá</em> (explicación); <em>su abuela, que está enferma</em> (explicación); <em>sus libros, su cuaderno y</em> (enumeración, sin coma antes de <em>y</em>); <em>Atentamente,</em> (despedida); <em>Mamá, ¿ya…?</em> y <em>Sí, ya…</em> (llamar a alguien y separar el <em>sí</em>).</li>
+  <li><strong>Dos puntos:</strong> después del saludo <em>Estimada señora Morales:</em>; el texto sigue con mayúscula en la línea siguiente.</li>
+  <li><strong>Rayas:</strong> cada intervención empieza con raya; <em>—preguntó Daniel</em> y <em>—respondió Lucía—</em> son palabras del narrador; en <em>—respondió Lucía—.</em> el punto va después de la segunda raya porque Lucía sigue hablando.</li>
+</ul>
+</div></details>
 </div>
+</details>
 
-<div class="tip">
-  <strong>📝 Reto adicional:</strong> ¿Cuántos sustantivos propios hay en el Texto 3? Pista: son los nombres de persona, que empiezan con mayúscula. (Respuesta: 3, que son Carlos, Ana y Luis.)
+<details id="s-6-corrige">
+<summary>6. Práctica: corrige el mensaje <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+<div class="actividad">
+  <h4><span class="badge badge-actividad">Actividad</span> Individual · en tu cuaderno</h4>
+  <p>Este correo tiene <strong>once errores</strong> de mayúsculas y puntuación, casi todos copiados del inglés. Cópialo corregido.</p>
+  <div class="carta" style="margin-bottom:0">
+  <p>Dear Señor García,</p>
+  <p>le escribo para confirmar mi cita del Jueves 9 de Octubre. Necesito llevar tres documentos, mi identificación, el comprobante de domicilio, y la carta del banco. Mi esposa que habla Inglés me va a acompañar.</p>
+  <p>Gracias<br>Roberto Díaz</p>
+  </div>
 </div>
-
+<details style="margin-top:10px"><summary>Ver la versión corregida</summary><div class="contenido-detalle">
+<div class="carta" style="margin:0">
+<p>Estimado señor García:</p>
+<p>Le escribo para confirmar mi cita del jueves 9 de octubre. Necesito llevar tres documentos: mi identificación, el comprobante de domicilio y la carta del banco. Mi esposa, que habla inglés, me va a acompañar.</p>
+<p>Gracias,<br>Roberto Díaz</p>
+</div>
+<p style="margin:8px 0 0">Los once cambios: <em>Dear</em> → <em>Estimado</em> · <em>Señor</em> → <em>señor</em> · coma del saludo → dos puntos · <em>le</em> → <em>Le</em> · <em>Jueves</em> → <em>jueves</em> · <em>Octubre</em> → <em>octubre</em> · coma antes de la lista → dos puntos · sin coma antes de <em>y</em> · comas en <em>, que habla inglés,</em> · <em>Inglés</em> → <em>inglés</em> · coma después de la despedida <em>Gracias</em>.</p>
+</div></details>
+<div class="tip"><strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> busquen juntos un correo o una nota de la escuela escritos en español y revisen sus mayúsculas y sus comas con lo que aprendiste.</div>
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>5. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>7. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
 <ul class="lista-bonita">
-  <li><strong>Un objeto de mi casa.</strong> Elige un objeto de tu casa (una mesa, una taza, tu bolso) y escribe 3 oraciones que lo describan con al menos <strong>2 adjetivos</strong>. Ejemplo: <em>«Mi mesa de cocina es redonda y vieja.»</em> Si quieres, tómale una foto y guárdala junto a tus oraciones.</li>
-  <li><strong>Diez sustantivos.</strong> Escribe 5 sustantivos comunes y 5 propios de tu vida diaria (por ejemplo: <em>autobús, Chicago</em>).</li>
-  <li><strong>Busca adjetivos.</strong> Toma un anuncio, una etiqueta o una receta y copia 5 adjetivos con el sustantivo que describen (<em>pan integral</em>, <em>leche fresca</em>).</li>
+  <li><strong>Una nota de verdad.</strong> Escribe una nota formal a la escuela de tus hijos, a tu trabajo o a una oficina (lugar y fecha, saludo con dos puntos, dos párrafos cortos, despedida y firma). Incluye una enumeración y una explicación entre comas.</li>
+  <li><strong>Un diálogo.</strong> Escribe un diálogo de seis líneas entre dos personas que planean una fiesta. Usa raya, al menos dos verbos de decir y una pregunta.</li>
+  <li><strong>Cazador de anglicismos.</strong> Busca en anuncios, menús o letreros en español de tu barrio dos palabras con mayúscula «a la inglesa» (meses, días, idiomas) y escribe cómo deberían ir.</li>
 </ul>
-<div class="tip"><strong>🎯 Antes del quiz:</strong> repasa las dos preguntas clave: el sustantivo <em>nombra</em> (¿quién?, ¿qué?) y el adjetivo <em>describe</em> (¿cómo es?, ¿cómo está?).</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -359,158 +403,113 @@
 </details>
 
 <details id="s-cierre">
-<summary>7. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-
 <h3>Lo que aprendiste en esta lección</h3>
-
 <ul class="lista-bonita">
-  <li>Los <strong>sustantivos</strong> nombran personas, lugares, objetos o ideas.</li>
-  <li>Los <strong>sustantivos propios</strong> nombran cosas únicas y se escriben con mayúscula.</li>
-  <li>Los <strong>adjetivos</strong> describen cómo es o cómo está un sustantivo.</li>
-  <li>Para encontrar el adjetivo: <em>"¿Cómo es?"</em> o <em>"¿Cómo está?"</em>.</li>
+  <li>Mayúscula: personas, lugares, instituciones y festividades. Minúscula: días, meses, idiomas, nacionalidades y estaciones.</li>
+  <li>Coma: enumeraciones (no antes de <em>y</em>), al llamar a alguien, explicaciones, fechas. Nunca entre sujeto y verbo.</li>
+  <li>Dos puntos: después del saludo de una carta, antes de una enumeración anunciada y antes de una cita.</li>
+  <li>Raya: marca a cada personaje y encierra las palabras del narrador.</li>
 </ul>
-
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Puedes decir tres sustantivos comunes de tu cocina?</li>
-    <li>¿Puedes decir tres adjetivos que describan a tu mejor amigo o amiga?</li>
-    <li>¿Reconoces los sustantivos y adjetivos en: "El gato negro duerme en el sofá viejo"?</li>
+    <li>¿Escribirías hoy «el Lunes 3 de Enero» o «el lunes 3 de enero»?</li>
+    <li>¿Sabes empezar un correo formal en español?</li>
+    <li>¿Puedes escribir «Ya voy, dijo mi hijo» como un diálogo con raya?</li>
   </ul>
 </div>
-
-<div class="tip">
-  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_3-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.2 · La regla de oro: la concordancia</a>. Aprenderás a hacer que el sustantivo y el adjetivo vayan de acuerdo en género (masculino o femenino) y en número (singular o plural).
-</div>
-
+<div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_3-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.2 · La tilde y la ortografía convencional</a>. Aprenderás cuándo lleva tilde una palabra y cómo no confundir <em>b</em> y <em>v</em>, <em>c</em>, <em>s</em> y <em>z</em>, <em>g</em> y <em>j</em>, o la <em>h</em> que no suena.</div>
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 3 · Lección 3.1</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 3 · Lección 3.1</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-
 <script>
+/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
 (function(){
-  prepararMarcable('texto-detective','btn-verificar-detective','btn-reset-detective','puntaje-detective',['sustantivo','sustantivos']);
+  var voz=null, hay=('speechSynthesis' in window);
+  function elegir(){
+    if(!hay)return;
+    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
+    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
+    voz=null;
+    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
+    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
+  }
+  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
+  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
+  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
+  /* hablar(texto, velocidad, alTerminar) */
+  window.hablar=function(texto,vel,fin){
+    if(!hay||!texto){aviso();return;}
+    speechSynthesis.cancel();
+    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
+    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
+    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
+  };
+  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
+  window.hablarPalabras=function(texto){
+    if(!hay){aviso();return;}
+    speechSynthesis.cancel();
+    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
+  };
+  window.callar=function(){if(hay)speechSynthesis.cancel();};
+  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
+})();
 
-  var btnMostrar=document.getElementById('btn-mostrar-sust'), textos=document.getElementById('textos-descriptivos');
-  btnMostrar.addEventListener('click',function(){
-    var oculto=textos.classList.toggle('ocultar-sust');
-    btnMostrar.textContent=oculto?'Mostrar los sustantivos':'Ocultar los sustantivos';
-    btnMostrar.setAttribute('aria-pressed',oculto?'false':'true');
-  });
-
-  var palabrasClasif=[
-    {palabra:'mesa',tipo:'sust'},{palabra:'rojo',tipo:'adj'},
-    {palabra:'feliz',tipo:'adj'},{palabra:'Chicago',tipo:'sust'},
-    {palabra:'grande',tipo:'adj'},{palabra:'profesor',tipo:'sust'},
-    {palabra:'caliente',tipo:'adj'},{palabra:'libertad',tipo:'sust'}
-  ];
-
-  var aciertos=0;
-  var resueltas={};
-  var lista=document.getElementById('lista-clasif');
-
-  palabrasClasif.forEach(function(item,idx){
-    var div=document.createElement('div');
-    div.className='item-palabra';
-    div.innerHTML=
-      '<span class="palabra-clasif">'+item.palabra+'</span>'+
-      '<div class="opciones-clasif">'+
-        '<button type="button" class="btn-clasif sust-btn" data-tipo="sust">Sustantivo</button>'+
-        '<button type="button" class="btn-clasif adj-btn" data-tipo="adj">Adjetivo</button>'+
-      '</div>';
-    lista.appendChild(div);
-
-    var botones=div.querySelectorAll('.btn-clasif');
-    botones.forEach(function(b){
+/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
+function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
+  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
+  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
+  items.forEach(function(it,i){
+    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
+    var ops=it.ops||opciones;
+    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
+      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
+      '<span class="item-fb" aria-live="polite"></span>';
+    caja.appendChild(d);
+    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
+    var fb=d.querySelector('.item-fb');
+    d.querySelectorAll('.btn-op').forEach(function(b){
       b.addEventListener('click',function(){
-        if(resueltas[idx])return;
-        var t=b.getAttribute('data-tipo');
-        if(t===item.tipo){
-          b.classList.add('correcta');
-          resueltas[idx]=true;
-          aciertos++;
-          actualizarPuntaje();
+        if(hechas[i])return;
+        if(+b.getAttribute('data-j')===it.c){
+          b.classList.add('correcta'); hechas[i]=true; bien++;
+          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
+          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
         }else{
-          b.classList.add('incorrecta');
-          setTimeout(function(){b.classList.remove('incorrecta')},500);
+          b.classList.add('incorrecta'); b.disabled=true;
+          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
         }
       });
     });
   });
-
-  function actualizarPuntaje(){
-    var el=document.getElementById('puntaje-clasif');
-    el.textContent='Aciertos: '+aciertos+' / '+palabrasClasif.length;
-    if(aciertos===palabrasClasif.length){
-      el.innerHTML='🎉 ¡Muy bien! Acertaste todas: '+aciertos+' / '+palabrasClasif.length;
-      el.style.color='var(--exito)';
-    }
-  }
-})();
-
-/* ===== Tocar palabras ===== */
-/* <div class="marcable" data-texto="Mi [familia] vive en una [casa] grande."> ;
-   cada línea del texto (separada por «|») es un párrafo. */
-function prepararMarcable(id, idRevisar, idLimpiar, idResultado, queBusca){
-  var caja=document.getElementById(id), res=document.getElementById(idResultado);
-  function pintar(){
-    caja.innerHTML='';
-    caja.getAttribute('data-texto').split('|').forEach(function(linea){
-      var p=document.createElement('p');
-      linea.trim().split(/\s+/).forEach(function(tok,k){
-        var m=tok.match(/^([¿¡«(]*)(\[?)([^\]\s.,;:!?»)]+)(\]?)([.,;:!?»)]*)$/);
-        if(k) p.appendChild(document.createTextNode(' '));
-        if(!m){ p.appendChild(document.createTextNode(tok)); return; }
-        if(m[1]) p.appendChild(document.createTextNode(m[1]));
-        var b=document.createElement('button'); b.type='button'; b.className='pal-m'; b.textContent=m[3];
-        b.setAttribute('aria-pressed','false'); if(m[2]==='[') b.dataset.ok='1';
-        b.addEventListener('click',function(){ if(b.disabled)return; b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true'); res.textContent=''; res.className='resultado-marcar'; });
-        p.appendChild(b);
-        if(m[5]){ var sg=document.createElement('span'); sg.className='punt'; sg.textContent=m[5]; p.appendChild(sg); }
-      });
-      caja.appendChild(p);
-    });
-    res.textContent=''; res.className='resultado-marcar';
-  }
-  document.getElementById(idRevisar).addEventListener('click',function(){
-    var bien=0,mal=0,falta=0,total=0;
-    caja.querySelectorAll('.pal-m').forEach(function(b){
-      var marcada=b.getAttribute('aria-pressed')==='true', obj=b.dataset.ok==='1';
-      if(obj) total++;
-      b.classList.remove('bien','mal','falto');
-      if(marcada&&obj){b.classList.add('bien');bien++;}
-      else if(marcada&&!obj){b.classList.add('mal');mal++;}
-      else if(!marcada&&obj){b.classList.add('falto');falta++;}
-    });
-    if(!mal&&!falta){ res.textContent='🎉 ¡Excelente! Encontraste '+(total===1?'el '+queBusca[0]:'los '+total+' '+queBusca[1])+'.'; res.className='resultado-marcar correcto'; }
-    else{ res.textContent='Encontraste '+bien+' de '+total+'.'+(mal?' Marcaste '+mal+' que no '+(mal===1?'es '+queBusca[0]:'son '+queBusca[1])+' (en rojo).':'')+(falta?' Te '+(falta===1?'faltó':'faltaron')+' '+falta+' (con borde naranja).':'')+' Puedes corregir y volver a revisar.'; res.className='resultado-marcar incorrecto'; }
-  });
-  document.getElementById(idLimpiar).addEventListener('click',pintar);
-  pintar();
+  marcador();
 }
 
-/* ===== Quiz de la lección ===== */
-(function(){
-  var P=[{"t": "¿Qué es un <strong>sustantivo</strong>?", "o": ["La palabra que nombra personas, lugares, objetos o ideas", "La palabra que dice qué hace alguien", "La palabra que describe cómo es algo"], "c": 0}, {"t": "¿Cuál de estas palabras es un sustantivo?", "o": ["mesa", "rápido", "corre"], "c": 0}, {"t": "¿Cuál de estas palabras es un sustantivo?", "o": ["feliz", "alegría", "alegre"], "c": 1}, {"t": "¿Cuál es un sustantivo <strong>propio</strong>?", "o": ["ciudad", "Chicago", "río"], "c": 1}, {"t": "Los sustantivos propios se escriben…", "o": ["Con mayúscula inicial", "Siempre en plural", "Con letra pequeña"], "c": 0}, {"t": "¿Qué es un <strong>adjetivo</strong>?", "o": ["La palabra que describe cómo es o cómo está un sustantivo", "El nombre de una persona", "Una palabra que une oraciones"], "c": 0}, {"t": "¿Cuál es el adjetivo en «la sopa caliente»?", "x": "la sopa caliente", "o": ["la", "sopa", "caliente"], "c": 2, "fijo": true}, {"t": "¿Cuál es el sustantivo en «un suéter verde»?", "x": "un suéter verde", "o": ["un", "suéter", "verde"], "c": 1, "fijo": true}, {"t": "En «El gato negro duerme en el sofá viejo», ¿cuáles son los adjetivos?", "o": ["negro y viejo", "gato y sofá", "duerme y en"], "c": 0}, {"t": "Para encontrar el adjetivo, le preguntas al sustantivo…", "o": ["¿Cómo es? o ¿cómo está?", "¿Qué hace?", "¿Dónde vive?"], "c": 0}, {"t": "Un truco para reconocer un sustantivo: delante puedes decir…", "o": ["el, la, un, una", "muy, más, poco", "ayer, hoy, mañana"], "c": 0}, {"t": "«Libertad» es un sustantivo que nombra…", "o": ["Una idea", "Un lugar", "Una persona"], "c": 0}], META=10, N=P.length;
-  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+/* ===== Quiz de la lección =====
+   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
+        ae:audio entrecortado opcional, fijo:no barajar,
+        r:enlace de repaso que aparece si la respuesta es incorrecta}]
+   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
+function iniciarQuiz(P,cfg){
+  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a){
+    if(p.x||p.a||p.ae){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
-    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -518,7 +517,7 @@ function prepararMarcable(id, idRevisar, idLimpiar, idResultado, queBusca){
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -533,37 +532,83 @@ function prepararMarcable(id, idRevisar, idLimpiar, idResultado, queBusca){
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
+      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya distingues sustantivos y adjetivos. Puedes continuar con la Lección 3.2.";fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-})();
+}
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
+  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-})();
-</script>
+});
 
+clasificador('clasif-may','puntaje-may',[
+  {p:'Días e idiomas',ops:['El Lunes empieza mi clase de Inglés.','El lunes empieza mi clase de inglés.','el lunes empieza mi clase de Inglés.'],c:1,n:'Días e idiomas van con minúscula; la oración empieza con mayúscula.'},
+  {p:'Meses y nacionalidades',ops:['En julio llegan mis primos colombianos.','En Julio llegan mis primos Colombianos.','En julio llegan mis primos Colombianos.'],c:0,n:'Meses y nacionalidades, con minúscula.'},
+  {p:'Lugares y festividades',ops:['En navidad viajamos a puerto rico.','En Navidad viajamos a puerto Rico.','En Navidad viajamos a Puerto Rico.'],c:2,n:'Festividades y lugares, con mayúscula.'},
+  {p:'Calles y cargos',ops:['La Doctora Ruiz trabaja en la Calle Ashland.','La doctora Ruiz trabaja en la calle Ashland.','La doctora ruiz trabaja en la calle ashland.'],c:1,n:'<em>doctora</em> y <em>calle</em> van con minúscula; los nombres propios, con mayúscula.'},
+  {p:'Mayúsculas con tilde',ops:['SALA DE ESPERA · ATENCION AL PUBLICO','SALA DE ESPERA · ATENCIÓN AL PÚBLICO','Sala de Espera · Atención al Público'],c:1,n:'Las mayúsculas llevan tilde cuando les corresponde.'}
+],null,false);
+
+clasificador('clasif-coma','puntaje-coma',[
+  {p:'Una enumeración',ops:['Traje arroz, frijoles, y tortillas.','Traje arroz frijoles y tortillas.','Traje arroz, frijoles y tortillas.'],c:2,n:'Coma entre los elementos, pero no antes de <em>y</em>.'},
+  {p:'Llamar a alguien',ops:['Carlos, cierra la puerta por favor.','Carlos cierra, la puerta por favor.','Carlos cierra la puerta, por favor.'],c:0,n:'Al llamar a Carlos se separa su nombre con coma. (También se puede añadir otra antes de <em>por favor</em>.)'},
+  {p:'Una explicación',ops:['Mi jefe que es muy amable, me dio el día libre.','Mi jefe, que es muy amable, me dio el día libre.','Mi jefe, que es muy amable me dio el día libre.'],c:1,n:'La explicación va entre dos comas.'},
+  {p:'Sujeto largo',ops:['Los estudiantes de la clase de la noche, llegaron temprano.','Los estudiantes, de la clase de la noche llegaron temprano.','Los estudiantes de la clase de la noche llegaron temprano.'],c:2,n:'Nunca va coma entre el sujeto y el verbo.'},
+  {p:'Una fecha',ops:['Chicago, 12 de mayo de 2026','Chicago 12 de mayo, de 2026','Chicago, 12 de Mayo de 2026'],c:0,n:'Coma entre el lugar y el día; el mes en minúscula.'}
+],null,false);
+
+clasificador('clasif-raya','puntaje-raya',[
+  {p:'El saludo de una carta formal',ops:['Estimado señor Gómez,','Estimado señor Gómez:','Estimado Señor Gómez;'],c:1,n:'En español, el saludo lleva dos puntos.'},
+  {p:'Un saludo de confianza',ops:['Hola, Marta:','Hola Marta,','Hola Marta;'],c:0,n:'Coma porque se llama a Marta, y dos puntos al final.'},
+  {p:'Un diálogo',ops:['"Ya llegué", dijo Ana.','—Ya llegué —dijo Ana.','- Ya llegué - dijo Ana.'],c:1,n:'Raya pegada a la palabra, y el verbo de decir en minúscula.'},
+  {p:'El personaje sigue hablando',ops:['—Tengo hambre —dijo Luis—. ¿Comemos?','—Tengo hambre —dijo Luis. ¿Comemos?','—Tengo hambre. —Dijo Luis—. ¿Comemos?'],c:0,n:'El punto va después de la segunda raya, porque Luis sigue hablando.'}
+],null,false);
+
+document.getElementById('btn-leer').addEventListener('click',function(){
+  hablar('Mamá, ¿ya le escribiste a la maestra?, preguntó Daniel. Sí, ya le mandé la nota, respondió Lucía. Le dije que volvemos el miércoles. ¿Y qué te contestó? Que no hay problema, pero que no olvides la tarea.',0.85);
+});
+
+iniciarQuiz([
+  {t:'¿Cuál está bien escrita?',o:['Mi cumpleaños es en julio.','Mi cumpleaños es en Julio.','Mi Cumpleaños es en julio.'],c:0},
+  {t:'¿Cuál está bien escrita?',o:['Mi vecino es mexicano y habla español.','Mi vecino es Mexicano y habla Español.','Mi vecino es mexicano y habla Español.'],c:0},
+  {t:'¿Cuál está bien escrita?',o:['En Navidad visitamos a mis abuelos.','En navidad visitamos a mis abuelos.','En Navidad visitamos a mis Abuelos.'],c:0},
+  {t:'¿Cómo empieza correctamente una carta formal en español?',o:['Estimado señor Ruiz:','Estimado señor Ruiz,','Estimado Señor Ruiz;'],c:0},
+  {t:'¿Dónde va bien la coma?',o:['Ana, ven a comer.','Ana ven, a comer.','Ana ven a comer,'],c:0},
+  {t:'¿Cuál está bien puntuada?',o:['Compré pan, leche, huevos y café.','Compré pan, leche, huevos, y café.','Compré, pan leche huevos y café.'],c:0},
+  {t:'¿Cuál está bien puntuada?',o:['Mis hermanos mayores viven en Texas.','Mis hermanos mayores, viven en Texas.','Mis, hermanos mayores viven en Texas.'],c:0},
+  {t:'¿Dónde van bien los dos puntos?',o:['Necesito tres cosas: paciencia, tiempo y práctica.','Necesito: tres cosas paciencia, tiempo y práctica.','Necesito tres cosas paciencia: tiempo y práctica.'],c:0},
+  {t:'¿Cuál es el diálogo bien escrito?',o:['—Ya llegué —dijo Ana.','—Ya llegué. —Dijo Ana.','Ya llegué —dijo Ana—.'],c:0},
+  {t:'En una historia, la raya al comienzo de una línea indica…',o:['Que habla un personaje','Que empieza un párrafo largo','Que la oración es una pregunta'],c:0},
+  {t:'En un letrero escrito en mayúsculas, ¿cómo va?',o:['ATENCIÓN AL CLIENTE','ATENCION AL CLIENTE','ATENCÍON AL CLIENTE'],c:0},
+  {t:'¿Cómo se escribe la fecha de una carta?',o:['Chicago, 5 de octubre de 2026','Chicago 5 de Octubre, de 2026','Chicago, 5 de Octubre de 2026'],c:0}
+],{meta:10,
+   bien:'Ya escribes las mayúsculas y la puntuación según la norma del español. Puedes continuar con la Lección 3.2.',
+   repaso:'Vuelve a las secciones 1 a 4 y repite el quiz: con práctica sale.'});
+</script>
 </body>
 </html>

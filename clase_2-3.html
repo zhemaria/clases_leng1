@@ -1,494 +1,91 @@
 <!DOCTYPE html>
-<!-- Lección 2.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
-     José M. Fernández · CC BY-NC-SA 4.0 -->
+<!-- Lección 2.3 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
+     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
+     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 2.3 · Palabras de uso frecuente y fluidez inicial</title>
+<title>Lección 2.3 · Oraciones simples, compuestas y complejas</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#0089cd;
-    --cp-claro:#e3f2fd;
-    --cp-oscuro:#005a8a;
-    --acento:#ff8c42;
-    --texto:#1a2332;
-    --fondo:#fafbfc;
-    --gris:#6b7785;
-    --gris-claro:#eef1f4;
-    --frecuente:#5e35b1;
-    --frecuente-claro:#ede7f6;
-    --bisilaba:#00897b;
-    --bisilaba-clara:#e0f2f1;
-    --sujeto:#c2185b;
-    --predicado:#1b5e20;
-    --exito:#2e7d32;
-    --error:#c62828;
+    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
+    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
+    --gris:#555;--gris-claro:#eef1f4;
+    --dip:#1565c0;--dip-claro:#e3f2fd;
+    --hia:#ad1457;--hia-claro:#fce4ec;
+    --grp:#5c3900;--grp-claro:#fff3cd;
+    --exito:#2e7d32;--error:#c62828;
   }
   *{box-sizing:border-box}
-  body{
-    font-family:'Poppins','Segoe UI',Arial,sans-serif;
-    line-height:1.7;
-    color:var(--texto);
-    background:var(--fondo);
-    max-width:960px;
-    margin:0 auto;
-    padding:24px 18px;
-  }
-  h1{
-    color:var(--cp-oscuro);
-    border-bottom:4px solid var(--cp);
-    padding-bottom:14px;
-    font-size:1.85rem;
-    margin-bottom:8px;
-  }
-  .subtitulo{
-    color:var(--gris);
-    font-style:italic;
-    margin-top:0;
-    margin-bottom:24px;
-    font-size:1.05rem;
-  }
-  h2{
-    color:var(--cp-oscuro);
-    border-left:6px solid var(--cp);
-    padding-left:14px;
-    margin-top:32px;
-    font-size:1.4rem;
-  }
-  h3{
-    color:var(--cp);
-    margin-top:24px;
-    font-size:1.15rem;
-  }
-  .caja-objetivos{
-    background:var(--cp-claro);
-    border-left:6px solid var(--cp);
-    padding:18px 22px;
-    border-radius:8px;
-    margin:18px 0 28px 0;
-  }
-  .caja-objetivos h3{margin-top:0;color:var(--cp-oscuro)}
-  .caja-tiempo{
-    display:inline-block;
-    background:var(--acento);
-    color:#fff;
-    padding:4px 12px;
-    border-radius:14px;
-    font-size:0.85rem;
-    font-weight:600;
-    margin-left:10px;
-    vertical-align:middle;
-  }
-  details{
-    background:#fff;
-    border:1px solid #d6dde4;
-    border-radius:10px;
-    margin:14px 0;
-    padding:0;
-    overflow:hidden;
-    box-shadow:0 1px 4px rgba(0,0,0,0.04);
-  }
-  details[open]{
-    border-color:var(--cp);
-    box-shadow:0 3px 10px rgba(0,137,205,0.12);
-  }
-  summary{
-    cursor:pointer;
-    padding:16px 20px;
-    font-weight:600;
-    color:var(--cp-oscuro);
-    background:var(--gris-claro);
-    list-style:none;
-    user-select:none;
-    font-size:1.05rem;
-  }
+  body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
+  h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
+  .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
+  h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
+  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
+  .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
+  summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
-  summary::before{
-    content:'▶';
-    display:inline-block;
-    margin-right:10px;
-    color:var(--cp);
-    transition:transform 0.25s;
-    font-size:0.85rem;
-  }
+  summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
-  details[open] summary{
-    background:var(--cp-claro);
-    border-bottom:2px solid var(--cp);
-  }
+  details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
-  .modalidad{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-    margin:16px 0;
-  }
-  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
-  .tarjeta-modalidad{
-    border-radius:10px;
-    padding:16px 18px;
-    border:2px solid;
-  }
-  .presencial{background:#fff8ee;border-color:var(--acento)}
-  .presencial h4{color:#b35316;margin-top:0}
-  .online{background:#eef5fb;border-color:var(--cp)}
-  .online h4{color:var(--cp-oscuro);margin-top:0}
-  .tip{
-    background:#fffbe6;
-    border-left:5px solid #f4c430;
-    padding:12px 18px;
-    border-radius:6px;
-    margin:14px 0;
-  }
-  .tip strong{color:#8a6d00}
-  .ejercicio{
-    background:#f3f9f3;
-    border:2px dashed #4caf50;
-    border-radius:10px;
-    padding:18px 22px;
-    margin:20px 0;
-  }
-  .ejercicio h4{color:#2e7d32;margin-top:0}
-  .botones{
-    display:flex;
-    gap:10px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin:14px 0;
-  }
-  .btn{
-    padding:10px 22px;
-    border:none;
-    border-radius:8px;
-    font-weight:600;
-    cursor:pointer;
-    font-family:inherit;
-    font-size:0.95rem;
-    transition:all 0.2s;
-  }
+  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#6b5400}
+  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
   .btn-primario{background:var(--cp);color:#fff}
   .btn-primario:hover{background:var(--cp-oscuro)}
   .btn-secundario{background:var(--gris-claro);color:var(--texto)}
   .btn-secundario:hover{background:#d6dde4}
-  .btn-sonido{
-    background:var(--acento);
-    color:#fff;
-    padding:8px 18px;
-    border-radius:20px;
-    font-size:0.95rem;
-  }
-  .btn-sonido:hover{background:#e07020}
-  .btn-sonido::before{content:'🔊 ';margin-right:4px}
-  .firma{
-    margin-top:40px;
-    padding-top:18px;
-    border-top:2px solid var(--gris-claro);
-    text-align:center;
-    color:var(--gris);
-    font-style:italic;
-    font-size:0.9rem;
-  }
+  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
-  ul.lista-bonita li::before{
-    content:'➜';
-    position:absolute;
-    left:0;
-    color:var(--cp);
-    font-weight:700;
-  }
-  .palabra-clave{
-    background:linear-gradient(transparent 60%,#ffeb3b 60%);
-    padding:0 4px;
-    font-weight:600;
-  }
-
-  /* === Tarjetas de palabras frecuentes (estilo "flashcard") === */
-  .mural-frecuentes{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-    gap:12px;
-    margin:18px 0;
-  }
-  .palabra-frec{
-    background:linear-gradient(135deg,var(--frecuente) 0%,#7e57c2 100%);
-    color:#fff;
-    padding:18px 8px;
-    border-radius:10px;
-    text-align:center;
-    font-family:'Georgia',serif;
-    font-size:1.5rem;
-    font-weight:700;
-    cursor:pointer;
-    transition:all 0.2s;
-    box-shadow:0 3px 8px rgba(94,53,177,0.25);
-    user-select:none;
-  }
-  .palabra-frec:hover{
-    transform:translateY(-3px);
-    box-shadow:0 5px 14px rgba(94,53,177,0.4);
-  }
-  .palabra-frec:active{transform:translateY(0)}
-
-  /* === Fluidez: tres pilares === */
-  .pilares-fluidez{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
-    margin:18px 0;
-  }
-  @media(max-width:640px){.pilares-fluidez{grid-template-columns:1fr}}
-  .pilar{
-    background:#fff;
-    border-top:5px solid;
-    border-radius:10px;
-    padding:18px;
-    text-align:center;
-    box-shadow:0 2px 6px rgba(0,0,0,0.05);
-  }
-  .pilar h4{margin-top:0}
-  .pilar.velocidad{border-color:#e91e63}
-  .pilar.velocidad h4{color:#e91e63}
-  .pilar.precision{border-color:#1976d2}
-  .pilar.precision h4{color:#1976d2}
-  .pilar.prosodia{border-color:#388e3c}
-  .pilar.prosodia h4{color:#388e3c}
-  .pilar .emoji-grande{
-    font-size:2.5rem;
-    display:block;
-    margin-bottom:8px;
-  }
-
-  /* === Lectura modelo (en eco y a coro) === */
-  .caja-lectura{
-    background:#fff;
-    border:2px solid var(--cp);
-    border-radius:10px;
-    padding:18px 22px;
-    margin:14px 0;
-  }
-  .frase-modelo{
-    font-family:'Georgia',serif;
-    font-size:1.3rem;
-    color:var(--cp-oscuro);
-    margin:10px 0;
-    padding:10px 14px;
-    background:var(--cp-claro);
-    border-radius:6px;
-  }
-  .botones-lectura{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:10px;
-    justify-content:center;
-  }
-
-  /* === Frases de apoyo === */
-  .frase-apoyo{
-    background:#fff;
-    border-left:5px solid var(--cp);
-    padding:14px 18px;
-    margin:12px 0;
-    border-radius:6px;
-    font-family:'Georgia',serif;
-    font-size:1.2rem;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:10px;
-  }
-  .palabra-frecuente{
-    background:var(--frecuente-claro);
-    color:var(--frecuente);
-    padding:2px 8px;
-    border-radius:4px;
-    font-weight:700;
-    box-shadow:0 -3px 0 var(--frecuente) inset;
-  }
-  .palabra-bisilaba{
-    background:var(--bisilaba-clara);
-    color:var(--bisilaba);
-    padding:2px 8px;
-    border-radius:4px;
-    font-weight:700;
-    box-shadow:0 -3px 0 var(--bisilaba) inset;
-  }
-  .leyenda-colores{
-    display:flex;
-    gap:18px;
-    justify-content:center;
-    margin:14px 0;
-    flex-wrap:wrap;
-    font-size:0.95rem;
-  }
-  .leyenda-colores span{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-  }
-  .leyenda-colores .punto{
-    width:14px;
-    height:14px;
-    border-radius:3px;
-    display:inline-block;
-  }
-
-  /* === Análisis sujeto/predicado === */
-  .oracion-analizada{
-    background:#fff;
-    border:2px solid var(--gris-claro);
-    border-radius:10px;
-    padding:14px 18px;
-    margin:12px 0;
-    font-family:'Georgia',serif;
-    font-size:1.2rem;
-    text-align:center;
-  }
-  .marca-sujeto{
-    color:var(--sujeto);
-    font-weight:700;
-    border-bottom:3px solid var(--sujeto);
-  }
-  .marca-predicado{
-    color:var(--predicado);
-    font-weight:700;
-    border-bottom:3px solid var(--predicado);
-  }
-
-  /* === Ejercicio constructor de frase === */
-  .constructor-frase{
-    background:#fff;
-    border:2px solid var(--cp);
-    border-radius:10px;
-    padding:18px;
-    margin:14px 0;
-  }
-  .palabras-disponibles{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    justify-content:center;
-    margin:14px 0;
-    padding:14px;
-    background:var(--gris-claro);
-    border-radius:8px;
-  }
-  .palabra-elegir{
-    padding:8px 14px;
-    border-radius:8px;
-    font-family:'Georgia',serif;
-    font-size:1.1rem;
-    font-weight:700;
-    cursor:pointer;
-    border:none;
-    box-shadow:0 2px 4px rgba(0,0,0,0.12);
-    transition:transform 0.15s;
-    font-family:inherit;
-  }
-  .palabra-elegir.frec-tipo{
-    background:var(--frecuente);
-    color:#fff;
-  }
-  .palabra-elegir.bisil-tipo{
-    background:var(--bisilaba);
-    color:#fff;
-  }
-  .palabra-elegir:hover{transform:translateY(-2px)}
-  .palabra-elegir.usada{opacity:0.3;cursor:default}
-  .area-frase{
-    min-height:60px;
-    background:#f9f9f9;
-    border:3px dashed var(--cp);
-    border-radius:8px;
-    padding:14px;
-    display:flex;
-    gap:6px;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
-    font-family:'Georgia',serif;
-    font-size:1.2rem;
-  }
-  .area-frase:empty::before{
-    content:'(toca palabras para armar una frase)';
-    color:var(--gris);
-    font-style:italic;
-    font-size:0.95rem;
-  }
-  .palabra-en-frase{
-    padding:6px 10px;
-    border-radius:6px;
-    cursor:pointer;
-  }
-  .palabra-en-frase.frec-tipo{
-    background:var(--frecuente-claro);
-    color:var(--frecuente);
-    font-weight:700;
-  }
-  .palabra-en-frase.bisil-tipo{
-    background:var(--bisilaba-clara);
-    color:var(--bisilaba);
-    font-weight:700;
-  }
-
-  .feedback{
-    margin-top:14px;
-    padding:12px 16px;
-    border-radius:8px;
-    text-align:center;
-    font-weight:600;
-    min-height:20px;
-  }
-  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
-  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
-  .neutral{background:#fff3cd;color:#856404;border:1px solid #ffeaa7}
-
-  /* === Resumen del Tema 2 === */
-  .resumen-tema{
-    background:linear-gradient(135deg,#fff3e0 0%,#ffe0b2 100%);
-    border:2px solid var(--acento);
-    border-radius:10px;
-    padding:20px 24px;
-    margin:24px 0;
-  }
-  .resumen-tema h3{
-    color:#b35316;
-    margin-top:0;
-  }
-  .escalera{
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    gap:8px;
-    margin:18px 0;
-  }
-  .escalera-paso{
-    background:#fff;
-    border:2px solid var(--cp);
-    border-radius:8px 8px 0 0;
-    padding:12px 16px;
-    text-align:center;
-    font-weight:700;
-    color:var(--cp-oscuro);
-    box-shadow:0 -2px 6px rgba(0,0,0,0.08);
-  }
-  .escalera-paso:nth-child(1){min-height:90px}
-  .escalera-paso:nth-child(2){min-height:120px}
-  .escalera-paso:nth-child(3){min-height:150px;background:#fff3e0;border-color:var(--acento);color:#b35316}
-  .escalera-paso .numero{
-    display:block;
-    font-size:1.6rem;
-    color:var(--acento);
-    margin-bottom:6px;
-  }
-
-  /* ── Índice de la lección ── */
+  ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
+  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
+  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
+  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
+  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
+  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.tabla tr:last-child td{border-bottom:none}
+  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad h4{color:#8a3d0c;margin-top:0}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0d47a1}
+  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
+  /* Clasificadores */
+  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
+  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
+  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
+  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
+  .item-fb:empty{display:none}
+  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
+  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
+  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
+  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
+  .btn-op:disabled{cursor:default}
+  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
+  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
+  /* Lectura con marcas */
+  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
+  .texto-lectura p{margin:0 0 10px}
+  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
+  .leyenda span{display:inline-flex;align-items:center;gap:6px}
+  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
+  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
+  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
+  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
+  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
+  /* Índice */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -498,14 +95,13 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  .caja-tiempo{color:#1a2332!important}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  /* ── Quiz de la lección ── */
+  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
+  .aviso-voz.visible{display:block}
+  /* Quiz */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -525,33 +121,93 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
-  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  button.palabra-frec{border:none;width:100%}
-  button.palabra-en-frase{border:none;font:inherit;font-weight:700}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
+
+  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
+  .qz-repaso a{color:#004d44;font-weight:700}
+  /* ── Comunes desde el Tema 4 ── */
+  .item-ops{flex-wrap:wrap}
+  .apilado .item{flex-direction:column;align-items:stretch}
+  .apilado .item-ops{flex-direction:column}
+  .apilado .btn-op{text-align:left;font-weight:400}
+  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
+  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
+  .pasaje p{margin:0 0 6px}
+  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
+  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
+  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
+  /* Taller de escritura (Tema 7) */
+  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
+  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
+  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
+  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
+  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
+  .tl-conect{font-size:.95rem;margin:4px 0 8px}
+  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
+  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
+  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
+  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
+  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
+  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
+  .rubrica{font-size:.92rem}
+  .rubrica td,.rubrica th{vertical-align:top}
+  .marca{border-radius:3px;padding:0 2px;font-weight:700}
+  .m-postura{background:#e3f2fd;color:#0d3c78}
+  .m-razon{background:#fff3e0;color:#7a3a00}
+  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
+  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
+  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
+  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
+  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
+  .oculta-marcas .marca::before{content:none}
+  @media(max-width:640px){
+    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
+    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
+    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
+    .rubrica td{border:none;border-top:1px solid #d5dde3}
+    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
+  }
+
+  .vb{color:#1565c0;font-weight:700;border-bottom:3px solid #1565c0}
+  .cx{background:#fff3cd;color:#5c3900;font-weight:700;padding:0 4px;border-radius:4px}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:700px){.dos{grid-template-columns:1fr}}
+  .dos .texto-lectura{margin:6px 0}
+  .ver-cx .cxm{background:#fff3cd;color:#5c3900;font-weight:700;box-shadow:0 -3px 0 #8a5a00 inset;border-radius:3px}
 </style>
 </head>
 <body>
-
-<h1>Lección 2.3 · Palabras de uso frecuente y fluidez inicial</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 2 · Unas 2 horas, a tu ritmo</p>
+<h1>Lección 2.3 · Oraciones simples, compuestas y complejas</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 2: Gramática de la oración · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
-  <h3>🎯 Objetivo de la lección</h3>
-  <p style="margin-bottom:0">Reconocer <strong>palabras de alta frecuencia</strong> de forma automática y unirlas a las palabras decodificadas para crear frases con <strong>fluidez básica</strong>.</p>
+  <h2>🎯 Objetivos de la lección</h2>
+  <ul class="lista-bonita" style="margin:0">
+    <li>Distinguir una oración <strong>simple</strong>, una <strong>compuesta</strong> y una <strong>compleja</strong>.</li>
+    <li>Elegir el <strong>conector</strong> adecuado según lo que quieres decir: sumar, contrastar, dar una causa o una condición.</li>
+    <li>Unir oraciones cortas para que tu escritura sea más fluida, con las comas en su lugar.</li>
+  </ul>
+  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.W.CS.1 · 2.W.TT.1</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-palabras-frecuentes">¿Qué son las palabras de alta frecuencia?</a></li>
-    <li><a href="#s-2-fluidez">Estrategias de lectura para la fluidez</a></li>
-    <li><a href="#s-3-frases-de-apoyo">Práctica: de palabras a oraciones</a></li>
+    <li><a href="#s-1-simple">La oración simple</a></li>
+    <li><a href="#s-2-compuesta">La oración compuesta: ideas del mismo peso</a></li>
+    <li><a href="#s-3-compleja">La oración compleja: una idea que depende de otra</a></li>
+    <li><a href="#s-4-clasifica">Práctica: clasifica y elige el conector</a></li>
+    <li><a href="#s-5-lectura">Lectura comparada: «Una mañana difícil»</a></li>
+    <li><a href="#s-6-une">Práctica: une las ideas</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
-    <li><a href="#s-cierre">Cierre del Tema 2</a></li>
+    <li><a href="#s-cierre">Cierre</a></li>
   </ol>
   <div class="abrir-cerrar">
     <button type="button" class="btn btn-secundario" id="abrir-todo">Abrir todo</button>
@@ -560,280 +216,145 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
+<p>Lee esto: <em>«Me levanté tarde. Perdí el autobús. Llegué tarde al trabajo. Mi jefe no se enojó.»</em> Se entiende, pero suena entrecortado, como un telegrama. Ahora lee esto: <em>«Como me levanté tarde, perdí el autobús y llegué tarde al trabajo, pero mi jefe no se enojó.»</em> Es la misma información, unida con <strong>conectores</strong>. Esta lección te enseña a hacerlo, y es una destreza clave para la escritura del GED.</p>
+<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán.</p>
 
-<p>Con esta lección cierras el Tema 2, y vas a sentir cómo se acomoda todo lo aprendido. Hasta ahora:</p>
-
+<details open id="s-1-simple">
+<summary>1. La oración simple <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+<p>Una <span class="palabra-clave">oración simple</span> tiene <strong>un solo verbo conjugado</strong>. Puede ser corta o larga, pero expresa una sola acción o un solo estado:</p>
 <ul class="lista-bonita">
-  <li>En la <a href="https://zhemaria.github.io/clases_leng1/clase_2-1.html">Lección 2.1</a> entrenaste el <strong>oído</strong> con sílabas, rimas y fonemas.</li>
-  <li>En la <a href="https://zhemaria.github.io/clases_leng1/clase_2-2.html">Lección 2.2</a> aprendiste a <strong>decodificar</strong> palabras de 1 y 2 sílabas.</li>
-  <li>Hoy le vamos a poner <strong>velocidad y naturalidad</strong> a esa lectura.</li>
+  <li><em>Mi hermano <span class="vb">trabaja</span>.</em></li>
+  <li><em>Mi hermano <span class="vb">trabaja</span> todas las noches en un taller de la calle 26.</em></li>
+  <li><em>Mañana <span class="vb">voy</span> a estudiar en la biblioteca.</em> (<em>Voy a estudiar</em> funciona como un solo verbo: solo <em>voy</em> está conjugado).</li>
 </ul>
-
-<p>El secreto está en dos cosas. Primero, hay un grupo de palabras que aparecen <em>todo el tiempo</em> en el español; si las memorizas de un solo golpe, te ahorras el trabajo de decodificarlas. Segundo, hay técnicas de práctica que te ayudan a que tu voz suene natural, no como un robot. <strong>Vamos a verlas.</strong></p>
-
-<details open id="s-1-palabras-frecuentes">
-<summary>1. ¿Qué son las palabras de alta frecuencia? <span class="caja-tiempo">20 min</span></summary>
-<div class="contenido-detalle">
-
-<h3>Las palabras que aparecen todo el tiempo</h3>
-
-<p>En el idioma español, hay un puñado de palabras que se repiten muchísimo. Tan seguido, que si te detienes a decodificarlas sonido por sonido cada vez, tu lectura se vuelve lenta y cansada. La estrategia mejor es <strong>memorizarlas visualmente</strong>: ver la palabra y reconocerla al instante, como cuando ves la cara de un amigo y sabes quién es sin tener que pensarlo.</p>
-
-<p>A estas se les llama <span class="palabra-clave">palabras de alta frecuencia</span> o <span class="palabra-clave">palabras frecuentes</span>.</p>
-
-<h3>Algunas palabras frecuentes en español</h3>
-
-<p>Aquí tienes las más comunes. Haz clic en cada tarjeta para escucharla. Léelas todas varias veces hasta que tu vista las reconozca de un golpe:</p>
-
-<div class="mural-frecuentes">
-  <button type="button" class="palabra-frec" onclick="hablar('el')">el</button>
-  <button type="button" class="palabra-frec" onclick="hablar('la')">la</button>
-  <button type="button" class="palabra-frec" onclick="hablar('de')">de</button>
-  <button type="button" class="palabra-frec" onclick="hablar('un')">un</button>
-  <button type="button" class="palabra-frec" onclick="hablar('una')">una</button>
-  <button type="button" class="palabra-frec" onclick="hablar('para')">para</button>
-  <button type="button" class="palabra-frec" onclick="hablar('tú')">tú</button>
-  <button type="button" class="palabra-frec" onclick="hablar('yo')">yo</button>
-  <button type="button" class="palabra-frec" onclick="hablar('con')">con</button>
-  <button type="button" class="palabra-frec" onclick="hablar('en')">en</button>
-  <button type="button" class="palabra-frec" onclick="hablar('lado')">lado</button>
-  <button type="button" class="palabra-frec" onclick="hablar('otro')">otro</button>
-  <button type="button" class="palabra-frec" onclick="hablar('mucho')">mucho</button>
-  <button type="button" class="palabra-frec" onclick="hablar('que')">que</button>
-  <button type="button" class="palabra-frec" onclick="hablar('por')">por</button>
-  <button type="button" class="palabra-frec" onclick="hablar('mi')">mi</button>
-</div>
-
-<div class="tip">
-  <strong>💡 Estrategia:</strong> Pídele a alguien de tu familia que te diga estas palabras al azar, y tú señala la palabra correcta. Cuando puedas hacerlo rápido y sin equivocarte, ya las dominaste. Si estudias solo, usa la práctica de abajo: ella te dice la palabra y tú la buscas.
-</div>
-
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l2-3.html#palabras" target="_blank" rel="noopener">
-  ⚡ Práctica: Palabras al instante ↗
-  <span>Unas cincuenta palabras frecuentes que aparecen y desaparecen, y un juego para encontrar la palabra que escuchas. Se abre en otra pestaña.</span>
-</a>
-
+<div class="tip"><strong>💡 Cuenta los verbos:</strong> para saber qué tipo de oración tienes, busca los verbos conjugados (los que dicen quién hace la acción y cuándo). Uno: simple. Dos o más: compuesta o compleja.</div>
 </div>
 </details>
 
-<details id="s-2-fluidez">
-<summary>2. Estrategias de lectura para la fluidez <span class="caja-tiempo">25 min</span></summary>
+<details id="s-2-compuesta">
+<summary>2. La oración compuesta: ideas del mismo peso <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>¿Qué es la fluidez?</h3>
-
-<p>La <span class="palabra-clave">fluidez</span> en la lectura no es solo leer rápido. Es leer <strong>bien</strong>. Tiene tres componentes que trabajan juntos:</p>
-
-<div class="pilares-fluidez">
-  <div class="pilar velocidad">
-    <span class="emoji-grande">⚡</span>
-    <h4>Velocidad</h4>
-    <p style="margin-bottom:0;font-size:0.95rem">Leer a un ritmo cómodo, sin trabarse mucho. No es una carrera.</p>
-  </div>
-  <div class="pilar precision">
-    <span class="emoji-grande">🎯</span>
-    <h4>Precisión</h4>
-    <p style="margin-bottom:0;font-size:0.95rem">Leer las palabras correctamente, sin inventar ni saltarse letras.</p>
-  </div>
-  <div class="pilar prosodia">
-    <span class="emoji-grande">🎵</span>
-    <h4>Prosodia</h4>
-    <p style="margin-bottom:0;font-size:0.95rem">La entonación: subir y bajar la voz, hacer pausas en las comas y puntos.</p>
-  </div>
-</div>
-
-<p>Si lees rápido pero te equivocas, no hay fluidez. Si lees con precisión pero monótono como un robot, tampoco. Los tres pilares trabajan en equipo.</p>
-
-<h3>Dos técnicas para entrenar la fluidez</h3>
-
-<p>Hay dos técnicas muy útiles que puedes hacer con el audio de esta página:</p>
-
-<div class="caja-lectura">
-  <h3 style="margin-top:0">🦜 Lectura en eco</h3>
-  <p>El audio lee una frase con buena entonación. Tú la repites exactamente igual, imitando hasta los gestos de la voz. Como un loro elegante.</p>
-
-  <p style="font-weight:600;color:var(--cp-oscuro);margin-top:14px">Prueba con estas frases. Primero escucha, después repítelas tú:</p>
-
-  <div class="frase-modelo">Hoy es un día bonito.</div>
-  <div class="botones-lectura">
-    <button type="button" class="btn btn-sonido" onclick="hablar('Hoy es un día bonito.')">Escuchar modelo</button>
-  </div>
-
-  <div class="frase-modelo">¿Tú quieres un café?</div>
-  <div class="botones-lectura">
-    <button type="button" class="btn btn-sonido" onclick="hablar('¿Tú quieres un café?')">Escuchar modelo</button>
-  </div>
-
-  <div class="frase-modelo">¡Qué buena pelota tira ese jugador!</div>
-  <div class="botones-lectura">
-    <button type="button" class="btn btn-sonido" onclick="hablar('¡Qué buena pelota tira ese jugador!')">Escuchar modelo</button>
-  </div>
-</div>
-
-<div class="caja-lectura" style="border-color:var(--acento)">
-  <h3 style="margin-top:0;color:#8a3d0c">🎧 Lectura acompañada</h3>
-  <p>Lees en voz alta <strong>al mismo tiempo</strong> que el audio. Es como cantar una canción junto con la radio: si vas más despacio, la voz te jala; si vas más rápido, te frena. Al final, llegas a su ritmo.</p>
-
-  <p style="font-weight:600;color:var(--cp-oscuro);margin-top:14px">Pulsa el botón y lee las tres frases junto con la voz, sin detenerte. Si te quedas atrás, no pasa nada: alcánzala en la frase siguiente.</p>
-
-  <div class="frase-modelo">El sol sale por el este.</div>
-  <div class="frase-modelo">Mi mamá hace un café muy rico.</div>
-  <div class="frase-modelo">Los niños juegan en el parque del barrio.</div>
-
-  <div class="botones-lectura">
-    <button type="button" class="btn btn-sonido" onclick="leerCoro()">Escuchar las tres seguidas</button>
-  </div>
-</div>
-
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l2-3.html#lectura" target="_blank" rel="noopener">
-  📖 Práctica: Lectura con guía ↗
-  <span>Un texto corto con una guía que va marcando las palabras a la velocidad que elijas. Léelo tres veces seguidas y compara tus tiempos. Se abre en otra pestaña.</span>
-</a>
-
+<p>Una <span class="palabra-clave">oración compuesta</span> une <strong>dos oraciones que podrían ir solas</strong>, con un conector en medio. Las dos ideas tienen el mismo peso.</p>
+<table class="tabla">
+  <caption class="sr-solo">Conectores de la oración compuesta</caption>
+  <thead><tr><th scope="col">Conector</th><th scope="col">Sirve para…</th><th scope="col">Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td><span class="cx">y</span> (<span class="cx">e</span>)</td><td>Sumar ideas.</td><td>Mi esposo <span class="vb">cocina</span> <span class="cx">y</span> yo <span class="vb">lavo</span> los platos.</td></tr>
+    <tr><td><span class="cx">o</span> (<span class="cx">u</span>)</td><td>Dar a elegir.</td><td><span class="vb">Llamas</span> tú <span class="cx">o</span> <span class="vb">llamo</span> yo.</td></tr>
+    <tr><td><span class="cx">ni</span></td><td>Sumar dos ideas negativas.</td><td>No <span class="vb">llamó</span> <span class="cx">ni</span> <span class="vb">escribió</span>.</td></tr>
+    <tr><td><span class="cx">pero</span></td><td>Contrastar: la segunda idea va en otra dirección.</td><td><span class="vb">Quería</span> ir, <span class="cx">pero</span> <span class="vb">llovía</span>.</td></tr>
+    <tr><td><span class="cx">sino</span></td><td>Corregir algo negado antes.</td><td>No <span class="vb">vino</span> el lunes, <span class="cx">sino</span> que <span class="vb">llegó</span> el martes.</td></tr>
+  </tbody>
+</table>
+<div class="tip"><strong>💡 <em>y</em> se vuelve <em>e</em>, y <em>o</em> se vuelve <em>u</em>:</strong> delante de una palabra que empieza con el sonido <em>i</em> se escribe <em>e</em> (<em>padres <strong>e</strong> hijos</em>, <em>español <strong>e</strong> inglés</em>), y delante del sonido <em>o</em> se escribe <em>u</em> (<em>siete <strong>u</strong> ocho</em>, <em>mujer <strong>u</strong> hombre</em>). Excepción: si después de la <em>hi</em> viene otra vocal, se queda la <em>y</em>: <em>agua <strong>y</strong> hielo</em>.</div>
+<div class="tip"><strong>💡 La coma:</strong> antes de <em>pero</em> y de <em>sino</em> va coma: <em>Quería ir<strong>,</strong> pero llovía</em>. Antes de <em>y</em>, <em>o</em> y <em>ni</em>, normalmente no.</div>
+<div class="tip"><strong>⚠️ <em>sino</em> o <em>si no</em>:</strong> <em>sino</em>, junto, corrige: <em>No quiero té, sino café</em>. <em>Si no</em>, separado, es una condición: <em><strong>Si no</strong> llueve, iremos al parque</em>.</div>
 </div>
 </details>
 
-<details id="s-3-frases-de-apoyo">
-<summary>3. Práctica: de palabras a oraciones <span class="caja-tiempo">20 min</span></summary>
+<details id="s-3-compleja">
+<summary>3. La oración compleja: una idea que depende de otra <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Frases de apoyo: ahora todo se conecta</h3>
-
-<p>Ahora vas a unir todo lo del tema. Tomas las <strong>palabras frecuentes</strong> de hoy y las <strong>palabras bisílabas</strong> que decodificaste en la Lección 2.2, y armas <span class="palabra-clave">frases de apoyo</span>.</p>
-
-<p>Las frases de apoyo son oraciones <strong>simples y repetitivas</strong> que te ayudan a leer sin sonar como robot. La estructura es siempre parecida, y eso le quita esfuerzo a tu cerebro para que pueda concentrarse en la entonación.</p>
-
-<div class="leyenda-colores">
-  <span><span class="punto" style="background:var(--frecuente)" aria-hidden="true"></span> Palabra frecuente (de memoria)</span>
-  <span><span class="punto" style="background:var(--bisilaba)" aria-hidden="true"></span> Palabra bisílaba (decodificada)</span>
+<p>Una <span class="palabra-clave">oración compleja</span> tiene una idea <strong>principal</strong> y otra que <strong>depende</strong> de ella. La parte que depende empieza con un conector y no tiene sentido completo por sí sola.</p>
+<table class="tabla">
+  <caption class="sr-solo">Conectores de la oración compleja</caption>
+  <thead><tr><th scope="col">Conector</th><th scope="col">Indica…</th><th scope="col">Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td><span class="cx">porque</span>, <span class="cx">como</span></td><td>Causa: por qué.</td><td>No <span class="vb">salí</span> <span class="cx">porque</span> <span class="vb">estaba</span> enferma.</td></tr>
+    <tr><td><span class="cx">aunque</span></td><td>Un obstáculo que no impide la acción.</td><td><span class="cx">Aunque</span> <span class="vb">estaba</span> cansado, <span class="vb">terminé</span> la tarea.</td></tr>
+    <tr><td><span class="cx">cuando</span>, <span class="cx">mientras</span></td><td>Tiempo: cuándo.</td><td><span class="cx">Cuando</span> <span class="vb">llegué</span>, todos <span class="vb">dormían</span>.</td></tr>
+    <tr><td><span class="cx">si</span></td><td>Condición.</td><td><span class="cx">Si</span> <span class="vb">estudias</span> cada día, <span class="vb">aprobarás</span>.</td></tr>
+    <tr><td><span class="cx">que</span></td><td>Une una idea con otra palabra.</td><td>El libro <span class="cx">que</span> me <span class="vb">prestaste</span> <span class="vb">es</span> muy bueno.</td></tr>
+  </tbody>
+</table>
+<div class="tip"><strong>💡 La prueba del fragmento:</strong> tapa la idea principal. Lo que queda, «<em>porque estaba enferma</em>», no se sostiene solo: es un fragmento, como aprendiste en el Nivel 1. Por eso esa parte depende de la otra.</div>
+<div class="tip"><strong>💡 La coma:</strong> si la parte que depende va <strong>primero</strong>, se separa con coma: <em>Cuando llegué<strong>,</strong> todos dormían</em>. Si va después, normalmente no: <em>Todos dormían cuando llegué</em>.</div>
+<div class="tip"><strong>📘 Un dato de gramática:</strong> en los libros de gramática española a estas dos clases se las llama también <em>oraciones compuestas coordinadas</em> (las de la sección 2) y <em>subordinadas</em> (las de esta sección). En el curso usamos <em>compuesta</em> y <em>compleja</em>, que son los nombres que verás en los materiales del GED.</div>
 </div>
+</details>
 
-<h3>Ejemplos de frases de apoyo</h3>
-
-<div class="frase-apoyo">
-  <div>
-    <span class="palabra-frecuente">Yo</span>
-    <span class="palabra-bisilaba">veo</span>
-    <span class="palabra-frecuente">un</span>
-    <span class="palabra-bisilaba">perro</span>.
-  </div>
-  <button type="button" class="btn btn-sonido" onclick="hablar('Yo veo un perro.')">Escuchar</button>
+<details id="s-4-clasifica">
+<summary>4. Práctica: clasifica y elige el conector <span class="caja-tiempo">20 min</span></summary>
+<div class="contenido-detalle">
+<h3>¿Simple, compuesta o compleja?</h3>
+<div class="clasificador" id="clasif-tipo"></div>
+<div class="puntaje" id="puntaje-tipo" role="status" aria-live="polite"></div>
+<h3>¿Qué conector va?</h3>
+<div class="clasificador" id="clasif-cx"></div>
+<div class="puntaje" id="puntaje-cx" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l2-3.html#clasifica" target="_blank" rel="noopener noreferrer">🧩 Practica más: clasifica oraciones
+  <span>Rondas con oraciones nuevas. Se abre en una pestaña nueva.</span></a>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l2-3.html#conectores" target="_blank" rel="noopener noreferrer">🔗 Practica más: elige el conector
+  <span>Completas oraciones con el conector que da el sentido correcto.</span></a>
 </div>
+</details>
 
-<div class="frase-apoyo">
-  <div>
-    <span class="palabra-frecuente">Yo</span>
-    <span class="palabra-bisilaba">quiero</span>
-    <span class="palabra-frecuente">la</span>
-    <span class="palabra-bisilaba">leche</span>.
-  </div>
-  <button type="button" class="btn btn-sonido" onclick="hablar('Yo quiero la leche.')">Escuchar</button>
+<details id="s-5-lectura">
+<summary>5. Lectura comparada: «Una mañana difícil» <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+<div class="actividad">
+  <h4><span class="badge badge-lectura">Lectura</span> Individual · en voz alta</h4>
+  <p style="margin:0">Lee en voz alta las dos versiones. Tienen exactamente la misma información. ¿Cuál suena mejor? ¿Por qué? Escribe tu respuesta en el cuaderno y luego marca los conectores de la versión B.</p>
 </div>
-
-<div class="frase-apoyo">
-  <div>
-    <span class="palabra-frecuente">Tú</span>
-    <span class="palabra-bisilaba">tienes</span>
-    <span class="palabra-frecuente">una</span>
-    <span class="palabra-bisilaba">bota</span>.
-  </div>
-  <button type="button" class="btn btn-sonido" onclick="hablar('Tú tienes una bota.')">Escuchar</button>
+<div class="dos">
+  <div><h3>Versión A · solo oraciones simples</h3>
+  <div class="texto-lectura" id="version-a"><p>El lunes me desperté tarde. La alarma no sonó. Me vestí muy rápido. No desayuné. Salí corriendo. El autobús ya se había ido. Esperé el siguiente. Llegué al trabajo a las nueve y media. Estaba muy nerviosa. Mi supervisora no se enojó. Ella también llegó tarde ese día.</p></div>
+  <div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="leer-a">🔊 Escuchar A</button></div></div>
+  <div><h3>Versión B · con conectores</h3>
+  <div class="texto-lectura" id="version-b"><p>El lunes me desperté tarde <span class="cxm">porque</span> la alarma no sonó. Me vestí muy rápido <span class="cxm">y</span> salí corriendo sin desayunar, <span class="cxm">pero</span> el autobús ya se había ido. <span class="cxm">Mientras</span> esperaba el siguiente, pensaba en mi supervisora. Llegué al trabajo a las nueve y media, muy nerviosa. <span class="cxm">Aunque</span> llegué tarde, ella no se enojó, <span class="cxm">porque</span> ese día también se le hizo tarde.</p></div>
+  <div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="leer-b">🔊 Escuchar B</button>
+  <button type="button" class="btn btn-secundario" id="ver-cx" aria-pressed="false">Mostrar conectores</button></div></div>
 </div>
-
-<div class="frase-apoyo">
-  <div>
-    <span class="palabra-frecuente">El</span>
-    <span class="palabra-bisilaba">bebé</span>
-    <span class="palabra-bisilaba">toma</span>
-    <span class="palabra-frecuente">la</span>
-    <span class="palabra-bisilaba">leche</span>.
-  </div>
-  <button type="button" class="btn btn-sonido" onclick="hablar('El bebé toma la leche.')">Escuchar</button>
+<details><summary>Ver una respuesta posible</summary><div class="contenido-detalle">
+La versión B se lee con más fluidez y muestra cómo se relacionan las ideas: <em>porque</em> explica la causa, <em>pero</em> marca un problema, <em>mientras</em> une dos momentos y <em>aunque</em> presenta algo que no impidió el resultado. En la versión A el lector tiene que adivinar esas relaciones. Ojo: no todo debe unirse. Una oración simple, bien colocada, también es valiosa; lo que se evita es una cadena de oraciones cortas iguales.
+</div></details>
 </div>
+</details>
 
-<h3>Conexión con el tema anterior</h3>
-
-<p>¿Te acuerdas de la <a href="https://zhemaria.github.io/clases_leng1/clase_1-2.html#s-2-sujeto-y-predicado">Lección 1.2</a>, cuando aprendiste que toda oración tiene <strong>sujeto</strong> y <strong>predicado</strong>? Pues mira: estas frases de apoyo también lo tienen. La información sigue fluyendo de <strong>izquierda a derecha</strong>, y cada frase tiene sentido completo.</p>
-
-<div class="oracion-analizada">
-  <span class="marca-sujeto">Yo</span> &nbsp;<span class="marca-predicado">veo un perro</span>.
+<details id="s-6-une">
+<summary>6. Práctica: une las ideas <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+<div class="actividad">
+  <h4><span class="badge badge-actividad">Actividad</span> Individual · en tu cuaderno</h4>
+  <p>Une cada par de oraciones en una sola. Usa el conector que pide la relación indicada y pon la coma donde haga falta.</p>
+  <ul class="lista-bonita" style="margin-bottom:0">
+    <li><em>Estudio de noche. Trabajo de día.</em> → causa (<em>porque</em>)</li>
+    <li><em>Quería comprar el carro. No tenía el dinero.</em> → contraste (<em>pero</em>)</li>
+    <li><em>Llueve. Llevo paraguas.</em> → condición (<em>si</em>, al principio)</li>
+    <li><em>Estaba enfermo. Fue a trabajar.</em> → obstáculo (<em>aunque</em>, al principio)</li>
+    <li><em>Mi hija canta. Mi hijo toca la guitarra.</em> → suma (<em>y</em>)</li>
+  </ul>
 </div>
-
-<div class="oracion-analizada">
-  <span class="marca-sujeto">El bebé</span> &nbsp;<span class="marca-predicado">toma la leche</span>.
-</div>
-
-<p style="text-align:center;color:var(--gris);font-style:italic">¿Quién? → sujeto · ¿Qué hace? → predicado</p>
-
-<div class="ejercicio">
-  <h4>🎯 Constructor de frases de apoyo</h4>
-  <p style="text-align:center">Toca palabras (en orden de izquierda a derecha) para armar una frase. Después escúchala.</p>
-
-  <div class="constructor-frase">
-    <p style="margin:0 0 8px 0;font-weight:600;color:var(--frecuente)">Palabras frecuentes:</p>
-    <div class="palabras-disponibles" style="background:var(--frecuente-claro)" id="palabras-frec">
-      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="Yo">Yo</button>
-      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="Tú">Tú</button>
-      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="El">El</button>
-      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="La">La</button>
-      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="un">un</button>
-      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="una">una</button>
-      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="con">con</button>
-      <button type="button" class="palabra-elegir frec-tipo" data-tipo="frec" data-palabra="mucho">mucho</button>
-    </div>
-
-    <p style="margin:14px 0 8px 0;font-weight:600;color:var(--bisilaba)">Palabras bisílabas:</p>
-    <div class="palabras-disponibles" style="background:var(--bisilaba-clara)" id="palabras-bisil">
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="veo">veo</button>
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="quiero">quiero</button>
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="tomo">tomo</button>
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="leche">leche</button>
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="perro">perro</button>
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="bota">bota</button>
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="boca">boca</button>
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="bebé">bebé</button>
-      <button type="button" class="palabra-elegir bisil-tipo" data-tipo="bisil" data-palabra="taxi">taxi</button>
-    </div>
-
-    <p style="margin:14px 0 8px 0;font-weight:600;color:var(--cp-oscuro)">Tu frase:</p>
-    <div class="area-frase" id="area-frase"></div>
-
-    <div class="botones">
-      <button type="button" class="btn btn-primario" id="btn-leer-frase">🔊 Leer mi frase</button>
-      <button type="button" class="btn btn-secundario" id="btn-limpiar-frase">Limpiar</button>
-    </div>
-
-    <div class="feedback" id="feedback-frase"></div>
-  </div>
-</div>
-
-<div class="tip">
-  <strong>✂️ Versión en papel:</strong> escribe en papelitos cinco palabras frecuentes (yo, tú, el, la, un) y cinco bisílabas (mesa, casa, perro, leche, bota). Combínalas para formar frases de apoyo y léelas en voz alta. Copia en tu cuaderno las tres que más te gusten.
-</div>
-
+<details style="margin-top:10px"><summary>Ver las respuestas</summary><div class="contenido-detalle">
+Estudio de noche porque trabajo de día. · Quería comprar el carro, pero no tenía el dinero. · Si llueve, llevo paraguas. · Aunque estaba enfermo, fue a trabajar. · Mi hija canta y mi hijo toca la guitarra.
+</div></details>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l2-3.html#une" target="_blank" rel="noopener noreferrer">🧵 Practica más: ¿cuál es la mejor unión?
+  <span>Dos oraciones cortas y tres maneras de unirlas: eliges la que conserva el sentido.</span></a>
+<div class="tip"><strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> uno dice una oración corta («Hoy hace frío») y el otro la continúa con un conector («…pero voy a salir igual»). Cambien el conector cada vez.</div>
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>7. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
 <ul class="lista-bonita">
-  <li><strong>Mis 16 palabras.</strong> Copia en tu cuaderno las 16 palabras frecuentes de la <a href="#s-1-palabras-frecuentes">sección 1</a>. Léelas en voz alta todos los días de esta semana, hasta reconocerlas de un golpe.</li>
-  <li><strong>Cinco frases de apoyo.</strong> Arma cinco frases con el constructor de la <a href="#s-3-frases-de-apoyo">sección 3</a> y cópialas. En cada una, subraya el sujeto con una raya recta y el predicado con una ondulada.</li>
-  <li><strong>Las señales de todos los días.</strong> Haz la estación de señales del entrenador (<a href="https://zhemaria.github.io/gramatica/n1-l2-3.html#senales" target="_blank" rel="noopener">abrir las señales ↗</a>). Después, camino a casa o al trabajo, busca tres de esas señales y léelas en voz alta.</li>
-  <li><strong>Tres lecturas.</strong> En la estación de lectura del entrenador, lee el mismo texto tres veces seguidas. Anota tus tres tiempos en el cuaderno.</li>
+  <li><strong>Reescribe tu rutina.</strong> Toma el párrafo de tu rutina que escribiste en la Lección 2.2 y reescríbelo uniendo oraciones con al menos <strong>cuatro conectores distintos</strong>.</li>
+  <li><strong>Mis conectores.</strong> Escribe una oración con cada uno: <em>y, o, pero, sino, porque, aunque, cuando, si</em>. Marca con un color los verbos.</li>
+  <li><strong>Las comas.</strong> Pon la coma donde falte: «Si tienes tiempo llámame» · «Quería ir pero no pude» · «Cuando terminé la tarea me acosté».</li>
 </ul>
-<div class="tip"><strong>🎯 Antes del quiz:</strong> repasa los tres pilares de la fluidez en la <a href="#s-2-fluidez">sección 2</a>: velocidad, precisión y prosodia.</div>
+<details style="margin-top:6px"><summary>Ver las respuestas de las comas</summary><div class="contenido-detalle">
+«Si tienes tiempo<strong>,</strong> llámame.» · «Quería ir<strong>,</strong> pero no pude.» · «Cuando terminé la tarea<strong>,</strong> me acosté.»
+</div></details>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -845,207 +366,113 @@
 </details>
 
 <details id="s-cierre">
-<summary>6. Cierre del Tema 2 <span class="caja-tiempo">5 min</span></summary>
+<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>El motor de la lectura</h3>
-
-<p>Acabas de subir las tres escaleras del Tema 2. Mira lo que has logrado:</p>
-
-<div class="escalera">
-  <div class="escalera-paso">
-    <span class="numero">1</span>
-    Sonidos<br>(Lección 2.1)
-  </div>
-  <div class="escalera-paso">
-    <span class="numero">2</span>
-    Decodificación<br>(Lección 2.2)
-  </div>
-  <div class="escalera-paso">
-    <span class="numero">3</span>
-    Fluidez<br>(Lección 2.3)
-  </div>
-</div>
-
-<p style="text-align:center;font-style:italic;color:var(--gris)">Sonidos → letras → palabras → frases con sentido</p>
-
-<div class="resumen-tema">
-  <h3>🚀 Lo que esto significa para tu GED</h3>
-  <p>Dominar estos tres pasos (los sonidos, la decodificación de sílabas y la memorización de palabras frecuentes) <strong>es el verdadero motor</strong> que te va a permitir leer y comprender los textos más complejos que vas a encontrar en el resto de tu preparación para el GED: artículos de historia, textos científicos, instrucciones, problemas de razonamiento.</p>
-  <p style="margin-bottom:0">Sin este motor, la lectura se vuelve un esfuerzo gigante. Con este motor, leer se vuelve algo natural, y entonces puedes concentrarte en <em>entender</em> en lugar de en <em>descifrar</em>.</p>
-</div>
-
+<h3>Lo que aprendiste en esta lección</h3>
+<ul class="lista-bonita">
+  <li>La oración <strong>simple</strong> tiene un solo verbo conjugado.</li>
+  <li>La <strong>compuesta</strong> une dos ideas del mismo peso con <em>y, o, ni, pero, sino</em>.</li>
+  <li>La <strong>compleja</strong> une una idea principal y otra que depende de ella con <em>porque, aunque, cuando, si, que</em>.</li>
+  <li>Va coma antes de <em>pero</em> y <em>sino</em>, y después de la parte que depende cuando va primero.</li>
+</ul>
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h3 style="color:#8a3d0c">✅ Autoevaluación del Tema 2</h3>
+  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Reconoces 10 palabras frecuentes sin tener que decodificarlas sonido por sonido?</li>
-    <li>¿Puedes leer palabras bisílabas (como "mesa", "pato", "tigre") sin pausa larga entre sílabas?</li>
-    <li>¿Eres capaz de leer una frase de apoyo con entonación (no como robot)?</li>
+    <li>¿Puedes decir una oración de cada tipo sobre tu trabajo?</li>
+    <li>¿Sabes cuándo escribir <em>sino</em> y cuándo <em>si no</em>?</li>
+    <li>¿Puedes explicar por qué «Porque no tenía dinero.» no es una oración completa?</li>
   </ul>
-  <p style="margin-bottom:0"><strong>Si contestaste "sí" a las tres, dominaste el Tema 2.</strong> Si todavía te cuestan algunas, no te preocupes: vuelve a esta página cuantas veces necesites y practica.</p>
 </div>
-
-<div class="tip">
-  <strong>📅 En la próxima lección:</strong> empieza el Tema 3 con la <a href="https://zhemaria.github.io/clases_leng1/clase_3-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.1 · Conociendo los sustantivos y los adjetivos</a>. Vas a mirar por dentro las oraciones que ya sabes leer: qué palabras nombran las cosas y cuáles dicen cómo son.
-</div>
-
-
+<div class="tip"><strong>🏁 Terminaste el Tema 2.</strong> En el próximo tema trabajarás la puntuación, la ortografía y el registro: <a href="https://zhemaria.github.io/clases_leng2/clase_3-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.1, primera del Tema 3</a>.</div>
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 2 · Lección 2.3</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 2 · Lección 2.3</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-
 <script>
+/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
 (function(){
-  // ============== Síntesis de voz ==============
-  window.hablar=function(texto,velocidad){
-    if(!('speechSynthesis' in window)){
-      alert('Tu navegador no puede reproducir el audio. Prueba con Chrome, Edge o Safari.');
-      return;
-    }
-    window.speechSynthesis.cancel();
-    var u=new SpeechSynthesisUtterance(texto);
-    u.lang='es-US';
-    u.rate=velocidad||0.85;
-    u.pitch=1;
-    var v=window.vozEspanol&&window.vozEspanol(); if(v)u.voice=v;
-    window.speechSynthesis.speak(u);
-  };
-  /* Se prefiere una voz latinoamericana: en las voces de España la «z» y la «c»
-     suenan distinto de la «s», y eso confunde los ejercicios de sonidos. */
-  window.vozEspanol=function(){
-    var vs=window.speechSynthesis.getVoices().filter(function(x){return /^es/i.test(x.lang);});
-    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-PR','es-CU'];
-    for(var k=0;k<pref.length;k++){for(var i=0;i<vs.length;i++){if(vs[i].lang.replace('_','-').toLowerCase()===pref[k].toLowerCase())return vs[i];}}
-    for(var i=0;i<vs.length;i++){if(!/es[-_]ES/i.test(vs[i].lang))return vs[i];}
-    return vs[0]||null;
-  };
-  if('speechSynthesis' in window){
-    window.speechSynthesis.getVoices();
-    window.speechSynthesis.onvoiceschanged=function(){
-      window.speechSynthesis.getVoices();
-    };
+  var voz=null, hay=('speechSynthesis' in window);
+  function elegir(){
+    if(!hay)return;
+    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
+    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
+    voz=null;
+    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
+    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
   }
-
-  // ============== Leer las 3 frases del coro seguidas ==============
-  window.leerCoro=function(){
-    var frases=[
-      'El sol sale por el este.',
-      'Mi mamá hace un café muy rico.',
-      'Los niños juegan en el parque del barrio.'
-    ];
-    var idx=0;
-    function siguiente(){
-      if(idx>=frases.length)return;
-      var u=new SpeechSynthesisUtterance(frases[idx]);
-      u.lang='es-US';
-      u.rate=0.85;
-      var v=window.vozEspanol(); if(v)u.voice=v;
-      u.onend=function(){
-        idx++;
-        setTimeout(siguiente,600);
-      };
-      window.speechSynthesis.speak(u);
-    }
-    window.speechSynthesis.cancel();
-    siguiente();
+  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
+  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
+  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
+  /* hablar(texto, velocidad, alTerminar) */
+  window.hablar=function(texto,vel,fin){
+    if(!hay||!texto){aviso();return;}
+    speechSynthesis.cancel();
+    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
+    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
+    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
   };
-
-  // ============== Constructor de frases ==============
-  var areaFrase=document.getElementById('area-frase');
-  var feedback=document.getElementById('feedback-frase');
-  var palabrasDisp=document.querySelectorAll('.palabra-elegir');
-  var fraseConstruida=[];
-
-  palabrasDisp.forEach(function(btn){
-    btn.addEventListener('click',function(){
-      if(btn.classList.contains('usada'))return;
-      if(fraseConstruida.length>=8)return;
-      var pal=btn.getAttribute('data-palabra');
-      var tipo=btn.getAttribute('data-tipo');
-      fraseConstruida.push({palabra:pal,tipo:tipo,origen:btn});
-      btn.classList.add('usada');
-      renderFrase();
-      feedback.textContent='';
-      feedback.className='feedback';
-    });
-  });
-
-  function renderFrase(){
-    areaFrase.innerHTML='';
-    fraseConstruida.forEach(function(item,idx){
-      var sp=document.createElement('button');
-      sp.type='button';
-      sp.className='palabra-en-frase '+(item.tipo==='frec'?'frec-tipo':'bisil-tipo');
-      sp.textContent=item.palabra;
-      sp.title='Quitar';
-      sp.setAttribute('aria-label','Quitar '+item.palabra);
-      sp.addEventListener('click',function(){
-        item.origen.classList.remove('usada');
-        fraseConstruida.splice(idx,1);
-        renderFrase();
-      });
-      areaFrase.appendChild(sp);
-    });
-  }
-
-  document.getElementById('btn-leer-frase').addEventListener('click',function(){
-    if(fraseConstruida.length===0){
-      feedback.textContent='Primero arma una frase tocando las palabras.';
-      feedback.className='feedback neutral';
-      return;
-    }
-    var frase=fraseConstruida.map(function(c){return c.palabra}).join(' ');
-    window.hablar(frase+'.',0.85);
-
-    // Verificar que tenga al menos una de cada tipo
-    var tieneFrec=fraseConstruida.some(function(c){return c.tipo==='frec'});
-    var tieneBisil=fraseConstruida.some(function(c){return c.tipo==='bisil'});
-
-    if(tieneFrec && tieneBisil && fraseConstruida.length>=3){
-      feedback.innerHTML='✅ ¡Muy bien! "<strong>'+frase+'</strong>" combina palabras frecuentes y bisílabas. Eso es una frase de apoyo.';
-      feedback.className='feedback correcto';
-    }else if(!tieneFrec){
-      feedback.innerHTML='🤔 Te faltó incluir alguna palabra <strong>frecuente</strong> (las moradas). Prueba a agregar una.';
-      feedback.className='feedback neutral';
-    }else if(!tieneBisil){
-      feedback.innerHTML='🤔 Te faltó incluir alguna palabra <strong>bisílaba</strong> (las de color verde azulado). Prueba a agregar una.';
-      feedback.className='feedback neutral';
-    }else{
-      feedback.innerHTML='🤔 Tu frase es muy corta. Intenta armar una con al menos 3 palabras.';
-      feedback.className='feedback neutral';
-    }
-  });
-
-  document.getElementById('btn-limpiar-frase').addEventListener('click',function(){
-    fraseConstruida.forEach(function(item){item.origen.classList.remove('usada')});
-    fraseConstruida=[];
-    renderFrase();
-    feedback.textContent='';
-    feedback.className='feedback';
-  });
+  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
+  window.hablarPalabras=function(texto){
+    if(!hay){aviso();return;}
+    speechSynthesis.cancel();
+    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
+  };
+  window.callar=function(){if(hay)speechSynthesis.cancel();};
+  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
 })();
 
-/* ===== Quiz de la lección ===== */
-(function(){
-  var P=[{"t": "¿Qué son las <strong>palabras de alta frecuencia</strong>?", "o": ["Palabras que aparecen muchísimo en lo que leemos", "Palabras muy largas y difíciles", "Palabras que solo se usan en el GED"], "c": 0}, {"t": "¿Cuál es la mejor estrategia con las palabras frecuentes?", "o": ["Reconocerlas de un golpe, sin decodificarlas cada vez", "Deletrearlas letra por letra cada vez", "Saltarlas al leer"], "c": 0}, {"t": "¿Cuál de estas es una palabra frecuente?", "o": ["para", "mariposa", "tigre"], "c": 0}, {"t": "¿Cuál de estas es una palabra frecuente?", "o": ["chocolate", "con", "lápiz"], "c": 1}, {"t": "La <strong>fluidez</strong> en la lectura es…", "o": ["Leer solo muy rápido", "Leer con buena velocidad, con precisión y con buena entonación", "Leer sin hacer pausas"], "c": 1}, {"t": "La <strong>prosodia</strong> es…", "o": ["La entonación: subir y bajar la voz y hacer pausas en las comas y puntos", "La velocidad a la que lees", "El número de palabras de un texto"], "c": 0}, {"t": "Leer con <strong>precisión</strong> significa…", "o": ["Leer las palabras correctamente, sin inventar ni saltarse letras", "Leer en voz muy alta", "Leer siempre en silencio"], "c": 0}, {"t": "En la <strong>lectura en eco</strong>, tú…", "o": ["Escuchas una frase y la repites imitando la entonación", "Lees la frase al revés", "Lees sin escuchar ningún modelo"], "c": 0}, {"t": "En la <strong>lectura acompañada</strong>, tú…", "o": ["Lees al mismo tiempo que el audio", "Lees solo después de que termina el audio", "Escribes lo que dice el audio"], "c": 0}, {"t": "Escucha. ¿Cómo debe sonar esta frase?", "x": "¿Tú quieres un café?", "a": "¿Tú quieres un café?", "o": ["Como una pregunta: la voz cambia al final", "Igual que una frase que afirma algo", "Como un grito"], "c": 0}, {"t": "En la frase «El bebé toma la leche», ¿cuál es el <strong>sujeto</strong>?", "o": ["El bebé", "toma la leche", "la leche"], "c": 0}, {"t": "¿Cuál de estas es una <strong>frase de apoyo</strong> bien armada?", "o": ["Yo veo un perro.", "perro un veo Yo", "Veo yo un."], "c": 0}], META=10, N=P.length;
-  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
+function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
+  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
+  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
+  items.forEach(function(it,i){
+    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
+    var ops=it.ops||opciones;
+    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
+      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
+      '<span class="item-fb" aria-live="polite"></span>';
+    caja.appendChild(d);
+    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
+    var fb=d.querySelector('.item-fb');
+    d.querySelectorAll('.btn-op').forEach(function(b){
+      b.addEventListener('click',function(){
+        if(hechas[i])return;
+        if(+b.getAttribute('data-j')===it.c){
+          b.classList.add('correcta'); hechas[i]=true; bien++;
+          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
+          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+        }else{
+          b.classList.add('incorrecta'); b.disabled=true;
+          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+        }
+      });
+    });
+  });
+  marcador();
+}
+
+/* ===== Quiz de la lección =====
+   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
+        ae:audio entrecortado opcional, fijo:no barajar,
+        r:enlace de repaso que aparece si la respuesta es incorrecta}]
+   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
+function iniciarQuiz(P,cfg){
+  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a){
+    if(p.x||p.a||p.ae){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
-    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -1053,7 +480,7 @@
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -1068,37 +495,81 @@
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
+      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Terminaste el Tema 2. Puedes continuar con la Lección 3.1.";fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el entrenador de lectura y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-})();
+}
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
+  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-})();
-</script>
+});
 
+clasificador('clasif-tipo','puntaje-tipo',[
+  {p:'Mi vecina vende tamales los domingos.',c:0,n:'Un solo verbo: <em>vende</em>.'},
+  {p:'Mi vecina vende tamales y su hijo reparte los pedidos.',c:1,n:'Dos ideas del mismo peso unidas por <em>y</em>.'},
+  {p:'Mi vecina vende tamales porque necesita dinero extra.',c:2,n:'<em>porque necesita dinero extra</em> depende de la idea principal.'},
+  {p:'Quería llamarte, pero no tenía saldo.',c:1,n:'Dos ideas unidas por <em>pero</em>.'},
+  {p:'Cuando termine el curso, buscaré un trabajo mejor.',c:2,n:'<em>Cuando termine el curso</em> no tiene sentido sola.'},
+  {p:'El próximo lunes voy a empezar mi clase de computación.',c:0,n:'Solo <em>voy</em> está conjugado: <em>voy a empezar</em> es un solo verbo.'}
+],['Simple','Compuesta','Compleja'],false);
+
+clasificador('clasif-cx','puntaje-cx',[
+  {p:'Estudio mucho ___ quiero aprobar el GED.',ops:['porque','pero','ni'],c:0,n:'Causa: <em>porque</em>.'},
+  {p:'Me invitaron a la fiesta, ___ no pude ir.',ops:['porque','pero','si'],c:1,n:'Contraste: <em>pero</em>.'},
+  {p:'___ hace buen tiempo, iremos a la playa.',ops:['Si','Sino','Aunque'],c:0,n:'Condición: <em>si</em>.'},
+  {p:'No compré manzanas, ___ peras.',ops:['si no','sino','pero'],c:1,n:'Corrige lo negado: <em>sino</em>.'},
+  {p:'___ estaba cansada, terminó su turno.',ops:['Porque','Cuando','Aunque'],c:2,n:'Un obstáculo que no impidió la acción: <em>aunque</em>.'},
+  {p:'Estudio español ___ inglés.',ops:['y','e','u'],c:1,n:'Antes del sonido <em>i</em>: <em>e</em>.'}
+],null,false);
+
+(function(){
+  var a=document.getElementById('version-a'), b=document.getElementById('version-b'), v=document.getElementById('ver-cx');
+  document.getElementById('leer-a').addEventListener('click',function(){hablar(a.textContent.trim(),0.85);});
+  document.getElementById('leer-b').addEventListener('click',function(){hablar(b.textContent.trim(),0.85);});
+  v.addEventListener('click',function(){var on=b.classList.toggle('ver-cx');v.setAttribute('aria-pressed',on?'true':'false');});
+})();
+
+iniciarQuiz([
+  {t:'Una oración <strong>simple</strong> tiene…',o:['Un solo verbo conjugado','Dos verbos unidos por y','Siempre menos de cinco palabras'],c:0},
+  {t:'¿Cuál es una oración simple?',o:['Mi hermano trabaja en un taller.','Mi hermano trabaja y mi cuñada estudia.','Mi hermano trabaja porque necesita dinero.'],c:0},
+  {t:'¿Cuál es una oración <strong>compuesta</strong>?',o:['Quería salir, pero llovía.','Quería salir porque hacía sol.','Quería salir temprano.'],c:0},
+  {t:'¿Cuál es una oración <strong>compleja</strong>?',o:['No salí porque estaba enferma.','No salí y me quedé en casa.','No salí el domingo.'],c:0},
+  {t:'¿Qué conector expresa <strong>contraste</strong>?',o:['pero','y','o'],c:0},
+  {t:'Completa: «Estudio mucho ___ quiero pasar el GED.»',o:['porque','pero','ni'],c:0},
+  {t:'Completa: «No quiero té, ___ café.»',o:['sino','si no','pero'],c:0},
+  {t:'Completa: «___ llueve, no iremos al parque.»',o:['Si','Sino','Pero'],c:0},
+  {t:'¿Cómo se escribe correctamente?',o:['padres e hijos','padres y hijos','padres u hijos'],c:0},
+  {t:'¿Dónde va bien la coma?',o:['Cuando llegué a casa, todos dormían.','Cuando llegué a casa todos, dormían.','Cuando, llegué a casa todos dormían.'],c:0},
+  {t:'«Porque no tenía dinero.» es…',o:['Un fragmento: depende de otra idea','Una oración compuesta completa','Una oración simple completa'],c:0},
+  {t:'¿Cuál es la mejor manera de unir «Hacía frío. Salí sin abrigo.»?',o:['Aunque hacía frío, salí sin abrigo.','Hacía frío porque salí sin abrigo.','Hacía frío o salí sin abrigo.'],c:0}
+],{meta:10,
+   bien:'Ya unes ideas con los conectores adecuados. Terminaste el Tema 2: puedes continuar con el Tema 3.',
+   repaso:'Vuelve a las secciones 2 y 3 y repite el quiz: con práctica sale.'});
+</script>
 </body>
 </html>

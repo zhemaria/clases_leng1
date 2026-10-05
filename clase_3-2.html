@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<!-- Lección 3.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
-     José M. Fernández · CC BY-NC-SA 4.0 -->
+<!-- Lección 3.2 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
+     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
+     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 3.2 · La regla de oro: la concordancia</title>
+<title>Lección 3.2 · La tilde y la ortografía convencional</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
     --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#6b7785;--gris-claro:#eef1f4;
-    --masculino:#1565c0;--masculino-claro:#e3f2fd;
-    --femenino:#c2185b;--femenino-claro:#fce4ec;
-    --singular:#388e3c;--plural:#f57c00;
+    --gris:#555;--gris-claro:#eef1f4;
+    --dip:#1565c0;--dip-claro:#e3f2fd;
+    --hia:#ad1457;--hia-claro:#fce4ec;
+    --grp:#5c3900;--grp-claro:#fff3cd;
     --exito:#2e7d32;--error:#c62828;
   }
   *{box-sizing:border-box}
@@ -27,160 +28,64 @@
   h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
-  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
-  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
-  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
-  .presencial{background:#fff8ee;border-color:var(--acento)}
-  .presencial h4{color:#b35316;margin-top:0}
-  .online{background:#eef5fb;border-color:var(--cp)}
-  .online h4{color:var(--cp-oscuro);margin-top:0}
   .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#8a6d00}
-  .ejercicio{background:#f3f9f3;border:2px dashed #4caf50;border-radius:10px;padding:18px 22px;margin:20px 0}
-  .ejercicio h4{color:#2e7d32;margin-top:0}
+  .tip strong{color:#6b5400}
   .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
   .btn-primario{background:var(--cp);color:#fff}
   .btn-primario:hover{background:var(--cp-oscuro)}
   .btn-secundario{background:var(--gris-claro);color:var(--texto)}
   .btn-secundario:hover{background:#d6dde4}
-  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
+  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
   .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .masc{color:var(--masculino);font-weight:700}
-  .fem{color:var(--femenino);font-weight:700}
-  .sing{background:#e8f5e9;color:var(--singular);padding:1px 6px;border-radius:4px;font-size:0.85rem;font-weight:600}
-  .plur{background:#fff3e0;color:var(--plural);padding:1px 6px;border-radius:4px;font-size:0.85rem;font-weight:600}
-
-  /* Cuadrante de concordancia */
-  table.cuadrante{width:100%;border-collapse:collapse;margin:18px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.cuadrante th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:center;font-size:0.95rem}
-  table.cuadrante td{padding:14px;text-align:center;font-family:'Georgia',serif;font-size:1.15rem;font-weight:700;border-bottom:1px solid var(--gris-claro)}
-  table.cuadrante tr:last-child td{border-bottom:none}
-  table.cuadrante .head-fila{background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.95rem}
-  .celda-mascsing{background:var(--masculino-claro);color:var(--masculino)}
-  .celda-femsing{background:var(--femenino-claro);color:var(--femenino)}
-  .celda-mascplur{background:#bbdefb;color:#0d47a1}
-  .celda-femplur{background:#f8bbd0;color:#880e4f}
-
-  /* Tabla artículos */
-  table.tabla-articulos{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla-articulos th{background:var(--cp);color:#fff;padding:10px;text-align:center}
-  table.tabla-articulos td{padding:12px;text-align:center;border-bottom:1px solid var(--gris-claro);font-family:'Georgia',serif;font-size:1.1rem}
-  table.tabla-articulos tr:last-child td{border-bottom:none}
-
-  /* Ejercicio: elegir adjetivo */
-  .item-completar{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:12px 0}
-  .frase-completar{font-family:'Georgia',serif;font-size:1.15rem;margin-bottom:10px;text-align:center}
-  .hueco{
-    display:inline-block;
-    min-width:80px;
-    border-bottom:2px dashed var(--gris);
-    margin:0 4px;
-    text-align:center;
-    color:var(--gris);
-    font-style:italic;
-  }
-  .hueco.resuelto{
-    background:#d4edda;
-    color:var(--exito);
-    border-bottom:2px solid var(--exito);
-    font-style:normal;
-    font-weight:700;
-    padding:0 8px;
-    border-radius:4px;
-  }
-  .opciones-completar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
-  .opt-completar{
-    padding:8px 16px;
-    border:2px solid var(--cp);
-    background:#fff;
-    color:var(--cp);
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600;
-    font-family:'Georgia',serif;
-    font-size:1.05rem;
-    transition:all 0.2s;
-  }
-  .opt-completar:hover{background:var(--cp-claro)}
-  .opt-completar.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
-  .opt-completar.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
-  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-
-  /* Drag-drop (clic-asignar) */
-  .area-dragdrop{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:14px 0}
-  .columnas-dd{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:640px){.columnas-dd{grid-template-columns:1fr}}
-  .col-dd{background:#f9f9f9;border:2px dashed var(--cp);border-radius:8px;padding:12px;min-height:120px}
-  .col-dd h5{margin:0 0 8px 0;text-align:center;color:var(--cp-oscuro);font-size:0.95rem}
-  .sust-target{
-    background:var(--masculino-claro);
-    color:var(--masculino);
-    padding:10px 14px;
-    border-radius:8px;
-    margin:6px 0;
-    font-family:'Georgia',serif;
-    font-size:1.1rem;
-    font-weight:700;
-    text-align:center;
-    cursor:pointer;
-    transition:all 0.15s;
-    border:2px solid var(--masculino);
-  }
-  .sust-target.fem-style{background:var(--femenino-claro);color:var(--femenino);border-color:var(--femenino)}
-  .sust-target.activo{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--acento)}
-  .adjs-disponibles{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:12px;background:var(--gris-claro);border-radius:8px;margin-top:14px}
-  .adj-elegible{
-    background:#fff;
-    border:2px solid var(--cp);
-    color:var(--cp);
-    padding:6px 12px;
-    border-radius:6px;
-    font-family:'Georgia',serif;
-    font-size:1rem;
-    font-weight:700;
-    cursor:pointer;
-  }
-  .adj-elegible:hover{background:var(--cp-claro)}
-  .adj-elegible.usada{opacity:0.3;cursor:default}
-  .feedback{margin-top:14px;padding:12px 16px;border-radius:8px;text-align:center;font-weight:600;min-height:20px}
-  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
-  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
-  .neutral{background:#fff3cd;color:#856404;border:1px solid #ffeaa7}
-
-  /* Actividades unidad */
-  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad-unidad h4{color:#b35316;margin-top:0}
-  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-quiz{background:#e8f5e9;color:#2e7d32}
-  .badge-rubrica{background:#fff3e0;color:#e65100}
-  .badge-lectura{background:#e3f2fd;color:#0277bd}
-  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
-
-  /* Rúbrica */
-  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
-  table.rubrica th{background:#b35316;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
-  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.rubrica tr:last-child td{border-bottom:none}
-  table.rubrica td:first-child{font-weight:600;color:#b35316;background:#fff3e0;text-align:center}
-  .nivel-4{background:#e8f5e9}
-  .nivel-3{background:#fff8e1}
-  .nivel-2{background:#fff3e0}
-  .nivel-1{background:#ffebee}
-
-  /* ── Índice de la lección ── */
+  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
+  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
+  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
+  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.tabla tr:last-child td{border-bottom:none}
+  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad h4{color:#8a3d0c;margin-top:0}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0d47a1}
+  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
+  /* Clasificadores */
+  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
+  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
+  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
+  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
+  .item-fb:empty{display:none}
+  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
+  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
+  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
+  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
+  .btn-op:disabled{cursor:default}
+  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
+  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
+  /* Lectura con marcas */
+  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
+  .texto-lectura p{margin:0 0 10px}
+  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
+  .leyenda span{display:inline-flex;align-items:center;gap:6px}
+  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
+  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
+  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
+  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
+  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
+  /* Índice */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -190,14 +95,13 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  .caja-tiempo{color:#1a2332!important}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  /* ── Quiz de la lección ── */
+  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
+  .aviso-voz.visible{display:block}
+  /* Quiz */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -217,29 +121,90 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
-  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  button.sust-target{display:block;width:100%;font:inherit;text-align:left}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
+
+  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
+  .qz-repaso a{color:#004d44;font-weight:700}
+  /* ── Comunes desde el Tema 4 ── */
+  .item-ops{flex-wrap:wrap}
+  .apilado .item{flex-direction:column;align-items:stretch}
+  .apilado .item-ops{flex-direction:column}
+  .apilado .btn-op{text-align:left;font-weight:400}
+  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
+  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
+  .pasaje p{margin:0 0 6px}
+  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
+  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
+  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
+  /* Taller de escritura (Tema 7) */
+  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
+  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
+  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
+  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
+  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
+  .tl-conect{font-size:.95rem;margin:4px 0 8px}
+  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
+  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
+  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
+  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
+  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
+  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
+  .rubrica{font-size:.92rem}
+  .rubrica td,.rubrica th{vertical-align:top}
+  .marca{border-radius:3px;padding:0 2px;font-weight:700}
+  .m-postura{background:#e3f2fd;color:#0d3c78}
+  .m-razon{background:#fff3e0;color:#7a3a00}
+  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
+  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
+  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
+  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
+  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
+  .oculta-marcas .marca::before{content:none}
+  @media(max-width:640px){
+    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
+    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
+    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
+    .rubrica td{border:none;border-top:1px solid #d5dde3}
+    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
+  }
+
+  .ton{color:#ad1457;font-weight:700;text-decoration:underline 3px}
+  .dictado{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+  .dictado .celda{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px;text-align:center}
+  .dictado .num{font-weight:700;color:var(--cp-oscuro);display:block}
+  .dictado .resp{font-family:Georgia,serif;font-size:1.25rem;font-weight:700;color:var(--cp-oscuro);margin-top:6px;min-height:1.6em}
+  .dictado .resp[hidden]{display:block;visibility:hidden}
 </style>
 </head>
 <body>
-
-<h1>Lección 3.2 · La regla de oro: la concordancia</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 3 · Unas 2 horas, a tu ritmo</p>
+<h1>Lección 3.2 · La tilde y la ortografía convencional</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 3: Puntuación, ortografía y registro · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <p style="margin-bottom:0">Aplicar la <strong>concordancia correcta de género y número</strong> entre sustantivos y adjetivos, para que las oraciones suenen naturales y no confundan al lector.</p>
+  <ul class="lista-bonita" style="margin:0">
+    <li>Encontrar la <strong>sílaba tónica</strong> y clasificar las palabras en agudas, llanas y esdrújulas.</li>
+    <li>Aplicar las <strong>reglas de la tilde</strong>, también la de palabras como <em>tú/tu</em> o <em>sí/si</em>.</li>
+    <li>Escribir bien las palabras que suenan igual: <strong>b/v</strong>, <strong>c/s/z</strong>, <strong>g/j</strong> y la <strong>h</strong> que no suena.</li>
+  </ul>
+  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.W.CS.2</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-genero-numero">El género y el número</a></li>
-    <li><a href="#s-2-cuadrante">El cuadrante de la concordancia</a></li>
-    <li><a href="#s-3-practica">Práctica: elige el adjetivo correcto</a></li>
+    <li><a href="#s-1-tonica">La sílaba tónica</a></li>
+    <li><a href="#s-2-reglas">Las reglas de la tilde</a></li>
+    <li><a href="#s-3-diacritica">Palabras cortas que cambian con la tilde</a></li>
+    <li><a href="#s-4-letras">Letras que suenan igual</a></li>
+    <li><a href="#s-5-pares">Pares que se confunden</a></li>
+    <li><a href="#s-6-dictado">Práctica: dictado</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -251,209 +216,162 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
+<p>En español casi todo se escribe como suena. Casi. La tilde y algunas letras son la excepción, y son también los errores que más se notan en una carta, un correo de trabajo o la respuesta escrita del GED. La buena noticia es que la tilde sigue <strong>reglas fijas</strong>: si sabes cuál sílaba suena más fuerte, sabes si lleva tilde. Y para las letras que suenan igual hay trucos que funcionan casi siempre.</p>
+<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán. Pide a alguien que te dicte las palabras, o lee tú las respuestas en voz alta.</p>
 
-<p>En la <a href="https://zhemaria.github.io/clases_leng1/clase_3-1.html">Lección 3.1</a> conociste a los sustantivos y a los adjetivos. Ahora vas a aprender la regla de oro que los hace funcionar juntos: <strong>tienen que coincidir en género y en número</strong>. Como una pareja de baile: si uno va en una dirección, el otro tiene que seguirle el paso.</p>
-
-<p>El español es un idioma de <strong>parejas</strong>. No podemos decir <em>"el casa blancos"</em>; suena raro porque las palabras no concuerdan. Lo correcto es <em>"la casa blanca"</em>. Vamos a ver por qué.</p>
-
-<details open id="s-1-genero-numero">
-<summary>1. El género y el número <span class="caja-tiempo">15 min</span></summary>
+<details open id="s-1-tonica">
+<summary>1. La sílaba tónica <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>El género: masculino o femenino</h3>
-
-<p>En español, todos los sustantivos tienen <strong>género</strong>: o son masculinos o son femeninos. No tiene nada que ver con que la cosa sea «macho» o «hembra»: es una etiqueta gramatical. La mesa no es mujer ni el libro es hombre.</p>
-
-<ul class="lista-bonita">
-  <li><span class="masc">Masculinos</span>: usan los artículos <em>el / un / los / unos</em>. Ejemplos: <em>el carro, un libro, el árbol</em>.</li>
-  <li><span class="fem">Femeninos</span>: usan los artículos <em>la / una / las / unas</em>. Ejemplos: <em>la casa, una flor, la mesa</em>.</li>
-</ul>
-
-<div class="tip">
-  <strong>💡 Pista útil:</strong> La mayoría de palabras que terminan en <strong>-o</strong> son masculinas (libro, carro, perro). La mayoría que terminan en <strong>-a</strong> son femeninas (casa, mesa, perra). Pero hay excepciones: <em>la mano</em> (femenina aunque termina en -o), <em>el día</em> (masculino aunque termina en -a).
-</div>
-
-<h3>El número: singular o plural</h3>
-
-<p>Los sustantivos también tienen <strong>número</strong>: pueden ser <span class="sing">singulares</span> (uno solo) o <span class="plur">plurales</span> (varios).</p>
-
-<table class="tabla-articulos">
-  <caption class="sr-solo">Artículos según el género y el número</caption>
-  <thead><tr><th scope="col">Género</th><th scope="col">Singular</th><th scope="col">Plural</th></tr></thead>
+<p>En cada palabra hay una sílaba que se pronuncia <strong>con más fuerza</strong>: la <span class="palabra-clave">sílaba tónica</span>. Para encontrarla, di la palabra en voz alta como si llamaras a alguien de lejos: <em>ca-<span class="ton">MIÓN</span></em>, <em><span class="ton">ÁR</span>-bol</em>, <em><span class="ton">MÚ</span>-si-ca</em>. Según dónde esté, la palabra es:</p>
+<table class="tabla">
+  <caption class="sr-solo">Clasificación de las palabras según la sílaba tónica</caption>
+  <thead><tr><th scope="col">Tipo</th><th scope="col">La sílaba tónica es…</th><th scope="col">Ejemplos</th></tr></thead>
   <tbody>
-    <tr><td><span class="masc">Masculino</span></td><td>el gato, un carro</td><td>los gatos, unos carros</td></tr>
-    <tr><td><span class="fem">Femenino</span></td><td>la gata, una casa</td><td>las gatas, unas casas</td></tr>
+    <tr><td><strong>Aguda</strong></td><td>La última.</td><td>ca-<span class="ton">fé</span> · re-<span class="ton">loj</span> · ciu-<span class="ton">dad</span> · can-<span class="ton">ción</span></td></tr>
+    <tr><td><strong>Llana</strong> (o grave)</td><td>La penúltima.</td><td><span class="ton">ca</span>-sa · <span class="ton">ár</span>-bol · e-<span class="ton">xa</span>-men · <span class="ton">lá</span>-piz</td></tr>
+    <tr><td><strong>Esdrújula</strong></td><td>La antepenúltima.</td><td><span class="ton">mú</span>-si-ca · <span class="ton">sá</span>-ba-do · te-<span class="ton">lé</span>-fo-no</td></tr>
   </tbody>
 </table>
-
-<h3>La regla de oro</h3>
-
-<p>Cuando un <strong>adjetivo</strong> acompaña a un <strong>sustantivo</strong>, deben <strong>concordar</strong>:</p>
-
-<ul class="lista-bonita">
-  <li>En el <strong>mismo género</strong> (los dos masculinos o los dos femeninos).</li>
-  <li>En el <strong>mismo número</strong> (los dos singulares o los dos plurales).</li>
-</ul>
-
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l3-2.html#genero-numero" target="_blank" rel="noopener">
-  ✍️ Práctica: ¿Masculino o femenino? ¿Singular o plural? ↗
-  <span>Cuarenta sustantivos para reconocer su género y su número, con las excepciones más comunes (<em>el día, la mano</em>). Los ejercicios salen al azar. Se abre en otra pestaña.</span>
-</a>
-
+<div class="tip"><strong>💡 Un truco:</strong> si dudas, prueba a decir la palabra con la fuerza en otra sílaba. Suena raro: <em>«CA-fe»</em>, <em>«mu-SI-ca»</em>. La versión que suena bien te dice dónde está la fuerza.</div>
+<h3>¿Aguda, llana o esdrújula?</h3>
+<div class="clasificador" id="clasif-ton"></div>
+<div class="puntaje" id="puntaje-ton" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-2.html#tonica" target="_blank" rel="noopener noreferrer">🔊 Practica más: encuentra la sílaba tónica
+  <span>Escuchas la palabra y eliges la sílaba que suena más fuerte. Se abre en una pestaña nueva.</span></a>
 </div>
 </details>
 
-<details id="s-2-cuadrante">
-<summary>2. El cuadrante de la concordancia <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-reglas">
+<summary>2. Las reglas de la tilde <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Mira cómo cambia un adjetivo</h3>
-
-<p>Tomemos el sustantivo <em>gato</em> y el adjetivo <em>negro</em>. Mira las cuatro combinaciones posibles:</p>
-
-<table class="cuadrante">
-  <caption class="sr-solo">Las cuatro formas según el género y el número</caption>
-  <thead>
-    <tr>
-      <td></td>
-      <th scope="col"><span class="sing">Singular</span></th>
-      <th scope="col"><span class="plur">Plural</span></th>
-    </tr>
-  </thead>
+<table class="tabla">
+  <caption class="sr-solo">Reglas generales de la tilde</caption>
+  <thead><tr><th scope="col">Tipo</th><th scope="col">Lleva tilde cuando…</th><th scope="col">Con tilde</th><th scope="col">Sin tilde</th></tr></thead>
   <tbody>
-    <tr>
-      <td class="head-fila"><span class="masc">Masculino</span></td>
-      <td class="celda-mascsing">el gato negro</td>
-      <td class="celda-mascplur">los gatos negros</td>
-    </tr>
-    <tr>
-      <td class="head-fila"><span class="fem">Femenino</span></td>
-      <td class="celda-femsing">la gata negra</td>
-      <td class="celda-femplur">las gatas negras</td>
-    </tr>
+    <tr><td><strong>Aguda</strong></td><td>Termina en <strong>n</strong>, <strong>s</strong> o <strong>vocal</strong>.</td><td>canción · compás · café · sofá</td><td>reloj · papel · ciudad · comer</td></tr>
+    <tr><td><strong>Llana</strong></td><td><strong>No</strong> termina en <em>n</em>, <em>s</em> ni vocal.</td><td>árbol · lápiz · fácil · azúcar</td><td>casa · examen · lunes · joven</td></tr>
+    <tr><td><strong>Esdrújula</strong></td><td><strong>Siempre.</strong></td><td>música · sábado · teléfono · médico</td><td>—</td></tr>
   </tbody>
 </table>
-
-<p>¿Ves cómo todo cambia "en bloque"? El artículo (<em>el / la / los / las</em>), el sustantivo (<em>gato / gata / gatos / gatas</em>) y el adjetivo (<em>negro / negra / negros / negras</em>) siempre van iguales.</p>
-
-<h3>Otro ejemplo: la palabra "rojo"</h3>
-
-<table class="cuadrante">
-  <caption class="sr-solo">Las cuatro formas según el género y el número</caption>
-  <thead>
-    <tr>
-      <td></td>
-      <th scope="col"><span class="sing">Singular</span></th>
-      <th scope="col"><span class="plur">Plural</span></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="head-fila"><span class="masc">Masculino</span></td>
-      <td class="celda-mascsing">el carro rojo</td>
-      <td class="celda-mascplur">los carros rojos</td>
-    </tr>
-    <tr>
-      <td class="head-fila"><span class="fem">Femenino</span></td>
-      <td class="celda-femsing">la flor roja</td>
-      <td class="celda-femplur">las flores rojas</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="tip">
-  <strong>⚠️ Adjetivos invariables:</strong> Algunos adjetivos no cambian con el género (solo con el número). Ejemplos: <em>grande/grandes, feliz/felices, azul/azules, fácil/fáciles</em>. Por eso decimos <em>"el niño feliz / la niña feliz"</em> (sin cambiar), pero <em>"los niños felices"</em> en plural.
-</div>
-
+<div class="tip"><strong>💡 Las reglas de las agudas y las llanas son opuestas:</strong> lo que hace llevar tilde a una aguda (<em>n, s, vocal</em>) es justo lo que hace que una llana <strong>no</strong> la lleve. Por eso <em>canción</em> lleva tilde y <em>examen</em> no.</div>
+<p>Dos casos más que ya conoces:</p>
+<ul class="lista-bonita">
+  <li><strong>Las palabras de una sola sílaba</strong> no llevan tilde: <em>fue, fui, dio, vio, pie, tren, mes</em>. (La excepción son las de la sección 3.)</li>
+  <li><strong>El hiato</strong> de la Lección 1.1: la <em>í</em> o la <em>ú</em> fuerte junto a otra vocal llevan tilde aunque la regla no lo pida: <em>día</em>, <em>país</em>, <em>baúl</em>, <em>maíz</em>.</li>
+</ul>
+<h3>¿Lleva tilde?</h3>
+<p>Las palabras aparecen sin tilde. Decide si deben llevarla.</p>
+<div class="clasificador" id="clasif-tilde"></div>
+<div class="puntaje" id="puntaje-tilde" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-2.html#tilde" target="_blank" rel="noopener noreferrer">✒️ Practica más: ¿con tilde o sin tilde?
+  <span>Rondas de palabras nuevas con la explicación de la regla.</span></a>
 </div>
 </details>
 
-<details id="s-3-practica">
-<summary>3. Práctica: elige el adjetivo correcto <span class="caja-tiempo">25 min</span></summary>
+<details id="s-3-diacritica">
+<summary>3. Palabras cortas que cambian con la tilde <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Ejercicio: completar con concordancia</h3>
-
-<p>Para cada oración, elige el adjetivo que <strong>concuerda</strong> con el sustantivo.</p>
-
-<div id="ejercicios-completar"></div>
-
-<div class="puntaje" id="puntaje-completar">Aciertos: 0 / 6</div>
-
-<h3>Ejercicio: empareja sustantivos con adjetivos</h3>
-
-<p>Toca primero un <strong>sustantivo</strong> y luego un <strong>adjetivo</strong> que concuerde con él (mismo género y mismo número). Puede haber más de un adjetivo que sirva: lo importante es que concuerden.</p>
-
-<div class="area-dragdrop">
-  <div class="columnas-dd">
-    <div class="col-dd">
-      <h5>Sustantivos</h5>
-      <div id="lista-susts"></div>
-    </div>
-    <div class="col-dd">
-      <h5>Emparejados</h5>
-      <div id="lista-emparejados"></div>
-    </div>
-  </div>
-
-  <div class="adjs-disponibles" id="adjs-disponibles"></div>
-
-  <div class="feedback" id="feedback-dd"></div>
-  <div class="puntaje" id="puntaje-dd">Parejas correctas: 0 / 5</div>
-
-  <div class="botones">
-    <button type="button" class="btn btn-secundario" id="btn-reset-dd">Reiniciar</button>
-  </div>
+<p>Algunas palabras de una sílaba se escriben igual pero significan cosas distintas. La tilde sirve para distinguirlas: se llama <span class="palabra-clave">tilde diacrítica</span>.</p>
+<table class="tabla">
+  <caption class="sr-solo">Palabras que cambian de significado con la tilde</caption>
+  <thead><tr><th scope="col">Con tilde</th><th scope="col">Sin tilde</th></tr></thead>
+  <tbody>
+    <tr><td><strong>tú</strong> (la persona): <em>Tú tienes razón.</em></td><td><strong>tu</strong> (de ti): <em>Tu casa es bonita.</em></td></tr>
+    <tr><td><strong>él</strong> (la persona): <em>Él trabaja aquí.</em></td><td><strong>el</strong> (artículo): <em>El trabajo es duro.</em></td></tr>
+    <tr><td><strong>mí</strong> (la persona): <em>Es para mí.</em></td><td><strong>mi</strong> (de mí): <em>Mi hijo estudia.</em></td></tr>
+    <tr><td><strong>sí</strong> (afirmación): <em>Sí, quiero.</em></td><td><strong>si</strong> (condición): <em>Si llueve, no voy.</em></td></tr>
+    <tr><td><strong>sé</strong> (de saber): <em>No sé nada.</em></td><td><strong>se</strong> (pronombre): <em>Se levanta temprano.</em></td></tr>
+    <tr><td><strong>té</strong> (la bebida): <em>Me gusta el té.</em></td><td><strong>te</strong> (pronombre): <em>Te llamo luego.</em></td></tr>
+    <tr><td><strong>más</strong> (cantidad): <em>Quiero más arroz.</em></td><td>—</td></tr>
+  </tbody>
+</table>
+<div class="tip"><strong>💡 Las palabras de pregunta:</strong> <em>qué, cómo, dónde, cuándo, quién, cuánto</em> llevan tilde cuando preguntan o exclaman, aunque no haya signos: <em>¿Dónde vives?</em> · <em>No sé dónde vive.</em> · <em>¡Qué bonito!</em> Sin pregunta, no: <em>La casa donde vivo es pequeña.</em> · <em>Creo que sí.</em></div>
+<h3>¿Con tilde o sin tilde?</h3>
+<div class="clasificador" id="clasif-dia"></div>
+<div class="puntaje" id="puntaje-dia" role="status" aria-live="polite"></div>
 </div>
+</details>
 
-<div class="enlace-practica" style="cursor:default"><a  href="https://zhemaria.github.io/gramatica/n1-l3-2.html#elige-adjetivo" target="_blank" rel="noopener" style="color:inherit">
-  ✍️ Práctica: Elige el adjetivo que concuerda ↗</a>
-  <span>Setenta frases para completar. En la misma página puedes después <a href="https://zhemaria.github.io/gramatica/n1-l3-2.html#escribe-adjetivo" target="_blank" rel="noopener">escribir tú el adjetivo</a> y <a href="https://zhemaria.github.io/gramatica/n1-l3-2.html#detecta-error" target="_blank" rel="noopener">detectar errores</a>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+<details id="s-4-letras">
+<summary>4. Letras que suenan igual <span class="caja-tiempo">25 min</span></summary>
+<div class="contenido-detalle">
+<p>En el español de América, la <em>b</em> y la <em>v</em> suenan igual, y también la <em>s</em>, la <em>z</em> y la <em>c</em> delante de <em>e</em> o <em>i</em>. Por eso hay que aprender cómo se escriben. Estas reglas funcionan casi siempre:</p>
+<table class="tabla">
+  <caption class="sr-solo">Reglas para letras que suenan igual</caption>
+  <thead><tr><th scope="col">Se escribe…</th><th scope="col">Cuándo</th><th scope="col">Ejemplos</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="1"><strong>b</strong></td><td>Antes de otra consonante · después de <em>m</em> · en el pasado en <em>-aba</em> · en los verbos en <em>-bir</em></td><td>blanco, brazo · hombre, cambio · trabajaba, cantábamos · escribir, recibir (excepto <em>hervir, servir, vivir</em>)</td></tr>
+    <tr><td><strong>v</strong></td><td>Después de <em>n</em> · después de <em>ol</em> · en las palabras que terminan en <em>-ivo, -iva</em></td><td>invierno, enviar · olvidar, polvo · activo, positiva</td></tr>
+    <tr><td><strong>z</strong> / <strong>c</strong></td><td><em>za, zo, zu</em> pero <em>ce, ci</em>. Por eso la <em>z</em> pasa a <em>c</em> en el plural y en las familias de palabras</td><td>zapato, azul · cena, cielo · lápiz → lápices · feliz → felicidad</td></tr>
+    <tr><td><strong>s</strong> o <strong>c</strong></td><td>Se aprende por la familia de la palabra</td><td>casa → casita · cazar → caza · educar → educación · confuso → confusión</td></tr>
+    <tr><td><strong>g</strong></td><td>En las palabras con <em>-gen</em> · en los verbos en <em>-ger</em> y <em>-gir</em></td><td>imagen, origen · proteger, elegir, dirigir (excepto <em>tejer, crujir</em>)</td></tr>
+    <tr><td><strong>j</strong></td><td>En las palabras que terminan en <em>-aje</em> y <em>-jero, -jera</em></td><td>viaje, mensaje, garaje · extranjero, cajera</td></tr>
+    <tr><td><strong>h</strong></td><td>No suena: hay que conocer las palabras. Siempre la llevan las que empiezan con <em>hie-</em>, <em>hue-</em> y <em>hum-</em>, y todas las formas de <em>haber</em> y <em>hacer</em></td><td>hielo, huevo, humo · hay, había, hubo · hago, hizo, hecho</td></tr>
+  </tbody>
+</table>
+<div class="tip"><strong>💡 La familia ayuda:</strong> si dudas cómo se escribe una palabra, piensa en otra de la misma familia. <em>¿Lapices o lápices?</em> Viene de <em>lápiz</em>, y como la <em>z</em> no va delante de <em>e</em>, se escribe con <em>c</em>: <em>lápices</em>.</div>
+<h3>¿Cómo se escribe?</h3>
+<div class="clasificador" id="clasif-letras"></div>
+<div class="puntaje" id="puntaje-letras" role="status" aria-live="polite"></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-2.html#letras" target="_blank" rel="noopener noreferrer">🔤 Practica más: b/v, c/s/z, g/j, h
+  <span>Eliges la escritura correcta y ves la regla que la explica.</span></a>
 </div>
+</details>
 
+<details id="s-5-pares">
+<summary>5. Pares que se confunden <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+<table class="tabla">
+  <caption class="sr-solo">Palabras que suenan igual y se escriben distinto</caption>
+  <thead><tr><th scope="col">Palabra</th><th scope="col">Significa</th><th scope="col">Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td><strong>hay</strong></td><td>Del verbo <em>haber</em>: existe.</td><td><em>Hay</em> leche en el refrigerador.</td></tr>
+    <tr><td><strong>ahí</strong></td><td>En ese lugar.</td><td>Deja la caja <em>ahí</em>.</td></tr>
+    <tr><td><strong>ay</strong></td><td>Una queja o un susto.</td><td>¡<em>Ay</em>, me duele!</td></tr>
+    <tr><td><strong>a ver</strong></td><td>Mirar, comprobar.</td><td><em>A ver</em> qué dice la carta.</td></tr>
+    <tr><td><strong>haber</strong></td><td>El verbo.</td><td>Debe <em>haber</em> un error.</td></tr>
+    <tr><td><strong>hecho</strong></td><td>Del verbo <em>hacer</em>.</td><td>Ya he <em>hecho</em> la tarea.</td></tr>
+    <tr><td><strong>echo</strong></td><td>Del verbo <em>echar</em>.</td><td><em>Echo</em> sal a la sopa.</td></tr>
+    <tr><td><strong>vez</strong></td><td>Una ocasión.</td><td>Otra <em>vez</em> llegó tarde.</td></tr>
+    <tr><td><strong>ves</strong></td><td>Del verbo <em>ver</em>.</td><td>¿<em>Ves</em> el autobús?</td></tr>
+  </tbody>
+</table>
+<div class="tip"><strong>💡 Para <em>hay / ahí / ay</em>:</strong> «<em>Ahí</em> hay un hombre que dice ¡ay!». Si puedes cambiarla por <em>allí</em>, es <em>ahí</em>; si puedes cambiarla por <em>existe</em> o <em>existen</em>, es <em>hay</em>.</div>
+</div>
+</details>
+
+<details id="s-6-dictado">
+<summary>6. Práctica: dictado <span class="caja-tiempo">15 min</span></summary>
+<div class="contenido-detalle">
+<div class="actividad">
+  <h4><span class="badge badge-actividad">Actividad</span> Individual · en tu cuaderno</h4>
+  <p style="margin:0">Pulsa 🔊 en cada número y escribe la palabra en tu cuaderno, con su tilde si la lleva. Cuando termines las doce, pulsa «Mostrar» en cada una para corregirte. Si fallas una, escribe al lado la regla que la explica.</p>
+</div>
+<div class="dictado" id="dictado"></div>
+<div class="botones"><button type="button" class="btn btn-secundario" id="mostrar-todo">Mostrar todas las respuestas</button></div>
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-2.html#dictado" target="_blank" rel="noopener noreferrer">⌨️ Practica más: dictado de oraciones
+  <span>Escuchas una oración, la escribes en la pantalla y el programa te señala las palabras que debes revisar.</span></a>
+<div class="tip"><strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> hagan un «dictado cooperativo»: uno dicta cinco oraciones de un periódico y el otro las escribe; luego cambian y se corrigen mirando el original.</div>
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>7. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
 <ul class="lista-bonita">
-  <li><strong>Las cuatro formas.</strong> Escribe las cuatro formas de <em>perro grande</em>, <em>casa bonita</em> y <em>niño feliz</em> (masculino o femenino, singular o plural), como en el cuadrante de la <a href="#s-2-cuadrante">sección 2</a>.</li>
-  <li><strong>Mi objeto, en plural.</strong> Vuelve a las 3 oraciones que escribiste en la tarea de la <a href="https://zhemaria.github.io/clases_leng1/clase_3-1.html#s-tarea">Lección 3.1</a> sobre un objeto de tu casa. Escríbelas otra vez, ahora en plural (<em>Mis mesas de cocina son redondas y viejas.</em>), y revisa que todo concuerde.</li>
-  <li><strong>Atento a la calle.</strong> En carteles, anuncios o mensajes, busca dos frases con un error de concordancia (pasa más de lo que crees) y escríbelas corregidas.</li>
+  <li><strong>Diez palabras con tilde.</strong> Busca en un periódico o una revista diez palabras con tilde. Sepáralas en sílabas, marca la tónica y escribe por qué la llevan (aguda en <em>n</em>, esdrújula, hiato…).</li>
+  <li><strong>Mi palabra difícil.</strong> Elige tres palabras que sueles escribir mal. Para cada una, escribe la regla o el truco que te ayudará a recordarla y tres oraciones donde la uses.</li>
+  <li><strong>Oraciones con pares.</strong> Escribe una oración con cada palabra: <em>tú, tu, sí, si, hay, ahí, hecho, echo</em>.</li>
 </ul>
-
-<div class="actividad-unidad">
-  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tus oraciones con esta rúbrica</h4>
-  <table class="rubrica">
-    <caption class="sr-solo">Rúbrica para revisar la concordancia de tus oraciones</caption>
-    <thead>
-      <tr>
-        <th scope="col">Criterio</th>
-        <th scope="col" class="nivel-4">Excelente (4)</th>
-        <th scope="col" class="nivel-3">Bueno (3)</th>
-        <th scope="col" class="nivel-2">Aceptable (2)</th>
-        <th scope="col" class="nivel-1">Inicial (1)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Concordancia de género</td><td class="nivel-4">Todas las oraciones concuerdan en género</td><td class="nivel-3">2 de 3 concuerdan</td><td class="nivel-2">1 de 3 concuerda</td><td class="nivel-1">Ninguna concuerda</td></tr>
-      <tr><td>Concordancia de número</td><td class="nivel-4">Todas las oraciones concuerdan en número</td><td class="nivel-3">2 de 3 concuerdan</td><td class="nivel-2">1 de 3 concuerda</td><td class="nivel-1">Ninguna concuerda</td></tr>
-      <tr><td>Ortografía básica</td><td class="nivel-4">Sin errores de ortografía</td><td class="nivel-3">1 o 2 errores menores</td><td class="nivel-2">3 o 4 errores menores</td><td class="nivel-1">Muchos errores</td></tr>
-    </tbody>
-  </table>
-  <p style="margin-bottom:0">Si en algún criterio te quedaste en 1 o 2, corrige esas oraciones y vuelve a puntuarte.</p>
-</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
-  <h4>✅ Quiz · 15 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>12 de 15</strong>.</p>
+  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -464,177 +382,114 @@
 </div>
 </details>
 
-
 <details id="s-cierre">
-<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-
-<h3>Por qué la concordancia importa</h3>
-
-<p>La concordancia <strong>evita la confusión al leer</strong>. Cuando escribes <em>"las mesas roja"</em>, el lector tropieza: ¿una mesa? ¿muchas? ¿qué color? Pero cuando escribes <em>"las mesas rojas"</em>, todo fluye. Esto vale tanto para el día a día como para el examen del GED.</p>
-
+<h3>Lo que aprendiste en esta lección</h3>
+<ul class="lista-bonita">
+  <li>Aguda con tilde si termina en <em>n, s</em> o vocal; llana con tilde si no termina así; esdrújula, siempre.</li>
+  <li><em>tú, él, mí, sí, sé, té, más</em> llevan tilde para distinguirse de <em>tu, el, mi, si, se, te</em>.</li>
+  <li>Las palabras de pregunta llevan tilde cuando preguntan: <em>No sé dónde vive</em>.</li>
+  <li><em>mb</em>, <em>nv</em>, <em>-aba</em>, <em>ce/ci</em>, <em>-aje</em> y las formas de <em>haber</em> y <em>hacer</em> con <em>h</em>.</li>
+</ul>
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Puedes decir las 4 formas de «perro grande» (masculino y femenino, en singular y en plural)?</li>
-    <li>¿Sabes por qué decimos "el día soleado" (no "la día soleada")?</li>
-    <li>¿Identificas cuál está mal: "las flores bonitas" o "las flores bonito"?</li>
+    <li>¿Sabes explicar por qué <em>camión</em> lleva tilde y <em>camiones</em> no?</li>
+    <li>¿Escribirías «Tu sabes que si» o «Tú sabes que sí»?</li>
+    <li>¿Sabes cuándo se escribe <em>hay</em> y cuándo <em>ahí</em>?</li>
   </ul>
 </div>
-
-<div class="tip">
-  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_3-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.3 · El corazón de la oración: el verbo</a>. Conocerás a otro actor fundamental: sin verbo no hay acción, y sin acción no hay oración completa.
-</div>
-
+<div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_3-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.3 · Registro formal e informal: habla frente a escritura</a>. Aprenderás a adaptar tu manera de escribir según a quién te diriges.</div>
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 3 · Lección 3.2</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 3 · Lección 3.2</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-
 <script>
+/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
 (function(){
-  // ============== Completar con adjetivo ==============
-  var ejercicios=[
-    {frase:'La casa ____.',opciones:['blanca','blanco','blancas','blancos'],correcta:'blanca'},
-    {frase:'Los carros ____.',opciones:['nuevo','nueva','nuevos','nuevas'],correcta:'nuevos'},
-    {frase:'Las niñas ____.',opciones:['feliz','felices','felizes','feliza'],correcta:'felices'},
-    {frase:'El perro ____.',opciones:['negro','negra','negros','negras'],correcta:'negro'},
-    {frase:'Las flores ____.',opciones:['amarillo','amarilla','amarillos','amarillas'],correcta:'amarillas'},
-    {frase:'Un café ____.',opciones:['caliente','calienta','calientes','calientos'],correcta:'caliente'}
-  ];
+  var voz=null, hay=('speechSynthesis' in window);
+  function elegir(){
+    if(!hay)return;
+    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
+    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
+    voz=null;
+    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
+    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
+  }
+  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
+  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
+  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
+  /* hablar(texto, velocidad, alTerminar) */
+  window.hablar=function(texto,vel,fin){
+    if(!hay||!texto){aviso();return;}
+    speechSynthesis.cancel();
+    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
+    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
+    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
+  };
+  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
+  window.hablarPalabras=function(texto){
+    if(!hay){aviso();return;}
+    speechSynthesis.cancel();
+    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
+  };
+  window.callar=function(){if(hay)speechSynthesis.cancel();};
+  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
+})();
 
-  var resueltos={};
-  var aciertos=0;
-  var cont=document.getElementById('ejercicios-completar');
-
-  ejercicios.forEach(function(ej,idx){
-    var div=document.createElement('div');
-    div.className='item-completar';
-    var partes=ej.frase.split('____');
-    var html='<div class="frase-completar">'+partes[0]+'<span class="hueco" data-idx="'+idx+'">_____</span>'+partes[1]+'</div>';
-    html+='<div class="opciones-completar">';
-    ej.opciones.forEach(function(op){
-      html+='<button type="button" class="opt-completar" data-opt="'+op+'">'+op+'</button>';
-    });
-    html+='</div>';
-    div.innerHTML=html;
-    cont.appendChild(div);
-
-    var botones=div.querySelectorAll('.opt-completar');
-    botones.forEach(function(b){
+/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
+function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
+  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
+  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
+  items.forEach(function(it,i){
+    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
+    var ops=it.ops||opciones;
+    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
+      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
+      '<span class="item-fb" aria-live="polite"></span>';
+    caja.appendChild(d);
+    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
+    var fb=d.querySelector('.item-fb');
+    d.querySelectorAll('.btn-op').forEach(function(b){
       b.addEventListener('click',function(){
-        if(resueltos[idx])return;
-        var opt=b.getAttribute('data-opt');
-        if(opt===ej.correcta){
-          b.classList.add('correcta');
-          var hueco=div.querySelector('.hueco');
-          hueco.textContent=opt;
-          hueco.classList.add('resuelto');
-          resueltos[idx]=true;
-          aciertos++;
-          actualizarPuntajeCompletar();
+        if(hechas[i])return;
+        if(+b.getAttribute('data-j')===it.c){
+          b.classList.add('correcta'); hechas[i]=true; bien++;
+          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
+          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
         }else{
-          b.classList.add('incorrecta');
-          setTimeout(function(){b.classList.remove('incorrecta')},500);
+          b.classList.add('incorrecta'); b.disabled=true;
+          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
         }
       });
     });
   });
+  marcador();
+}
 
-  function actualizarPuntajeCompletar(){
-    var el=document.getElementById('puntaje-completar');
-    el.textContent='Aciertos: '+aciertos+' / '+ejercicios.length;
-    if(aciertos===ejercicios.length){
-      el.innerHTML='🎉 ¡Excelente! Concordancia perfecta: '+aciertos+' / '+ejercicios.length;
-      el.style.color='var(--exito)';
-    }
-  }
-
-  // ============== Empareja sustantivo y adjetivo ==============
-  /* Se acepta cualquier adjetivo que concuerde en género y número.
-     gen 'x' = el adjetivo sirve para los dos géneros (amable, feliz…). */
-  var SUSTS=[
-    {sust:'el niño',gen:'m',num:'s'},{sust:'la mesa',gen:'f',num:'s'},{sust:'los gatos',gen:'m',num:'p'},
-    {sust:'las flores',gen:'f',num:'p'},{sust:'la profesora',gen:'f',num:'s'}
-  ];
-  var ADJS=[
-    {adj:'simpático',gen:'m',num:'s'},{adj:'redonda',gen:'f',num:'s'},{adj:'negros',gen:'m',num:'p'},{adj:'rojas',gen:'f',num:'p'},
-    {adj:'amable',gen:'x',num:'s'},{adj:'cansada',gen:'f',num:'s'},{adj:'simpáticas',gen:'f',num:'p'},{adj:'cansados',gen:'m',num:'p'}
-  ];
-  var NOM={m:'masculino',f:'femenino',s:'singular',p:'plural'};
-  var sustActivo=null, emparejados=0, hechos={};
-  var fb=document.getElementById('feedback-dd');
-  function aviso(t,c){ fb.innerHTML=t; fb.className='feedback '+c; }
-
-  function dibujarDD(){
-    sustActivo=null; emparejados=0; hechos={};
-    var listaSusts=document.getElementById('lista-susts'), listaEmp=document.getElementById('lista-emparejados'), adjsDisp=document.getElementById('adjs-disponibles');
-    listaSusts.innerHTML=''; listaEmp.innerHTML=''; adjsDisp.innerHTML=''; aviso('','');
-    SUSTS.forEach(function(p,i){
-      var d=document.createElement('button'); d.type='button';
-      d.className='sust-target'+(p.gen==='f'?' fem-style':''); d.textContent=p.sust; d.setAttribute('aria-pressed','false');
-      d.addEventListener('click',function(){
-        if(hechos[i])return;
-        listaSusts.querySelectorAll('.sust-target').forEach(function(x){x.classList.remove('activo');x.setAttribute('aria-pressed','false');});
-        d.classList.add('activo'); d.setAttribute('aria-pressed','true'); sustActivo=i;
-        aviso('Ahora elige un adjetivo que concuerde con «'+p.sust+'».','neutral');
-      });
-      listaSusts.appendChild(d);
-    });
-    ADJS.slice().sort(function(){return Math.random()-0.5;}).forEach(function(a){
-      var b=document.createElement('button'); b.type='button'; b.className='adj-elegible'; b.textContent=a.adj;
-      b.addEventListener('click',function(){
-        if(b.classList.contains('usada'))return;
-        if(sustActivo===null){ aviso('Primero elige un sustantivo de la columna izquierda.','neutral'); return; }
-        var par=SUSTS[sustActivo];
-        if((a.gen==='x'||a.gen===par.gen)&&a.num===par.num){
-          b.classList.add('usada'); b.disabled=true;
-          var m=document.createElement('div'); m.className='sust-target'+(par.gen==='f'?' fem-style':'');
-          m.style.background='#d4edda'; m.style.color='var(--exito)'; m.style.borderColor='var(--exito)';
-          m.innerHTML=par.sust+' <strong>'+a.adj+'</strong> ✓'; listaEmp.appendChild(m);
-          var origen=document.querySelector('#lista-susts .sust-target.activo'); if(origen) origen.style.display='none';
-          hechos[sustActivo]=true; emparejados++; sustActivo=null;
-          aviso('✅ ¡Concordancia correcta! «'+par.sust+' '+a.adj+'»: los dos van en '+NOM[par.gen]+' '+NOM[par.num]+'.','correcto');
-          actualizarPuntajeDD();
-        }else{
-          var fallaG=(a.gen!=='x'&&a.gen!==par.gen), fallaN=(a.num!==par.num);
-          var falla=fallaG&&fallaN?'el género y el número':(fallaN?'el número (uno es singular y el otro plural)':'el género (uno es masculino y el otro femenino)');
-          aviso('❌ «'+a.adj+'» no concuerda con «'+par.sust+'»: falla '+falla+'.','incorrecto');
-        }
-      });
-      adjsDisp.appendChild(b);
-    });
-    actualizarPuntajeDD();
-  }
-  function actualizarPuntajeDD(){
-    var el=document.getElementById('puntaje-dd');
-    el.textContent='Parejas correctas: '+emparejados+' / '+SUSTS.length; el.style.color='';
-    if(emparejados===SUSTS.length){ el.innerHTML='🎉 ¡Muy bien! Emparejaste todos: '+emparejados+' / '+SUSTS.length; el.style.color='var(--exito)'; }
-  }
-  document.getElementById('btn-reset-dd').addEventListener('click',dibujarDD);
-  dibujarDD();
-})();
-
-/* ===== Quiz de la lección ===== */
-(function(){
-  var P=[{"t": "¿Qué significa que dos palabras <strong>concuerdan</strong>?", "o": ["Que tienen el mismo género y el mismo número", "Que empiezan con la misma letra", "Que riman"], "c": 0}, {"t": "¿De qué género es «la mesa»?", "o": ["Femenino", "Masculino"], "c": 0, "fijo": true}, {"t": "¿De qué género es «el día»?", "o": ["Masculino", "Femenino"], "c": 0, "fijo": true}, {"t": "¿De qué género es «la mano»?", "o": ["Femenino", "Masculino"], "c": 0, "fijo": true}, {"t": "¿En qué número está «los gatos»?", "o": ["Plural", "Singular"], "c": 0, "fijo": true}, {"t": "Completa: «La casa ___»", "o": ["blanca", "blanco", "blancas"], "c": 0}, {"t": "Completa: «Los carros ___»", "o": ["nuevos", "nuevo", "nuevas"], "c": 0}, {"t": "Completa: «Las flores ___»", "o": ["amarillas", "amarillo", "amarillos"], "c": 0}, {"t": "Completa: «Las niñas ___»", "o": ["felices", "feliz", "felizes"], "c": 0}, {"t": "Completa: «El perro ___»", "o": ["negro", "negra", "negros"], "c": 0}, {"t": "¿Cuál tiene buena concordancia?", "o": ["las mesas rojas", "las mesas roja", "la mesas rojas"], "c": 0}, {"t": "¿Cuál tiene buena concordancia?", "o": ["el niño simpático", "el niño simpática", "los niño simpático"], "c": 0}, {"t": "¿Cuál de estos adjetivos <strong>no cambia</strong> con el género?", "o": ["grande", "bonito", "rojo"], "c": 0}, {"t": "¿Cuál es el plural de «el lápiz azul»?", "o": ["los lápices azules", "los lápiz azules", "los lápices azul"], "c": 0}, {"t": "¿Cuál está mal escrita?", "o": ["la día soleado", "el día soleado", "los días soleados"], "c": 0}], META=12, N=P.length;
-  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+/* ===== Quiz de la lección =====
+   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
+        ae:audio entrecortado opcional, fijo:no barajar,
+        r:enlace de repaso que aparece si la respuesta es incorrecta}]
+   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
+function iniciarQuiz(P,cfg){
+  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a){
+    if(p.x||p.a||p.ae){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
-    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -642,7 +497,7 @@
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
+    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -657,37 +512,115 @@
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
+      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Dominas la concordancia. Puedes continuar con la Lección 3.3.";fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve al cuadrante de la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-})();
+}
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
+  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-})();
-</script>
+});
 
+clasificador('clasif-ton','puntaje-ton',[
+  {p:'ventana',c:1,n:'ven-<strong>ta</strong>-na: llana.'},
+  {p:'café',c:0,n:'ca-<strong>fé</strong>: aguda.'},
+  {p:'sábado',c:2,n:'<strong>sá</strong>-ba-do: esdrújula.'},
+  {p:'reloj',c:0,n:'re-<strong>loj</strong>: aguda.'},
+  {p:'lápiz',c:1,n:'<strong>lá</strong>-piz: llana.'},
+  {p:'teléfono',c:2,n:'te-<strong>lé</strong>-fo-no: esdrújula.'},
+  {p:'trabajar',c:0,n:'tra-ba-<strong>jar</strong>: aguda.'},
+  {p:'examen',c:1,n:'e-<strong>xa</strong>-men: llana.'}
+],['Aguda','Llana','Esdrújula'],true);
+
+clasificador('clasif-tilde','puntaje-tilde',[
+  {p:'cancion',a:'canción',c:0,n:'can-<strong>ción</strong>: aguda terminada en <em>n</em> → <em>canción</em>.'},
+  {p:'papel',c:1,n:'pa-<strong>pel</strong>: aguda terminada en <em>l</em> → sin tilde.'},
+  {p:'arbol',a:'árbol',c:0,n:'<strong>ár</strong>-bol: llana terminada en <em>l</em> → <em>árbol</em>.'},
+  {p:'joven',c:1,n:'<strong>jo</strong>-ven: llana terminada en <em>n</em> → sin tilde.'},
+  {p:'musica',a:'música',c:0,n:'<strong>mú</strong>-si-ca: esdrújula → siempre: <em>música</em>.'},
+  {p:'ciudad',c:1,n:'ciu-<strong>dad</strong>: aguda terminada en <em>d</em> → sin tilde.'},
+  {p:'facil',a:'fácil',c:0,n:'<strong>fá</strong>-cil: llana terminada en <em>l</em> → <em>fácil</em>.'},
+  {p:'camiones',c:1,n:'ca-<strong>mio</strong>-nes: llana terminada en <em>s</em> → sin tilde.'}
+],['Lleva tilde','No lleva tilde'],true);
+
+clasificador('clasif-dia','puntaje-dia',[
+  {p:'«___ tienes razón.»',ops:['Tú','Tu'],c:0,n:'Es la persona: <em>tú</em>.'},
+  {p:'«___ hermana trabaja conmigo.»',ops:['Tú','Tu'],c:1,n:'Es «de ti»: <em>tu</em>.'},
+  {p:'«Este regalo es para ___.»',ops:['mí','mi'],c:0,n:'Es la persona: <em>mí</em>.'},
+  {p:'«___ llueve, nos quedamos en casa.»',ops:['Sí','Si'],c:1,n:'Es una condición: <em>si</em>.'},
+  {p:'«Le pregunté y me dijo que ___.»',ops:['sí','si'],c:0,n:'Es una afirmación: <em>sí</em>.'},
+  {p:'«No sé ___ empieza la clase.»',ops:['cuándo','cuando'],c:0,n:'Pregunta indirecta: <em>cuándo</em>.'},
+  {p:'«Te llamo ___ salga del trabajo.»',ops:['cuándo','cuando'],c:1,n:'No pregunta nada: <em>cuando</em>.'},
+  {p:'«___ trabaja en el turno de noche.»',ops:['Él','El'],c:0,n:'Es la persona: <em>él</em>.'}
+],null,false);
+
+clasificador('clasif-letras','puntaje-letras',[
+  {p:'Cuando era niña, ___ en el campo.',ops:['trabajaba','trabajava'],c:0,n:'Pasado en <em>-aba</em>: con <em>b</em>.'},
+  {p:'En ___ hace mucho frío.',ops:['imbierno','invierno'],c:1,n:'Después de <em>n</em>: <em>v</em>.'},
+  {p:'Tengo que ___ el carro.',ops:['cambiar','canviar'],c:0,n:'Después de <em>m</em>: <em>b</em>.'},
+  {p:'Compré dos ___ nuevos.',ops:['lápizes','lápices'],c:1,n:'<em>z</em> pasa a <em>c</em> delante de <em>e</em>.'},
+  {p:'Haremos un ___ a Guadalajara.',ops:['viaje','viage'],c:0,n:'Termina en <em>-aje</em>: con <em>j</em>.'},
+  {p:'Debemos ___ a los niños.',ops:['proteger','protejer'],c:0,n:'Verbo en <em>-ger</em>: con <em>g</em>.'},
+  {p:'Mi hijo ya ___ la tarea.',ops:['hizo','izo'],c:0,n:'Del verbo <em>hacer</em>: con <em>h</em>.'},
+  {p:'Pon el ___ en el congelador.',ops:['ielo','hielo'],c:1,n:'Empieza por <em>hie-</em>: con <em>h</em>.'}
+],null,false);
+
+/* Dictado de palabras */
+(function(){
+  var W=['camión','árbol','música','reloj','examen','teléfono','invierno','trabajaba','lápices','viaje','hielo','país'];
+  var caja=document.getElementById('dictado');
+  W.forEach(function(w,i){
+    var d=document.createElement('div'); d.className='celda';
+    d.innerHTML='<span class="num">Palabra '+(i+1)+'</span><button type="button" class="oir" aria-label="Escuchar la palabra '+(i+1)+'">🔊 Escuchar</button> '+
+      '<button type="button" class="oir mostrar">Mostrar</button><div class="resp" hidden>'+w+'</div>';
+    caja.appendChild(d);
+    d.querySelector('.oir').addEventListener('click',function(){hablar(w,0.75);});
+    d.querySelector('.mostrar').addEventListener('click',function(){d.querySelector('.resp').hidden=false;});
+  });
+  document.getElementById('mostrar-todo').addEventListener('click',function(){caja.querySelectorAll('.resp').forEach(function(r){r.hidden=false;});});
+})();
+
+iniciarQuiz([
+  {t:'¿Cuál es la sílaba tónica de <em>camión</em>?',o:['mión','ca','Tiene dos sílabas tónicas'],c:0},
+  {t:'La palabra <em>teléfono</em> es…',o:['Esdrújula','Llana','Aguda'],c:0},
+  {t:'¿Cuál está bien escrita?',o:['árbol','arbol','arból'],c:0},
+  {t:'Las palabras esdrújulas…',o:['Siempre llevan tilde','Nunca llevan tilde','Solo la llevan si terminan en n, s o vocal'],c:0},
+  {t:'¿Por qué <em>reloj</em> no lleva tilde?',o:['Es aguda y no termina en n, s ni vocal','Es llana y termina en consonante','Tiene una sola sílaba'],c:0},
+  {t:'Completa: «___ tienes toda la razón.»',o:['Tú','Tu','Tù'],c:0},
+  {t:'Completa: «No sé ___ vive tu hermano.»',o:['dónde','donde','dondé'],c:0},
+  {t:'¿Cómo se escribe?',o:['fue','fué','fúe'],c:0},
+  {t:'¿Cómo se escribe?',o:['trabajaba','trabajava','travajaba'],c:0},
+  {t:'¿Cómo se escribe?',o:['invierno','imbierno','inbierno'],c:0},
+  {t:'Completa: «Mi hermano ya ___ la tarea.»',o:['hizo','izo','hiso'],c:0},
+  {t:'Completa: «Mira, ___ está tu teléfono.»',o:['ahí','hay','ay'],c:0}
+],{meta:10,
+   bien:'Ya aplicas las reglas de la tilde y de las letras que suenan igual. Puedes continuar con la Lección 3.3.',
+   repaso:'Vuelve a las secciones 2, 3 y 4 y repite el quiz: con práctica sale.'});
+</script>
 </body>
 </html>
