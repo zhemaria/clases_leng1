@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<!-- Lección 1.1 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
-     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
-     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
+<!-- Lección 1.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 1.1 · Vocales, diptongos y sílabas complejas</title>
+<title>Lección 1.1 · El alfabeto: letras mayúsculas y minúsculas</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
     --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#555;--gris-claro:#eef1f4;
-    --dip:#1565c0;--dip-claro:#e3f2fd;
-    --hia:#ad1457;--hia-claro:#fce4ec;
-    --grp:#5c3900;--grp-claro:#fff3cd;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --mayus:#1565c0;--mayus-claro:#e3f2fd;
+    --minus:#c2185b;--minus-claro:#fce4ec;
     --exito:#2e7d32;--error:#c62828;
   }
   *{box-sizing:border-box}
@@ -28,129 +26,214 @@
   h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
   .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#6b5400}
+  .tip strong{color:#8a6d00}
   .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
   .btn-primario{background:var(--cp);color:#fff}
   .btn-primario:hover{background:var(--cp-oscuro)}
   .btn-secundario{background:var(--gris-claro);color:var(--texto)}
   .btn-secundario:hover{background:#d6dde4}
-  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
   .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
-  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
-  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
-  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.tabla tr:last-child td{border-bottom:none}
-  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad h4{color:#8a3d0c;margin-top:0}
-  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-lectura{background:#e3f2fd;color:#0d47a1}
-  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
-  /* Clasificadores */
-  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
-  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
-  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
-  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
-  .item-fb:empty{display:none}
-  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
-  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
-  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
-  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
-  .btn-op:disabled{cursor:default}
-  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
-  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
-  /* Lectura con marcas */
-  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
-  .texto-lectura p{margin:0 0 10px}
-  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
-  .leyenda span{display:inline-flex;align-items:center;gap:6px}
-  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
-  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
-  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
-  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
-  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
-  /* Índice */
+
+  /* Abecedario ilustrado */
+  .abecedario{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:10px;
+    margin:18px 0;
+  }
+  .letra-card{
+    background:#fff;
+    border:2px solid var(--cp);
+    border-radius:12px;
+    padding:14px 10px;
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.2s;
+    box-shadow:0 2px 6px rgba(0,0,0,0.06);
+  }
+  .letra-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 14px rgba(0,137,205,0.25);
+    border-color:var(--cp-oscuro);
+  }
+  .letra-card.sonando{
+    background:var(--cp-claro);
+    border-color:var(--acento);
+    box-shadow:0 0 0 4px rgba(255,140,66,0.3);
+  }
+  .letras-pareja{
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:6px;
+    margin-bottom:4px;
+  }
+  .letra-mayus{
+    font-family:'Georgia',serif;
+    font-size:2.4rem;
+    font-weight:700;
+    color:var(--mayus);
+    line-height:1;
+  }
+  .letra-minus{
+    font-family:'Georgia',serif;
+    font-size:1.8rem;
+    font-weight:700;
+    color:var(--minus);
+    line-height:1;
+  }
+  .letra-palabra{
+    font-size:0.85rem;
+    color:var(--gris);
+    margin-top:2px;
+    font-style:italic;
+  }
+  .letra-emoji{font-size:1.6rem;display:block;margin-top:2px}
+
+  /* Tabla mayús/minús explicación */
+  table.tabla-explicacion{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-explicacion th{padding:12px;text-align:left;font-weight:700;color:#fff}
+  table.tabla-explicacion th.col-mayus{background:var(--mayus)}
+  table.tabla-explicacion th.col-minus{background:var(--minus)}
+  table.tabla-explicacion td{padding:12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.tabla-explicacion tr:last-child td{border-bottom:none}
+  table.tabla-explicacion td.celda-mayus{background:var(--mayus-claro)}
+  table.tabla-explicacion td.celda-minus{background:var(--minus-claro)}
+
+  /* Quiz emparejamiento */
+  .quiz-emparejar{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .columnas-emp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:640px){.columnas-emp{grid-template-columns:1fr}}
+  .col-emp{background:#f9f9f9;border:2px dashed var(--cp);border-radius:8px;padding:12px;min-height:80px}
+  .col-emp h5{margin:0 0 8px 0;text-align:center;color:var(--cp-oscuro);font-size:0.95rem}
+  .letra-emp{
+    background:#fff;
+    border:2px solid;
+    border-radius:8px;
+    padding:10px;
+    margin:6px 0;
+    text-align:center;
+    cursor:pointer;
+    font-family:'Georgia',serif;
+    font-size:1.5rem;
+    font-weight:700;
+    transition:all 0.15s;
+  }
+  .letra-emp.mayus-style{border-color:var(--mayus);color:var(--mayus)}
+  .letra-emp.mayus-style:hover{background:var(--mayus-claro)}
+  .letra-emp.minus-style{border-color:var(--minus);color:var(--minus)}
+  .letra-emp.minus-style:hover{background:var(--minus-claro)}
+  .letra-emp.activa{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--acento)}
+  .letra-emp.emparejada{
+    background:#d4edda;
+    border-color:var(--exito);
+    color:var(--exito);
+    cursor:default;
+  }
+  .feedback{margin-top:14px;padding:12px 16px;border-radius:8px;text-align:center;font-weight:600;min-height:20px}
+  .correcto{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+  .incorrecto{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+  .neutral{background:#fff3cd;color:#856404;border:1px solid #ffeaa7}
+
+  /* Quiz imagen → letra */
+  .item-imagen{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:16px 20px;margin:12px 0}
+  .imagen-emoji-grande{font-size:4rem;text-align:center;margin:8px 0}
+  .nombre-objeto{text-align:center;font-family:'Georgia',serif;font-size:1.1rem;color:var(--gris);margin-bottom:10px}
+  .opciones-letra{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .btn-letra{
+    padding:10px 18px;
+    border:2px solid var(--cp);
+    background:#fff;
+    color:var(--cp);
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+    font-family:'Georgia',serif;
+    font-size:1.4rem;
+    min-width:55px;
+    transition:all 0.2s;
+  }
+  .btn-letra:hover{background:var(--cp-claro)}
+  .btn-letra.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-letra.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Aviso audio */
+  .aviso-audio{background:#e3f2fd;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:14px 0;text-align:center}
+  .aviso-audio .icono-audio{font-size:1.8rem;margin-bottom:6px;display:block}
+
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-quiz{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
   .indice li{margin:4px 0}
   .indice a{color:var(--cp-oscuro)}
+  .indice a:focus-visible,.volver-indice:focus-visible,summary:focus-visible,.btn:focus-visible,.btn-letra:focus-visible{outline:3px solid #b35316;outline-offset:2px}
   .abrir-cerrar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
-  a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
-  .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-  .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
-  .enlace-practica:hover{background:var(--cp-claro)}
-  .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
-  .aviso-voz.visible{display:block}
-  /* Quiz */
-  .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
-  .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
-  .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
-  .qz-enun{font-weight:600;margin:0 0 10px}
-  .qz-num{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
-  .qz-extra{display:block;text-align:center;margin:6px 0 10px;font-weight:400}
-  .qz-extra .qz-grande{font-family:Georgia,serif;font-size:1.3rem}
-  .qz-oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-family:inherit}
-  .qz-ops{display:flex;flex-direction:column;gap:8px}
-  .qz-op{text-align:left;background:#fff;border:2px solid #c9d2db;border-radius:8px;padding:10px 14px;font-family:inherit;font-size:1rem;cursor:pointer;color:var(--texto)}
-  .qz-op:hover:not(:disabled){border-color:var(--cp)}
-  .qz-op.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
-  .qz-op.correcta{background:#d4edda;border-color:#2e7d32;color:#155724}
-  .qz-op.correcta::before{content:'✓ '}
-  .qz-op.incorrecta{background:#f8d7da;border-color:#c62828;color:#721c24}
-  .qz-op.incorrecta::before{content:'✗ '}
-  .qz-op:disabled{cursor:default}
-  .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
-  .qz-resultado.visible{display:block}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  /* ── Quiz de la lección ── */
+  .quiz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
+  .quiz-preg .enunciado{font-weight:600;margin:0 0 10px}
+  .quiz-preg .num-preg{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:12px;padding:1px 10px;font-size:.8rem;margin-right:8px}
+  .quiz-preg .emoji-preg{font-size:2.6rem;display:block;text-align:center;margin:4px 0}
+  .btn-letra.elegida{background:var(--cp-claro);border-color:var(--cp-oscuro);color:var(--cp-oscuro);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--cp)}
+  .btn-letra.texto{font-family:inherit;font-size:1rem}
+  .resultado-quiz{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
+  .resultado-quiz.visible{display:block}
+  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 </style>
 </head>
 <body>
 
-<h1>Lección 1.1 · Vocales, diptongos y sílabas complejas</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 1: Fonética avanzada y fluidez lectora · Unas 2 horas, a tu ritmo</p>
+<h1>Lección 1.1 · El alfabeto: letras mayúsculas y minúsculas</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 1 · Unas 3 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <ul class="lista-bonita" style="margin:0">
-    <li>Distinguir las vocales <strong>fuertes</strong> (a, e, o) de las <strong>débiles</strong> (i, u).</li>
-    <li>Reconocer cuándo dos vocales juntas forman un <strong>diptongo</strong> y cuándo forman un <strong>hiato</strong>.</li>
-    <li>Leer y separar en sílabas palabras con <strong>grupos de consonantes</strong> como <em>br, cl, tr, pl</em>.</li>
-  </ul>
-  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.R.FS.1 · 2.R.FS.2 · 2.R.FL.1</p>
+  <p style="margin-bottom:0">Reconocer y nombrar todas las letras del <strong>alfabeto español</strong> en sus dos formas (mayúscula y minúscula), y asociar cada letra con su <strong>sonido inicial</strong> y palabras que empiezan con ella.</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-vocales">Vocales fuertes y vocales débiles</a></li>
-    <li><a href="#s-2-diptongos">Diptongos e hiatos</a></li>
-    <li><a href="#s-3-grupos">Grupos de consonantes y letras dobles</a></li>
-    <li><a href="#s-4-lectura">Lectura: «El tren de la mañana»</a></li>
-    <li><a href="#s-5-practica">Práctica: separa y arma</a></li>
+    <li><a href="#s-1-el-abecedario-espanol">El abecedario español</a></li>
+    <li><a href="#s-2-palabras-que-empiezan-con-mi-letra">Actividad: palabras que empiezan con mi letra</a></li>
+    <li><a href="#s-3-practica-emparejar">Práctica: emparejar mayúscula con minúscula</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -162,397 +245,585 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
-<p>En el Nivel 1 aprendiste a separar en sílabas palabras sencillas como <span class="sil">ca-sa</span>, <span class="sil">me-sa</span> o <span class="sil">ga-to</span>, donde cada sílaba tiene una consonante y una vocal. Pero muchas palabras de tu vida diaria no son tan simples: <em>cuidado</em>, <em>tren</em>, <em>estudiante</em>, <em>país</em>. En ellas aparecen dos vocales juntas o dos consonantes seguidas.</p>
-<p>En esta lección aprenderás las reglas que te dicen <strong>cómo se agrupan esas letras</strong>. Con ellas podrás leer palabras largas sin trabarte y, más adelante, poner bien las tildes.</p>
-<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán. Lee las palabras en voz alta tú mismo: el ejercicio funciona igual.</p>
 
-<details open id="s-1-vocales">
-<summary>1. Vocales fuertes y vocales débiles <span class="caja-tiempo">10 min</span></summary>
-<div class="contenido-detalle">
-<p>El español tiene cinco vocales, pero no todas se comportan igual cuando se juntan con otra. Por eso se dividen en dos grupos:</p>
-<table class="tabla">
-  <caption class="sr-solo">Vocales fuertes y vocales débiles</caption>
-  <thead><tr><th scope="col">Grupo</th><th scope="col">Vocales</th><th scope="col">Cómo se pronuncian</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Fuertes</strong> (o abiertas)</td><td class="ejemplo">a · e · o</td><td>La boca se abre más.</td></tr>
-    <tr><td><strong>Débiles</strong> (o cerradas)</td><td class="ejemplo">i · u</td><td>La boca queda casi cerrada.</td></tr>
-  </tbody>
-</table>
-<div class="tip"><strong>💡 Para recordarlas:</strong> las débiles son solo dos, la <em>i</em> y la <em>u</em>. Piensa en la frase «<strong>tú y yo</strong>»: tiene una <em>u</em> y una <em>y</em>, que suena como <em>i</em>. Al final de palabra, la <em>y</em> funciona como vocal débil: <em>hoy</em>, <em>muy</em>, <em>rey</em>.</div>
+<p>¡Empezamos el Tema 1! Antes de leer, escribir y construir oraciones, vamos a recordar lo más básico: <strong>las letras del alfabeto</strong>. Algunas las recuerdas perfectamente, otras quizás se confunden — sobre todo si has aprendido inglés y español al mismo tiempo.</p>
 
-<h3>Clasifica cada vocal</h3>
-<div class="clasificador" id="clasif-vocales"></div>
-<div class="puntaje" id="puntaje-vocales" role="status" aria-live="polite"></div>
+<p>Esta lección es la base de todo lo que viene. Vamos a darle ese repaso bien hecho.</p>
+
+<div class="aviso-audio">
+  <span class="icono-audio">🔊</span>
+  <strong>Esta lección tiene audio.</strong> Haz clic en cualquier letra para escucharla. Usa audífonos o asegúrate de tener el volumen activado.
 </div>
-</details>
 
-<details id="s-2-diptongos">
-<summary>2. Diptongos e hiatos <span class="caja-tiempo">25 min</span></summary>
+<details open id="s-1-el-abecedario-espanol">
+<summary>1. El abecedario español <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>El diptongo: dos vocales en una sola sílaba</h3>
-<p>Un <span class="palabra-clave">diptongo</span> son dos vocales que se pronuncian <strong>juntas, en la misma sílaba</strong>. Ocurre cuando se combinan:</p>
-<table class="tabla">
-  <caption class="sr-solo">Combinaciones que forman diptongo</caption>
-  <thead><tr><th scope="col">Combinación</th><th scope="col">Ejemplos</th></tr></thead>
+<h3>27 letras: las conocemos todas</h3>
+
+<p>El alfabeto español tiene <span class="palabra-clave">27 letras</span>. Cada letra tiene una forma <strong>mayúscula</strong> (grande, para iniciar oración y nombres propios) y una forma <strong>minúscula</strong> (pequeña, para el resto). Aquí están todas:</p>
+
+<table class="tabla-explicacion">
+  <thead>
+    <tr>
+      <th class="col-mayus">Mayúscula</th>
+      <th class="col-minus">Minúscula</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td>Débil + fuerte</td><td class="ejemplo"><span class="sil">a-gua</span> · <span class="sil">puer-ta</span> · <span class="sil">fa-mi-lia</span> · <span class="sil">vien-to</span></td></tr>
-    <tr><td>Fuerte + débil</td><td class="ejemplo"><span class="sil">ai-re</span> · <span class="sil">pei-ne</span> · <span class="sil">cau-sa</span> · <span class="sil">hoy</span></td></tr>
-    <tr><td>Dos débiles distintas</td><td class="ejemplo"><span class="sil">ciu-dad</span> · <span class="sil">cui-da-do</span> · <span class="sil">rui-do</span></td></tr>
+    <tr>
+      <td class="celda-mayus"><strong>Para qué se usa:</strong> al inicio de cada oración, en nombres propios (María, Chicago, Truman), en siglas (GED, ABE).</td>
+      <td class="celda-minus"><strong>Para qué se usa:</strong> en el resto de las palabras. Es la forma más común — la que usas todo el tiempo.</td>
+    </tr>
+    <tr>
+      <td class="celda-mayus"><strong>Ejemplo:</strong> <span style="font-family:'Georgia',serif;font-size:1.5rem">M, A, R, Í, A</span></td>
+      <td class="celda-minus"><strong>Ejemplo:</strong> <span style="font-family:'Georgia',serif;font-size:1.5rem">m, a, r, í, a</span></td>
+    </tr>
   </tbody>
 </table>
 
-<h3>El hiato: dos vocales que se separan</h3>
-<p>Un <span class="palabra-clave">hiato</span> son dos vocales juntas que se pronuncian <strong>en sílabas distintas</strong>. Ocurre en dos casos:</p>
-<ul class="lista-bonita">
-  <li><strong>Dos vocales fuertes juntas:</strong> <span class="sil">po-e-ta</span>, <span class="sil">le-er</span>, <span class="sil">ma-es-tro</span>, <span class="sil">ca-ca-o</span>.</li>
-  <li><strong>Una vocal débil que suena más fuerte y lleva tilde:</strong> <span class="sil">dí-a</span>, <span class="sil">rí-o</span>, <span class="sil">pa-ís</span>, <span class="sil">ba-úl</span>. La tilde sobre la <em>í</em> o la <em>ú</em> avisa que el diptongo se rompe.</li>
-</ul>
-<div class="tip"><strong>💡 Compara con el oído:</strong> en <em>causa</em> la <em>a</em> y la <em>u</em> salen de un solo golpe de voz (<span class="sil">cau-sa</span>). En <em>baúl</em> la voz se detiene un instante entre ellas (<span class="sil">ba-úl</span>). Pulsa 🔊 en los ejercicios y escucha esa diferencia.</div>
+<h3>Abecedario ilustrado · haz clic para escuchar</h3>
 
-<h3>Dos trampas frecuentes</h3>
-<ul class="lista-bonita">
-  <li><strong>La <em>h</em> no separa:</strong> está escrita pero no suena. En <em>búho</em> la <em>ú</em> y la <em>o</em> forman hiato (<span class="sil">bú-ho</span>), igual que si la <em>h</em> no estuviera.</li>
-  <li><strong>La <em>u</em> muda:</strong> en <em>que, qui, gue, gui</em> la <em>u</em> no suena, así que no forma diptongo. <em>Queso</em> tiene dos sílabas (<span class="sil">que-so</span>) y <em>guitarra</em> tres (<span class="sil">gui-ta-rra</span>). Cuando la <em>u</em> sí debe sonar, lleva diéresis: <em>pingüino</em>, <em>vergüenza</em>.</li>
-</ul>
+<p><strong>Lectura en voz alta con el audio como modelo.</strong> Vas a hacer tres pasadas:</p>
+<ol>
+  <li><strong>Primera pasada:</strong> escucha cada letra y la palabra-ejemplo haciendo clic una a una.</li>
+  <li><strong>Segunda pasada:</strong> usa el botón <em>"Escuchar todo el abecedario"</em> y repite en voz alta junto al audio.</li>
+  <li><strong>Tercera pasada:</strong> intenta decir el abecedario tú solo, y verifica con clics individuales.</li>
+</ol>
 
-<h3>¿Diptongo o hiato?</h3>
-<p>Escucha cada palabra, si quieres, y elige. Al acertar verás cómo se separa en sílabas.</p>
-<div class="clasificador" id="clasif-dh"></div>
-<div class="puntaje" id="puntaje-dh" role="status" aria-live="polite"></div>
+<div class="botones">
+  <button type="button" class="btn btn-primario" id="btn-todo">🔊 Escuchar todo el abecedario</button>
+  <button type="button" class="btn btn-secundario" id="btn-detener">⏹️ Detener</button>
+</div>
 
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l1-1.html#diptongo-hiato" target="_blank" rel="noopener noreferrer">🧩 Practica más: ¿diptongo o hiato?
-  <span>Rondas de diez palabras nuevas, con audio y botón «Otro ejercicio». Se abre en una pestaña nueva.</span></a>
+<div class="abecedario" id="abecedario"></div>
+
+<div class="tip">
+  <strong>💡 Cómo se llaman las letras:</strong> Cada letra tiene su <em>nombre</em> (cómo la pronuncias cuando deletreas) y su <em>sonido</em> (cómo suena dentro de una palabra). Por ejemplo, la letra <strong>B</strong> se llama "be" pero suena "bbb" dentro de "barco". La letra <strong>H</strong> se llama "hache" pero en español <em>no suena</em> dentro de las palabras: "hola" se pronuncia "ola".
+</div>
+
+<div class="tip">
+  <strong>📌 Una letra con dos nombres:</strong> la <strong>Y</strong> se llama <strong>ye</strong>. También se le dice <em>i griega</em>, y vas a oír los dos nombres.
+</div>
+
 </div>
 </details>
 
-<details id="s-3-grupos">
-<summary>3. Grupos de consonantes y letras dobles <span class="caja-tiempo">25 min</span></summary>
+<details id="s-2-palabras-que-empiezan-con-mi-letra">
+<summary>2. Actividad: palabras que empiezan con mi letra <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 
-<h3>Grupos que nunca se separan</h3>
-<p>Algunas consonantes se juntan con una <strong>l</strong> o una <strong>r</strong> y forman un <span class="palabra-clave">grupo consonántico</span>. El grupo se lee de un solo golpe y <strong>siempre va en la misma sílaba</strong>, al comienzo:</p>
-<table class="tabla">
-  <caption class="sr-solo">Grupos consonánticos con l y con r</caption>
-  <thead><tr><th scope="col">Con l</th><th scope="col">Con r</th></tr></thead>
-  <tbody>
-    <tr><td class="ejemplo"><strong>bl</strong>: <span class="sil">ha-blar</span></td><td class="ejemplo"><strong>br</strong>: <span class="sil">li-bro</span></td></tr>
-    <tr><td class="ejemplo"><strong>cl</strong>: <span class="sil">cla-se</span></td><td class="ejemplo"><strong>cr</strong>: <span class="sil">cre-ma</span></td></tr>
-    <tr><td class="ejemplo"><strong>fl</strong>: <span class="sil">flor</span></td><td class="ejemplo"><strong>dr</strong>: <span class="sil">ma-dre</span></td></tr>
-    <tr><td class="ejemplo"><strong>gl</strong>: <span class="sil">i-gle-sia</span></td><td class="ejemplo"><strong>fr</strong>: <span class="sil">frí-o</span></td></tr>
-    <tr><td class="ejemplo"><strong>pl</strong>: <span class="sil">pla-to</span></td><td class="ejemplo"><strong>gr</strong>: <span class="sil">gran-de</span></td></tr>
-    <tr><td class="ejemplo">&nbsp;</td><td class="ejemplo"><strong>pr</strong>: <span class="sil">pri-mo</span> · <strong>tr</strong>: <span class="sil">tren</span></td></tr>
-  </tbody>
-</table>
-<div class="tip"><strong>💡 La regla en una frase:</strong> si ves una consonante seguida de <em>l</em> o <em>r</em>, no las separes. Por eso es <span class="sil">a-pren-der</span> y no <em>ap-ren-der</em>, y <span class="sil">nom-bre</span> y no <em>nomb-re</em>.</div>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-discusion">Actividad</span> Individual · en voz alta y en tu cuaderno</h4>
+  <p>Elige una letra del alfabeto y escribe en tu cuaderno <strong>3 objetos o palabras</strong> que empiecen con ella. Después dilas en voz alta. Repite con otras letras hasta completar <strong>diez letras</strong>.</p>
 
-<h3>Letras dobles: ch, ll, rr</h3>
-<p>La <strong>ch</strong>, la <strong>ll</strong> y la <strong>rr</strong> se escriben con dos letras, pero suenan como <strong>un solo sonido</strong>. Por eso tampoco se separan: <span class="sil">co-che</span>, <span class="sil">ca-lle</span>, <span class="sil">pe-rro</span>.</p>
+  <p><strong>Ejemplos:</strong></p>
+  <ul class="lista-bonita">
+    <li><strong>Letra M:</strong> mesa, mamá, mango.</li>
+    <li><strong>Letra C:</strong> carro, casa, café.</li>
+    <li><strong>Letra P:</strong> perro, pan, paz.</li>
+  </ul>
 
-<h3>Cuando hay dos consonantes que no forman grupo</h3>
-<p>Si dos consonantes juntas no son un grupo de los de la tabla ni una letra doble, se reparten entre dos sílabas: la primera cierra una sílaba y la segunda abre la siguiente. Ejemplos: <span class="sil">can-ción</span>, <span class="sil">par-que</span>, <span class="sil">es-cue-la</span>, <span class="sil">al-to</span>.</p>
-
-<h3>¿Cuál separación es la correcta?</h3>
-<div class="clasificador" id="clasif-sep"></div>
-<div class="puntaje" id="puntaje-sep" role="status" aria-live="polite"></div>
-
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l1-1.html#silabas" target="_blank" rel="noopener noreferrer">✂️ Practica más: corta las palabras en sílabas
-  <span>Tú mismo colocas los cortes entre las letras y el programa te dice si están bien.</span></a>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l1-1.html#grupos" target="_blank" rel="noopener noreferrer">👂 Practica más: escucha y completa el grupo
-  <span>Oyes una palabra y eliges el grupo que le falta: ¿<em>br</em> o <em>bl</em>? ¿<em>pr</em> o <em>pl</em>?</span></a>
-</div>
-</details>
-
-<details id="s-4-lectura">
-<summary>4. Lectura: «El tren de la mañana» <span class="caja-tiempo">20 min</span></summary>
-<div class="contenido-detalle">
-<div class="actividad">
-  <h4><span class="badge badge-lectura">Lectura</span> Individual · en voz alta</h4>
-  <p style="margin:0">Lee el texto <strong>tres veces</strong>. La primera, escúchalo mientras sigues las palabras con el dedo. La segunda, léelo despacio, marcando las sílabas de las palabras largas. La tercera, léelo a tu ritmo normal. Después usa los botones para ver dónde están los diptongos, los hiatos y los grupos de consonantes.</p>
-</div>
-
-<div class="botones" style="justify-content:flex-start">
-  <button type="button" class="btn btn-primario" id="btn-leer">🔊 Escuchar el texto</button>
-  <button type="button" class="btn btn-secundario" id="btn-parar">⏹ Detener</button>
-  <button type="button" class="btn btn-secundario" id="btn-ver-dip" aria-pressed="false">Mostrar diptongos e hiatos</button>
-  <button type="button" class="btn btn-secundario" id="btn-ver-grp" aria-pressed="false">Mostrar grupos de consonantes</button>
-</div>
-<div class="leyenda" aria-label="Leyenda de colores">
-  <span><span class="mk" style="background:var(--dip)" aria-hidden="true"></span> Diptongo</span>
-  <span><span class="mk" style="background:var(--hia)" aria-hidden="true"></span> Hiato</span>
-  <span><span class="mk" style="background:#555" aria-hidden="true"></span> <em>u</em> muda (subrayado de puntos)</span>
-  <span><span class="mk" style="background:var(--grp)" aria-hidden="true"></span> Grupo de consonantes</span>
-</div>
-
-<div class="texto-lectura" id="texto-tren">
-<p>Cada d<span class="hia">í</span><span class="hia">a</span>, a las s<span class="dip">ei</span>s y med<span class="dip">ia</span>, Jul<span class="dip">ia</span> sale de su casa con <span class="grp">pr</span>isa. Camina <span class="grp">tr</span>es cua<span class="grp">dr</span>as bajo el v<span class="dip">ie</span>nto <span class="grp">fr</span><span class="hia">í</span><span class="hia">o</span> hasta la estac<span class="dip">ió</span>n. Allí espera el <span class="grp">tr</span>en junto a un <span class="grp">gr</span>upo de <span class="grp">tr</span>abajadores.</p>
-<p>En el vagón, Jul<span class="dip">ia</span> l<span class="hia">e</span><span class="hia">e</span> un li<span class="grp">br</span>o sobre la histor<span class="dip">ia</span> de su c<span class="dip">iu</span>dad. Le gusta a<span class="grp">pr</span>ender pala<span class="grp">br</span>as n<span class="dip">ue</span>vas. A veces el <span class="grp">tr</span>en se det<span class="dip">ie</span>ne y se oye un r<span class="dip">ui</span>do f<span class="dip">ue</span>rte, pero ella sig<span class="muda">u</span>e leyendo <span class="grp">tr</span>anq<span class="muda">u</span>ila.</p>
-<p>C<span class="dip">ua</span>ndo llega a la fá<span class="grp">br</span>ica, g<span class="dip">ua</span>rda el li<span class="grp">br</span>o en su bolsa azul. Por la tarde, en el camino de re<span class="grp">gr</span>eso, p<span class="dip">ie</span>nsa en el d<span class="hia">í</span><span class="hia">a</span> en que podrá enseñar a sus hijos todo lo que a<span class="grp">pr</span>end<span class="dip">ió</span>.</p>
-</div>
-
-<div class="tip"><strong>🔎 Fíjate en tres detalles:</strong>
-  <ul class="lista-bonita" style="margin:4px 0 0">
-    <li><em>Julia</em> tiene dos sílabas (<span class="sil">Ju-lia</span>), pero <em>día</em> también tiene dos (<span class="sil">dí-a</span>): en la primera hay diptongo; en la segunda, la tilde lo rompe.</li>
-    <li>En <em>sigue</em> y <em>tranquila</em> la <em>u</em> no suena, pero en <em>guarda</em> sí suena: por eso <span class="sil">guar-da</span> sí tiene diptongo.</li>
-    <li>En <em>se oye</em>, la <em>y</em> está entre dos vocales y suena como consonante: <span class="sil">o-ye</span>.</li>
+  <p><strong>Reglas:</strong></p>
+  <ul class="lista-bonita">
+    <li>No repitas palabras: cada letra necesita tres palabras distintas.</li>
+    <li>Si dudas con una letra difícil (K, W, X, Y, Ñ), vuelve al abecedario de la <a href="#s-1-el-abecedario-espanol">sección 1</a> y escucha la palabra de ejemplo.</li>
+    <li>Guarda la lista: es el comienzo de tu <strong>diccionario personal</strong>, que vas a seguir llenando en las próximas lecciones.</li>
   </ul>
 </div>
 
-<h3>Comprueba lo que leíste</h3>
-<ul class="lista-bonita">
-  <li>¿A qué hora sale Julia de su casa?</li>
-  <li>¿Qué lee Julia en el tren?</li>
-  <li>¿Qué quiere hacer Julia con lo que aprende?</li>
-</ul>
-<p>Responde en tu cuaderno con oraciones completas.</p>
-<details><summary>Ver las respuestas</summary><div class="contenido-detalle">Sale a las seis y media. Lee un libro sobre la historia de su ciudad. Quiere enseñarles a sus hijos todo lo que aprendió.</div></details>
+<div class="tip">
+  <strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> conviértelo en un juego con alguien de tu casa. Por turnos, uno dice una letra y el otro nombra tres cosas que empiecen con ella. No se vale repetir palabras.
+</div>
+
+<div class="tip">
+  <strong>📝 Ejercicio adicional:</strong> Intenta encontrar palabras que empiecen con cada vocal: A, E, I, O, U. Las vocales son las cinco letras más importantes: las vas a usar en cada palabra que escribas.
+</div>
+
 </div>
 </details>
 
-<details id="s-5-practica">
-<summary>5. Práctica: separa y arma <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica-emparejar">
+<summary>3. Práctica: emparejar mayúscula con minúscula <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
-<div class="actividad">
-  <h4><span class="badge badge-actividad">Actividad</span> Individual · en tu cuaderno</h4>
-  <p>Copia estas diez palabras. Sepáralas en sílabas con guiones y marca con un color los diptongos y con otro los grupos de consonantes. Luego léelas en voz alta dando una palmada en cada sílaba.</p>
-  <p class="ejemplo" style="text-align:center">trabajo · nuevo · problema · escuela · país · blanco · siempre · maíz · cuaderno · flores</p>
-  <p style="margin-bottom:0">Al revés: escribe cinco palabras <strong>armadas</strong> a partir de sílabas sueltas, por ejemplo <span class="sil">pue + blo</span> → <em>pueblo</em>, o <span class="sil">cla + ve</span> → <em>clave</em>.</p>
-</div>
-<details style="margin-top:10px">
-  <summary>Ver las respuestas</summary>
-  <div class="contenido-detalle ejemplo" style="font-size:1.05rem">
-    <span class="sil">tra-ba-jo</span> · <span class="sil">nue-vo</span> · <span class="sil">pro-ble-ma</span> · <span class="sil">es-cue-la</span> · <span class="sil">pa-ís</span> (hiato) · <span class="sil">blan-co</span> · <span class="sil">siem-pre</span> · <span class="sil">ma-íz</span> (hiato) · <span class="sil">cua-der-no</span> · <span class="sil">flo-res</span>
+
+<h3>Empareja cada mayúscula con su minúscula</h3>
+
+<p>Haz clic primero en una letra <strong>mayúscula</strong> (columna izquierda) y luego en su <strong>minúscula</strong> (columna derecha). Si están bien emparejadas, se ponen verdes.</p>
+
+<div class="quiz-emparejar">
+  <div class="columnas-emp">
+    <div class="col-emp">
+      <h5 style="color:var(--mayus)">Mayúsculas</h5>
+      <div id="col-mayus"></div>
+    </div>
+    <div class="col-emp">
+      <h5 style="color:var(--minus)">Minúsculas</h5>
+      <div id="col-minus"></div>
+    </div>
   </div>
-</details>
-<div class="tip"><strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> dile a alguien de tu casa una palabra larga y pídele que la separe en sílabas con palmadas. Después cambien los papeles.</div>
+
+  <div class="feedback" id="feedback-emp"></div>
+  <div class="puntaje" id="puntaje-emp">Parejas correctas: 0 / 8</div>
+
+  <div class="botones">
+    <button type="button" class="btn btn-secundario" id="btn-reset-emp">Reiniciar</button>
+    <button type="button" class="btn btn-primario" id="btn-nueva-tanda">Nueva tanda de letras</button>
+  </div>
+</div>
+
+<h3>¿Con qué letra empieza?</h3>
+
+<p>Mira el objeto y elige con qué letra empieza su nombre.</p>
+
+<div id="quiz-imagenes"></div>
+<div class="puntaje" id="puntaje-imagenes">Aciertos: 0 / 7</div>
+
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>6. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>4. Tarea <span class="caja-tiempo">40 min</span></summary>
 <div class="contenido-detalle">
+
 <p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
 <ul class="lista-bonita">
-  <li><strong>Cazador de diptongos.</strong> Busca en un periódico, una etiqueta o un anuncio <strong>cinco palabras con diptongo</strong> y <strong>tres con hiato</strong>. Cópialas separadas en sílabas.</li>
-  <li><strong>Mi lista de grupos.</strong> Escribe una palabra de tu vida diaria para cada uno de estos grupos: <em>br, cl, dr, fr, gr, pl, pr, tr</em>.</li>
-  <li><strong>Lectura grabada.</strong> Lee en voz alta el texto «El tren de la mañana» y grábate con el celular. Escúchate: ¿te trabaste en alguna palabra? Practícala separándola en sílabas y vuelve a grabar.</li>
+  <li><strong>Mi nombre con mayúscula.</strong> Escribe tu nombre completo, el de tres personas de tu familia y el de la ciudad donde vives. Revisa que cada uno empiece con <strong>mayúscula</strong>.</li>
+  <li><strong>El abecedario de memoria.</strong> Escribe las 27 letras en orden, primero en mayúscula y después en minúscula. Compruébalas con el abecedario de la sección 1.</li>
+  <li><strong>Mi diccionario personal.</strong> Completa la lista de la sección 2 hasta tener tres palabras para cada una de las 27 letras. Las letras K, W, X e Y son las más difíciles: puedes usar palabras como kilo, wifi, xilófono y yate.</li>
+  <li><strong>En la calle.</strong> Busca tres carteles o letreros (en la tienda, en el autobús, en el trabajo) y copia una palabra de cada uno. Fíjate si está escrita en mayúsculas o en minúsculas.</li>
 </ul>
-<div class="tip"><strong>🎯 Antes del quiz:</strong> repasa las tres ideas clave: las vocales débiles son la <em>i</em> y la <em>u</em>; el diptongo va en una sílaba y el hiato en dos; los grupos con <em>l</em> o <em>r</em> no se separan.</div>
+
+<div class="tip">
+  <strong>🎯 Antes del quiz:</strong> asegúrate de poder decir el abecedario completo en voz alta, sin saltarte ninguna letra. Si dudas en alguna, vuelve a la sección 1 y haz clic en esa letra para escucharla de nuevo.
+</div>
+
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>7. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-<div class="qz-intro">
-  <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
+
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-quiz">Quiz</span> 15 preguntas · puedes repetirlo las veces que quieras</h4>
+  <p>Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>12 de 15</strong>.</p>
 </div>
-<div id="qz-cuerpo"></div>
+
+<div id="quiz-cuerpo"></div>
+
 <div class="botones">
-  <button type="button" class="btn btn-primario" id="qz-calificar">Ver mi resultado</button>
-  <button type="button" class="btn btn-secundario" id="qz-reintentar" style="display:none">Intentar de nuevo</button>
+  <button type="button" class="btn btn-primario" id="btn-calificar">Ver mi resultado</button>
+  <button type="button" class="btn btn-secundario" id="btn-reintentar" style="display:none">Intentar de nuevo</button>
 </div>
-<div class="qz-resultado" id="qz-resultado" role="status" aria-live="polite"></div>
+<div class="resultado-quiz" id="resultado-quiz" role="status" aria-live="polite"></div>
+
 </div>
 </details>
 
 <details id="s-cierre">
-<summary>8. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
+
 <h3>Lo que aprendiste en esta lección</h3>
+
 <ul class="lista-bonita">
-  <li>Las vocales <strong>fuertes</strong> son <em>a, e, o</em>; las <strong>débiles</strong>, <em>i, u</em>.</li>
-  <li>Un <strong>diptongo</strong> son dos vocales en la misma sílaba: <span class="sil">puer-ta</span>, <span class="sil">ciu-dad</span>.</li>
-  <li>Un <strong>hiato</strong> son dos vocales en sílabas distintas: <span class="sil">po-e-ta</span>, <span class="sil">dí-a</span>.</li>
-  <li>Los grupos de consonante + <em>l</em> o <em>r</em>, y las letras <em>ch, ll, rr</em>, nunca se separan.</li>
+  <li>El alfabeto español tiene <strong>27 letras</strong>.</li>
+  <li>Cada letra tiene su forma <strong>mayúscula</strong> (grande) y <strong>minúscula</strong> (pequeña).</li>
+  <li>Cada letra tiene un <strong>nombre</strong> (cómo la dices) y un <strong>sonido</strong> (cómo suena en palabras).</li>
+  <li>La letra <strong>H</strong> es muda en español: "hola" se dice "ola".</li>
+  <li>La <strong>Ñ</strong> es una letra única del español: el inglés no la tiene.</li>
 </ul>
+
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
-  <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
+  <h2 style="color:#b35316;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Puedes explicar con tus palabras por qué <em>aire</em> tiene dos sílabas y <em>país</em> también tiene dos, pero por razones distintas?</li>
-    <li>¿Sabes separar <em>problema</em> y <em>perro</em> sin dudar?</li>
-    <li>¿Leíste «El tren de la mañana» sin trabarte en las palabras largas?</li>
+    <li>¿Puedes decir el abecedario completo de memoria, sin saltarte ninguna letra?</li>
+    <li>¿Puedes decir 3 palabras que empiezan con la letra <em>S</em>?</li>
+    <li>¿Sabes la diferencia entre el nombre de una letra (ej. "be") y su sonido?</li>
+    <li>¿Cuál es la única letra del español que no existe en el inglés?</li>
   </ul>
 </div>
-<div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_1-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 1.2 · Prefijos y sufijos comunes para leer palabras nuevas</a>. Aprenderás a descubrir las partes de una palabra larga (<em>des-</em>, <em>re-</em>, <em>-ción</em>, <em>-mente</em>) para leerla y adivinar su significado.</div>
+
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_1-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 1.2 · La dirección de la lectura y la estructura de la oración</a>. Vas a entrenar los ojos para leer de izquierda a derecha y de arriba abajo, y verás de qué partes está hecha una oración.
+</div>
+
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 1 · Lección 1.1</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 1 · Lección 1.1</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
 <script>
-/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
 (function(){
-  var voz=null, hay=('speechSynthesis' in window);
-  function elegir(){
-    if(!hay)return;
-    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
-    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
-    voz=null;
-    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
-    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
-  }
-  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
-  window.hablar=function(texto,vel){
-    if(!hay||!texto){document.getElementById('aviso-voz').classList.add('visible');return;}
-    speechSynthesis.cancel();
-    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
-    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
-    partes.forEach(function(t){var u=new SpeechSynthesisUtterance(t.trim()); u.lang=voz?voz.lang:'es-US'; if(voz)u.voice=voz; u.rate=vel||0.9; speechSynthesis.speak(u);});
-  };
-  window.callar=function(){if(hay)speechSynthesis.cancel();};
-  if(!hay)document.getElementById('aviso-voz').classList.add('visible');
-})();
+  // Abecedario español
+  var letras=[
+    {mayus:'A',minus:'a',palabra:'árbol',emoji:'🌳'},
+    {mayus:'B',minus:'b',palabra:'barco',emoji:'⛵'},
+    {mayus:'C',minus:'c',palabra:'casa',emoji:'🏠'},
+    {mayus:'D',minus:'d',palabra:'dedo',emoji:'👆'},
+    {mayus:'E',minus:'e',palabra:'estrella',emoji:'⭐'},
+    {mayus:'F',minus:'f',palabra:'flor',emoji:'🌸'},
+    {mayus:'G',minus:'g',palabra:'gato',emoji:'🐱'},
+    {mayus:'H',minus:'h',palabra:'hoja',emoji:'🍃'},
+    {mayus:'I',minus:'i',palabra:'isla',emoji:'🏝️'},
+    {mayus:'J',minus:'j',palabra:'jugo',emoji:'🥤'},
+    {mayus:'K',minus:'k',palabra:'kilo',emoji:'⚖️'},
+    {mayus:'L',minus:'l',palabra:'luna',emoji:'🌙'},
+    {mayus:'M',minus:'m',palabra:'manzana',emoji:'🍎'},
+    {mayus:'N',minus:'n',palabra:'nube',emoji:'☁️'},
+    {mayus:'Ñ',minus:'ñ',palabra:'ñame',emoji:'🍠'},
+    {mayus:'O',minus:'o',palabra:'oso',emoji:'🐻'},
+    {mayus:'P',minus:'p',palabra:'pan',emoji:'🍞'},
+    {mayus:'Q',minus:'q',palabra:'queso',emoji:'🧀'},
+    {mayus:'R',minus:'r',palabra:'ratón',emoji:'🐭'},
+    {mayus:'S',minus:'s',palabra:'sol',emoji:'☀️'},
+    {mayus:'T',minus:'t',palabra:'taza',emoji:'🍵'},
+    {mayus:'U',minus:'u',palabra:'uva',emoji:'🍇'},
+    {mayus:'V',minus:'v',palabra:'vaca',emoji:'🐄'},
+    {mayus:'W',minus:'w',palabra:'wifi',emoji:'📶'},
+    {mayus:'X',minus:'x',palabra:'xilófono',emoji:'🎵'},
+    {mayus:'Y',minus:'y',palabra:'yate',emoji:'🛥️'},
+    {mayus:'Z',minus:'z',palabra:'zapato',emoji:'👞'}
+  ];
 
-/* ===== Clasificador genérico: cada palabra con sus botones; al acertar muestra una nota ===== */
-function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
-  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
-  function marcador(){pun.textContent=bien===items.length?'🎉 ¡Muy bien! Acertaste las '+bien+'.':'Aciertos: '+bien+' / '+items.length;}
-  items.forEach(function(it,i){
-    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label','Palabra: '+it.p);
-    var ops=it.ops||opciones;
-    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar '+it.p+'">🔊</button>':'')+'</span>'+
-      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
-      '<span class="item-fb" aria-live="polite"></span>';
-    caja.appendChild(d);
-    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.p.replace(/<[^>]+>/g,''),0.8);});
-    var fb=d.querySelector('.item-fb');
-    d.querySelectorAll('.btn-op').forEach(function(b){
-      b.addEventListener('click',function(){
-        if(hechas[i])return;
-        if(+b.getAttribute('data-j')===it.c){
-          b.classList.add('correcta'); hechas[i]=true; bien++;
-          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
-          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+  // Nombres de las letras en español
+  var nombresLetras={
+    'A':'a','B':'be','C':'ce','D':'de','E':'e','F':'efe','G':'ge','H':'hache',
+    'I':'i','J':'jota','K':'ka','L':'ele','M':'eme','N':'ene','Ñ':'eñe','O':'o',
+    'P':'pe','Q':'cu','R':'erre','S':'ese','T':'te','U':'u','V':'uve','W':'doble uve',
+    'X':'equis','Y':'ye','Z':'zeta'
+  };
+
+  // Cómo debe decirlas la voz. Es igual que el nombre escrito, salvo las letras
+  // que la voz lee como sílaba del inglés o como sigla («bi», «segú»).
+  // Probado con la página prueba_voz.html. Si otra letra suena mal, se añade aquí.
+  var vozLetras={};
+  Object.keys(nombresLetras).forEach(function(k){vozLetras[k]=nombresLetras[k];});
+  var ajustes={'B':'beh','P':'la pe','Q':'ku','Y':'lle'};
+  Object.keys(ajustes).forEach(function(k){vozLetras[k]=ajustes[k];});
+
+  // Web Speech API
+  var hablando=false;
+  var leyendoTodo=false;
+
+  // Buscar una voz en español; si no, el navegador usa la voz en inglés
+  var vozES=null;
+  function elegirVoz(){
+    if(!('speechSynthesis' in window))return;
+    var vs=speechSynthesis.getVoices(),pref=['es-US','es-MX','es-ES'];
+    for(var i=0;i<pref.length&&!vozES;i++){
+      vozES=vs.filter(function(v){return v.lang.replace('_','-')===pref[i];})[0]||null;
+    }
+    if(!vozES)vozES=vs.filter(function(v){return /^es/i.test(v.lang);})[0]||null;
+  }
+  if('speechSynthesis' in window){elegirVoz();speechSynthesis.onvoiceschanged=elegirVoz;}
+
+  function hablar(texto,callback){
+    if(!('speechSynthesis' in window))return callback&&callback();
+    var utter=new SpeechSynthesisUtterance(texto);
+    utter.lang=vozES?vozES.lang:'es-US';
+    if(vozES)utter.voice=vozES;
+    utter.rate=0.85;
+    utter.pitch=1;
+    if(callback)utter.onend=callback;
+    speechSynthesis.speak(utter);
+  }
+
+  // Nombre de la letra, una pausa, y después «ene de nube»
+  var pausaLetra=null,turno=0;
+  function decirLetra(L,callback){
+    var n=vozLetras[L.mayus],t=turno;
+    hablar(n,function(){
+      if(t!==turno)return;   // se pulsó Detener u otra letra
+      pausaLetra=setTimeout(function(){
+        if(t===turno)hablar(n+' de '+L.palabra,callback);
+      },450);
+    });
+  }
+
+  function detenerAudio(){
+    turno++;
+    clearTimeout(pausaLetra);
+    if('speechSynthesis' in window)speechSynthesis.cancel();
+    leyendoTodo=false;
+    document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
+  }
+
+  // Dibujar abecedario
+  var contAbc=document.getElementById('abecedario');
+  letras.forEach(function(L,idx){
+    var card=document.createElement('div');
+    card.className='letra-card';
+    card.setAttribute('data-idx',idx);
+    card.innerHTML=
+      '<div class="letras-pareja">'+
+        '<span class="letra-mayus">'+L.mayus+'</span>'+
+        '<span class="letra-minus">'+L.minus+'</span>'+
+      '</div>'+
+      '<div class="letra-palabra">'+L.palabra+'</div>'+
+      '<span class="letra-emoji">'+L.emoji+'</span>';
+    card.addEventListener('click',function(){
+      if(leyendoTodo)return;
+      detenerAudio();
+      card.classList.add('sonando');
+      decirLetra(L,function(){
+        card.classList.remove('sonando');
+      });
+    });
+    contAbc.appendChild(card);
+  });
+
+  // Botón "todo"
+  document.getElementById('btn-todo').addEventListener('click',function(){
+    detenerAudio();
+    leyendoTodo=true;
+    var i=0;
+    function siguiente(){
+      if(i>=letras.length||!leyendoTodo){
+        leyendoTodo=false;
+        document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
+        return;
+      }
+      var L=letras[i];
+      var card=contAbc.children[i];
+      document.querySelectorAll('.letra-card.sonando').forEach(function(c){c.classList.remove('sonando')});
+      card.classList.add('sonando');
+      card.scrollIntoView({behavior:'smooth',block:'center'});
+      decirLetra(L,function(){
+        i++;
+        setTimeout(siguiente,300);
+      });
+    }
+    siguiente();
+  });
+
+  document.getElementById('btn-detener').addEventListener('click',detenerAudio);
+
+  // ============== Emparejamiento mayús ↔ minús ==============
+  var tandas=[
+    ['A','M','P','S','C','L','N','R'],
+    ['B','D','F','G','T','V','Z','J'],
+    ['E','I','O','U','H','Q','Ñ','K'],
+    ['X','Y','W','A','C','M','P','S']
+  ];
+  var tandaIdx=0;
+  var seleccionMayus=null;
+  var emparejadosTotal=0;
+  var emparejadosEnTanda=0;
+
+  function dibujarEmp(){
+    var tanda=tandas[tandaIdx];
+    var colM=document.getElementById('col-mayus');
+    var colm=document.getElementById('col-minus');
+    colM.innerHTML='';
+    colm.innerHTML='';
+    seleccionMayus=null;
+    emparejadosEnTanda=0;
+    document.getElementById('feedback-emp').textContent='';
+    document.getElementById('feedback-emp').className='feedback';
+
+    // Mayúsculas en orden
+    tanda.forEach(function(letra){
+      var d=document.createElement('div');
+      d.className='letra-emp mayus-style';
+      d.textContent=letra;
+      d.setAttribute('data-letra',letra);
+      d.addEventListener('click',function(){
+        if(d.classList.contains('emparejada'))return;
+        document.querySelectorAll('#col-mayus .letra-emp').forEach(function(x){x.classList.remove('activa')});
+        d.classList.add('activa');
+        seleccionMayus=d;
+        document.getElementById('feedback-emp').innerHTML='Ahora elige la minúscula que le corresponde a <strong style="color:var(--mayus)">'+letra+'</strong>.';
+        document.getElementById('feedback-emp').className='feedback neutral';
+      });
+      colM.appendChild(d);
+    });
+
+    // Minúsculas mezcladas
+    var minusOrden=tanda.slice();
+    minusOrden.sort(function(){return Math.random()-0.5});
+    minusOrden.forEach(function(letra){
+      var d=document.createElement('div');
+      d.className='letra-emp minus-style';
+      d.textContent=letra.toLowerCase();
+      d.setAttribute('data-letra',letra);
+      d.addEventListener('click',function(){
+        if(d.classList.contains('emparejada'))return;
+        if(!seleccionMayus){
+          document.getElementById('feedback-emp').textContent='Primero elige una mayúscula de la columna izquierda.';
+          document.getElementById('feedback-emp').className='feedback neutral';
+          return;
+        }
+        var letraM=seleccionMayus.getAttribute('data-letra');
+        if(letra===letraM){
+          d.classList.add('emparejada');
+          seleccionMayus.classList.add('emparejada');
+          seleccionMayus.classList.remove('activa');
+          seleccionMayus=null;
+          emparejadosEnTanda++;
+          emparejadosTotal++;
+          document.getElementById('feedback-emp').innerHTML='✅ ¡Bien! '+letraM+' y '+letra.toLowerCase()+' van juntas.';
+          document.getElementById('feedback-emp').className='feedback correcto';
+          actualizarPuntajeEmp();
+          if(emparejadosEnTanda===tanda.length){
+            document.getElementById('feedback-emp').innerHTML='🎉 ¡Tanda completa! Pulsa "Nueva tanda" para seguir practicando.';
+          }
         }else{
-          b.classList.add('incorrecta'); b.disabled=true;
-          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+          document.getElementById('feedback-emp').innerHTML='❌ '+letraM+' no va con '+letra.toLowerCase()+'. Inténtalo otra vez.';
+          document.getElementById('feedback-emp').className='feedback incorrecto';
+        }
+      });
+      colm.appendChild(d);
+    });
+
+    actualizarPuntajeEmp();
+  }
+
+  function actualizarPuntajeEmp(){
+    var el=document.getElementById('puntaje-emp');
+    el.textContent='Parejas correctas en esta sesión: '+emparejadosTotal;
+  }
+
+  document.getElementById('btn-reset-emp').addEventListener('click',function(){
+    emparejadosTotal-=emparejadosEnTanda;
+    dibujarEmp();
+  });
+  document.getElementById('btn-nueva-tanda').addEventListener('click',function(){
+    tandaIdx=(tandaIdx+1)%tandas.length;
+    dibujarEmp();
+  });
+  dibujarEmp();
+
+  // ============== Imagen → letra inicial ==============
+  var imagenes=[
+    {emoji:'🐱',palabra:'gato',correcta:'G',opciones:['G','J','C']},
+    {emoji:'🏠',palabra:'casa',correcta:'C',opciones:['K','C','S']},
+    {emoji:'🍎',palabra:'manzana',correcta:'M',opciones:['M','N','A']},
+    {emoji:'☀️',palabra:'sol',correcta:'S',opciones:['S','Z','C']},
+    {emoji:'🌙',palabra:'luna',correcta:'L',opciones:['L','I','J']},
+    {emoji:'🐭',palabra:'ratón',correcta:'R',opciones:['R','L','D']},
+    {emoji:'⛵',palabra:'barco',correcta:'B',opciones:['B','V','P']}
+  ];
+
+  var aciertosImg=0;
+  var resueltasImg={};
+  var contImg=document.getElementById('quiz-imagenes');
+
+  imagenes.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-imagen';
+    var opcionesHTML=item.opciones.map(function(op){
+      return '<button type="button" class="btn-letra" data-opt="'+op+'">'+op+'</button>';
+    }).join('');
+    div.innerHTML=
+      '<div class="imagen-emoji-grande">'+item.emoji+'</div>'+
+      '<div class="nombre-objeto">'+item.palabra+'</div>'+
+      '<div class="opciones-letra">'+opcionesHTML+'</div>';
+    contImg.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-letra');
+    botones.forEach(function(b){
+      b.addEventListener('click',function(){
+        if(resueltasImg[idx])return;
+        if(b.getAttribute('data-opt')===item.correcta){
+          b.classList.add('correcta');
+          resueltasImg[idx]=true;
+          aciertosImg++;
+          actualizarPuntajeImg();
+          // Audio de confirmación con la letra y palabra
+          detenerAudio();
+          hablar(vozLetras[item.correcta]+' de '+item.palabra);
+        }else{
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
       });
     });
   });
-  marcador();
-}
 
-clasificador('clasif-vocales','puntaje-vocales',[
-  {p:'o',c:0,n:'La <em>o</em> es fuerte: la boca se abre.'},
-  {p:'i',c:1,n:'La <em>i</em> es débil.'},
-  {p:'a',c:0,n:'La <em>a</em> es la más abierta de todas.'},
-  {p:'u',c:1,n:'La <em>u</em> es débil.'},
-  {p:'e',c:0,n:'La <em>e</em> es fuerte.'}
-],['Fuerte','Débil'],false);
-
-clasificador('clasif-dh','puntaje-dh',[
-  {p:'aire',c:0,n:'<span class="sil">ai-re</span>: fuerte + débil en una sílaba.'},
-  {p:'poeta',c:1,n:'<span class="sil">po-e-ta</span>: dos fuertes se separan.',pista:'La <em>o</em> y la <em>e</em>, ¿son fuertes o débiles?'},
-  {p:'cuidado',c:0,n:'<span class="sil">cui-da-do</span>: dos débiles distintas van juntas.'},
-  {p:'día',c:1,n:'<span class="sil">dí-a</span>: la tilde sobre la <em>í</em> rompe el diptongo.',pista:'Fíjate en la tilde.'},
-  {p:'agua',c:0,n:'<span class="sil">a-gua</span>: débil + fuerte.'},
-  {p:'leer',c:1,n:'<span class="sil">le-er</span>: dos fuertes iguales también se separan.'},
-  {p:'puerta',c:0,n:'<span class="sil">puer-ta</span>: débil + fuerte.'},
-  {p:'país',c:1,n:'<span class="sil">pa-ís</span>: la <em>í</em> con tilde forma su propia sílaba.',pista:'Fíjate en la tilde.'},
-  {p:'ciudad',c:0,n:'<span class="sil">ciu-dad</span>: dos débiles distintas.'},
-  {p:'búho',c:1,n:'<span class="sil">bú-ho</span>: la <em>h</em> no cuenta y la <em>ú</em> lleva tilde.',pista:'La <em>h</em> no suena: imagina que no está.'}
-],['Diptongo','Hiato'],true);
-
-clasificador('clasif-sep','puntaje-sep',[
-  {p:'hablar',ops:['hab-lar','ha-blar'],c:1,n:'<em>bl</em> es un grupo: no se separa.'},
-  {p:'carro',ops:['ca-rro','car-ro'],c:0,n:'La <em>rr</em> es un solo sonido.'},
-  {p:'maestro',ops:['maes-tro','ma-es-tro'],c:1,n:'<em>a</em> y <em>e</em> son fuertes: hiato. Y <em>tr</em> va junto.'},
-  {p:'nombre',ops:['nom-bre','nomb-re'],c:0,n:'La <em>m</em> cierra la primera sílaba; <em>br</em> va junto.'},
-  {p:'ciudad',ops:['ci-u-dad','ciu-dad'],c:1,n:'<em>iu</em> es diptongo: dos débiles distintas.'},
-  {p:'escuela',ops:['es-cue-la','e-scue-la'],c:0,n:'<em>sc</em> no es un grupo: la <em>s</em> cierra la sílaba.'},
-  {p:'calle',ops:['cal-le','ca-lle'],c:1,n:'La <em>ll</em> no se separa.'},
-  {p:'problema',ops:['pro-ble-ma','prob-le-ma'],c:0,n:'Dos grupos: <em>pr</em> y <em>bl</em>.'}
-],null,false);
-
-/* ===== Lectura con marcas ===== */
-(function(){
-  var t=document.getElementById('texto-tren');
-  function alternar(btn,clase){btn.addEventListener('click',function(){var on=t.classList.toggle(clase);btn.setAttribute('aria-pressed',on?'true':'false');});}
-  alternar(document.getElementById('btn-ver-dip'),'ver-dip');
-  alternar(document.getElementById('btn-ver-grp'),'ver-grp');
-  document.getElementById('btn-leer').addEventListener('click',function(){hablar(t.textContent.replace(/\s+/g,' ').trim(),0.85);});
-  document.getElementById('btn-parar').addEventListener('click',function(){callar();});
-})();
-
-/* ===== Quiz de la lección ===== */
-(function(){
-  var P=[
-    {t:'¿Cuáles son las vocales <strong>débiles</strong>?',o:['i, u','a, e, o','a, i'],c:0},
-    {t:'¿Qué es un <strong>diptongo</strong>?',o:['Dos vocales en la misma sílaba','Dos vocales en sílabas distintas','Dos consonantes en la misma sílaba'],c:0},
-    {t:'¿Qué palabra tiene un diptongo?',o:['puerta','poeta','leer'],c:0},
-    {t:'¿Qué palabra tiene un hiato?',o:['peine','país','aire'],c:1},
-    {t:'¿Cómo se separa <em>ciudad</em> en sílabas?',o:['ciu-dad','ci-u-dad','ciud-ad'],c:0},
-    {t:'¿Cómo se separa <em>libro</em> en sílabas?',o:['lib-ro','li-bro','libr-o'],c:1},
-    {t:'¿Cómo se separa <em>perro</em> en sílabas?',o:['per-ro','pe-r-ro','pe-rro'],c:2},
-    {t:'En la palabra <em>queso</em>, la letra <em>u</em>…',o:['No suena y no forma diptongo','Suena y forma diptongo con la e','Es una vocal fuerte en esa palabra'],c:0},
-    {t:'¿Por qué <em>día</em> tiene un hiato?',o:['La í tónica lleva tilde y rompe el diptongo','Las dos vocales son fuertes y se separan','La d obliga a separar las dos vocales'],c:0},
-    {t:'Escucha la palabra. ¿Con qué grupo empieza?',a:'flor',o:['fl','fr','bl'],c:0,fijo:true},
-    {t:'Escucha la palabra. ¿Con qué grupo empieza?',a:'grande',o:['cr','gl','gr'],c:2,fijo:true},
-    {t:'¿Cuántas sílabas tiene <em>estudiante</em>?',x:'estudiante',o:['3','4','5'],c:1,fijo:true}
-  ], META=10, N=P.length;
-  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
-  P.forEach(function(p,i){
-    var d=document.createElement('div');
-    d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
-    var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a){
-      h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+  function actualizarPuntajeImg(){
+    var el=document.getElementById('puntaje-imagenes');
+    el.textContent='Aciertos: '+aciertosImg+' / '+imagenes.length;
+    if(aciertosImg===imagenes.length){
+      el.innerHTML='🎉 ¡Excelente! Aciertos: '+aciertosImg+' / '+imagenes.length;
+      el.style.color='var(--exito)';
     }
-    h+='<div class="qz-ops">';
-    var orden=p.o.map(function(_,j){return j;});
-    if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),tt=orden[k];orden[k]=orden[r];orden[r]=tt;}}
-    orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
-    d.innerHTML=h+'</div>'; cuerpo.appendChild(d);
+  }
+})();
+</script>
+
+<script>
+/* ===== Quiz de la lección (15 preguntas) ===== */
+(function(){
+  var PREGUNTAS=[
+    {t:'¿Cuál es la minúscula de <strong>G</strong>?',o:['g','q','j'],c:0},
+    {t:'¿Cuál es la minúscula de <strong>Q</strong>?',o:['p','q','g'],c:1},
+    {t:'¿Cuál es la minúscula de <strong>B</strong>?',o:['d','p','b'],c:2},
+    {t:'¿Cuál es la minúscula de <strong>Ñ</strong>?',o:['ñ','n','m'],c:0},
+    {t:'¿Cuál es la minúscula de <strong>R</strong>?',o:['n','r','v'],c:1},
+    {t:'¿Cuál es la mayúscula de <strong>d</strong>?',o:['B','P','D'],c:2},
+    {t:'¿Cuál es la mayúscula de <strong>h</strong>?',o:['H','N','K'],c:0},
+    {t:'¿Cuál es la mayúscula de <strong>e</strong>?',o:['F','E','B'],c:1},
+    {t:'¿Con qué letra empieza <strong>pan</strong>?',e:'🍞',o:['B','D','P'],c:2},
+    {t:'¿Con qué letra empieza <strong>vaca</strong>?',e:'🐄',o:['V','B','F'],c:0},
+    {t:'¿Con qué letra empieza <strong>queso</strong>?',e:'🧀',o:['K','Q','C'],c:1},
+    {t:'¿Con qué letra empieza <strong>hoja</strong>?',e:'🍃',o:['O','J','H'],c:2},
+    {t:'¿Con qué letra empieza <strong>zapato</strong>?',e:'👞',o:['Z','S','C'],c:0},
+    {t:'¿Cuántas letras tiene el alfabeto español?',o:['26','27','29'],c:1,txt:true},
+    {t:'¿Qué letra se escribe pero <strong>no suena</strong> en la palabra «hola»?',o:['la O','la L','la H'],c:2,txt:true}
+  ];
+  var cuerpo=document.getElementById('quiz-cuerpo'),elegidas={};
+  PREGUNTAS.forEach(function(p,i){
+    var d=document.createElement('div');d.className='quiz-preg';d.setAttribute('role','group');d.setAttribute('aria-labelledby','enun-'+i);
+    var html='<p class="enunciado" id="enun-'+i+'"><span class="num-preg">'+(i+1)+'</span>'+p.t+'</p>';
+    if(p.e)html+='<span class="emoji-preg" aria-hidden="true">'+p.e+'</span>';
+    html+='<div class="opciones-letra">';
+    p.o.forEach(function(op,j){html+='<button type="button" class="btn-letra'+(p.txt?' texto':'')+'" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+op+'</button>';});
+    d.innerHTML=html+'</div>';cuerpo.appendChild(d);
   });
   cuerpo.addEventListener('click',function(ev){
-    var oir=ev.target.closest('.qz-oir');
-    if(oir){hablar(P[+oir.getAttribute('data-oir')].a,0.8);return;}
-    var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
+    var b=ev.target.closest('.btn-letra');if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
-    cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
-    b.classList.add('elegida'); b.setAttribute('aria-pressed','true'); elegidas[i]=+b.getAttribute('data-j');
+    cuerpo.querySelectorAll('.btn-letra[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
+    b.classList.add('elegida');b.setAttribute('aria-pressed','true');elegidas[i]=parseInt(b.getAttribute('data-j'),10);
   });
-  var res=document.getElementById('qz-resultado');
-  document.getElementById('qz-calificar').addEventListener('click',function(){
+  var res=document.getElementById('resultado-quiz');
+  document.getElementById('btn-calificar').addEventListener('click',function(){
     var bien=0;
-    P.forEach(function(p,i){
-      cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){
-        var j=+x.getAttribute('data-j'); x.disabled=true; x.classList.remove('elegida');
-        if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
+    PREGUNTAS.forEach(function(p,i){
+      cuerpo.querySelectorAll('.btn-letra[data-i="'+i+'"]').forEach(function(x){
+        var j=parseInt(x.getAttribute('data-j'),10);x.disabled=true;x.classList.remove('elegida');
+        if(j===p.c)x.classList.add('correcta');else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. Ya distingues diptongos, hiatos y grupos de consonantes. Puedes continuar con la Lección 1.2.';fondo='#d4edda';color='#155724';}
-    else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. Vuelve a las secciones 2 y 3 y repite el quiz: con práctica sale.';fondo='#f8d7da';color='#721c24';}
-    res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
-    this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
+    if(bien>=12){msg='¡Excelente! '+bien+' de 15. Dominas el alfabeto y puedes continuar con la Lección 1.2.';fondo='#d4edda';color='#155724';}
+    else if(bien>=9){msg='Buen trabajo: '+bien+' de 15. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
+    else{msg='Llevas '+bien+' de 15. Vuelve a escuchar el abecedario de la sección 1 y repite el quiz: con práctica sale.';fondo='#f8d7da';color='#721c24';}
+    res.textContent=msg;res.style.background=fondo;res.style.color=color;res.classList.add('visible');
+    this.style.display='none';document.getElementById('btn-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
-  document.getElementById('qz-reintentar').addEventListener('click',function(){
-    cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
-    elegidas={}; res.classList.remove('visible'); res.textContent='';
-    this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
+  document.getElementById('btn-reintentar').addEventListener('click',function(){
+    cuerpo.querySelectorAll('.btn-letra').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
+    elegidas={};res.classList.remove('visible');res.textContent='';
+    this.style.display='none';document.getElementById('btn-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
 })();
-
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
 (function(){
   function abrir(id){
-    var el=id&&document.getElementById(id); if(!el)return;
+    var el=id&&document.getElementById(id);if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
-    if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
+    if(d){d.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
   document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});

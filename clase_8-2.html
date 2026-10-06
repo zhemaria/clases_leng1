@@ -1,91 +1,178 @@
 <!DOCTYPE html>
-<!-- Lección 8.2 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
-     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
-     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
+<!-- Lección 8.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 8.2 · Comprensión auditiva y presentación oral con audio</title>
+<title>Lección 8.2 · Leer y conversar: la técnica 1-2-4</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
-    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#555;--gris-claro:#eef1f4;
-    --dip:#1565c0;--dip-claro:#e3f2fd;
-    --hia:#ad1457;--hia-claro:#fce4ec;
-    --grp:#5c3900;--grp-claro:#fff3cd;
-    --exito:#2e7d32;--error:#c62828;
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--exito-claro:#e8f5e9;--error:#c62828;--error-claro:#fdecea;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    /* Colores de las 3 fases de 1-2-4 */
+    --fase1:#0277bd;--fase1-claro:#e1f5fe;--fase1-oscuro:#01486d;
+    --fase2:#7b3fbf;--fase2-claro:#f3e8ff;--fase2-oscuro:#5a2d8f;
+    --fase4:#2e7d32;--fase4-claro:#e8f5e9;--fase4-oscuro:#1b5e20;
+    /* Colores de los 4 roles del círculo */
+    --rol-inicio:#ef6c00;--rol-inicio-claro:#fff3e0;
+    --rol-resumen:#0277bd;--rol-resumen-claro:#e1f5fe;
+    --rol-pregunta:#7b3fbf;--rol-pregunta-claro:#f3e8ff;
+    --rol-cierre:#2e7d32;--rol-cierre-claro:#e8f5e9;
   }
   *{box-sizing:border-box}
   body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
   h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
   .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
   h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
-  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
-  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#6b5400}
-  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
-  .btn-primario{background:var(--cp);color:#fff}
-  .btn-primario:hover{background:var(--cp-oscuro)}
-  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
-  .btn-secundario:hover{background:#d6dde4}
-  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
-  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
-  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
-  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
-  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.tabla tr:last-child td{border-bottom:none}
-  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad h4{color:#8a3d0c;margin-top:0}
-  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-lectura{background:#e3f2fd;color:#0d47a1}
-  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
-  /* Clasificadores */
-  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
-  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
-  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
-  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
-  .item-fb:empty{display:none}
-  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
-  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
-  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
-  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
-  .btn-op:disabled{cursor:default}
-  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
-  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
-  /* Lectura con marcas */
-  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
-  .texto-lectura p{margin:0 0 10px}
-  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
-  .leyenda span{display:inline-flex;align-items:center;gap:6px}
-  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
-  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
-  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
-  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
-  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
-  /* Índice */
+  .palabra-clave{background:#ffeb3b;padding:1px 6px;border-radius:3px;font-weight:600}
+
+  /* Diagrama de la técnica 1-2-4 */
+  .flujo-124{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:stretch;margin:22px 0;max-width:780px;margin-left:auto;margin-right:auto}
+  @media(max-width:720px){.flujo-124{grid-template-columns:1fr;gap:8px}.flujo-124 .flecha-fase{transform:rotate(90deg);justify-self:center}}
+  .fase-124{border-radius:12px;padding:16px 14px;text-align:center;border:3px solid;display:flex;flex-direction:column;justify-content:flex-start}
+  .fase-124.fase-1{background:var(--fase1-claro);border-color:var(--fase1)}
+  .fase-124.fase-2{background:var(--fase2-claro);border-color:var(--fase2)}
+  .fase-124.fase-4{background:var(--fase4-claro);border-color:var(--fase4)}
+  .fase-124 .num-fase{color:#fff;width:48px;height:48px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:1.6rem;margin:0 auto 8px auto}
+  .fase-124.fase-1 .num-fase{background:var(--fase1)}
+  .fase-124.fase-2 .num-fase{background:var(--fase2)}
+  .fase-124.fase-4 .num-fase{background:var(--fase4)}
+  .fase-124 .titulo-fase{font-weight:700;font-size:1.02rem;display:block;margin-bottom:6px}
+  .fase-124.fase-1 .titulo-fase{color:var(--fase1-oscuro)}
+  .fase-124.fase-2 .titulo-fase{color:var(--fase2-oscuro)}
+  .fase-124.fase-4 .titulo-fase{color:var(--fase4-oscuro)}
+  .fase-124 .tiempo-fase{display:inline-block;background:#fff;padding:2px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;margin-bottom:8px}
+  .fase-124.fase-1 .tiempo-fase{color:var(--fase1-oscuro);border:1px solid var(--fase1)}
+  .fase-124.fase-2 .tiempo-fase{color:var(--fase2-oscuro);border:1px solid var(--fase2)}
+  .fase-124.fase-4 .tiempo-fase{color:var(--fase4-oscuro);border:1px solid var(--fase4)}
+  .fase-124 .accion-fase{font-size:0.88rem;line-height:1.5;display:block;color:var(--texto)}
+  .flecha-fase{display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--acento);font-weight:700}
+
+  /* Texto modelo para la discusión */
+  .texto-discusion{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px 22px;margin:18px 0;line-height:1.75;font-size:0.96rem;box-shadow:0 2px 8px rgba(0,137,205,0.08);position:relative}
+  .texto-discusion .etiq-lectura{position:absolute;top:-13px;left:18px;background:var(--cp);color:#fff;padding:3px 12px;border-radius:14px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+  .texto-discusion .titulo-lectura{font-weight:700;color:var(--cp-oscuro);font-size:1.08rem;margin:6px 0 10px 0}
+  .texto-discusion p{margin:8px 0}
+
+  /* Roles del círculo literario */
+  .roles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .rol{border-radius:12px;padding:16px 16px;border:3px solid;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+  .rol.r-inicio{border-color:var(--rol-inicio);background:var(--rol-inicio-claro)}
+  .rol.r-resumen{border-color:var(--rol-resumen);background:var(--rol-resumen-claro)}
+  .rol.r-pregunta{border-color:var(--rol-pregunta);background:var(--rol-pregunta-claro)}
+  .rol.r-cierre{border-color:var(--rol-cierre);background:var(--rol-cierre-claro)}
+  .rol .icono-rol{font-size:1.8rem;display:block;margin-bottom:4px}
+  .rol .nombre-rol{font-weight:700;font-size:1.05rem;display:block;margin-bottom:4px}
+  .rol.r-inicio .nombre-rol{color:var(--rol-inicio)}
+  .rol.r-resumen .nombre-rol{color:var(--rol-resumen)}
+  .rol.r-pregunta .nombre-rol{color:var(--rol-pregunta)}
+  .rol.r-cierre .nombre-rol{color:var(--rol-cierre)}
+  .rol .tarea-rol{font-size:0.92rem;line-height:1.55;color:var(--texto);margin:6px 0}
+  .rol .frase-rol{display:block;background:#fff;border-left:4px solid;padding:8px 12px;border-radius:6px;font-style:italic;font-size:0.88rem;margin-top:8px}
+  .rol.r-inicio .frase-rol{border-color:var(--rol-inicio);color:#7a3b0a}
+  .rol.r-resumen .frase-rol{border-color:var(--rol-resumen);color:#01486d}
+  .rol.r-pregunta .frase-rol{border-color:var(--rol-pregunta);color:var(--rol-pregunta)}
+  .rol.r-cierre .frase-rol{border-color:var(--rol-cierre);color:var(--rol-cierre-oscuro,var(--rol-cierre))}
+
+  /* Actividad: emparejar rol con tarea */
+  .empar-cont{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(123,63,191,0.08)}
+  .empar-cont h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
+  .item-empar{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .item-empar .tarea-empar{font-style:italic;line-height:1.6;font-size:0.94rem;margin-bottom:10px;padding:10px 12px;background:var(--gris-claro);border-radius:6px}
+  .item-empar .opciones-empar{display:flex;flex-wrap:wrap;gap:8px}
+  .btn-empar{padding:8px 14px;border:2px solid;background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.88rem;transition:all 0.2s;font-weight:600;flex:1;min-width:130px}
+  .btn-empar.b-inicio{border-color:var(--rol-inicio);color:var(--rol-inicio)}
+  .btn-empar.b-inicio:hover{background:var(--rol-inicio-claro)}
+  .btn-empar.b-resumen{border-color:var(--rol-resumen);color:var(--rol-resumen)}
+  .btn-empar.b-resumen:hover{background:var(--rol-resumen-claro)}
+  .btn-empar.b-pregunta{border-color:var(--rol-pregunta);color:var(--rol-pregunta)}
+  .btn-empar.b-pregunta:hover{background:var(--rol-pregunta-claro)}
+  .btn-empar.b-cierre{border-color:var(--rol-cierre);color:var(--rol-cierre)}
+  .btn-empar.b-cierre:hover{background:var(--rol-cierre-claro)}
+  .btn-empar.correcto{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-empar.incorrecto{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-empar{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-empar.visible{display:block}
+  .puntaje-empar{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.02rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Acuerdos del grupo (contrato visual) */
+  .acuerdos-cont{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px 22px;margin:18px 0;box-shadow:0 2px 10px rgba(0,137,205,0.08)}
+  .acuerdos-cont h4{text-align:center;color:var(--cp-oscuro);margin-top:0;font-size:1.1rem}
+  .acuerdos-cont .subtitulo-acuerdo{text-align:center;font-style:italic;color:var(--gris);font-size:0.92rem;margin-bottom:14px}
+  .acuerdos-lista{list-style:none;padding:0;margin:0}
+  .acuerdos-lista li{padding:10px 12px 10px 42px;margin:8px 0;background:var(--cp-claro);border-left:4px solid var(--cp);border-radius:6px;position:relative;font-size:0.95rem;line-height:1.55}
+  .acuerdos-lista li::before{content:'✓';position:absolute;left:14px;top:50%;transform:translateY(-50%);background:var(--cp);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem}
+
+  /* Foro con frases plantilla */
+  .foro-modelo{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 2px 10px rgba(123,63,191,0.08)}
+  .foro-modelo h4{margin-top:0;color:var(--acento-oscuro);text-align:center}
+  .post-foro{background:var(--acento-claro);border-left:5px solid var(--acento);padding:12px 16px;border-radius:8px;margin:12px 0}
+  .post-foro .usuario-post{font-weight:700;color:var(--acento-oscuro);font-size:0.92rem;display:block;margin-bottom:6px}
+  .post-foro .texto-post{font-size:0.94rem;line-height:1.6;font-style:italic;color:var(--texto)}
+  .post-foro .frase-resaltada{background:#fff;padding:1px 6px;border-radius:3px;font-weight:600;color:var(--acento-oscuro);font-style:normal}
+
+  /* Quiz final */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -95,13 +182,17 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
-  .aviso-voz.visible{display:block}
-  /* Quiz */
+  /* ── Quiz de la lección ── */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -121,101 +212,53 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
+  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 
-  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
-  .qz-repaso a{color:#004d44;font-weight:700}
-  /* ── Comunes desde el Tema 4 ── */
-  .item-ops{flex-wrap:wrap}
-  .apilado .item{flex-direction:column;align-items:stretch}
-  .apilado .item-ops{flex-direction:column}
-  .apilado .btn-op{text-align:left;font-weight:400}
-  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
-  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
-  .pasaje p{margin:0 0 6px}
-  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
-  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
-  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
-  /* Taller de escritura (Tema 7) */
-  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
-  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
-  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
-  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
-  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
-  .tl-conect{font-size:.95rem;margin:4px 0 8px}
-  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
-  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
-  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
-  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
-  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
-  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
-  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
-  .rubrica{font-size:.92rem}
-  .rubrica td,.rubrica th{vertical-align:top}
-  .marca{border-radius:3px;padding:0 2px;font-weight:700}
-  .m-postura{background:#e3f2fd;color:#0d3c78}
-  .m-razon{background:#fff3e0;color:#7a3a00}
-  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
-  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
-  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
-  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
-  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
-  .oculta-marcas .marca::before{content:none}
-  @media(max-width:640px){
-    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
-    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
-    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
-    .rubrica td{border:none;border-top:1px solid #d5dde3}
-    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
-  }
-
-  .escucha{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:12px 14px;margin:12px 0}
-  .escucha h4{margin:0 0 8px;color:var(--cp-oscuro)}
-  .pasadas{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
-  .velocidad{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0;font-size:.95rem}
-  .velocidad button[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
-  .transcripcion summary{font-size:.95rem}
-  .guion p{margin:0 0 8px}
-  .guion .quien{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--cp-oscuro)}
-  .grabadora{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:12px 0;text-align:center}
-  .grabadora .reloj{font-size:2rem;font-weight:700;color:var(--cp-oscuro);font-variant-numeric:tabular-nums;margin:6px 0}
-  .grabadora .estado{font-weight:700;min-height:1.4em}
-  .grabadora audio{width:100%;margin-top:8px}
-  .grabando{color:#b3261e}
-  .plantilla{background:#fff;border:2px dashed var(--cp);border-radius:10px;padding:10px 16px;margin:10px 0}
-  .plantilla p{margin:6px 0}
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
-<h1>Lección 8.2 · Comprensión auditiva y presentación oral con audio</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 8: Hablar, colaborar y proyecto final · Unas 2 horas, a tu ritmo</p>
+
+<h1>Lección 8.2 · Leer y conversar: la técnica 1-2-4</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 8 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <ul class="lista-bonita" style="margin:0">
-    <li>Escuchar en <strong>dos pasadas</strong>: primero la idea general, después los detalles.</li>
-    <li>Distinguir <strong>hechos</strong> de <strong>opiniones</strong> en lo que escuchas.</li>
-    <li>Reconocer relaciones de <strong>causa y efecto</strong>.</li>
-    <li>Preparar y <strong>grabar</strong> una presentación oral breve sobre tu experiencia.</li>
+  <ul>
+    <li>Aplicar la <strong>técnica 1-2-4</strong> para pensar un texto en tres fases: solo, comparando con otra persona y sacando una conclusión.</li>
+    <li>Leer un texto pasando por los <strong>cuatro papeles del lector</strong>: quien empieza, quien resume, quien pregunta y quien cierra.</li>
+    <li>Aplicar los <strong>acuerdos para conversar</strong> y las frases de escucha activa de la Lección 8.1.</li>
   </ul>
-  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.S.CC.5 · 2.S.PK.1 · 2.S.PK.2 · 2.S.PK.3 · 2.W.PD.3</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-pasadas">Escuchar en dos pasadas</a></li>
-    <li><a href="#s-2-noticia">Audio 1: una noticia</a></li>
-    <li><a href="#s-3-hecho">Hecho u opinión al escuchar</a></li>
-    <li><a href="#s-4-causa">Causa y efecto</a></li>
-    <li><a href="#s-5-entrevista">Audio 2: una entrevista</a></li>
-    <li><a href="#s-6-presentacion">Prepara tu presentación</a></li>
-    <li><a href="#s-7-grabar">Graba tu presentación</a></li>
+    <li><a href="#s-1-tecnica">La técnica 1-2-4: pensar, comparar, concluir</a></li>
+    <li><a href="#s-2-texto">El texto de hoy</a></li>
+    <li><a href="#s-3-roles">Los cuatro papeles del lector</a></li>
+    <li><a href="#s-4-actividad">Actividad: ¿qué papel es?</a></li>
+    <li><a href="#s-5-acuerdos">Acuerdos para conversar</a></li>
+    <li><a href="#s-6-por-escrito">Responder por escrito</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -227,183 +270,242 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
-<p>Pasamos más tiempo escuchando que leyendo: las noticias de la radio, los avisos del trabajo, las explicaciones del médico, los mensajes de voz. Escuchar bien es difícil porque las palabras pasan y no vuelven, como en un texto escrito. En esta lección aprenderás una estrategia para no perderte y usarás lo que ya sabes de la lectura (idea principal, detalles, hechos y opiniones) con los oídos. Al final grabarás tu propia presentación.</p>
-<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán. Puedes leer la transcripción de cada audio.</p>
 
-<details open id="s-1-pasadas">
-<summary>1. Escuchar en dos pasadas <span class="caja-tiempo">10 min</span></summary>
-<div class="contenido-detalle">
-<ol class="lista-bonita">
-  <li><strong>Antes de escuchar:</strong> lee las preguntas. Así sabes qué buscar.</li>
-  <li><strong>Primera pasada, la idea general:</strong> escucha sin escribir. ¿De qué trata? ¿Quién habla?</li>
-  <li><strong>Segunda pasada, los detalles:</strong> escucha con papel y lápiz. Anota números, nombres, fechas y palabras clave, no oraciones completas.</li>
-  <li><strong>Después:</strong> responde y comprueba con la transcripción.</li>
-</ol>
-<div class="tip"><strong>💡 Las señales del que habla:</strong> «lo más importante es…», «en primer lugar…», «según…», «como resultado…». Cuando las oigas, presta más atención: viene algo importante.</div>
+<p>En la lección anterior aprendiste qué es la escucha activa y las frases para mostrar acuerdo, añadir información o pedir aclaración. Ahora vas a usar todo eso para algo muy útil: <strong>conversar sobre un texto</strong>.</p>
+
+<p>Hablar de lo que leíste con otra persona te obliga a <strong>ordenar tu pensamiento</strong>, <strong>defender una idea</strong> y <strong>escuchar a quien piensa distinto</strong>. Son las mismas habilidades que pide la respuesta extendida del GED, y las que se necesitan en una reunión de trabajo o en una conversación familiar. Vas a aprender dos herramientas: la <span class="palabra-clave">técnica 1-2-4</span> y los <span class="palabra-clave">cuatro papeles del lector</span>. Las dos nacieron para usarse en grupo, pero aquí las adaptas para que funcionen aunque estudies por tu cuenta.</p>
+
+<div class="clave-pedagogica">
+  <strong>🧠 Clave de la lección:</strong> primero piensas tú, después comparas tu idea con la de otros y al final sacas una conclusión. Así tu opinión es tuya, pero sale más fuerte después de escuchar otras.
 </div>
-</details>
 
-<details id="s-2-noticia">
-<summary>2. Audio 1: una noticia <span class="caja-tiempo">20 min</span></summary>
+<details open id="s-1-tecnica">
+<summary>1. La técnica 1-2-4: pensar, comparar, concluir <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-<p>Lee primero las preguntas que están debajo del audio. Después escucha dos veces.</p>
-<div class="escucha">
-  <h4>🎧 Noticia: «Abre una clínica comunitaria»</h4>
-  <div class="velocidad" role="group" aria-label="Velocidad del audio">Velocidad:
-    <button type="button" class="btn btn-secundario vel" data-v="0.8" aria-pressed="false">🐢 Más lenta</button>
-    <button type="button" class="btn btn-secundario vel" data-v="0.95" aria-pressed="true">Normal</button>
+
+<h3>¿Qué es la técnica 1-2-4?</h3>
+
+<p>Es una técnica para pensar un texto en <strong>tres fases</strong>. En un salón de clases, el nombre viene del número de personas en cada fase: primero <strong>1</strong> (yo solo), después <strong>2</strong> (en pareja) y al final <strong>4</strong> (en grupo). Estudiando por tu cuenta, la idea es la misma: primero tu idea, después la comparas, y al final concluyes.</p>
+
+<div class="flujo-124">
+  <div class="fase-124 fase-1">
+    <span class="num-fase">1</span>
+    <span class="titulo-fase">Pensar solo</span>
+    <span class="tiempo-fase">⏱️ 3 minutos</span>
+    <span class="accion-fase">Respondes la pregunta <strong>por escrito</strong>, en tu cuaderno, sin consultar con nadie.</span>
   </div>
-  <div class="pasadas">
-    <button type="button" class="btn btn-primario" data-audio="t-noticia" data-p="1">▶️ Primera pasada: idea general</button>
-    <button type="button" class="btn btn-primario" data-audio="t-noticia" data-p="2">▶️ Segunda pasada: detalles</button>
-    <button type="button" class="btn btn-secundario parar">⏹️ Parar</button>
+  <div class="flecha-fase">➡️</div>
+  <div class="fase-124 fase-2">
+    <span class="num-fase">2</span>
+    <span class="titulo-fase">Comparar</span>
+    <span class="tiempo-fase">⏱️ 5 minutos</span>
+    <span class="accion-fase">Compartes tu respuesta con <strong>otra persona</strong> (alguien de tu casa, un amigo por teléfono) y escuchas la suya. Si estás solo, compárala con la <strong>respuesta modelo</strong>.</span>
   </div>
-  <p class="estado-esc" role="status" aria-live="polite"></p>
-  <details class="transcripcion">
-    <summary>📄 Ver la transcripción (después de escuchar)</summary>
-    <div class="texto-lectura" id="t-noticia"><p>Buenos días. Les informamos que el lunes abrió sus puertas una nueva clínica comunitaria en el barrio Las Flores. La clínica atenderá de lunes a sábado, de ocho de la mañana a ocho de la noche. Ofrece consultas médicas, vacunas y atención dental, y su personal habla inglés y español. Según la directora, la doctora Inés Vargas, la clínica se construyó porque los vecinos tenían que viajar más de una hora para ver a un médico. Como resultado, muchas familias dejaban de ir a sus citas. El precio de las consultas depende de los ingresos de cada familia, y nadie se quedará sin atención por no poder pagar. El primer día, la clínica atendió a ciento veinte pacientes. Una vecina, la señora Carmen Ruiz, dijo: «Es lo mejor que le ha pasado a este barrio en muchos años». Para pedir una cita, llame a la clínica o visite su página en internet.</p></div>
-  </details>
+  <div class="flecha-fase">➡️</div>
+  <div class="fase-124 fase-4">
+    <span class="num-fase">4</span>
+    <span class="titulo-fase">Concluir</span>
+    <span class="tiempo-fase">⏱️ 5 minutos</span>
+    <span class="accion-fase">Escribes una <strong>conclusión final</strong> que tome lo mejor de las dos respuestas.</span>
+  </div>
 </div>
-<p style="font-size:.9rem;color:#555">Noticia inventada para la lección.</p>
-<div class="clasificador apilado" id="clasif-noticia"></div>
-<div class="puntaje" id="puntaje-noticia" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l8-2.html#escucha" target="_blank" rel="noopener noreferrer">🎧 Practica más: audios cortos</a>
-</div>
-</details>
 
-<details id="s-3-hecho">
-<summary>3. Hecho u opinión al escuchar <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<p>Lo viste en la Lección 7.2 con textos escritos: un <strong>hecho</strong> se puede comprobar; una <strong>opinión</strong> dice lo que alguien piensa o siente. Al escuchar, las opiniones suelen llegar con estas señales:</p>
+<h3>¿Por qué funciona?</h3>
+
 <ul class="lista-bonita">
-  <li><strong>Verbos y frases de opinión:</strong> creo que, pienso que, me parece, en mi opinión, debería.</li>
-  <li><strong>Palabras que valoran:</strong> lo mejor, lo peor, maravilloso, terrible, increíble.</li>
-  <li><strong>El tono de voz:</strong> más emoción, más fuerza en ciertas palabras.</li>
+  <li><strong>Tu idea va primero.</strong> Si empiezas escuchando a otros, es fácil que solo repitas lo que oíste. La fase 1 te da tiempo para formar tu propia opinión.</li>
+  <li><strong>Comparar enriquece.</strong> Otra persona puede ver algo que tú no viste. No se trata de quién tiene razón, sino de mejorar la respuesta.</li>
+  <li><strong>Concluir ordena.</strong> Al escribir la conclusión, decides qué ideas te quedan y por qué.</li>
 </ul>
-<div class="tip"><strong>💡 Cuidado:</strong> una noticia puede citar una opinión. «La señora Ruiz dijo que es lo mejor del barrio» es un hecho (es verdad que lo dijo), pero lo que ella dice es una opinión.</div>
-<h3>Escucha y decide</h3>
-<div class="clasificador apilado" id="clasif-hecho"></div>
-<div class="puntaje" id="puntaje-hecho" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l8-2.html#hecho-opinion" target="_blank" rel="noopener noreferrer">⚖️ Practica más: hecho u opinión</a>
+
 </div>
 </details>
 
-<details id="s-4-causa">
-<summary>4. Causa y efecto <span class="caja-tiempo">15 min</span></summary>
+<details id="s-2-texto">
+<summary>2. El texto que vamos a discutir hoy <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-<p>La <span class="palabra-clave">causa</span> es <strong>por qué</strong> pasa algo; el <span class="palabra-clave">efecto</span> es <strong>lo que pasa</strong> como resultado.</p>
-<table class="tabla">
-  <caption class="sr-solo">Señales de causa y de efecto</caption>
-  <thead><tr><th scope="col">Señales de causa</th><th scope="col">Señales de efecto</th></tr></thead>
-  <tbody>
-    <tr><td>porque, ya que, debido a, a causa de, como…</td><td>por eso, por lo tanto, como resultado, así que, en consecuencia</td></tr>
-  </tbody>
-</table>
-<p>En la noticia: «La clínica se construyó <strong>porque</strong> los vecinos tenían que viajar más de una hora». <strong>Causa:</strong> el viaje largo. <strong>Efecto:</strong> se construyó la clínica. Y otra: «<strong>Como resultado</strong>, muchas familias dejaban de ir a sus citas».</p>
-<div class="tip"><strong>💡 Prueba rápida:</strong> une las dos partes con «por eso». «Los vecinos tenían que viajar mucho, <em>por eso</em> se construyó la clínica.» Lo que va antes de «por eso» es la causa.</div>
-<div class="clasificador apilado" id="clasif-causa"></div>
-<div class="puntaje" id="puntaje-causa" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l8-2.html#causa-efecto" target="_blank" rel="noopener noreferrer">🔁 Practica más: causa y efecto</a>
+
+<h3>Lectura inicial</h3>
+
+<p>Lee con calma este texto. Anota las palabras que no entiendas y piensa en la pregunta que aparece al final. Si quieres, puedes escucharlo con el botón de tu celular o computadora que lee el texto en voz alta.</p>
+
+<div class="texto-discusion">
+  <span class="etiq-lectura">📖 Texto modelo</span>
+  <p class="titulo-lectura">Los abuelos como maestros de la familia</p>
+  <p>En muchas familias hispanas, los abuelos no son solo los miembros mayores: son los <strong>guardianes de la memoria</strong>. Cuando una familia emigra a otro país, los abuelos suelen quedarse en casa o en su pueblo natal mientras los hijos y los nietos viven lejos. Aun así, los abuelos siguen siendo el puente con la cultura, la lengua y las costumbres de origen.</p>
+  <p>Una llamada semanal, una visita en vacaciones o una receta enseñada por teléfono son maneras en que los abuelos transmiten lo que saben. Hay nietos que aprendieron a cocinar arroz con frijoles escuchando a su abuela paso a paso desde mil kilómetros de distancia. Hay otros que conocen la historia de su pueblo solo porque su abuelo se la contó.</p>
+  <p>El problema es que, con el ritmo de vida moderno, muchas familias sienten que esas conversaciones se hacen cada vez más cortas. Y cuando los abuelos se van, se va con ellos un pedazo de la historia familiar que nadie escribió.</p>
+  <p><strong>Pregunta para pensar:</strong> ¿cuál es la idea más importante que el autor quiere transmitir, y qué podría hacer tu familia para fortalecer la conexión con los abuelos?</p>
+</div>
+
+<h3>Aplica la técnica 1-2-4</h3>
+<ol class="lista-bonita">
+  <li><strong>Pensar solo:</strong> escribe en tu cuaderno tu respuesta a la pregunta, en dos o tres oraciones.</li>
+  <li><strong>Comparar:</strong> léesela a alguien y escucha su respuesta, o compárala con el modelo de abajo.</li>
+  <li><strong>Concluir:</strong> escribe una conclusión final con lo mejor de las dos.</li>
+</ol>
+<details class="ver-modelo">
+  <summary>Ya escribí mi respuesta: ver una respuesta modelo</summary>
+  <p style="margin-bottom:0">«El autor quiere decir que los abuelos guardan la memoria de la familia y que, si no hablamos con ellos, esa historia se pierde. Mi familia podría hacer una videollamada cada domingo y pedirle a la abuela que nos cuente una historia o nos enseñe una receta. También podríamos escribir esas historias en un cuaderno.»</p>
+</details>
+
 </div>
 </details>
 
-<details id="s-5-entrevista">
-<summary>5. Audio 2: una entrevista <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-roles">
+<summary>3. Los cuatro papeles del lector <span class="caja-tiempo">12 min</span></summary>
 <div class="contenido-detalle">
-<div class="escucha">
-  <h4>🎧 Entrevista: «El huerto de la calle Quince»</h4>
-  <div class="velocidad" role="group" aria-label="Velocidad del audio">Velocidad:
-    <button type="button" class="btn btn-secundario vel" data-v="0.8" aria-pressed="false">🐢 Más lenta</button>
-    <button type="button" class="btn btn-secundario vel" data-v="0.95" aria-pressed="true">Normal</button>
+
+<h3>Del círculo de lectura a tu cuaderno</h3>
+
+<p>Un <span class="palabra-clave">círculo literario</span> o círculo de lectura es una conversación ordenada sobre un texto, en la que cada participante tiene un <strong>papel</strong>. Cuando estudias por tu cuenta, puedes hacer <strong>los cuatro papeles tú mismo, uno después del otro</strong>, como si te pusieras cuatro sombreros distintos. Si alguien de tu casa lee el texto contigo, pueden repartirse los papeles.</p>
+
+<p>Estos son los cuatro papeles:</p>
+
+<div class="roles-grid">
+  <div class="rol r-inicio">
+    <span class="icono-rol">🚀</span>
+    <span class="nombre-rol">Quien empieza</span>
+    <p class="tarea-rol">Abre la conversación leyendo en voz alta la primera oración o el título del texto, e invita al grupo a hablar.</p>
+    <span class="frase-rol">«Vamos a empezar. Yo leeré el título y abro la conversación: ¿qué piensan?»</span>
   </div>
-  <div class="pasadas">
-    <button type="button" class="btn btn-primario" data-audio="t-entrevista" data-p="1">▶️ Primera pasada: idea general</button>
-    <button type="button" class="btn btn-primario" data-audio="t-entrevista" data-p="2">▶️ Segunda pasada: detalles</button>
-    <button type="button" class="btn btn-secundario parar">⏹️ Parar</button>
+  <div class="rol r-resumen">
+    <span class="icono-rol">📋</span>
+    <span class="nombre-rol">Quien resume</span>
+    <p class="tarea-rol">Después de leer, dice en dos o tres oraciones de qué trata el texto. No opina todavía: solo resume lo que el autor dice.</p>
+    <span class="frase-rol">«El texto nos dice que…», «La idea principal es que…»</span>
   </div>
-  <p class="estado-esc" role="status" aria-live="polite"></p>
-  <details class="transcripcion">
-    <summary>📄 Ver la transcripción (después de escuchar)</summary>
-    <div class="texto-lectura guion" id="t-entrevista">
-      <p><span class="quien">Periodista:</span> Tomás, ¿cómo empezó el huerto?</p>
-      <p><span class="quien">Tomás:</span> Hace tres años, este terreno estaba lleno de basura. Un grupo de vecinos pidió permiso a la ciudad para limpiarlo y sembrar.</p>
-      <p><span class="quien">Periodista:</span> ¿Y qué cultivan?</p>
-      <p><span class="quien">Tomás:</span> Tomates, chiles, calabazas y cilantro. Cada familia cuida su propia parcela.</p>
-      <p><span class="quien">Periodista:</span> ¿Qué ha cambiado en el barrio?</p>
-      <p><span class="quien">Tomás:</span> Mucho. Como ahora pasamos más tiempo afuera, los vecinos nos conocemos mejor. Además, los niños aprenden de dónde viene la comida. Yo creo que todos los barrios deberían tener un huerto.</p>
-      <p><span class="quien">Periodista:</span> ¿Qué necesitan ahora?</p>
-      <p><span class="quien">Tomás:</span> Más voluntarios para regar en verano, porque con el calor la tierra se seca muy rápido.</p>
-    </div>
-  </details>
+  <div class="rol r-pregunta">
+    <span class="icono-rol">❓</span>
+    <span class="nombre-rol">Quien pregunta</span>
+    <p class="tarea-rol">Hace por lo menos dos preguntas al grupo para profundizar la discusión. Las preguntas no se responden con «sí» o «no».</p>
+    <span class="frase-rol">«¿Por qué creen que…?», «¿Qué pasaría si…?», «¿Cómo se relaciona esto con…?»</span>
+  </div>
+  <div class="rol r-cierre">
+    <span class="icono-rol">🎯</span>
+    <span class="nombre-rol">Quien cierra</span>
+    <p class="tarea-rol">Al final, recoge lo que dijo el grupo y formula la <strong>conclusión común</strong>: la idea principal que todos comparten.</p>
+    <span class="frase-rol">«En conclusión, el grupo piensa que…», «Lo que todos coincidimos es que…»</span>
+  </div>
 </div>
-<p style="font-size:.9rem;color:#555">Entrevista inventada para la lección.</p>
-<div class="clasificador apilado" id="clasif-entrevista"></div>
-<div class="puntaje" id="puntaje-entrevista" role="status" aria-live="polite"></div>
+
+<div class="tip">
+  <strong>📝 Por qué cuatro papeles:</strong> cada uno ejercita una habilidad distinta: anticipar, resumir, preguntar y concluir. Si conversas con otras personas, cambien de papel cada vez para que todos practiquen las cuatro.
+</div>
+
 </div>
 </details>
 
-<details id="s-6-presentacion">
-<summary>6. Prepara tu presentación: «Cuento mi experiencia» <span class="caja-tiempo">25 min</span></summary>
+<details id="s-4-actividad">
+<summary>4. Actividad: ¿qué papel es? <span class="caja-tiempo">7 min</span></summary>
 <div class="contenido-detalle">
-<p>Vas a contar en unos <strong>tres minutos</strong> una experiencia tuya: tu primer trabajo en este país, un viaje, un logro, un día difícil que terminó bien. Usa lo que aprendiste de la narración (Lección 7.3): escenario, hechos en orden y detalles.</p>
-<div class="plantilla">
-  <p><strong>Inicio (30 segundos):</strong> Hoy les voy a contar… Pasó en… (cuándo y dónde).</p>
-  <p><strong>Desarrollo (2 minutos):</strong> Primero… Luego… De repente… Recuerdo que… (detalles: qué veías, oías, sentías).</p>
-  <p><strong>Cierre (30 segundos):</strong> Al final… De esa experiencia aprendí que…</p>
+
+<p>Aquí tienes seis intervenciones que podrían darse en una conversación sobre el texto. Para cada una, elige a qué papel corresponde:</p>
+
+<div class="empar-cont">
+  <h4>🎭 Elige el papel de cada intervención</h4>
+  <div id="items-empar"></div>
+  <div class="puntaje-empar" id="puntaje-empar" role="status">Aciertos: 0 / 6</div>
 </div>
-<p>Escribe tu guion. No lo vas a leer palabra por palabra: te servirá para ordenar las ideas.</p>
-<div class="taller" id="taller-82"></div>
-<div class="tip"><strong>💡 Al hablar:</strong> habla un poco más despacio que en una conversación, haz pausas entre las partes, mira a la cámara o a tu público y varía el tono. Antes de grabar, ensaya dos o tres veces en voz alta.</div>
+
 </div>
 </details>
 
-<details id="s-7-grabar">
-<summary>7. Graba tu presentación <span class="caja-tiempo">20 min</span></summary>
+<details id="s-5-acuerdos">
+<summary>5. Acuerdos para conversar <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-<p>Puedes grabarla aquí mismo, desde la computadora o el celular. El navegador te pedirá permiso para usar el micrófono. La grabación <strong>no se envía a ningún lugar</strong>: se queda en tu equipo hasta que la descargues.</p>
-<div class="grabadora">
-  <div class="reloj" id="gr-reloj" aria-hidden="true">0:00</div>
-  <p class="estado" id="gr-estado" role="status" aria-live="polite">Listo para grabar.</p>
-  <div class="botones">
-    <button type="button" class="btn btn-primario" id="gr-grabar">🎙️ Grabar</button>
-    <button type="button" class="btn btn-secundario" id="gr-parar" disabled>⏹️ Detener</button>
-  </div>
-  <audio id="gr-audio" controls hidden></audio>
-  <p><a class="btn btn-secundario" id="gr-bajar" hidden download="mi-presentacion">⬇️ Descargar mi grabación</a></p>
+
+<h3>Reglas básicas para cualquier conversación</h3>
+
+<p>Una conversación funciona mejor cuando todos siguen unas reglas sencillas. Sirven igual para comentar un texto en familia, para una reunión de trabajo o para la junta de padres de la escuela:</p>
+
+<div class="acuerdos-cont">
+  <h4>📜 Seis acuerdos para conversar</h4>
+  <p class="subtitulo-acuerdo">Puedes proponerlos en tu casa o en tu trabajo</p>
+  <ul class="acuerdos-lista">
+    <li><strong>Una voz a la vez.</strong> Cuando alguien habla, los demás escuchan. Nadie interrumpe.</li>
+    <li><strong>Todos hablamos al menos una vez.</strong> Si alguien todavía no ha participado, el grupo le invita con respeto.</li>
+    <li><strong>Pedimos la palabra con respeto.</strong> Alzamos la mano o esperamos a que el otro termine la oración.</li>
+    <li><strong>Pedimos aclaración si no entendemos.</strong> No fingimos haber entendido para «quedar bien».</li>
+    <li><strong>Criticamos ideas, no personas.</strong> Se puede estar en desacuerdo con una idea sin atacar a quien la dijo.</li>
+    <li><strong>Cuidamos el tiempo.</strong> Si alguien habla mucho, el grupo amablemente le pide que cierre su idea.</li>
+  </ul>
 </div>
-<p>Si prefieres, usa la grabadora de voz de tu celular. Después, sube el archivo a la tarea de Brightspace.</p>
-<h3>Rúbrica de la presentación</h3>
-<table class="tabla rubrica">
-  <caption class="sr-solo">Rúbrica de comprensión auditiva y presentación: cuatro criterios en cuatro niveles</caption>
-  <thead><tr><th scope="col">Criterio</th><th scope="col">4 · Excelente</th><th scope="col">3 · Bien</th><th scope="col">2 · En camino</th><th scope="col">1 · Inicial</th></tr></thead>
-  <tbody>
-    <tr><th scope="row">Ideas y detalles del audio</th><td>Identifica la idea principal y todos los detalles pedidos</td><td>Idea principal y casi todos los detalles</td><td>Solo la idea principal</td><td>No identifica la idea principal</td></tr>
-    <tr><th scope="row">Hechos y opiniones</th><td>Los distingue siempre y explica la señal</td><td>Los distingue casi siempre</td><td>Los confunde a menudo</td><td>No los distingue</td></tr>
-    <tr><th scope="row">Causa y efecto</th><td>Reconoce causa y efecto y sus señales</td><td>Reconoce la mayoría</td><td>Reconoce alguna con ayuda</td><td>No las reconoce</td></tr>
-    <tr><th scope="row">Presentación con audio</th><td>Clara, ordenada, con detalles y buen ritmo</td><td>Clara y ordenada, con pocos detalles</td><td>Se entiende, pero desordenada</td><td>Difícil de seguir</td></tr>
-  </tbody>
-</table>
-<p style="font-size:.92rem">Total: 16 puntos.</p>
+
+<div class="clave-pedagogica">
+  <strong>💡 ¿Por qué ponerse de acuerdo antes?</strong> Cuando todos conocen las reglas <em>antes</em> de conversar, es más fácil volver al orden si algo se descontrola. Si alguien interrumpe, nadie lo regaña: solo se le recuerda el acuerdo número uno.
+</div>
+
+</div>
+</details>
+
+<details id="s-6-por-escrito">
+<summary>6. Responder por escrito <span class="caja-tiempo">6 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Las frases de escucha activa también se escriben</h3>
+
+<p>Muchas conversaciones hoy son por escrito: el grupo de mensajes de la familia, los comentarios de una noticia, un correo del trabajo. Ahí también se nota quién escucha. Mira este ejemplo: tres personas comentan el texto de los abuelos en un grupo de mensajes, y cada respuesta <strong>empieza con una frase de escucha activa</strong>.</p>
+
+<div class="foro-modelo">
+  <h4>💬 Ejemplo de conversación por escrito</h4>
+
+  <div class="post-foro" style="background:var(--rol-resumen-claro);border-left-color:var(--rol-resumen)">
+    <span class="usuario-post">🗣️ María — primer mensaje</span>
+    <p class="texto-post">El texto dice que los abuelos son los guardianes de la memoria familiar. En mi caso es cierto: mi abuela me enseñó las recetas cubanas por teléfono cuando yo ya vivía en Chicago. Pienso que el problema más grande es que los nietos pequeños no se sienten cercanos a sus abuelos porque viven lejos.</p>
+  </div>
+
+  <div class="post-foro">
+    <span class="usuario-post">↪️ Luis — responde a María</span>
+    <p class="texto-post"><span class="frase-resaltada">Estoy de acuerdo con María</span> en que la distancia es un problema grande. <span class="frase-resaltada">Quiero añadir que</span> en mi familia hacemos videollamadas los domingos justamente para que los nietos vean la cara de los abuelos y no solo escuchen una voz al teléfono.</p>
+  </div>
+
+  <div class="post-foro">
+    <span class="usuario-post">↪️ Ana — responde a María</span>
+    <p class="texto-post"><span class="frase-resaltada">Estoy de acuerdo</span> en que los abuelos son guardianes de la memoria, pero <span class="frase-resaltada">quiero añadir que</span> también los padres podemos transmitir esas historias. <span class="frase-resaltada">¿Puedes explicar</span> qué recetas te enseñó tu abuela? Me interesa saber.</p>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Buena costumbre:</strong> empieza tus respuestas escritas con una frase de escucha activa <em>(de acuerdo, añadir o pedir aclaración)</em>. Escribir solo «ok» o «👍» no demuestra que leíste a la otra persona.
+</div>
+
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>8. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>7. Tarea <span class="caja-tiempo">40 min</span></summary>
 <div class="contenido-detalle">
+<p><strong>Los cuatro papeles con un texto nuevo.</strong> Elige un texto corto que te interese: una noticia, un artículo de una revista o un texto de la Lección 7.3. Léelo y escribe en tu cuaderno, poniéndote los cuatro sombreros:</p>
 <ul class="lista-bonita">
-  <li><strong>Mi grabación.</strong> Graba tu presentación «Cuento mi experiencia» (unos tres minutos) y súbela a Brightspace.</li>
-  <li><strong>Escucha a un compañero.</strong> Escucha la grabación de otra persona y coméntala: la idea principal, un detalle que recuerdes y un «Me gustó cuando…».</li>
-  <li><strong>Radio en dos pasadas.</strong> Escucha una noticia breve en la radio o en un pódcast en español. En la primera pasada anota el tema; en la segunda, tres detalles, un hecho y una opinión.</li>
+  <li>🚀 <strong>Quien empieza:</strong> por el título, ¿de qué crees que trata? (una oración).</li>
+  <li>📋 <strong>Quien resume:</strong> la idea principal del texto en dos o tres oraciones, sin opinar.</li>
+  <li>❓ <strong>Quien pregunta:</strong> dos preguntas abiertas sobre el texto (que no se respondan con «sí» o «no»).</li>
+  <li>🎯 <strong>Quien cierra:</strong> tu conclusión: qué piensas del texto y por qué.</li>
 </ul>
+<p>Si alguien de tu casa quiere participar, léanlo juntos y háganle tus dos preguntas. Escribe al final una oración con lo que esa persona respondió.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Los cuatro papeles»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Quien empieza</td><td class="nivel-4">Hice una predicción a partir del título</td><td class="nivel-1">No escribí la predicción</td></tr>
+      <tr><td>Quien resume</td><td class="nivel-4">Resumí la idea principal sin opinar</td><td class="nivel-1">Mezclé mi opinión con el resumen</td></tr>
+      <tr><td>Quien pregunta</td><td class="nivel-4">Escribí dos preguntas abiertas</td><td class="nivel-1">Mis preguntas se responden con sí o no</td></tr>
+      <tr><td>Quien cierra</td><td class="nivel-4">Di mi conclusión con al menos una razón</td><td class="nivel-1">Solo escribí «me gustó»</td></tr>
+    </tbody>
+  </table>
+</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>9. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Las preguntas son sobre los dos audios de la lección. Puedes volver a escucharlos. Al final pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -415,113 +517,116 @@
 </details>
 
 <details id="s-cierre">
-<summary>10. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-<h3>Lo que aprendiste en esta lección</h3>
+<h3>Lo que aprendiste</h3>
 <ul class="lista-bonita">
-  <li>Escuchar en <strong>dos pasadas</strong>: la idea general primero, los detalles después.</li>
-  <li>Las opiniones se oyen en <em>creo que, me parece, lo mejor</em>; los hechos se pueden comprobar.</li>
-  <li><strong>Causa:</strong> por qué pasa (porque, debido a). <strong>Efecto:</strong> lo que pasa (por eso, como resultado).</li>
-  <li>Una buena presentación tiene inicio, desarrollo con detalles y cierre, y se ensaya antes de grabarla.</li>
+  <li>La <strong>técnica 1-2-4</strong> tiene tres fases: pensar solo, comparar con otra respuesta y concluir.</li>
+  <li>Los <strong>cuatro papeles del lector</strong> son: quien empieza, quien resume, quien pregunta y quien cierra.</li>
+  <li>Los acuerdos para conversar (una voz a la vez, criticar ideas y no personas…) sirven en cualquier conversación.</li>
+  <li>Las frases de escucha activa también se usan por escrito.</li>
 </ul>
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Qué haces en la primera pasada? ¿Y en la segunda?</li>
-    <li>«Debido a la nieve, cerraron las escuelas.» ¿Cuál es la causa?</li>
-    <li>¿Ya grabaste tu presentación?</li>
+    <li>¿Por qué la técnica 1-2-4 empieza pensando solo?</li>
+    <li>¿Qué diferencia hay entre resumir y cerrar?</li>
+    <li>¿Qué es una pregunta abierta?</li>
   </ul>
 </div>
-<div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_8-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.3 · Proyecto final y evaluación del nivel</a>. Unirás todo lo aprendido en tu proyecto «Mi tema, mis fuentes» y harás la evaluación final.</div>
+
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_8-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.3 · Alfabetización tecnológica y vocabulario digital</a>. Aprenderás el vocabulario de la computadora y los pasos para moverte por GEDparaHispanos y por GED.com.
+</div>
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 8 · Lección 8.2</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 8 · Lección 8.2</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<script>
-/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
-(function(){
-  var voz=null, hay=('speechSynthesis' in window);
-  function elegir(){
-    if(!hay)return;
-    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
-    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
-    voz=null;
-    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
-    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
-  }
-  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
-  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
-  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
-  /* hablar(texto, velocidad, alTerminar) */
-  window.hablar=function(texto,vel,fin){
-    if(!hay||!texto){aviso();return;}
-    speechSynthesis.cancel();
-    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
-    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
-    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
-  };
-  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
-  window.hablarPalabras=function(texto){
-    if(!hay){aviso();return;}
-    speechSynthesis.cancel();
-    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
-  };
-  window.callar=function(){if(hay)speechSynthesis.cancel();};
-  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
-})();
 
-/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
-function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
-  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
-  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
-  items.forEach(function(it,i){
-    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
-    var ops=it.ops||opciones;
-    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
-      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
-      '<span class="item-fb" aria-live="polite"></span>';
-    caja.appendChild(d);
-    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
-    var fb=d.querySelector('.item-fb');
-    d.querySelectorAll('.btn-op').forEach(function(b){
+<script>
+(function(){
+  /* =========================================================
+     ACTIVIDAD: EMPAREJAR INTERVENCIÓN CON ROL DEL CÍRCULO
+     ========================================================= */
+  var intervenciones=[
+    {texto:'«Buenos días a todos. Hoy vamos a comentar el texto sobre los abuelos. Yo leeré el título y arrancamos la conversación.»', rol:'inicio', explica:'Es "quien empieza": abre la sesión leyendo el título e invitando al grupo a la conversación.'},
+    {texto:'«El texto nos cuenta que los abuelos transmiten la cultura familiar incluso cuando viven lejos, pero que las conversaciones entre generaciones son cada vez más cortas.»', rol:'resumen', explica:'Es "quien resume": expone la idea principal del texto sin opinar todavía.'},
+    {texto:'«¿Por qué creen que las conversaciones entre nietos y abuelos se han acortado en los últimos años?»', rol:'pregunta', explica:'Es "quien pregunta": formula una pregunta abierta que no se responde con sí o no, para profundizar la discusión.'},
+    {texto:'«Entonces, todos coincidimos en que los abuelos son guardianes de la memoria y que vale la pena hacer un esfuerzo por conversar con ellos. Esa es nuestra conclusión.»', rol:'cierre', explica:'Es "quien cierra": recoge lo que dijo el grupo y formula la conclusión común.'},
+    {texto:'«¿Qué pasaría en una familia si nadie hablara más con los abuelos?»', rol:'pregunta', explica:'Es "quien pregunta": una pregunta abierta del tipo "¿qué pasaría si…?" que invita a imaginar consecuencias.'},
+    {texto:'«El autor presenta dos ideas centrales: los abuelos como guardianes de la memoria y el problema del ritmo de vida moderno que reduce las conversaciones.»', rol:'resumen', explica:'Es "quien resume": presenta las ideas centrales del texto sin añadir opinión personal.'}
+  ];
+
+  var contEmpar=document.getElementById('items-empar');
+  var resueltosE={};
+  var aciertosE=0;
+
+  intervenciones.forEach(function(it,idx){
+    var div=document.createElement('div');
+    div.className='item-empar';
+    div.innerHTML=
+      '<div class="tarea-empar">'+it.texto+'</div>'+
+      '<div class="opciones-empar">'+
+        '<button type="button" class="btn-empar b-inicio" data-rol="inicio">🚀 Quien empieza</button>'+
+        '<button type="button" class="btn-empar b-resumen" data-rol="resumen">📋 Quien resume</button>'+
+        '<button type="button" class="btn-empar b-pregunta" data-rol="pregunta">❓ Quien pregunta</button>'+
+        '<button type="button" class="btn-empar b-cierre" data-rol="cierre">🎯 Quien cierra</button>'+
+      '</div>'+
+      '<div class="retro-empar" id="retro-empar-'+idx+'" role="status"></div>';
+    contEmpar.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-empar');
+    botones.forEach(function(b){
       b.addEventListener('click',function(){
-        if(hechas[i])return;
-        if(+b.getAttribute('data-j')===it.c){
-          b.classList.add('correcta'); hechas[i]=true; bien++;
-          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
-          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+        if(resueltosE[idx])return;
+        if(b.getAttribute('data-rol')===it.rol){
+          b.classList.add('correcto');
+          resueltosE[idx]=true;
+          aciertosE++;
+          actualizarEmpar();
+          var r=document.getElementById('retro-empar-'+idx);
+          r.textContent='✅ '+it.explica;
+          r.classList.add('visible');
         }else{
-          b.classList.add('incorrecta'); b.disabled=true;
-          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+          var r2=document.getElementById('retro-empar-'+idx); r2.textContent='❌ Pregúntate: ¿abre la conversación, resume el texto, pregunta o saca la conclusión?'; r2.classList.add('visible');
+          b.classList.add('incorrecto');
+          setTimeout(function(){b.classList.remove('incorrecto')},500);
         }
       });
     });
   });
-  marcador();
-}
 
-/* ===== Quiz de la lección =====
-   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
-        ae:audio entrecortado opcional, fijo:no barajar,
-        r:enlace de repaso que aparece si la respuesta es incorrecta}]
-   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
-function iniciarQuiz(P,cfg){
-  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  function actualizarEmpar(){
+    var el=document.getElementById('puntaje-empar');
+    el.textContent='Aciertos: '+aciertosE+' / '+intervenciones.length;
+    if(aciertosE===intervenciones.length){
+      el.innerHTML='🎉 ¡Perfecto! Aciertos: '+aciertosE+' / '+intervenciones.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Cuáles son las tres fases de la técnica 1-2-4?", "o": ["Pensar solo, comparar y concluir", "Leer, copiar y entregar", "Escuchar, callar y repetir"], "c": 0}, {"t": "¿Por qué la técnica empieza con una fase en la que piensas solo?", "o": ["Para formar tu propia idea antes de escuchar a otros", "Porque es la fase más corta", "Para no tener que hablar con nadie"], "c": 0}, {"t": "Si estudias solo, ¿con qué puedes comparar tu respuesta en la fase 2?", "o": ["Con la respuesta modelo o con la de alguien de tu casa", "Con nada", "Con el título del texto"], "c": 0}, {"t": "«¿Y qué pasaría si dejáramos de hablar con los abuelos?» ¿Qué papel cumple esa intervención?", "o": ["Quien pregunta", "Quien resume", "Quien empieza", "Quien cierra"], "c": 0}, {"t": "«El texto dice que los abuelos guardan la memoria de la familia.» ¿Qué papel es?", "o": ["Quien resume", "Quien pregunta", "Quien cierra"], "c": 0}, {"t": "¿Qué diferencia hay entre «quien resume» y «quien cierra»?", "o": ["Quien resume cuenta lo que dice el texto; quien cierra da la conclusión", "Ninguna", "Quien resume hace preguntas"], "c": 0}, {"t": "¿Cuál es una pregunta <strong>abierta</strong>?", "o": ["¿Por qué crees que las conversaciones con los abuelos son más cortas?", "¿Te gustó el texto?", "¿Tienes abuelos?"], "c": 0}, {"t": "En una conversación, alguien habla cinco minutos sin dejar participar a nadie. ¿Qué acuerdo rompe?", "o": ["Cuidar el tiempo y dejar que todos hablen", "Pedir aclaración si no entendemos", "Criticar ideas, no personas"], "c": 0}, {"t": "«Criticamos ideas, no personas» significa que…", "o": ["se puede no estar de acuerdo con una idea sin atacar a quien la dijo", "nunca hay que estar en desacuerdo", "solo se critica a las personas"], "c": 0}, {"t": "En el grupo de mensajes de la familia, ¿qué respuesta muestra que leíste el mensaje?", "o": ["«Estoy de acuerdo con lo de las videollamadas; quiero añadir que…»", "«ok»", "«👍»"], "c": 0}, {"t": "Según el texto, ¿qué papel cumplen los abuelos en muchas familias hispanas?", "o": ["Son los guardianes de la memoria familiar", "Son los que más usan la tecnología", "Son los que menos hablan"], "c": 0}, {"t": "Antes de leer, por el título, haces una predicción. ¿Qué papel cumples?", "o": ["Quien empieza", "Quien cierra", "Quien resume"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a||p.ae){
+    if(p.x||p.a){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -529,7 +634,7 @@ function iniciarQuiz(P,cfg){
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -544,207 +649,37 @@ function iniciarQuiz(P,cfg){
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
-      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes pensar y conversar sobre un texto. Puedes continuar con la Lección 8.3.";fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 3 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
-    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-}
+})();
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-document.addEventListener('DOMContentLoaded',function(){
+(function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
-  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-});
-
-/* ===== Taller de escritura (Tema 7) =====
-   tallerEscritura('id-caja',{clave:'n2-7-1', conectores:[...], meta:{oraciones:6, palabras:60}, lista:['…','…']})
-   Arma: área de texto, contadores, conectores detectados, lista de revisión, escuchar, copiar y borrar.
-   El borrador se guarda en este navegador (si el navegador lo permite). */
-function tallerEscritura(id,o){
-  var caja=document.getElementById(id), k='gph-borrador-'+o.clave;
-  var h='<label class="tl-etq" for="'+id+'-txt">'+(o.etiqueta||'Escribe aquí tu texto')+'</label>'+
-    '<textarea class="tl-txt" id="'+id+'-txt" rows="10" spellcheck="true" lang="es"'+(o.guia?' placeholder="'+o.guia.replace(/"/g,'&quot;')+'"':'')+'></textarea>'+
-    '<div class="tl-cuenta" id="'+id+'-cuenta" aria-live="polite"></div>';
-  if(o.conectores)h+='<div class="tl-conect" id="'+id+'-con" aria-live="polite"></div>';
-  h+='<div class="botones" style="justify-content:flex-start">'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-oir">🔊 Escuchar mi texto</button>'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-copiar">📋 Copiar mi texto</button>'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-borrar">🗑️ Borrar</button></div>'+
-    '<div class="tl-aviso" id="'+id+'-aviso" role="status" aria-live="polite"></div>';
-  if(o.lista){
-    h+='<fieldset class="tl-lista"><legend>✅ Revisa tu texto antes de entregarlo</legend>'+
-      o.lista.map(function(t,i){return '<label><input type="checkbox" id="'+id+'-c'+i+'"> '+t+'</label>';}).join('')+
-      '<p class="tl-listo" id="'+id+'-listo" aria-live="polite"></p></fieldset>';
-  }
-  caja.innerHTML=h;
-  var ta=document.getElementById(id+'-txt'), cu=document.getElementById(id+'-cuenta'), co=document.getElementById(id+'-con'), av=document.getElementById(id+'-aviso');
-  try{var g=localStorage.getItem(k); if(g)ta.value=g;}catch(e){}
-  function avisar(t){av.textContent=t; clearTimeout(avisar.t); avisar.t=setTimeout(function(){av.textContent='';},4000);}
-  function contar(){
-    var t=ta.value.trim(), pal=t?t.split(/\s+/).length:0, ora=(t.match(/[^.!?…]+[.!?…]+/g)||[]).length;
-    var m=o.meta||{}, s='Palabras: '+pal+(m.palabras?' (meta: '+m.palabras+' o más)':'')+' · Oraciones: '+ora+(m.oraciones?' (meta: '+m.oraciones+' o más)':'');
-    if(m.oraciones&&ora>=m.oraciones&&(!m.palabras||pal>=m.palabras))s+=' · 🎯 ¡Llegaste a la meta de extensión!';
-    cu.textContent=s;
-    if(co){
-      var low=' '+t.toLowerCase().replace(/[.,;:¡!¿?«»"()—]/g,' ')+' ', us=o.conectores.filter(function(c){return low.indexOf(' '+c.toLowerCase()+' ')>=0;});
-      co.innerHTML=us.length?'Conectores que usaste: '+us.map(function(c){return '<span class="tl-chip">'+c+'</span>';}).join(' '):'Todavía no aparece ningún conector de la lista. Recuerda unir tus ideas con ellos.';
-    }
-    try{localStorage.setItem(k,ta.value);}catch(e){}
-  }
-  ta.addEventListener('input',contar); contar();
-  document.getElementById(id+'-oir').addEventListener('click',function(){
-    if(!ta.value.trim()){avisar('Primero escribe algo para poder escucharlo.');return;}
-    hablar(ta.value,0.9);
-  });
-  document.getElementById(id+'-copiar').addEventListener('click',function(){
-    if(!ta.value.trim()){avisar('Todavía no hay texto para copiar.');return;}
-    function ok(){avisar('✓ Texto copiado. Ya puedes pegarlo en el foro o en un correo.');}
-    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(ta.value).then(ok,function(){ta.select();document.execCommand('copy');ok();});
-    else{ta.select();document.execCommand('copy');ok();}
-  });
-  var borrarListo=false;
-  document.getElementById(id+'-borrar').addEventListener('click',function(){
-    if(!borrarListo){borrarListo=true;avisar('¿Seguro? Pulsa «Borrar» otra vez para borrar todo el texto.');setTimeout(function(){borrarListo=false;},4000);return;}
-    borrarListo=false; ta.value=''; contar(); avisar('Texto borrado.'); ta.focus();
-  });
-  if(o.lista){
-    var cbs=caja.querySelectorAll('.tl-lista input'), li=document.getElementById(id+'-listo');
-    function rev(){var n=Array.prototype.filter.call(cbs,function(c){return c.checked;}).length;var t=ta.value.trim(),m=o.meta||{},pal=t?t.split(/\s+/).length:0,ora=(t.match(/[^.!?…]+[.!?…]+/g)||[]).length,corto=(m.oraciones&&ora<m.oraciones)||(m.palabras&&pal<m.palabras);
-    li.textContent=n<cbs.length?'Revisado: '+n+' de '+cbs.length:(corto?'Marcaste toda la lista, pero tu texto todavía no llega a la meta de extensión. Añade algo más.':'🎉 ¡Todo revisado! Tu texto está listo para compartir.');}
-    ta.addEventListener('input',rev);
-    cbs.forEach(function(c){c.addEventListener('change',rev);}); rev();
-  }
-}
-/* Rúbricas: cada celda recibe el nombre de su nivel para mostrarlo en el móvil */
-document.querySelectorAll('table.rubrica').forEach(function(t){
-  var cab=Array.prototype.map.call(t.querySelectorAll('thead th'),function(th){return th.textContent;});
-  t.querySelectorAll('tbody tr').forEach(function(tr){Array.prototype.forEach.call(tr.children,function(c,i){if(c.tagName==='TD')c.setAttribute('data-et',cab[i]);});});
-});
-
-/* Reproductores de escucha: velocidad, dos pasadas y parar */
-document.querySelectorAll('.escucha').forEach(function(c){
-  var vel=0.95, est=c.querySelector('.estado-esc');
-  c.querySelectorAll('.vel').forEach(function(b){b.addEventListener('click',function(){
-    vel=parseFloat(b.dataset.v); c.querySelectorAll('.vel').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
-  });});
-  c.querySelectorAll('[data-audio]').forEach(function(b){b.addEventListener('click',function(){
-    var t=document.getElementById(b.dataset.audio).textContent.replace(/\s+/g,' ').trim();
-    est.textContent=b.dataset.p==='1'?'🎧 Primera pasada: escucha sin escribir. ¿De qué trata?':'✏️ Segunda pasada: anota números, nombres y palabras clave.';
-    hablar(t,vel,function(){est.textContent=b.dataset.p==='1'?'Terminó la primera pasada. ¿Cuál es la idea general? Ahora escucha otra vez para los detalles.':'Terminó la segunda pasada. Responde las preguntas y comprueba con la transcripción.';});
-  });});
-  c.querySelector('.parar').addEventListener('click',function(){callar(); est.textContent='Audio detenido.';});
-});
-
-/* Grabadora: todo queda en el equipo del estudiante */
-(function(){
-  var bG=document.getElementById('gr-grabar'), bP=document.getElementById('gr-parar'), est=document.getElementById('gr-estado'),
-      reloj=document.getElementById('gr-reloj'), au=document.getElementById('gr-audio'), bajar=document.getElementById('gr-bajar');
-  var rec=null, trozos=[], t0=0, tic=null, flujo=null;
-  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder)){
-    bG.disabled=true; est.textContent='Este navegador no permite grabar aquí. Usa la grabadora de voz de tu celular.'; return;
-  }
-  function mmss(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2);}
-  bG.addEventListener('click',function(){
-    callar();
-    navigator.mediaDevices.getUserMedia({audio:true}).then(function(f){
-      flujo=f; trozos=[]; rec=new MediaRecorder(f);
-      rec.ondataavailable=function(e){if(e.data&&e.data.size)trozos.push(e.data);};
-      rec.onstop=function(){
-        var tipo=rec.mimeType||'audio/webm', blob=new Blob(trozos,{type:tipo}), url=URL.createObjectURL(blob);
-        au.src=url; au.hidden=false; bajar.href=url; bajar.hidden=false;
-        bajar.download='mi-presentacion.'+(tipo.indexOf('mp4')>=0?'m4a':tipo.indexOf('ogg')>=0?'ogg':'webm');
-        flujo.getTracks().forEach(function(t){t.stop();});
-        est.textContent='✓ Grabación lista ('+reloj.textContent+'). Escúchala y, si te gusta, descárgala.'; est.classList.remove('grabando');
-      };
-      rec.start(); t0=Date.now(); reloj.textContent='0:00';
-      tic=setInterval(function(){var s=Math.round((Date.now()-t0)/1000);reloj.textContent=mmss(s);if(s===180)est.textContent='🔴 Grabando… Ya llevas tres minutos: ve cerrando tu presentación.';},500);
-      bG.disabled=true; bP.disabled=false; au.hidden=true; bajar.hidden=true;
-      est.textContent='🔴 Grabando… Habla con calma. Pulsa «Detener» al terminar.'; est.classList.add('grabando');
-    }).catch(function(){
-      est.textContent='No se pudo usar el micrófono. Revisa que el navegador tenga permiso o usa la grabadora de tu celular.';
-    });
-  });
-  bP.addEventListener('click',function(){
-    if(rec&&rec.state!=='inactive')rec.stop(); clearInterval(tic); bG.disabled=false; bP.disabled=true; bG.textContent='🎙️ Grabar otra vez';
-  });
 })();
-
-clasificador('clasif-noticia','puntaje-noticia',[
-  {p:'<strong>Primera pasada.</strong> ¿Cuál es la idea principal?',ops:['Abrió una clínica comunitaria en el barrio Las Flores','Una vecina habla de los problemas del barrio','Las consultas médicas son cada vez más caras'],c:0,n:'Es de lo que trata toda la noticia.'},
-  {p:'<strong>Segunda pasada.</strong> ¿Qué días atiende la clínica?',ops:['Todos los días de la semana','De lunes a sábado','Solo de lunes a viernes'],c:1,n:'«De lunes a sábado, de ocho a ocho».'},
-  {p:'¿Cuántos pacientes atendió el primer día?',ops:['Ochenta','Doce','Ciento veinte'],c:2,n:'«…atendió a ciento veinte pacientes».'},
-  {p:'¿Qué servicios ofrece?',ops:['Consultas, vacunas y atención dental','Consultas, farmacia y laboratorio','Vacunas, cirugías y ambulancias'],c:0,n:'Lo enumera la noticia.'},
-  {p:'¿Quién es Inés Vargas?',ops:['Una vecina del barrio','La directora de la clínica','La periodista que da la noticia'],c:1,n:'«Según la directora, la doctora Inés Vargas…».'}
-],null,false);
-
-clasificador('clasif-hecho','puntaje-hecho',[
-  {p:'«La clínica abrió el lunes.»',c:0,n:'Se puede comprobar.'},
-  {p:'«Es lo mejor que le ha pasado a este barrio en muchos años.»',c:1,n:'«Lo mejor» es una valoración de la señora Ruiz.'},
-  {p:'«El personal habla inglés y español.»',c:0,n:'Se puede comprobar en la clínica.'},
-  {p:'«Yo creo que todos los barrios deberían tener un huerto.»',c:1,n:'«Creo que» y «deberían» señalan opinión.'},
-  {p:'«Cada familia cuida su propia parcela.»',c:0,n:'Es un dato sobre cómo funciona el huerto.'}
-],['Hecho','Opinión'],true);
-
-clasificador('clasif-causa','puntaje-causa',[
-  {p:'«Los vecinos tenían que viajar más de una hora para ver a un médico.» En la noticia, esto es…',ops:['La causa de que se construyera la clínica','El efecto de que se construyera la clínica'],c:0,n:'Señal: «porque».'},
-  {p:'«Muchas familias dejaban de ir a sus citas.» Esto es…',ops:['La causa del viaje largo','El efecto del viaje largo'],c:1,n:'Señal: «como resultado».'},
-  {p:'«Debido a la lluvia, se suspendió el partido.» ¿Cuál es la causa?',ops:['La lluvia','La suspensión del partido','El partido'],c:0,n:'«Debido a» marca la causa.'},
-  {p:'«Con el calor, la tierra se seca rápido; por eso necesitan voluntarios.» ¿Cuál es el efecto final?',ops:['El calor del verano','La tierra seca','Necesitan voluntarios'],c:2,n:'«Por eso» introduce el efecto.'}
-],null,false);
-
-clasificador('clasif-entrevista','puntaje-entrevista',[
-  {p:'¿De qué trata la entrevista?',ops:['De un huerto comunitario y lo que cambió en el barrio','De cómo cocinar con tomates, chiles y cilantro','De un problema con la basura en la ciudad'],c:0,n:'Es la idea general.'},
-  {p:'¿Cómo estaba el terreno hace tres años?',ops:['Ya tenía un huerto pequeño','Lleno de basura','Era un parque con juegos'],c:1,n:'«Estaba lleno de basura».'},
-  {p:'Según Tomás, ¿por qué los vecinos se conocen mejor?',ops:['Porque hacen fiestas cada mes','Porque pasan más tiempo afuera','Porque tienen un grupo de mensajes'],c:1,n:'Causa: pasan más tiempo afuera.'},
-  {p:'¿Qué necesitan ahora?',ops:['Más semillas y herramientas','Dinero para comprar el terreno','Más voluntarios para regar en verano'],c:2,n:'Último detalle de la entrevista.'}
-],null,false);
-
-tallerEscritura('taller-82',{clave:'8-2',etiqueta:'Mi guion para «Cuento mi experiencia»',
-  guia:'Hoy les voy a contar…  Pasó en…  Primero…  Luego…  Al final…  De esa experiencia aprendí que…',
-  meta:{oraciones:8,palabras:150},
-  conectores:['primero','luego','después','más tarde','entonces','de repente','al final','por fin','recuerdo que','aprendí que','por eso','porque'],
-  lista:['Digo cuándo y dónde pasó.','Cuento los hechos en orden.','Incluyo detalles de lo que veía, oía o sentía.','Tengo un cierre: lo que aprendí.','Ensayé en voz alta y dura unos tres minutos.']});
-
-var N='<span class="pasaje" style="font-size:.95rem">Preguntas sobre el <strong>audio 1</strong> (la clínica). Puedes volver a escucharlo en la <a href="#s-2-noticia">sección 2</a>.</span>';
-var E2='<span class="pasaje" style="font-size:.95rem">Preguntas sobre el <strong>audio 2</strong> (el huerto). Puedes volver a escucharlo en la <a href="#s-5-entrevista">sección 5</a>.</span>';
-iniciarQuiz([
-  {t:'En la <strong>primera pasada</strong> de un audio conviene…',o:['Buscar la idea general sin escribir','Anotar todos los números','Copiar las oraciones completas'],c:0,fijo:true,r:'<a href="#s-1-pasadas">1. Dos pasadas</a>'},
-  {t:'En la <strong>segunda pasada</strong> conviene anotar…',o:['Números, nombres y palabras clave','Oraciones completas, palabra por palabra','Solo la primera y la última frase'],c:0,r:'<a href="#s-1-pasadas">1. Dos pasadas</a>'},
-  {t:N+'¿Cuál es la idea principal de la noticia?',o:['Abrió una clínica comunitaria en el barrio','Los vecinos protestan por los médicos','La señora Ruiz consiguió un empleo'],c:0,r:'<a href="#s-2-noticia">2. Audio 1</a>'},
-  {t:N+'¿Hasta qué hora atiende la clínica?',o:['Hasta las ocho de la noche','Hasta las seis de la tarde','Hasta la medianoche'],c:0,r:'<a href="#s-2-noticia">2. Audio 1</a>'},
-  {t:N+'¿Cómo se decide el precio de las consultas?',o:['Según los ingresos de cada familia','Es el mismo precio para todos','Es gratis solo los sábados'],c:0,r:'<a href="#s-2-noticia">2. Audio 1</a>'},
-  {t:N+'¿Por qué se construyó la clínica?',o:['Porque los vecinos viajaban más de una hora para ver a un médico','Porque la ciudad tenía dinero que le había sobrado ese año','Porque la directora vive en el barrio Las Flores desde niña'],c:0,r:'<a href="#s-4-causa">4. Causa y efecto</a>'},
-  {t:N+'«Es lo mejor que le ha pasado a este barrio.» Esto es…',o:['Una opinión de la señora Ruiz','Un hecho comprobado por la clínica','Un dato de la directora'],c:0,r:'<a href="#s-3-hecho">3. Hecho u opinión</a>'},
-  {t:E2+'¿Qué cultivan en el huerto?',o:['Tomates, chiles, calabazas y cilantro','Maíz, frijoles, papas y lechuga','Flores, árboles frutales y hierbas'],c:0,r:'<a href="#s-5-entrevista">5. Audio 2</a>'},
-  {t:E2+'¿Cuál de estas frases de Tomás es una <strong>opinión</strong>?',o:['«Todos los barrios deberían tener un huerto.»','«Cada familia cuida su propia parcela.»','«Hace tres años el terreno tenía basura.»'],c:0,r:'<a href="#s-3-hecho">3. Hecho u opinión</a>'},
-  {t:E2+'«Con el calor la tierra se seca muy rápido.» Esto es la causa de que…',o:['Necesiten más voluntarios en verano','Los vecinos se conozcan mejor','Los niños aprendan sobre la comida'],c:0,r:'<a href="#s-4-causa">4. Causa y efecto</a>'},
-  {t:'«A causa del accidente, el tráfico se detuvo.» ¿Cuál es el <strong>efecto</strong>?',o:['El tráfico se detuvo','El accidente','La causa del accidente'],c:0,r:'<a href="#s-4-causa">4. Causa y efecto</a>'},
-  {t:'Antes de grabar una presentación, lo mejor es…',o:['Ensayarla en voz alta dos o tres veces','Leer el guion lo más rápido posible','Grabarla sin prepararla, para que sea natural'],c:0,r:'<a href="#s-6-presentacion">6. Prepara tu presentación</a>'}
-],{meta:10,
-   bien:'Ya escuchas en dos pasadas, distingues hechos y opiniones y reconoces causas y efectos. Puedes continuar con la Lección 8.3.',
-   repaso:'Vuelve a escuchar los audios y a las secciones que te indica cada pregunta, y repite el quiz.'});
 </script>
+
 </body>
 </html>

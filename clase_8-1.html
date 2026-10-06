@@ -1,91 +1,164 @@
 <!DOCTYPE html>
-<!-- Lección 8.1 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
-     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
-     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
+<!-- Lección 8.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 8.1 · Conversar con respeto: turnos, enlazar y aclarar</title>
+<title>Lección 8.1 · Fundamentos de la comunicación y escucha activa</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
-    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#555;--gris-claro:#eef1f4;
-    --dip:#1565c0;--dip-claro:#e3f2fd;
-    --hia:#ad1457;--hia-claro:#fce4ec;
-    --grp:#5c3900;--grp-claro:#fff3cd;
-    --exito:#2e7d32;--error:#c62828;
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --exito:#2e7d32;--exito-claro:#e8f5e9;--error:#c62828;--error-claro:#fdecea;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --emisor:#0277bd;--emisor-claro:#e1f5fe;--emisor-oscuro:#01486d;
+    --receptor:#ef6c00;--receptor-claro:#fff3e0;--receptor-oscuro:#a04200;
+    --escucha:#2e7d32;--escucha-claro:#e8f5e9;--escucha-oscuro:#1b5e20;
   }
   *{box-sizing:border-box}
   body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
   h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
   .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
   h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
-  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
-  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#6b5400}
-  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
-  .btn-primario{background:var(--cp);color:#fff}
-  .btn-primario:hover{background:var(--cp-oscuro)}
-  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
-  .btn-secundario:hover{background:#d6dde4}
-  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
-  .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
-  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
-  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
-  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.tabla tr:last-child td{border-bottom:none}
-  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad h4{color:#8a3d0c;margin-top:0}
-  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-lectura{background:#e3f2fd;color:#0d47a1}
-  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
-  /* Clasificadores */
-  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
-  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
-  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
-  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
-  .item-fb:empty{display:none}
-  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
-  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
-  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
-  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
-  .btn-op:disabled{cursor:default}
-  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
-  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
-  /* Lectura con marcas */
-  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
-  .texto-lectura p{margin:0 0 10px}
-  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
-  .leyenda span{display:inline-flex;align-items:center;gap:6px}
-  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
-  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
-  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
-  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
-  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
-  /* Índice */
+  .palabra-clave{background:#ffeb3b;padding:1px 6px;border-radius:3px;font-weight:600}
+
+  /* Diagrama emisor/receptor */
+  .esquema-comunicacion{background:#fff;border:2px solid var(--gris-claro);border-radius:12px;padding:22px 18px;margin:18px 0;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+  .esquema-comunicacion h4{margin-top:0;color:var(--cp-oscuro)}
+  .actores-com{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin:18px 0;max-width:600px;margin-left:auto;margin-right:auto}
+  @media(max-width:640px){.actores-com{grid-template-columns:1fr;gap:10px}}
+  .actor{border-radius:12px;padding:16px 14px;border:3px solid}
+  .actor.act-emisor{background:var(--emisor-claro);border-color:var(--emisor)}
+  .actor.act-receptor{background:var(--receptor-claro);border-color:var(--receptor)}
+  .actor .icono-act{font-size:2.2rem;display:block;margin-bottom:4px}
+  .actor .rol{font-weight:700;font-size:1.05rem;display:block;margin-bottom:4px}
+  .actor.act-emisor .rol{color:var(--emisor-oscuro)}
+  .actor.act-receptor .rol{color:var(--receptor-oscuro)}
+  .actor .desc-act{font-size:0.88rem;color:var(--texto);font-style:italic;display:block}
+  .flecha-com{font-size:1.8rem;color:var(--acento);font-weight:700}
+  @media(max-width:640px){.flecha-com{transform:rotate(90deg)}}
+  .mensaje-com{background:var(--acento-claro);border:2px dashed var(--acento);border-radius:10px;padding:10px 16px;margin:14px auto 0 auto;max-width:480px;font-style:italic;color:var(--acento-oscuro);font-weight:600}
+
+  /* Niveles de escucha */
+  .niveles-escucha{display:grid;grid-template-columns:1fr;gap:12px;margin:18px 0;max-width:680px;margin-left:auto;margin-right:auto}
+  .nivel-esc{background:#fff;border-radius:10px;padding:14px 18px;border-left:6px solid;display:flex;gap:14px;align-items:flex-start;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  .nivel-esc.n1{border-left-color:var(--gris)}
+  .nivel-esc.n2{border-left-color:var(--cp)}
+  .nivel-esc.n3{border-left-color:var(--escucha)}
+  .nivel-esc .num-niv{color:#fff;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;flex-shrink:0}
+  .nivel-esc.n1 .num-niv{background:var(--gris)}
+  .nivel-esc.n2 .num-niv{background:var(--cp)}
+  .nivel-esc.n3 .num-niv{background:var(--escucha)}
+  .nivel-esc .cont-niv{flex:1}
+  .nivel-esc .nombre-niv{font-weight:700;font-size:1rem;display:block;margin-bottom:4px}
+  .nivel-esc.n1 .nombre-niv{color:var(--gris)}
+  .nivel-esc.n2 .nombre-niv{color:var(--cp-oscuro)}
+  .nivel-esc.n3 .nombre-niv{color:var(--escucha-oscuro)}
+  .nivel-esc .desc-niv{font-size:0.92rem;line-height:1.55;display:block}
+
+  /* Frases plantilla de escucha activa */
+  .frases-escucha-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+  .frase-esc{background:var(--escucha-claro);border-left:4px solid var(--escucha);border-radius:8px;padding:12px 14px}
+  .frase-esc .fr-funcion{font-size:0.78rem;font-weight:700;color:var(--escucha-oscuro);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px}
+  .frase-esc .fr-icono{font-size:1.1rem;margin-right:4px}
+  .frase-esc .fr-ejemplos{font-size:0.92rem;font-style:italic;line-height:1.6;display:block;color:var(--texto)}
+
+  /* Tabla de canales de comunicación */
+  .tabla-canales{width:100%;border-collapse:collapse;margin:18px 0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);font-size:0.93rem}
+  .tabla-canales th{padding:12px 14px;color:#fff;text-align:left;font-size:0.95rem;font-weight:700;background:var(--cp)}
+  .tabla-canales th.h-fila{background:var(--gris)}
+  .tabla-canales td{padding:12px 14px;border-bottom:1px solid var(--gris-claro);vertical-align:top;line-height:1.55}
+  .tabla-canales td:first-child{font-weight:700;background:#f9fafb;color:var(--cp-oscuro);width:35%}
+  .tabla-canales tr:last-child td{border-bottom:none}
+  .tabla-canales .canal-verbal{color:var(--emisor-oscuro)}
+  .tabla-canales .canal-no-verbal{color:var(--receptor-oscuro)}
+  .tabla-canales .canal-paraverbal{color:var(--acento-oscuro)}
+
+  /* Actividad de clasificación: buena vs mala escucha */
+  .clasif-cont{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(123,63,191,0.08)}
+  .clasif-cont h4{margin-top:0;text-align:center;color:var(--acento-oscuro)}
+  .item-clasif{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:12px 0}
+  .item-clasif .texto-clasif{font-style:italic;line-height:1.6;font-size:0.93rem;margin-bottom:10px;padding:10px 12px;background:var(--gris-claro);border-radius:6px}
+  .item-clasif .opciones-clasif{display:flex;flex-wrap:wrap;gap:8px}
+  .btn-clasif{padding:10px 16px;border:2px solid;background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.93rem;transition:all 0.2s;font-weight:600;flex:1;min-width:140px}
+  .btn-clasif.bbuena{border-color:var(--exito);color:var(--exito)}
+  .btn-clasif.bbuena:hover{background:var(--exito-claro)}
+  .btn-clasif.bmala{border-color:var(--error);color:var(--error)}
+  .btn-clasif.bmala:hover{background:var(--error-claro)}
+  .btn-clasif.correcto{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default}
+  .btn-clasif.incorrecto{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-clasif{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-clasif.visible{display:block}
+  .puntaje-clasif{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.02rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Tarjetas de comunicación no verbal */
+  .gestos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:14px 0}
+  .gesto{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 12px;text-align:center;transition:all 0.2s}
+  .gesto:hover{border-color:var(--cp);box-shadow:0 4px 12px rgba(0,137,205,0.12);transform:translateY(-2px)}
+  .gesto .icono-gesto{font-size:2.2rem;display:block;margin-bottom:6px}
+  .gesto .nombre-gesto{font-weight:700;color:var(--cp-oscuro);display:block;font-size:0.95rem;margin-bottom:4px}
+  .gesto .mensaje-gesto{font-size:0.85rem;color:var(--texto);font-style:italic;display:block;line-height:1.45}
+
+  /* Quiz final */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-reflexion{background:#e8f5e9;color:#2e7d32}
+
+  /* ── Índice de la lección ── */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -95,13 +168,17 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
-  .aviso-voz.visible{display:block}
-  /* Quiz */
+  /* ── Quiz de la lección ── */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -121,95 +198,54 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
+  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 
-  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
-  .qz-repaso a{color:#004d44;font-weight:700}
-  /* ── Comunes desde el Tema 4 ── */
-  .item-ops{flex-wrap:wrap}
-  .apilado .item{flex-direction:column;align-items:stretch}
-  .apilado .item-ops{flex-direction:column}
-  .apilado .btn-op{text-align:left;font-weight:400}
-  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
-  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
-  .pasaje p{margin:0 0 6px}
-  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
-  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
-  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
-  /* Taller de escritura (Tema 7) */
-  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
-  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
-  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
-  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
-  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
-  .tl-conect{font-size:.95rem;margin:4px 0 8px}
-  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
-  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
-  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
-  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
-  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
-  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
-  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
-  .rubrica{font-size:.92rem}
-  .rubrica td,.rubrica th{vertical-align:top}
-  .marca{border-radius:3px;padding:0 2px;font-weight:700}
-  .m-postura{background:#e3f2fd;color:#0d3c78}
-  .m-razon{background:#fff3e0;color:#7a3a00}
-  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
-  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
-  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
-  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
-  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
-  .oculta-marcas .marca::before{content:none}
-  @media(max-width:640px){
-    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
-    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
-    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
-    .rubrica td{border:none;border-top:1px solid #d5dde3}
-    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
-  }
-
-  .normas{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:12px 0}
-  .normas div{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:10px 14px}
-  .normas strong{color:var(--cp-oscuro)}
-  .guion p{margin:0 0 10px}
-  .guion .quien{font-family:'Segoe UI',Arial,sans-serif;font-weight:700;color:var(--cp-oscuro)}
-  .guion .rol{display:inline-block;font-family:'Segoe UI',Arial,sans-serif;font-size:.75rem;font-weight:700;background:var(--cp-claro);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:10px;padding:0 8px;margin-left:4px;vertical-align:middle}
-  .frases td:first-child{font-weight:700;color:var(--cp-oscuro)}
-  .roles4{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:12px 0}
-  .roles4 div{background:var(--cp-claro);border-radius:10px;padding:10px 12px;text-align:center}
-  .roles4 .ico{font-size:1.6rem;display:block}
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
-<h1>Lección 8.1 · Conversar con respeto: turnos, enlazar y aclarar</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 8: Hablar, colaborar y proyecto final · Unas 2 horas, a tu ritmo</p>
+
+<h1>Lección 8.1 · Fundamentos de la comunicación y escucha activa</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 8 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <ul class="lista-bonita" style="margin:0">
-    <li>Seguir las <strong>normas</strong> de una discusión en grupo.</li>
-    <li><strong>Pedir la palabra</strong> con respeto y esperar tu turno.</li>
-    <li><strong>Enlazar</strong> tu comentario con lo que dijo otra persona.</li>
-    <li><strong>Pedir y dar aclaraciones</strong> cuando algo no queda claro.</li>
+  <ul>
+    <li>Comprender que la <strong>comunicación interpersonal</strong> es un intercambio donde los roles de emisor y receptor se alternan.</li>
+    <li>Distinguir tres <strong>niveles de escucha</strong>: oír, escuchar y escuchar activamente.</li>
+    <li>Aprender frases de <strong>escucha activa</strong> para usar en la vida diaria.</li>
+    <li>Reconocer la importancia de la <strong>comunicación no verbal</strong> (gestos, postura, contacto visual).</li>
   </ul>
-  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.S.CC.1 · 2.S.CC.2 · 2.S.CC.4</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-normas">Las normas de una buena discusión</a></li>
-    <li><a href="#s-2-modelo">Diálogo modelo: la reunión de padres</a></li>
-    <li><a href="#s-3-turnos">Pedir la palabra y respetar el turno</a></li>
-    <li><a href="#s-4-enlazar">Enlazar con lo que dijo otro</a></li>
-    <li><a href="#s-5-aclarar">Pedir y dar aclaraciones</a></li>
-    <li><a href="#s-6-circulo">El círculo de ideas</a></li>
+    <li><a href="#s-1-comunicacion">¿Qué es la comunicación interpersonal?</a></li>
+    <li><a href="#s-2-niveles">Los tres niveles de escucha</a></li>
+    <li><a href="#s-3-frases">Frases de escucha activa</a></li>
+    <li><a href="#s-4-no-verbal">La comunicación no verbal</a></li>
+    <li><a href="#s-5-actividad">Actividad: ¿buena o mala escucha?</a></li>
+    <li><a href="#s-6-vida-diaria">La escucha en la vida diaria</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -221,150 +257,265 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
-<p>En la clase, en una reunión de padres, en el trabajo o en la consulta del médico, conversamos con otras personas para resolver algo juntos. Una buena conversación no es la que gana quien habla más alto, sino aquella en la que <strong>todos se escuchan</strong> y las ideas de uno ayudan a las de otro. Hablar bien en grupo se aprende, igual que escribir bien. En este último tema del nivel vas a practicar cómo pedir la palabra, cómo unir tu idea a la de otra persona y qué decir cuando no entiendes algo.</p>
-<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán.</p>
 
-<details open id="s-1-normas">
-<summary>1. Las normas de una buena discusión <span class="caja-tiempo">10 min</span></summary>
-<div class="contenido-detalle">
-<div class="normas">
-  <div><strong>👂 Escucha</strong> hasta el final, sin interrumpir ni mirar el teléfono.</div>
-  <div><strong>✋ Pide la palabra</strong> y espera tu turno.</div>
-  <div><strong>🔗 Enlaza</strong> tu idea con lo que ya se dijo.</div>
-  <div><strong>❓ Pregunta</strong> cuando algo no esté claro.</div>
-  <div><strong>🎯 Habla del tema</strong> y sé breve, para que todos participen.</div>
-  <div><strong>🤝 Respeta</strong> las opiniones distintas: critica las ideas, no a las personas.</div>
+<p>Llegaste al último tema del Nivel 1. En los temas anteriores aprendiste a <strong>leer</strong> (decodificar palabras, comprender párrafos, interpretar gráficas) y a <strong>escribir</strong> (oraciones completas, párrafos de distintos tipos). Ahora completas el círculo con las dos habilidades que faltan: <span class="palabra-clave">hablar</span> y <span class="palabra-clave">escuchar</span>.</p>
+
+<p>En esta lección te centras en una idea clave: <strong>escuchar bien es tan importante como hablar bien</strong>. Quien no sabe escuchar tampoco sabe responder, y quien no sabe responder no puede participar en una conversación, en una cita con el médico, en una entrevista de trabajo o en una reunión familiar.</p>
+
+<div class="clave-pedagogica">
+  <strong>🧠 Clave de la lección:</strong> la comunicación no es solo «hablar para que el otro me entienda». Es un intercambio: <em>yo hablo, tú escuchas; tú hablas, yo escucho</em>. Quien domina ese intercambio se hace entender y entiende a los demás.
 </div>
-<div class="tip"><strong>💡 ¿Tú o usted?</strong> Recuerda la Lección 3.3: con compañeros de clase, <em>tú</em>; en una cita médica, una entrevista o con alguien mayor que no conoces, <em>usted</em>. Las frases de esta lección sirven en las dos formas.</div>
+
+<details open id="s-1-comunicacion">
+<summary>1. ¿Qué es la comunicación interpersonal? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>Una conversación es un intercambio</h3>
+
+<p>La <span class="palabra-clave">comunicación interpersonal</span> ocurre cuando dos o más personas intercambian un mensaje. Lo importante es la palabra <em>intercambio</em>: no basta con que una persona hable y la otra esté callada. En una conversación auténtica, los roles se alternan continuamente.</p>
+
+<div class="esquema-comunicacion">
+  <h4>El esquema básico de la comunicación</h4>
+  <div class="actores-com">
+    <div class="actor act-emisor">
+      <span class="icono-act">🗣️</span>
+      <span class="rol">Emisor</span>
+      <span class="desc-act">La persona que envía el mensaje</span>
+    </div>
+    <span class="flecha-com">⇄</span>
+    <div class="actor act-receptor">
+      <span class="icono-act">👂</span>
+      <span class="rol">Receptor</span>
+      <span class="desc-act">La persona que recibe el mensaje</span>
+    </div>
+  </div>
+  <div class="mensaje-com">📨 El mensaje viaja entre ambos y los roles se alternan</div>
+</div>
+
+<p>En una conversación real, las personas <strong>cambian de rol todo el tiempo</strong>. Cuando yo hablo, soy emisor; cuando tú respondes, tú eres el emisor y yo el receptor. Por eso se dice que la comunicación interpersonal es <strong>bidireccional</strong>: el mensaje va y vuelve.</p>
+
+<h3>Tres maneras de fallar en una conversación</h3>
+
+<p>Cuando una conversación no funciona, normalmente es por alguna de estas razones:</p>
+
+<ul class="lista-bonita">
+  <li>Una persona habla todo el tiempo y no deja espacio para que el otro responda.</li>
+  <li>El receptor no presta atención: piensa en otra cosa mientras el emisor habla.</li>
+  <li>Nadie pide aclaración cuando algo no se entiende, y la conversación sigue con un malentendido.</li>
+</ul>
+
+<p>En esta lección vas a aprender a <strong>evitar las tres cosas</strong>.</p>
+
 </div>
 </details>
 
-<details id="s-2-modelo">
-<summary>2. Diálogo modelo: la reunión de padres <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-niveles">
+<summary>2. Los tres niveles de escucha <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-<p>Cuatro padres del comité de la escuela discuten si la escuela debería abrir la biblioteca los sábados. Lee el diálogo o escúchalo. Fíjate en las frases destacadas.</p>
-<div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="leer-reu">🔊 Escuchar el diálogo</button></div>
-<div class="texto-lectura guion" id="texto-reu">
-<p><span class="quien">Marta</span><span class="rol">inicia</span><br>Buenas tardes a todos. Hoy queremos decidir si pedimos a la escuela que abra la biblioteca los sábados. <strong>¿Quién quiere empezar?</strong></p>
-<p><span class="quien">Jorge</span><span class="rol">enlaza</span><br><strong>Si me permiten</strong>, yo creo que es buena idea. Muchos padres trabajamos entre semana y el sábado es el único día en que podemos ir con nuestros hijos.</p>
-<p><span class="quien">Lucía</span><span class="rol">pregunta</span><br><strong>Estoy de acuerdo con Jorge, y añado</strong> que los niños podrían usar las computadoras para las tareas. Pero tengo una duda. <strong>¿Podrías explicar</strong> quién atendería la biblioteca ese día?</p>
-<p><span class="quien">Jorge</span><br>Buena pregunta. <strong>Lo que quiero decir es que</strong> podría haber voluntarios del comité, por turnos.</p>
-<p><span class="quien">Samuel</span><span class="rol">resume</span><br><strong>Entiendo tu punto, Jorge, pero</strong> me preocupa que no haya suficientes voluntarios. <strong>Retomando lo que dijo Lucía</strong> sobre las computadoras, quizás podríamos empezar solo dos sábados al mes.</p>
-<p><span class="quien">Marta</span><br>Entonces, <strong>para resumir</strong>: todos vemos la utilidad, la duda es quién atiende, y Samuel propone empezar con dos sábados al mes. ¿Les parece bien que lo propongamos así?</p>
+
+<h3>No es lo mismo «oír» que «escuchar»</h3>
+
+<p>En español tenemos dos verbos parecidos pero distintos: <strong>oír</strong> y <strong>escuchar</strong>. Y dentro de «escuchar» hay todavía un nivel más profundo: la <span class="palabra-clave">escucha activa</span>. Aquí van en orden:</p>
+
+<div class="niveles-escucha">
+  <div class="nivel-esc n1">
+    <span class="num-niv">1</span>
+    <div class="cont-niv">
+      <span class="nombre-niv">👂 Oír</span>
+      <span class="desc-niv">Los sonidos llegan al oído sin que la persona los procese. Es automático: oigo el tráfico de la calle, oigo el ventilador, pero no les presto atención.</span>
+    </div>
+  </div>
+  <div class="nivel-esc n2">
+    <span class="num-niv">2</span>
+    <div class="cont-niv">
+      <span class="nombre-niv">🎧 Escuchar</span>
+      <span class="desc-niv">La persona presta atención a un sonido específico y trata de entenderlo. Escucho la radio para enterarme de las noticias. Pero todavía no participo activamente.</span>
+    </div>
+  </div>
+  <div class="nivel-esc n3">
+    <span class="num-niv">3</span>
+    <div class="cont-niv">
+      <span class="nombre-niv">💡 Escucha activa</span>
+      <span class="desc-niv">La persona escucha con la intención de comprender de verdad lo que el otro dice. Hace gestos, pregunta si no entiende, no interrumpe y, al final, demuestra que entendió. Es el nivel que necesitas en el trabajo, en el médico y en casa.</span>
+    </div>
+  </div>
 </div>
-<p style="font-size:.9rem;color:#555">Texto escrito para esta lección.</p>
-<div class="clasificador apilado" id="clasif-reu"></div>
-<div class="puntaje" id="puntaje-reu" role="status" aria-live="polite"></div>
-<div class="tip"><strong>💡 Fíjate:</strong> Samuel no está de acuerdo del todo, pero lo dice con respeto («Entiendo tu punto, pero…») y propone una solución. Discrepar no es pelear.</div>
+
+<div class="tip">
+  <strong>📝 La gran diferencia:</strong> en la escucha activa, mi objetivo no es <em>responder rápido</em>, sino <em>entender bien</em>. Primero comprendo, después respondo.
+</div>
+
 </div>
 </details>
 
-<details id="s-3-turnos">
-<summary>3. Pedir la palabra y respetar el turno <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-frases">
+<summary>3. Frases de escucha activa <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-<table class="tabla frases">
-  <caption class="sr-solo">Frases para pedir la palabra</caption>
-  <thead><tr><th scope="col">Situación</th><th scope="col">Frases útiles</th></tr></thead>
+
+<h3>¿Cómo demuestro que estoy escuchando?</h3>
+
+<p>La escucha activa no es solo callarse mientras el otro habla. Hay que <strong>demostrar</strong> con palabras concretas que uno está siguiendo la conversación. Aquí tienes frases para cuatro funciones importantes:</p>
+
+<div class="frases-escucha-grid">
+  <div class="frase-esc">
+    <span class="fr-funcion"><span class="fr-icono">✅</span>Mostrar acuerdo</span>
+    <span class="fr-ejemplos">«Estoy de acuerdo con…», «Comparto lo que dijo…», «Tiene razón en que…»</span>
+  </div>
+  <div class="frase-esc">
+    <span class="fr-funcion"><span class="fr-icono">➕</span>Añadir información</span>
+    <span class="fr-ejemplos">«Quiero añadir que…», «También me parece importante…», «A lo que dijo, agrego que…»</span>
+  </div>
+  <div class="frase-esc">
+    <span class="fr-funcion"><span class="fr-icono">❓</span>Pedir aclaración</span>
+    <span class="fr-ejemplos">«¿Puedes explicar…?», «No entendí bien la parte de…», «¿Podrías repetir lo último?»</span>
+  </div>
+  <div class="frase-esc">
+    <span class="fr-funcion"><span class="fr-icono">🔁</span>Parafrasear</span>
+    <span class="fr-ejemplos">«Entonces, lo que dices es…», «Si entendí bien, tú piensas que…»</span>
+  </div>
+</div>
+
+<h3>Una conversación con escucha activa</h3>
+
+<p>Mira cómo se usan estas frases en una conversación entre dos personas que estudian para el GED y hablan de sus metas:</p>
+
+<div class="esquema-comunicacion" style="text-align:left">
+  <p style="margin:0 0 10px 0"><strong style="color:var(--emisor-oscuro)">🗣️ María:</strong> Mi meta este semestre es terminar el nivel 1 y empezar el nivel 2 lo antes posible.</p>
+  <p style="margin:0 0 10px 0"><strong style="color:var(--receptor-oscuro)">👂 Carlos:</strong> <em>Estoy de acuerdo contigo</em>; yo también quiero avanzar rápido. <em>¿Puedes explicar</em> por qué tienes prisa?</p>
+  <p style="margin:0 0 10px 0"><strong style="color:var(--emisor-oscuro)">🗣️ María:</strong> Porque trabajo de día y solo tengo dos noches por semana para estudiar.</p>
+  <p style="margin:0"><strong style="color:var(--receptor-oscuro)">👂 Carlos:</strong> <em>Entonces, lo que dices es</em> que tu horario te limita. <em>Quiero añadir que</em> a mí me pasa igual con el segundo turno.</p>
+</div>
+
+<p>Fíjate en que Carlos no se limita a contestar lo suyo: <strong>primero acusa recibo</strong> de lo que dijo María (con «estoy de acuerdo», con «entonces, lo que dices es») y <strong>después añade</strong> su parte. Eso es escucha activa.</p>
+
+</div>
+</details>
+
+<details id="s-4-no-verbal">
+<summary>4. La comunicación no verbal <span class="caja-tiempo">8 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El cuerpo también habla</h3>
+
+<p>Cuando conversas con otra persona, no solo importan las palabras. El <strong>cuerpo, la cara y la voz</strong> envían mensajes paralelos que pueden reforzar lo que decimos o, al contrario, contradecirlo. Por eso hay tres canales que conviene conocer:</p>
+
+<table class="tabla-canales">
+  <thead>
+    <tr>
+      <th scope="col" class="h-fila">Canal</th>
+      <th scope="col">Qué es y para qué sirve</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td>Quieres hablar</td><td>«Si me permiten…» · «¿Puedo añadir algo?» · «Quisiera decir algo sobre eso.»</td></tr>
-    <tr><td>Alguien está hablando</td><td>Espera a que termine. Si es en línea, usa el botón de levantar la mano.</td></tr>
-    <tr><td>Tienes que interrumpir</td><td>«Perdón que interrumpa, pero…» · «Disculpe, una pregunta rápida.»</td></tr>
-    <tr><td>Quieres dar paso a otro</td><td>«¿Qué opinas tú, Ana?» · «No hemos escuchado a Luis todavía.»</td></tr>
+    <tr>
+      <td class="canal-verbal">🔤 Verbal</td>
+      <td>Las <strong>palabras</strong> que decimos. Es el mensaje explícito: lo que el otro puede leer si escribiéramos la conversación en papel.</td>
+    </tr>
+    <tr>
+      <td class="canal-no-verbal">🙋 No verbal</td>
+      <td>Los <strong>gestos, la postura, las miradas</strong> y las expresiones de la cara. Indican si la persona está atenta, aburrida, sorprendida, en desacuerdo o cansada.</td>
+    </tr>
+    <tr>
+      <td class="canal-paraverbal">🎤 Paraverbal</td>
+      <td>El <strong>tono de voz, el volumen, la velocidad y las pausas</strong>. Una misma frase puede sonar amable o agresiva según cómo se pronuncie.</td>
+    </tr>
   </tbody>
 </table>
-<div class="tip"><strong>💡 En una clase por Zoom:</strong> activa el micrófono solo cuando te toca, usa la mano virtual para pedir la palabra y el chat para preguntas cortas.</div>
-<h3>¿Respetuoso o no?</h3>
-<div class="clasificador apilado" id="clasif-turnos"></div>
-<div class="puntaje" id="puntaje-turnos" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l8-1.html#turnos" target="_blank" rel="noopener noreferrer">✋ Practica más: los turnos</a>
+
+<h3>Gestos que demuestran escucha activa</h3>
+
+<p>Estos son cuatro gestos básicos que indican al hablante que lo estamos escuchando con respeto:</p>
+
+<div class="gestos-grid">
+  <div class="gesto">
+    <span class="icono-gesto">👀</span>
+    <span class="nombre-gesto">Contacto visual</span>
+    <span class="mensaje-gesto">«Te estoy mirando, te presto atención»</span>
+  </div>
+  <div class="gesto">
+    <span class="icono-gesto">🙆</span>
+    <span class="nombre-gesto">Asentir con la cabeza</span>
+    <span class="mensaje-gesto">«Te sigo, entiendo lo que dices»</span>
+  </div>
+  <div class="gesto">
+    <span class="icono-gesto">🪑</span>
+    <span class="nombre-gesto">Postura abierta</span>
+    <span class="mensaje-gesto">«Estoy disponible para escuchar»</span>
+  </div>
+  <div class="gesto">
+    <span class="icono-gesto">😊</span>
+    <span class="nombre-gesto">Expresión amable</span>
+    <span class="mensaje-gesto">«Lo que dices me interesa»</span>
+  </div>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Idea clave:</strong> si las palabras dicen una cosa y el cuerpo dice la contraria, la gente suele creerle más al cuerpo. Por eso, una postura encorvada, brazos cruzados o mirada perdida envían el mensaje «no me interesa», aunque la boca diga «sí, claro, te escucho».
+</div>
+
 </div>
 </details>
 
-<details id="s-4-enlazar">
-<summary>4. Enlazar con lo que dijo otro <span class="caja-tiempo">20 min</span></summary>
+<details id="s-5-actividad">
+<summary>5. Actividad: ¿buena o mala escucha? <span class="caja-tiempo">8 min</span></summary>
 <div class="contenido-detalle">
-<p><span class="palabra-clave">Enlazar</span> es empezar tu comentario conectándolo con lo que dijo otra persona. Así la conversación avanza en lugar de saltar de un tema a otro.</p>
-<table class="tabla frases">
-  <caption class="sr-solo">Frases para enlazar comentarios</caption>
-  <thead><tr><th scope="col">Para…</th><th scope="col">Frases útiles</th></tr></thead>
-  <tbody>
-    <tr><td>Estar de acuerdo y sumar</td><td>«Estoy de acuerdo con… y añado que…» · «Como dijo…, yo también…»</td></tr>
-    <tr><td>No estar de acuerdo</td><td>«Entiendo tu punto, pero…» · «Veo lo que dices; sin embargo…»</td></tr>
-    <tr><td>Retomar una idea</td><td>«Retomando lo que dijo…» · «Volviendo a la idea de…»</td></tr>
-    <tr><td>Resumir</td><td>«Para resumir…» · «Entonces, lo que hemos dicho es…»</td></tr>
-  </tbody>
-</table>
-<h3>¿Qué respuesta enlaza mejor?</h3>
-<div class="clasificador apilado" id="clasif-enlazar"></div>
-<div class="puntaje" id="puntaje-enlazar" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l8-1.html#enlazar" target="_blank" rel="noopener noreferrer">🔗 Practica más: enlazar</a>
+
+<p>Aquí tienes seis situaciones cortas. En cada una, decide si la persona está practicando <strong>buena escucha</strong> (escucha activa) o <strong>mala escucha</strong> (no presta atención, interrumpe, juzga, etc.).</p>
+
+<div class="clasif-cont">
+  <h4>🎧 Clasifica cada situación</h4>
+  <div id="items-clasif"></div>
+  <div class="puntaje-clasif" id="puntaje-clasif" role="status">Aciertos: 0 / 6</div>
+</div>
+
 </div>
 </details>
 
-<details id="s-5-aclarar">
-<summary>5. Pedir y dar aclaraciones <span class="caja-tiempo">20 min</span></summary>
+<details id="s-6-vida-diaria">
+<summary>6. La escucha en la vida diaria <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-<p>No entender algo es normal. Lo que no conviene es quedarse callado. Pedir una aclaración es una forma de respeto: demuestra que estás escuchando.</p>
-<table class="tabla frases">
-  <caption class="sr-solo">Frases para pedir y dar aclaraciones</caption>
-  <thead><tr><th scope="col">Para…</th><th scope="col">Frases útiles</th></tr></thead>
-  <tbody>
-    <tr><td>Pedir que expliquen</td><td>«¿Podrías explicar…?» · «¿Me puede repetir…, por favor?» · «No entendí bien la parte de…»</td></tr>
-    <tr><td>Comprobar que entendiste</td><td>«¿Quieres decir que…?» · «Entonces, si entiendo bien…»</td></tr>
-    <tr><td>Aclarar lo que tú dijiste</td><td>«Lo que quiero decir es que…» · «Me explico mejor: …» · «Por ejemplo, …»</td></tr>
-  </tbody>
-</table>
-<div class="tip"><strong>💡 En la consulta del médico:</strong> repite con tus palabras lo que te indicó: «Entonces, si entiendo bien, tomo una pastilla cada ocho horas durante una semana, ¿verdad?». Si algo está mal, el médico lo corregirá en ese momento.</div>
-<h3>¿Qué dirías?</h3>
-<div class="clasificador apilado" id="clasif-aclarar"></div>
-<div class="puntaje" id="puntaje-aclarar" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l8-1.html#aclarar" target="_blank" rel="noopener noreferrer">❓ Practica más: aclarar</a>
-</div>
-</details>
-
-<details id="s-6-circulo">
-<summary>6. El círculo de ideas <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<p>En la clase en vivo trabajarás en grupos de cuatro sobre un texto leído. Cada persona tiene un <strong>rol</strong>, y en la siguiente ronda los roles cambian:</p>
-<div class="roles4">
-  <div><span class="ico" aria-hidden="true">🚀</span><strong>Quien inicia</strong><br>Presenta el tema y la primera idea.</div>
-  <div><span class="ico" aria-hidden="true">🔗</span><strong>Quien enlaza</strong><br>Conecta su idea con la anterior.</div>
-  <div><span class="ico" aria-hidden="true">❓</span><strong>Quien pregunta</strong><br>Pide aclaraciones o ejemplos.</div>
-  <div><span class="ico" aria-hidden="true">📝</span><strong>Quien resume</strong><br>Recoge lo dicho al final.</div>
-</div>
-<h3>Rúbrica de participación oral</h3>
-<table class="tabla rubrica">
-  <caption class="sr-solo">Rúbrica de participación oral: cuatro criterios en tres niveles</caption>
-  <thead><tr><th scope="col">Criterio</th><th scope="col">3 · Logrado</th><th scope="col">2 · En camino</th><th scope="col">1 · Inicial</th></tr></thead>
-  <tbody>
-    <tr><th scope="row">Respeta los turnos</th><td>Pide la palabra y espera siempre</td><td>A veces interrumpe</td><td>Interrumpe con frecuencia</td></tr>
-    <tr><th scope="row">Enlaza su comentario</th><td>Conecta con lo que dijo otro, usando frases para enlazar</td><td>A veces conecta</td><td>Habla sin relación con lo anterior</td></tr>
-    <tr><th scope="row">Pide o da aclaraciones</th><td>Pregunta y aclara cuando hace falta</td><td>Lo hace solo si se le pide</td><td>No pregunta ni aclara</td></tr>
-    <tr><th scope="row">Escucha con atención</th><td>Mira al hablante y retoma sus ideas</td><td>Escucha, pero se distrae</td><td>No presta atención</td></tr>
-  </tbody>
-</table>
-<p style="font-size:.92rem">Total: 12 puntos.</p>
-<div class="tip"><strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> en la cena, propón un tema (¿adónde ir el domingo?) y repartan los cuatro roles. Al final, quien resume dice lo que se decidió.</div>
+<p>La escucha activa se ve un poco distinta según la situación. Estas son algunas claves para cuatro momentos muy comunes:</p>
+<ul class="lista-bonita">
+  <li><strong>🩺 En una cita médica:</strong> lleva tus preguntas escritas. Cuando el médico termine, repite con tus palabras lo que entendiste: «Entonces, debo tomar la pastilla dos veces al día, ¿es así?». Si usa una palabra que no conoces, pide que te la explique.</li>
+  <li><strong>💼 En una entrevista de trabajo:</strong> mira a la persona, espera a que termine la pregunta antes de responder y, si no la entendiste, pide con respeto: «¿Podría repetir la pregunta, por favor?».</li>
+  <li><strong>📞 En una llamada por teléfono:</strong> como no hay gestos, usa palabras cortas para mostrar que sigues la conversación («sí», «entiendo», «claro») y anota los datos importantes: nombres, fechas, números.</li>
+  <li><strong>💻 En una videollamada:</strong> mira a la cámara cuando hables, apaga el micrófono cuando no hablas para evitar ruidos, y no hagas otras cosas al mismo tiempo: se nota.</li>
+</ul>
+<div class="tip"><strong>📝 Usted o tú:</strong> con el médico, en una entrevista o con alguien que no conoces, lo normal es tratar de <strong>usted</strong>: «¿Podría explicarme…?». Con la familia y los amigos, de <strong>tú</strong>: «¿Puedes explicarme…?».</div>
 </div>
 </details>
 
 <details id="s-tarea">
 <summary>7. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p><strong>Una conversación con escucha activa.</strong> Elige una de estas dos opciones:</p>
 <ul class="lista-bonita">
-  <li><strong>Para el foro.</strong> Responde a dos compañeros usando una frase para enlazar distinta en cada respuesta: «Estoy de acuerdo con… y añado…», «Entiendo tu punto, pero…» o «¿Podrías explicar…?».</li>
-  <li><strong>Mi frase de rescate.</strong> Escribe tres frases que usarías en una cita médica o en una oficina para pedir que te repitan o te expliquen algo. Practícalas en voz alta.</li>
-  <li><strong>Observa una conversación.</strong> Mira un programa de debate o una reunión. Anota una frase respetuosa para discrepar y una interrupción que no fue respetuosa.</li>
+  <li><strong>Opción A:</strong> conversa unos cinco minutos con alguien de tu casa, un amigo o un compañero de trabajo sobre cómo le fue en el día o sobre sus metas. Usa al menos <strong>tres frases de escucha activa</strong> distintas (acuerdo, añadir, pedir aclaración o parafrasear).</li>
+  <li><strong>Opción B:</strong> si no tienes con quién conversar, mira una entrevista corta en la televisión o en internet. Cada vez que la persona termine una idea, detén el video y escribe una paráfrasis: «Entonces, lo que dice es que…».</li>
 </ul>
+<p>Después, escribe en tu cuaderno un párrafo corto: qué frases usaste, qué gestos hiciste y qué aprendiste de la otra persona que no sabías.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Una conversación con escucha activa»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Frases</td><td class="nivel-4">Usé al menos tres frases de escucha activa</td><td class="nivel-1">Usé una o ninguna</td></tr>
+      <tr><td>No interrumpir</td><td class="nivel-4">Esperé a que la otra persona terminara antes de hablar</td><td class="nivel-1">Interrumpí varias veces</td></tr>
+      <tr><td>Paráfrasis</td><td class="nivel-4">Repetí con mis palabras al menos una idea de la otra persona</td><td class="nivel-1">No comprobé si había entendido</td></tr>
+      <tr><td>Mi párrafo</td><td class="nivel-4">Cuenta qué hice y qué aprendí, con oraciones completas</td><td class="nivel-1">No escribí el párrafo</td></tr>
+    </tbody>
+  </table>
+</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>8. Quiz de la lección <span class="caja-tiempo">15 min</span></summary>
+<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Al final pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -378,111 +529,112 @@
 <details id="s-cierre">
 <summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-<h3>Lo que aprendiste en esta lección</h3>
+<h3>Lo que aprendiste</h3>
 <ul class="lista-bonita">
-  <li>Normas: escuchar, pedir la palabra, enlazar, preguntar, hablar del tema y respetar.</li>
-  <li><strong>Pedir la palabra:</strong> «Si me permiten…», «¿Puedo añadir algo?».</li>
-  <li><strong>Enlazar:</strong> «Estoy de acuerdo con… y añado…», «Entiendo tu punto, pero…».</li>
-  <li><strong>Aclarar:</strong> «¿Podrías explicar…?», «¿Quieres decir que…?», «Lo que quiero decir es…».</li>
+  <li>La comunicación interpersonal es un <strong>intercambio</strong>: los roles de emisor y receptor se alternan.</li>
+  <li>Hay tres niveles de escucha: <strong>oír</strong>, <strong>escuchar</strong> y <strong>escuchar activamente</strong>.</li>
+  <li>Las frases de escucha activa sirven para mostrar acuerdo, añadir, pedir aclaración y parafrasear.</li>
+  <li>El cuerpo y la voz también comunican: contacto visual, postura abierta, tono amable.</li>
 </ul>
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Qué dirías para no estar de acuerdo sin ofender?</li>
-    <li>¿Qué frase usarías si el médico habla muy rápido?</li>
-    <li>¿Cuál de los cuatro roles del círculo de ideas te resulta más fácil? ¿Y el más difícil?</li>
+    <li>¿Qué diferencia hay entre oír y escuchar?</li>
+    <li>¿Qué frase usas para comprobar que entendiste bien?</li>
+    <li>¿Qué gestos muestran que escuchas?</li>
   </ul>
 </div>
-<div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_8-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.2 · Comprensión auditiva y presentación oral con audio</a>. Escucharás para entender y prepararás tu propia presentación grabada.</div>
+
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_8-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.2 · Leer y conversar: la técnica 1-2-4</a>. Pondrás en práctica la escucha activa para hablar de un texto, pensándolo primero tú solo y luego conversándolo con otros.
+</div>
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 8 · Lección 8.1</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 8 · Lección 8.1</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<script>
-/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
-(function(){
-  var voz=null, hay=('speechSynthesis' in window);
-  function elegir(){
-    if(!hay)return;
-    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
-    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
-    voz=null;
-    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
-    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
-  }
-  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
-  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
-  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
-  /* hablar(texto, velocidad, alTerminar) */
-  window.hablar=function(texto,vel,fin){
-    if(!hay||!texto){aviso();return;}
-    speechSynthesis.cancel();
-    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
-    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
-    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
-  };
-  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
-  window.hablarPalabras=function(texto){
-    if(!hay){aviso();return;}
-    speechSynthesis.cancel();
-    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
-  };
-  window.callar=function(){if(hay)speechSynthesis.cancel();};
-  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
-})();
 
-/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
-function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
-  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
-  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
-  items.forEach(function(it,i){
-    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
-    var ops=it.ops||opciones;
-    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
-      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
-      '<span class="item-fb" aria-live="polite"></span>';
-    caja.appendChild(d);
-    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
-    var fb=d.querySelector('.item-fb');
-    d.querySelectorAll('.btn-op').forEach(function(b){
+<script>
+(function(){
+  /* =========================================================
+     ACTIVIDAD DE CLASIFICACIÓN: BUENA VS MALA ESCUCHA
+     ========================================================= */
+  var situaciones=[
+    {texto:'Mientras su amigo le cuenta sobre su trabajo, Pedro mira el celular y revisa los mensajes.', tipo:'mala', explica:'Es mala escucha: el celular se vuelve una distracción y envía el mensaje "lo que dices no me interesa".'},
+    {texto:'Ana mira a su vecina a los ojos, asiente con la cabeza y le pregunta: "¿Puedes contarme más sobre esa parte?".', tipo:'buena', explica:'Es escucha activa: contacto visual, asentimiento y una pregunta para profundizar.'},
+    {texto:'Luis interrumpe a su esposa a media oración para decir lo que él piensa, sin esperar que ella termine.', tipo:'mala', explica:'Es mala escucha: interrumpir corta la idea del otro y comunica "lo mío es más importante que lo tuyo".'},
+    {texto:'Después de oír a su hermano, Marta dice: "Entonces, lo que dices es que el horario te complica. ¿Entendí bien?".', tipo:'buena', explica:'Es escucha activa: Marta parafrasea lo escuchado y verifica que entendió correctamente.'},
+    {texto:'Carmen mantiene los brazos cruzados, mira al techo y suspira mientras su supervisora habla.', tipo:'mala', explica:'Es mala escucha: la postura cerrada y los suspiros indican aburrimiento o desacuerdo sin palabras.'},
+    {texto:'Cuando José no entiende una palabra que usó la doctora, le dice con calma: "Perdón, no conozco esa palabra, ¿podrías explicarla?".', tipo:'buena', explica:'Es escucha activa: pedir aclaración con respeto demuestra interés en entender bien.'}
+  ];
+
+  var contItems=document.getElementById('items-clasif');
+  var resueltos={};
+  var aciertosClasif=0;
+
+  situaciones.forEach(function(sit,idx){
+    var div=document.createElement('div');
+    div.className='item-clasif';
+    div.innerHTML=
+      '<div class="texto-clasif">'+sit.texto+'</div>'+
+      '<div class="opciones-clasif">'+
+        '<button type="button" class="btn-clasif bbuena" data-tipo="buena">✅ Buena escucha</button>'+
+        '<button type="button" class="btn-clasif bmala" data-tipo="mala">❌ Mala escucha</button>'+
+      '</div>'+
+      '<div class="retro-clasif" id="retro-clasif-'+idx+'" role="status"></div>';
+    contItems.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-clasif');
+    botones.forEach(function(b){
       b.addEventListener('click',function(){
-        if(hechas[i])return;
-        if(+b.getAttribute('data-j')===it.c){
-          b.classList.add('correcta'); hechas[i]=true; bien++;
-          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
-          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+        if(resueltos[idx])return;
+        if(b.getAttribute('data-tipo')===sit.tipo){
+          b.classList.add('correcto');
+          resueltos[idx]=true;
+          aciertosClasif++;
+          actualizarClasif();
+          var r=document.getElementById('retro-clasif-'+idx);
+          r.textContent='✅ '+sit.explica;
+          r.classList.add('visible');
         }else{
-          b.classList.add('incorrecta'); b.disabled=true;
-          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+          var r2=document.getElementById('retro-clasif-'+idx); r2.textContent='❌ Pregúntate: ¿esa persona está atenta y trata de entender al otro?'; r2.classList.add('visible');
+          b.classList.add('incorrecto');
+          setTimeout(function(){b.classList.remove('incorrecto')},500);
         }
       });
     });
   });
-  marcador();
-}
 
-/* ===== Quiz de la lección =====
-   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
-        ae:audio entrecortado opcional, fijo:no barajar,
-        r:enlace de repaso que aparece si la respuesta es incorrecta}]
-   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
-function iniciarQuiz(P,cfg){
-  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  function actualizarClasif(){
+    var el=document.getElementById('puntaje-clasif');
+    el.textContent='Aciertos: '+aciertosClasif+' / '+situaciones.length;
+    if(aciertosClasif===situaciones.length){
+      el.innerHTML='🎉 ¡Perfecto! Aciertos: '+aciertosClasif+' / '+situaciones.length;
+      el.style.color='var(--exito)';
+    }
+  }
+
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "En una conversación, ¿qué significa que los roles «se alternan»?", "o": ["Que cada persona es a veces emisor y a veces receptor", "Que una persona siempre habla y la otra siempre escucha", "Que las dos hablan al mismo tiempo"], "c": 0}, {"t": "¿Quién es el <strong>emisor</strong>?", "o": ["La persona que envía el mensaje", "La persona que recibe el mensaje", "El teléfono"], "c": 0}, {"t": "María está en una cita médica. Se oye el ruido del aire acondicionado, pero ella se concentra en lo que dice la doctora. ¿Qué hace María con el ruido?", "o": ["Lo oye", "Lo escucha activamente", "No lo oye"], "c": 0}, {"t": "Carlos dice: «Quiero terminar el GED este año para estudiar enfermería». ¿Qué respuesta muestra escucha activa?", "o": ["Entonces, el GED es un paso para entrar a enfermería, ¿es así?", "Ah, sí. Yo también tengo metas.", "A mí me gusta la cocina."], "c": 0}, {"t": "¿Cuál frase sirve para <strong>pedir aclaración</strong> con respeto?", "o": ["¿Puedes explicar esa parte un poco más, por favor?", "¿Qué? No te entiendo nada.", "Habla más fuerte."], "c": 0}, {"t": "«Si entendí bien, tú piensas que…» sirve para…", "o": ["parafrasear", "cambiar de tema", "interrumpir"], "c": 0}, {"t": "¿Cuál es un ejemplo de comunicación <strong>no verbal</strong>?", "o": ["Asentir con la cabeza", "Decir «estoy de acuerdo»", "Escribir un correo"], "c": 0}, {"t": "El tono, el volumen y la velocidad de la voz forman el canal…", "o": ["paraverbal", "verbal", "escrito"], "c": 0}, {"t": "En una videollamada de trabajo, Pedro tiene la cámara apagada, come y mira el celular. ¿Qué mensaje envía?", "o": ["Que la reunión no le interesa", "Que está muy concentrado", "Que practica la escucha activa"], "c": 0}, {"t": "En la escucha activa, ¿qué es primero?", "o": ["Entender bien", "Responder rápido", "Dar mi opinión"], "c": 0}, {"t": "En una llamada telefónica, como no hay gestos, conviene…", "o": ["usar palabras cortas como «entiendo» y anotar los datos importantes", "quedarse callado todo el tiempo", "hablar al mismo tiempo que la otra persona"], "c": 0}, {"t": "Con el médico o en una entrevista de trabajo, lo normal es tratar de…", "o": ["usted: «¿Podría repetir, por favor?»", "tú, siempre", "no hablar"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a||p.ae){
+    if(p.x||p.a){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -490,7 +642,7 @@ function iniciarQuiz(P,cfg){
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -505,155 +657,37 @@ function iniciarQuiz(P,cfg){
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
-      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes escuchar activamente. Puedes continuar con la Lección 8.2.";fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 2 y 3 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
-    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-}
+})();
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-document.addEventListener('DOMContentLoaded',function(){
+(function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
-  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-});
-
-/* ===== Taller de escritura (Tema 7) =====
-   tallerEscritura('id-caja',{clave:'n2-7-1', conectores:[...], meta:{oraciones:6, palabras:60}, lista:['…','…']})
-   Arma: área de texto, contadores, conectores detectados, lista de revisión, escuchar, copiar y borrar.
-   El borrador se guarda en este navegador (si el navegador lo permite). */
-function tallerEscritura(id,o){
-  var caja=document.getElementById(id), k='gph-borrador-'+o.clave;
-  var h='<label class="tl-etq" for="'+id+'-txt">'+(o.etiqueta||'Escribe aquí tu texto')+'</label>'+
-    '<textarea class="tl-txt" id="'+id+'-txt" rows="10" spellcheck="true" lang="es"'+(o.guia?' placeholder="'+o.guia.replace(/"/g,'&quot;')+'"':'')+'></textarea>'+
-    '<div class="tl-cuenta" id="'+id+'-cuenta" aria-live="polite"></div>';
-  if(o.conectores)h+='<div class="tl-conect" id="'+id+'-con" aria-live="polite"></div>';
-  h+='<div class="botones" style="justify-content:flex-start">'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-oir">🔊 Escuchar mi texto</button>'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-copiar">📋 Copiar mi texto</button>'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-borrar">🗑️ Borrar</button></div>'+
-    '<div class="tl-aviso" id="'+id+'-aviso" role="status" aria-live="polite"></div>';
-  if(o.lista){
-    h+='<fieldset class="tl-lista"><legend>✅ Revisa tu texto antes de entregarlo</legend>'+
-      o.lista.map(function(t,i){return '<label><input type="checkbox" id="'+id+'-c'+i+'"> '+t+'</label>';}).join('')+
-      '<p class="tl-listo" id="'+id+'-listo" aria-live="polite"></p></fieldset>';
-  }
-  caja.innerHTML=h;
-  var ta=document.getElementById(id+'-txt'), cu=document.getElementById(id+'-cuenta'), co=document.getElementById(id+'-con'), av=document.getElementById(id+'-aviso');
-  try{var g=localStorage.getItem(k); if(g)ta.value=g;}catch(e){}
-  function avisar(t){av.textContent=t; clearTimeout(avisar.t); avisar.t=setTimeout(function(){av.textContent='';},4000);}
-  function contar(){
-    var t=ta.value.trim(), pal=t?t.split(/\s+/).length:0, ora=(t.match(/[^.!?…]+[.!?…]+/g)||[]).length;
-    var m=o.meta||{}, s='Palabras: '+pal+(m.palabras?' (meta: '+m.palabras+' o más)':'')+' · Oraciones: '+ora+(m.oraciones?' (meta: '+m.oraciones+' o más)':'');
-    if(m.oraciones&&ora>=m.oraciones&&(!m.palabras||pal>=m.palabras))s+=' · 🎯 ¡Llegaste a la meta de extensión!';
-    cu.textContent=s;
-    if(co){
-      var low=' '+t.toLowerCase().replace(/[.,;:¡!¿?«»"()—]/g,' ')+' ', us=o.conectores.filter(function(c){return low.indexOf(' '+c.toLowerCase()+' ')>=0;});
-      co.innerHTML=us.length?'Conectores que usaste: '+us.map(function(c){return '<span class="tl-chip">'+c+'</span>';}).join(' '):'Todavía no aparece ningún conector de la lista. Recuerda unir tus ideas con ellos.';
-    }
-    try{localStorage.setItem(k,ta.value);}catch(e){}
-  }
-  ta.addEventListener('input',contar); contar();
-  document.getElementById(id+'-oir').addEventListener('click',function(){
-    if(!ta.value.trim()){avisar('Primero escribe algo para poder escucharlo.');return;}
-    hablar(ta.value,0.9);
-  });
-  document.getElementById(id+'-copiar').addEventListener('click',function(){
-    if(!ta.value.trim()){avisar('Todavía no hay texto para copiar.');return;}
-    function ok(){avisar('✓ Texto copiado. Ya puedes pegarlo en el foro o en un correo.');}
-    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(ta.value).then(ok,function(){ta.select();document.execCommand('copy');ok();});
-    else{ta.select();document.execCommand('copy');ok();}
-  });
-  var borrarListo=false;
-  document.getElementById(id+'-borrar').addEventListener('click',function(){
-    if(!borrarListo){borrarListo=true;avisar('¿Seguro? Pulsa «Borrar» otra vez para borrar todo el texto.');setTimeout(function(){borrarListo=false;},4000);return;}
-    borrarListo=false; ta.value=''; contar(); avisar('Texto borrado.'); ta.focus();
-  });
-  if(o.lista){
-    var cbs=caja.querySelectorAll('.tl-lista input'), li=document.getElementById(id+'-listo');
-    function rev(){var n=Array.prototype.filter.call(cbs,function(c){return c.checked;}).length;var t=ta.value.trim(),m=o.meta||{},pal=t?t.split(/\s+/).length:0,ora=(t.match(/[^.!?…]+[.!?…]+/g)||[]).length,corto=(m.oraciones&&ora<m.oraciones)||(m.palabras&&pal<m.palabras);
-    li.textContent=n<cbs.length?'Revisado: '+n+' de '+cbs.length:(corto?'Marcaste toda la lista, pero tu texto todavía no llega a la meta de extensión. Añade algo más.':'🎉 ¡Todo revisado! Tu texto está listo para compartir.');}
-    ta.addEventListener('input',rev);
-    cbs.forEach(function(c){c.addEventListener('change',rev);}); rev();
-  }
-}
-/* Rúbricas: cada celda recibe el nombre de su nivel para mostrarlo en el móvil */
-document.querySelectorAll('table.rubrica').forEach(function(t){
-  var cab=Array.prototype.map.call(t.querySelectorAll('thead th'),function(th){return th.textContent;});
-  t.querySelectorAll('tbody tr').forEach(function(tr){Array.prototype.forEach.call(tr.children,function(c,i){if(c.tagName==='TD')c.setAttribute('data-et',cab[i]);});});
-});
-
-document.getElementById('leer-reu').addEventListener('click',function(){
-  var t=Array.prototype.map.call(document.querySelectorAll('#texto-reu p'),function(p){var q=p.querySelector('.quien').textContent, c=p.cloneNode(true); c.querySelectorAll('.quien,.rol').forEach(function(x){x.remove();}); return q+' dice: '+c.textContent.trim();}).join(' ');
-  hablar(t,0.9);
-});
-
-clasificador('clasif-reu','puntaje-reu',[
-  {p:'¿Qué frase usa Jorge para pedir la palabra?',ops:['«¿Quién quiere empezar?»','«Si me permiten…»','«Para resumir…»'],c:1,n:'Pide permiso antes de hablar.'},
-  {p:'¿Cómo enlaza Lucía con lo que dijo Jorge?',ops:['«Estoy de acuerdo con Jorge, y añado…»','«Buena pregunta, eso es importante.»','«Entiendo tu punto, Jorge, pero…»'],c:0,n:'Nombra a Jorge y suma una idea.'},
-  {p:'¿Qué pide Lucía?',ops:['Que voten en ese momento','Una aclaración sobre quién atendería','Que Jorge deje de hablar'],c:1,n:'«¿Podrías explicar quién atendería…?»'},
-  {p:'¿Cómo muestra Samuel su desacuerdo?',ops:['Interrumpe a Jorge en voz alta','Dice que la idea de Jorge es mala','Reconoce la idea y propone otra opción'],c:2,n:'«Entiendo tu punto, Jorge, pero…» y propone dos sábados al mes.'},
-  {p:'¿Qué hace Marta al final?',ops:['Resume lo dicho y pide acuerdo','Da por terminada la reunión sin más','Cambia de tema por completo'],c:0,n:'«Para resumir…».'}
-],null,false);
-
-clasificador('clasif-turnos','puntaje-turnos',[
-  {p:'«Perdón que interrumpa, pero ¿podemos ver la hora?»',c:0,n:'Pide disculpas y es breve.'},
-  {p:'«¡Eso no es así! Déjame hablar a mí.»',c:1,n:'Corta al otro sin respeto.'},
-  {p:'Levantar la mano virtual en Zoom y esperar.',c:0,n:'Es la forma correcta en línea.'},
-  {p:'Hablar mientras otra persona sigue explicando.',c:1,n:'Hay que esperar a que termine.'},
-  {p:'«No hemos oído a Rosa todavía. ¿Qué piensas tú?»',c:0,n:'Da paso a quien no ha hablado.'}
-],['Respetuoso','No respetuoso'],false);
-
-clasificador('clasif-enlazar','puntaje-enlazar',[
-  {p:'Ana dijo: «El parque necesita más luces por la noche».',ops:['Como dijo Ana, falta luz, y añado que también faltan bancas.','Yo quiero hablar de los precios del supermercado.','Eso que dijo Ana no tiene ningún sentido para nadie.'],c:0,n:'Retoma la idea de Ana y suma otra.'},
-  {p:'Pedro dijo: «Las reuniones deberían ser por la mañana».',ops:['No, porque no.','Entiendo tu punto, Pedro, pero muchos trabajamos por la mañana.','Bueno, el clima de mañana va a estar frío.'],c:1,n:'Discrepa con respeto y da una razón.'},
-  {p:'Al final de la reunión, nadie sabe qué se decidió.',ops:['Mejor nos vamos ya, que es tarde.','Yo opino lo mismo que dije al principio.','Para resumir: acordamos pintar el salón el sábado.'],c:2,n:'Resumir aclara lo que se decidió.'}
-],null,false);
-
-clasificador('clasif-aclarar','puntaje-aclarar',[
-  {p:'La farmacéutica habla muy rápido y no entiendes la dosis.',ops:['Asentir y salir sin preguntar nada','¿Me puede repetir cada cuántas horas, por favor?','Buscar la respuesta en internet al llegar a casa'],c:1,n:'Pide que repita lo concreto que no entendiste.'},
-  {p:'Un compañero dice: «Hay que cambiar el plan». No sabes qué plan.',ops:['¿Quieres decir el plan de estudio del grupo?','Sí, claro, estoy totalmente de acuerdo.','No me importa, haz lo que quieras.'],c:0,n:'Comprueba lo que entendiste.'},
-  {p:'Te dicen que tu idea no se entendió.',ops:['Repetir la misma frase más alto','Lo que quiero decir es que… y dar un ejemplo','Quedarse callado el resto de la reunión'],c:1,n:'Aclara con otras palabras y un ejemplo.'},
-  {p:'En una entrevista de trabajo no entiendes una pregunta.',ops:['Responder cualquier cosa para no quedar mal','Decir que no sabe y cambiar de tema','Disculpe, ¿podría explicar qué quiere decir con «turno rotativo»?'],c:2,n:'Pedir aclaración demuestra interés.'}
-],null,false);
-
-iniciarQuiz([
-  {t:'¿Cuál es la forma más respetuosa de pedir la palabra?',o:['«Si me permiten, quisiera añadir algo.»','«¡Ahora me toca a mí!»','Empezar a hablar más alto que los demás.'],c:0,r:'<a href="#s-3-turnos">3. Pedir la palabra</a>'},
-  {t:'Alguien está explicando una idea y tú quieres opinar. ¿Qué haces?',o:['Espero a que termine y pido la palabra','Le interrumpo para no olvidar mi idea','Hablo con el compañero de al lado'],c:0,r:'<a href="#s-3-turnos">3. Pedir la palabra</a>'},
-  {t:'En una clase por Zoom, para pedir la palabra conviene…',o:['Usar la mano virtual y esperar','Activar el micrófono y hablar enseguida','Escribir en mayúsculas en el chat'],c:0,r:'<a href="#s-3-turnos">3. Pedir la palabra</a>'},
-  {t:'¿Qué frase <strong>enlaza</strong> con un comentario anterior?',o:['«Estoy de acuerdo con Luis, y añado que…»','«Yo quiero hablar de otra cosa.»','«¿A qué hora termina la reunión?»'],c:0,r:'<a href="#s-4-enlazar">4. Enlazar</a>'},
-  {t:'¿Cómo muestras desacuerdo con respeto?',o:['«Entiendo tu punto, pero creo que…»','«Eso que dices es una tontería.»','Quedarte callado, molesto, sin decir nada.'],c:0,r:'<a href="#s-4-enlazar">4. Enlazar</a>'},
-  {t:'«Retomando lo que dijo Carmen…» sirve para…',o:['Conectar con una idea dicha antes','Cambiar de tema por completo','Terminar la reunión'],c:0,r:'<a href="#s-4-enlazar">4. Enlazar</a>'},
-  {t:'¿Cuándo conviene pedir una aclaración?',o:['Cuando no entiendes algo importante','Nunca, porque parece de mala educación','Solo al final de la reunión, si sobra tiempo'],c:0,r:'<a href="#s-5-aclarar">5. Aclarar</a>'},
-  {t:'¿Qué frase sirve para <strong>comprobar</strong> que entendiste?',o:['«¿Quieres decir que…?»','«Ya sé, ya sé, sigue.»','«Bueno, como tú digas.»'],c:0,r:'<a href="#s-5-aclarar">5. Aclarar</a>'},
-  {t:'Para aclarar algo que <strong>tú</strong> dijiste, puedes decir…',o:['«Lo que quiero decir es que…»','«No me entiendes nunca.»','«Olvídalo, no importa.»'],c:0,r:'<a href="#s-5-aclarar">5. Aclarar</a>'},
-  {t:'En el círculo de ideas, la persona que <strong>resume</strong>…',o:['Recoge al final lo que se dijo','Presenta el tema al principio','Hace todas las preguntas'],c:0,r:'<a href="#s-6-circulo">6. El círculo de ideas</a>'},
-  {t:'¿Cuál es una señal de que <strong>escuchas con atención</strong>?',o:['Retomas las ideas del que habló','Miras tu teléfono mientras habla','Preparas tu respuesta sin escuchar'],c:0,r:'<a href="#s-1-normas">1. Las normas</a>'},
-  {t:'En una discusión se critican…',o:['Las ideas, no a las personas','Las personas, no las ideas','Las ideas y también las personas'],c:0,r:'<a href="#s-1-normas">1. Las normas</a>'}
-],{meta:10,
-   bien:'Ya sabes participar en una conversación con respeto: pedir la palabra, enlazar y aclarar. Puedes continuar con la Lección 8.2.',
-   repaso:'Vuelve a las secciones que te indica cada pregunta y repite el quiz: con práctica sale.'});
+})();
 </script>
+
 </body>
 </html>

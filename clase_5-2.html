@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<!-- Lección 5.2 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
-     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
-     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
+<!-- Lección 5.2 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 5.2 · Vocabulario por contexto: pistas, afijos y raíces</title>
+<title>Lección 5.2 · El escenario y su impacto en la historia</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
     --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#555;--gris-claro:#eef1f4;
-    --dip:#1565c0;--dip-claro:#e3f2fd;
-    --hia:#ad1457;--hia-claro:#fce4ec;
-    --grp:#5c3900;--grp-claro:#fff3cd;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --vista:#1976d2;--vista-claro:#e3f2fd;
+    --sonido:#7b1fa2;--sonido-claro:#f3e5f5;
+    --olfato:#388e3c;--olfato-claro:#e8f5e9;
+    --gusto:#f57c00;--gusto-claro:#fff3e0;
+    --tacto:#c2185b;--tacto-claro:#fce4ec;
     --exito:#2e7d32;--error:#c62828;
   }
   *{box-sizing:border-box}
@@ -28,9 +29,9 @@
   h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
@@ -38,54 +39,91 @@
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
   .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#6b5400}
+  .tip strong{color:#8a6d00}
   .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
   .btn-primario{background:var(--cp);color:#fff}
   .btn-primario:hover{background:var(--cp-oscuro)}
   .btn-secundario{background:var(--gris-claro);color:var(--texto)}
   .btn-secundario:hover{background:#d6dde4}
-  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
   .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
-  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
-  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
-  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.tabla tr:last-child td{border-bottom:none}
-  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad h4{color:#8a3d0c;margin-top:0}
-  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-lectura{background:#e3f2fd;color:#0d47a1}
-  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
-  /* Clasificadores */
-  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
-  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
-  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
-  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
-  .item-fb:empty{display:none}
-  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
-  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
-  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
-  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
-  .btn-op:disabled{cursor:default}
-  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
-  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
-  /* Lectura con marcas */
-  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
-  .texto-lectura p{margin:0 0 10px}
-  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
-  .leyenda span{display:inline-flex;align-items:center;gap:6px}
-  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
-  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
-  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
-  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
-  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
-  /* Índice */
+
+  /* Tarjetas de los 5 sentidos */
+  .sentidos-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}
+  @media(max-width:760px){.sentidos-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:420px){.sentidos-grid{grid-template-columns:1fr}}
+  .tarjeta-sentido{border-radius:10px;padding:14px;border:2px solid;background:#fff;text-align:center}
+  .tarjeta-sentido .emoji{font-size:2rem;display:block;margin-bottom:6px}
+  .tarjeta-sentido h4{margin:0 0 6px 0;font-size:1rem}
+  .tarjeta-sentido p{margin:0;font-size:0.85rem;line-height:1.4}
+  .s-vista{border-color:var(--vista);background:var(--vista-claro)}
+  .s-vista h4{color:var(--vista)}
+  .s-sonido{border-color:var(--sonido);background:var(--sonido-claro)}
+  .s-sonido h4{color:var(--sonido)}
+  .s-olfato{border-color:var(--olfato);background:var(--olfato-claro)}
+  .s-olfato h4{color:var(--olfato)}
+  .s-gusto{border-color:var(--gusto);background:var(--gusto-claro)}
+  .s-gusto h4{color:var(--gusto)}
+  .s-tacto{border-color:var(--tacto);background:var(--tacto-claro)}
+  .s-tacto h4{color:var(--tacto)}
+
+  /* Tabla escenario-emoción */
+  table.tabla-clima{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-clima th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.tabla-clima td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.tabla-clima tr:last-child td{border-bottom:none}
+  table.tabla-clima td:first-child{font-weight:700;width:200px;color:var(--cp-oscuro)}
+
+  /* Fragmento literario */
+  .fragmento{background:#fffaf3;border:2px solid var(--acento);border-radius:10px;padding:20px 24px;margin:18px 0;font-family:'Georgia',serif;font-size:1.05rem;line-height:1.85}
+  .fragmento h4{color:#b35316;margin-top:0;font-family:'Poppins',sans-serif}
+  .fragmento p{margin:0 0 12px 0}
+  .marca-vista{background:var(--vista-claro);color:var(--vista);padding:1px 4px;border-radius:3px;font-weight:600}
+  .marca-sonido{background:var(--sonido-claro);color:var(--sonido);padding:1px 4px;border-radius:3px;font-weight:600}
+  .marca-olfato{background:var(--olfato-claro);color:var(--olfato);padding:1px 4px;border-radius:3px;font-weight:600}
+  .marca-gusto{background:var(--gusto-claro);color:var(--gusto);padding:1px 4px;border-radius:3px;font-weight:600}
+  .marca-tacto{background:var(--tacto-claro);color:var(--tacto);padding:1px 4px;border-radius:3px;font-weight:600}
+
+  /* Clasificador de detalles sensoriales */
+  .clasificador-sent{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .item-sent{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:10px 0}
+  .frase-sent{font-family:'Georgia',serif;font-size:1.05rem;margin-bottom:10px;line-height:1.6}
+  .opciones-sent{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+  .btn-sent{padding:7px 12px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.85rem;transition:all 0.2s}
+  .btn-sent.btn-vista{border-color:var(--vista);color:var(--vista)}
+  .btn-sent.btn-vista:hover{background:var(--vista-claro)}
+  .btn-sent.btn-sonido{border-color:var(--sonido);color:var(--sonido)}
+  .btn-sent.btn-sonido:hover{background:var(--sonido-claro)}
+  .btn-sent.btn-olfato{border-color:var(--olfato);color:var(--olfato)}
+  .btn-sent.btn-olfato:hover{background:var(--olfato-claro)}
+  .btn-sent.btn-gusto{border-color:var(--gusto);color:var(--gusto)}
+  .btn-sent.btn-gusto:hover{background:var(--gusto-claro)}
+  .btn-sent.btn-tacto{border-color:var(--tacto);color:var(--tacto)}
+  .btn-sent.btn-tacto:hover{background:var(--tacto-claro)}
+  .btn-sent.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-sent.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .feedback-item{margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.9rem;display:none}
+  .feedback-item.mostrar{display:block}
+  .feedback-item.correcto{background:#d4edda;color:#155724}
+  .feedback-item.incorrecto{background:#f8d7da;color:#721c24}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Emparejar escenario-emoción */
+  .empareja-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media(max-width:640px){.empareja-grid{grid-template-columns:1fr}}
+  .col-empareja h4{color:var(--cp-oscuro);margin-bottom:10px;text-align:center;font-size:1rem}
+  .item-empareja{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:12px 14px;margin-bottom:8px;cursor:pointer;font-size:0.95rem;transition:all 0.2s}
+  .item-empareja:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .item-empareja.seleccionado{border-color:var(--acento);background:#fff3e0;font-weight:600}
+  .item-empareja.unido{border-color:var(--exito);background:#d4edda;cursor:default}
+  .item-empareja.unido::after{content:' ✓';color:var(--exito);font-weight:700}
+
+  /* ── Índice de la lección ── */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -95,13 +133,17 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
-  .aviso-voz.visible{display:block}
-  /* Quiz */
+  /* ── Quiz de la lección ── */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -121,92 +163,50 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
+  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 
-  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
-  .qz-repaso a{color:#004d44;font-weight:700}
-  /* ── Comunes desde el Tema 4 ── */
-  .item-ops{flex-wrap:wrap}
-  .apilado .item{flex-direction:column;align-items:stretch}
-  .apilado .item-ops{flex-direction:column}
-  .apilado .btn-op{text-align:left;font-weight:400}
-  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
-  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
-  .pasaje p{margin:0 0 6px}
-  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
-  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
-  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
-  /* Taller de escritura (Tema 7) */
-  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
-  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
-  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
-  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
-  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
-  .tl-conect{font-size:.95rem;margin:4px 0 8px}
-  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
-  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
-  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
-  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
-  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
-  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
-  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
-  .rubrica{font-size:.92rem}
-  .rubrica td,.rubrica th{vertical-align:top}
-  .marca{border-radius:3px;padding:0 2px;font-weight:700}
-  .m-postura{background:#e3f2fd;color:#0d3c78}
-  .m-razon{background:#fff3e0;color:#7a3a00}
-  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
-  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
-  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
-  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
-  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
-  .oculta-marcas .marca::before{content:none}
-  @media(max-width:640px){
-    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
-    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
-    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
-    .rubrica td{border:none;border-top:1px solid #d5dde3}
-    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
-  }
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 
-  .pista-m{background:#fff3cd;color:#5c3900;font-weight:700;padding:0 3px;border-radius:3px}
-  .nueva{background:#e3f2fd;color:#0d3c78;font-weight:700;padding:0 3px;border-radius:3px}
-  .entrada{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:12px 16px;margin:12px 0;font-family:Georgia,serif;line-height:1.8}
-  .entrada .lema{font-size:1.25rem;font-weight:700;color:var(--cp-oscuro)}
-  .entrada .abr{font-style:italic;color:#555}
-  .pasos{counter-reset:paso;list-style:none;padding:0}
-  .pasos li{counter-increment:paso;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:10px 14px 10px 52px;margin:8px 0;position:relative}
-  .pasos li::before{content:counter(paso);position:absolute;left:12px;top:10px;width:28px;height:28px;border-radius:50%;background:var(--cp-oscuro);color:#fff;text-align:center;line-height:28px;font-weight:700}
+  button.item-empareja,button.item-ce{display:block;width:100%;text-align:left;font:inherit;color:inherit}
+  button.item-ce{font-family:'Georgia',serif}
+  button.item-empareja:focus-visible,button.item-ce:focus-visible{outline:3px solid var(--cp-oscuro);outline-offset:2px}
 </style>
 </head>
 <body>
-<h1>Lección 5.2 · Vocabulario por contexto: pistas, afijos y raíces</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 5: Comparar textos, vocabulario y lenguaje figurado · Unas 2 horas, a tu ritmo</p>
+
+<h1>Lección 5.2 · El escenario y su impacto en la historia</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 5 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <ul class="lista-bonita" style="margin:0">
-    <li>Usar las <strong>pistas del contexto</strong> (definición, sinónimo, contraste, ejemplo y sentido general) para deducir el significado de una palabra.</li>
-    <li>Apoyarte en los <strong>afijos</strong> y en la <strong>familia de la palabra</strong> para entenderla.</li>
-    <li>Confirmar el significado en un <strong>diccionario</strong> y elegir la acepción que corresponde al texto.</li>
-  </ul>
-  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.R.VA.1 · 2.W.VU.1</p>
+  <p style="margin-bottom:0">Identificar el <strong>escenario</strong> (tiempo y lugar) en un texto literario, reconocer los <strong>detalles sensoriales</strong> que lo construyen y comprender cómo el escenario influye en las <strong>emociones</strong> de los personajes y en la <strong>atmósfera</strong> de la historia.</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-contexto">¿Qué es el contexto?</a></li>
-    <li><a href="#s-2-pistas">Cinco tipos de pistas</a></li>
-    <li><a href="#s-3-afijos">Afijos y familias de palabras</a></li>
-    <li><a href="#s-4-diccionario">El diccionario: elegir la acepción</a></li>
-    <li><a href="#s-5-tres-pasos">La estrategia de tres pasos</a></li>
-    <li><a href="#s-6-lectura">Lectura: «El primer día en la planta»</a></li>
+    <li><a href="#s-1-escenario">¿Qué es el escenario?</a></li>
+    <li><a href="#s-2-sentidos">Los cinco sentidos y el estado de ánimo</a></li>
+    <li><a href="#s-3-practica">Práctica: leer un escenario con todos los sentidos</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -218,131 +218,206 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
-<p>Ningún lector conoce todas las palabras. La diferencia entre un buen lector y uno que se rinde es lo que hace cuando encuentra una palabra nueva: el buen lector no se detiene ni busca cada palabra en el diccionario; mira <strong>a su alrededor</strong> y la descubre. En el GED no hay diccionario, y muchas preguntas piden justamente eso: «¿Qué significa la palabra <em>X</em> en el párrafo 2?». En esta lección aprenderás a responderlas.</p>
-<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán.</p>
 
-<details open id="s-1-contexto">
-<summary>1. ¿Qué es el contexto? <span class="caja-tiempo">10 min</span></summary>
+<p>En la lección anterior aprendiste a observar a los personajes: quiénes son, cómo son y qué problemas enfrentan. Ahora vas a mirar <strong>el mundo donde viven esos personajes</strong>: el <span class="palabra-clave">escenario</span>.</p>
+
+<p>El escenario no es un simple fondo decorativo. Quien escribe lo usa para crear un ambiente, para anunciar lo que va a pasar y para reflejar las emociones de los personajes. Una historia en una calle silenciosa de madrugada produce una sensación muy distinta que la misma historia en un mercado lleno de gente al mediodía.</p>
+
+<details open id="s-1-escenario">
+<summary>1. ¿Qué es el escenario? <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-<p>El <span class="palabra-clave">contexto</span> son las palabras y oraciones que rodean a una palabra. Como las piezas alrededor de un hueco en un rompecabezas, el contexto te dice qué forma debe tener la pieza que falta.</p>
-<p>Lee: <em>«Después de correr diez cuadras bajo el sol, Pedro estaba <span class="nueva">exhausto</span> y se dejó caer en una silla.»</em></p>
-<p>Aunque no conocieras la palabra <em>exhausto</em>, el contexto te lo dice: corrió diez cuadras, bajo el sol, y se dejó caer. Significa <strong>muy cansado</strong>.</p>
-<div class="tip"><strong>💡 La prueba del cambio:</strong> cuando creas saber qué significa, pon tu significado en lugar de la palabra y lee la oración: <em>«Pedro estaba <strong>muy cansado</strong> y se dejó caer en una silla.»</em> Si la oración tiene sentido, acertaste.</div>
+
+<h3>¿Qué es el escenario?</h3>
+
+<p>El <span class="palabra-clave">escenario</span> es todo lo que rodea a los personajes en una historia. Comprende tres elementos básicos.</p>
+
+<ul class="lista-bonita">
+  <li><strong>Lugar:</strong> ¿dónde ocurre la acción? (una cocina, un parque, un hospital, una ciudad).</li>
+  <li><strong>Tiempo:</strong> ¿cuándo ocurre? (de noche, en invierno, en la década de 1950, durante una guerra).</li>
+  <li><strong>Ambiente:</strong> ¿cómo se siente ese lugar? (frío, alegre, peligroso, acogedor).</li>
+</ul>
+
+<p>Un escenario bien construido permite que el lector se "sumerja" en la historia, como si pudiera ver, oír y oler lo que está ocurriendo. Y eso se logra gracias a los <strong>detalles sensoriales</strong>.</p>
+
+<div class="tip">
+  <strong>💡 Idea central:</strong> El escenario responde a dos preguntas básicas — <em>¿dónde?</em> y <em>¿cuándo?</em> — pero los buenos autores agregan una tercera: <em>¿cómo se siente estar allí?</em>
+</div>
+
 </div>
 </details>
 
-<details id="s-2-pistas">
-<summary>2. Cinco tipos de pistas <span class="caja-tiempo">25 min</span></summary>
+<details id="s-2-sentidos">
+<summary>2. Los cinco sentidos y el estado de ánimo <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
-<table class="tabla">
-  <caption class="sr-solo">Tipos de pistas del contexto</caption>
-  <thead><tr><th scope="col">Pista</th><th scope="col">Cómo la reconoces</th><th scope="col">Ejemplo</th></tr></thead>
+
+<h3>Los detalles sensoriales</h3>
+
+<p>Los autores construyen el escenario apelando a los <span class="palabra-clave">cinco sentidos</span>. Estos detalles permiten que el lector imagine la escena con precisión y emoción.</p>
+
+<div class="sentidos-grid">
+
+  <div class="tarjeta-sentido s-vista">
+    <span class="emoji">👁️</span>
+    <h4>Vista</h4>
+    <p>Lo que se ve: colores, formas, luz.</p>
+  </div>
+
+  <div class="tarjeta-sentido s-sonido">
+    <span class="emoji">👂</span>
+    <h4>Oído</h4>
+    <p>Lo que se oye: ruidos, voces, silencio.</p>
+  </div>
+
+  <div class="tarjeta-sentido s-olfato">
+    <span class="emoji">👃</span>
+    <h4>Olfato</h4>
+    <p>Lo que se huele: aromas, perfumes, hedores.</p>
+  </div>
+
+  <div class="tarjeta-sentido s-gusto">
+    <span class="emoji">👅</span>
+    <h4>Gusto</h4>
+    <p>Lo que se saborea: dulce, amargo, salado.</p>
+  </div>
+
+  <div class="tarjeta-sentido s-tacto">
+    <span class="emoji">✋</span>
+    <h4>Tacto</h4>
+    <p>Lo que se toca: frío, suave, áspero.</p>
+  </div>
+
+</div>
+
+<h3>El escenario refleja las emociones</h3>
+
+<p>Una técnica frecuente en la literatura es hacer que el escenario coincida con el estado de ánimo de los personajes, o que contraste con él. El clima, la luz y los sonidos pueden anunciar lo que va a sentir quien lee.</p>
+
+<table class="tabla-clima">
+  <caption class="sr-solo">Detalles del escenario y la emoción que suelen provocar</caption>
+  <thead>
+    <tr>
+      <th scope="col">Detalle del escenario</th>
+      <th scope="col">Atmósfera o emoción que suele provocar</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td><strong>Definición</strong></td><td>El texto explica la palabra, a menudo entre comas o después de <em>es decir</em>, <em>o sea</em>, <em>que significa</em>.</td><td>Revisaron el <span class="nueva">inventario</span>, <span class="pista-m">es decir, la lista de todo lo que hay en el almacén</span>.</td></tr>
-    <tr><td><strong>Sinónimo</strong></td><td>Cerca aparece otra palabra que significa lo mismo.</td><td>El jefe estaba <span class="nueva">furioso</span>; nunca lo habíamos visto tan <span class="pista-m">enojado</span>.</td></tr>
-    <tr><td><strong>Contraste</strong></td><td>Una palabra como <em>pero</em>, <em>en cambio</em> o <em>a diferencia de</em> presenta lo contrario.</td><td>Su hermano es muy <span class="pista-m">hablador</span>; ella, en cambio, es muy <span class="nueva">reservada</span>.</td></tr>
-    <tr><td><strong>Ejemplo</strong></td><td>Después de <em>como</em>, <em>por ejemplo</em> o <em>tales como</em> vienen casos concretos.</td><td>Venden <span class="nueva">legumbres</span>, <span class="pista-m">como frijoles, lentejas y garbanzos</span>.</td></tr>
-    <tr><td><strong>Sentido general</strong></td><td>No hay una pista concreta: lo dice la situación entera.</td><td>El niño se <span class="nueva">extravió</span> en el mercado y su madre <span class="pista-m">lo buscó durante una hora</span>.</td></tr>
+    <tr>
+      <td>Lluvia fuerte, cielo gris, viento</td>
+      <td>Tristeza, soledad, presagio negativo.</td>
+    </tr>
+    <tr>
+      <td>Sol brillante, pájaros, flores abiertas</td>
+      <td>Alegría, esperanza, comienzo.</td>
+    </tr>
+    <tr>
+      <td>Casa silenciosa, sombras, frío</td>
+      <td>Miedo, tensión, soledad.</td>
+    </tr>
+    <tr>
+      <td>Cocina con olor a comida, voces familiares</td>
+      <td>Calidez, hogar, seguridad.</td>
+    </tr>
+    <tr>
+      <td>Calle ruidosa, multitudes, prisa</td>
+      <td>Confusión, ansiedad, anonimato.</td>
+    </tr>
   </tbody>
 </table>
-<div class="tip"><strong>💡 En el ejemplo de contraste:</strong> si el hermano habla mucho y ella es lo contrario, <em>reservada</em> significa que habla poco y guarda sus cosas para sí.</div>
-<h3>¿Qué significa? ¿Qué pista te ayudó?</h3>
-<div class="clasificador apilado" id="clasif-pistas"></div>
-<div class="puntaje" id="puntaje-pistas" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l5-2.html#pistas" target="_blank" rel="noopener noreferrer">🔍 Practica más: pistas del contexto
-  <span>Oraciones nuevas para deducir el significado. Se abre en una pestaña nueva.</span></a>
+
+<div class="tip">
+  <strong>⚠️ Atención:</strong> El escenario no <em>siempre</em> coincide con la emoción del personaje. A veces el autor crea contraste: un personaje triste en un día soleado puede transmitir aún más soledad. Lo importante es preguntarse qué efecto produce esa elección.
+</div>
+
 </div>
 </details>
 
-<details id="s-3-afijos">
-<summary>3. Afijos y familias de palabras <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: leer un escenario con todos los sentidos <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
-<p>En la Lección 1.2 aprendiste a separar una palabra en prefijo, raíz y sufijo. Esa misma herramienta sirve para adivinar el significado: si conoces las piezas, conoces la palabra.</p>
-<ul class="lista-bonita">
-  <li><em>La calle quedó <span class="nueva">intransitable</span> por la nieve.</em> → <strong>in-</strong> (no) + <strong>transitar</strong> (pasar) + <strong>-able</strong> (que se puede): <em>por donde no se puede pasar</em>.</li>
-  <li><em>Hay que <span class="nueva">reutilizar</span> las bolsas.</em> → <strong>re-</strong> (otra vez) + <strong>utilizar</strong>: <em>volver a usar</em>.</li>
-  <li><em>Fue una decisión <span class="nueva">precipitada</span>.</em> Aquí los afijos no bastan, pero el contexto sí: si se tomó sin pensar, significa <em>hecha demasiado rápido</em>.</li>
-</ul>
-<p>También ayuda la <strong>familia de la palabra</strong>. Si no conoces <em>panadero</em>, pero conoces <em>pan</em>, ya sabes de qué se trata. Si no conoces <em>enrojecer</em>, piensa en <em>rojo</em>: ponerse rojo.</p>
-<div class="tip"><strong>⚠️ Afijos y contexto juntos:</strong> los afijos dan una pista, pero el contexto decide. <em>Inflamable</em> no significa «que no se puede inflamar»: significa que <strong>se quema con facilidad</strong>. Aquí <em>in-</em> no niega. Por eso los camiones con gasolina llevan el letrero «inflamable»: es un aviso de peligro.</div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l5-2.html#afijos" target="_blank" rel="noopener noreferrer">🧩 Practica más: deduce con afijos y familias
-  <span>Palabras largas para descubrir por partes.</span></a>
+
+<h3>Fragmento literario</h3>
+
+<p>Lee el siguiente fragmento. Observa cómo el autor usa los cinco sentidos para construir un escenario con una atmósfera muy precisa. Los detalles sensoriales aparecen marcados con colores según el sentido: <strong>olfato</strong>, <strong>vista</strong>, <strong>oído</strong>, <strong>tacto</strong> y <strong>gusto</strong>.</p>
+
+<div class="fragmento">
+<h4>📖 La cocina de la abuela</h4>
+<p>Era una tarde de domingo, y la cocina de la abuela <span class="marca-olfato">olía a café recién colado y a galletas de canela</span>. <span class="marca-vista">La luz amarilla del sol entraba por la ventana</span> y dibujaba cuadros tibios sobre el piso de baldosas. <span class="marca-sonido">Afuera se oía el rumor lejano del tráfico</span>, pero adentro <span class="marca-sonido">solo se escuchaba el tic-tac del reloj de pared</span>.</p>
+<p>La abuela me sirvió una taza. <span class="marca-tacto">La cerámica caliente me quemó un poco los dedos</span>, pero no me importó. Mordí una galleta y <span class="marca-gusto">el sabor dulce y especiado me llenó la boca</span>. Me senté junto a ella, sin hablar, y por un momento sentí que el mundo se había detenido en aquella cocina pequeña y luminosa.</p>
 </div>
+
+<h3>Pregunta de comprensión</h3>
+
+<p>¿Qué <strong>atmósfera</strong> crea este escenario? Piénsalo antes de seguir leyendo.</p>
+
+<details class="ver-modelo">
+  <summary>Ver la respuesta</summary>
+<p>El olor a café y galletas, la luz amarilla, el silencio interior, el calor de la taza y el sabor dulce construyen una sensación de <strong>calidez, paz y hogar</strong>. El escenario está al servicio de la emoción que el narrador quiere transmitir: el bienestar de estar con la abuela.</p>
 </details>
 
-<details id="s-4-diccionario">
-<summary>4. El diccionario: elegir la acepción <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<p>Cuando el contexto no basta, se confirma en un diccionario. En línea puedes usar el de la Real Academia Española: <a href="https://dle.rae.es" target="_blank" rel="noopener noreferrer" style="color:var(--cp-oscuro);font-weight:700">dle.rae.es</a>. Muchas palabras tienen varios significados, llamados <span class="palabra-clave">acepciones</span>, y hay que elegir el que corresponde al texto.</p>
-<div class="entrada">
-  <span class="lema">banco</span> <span class="abr">m.</span><br>
-  1. Asiento, a veces con respaldo, en el que pueden sentarse varias personas.<br>
-  2. Empresa que guarda dinero, presta y hace pagos.<br>
-  3. Conjunto de peces que van juntos en gran número.<br>
-  4. Lugar donde se guardan órganos, sangre u otros elementos para su uso médico: <em>banco de sangre</em>.
-</div>
-<p class="ingles" style="font-size:.9rem;color:#555">Entrada adaptada para la lección. Abreviaturas frecuentes: <em>m.</em> = sustantivo masculino · <em>f.</em> = sustantivo femenino · <em>adj.</em> = adjetivo · <em>tr.</em> o <em>intr.</em> = verbo.</p>
-<h3>¿Qué acepción corresponde?</h3>
-<div class="clasificador apilado" id="clasif-dicc"></div>
-<div class="puntaje" id="puntaje-dicc" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l5-2.html#diccionario" target="_blank" rel="noopener noreferrer">📖 Practica más: elige la acepción
-  <span>Palabras con varios significados y oraciones para decidir cuál corresponde.</span></a>
-</div>
-</details>
+<h3>Clasifica el detalle sensorial</h3>
 
-<details id="s-5-tres-pasos">
-<summary>5. La estrategia de tres pasos <span class="caja-tiempo">10 min</span></summary>
-<div class="contenido-detalle">
-<p>Cuando encuentres una palabra desconocida, sigue estos pasos:</p>
-<ol class="pasos">
-  <li><strong>Relee la oración completa</strong>, y también la anterior y la siguiente. Busca las cinco pistas.</li>
-  <li><strong>Mira las piezas de la palabra:</strong> ¿tiene un prefijo o un sufijo conocidos? ¿Se parece a otra palabra que conoces?</li>
-  <li><strong>Prueba tu significado</strong> en lugar de la palabra. Si tiene sentido, sigue leyendo. Si es una palabra clave y sigues con dudas, confírmalo en el diccionario.</li>
-</ol>
-<div class="tip"><strong>💡 No todas las palabras importan igual.</strong> Si una palabra desconocida no cambia el sentido de lo que lees, sigue adelante. Detente solo en las que necesitas para entender la idea.</div>
-</div>
-</details>
+<p>Lee cada frase y decide con cuál de los cinco sentidos se percibe el detalle.</p>
 
-<details id="s-6-lectura">
-<summary>6. Lectura: «El primer día en la planta» <span class="caja-tiempo">25 min</span></summary>
-<div class="contenido-detalle">
-<div class="actividad">
-  <h4><span class="badge badge-lectura">Lectura</span> Individual · detective de palabras</h4>
-  <p style="margin:0">Lee el texto. Las palabras marcadas en azul pueden ser nuevas para ti. Antes de responder las preguntas, escribe en tu cuaderno qué crees que significa cada una y qué pista usaste.</p>
+<div class="clasificador-sent" id="clasif-sent"></div>
+<div class="puntaje" id="puntaje-clasif-sent" role="status">Aciertos: 0 / 8</div>
+
+<h3>Empareja el escenario con la emoción</h3>
+
+<p>Toca un escenario de la columna izquierda y luego la emoción que mejor le corresponde en la columna derecha. Si la pareja es correcta, las dos quedan marcadas en verde.</p>
+
+<div class="empareja-grid">
+  <div class="col-empareja">
+    <h4>Escenario</h4>
+    <div id="col-escenarios"></div>
+  </div>
+  <div class="col-empareja">
+    <h4>Atmósfera / emoción</h4>
+    <div id="col-emociones"></div>
+  </div>
 </div>
-<div class="botones" style="justify-content:flex-start">
-  <button type="button" class="btn btn-primario" id="btn-leer">🔊 Escuchar el texto</button>
-  <button type="button" class="btn btn-secundario" id="btn-parar">⏹ Detener</button>
-</div>
-<div class="texto-lectura" id="texto-planta">
-<p>El lunes, Jorge empezó a trabajar en una planta empacadora de alimentos. Estaba <span class="nueva">ansioso</span>: no había dormido bien y le sudaban las manos.</p>
-<p>La supervisora le explicó las reglas de <span class="nueva">higiene</span>, es decir, las normas de limpieza que todos deben seguir: lavarse las manos, cubrirse el pelo y usar guantes. Luego le mostró la línea de producción, donde las cajas avanzaban por una banda sin <span class="nueva">interrupción</span>, sin detenerse ni un momento.</p>
-<p>—Aquí todo es muy <span class="nueva">riguroso</span> —le advirtió—. Un pequeño descuido puede contaminar un lote entero.</p>
-<p>A Jorge le tocó revisar las fechas de <span class="nueva">caducidad</span> de las latas, para que ningún producto vencido saliera de la planta. Al principio era lento, pero sus compañeros, a diferencia de lo que temía, fueron muy <span class="nueva">amables</span> y le dieron consejos. Al final del turno, ya no estaba nervioso: se sentía <span class="nueva">sereno</span> y orgulloso de su primer día.</p>
-</div>
-<div class="clasificador apilado" id="clasif-planta"></div>
-<div class="puntaje" id="puntaje-planta" role="status" aria-live="polite"></div>
-<div class="tip"><strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> lean juntos un artículo del periódico y que cada uno elija una palabra difícil. Intenten descubrir su significado por el contexto antes de buscarla.</div>
+<div class="puntaje" id="puntaje-empareja" role="status">Parejas correctas: 0 / 5</div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-2.html#sentidos" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Qué sentido es? ↗
+  <span>Veinte detalles más para clasificar. En la misma página practicas también <strong>la atmósfera</strong> de un escenario. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>7. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p><strong>Mi escenario con los cinco sentidos.</strong> Elige un lugar que conoces bien: la cocina de tu casa, la parada del autobús, el mercado, tu lugar de trabajo o un sitio de tu infancia. Ve allí o recuérdalo con calma, y escribe en tu cuaderno:</p>
 <ul class="lista-bonita">
-  <li><strong>Mi cuaderno de palabras.</strong> Abre una sección del cuaderno para palabras nuevas. Cada vez que encuentres una, anota la oración donde la viste, tu significado deducido, la pista que usaste y, después, la definición del diccionario.</li>
-  <li><strong>Cinco palabras de la semana.</strong> Lee un artículo de un periódico en español y encuentra cinco palabras que no conocías. Sigue la estrategia de tres pasos con cada una.</li>
-  <li><strong>Escribe pistas.</strong> Escribe cinco oraciones, una por cada tipo de pista, con una palabra que conozcas bien. Ejemplo de ejemplo: <em>«Me gustan los cítricos, como la naranja, el limón y la toronja.»</em></li>
+  <li>El <strong>lugar</strong> y el <strong>tiempo</strong>: dónde estás, a qué hora y en qué época del año.</li>
+  <li><strong>Un detalle por cada sentido</strong>: algo que se ve, algo que se oye, algo que se huele, algo que se saborea y algo que se toca.</li>
+  <li>Un párrafo de cinco a siete oraciones que describa el lugar usando esos detalles, como el fragmento de «La cocina de la abuela».</li>
+  <li>Al final, una oración que diga qué <strong>atmósfera</strong> quisiste crear: calma, alegría, miedo, prisa, nostalgia…</li>
 </ul>
+<p>Si alguien de tu casa quiere participar, léele tu párrafo sin decirle la atmósfera y pregúntale qué sintió al escucharlo. ¿Coincide con lo que querías transmitir?</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo del escenario con los cinco sentidos</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Lugar y tiempo</td><td class="nivel-4">Se sabe dónde y cuándo ocurre</td><td class="nivel-1">No se sabe cuándo o dónde</td></tr>
+      <tr><td>Cinco sentidos</td><td class="nivel-4">Hay al menos un detalle de cada sentido</td><td class="nivel-1">Usé solo la vista</td></tr>
+      <tr><td>Atmósfera</td><td class="nivel-4">Los detalles ayudan a crear la emoción que elegí</td><td class="nivel-1">Los detalles no tienen relación con la emoción</td></tr>
+      <tr><td>Oraciones</td><td class="nivel-4">Cada oración empieza con mayúscula y termina con punto</td><td class="nivel-1">Hay oraciones sin mayúscula o sin punto</td></tr>
+    </tbody>
+  </table>
+</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Al final pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -354,113 +429,214 @@
 </details>
 
 <details id="s-cierre">
-<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-<h3>Lo que aprendiste en esta lección</h3>
+
+<h3>Lo que aprendiste</h3>
+
 <ul class="lista-bonita">
-  <li>El <strong>contexto</strong> son las palabras que rodean a otra y ayudan a entenderla.</li>
-  <li>Cinco pistas: <strong>definición</strong>, <strong>sinónimo</strong>, <strong>contraste</strong>, <strong>ejemplo</strong> y <strong>sentido general</strong>.</li>
-  <li>Los afijos y la familia de la palabra ayudan, pero el contexto decide.</li>
-  <li>En el diccionario, elige la <strong>acepción</strong> que tiene sentido en la oración.</li>
+  <li>El <strong>escenario</strong> incluye <strong>lugar, tiempo y ambiente</strong>.</li>
+  <li>Los autores construyen el escenario con <strong>detalles sensoriales</strong> que llegan por los cinco sentidos: vista, oído, olfato, gusto y tacto.</li>
+  <li>El escenario suele <strong>reflejar</strong> o <strong>contrastar</strong> con el estado de ánimo de los personajes.</li>
+  <li>Los eventos de una historia siempre están influenciados por <em>quién</em> los vive (personaje) y <em>dónde / cuándo</em> ocurren (escenario).</li>
 </ul>
+
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Puedes explicar qué es una pista de contraste?</li>
-    <li>¿Qué significa <em>inflamable</em> y por qué los afijos engañan?</li>
-    <li>¿Cuáles son los tres pasos ante una palabra desconocida?</li>
+    <li>¿Puedes nombrar los tres elementos básicos del escenario?</li>
+    <li>¿Cuál es la diferencia entre un detalle de vista y uno de olfato?</li>
+    <li>¿Puedes describir el escenario donde estás ahora usando al menos tres de los cinco sentidos?</li>
   </ul>
 </div>
-<div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_5-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 5.3 · Significado literal frente a figurado; modismos</a>. Descubrirás por qué «costar un ojo de la cara» no tiene nada que ver con los ojos.</div>
+
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_5-3.html" style="color:var(--cp-oscuro);font-weight:700">Lección 5.3 · El orden de los eventos: palabras de secuencia</a>. Además de entender <em>qué</em> pasa en una historia, hay que entender <em>en qué orden</em> pasa. Estudiarás las palabras que organizan los hechos: <em>primero, luego, después, finalmente</em>.
+</div>
+
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 5 · Lección 5.2</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 5 · Lección 5.2</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<script>
-/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
-(function(){
-  var voz=null, hay=('speechSynthesis' in window);
-  function elegir(){
-    if(!hay)return;
-    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
-    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
-    voz=null;
-    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
-    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
-  }
-  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
-  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
-  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
-  /* hablar(texto, velocidad, alTerminar) */
-  window.hablar=function(texto,vel,fin){
-    if(!hay||!texto){aviso();return;}
-    speechSynthesis.cancel();
-    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
-    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
-    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
-  };
-  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
-  window.hablarPalabras=function(texto){
-    if(!hay){aviso();return;}
-    speechSynthesis.cancel();
-    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
-  };
-  window.callar=function(){if(hay)speechSynthesis.cancel();};
-  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
-})();
 
-/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
-function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
-  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
-  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
-  items.forEach(function(it,i){
-    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
-    var ops=it.ops||opciones;
-    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
-      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
-      '<span class="item-fb" aria-live="polite"></span>';
-    caja.appendChild(d);
-    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
-    var fb=d.querySelector('.item-fb');
-    d.querySelectorAll('.btn-op').forEach(function(b){
+<script>
+(function(){
+  // Clasificador de detalles sensoriales
+  var sensoriales=[
+    {frase:'El cielo estaba pintado de un naranja intenso al atardecer.',tipo:'vista',pista:'"Naranja intenso" y "atardecer" son detalles que se perciben con los ojos.'},
+    {frase:'Se oía el crujido de las hojas secas bajo nuestros zapatos.',tipo:'sonido',pista:'"Crujido" es algo que se escucha.'},
+    {frase:'Un olor a pan recién horneado salía de la panadería.',tipo:'olfato',pista:'"Olor" apela directamente al sentido del olfato.'},
+    {frase:'El limón estaba tan ácido que se me arrugó la cara.',tipo:'gusto',pista:'"Ácido" es una sensación que se percibe con el gusto.'},
+    {frase:'La manta de lana picaba contra la piel de los brazos.',tipo:'tacto',pista:'"Picaba contra la piel" es una sensación táctil.'},
+    {frase:'A lo lejos resonaba el llanto de un bebé.',tipo:'sonido',pista:'"Resonaba" y "llanto" se perciben con el oído.'},
+    {frase:'El agua del río estaba helada cuando metí los pies.',tipo:'tacto',pista:'"Helada" describe una sensación de frío en la piel: tacto.'},
+    {frase:'La ropa olía a humo de cigarro aunque la habían lavado.',tipo:'olfato',pista:'«Olía» apela directamente al olfato.'}
+  ];
+
+  var aciertosSent=0;
+  var resueltasSent={};
+  var contSent=document.getElementById('clasif-sent');
+
+  sensoriales.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-sent';
+    div.innerHTML=
+      '<div class="frase-sent">'+(idx+1)+'. '+item.frase+'</div>'+
+      '<div class="opciones-sent">'+
+        '<button type="button" class="btn-sent btn-vista" data-tipo="vista">👁️ Vista</button>'+
+        '<button type="button" class="btn-sent btn-sonido" data-tipo="sonido">👂 Oído</button>'+
+        '<button type="button" class="btn-sent btn-olfato" data-tipo="olfato">👃 Olfato</button>'+
+        '<button type="button" class="btn-sent btn-gusto" data-tipo="gusto">👅 Gusto</button>'+
+        '<button type="button" class="btn-sent btn-tacto" data-tipo="tacto">✋ Tacto</button>'+
+      '</div>'+
+      '<div class="feedback-item"></div>';
+    contSent.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-sent');
+    var feedback=div.querySelector('.feedback-item');
+    botones.forEach(function(b){
       b.addEventListener('click',function(){
-        if(hechas[i])return;
-        if(+b.getAttribute('data-j')===it.c){
-          b.classList.add('correcta'); hechas[i]=true; bien++;
-          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
-          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+        if(resueltasSent[idx])return;
+        var t=b.getAttribute('data-tipo');
+        if(t===item.tipo){
+          b.classList.add('correcta');
+          feedback.className='feedback-item correcto mostrar';
+          feedback.innerHTML='✅ Correcto. '+item.pista;
+          resueltasSent[idx]=true;
+          aciertosSent++;
+          actualizarPuntajeSent();
         }else{
-          b.classList.add('incorrecta'); b.disabled=true;
-          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+          b.classList.add('incorrecta');
+          feedback.className='feedback-item incorrecto mostrar';
+          feedback.innerHTML='❌ Inténtalo otra vez. Pregúntate: ¿con qué sentido percibo esta sensación?';
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
       });
     });
   });
-  marcador();
-}
 
-/* ===== Quiz de la lección =====
-   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
-        ae:audio entrecortado opcional, fijo:no barajar,
-        r:enlace de repaso que aparece si la respuesta es incorrecta}]
-   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
-function iniciarQuiz(P,cfg){
-  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  function actualizarPuntajeSent(){
+    var el=document.getElementById('puntaje-clasif-sent');
+    el.textContent='Aciertos: '+aciertosSent+' / '+sensoriales.length;
+    if(aciertosSent===sensoriales.length){
+      el.innerHTML='🎉 ¡Excelente! Identificaste los '+sensoriales.length+' detalles sensoriales.';
+      el.style.color='var(--exito)';
+    }
+  }
+
+  // Emparejar escenario y emoción
+  var parejas=[
+    {esc:'Una habitación oscura, sin muebles, donde se oye el goteo de un grifo.',emo:'Soledad y abandono.'},
+    {esc:'Una playa al amanecer, con el sol naranja y el sonido suave de las olas.',emo:'Esperanza y calma.'},
+    {esc:'Una calle llena de gente, autos pitando y olor a comida frita.',emo:'Bullicio y ansiedad.'},
+    {esc:'Un bosque al anochecer, con sombras largas y crujidos entre los árboles.',emo:'Miedo y tensión.'},
+    {esc:'Una sala con chimenea encendida, olor a café y risas en voz baja.',emo:'Calidez y hogar.'}
+  ];
+
+  // Mezclar emociones para el orden visual
+  var emocionesOrden=parejas.map(function(p,i){return {texto:p.emo,id:i}});
+  for(var _i=emocionesOrden.length-1;_i>0;_i--){var _j=Math.floor(Math.random()*(_i+1));var _t=emocionesOrden[_i];emocionesOrden[_i]=emocionesOrden[_j];emocionesOrden[_j]=_t;}
+
+  var colE=document.getElementById('col-escenarios');
+  var colM=document.getElementById('col-emociones');
+
+  parejas.forEach(function(p,i){
+    var d=document.createElement('button');
+    d.type='button';
+    d.className='item-empareja';
+    d.setAttribute('data-id',i);
+    d.textContent=(i+1)+'. '+p.esc;
+    colE.appendChild(d);
+  });
+
+  emocionesOrden.forEach(function(e){
+    var d=document.createElement('button');
+    d.type='button';
+    d.className='item-empareja';
+    d.setAttribute('data-id',e.id);
+    d.textContent=e.texto;
+    colM.appendChild(d);
+  });
+
+  var seleccionEsc=null;
+  var seleccionEmo=null;
+  var unidos=0;
+
+  function intentarUnir(){
+    if(!seleccionEsc||!seleccionEmo)return;
+    var idEsc=seleccionEsc.getAttribute('data-id');
+    var idEmo=seleccionEmo.getAttribute('data-id');
+    if(idEsc===idEmo){
+      seleccionEsc.classList.remove('seleccionado');
+      seleccionEmo.classList.remove('seleccionado');
+      seleccionEsc.classList.add('unido');
+      seleccionEmo.classList.add('unido');
+      seleccionEsc.disabled=true;
+      seleccionEmo.disabled=true;
+      unidos++;
+      var el=document.getElementById('puntaje-empareja');
+      el.textContent='Parejas correctas: '+unidos+' / '+parejas.length;
+      if(unidos===parejas.length){
+        el.innerHTML='🎉 ¡Excelente! Emparejaste bien las '+parejas.length+' parejas.';
+        el.style.color='var(--exito)';
+      }
+      seleccionEsc=null;
+      seleccionEmo=null;
+    }else{
+      // No coincide: parpadeo rojo breve
+      var a=seleccionEsc,b=seleccionEmo;
+      a.style.borderColor='var(--error)';
+      b.style.borderColor='var(--error)';
+      setTimeout(function(){
+        a.classList.remove('seleccionado');
+        b.classList.remove('seleccionado');
+        a.style.borderColor='';
+        b.style.borderColor='';
+      },500);
+      seleccionEsc=null;
+      seleccionEmo=null;
+    }
+  }
+
+  colE.addEventListener('click',function(e){
+    var it=e.target.closest('.item-empareja');
+    if(!it||it.classList.contains('unido'))return;
+    if(seleccionEsc)seleccionEsc.classList.remove('seleccionado');
+    seleccionEsc=it;
+    it.classList.add('seleccionado');
+    intentarUnir();
+  });
+
+  colM.addEventListener('click',function(e){
+    var it=e.target.closest('.item-empareja');
+    if(!it||it.classList.contains('unido'))return;
+    if(seleccionEmo)seleccionEmo.classList.remove('seleccionado');
+    seleccionEmo=it;
+    it.classList.add('seleccionado');
+    intentarUnir();
+  });
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué tres elementos forman el escenario?", "o": ["Lugar, tiempo y ambiente", "Protagonista, antagonista y mentor", "Inicio, medio y final"], "c": 0}, {"t": "«En la década de 1950» es un dato de…", "o": ["tiempo", "lugar", "ambiente"], "c": 0}, {"t": "«Una cocina pequeña de un pueblo de montaña» es un dato de…", "o": ["lugar", "tiempo", "conflicto"], "c": 0}, {"t": "«Se escuchaba el tic-tac del reloj.» ¿Con qué sentido se percibe?", "o": ["Vista", "Oído", "Olfato", "Gusto", "Tacto"], "c": 1, "fijo": true}, {"t": "«La sopa estaba demasiado salada.» ¿Con qué sentido se percibe?", "o": ["Vista", "Oído", "Olfato", "Gusto", "Tacto"], "c": 3, "fijo": true}, {"t": "«La cerámica caliente me quemó los dedos.» ¿Con qué sentido se percibe?", "o": ["Vista", "Oído", "Olfato", "Gusto", "Tacto"], "c": 4, "fijo": true}, {"t": "«Olía a café recién colado.» ¿Con qué sentido se percibe?", "o": ["Vista", "Oído", "Olfato", "Gusto", "Tacto"], "c": 2, "fijo": true}, {"t": "¿Qué atmósfera suele crear «una casa silenciosa, con sombras y frío»?", "o": ["Miedo y tensión", "Alegría y fiesta", "Calma y hogar"], "c": 0}, {"t": "¿Qué atmósfera suele crear «una cocina con olor a comida y voces familiares»?", "o": ["Calidez y hogar", "Miedo y peligro", "Prisa y confusión"], "c": 0}, {"t": "Un personaje muy triste camina por un parque lleno de sol y de niños que juegan. ¿Qué técnica usa el autor?", "o": ["El contraste: el escenario alegre hace notar más la tristeza", "La coincidencia: el escenario refleja la emoción", "Ninguna: el escenario no importa"], "c": 0}, {"t": "¿Para qué sirven los detalles sensoriales?", "o": ["Para que quien lee imagine la escena como si estuviera allí", "Para alargar el texto", "Para presentar a los personajes"], "c": 0}, {"t": "Al leer un escenario, ¿qué tercera pregunta se hacen los buenos lectores, además de dónde y cuándo?", "o": ["¿Cómo se siente estar allí?", "¿Cuántas páginas tiene?", "¿Quién es el autor?"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a||p.ae){
+    if(p.x||p.a){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -468,7 +644,7 @@ function iniciarQuiz(P,cfg){
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -483,87 +659,37 @@ function iniciarQuiz(P,cfg){
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
-      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes leer un escenario con todos los sentidos. Puedes continuar con la Lección 5.3.";fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
-    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-}
+})();
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-document.addEventListener('DOMContentLoaded',function(){
+(function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
-  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-});
-
-clasificador('clasif-pistas','puntaje-pistas',[
-  {p:'«La empresa decidió <span class="nueva">contratar</span>, o sea, dar empleo, a veinte personas más.» ¿Qué pista hay?',ops:['Definición','Ejemplo','Contraste'],c:0,n:'<em>o sea, dar empleo</em> explica la palabra.'},
-  {p:'«Mi abuela es muy <span class="nueva">longeva</span>: tiene ciento dos años y todavía cocina.» ¿Qué significa <em>longeva</em>?',ops:['Que vive muchos años','Que cocina muy bien','Que es muy alta'],c:0,n:'El sentido general: ciento dos años.'},
-  {p:'«El mercado vende <span class="nueva">hortalizas</span>, como lechugas, zanahorias y cebollas.» ¿Qué pista hay?',ops:['Sinónimo','Ejemplo','Definición'],c:1,n:'Después de <em>como</em> vienen ejemplos.'},
-  {p:'«El primer examen fue <span class="nueva">sencillo</span>, pero el segundo fue muy difícil.» ¿Qué significa <em>sencillo</em>?',ops:['Fácil','Largo','Importante'],c:0,n:'Pista de contraste: <em>pero… muy difícil</em>.'},
-  {p:'«Estaba <span class="nueva">aterrado</span>; nunca había sentido tanto miedo.» ¿Qué pista hay?',ops:['Ejemplo','Contraste','Sinónimo'],c:2,n:'<em>tanto miedo</em> repite la idea con otras palabras.'},
-  {p:'«Tras la tormenta, el río se <span class="nueva">desbordó</span> e inundó las calles cercanas.» ¿Qué significa?',ops:['Se secó por completo','Se salió de su cauce','Cambió de color'],c:1,n:'Si inundó las calles, el agua salió del río.'}
-],null,false);
-
-clasificador('clasif-dicc','puntaje-dicc',[
-  {p:'«Nos sentamos en un <strong>banco</strong> del parque a comer helado.»',ops:['Acepción 1','Acepción 2','Acepción 3'],c:0,n:'Un asiento.'},
-  {p:'«Fui al <strong>banco</strong> a cobrar mi cheque.»',ops:['Acepción 4','Acepción 2','Acepción 1'],c:1,n:'Una empresa que maneja dinero.'},
-  {p:'«Desde el barco vimos un <strong>banco</strong> de sardinas.»',ops:['Acepción 2','Acepción 1','Acepción 3'],c:2,n:'Muchos peces juntos.'},
-  {p:'«El hospital pidió donantes para su <strong>banco</strong> de sangre.»',ops:['Acepción 4','Acepción 3','Acepción 2'],c:0,n:'Un lugar donde se guarda sangre para uso médico.'}
-],null,false);
-
-clasificador('clasif-planta','puntaje-planta',[
-  {p:'<em>ansioso</em> significa…',ops:['Nervioso y preocupado','Muy contento','Con mucha hambre'],c:0,n:'Sentido general: no durmió y le sudaban las manos. Más adelante, el texto lo confirma: «ya no estaba nervioso».'},
-  {p:'¿Qué pista explica <em>higiene</em>?',ops:['Un contraste con «pero»','Una definición con «es decir»','Un sinónimo al final del texto'],c:1,n:'«es decir, las normas de limpieza».'},
-  {p:'<em>sin interrupción</em> significa…',ops:['Muy despacio','Sin detenerse','Con mucho ruido'],c:1,n:'Lo explica el texto: «sin detenerse ni un momento».'},
-  {p:'<em>riguroso</em> significa…',ops:['Estricto, muy exigente','Divertido, relajado','Sucio, descuidado'],c:0,n:'Sentido general: un pequeño descuido puede contaminar un lote.'},
-  {p:'<em>fecha de caducidad</em> es…',ops:['El día en que se fabricó la lata','El día a partir del cual el producto ya no sirve','El día de pago del trabajador'],c:1,n:'Pista: «para que ningún producto vencido saliera».'},
-  {p:'¿Qué pista ayuda con <em>sereno</em>?',ops:['Un contraste: «ya no estaba nervioso»','Un ejemplo con «como»','Una definición con «o sea»'],c:0,n:'Si ya no estaba nervioso, estaba tranquilo: eso es <em>sereno</em>.'}
-],null,false);
-
-(function(){
-  var t=document.getElementById('texto-planta');
-  document.getElementById('btn-leer').addEventListener('click',function(){hablar(t.textContent.replace(/\s+/g,' ').trim(),0.85);});
-  document.getElementById('btn-parar').addEventListener('click',function(){callar();});
 })();
-
-iniciarQuiz([
-  {t:'El <strong>contexto</strong> de una palabra es…',o:['Las palabras y oraciones que la rodean','Su definición en el diccionario','La primera letra de la palabra'],c:0},
-  {t:'«Llevó al perro al <em>veterinario</em>, es decir, al médico de los animales.» ¿Qué pista hay?',o:['Definición','Contraste','Ejemplo'],c:0},
-  {t:'«Juan es muy <em>tacaño</em>; su hermana, en cambio, es generosa con todos.» ¿Qué significa <em>tacaño</em>?',o:['Que no le gusta gastar ni dar','Que es muy alto y fuerte','Que trabaja mucho'],c:0},
-  {t:'«Compré varios <em>lácteos</em>, como leche, queso y yogur.» ¿Qué son los lácteos?',o:['Productos hechos con leche','Frutas de temporada','Productos de limpieza'],c:0},
-  {t:'«La sala estaba <em>repleta</em>: no cabía ni una persona más.» ¿Qué significa <em>repleta</em>?',o:['Llena por completo','Vacía y oscura','Muy limpia'],c:0},
-  {t:'«Estaba <em>dichoso</em>, muy feliz, el día de su graduación.» ¿Qué pista hay?',o:['Sinónimo','Ejemplo','Contraste'],c:0},
-  {t:'¿Qué significa <em>irrompible</em>?',o:['Que no se puede romper','Que se rompe con facilidad','Que ya está roto'],c:0},
-  {t:'Un cartel dice «Material <em>inflamable</em>». ¿Qué significa?',o:['Que se quema con facilidad','Que no se puede quemar','Que es muy pesado'],c:0},
-  {t:'Las distintas definiciones de una palabra en el diccionario se llaman…',o:['Acepciones','Afijos','Sinónimos'],c:0},
-  {t:'«Pagué la cuenta en el <em>banco</em>.» ¿Qué significa <em>banco</em> aquí?',o:['Una empresa que maneja dinero','Un asiento del parque','Un grupo de peces'],c:0},
-  {t:'¿Cuál es el primer paso ante una palabra desconocida?',o:['Releer la oración completa y buscar pistas','Cerrar el libro y buscar otro texto','Saltar al último párrafo del texto'],c:0},
-  {t:'¿Cómo compruebas si acertaste el significado?',o:['Lo pones en lugar de la palabra y ves si la oración tiene sentido','Miras si la palabra es larga o corta','Lo comparas con el título del texto'],c:0}
-],{meta:10,
-   bien:'Ya descubres el significado de las palabras por el contexto. Puedes continuar con la Lección 5.3.',
-   repaso:'Vuelve a las secciones 2 y 3 y repite el quiz: con práctica sale.'});
 </script>
+
 </body>
 </html>

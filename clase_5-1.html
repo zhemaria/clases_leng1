@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<!-- Lección 5.1 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
-     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
-     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
+<!-- Lección 5.1 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 5.1 · Comparar y contrastar dos textos</title>
+<title>Lección 5.1 · Los personajes y sus conflictos</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
     --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#555;--gris-claro:#eef1f4;
-    --dip:#1565c0;--dip-claro:#e3f2fd;
-    --hia:#ad1457;--hia-claro:#fce4ec;
-    --grp:#5c3900;--grp-claro:#fff3cd;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --protagonista:#1565c0;--protagonista-claro:#e3f2fd;
+    --antagonista:#c62828;--antagonista-claro:#ffebee;
+    --mentor:#6a1b9a;--mentor-claro:#f3e5f5;
+    --conflicto-interno:#00838f;--conflicto-interno-claro:#e0f7fa;
+    --conflicto-externo:#ef6c00;--conflicto-externo-claro:#fff3e0;
     --exito:#2e7d32;--error:#c62828;
   }
   *{box-sizing:border-box}
@@ -28,9 +29,9 @@
   h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
@@ -38,54 +39,80 @@
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
   .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#6b5400}
+  .tip strong{color:#8a6d00}
   .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
   .btn-primario{background:var(--cp);color:#fff}
   .btn-primario:hover{background:var(--cp-oscuro)}
   .btn-secundario{background:var(--gris-claro);color:var(--texto)}
   .btn-secundario:hover{background:#d6dde4}
-  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
   .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
-  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
-  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
-  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.tabla tr:last-child td{border-bottom:none}
-  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad h4{color:#8a3d0c;margin-top:0}
-  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-lectura{background:#e3f2fd;color:#0d47a1}
-  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
-  /* Clasificadores */
-  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
-  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
-  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
-  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
-  .item-fb:empty{display:none}
-  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
-  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
-  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
-  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
-  .btn-op:disabled{cursor:default}
-  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
-  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
-  /* Lectura con marcas */
-  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
-  .texto-lectura p{margin:0 0 10px}
-  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
-  .leyenda span{display:inline-flex;align-items:center;gap:6px}
-  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
-  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
-  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
-  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
-  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
-  /* Índice */
+
+  /* Tarjetas de rol */
+  .roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+  @media(max-width:720px){.roles-grid{grid-template-columns:1fr}}
+  .tarjeta-rol{border-radius:10px;padding:16px 18px;border:2px solid;background:#fff}
+  .tarjeta-rol h4{margin-top:0;margin-bottom:8px;font-size:1.05rem}
+  .tarjeta-rol p{margin:0 0 8px 0;font-size:0.95rem}
+  .tarjeta-rol .ejemplo{font-style:italic;font-size:0.9rem;color:var(--gris);border-top:1px dashed currentColor;padding-top:8px;margin-top:8px}
+  .rol-protag{border-color:var(--protagonista);background:var(--protagonista-claro)}
+  .rol-protag h4{color:var(--protagonista)}
+  .rol-antag{border-color:var(--antagonista);background:var(--antagonista-claro)}
+  .rol-antag h4{color:var(--antagonista)}
+  .rol-ment{border-color:var(--mentor);background:var(--mentor-claro)}
+  .rol-ment h4{color:var(--mentor)}
+
+  /* Tabla rasgos */
+  table.tabla-rasgos{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-rasgos th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.tabla-rasgos td{padding:12px;border-bottom:1px solid var(--gris-claro)}
+  table.tabla-rasgos tr:last-child td{border-bottom:none}
+  table.tabla-rasgos td:first-child{font-weight:700;width:180px;color:var(--cp-oscuro)}
+
+  /* Texto del cuento */
+  .cuento{background:#fffaf3;border:2px solid var(--acento);border-radius:10px;padding:20px 24px;margin:18px 0;font-family:'Georgia',serif;font-size:1.05rem;line-height:1.85}
+  .cuento h4{color:#b35316;margin-top:0;font-family:'Poppins',sans-serif}
+  .cuento p{margin:0 0 12px 0}
+
+  /* Mapa de personaje */
+  .mapa-personaje{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .mapa-personaje h4{color:var(--cp-oscuro);margin-top:0;text-align:center}
+  .mapa-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:640px){.mapa-grid{grid-template-columns:1fr}}
+  .cuadro-mapa{border:2px solid var(--gris-claro);border-radius:8px;padding:12px 14px;background:#fafbfc}
+  .cuadro-mapa .etiq{display:block;font-weight:700;color:var(--cp-oscuro);font-size:0.95rem;margin-bottom:6px}
+  .cuadro-mapa textarea{width:100%;border:1px solid var(--gris-claro);border-radius:6px;padding:8px;font-family:inherit;font-size:0.95rem;resize:vertical;min-height:60px}
+  .cuadro-mapa textarea:focus{outline:none;border-color:var(--cp)}
+
+  /* Clasificador de conflictos */
+  .clasificador-conf{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .item-conf{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:10px 0}
+  .frase-conf{font-family:'Georgia',serif;font-size:1.05rem;margin-bottom:10px;line-height:1.6}
+  .opciones-conf{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-tipo-conf{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-int{border-color:var(--conflicto-interno);color:var(--conflicto-interno)}
+  .btn-int:hover{background:var(--conflicto-interno-claro)}
+  .btn-ext{border-color:var(--conflicto-externo);color:var(--conflicto-externo)}
+  .btn-ext:hover{background:var(--conflicto-externo-claro)}
+  .btn-tipo-conf.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-tipo-conf.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .feedback-item{margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.9rem;display:none}
+  .feedback-item.mostrar{display:block}
+  .feedback-item.correcto{background:#d4edda;color:#155724}
+  .feedback-item.incorrecto{background:#f8d7da;color:#721c24}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+
+  /* Leyenda */
+  .leyenda-colores{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.95rem}
+  .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
+  .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+  /* ── Índice de la lección ── */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -95,13 +122,17 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
-  .aviso-voz.visible{display:block}
-  /* Quiz */
+  /* ── Quiz de la lección ── */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -121,93 +152,46 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
+  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 
-  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
-  .qz-repaso a{color:#004d44;font-weight:700}
-  /* ── Comunes desde el Tema 4 ── */
-  .item-ops{flex-wrap:wrap}
-  .apilado .item{flex-direction:column;align-items:stretch}
-  .apilado .item-ops{flex-direction:column}
-  .apilado .btn-op{text-align:left;font-weight:400}
-  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
-  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
-  .pasaje p{margin:0 0 6px}
-  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
-  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
-  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
-  /* Taller de escritura (Tema 7) */
-  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
-  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
-  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
-  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
-  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
-  .tl-conect{font-size:.95rem;margin:4px 0 8px}
-  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
-  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
-  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
-  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
-  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
-  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
-  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
-  .rubrica{font-size:.92rem}
-  .rubrica td,.rubrica th{vertical-align:top}
-  .marca{border-radius:3px;padding:0 2px;font-weight:700}
-  .m-postura{background:#e3f2fd;color:#0d3c78}
-  .m-razon{background:#fff3e0;color:#7a3a00}
-  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
-  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
-  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
-  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
-  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
-  .oculta-marcas .marca::before{content:none}
-  @media(max-width:640px){
-    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
-    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
-    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
-    .rubrica td{border:none;border-top:1px solid #d5dde3}
-    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
-  }
-
-  .dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:700px){.dos{grid-template-columns:1fr}}
-  .dos .texto-lectura{margin:6px 0}
-  .dos h3{margin:0 0 4px}
-  .autor{font-size:.9rem;color:#555;font-style:italic;margin:0 0 4px}
-  .venn{text-align:center;margin:12px 0}
-  .venn svg{max-width:100%;height:auto}
-  .plantilla{background:#fff;border:2px dashed var(--cp);border-radius:10px;padding:12px 16px;font-family:Georgia,serif;line-height:1.9}
-  .hueco{display:inline-block;min-width:6em;border-bottom:2px solid var(--cp);color:#555;font-style:italic}
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
-<h1>Lección 5.1 · Comparar y contrastar dos textos</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 5: Comparar textos, vocabulario y lenguaje figurado · Unas 2 horas, a tu ritmo</p>
+
+<h1>Lección 5.1 · Los personajes y sus conflictos</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 5 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <ul class="lista-bonita" style="margin:0">
-    <li>Encontrar las <strong>semejanzas</strong> y las <strong>diferencias</strong> entre dos textos sobre el mismo tema.</li>
-    <li>Distinguir si los textos se diferencian en la <strong>información</strong> que dan o en el <strong>punto de vista</strong> del autor.</li>
-    <li>Escribir una comparación con <strong>conectores</strong> como <em>ambos</em>, <em>en cambio</em> y <em>mientras que</em>.</li>
-  </ul>
-  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.R.CL.7 · 2.R.CL.8 · 2.R.CI.10 · 2.R.CI.11</p>
+  <p style="margin-bottom:0">Analizar el <strong>papel</strong> (rol), los <strong>rasgos</strong> y los <strong>conflictos</strong> de los personajes en un texto literario, distinguiendo entre <strong>protagonista</strong>, <strong>antagonista</strong> y <strong>mentor</strong>, y entre <strong>conflicto interno</strong> y <strong>conflicto externo</strong>.</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-comparar">Comparar y contrastar</a></li>
-    <li><a href="#s-2-que">¿Qué se compara?</a></li>
-    <li><a href="#s-3-conectores">Las palabras de la comparación</a></li>
-    <li><a href="#s-4-lectura">Lectura paralela: trabajar desde casa</a></li>
-    <li><a href="#s-5-venn">El diagrama de Venn</a></li>
-    <li><a href="#s-6-escribir">Práctica: escribe la comparación</a></li>
+    <li><a href="#s-1-personajes">El papel de los personajes</a></li>
+    <li><a href="#s-2-roles">Roles, rasgos y conflictos</a></li>
+    <li><a href="#s-3-practica">Práctica: el mapa de personaje</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -219,151 +203,225 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
-<p>Comparamos todo el tiempo: dos ofertas de trabajo, dos apartamentos, dos médicos. Con los textos pasa lo mismo. Dos personas pueden escribir sobre el mismo tema y decir cosas muy distintas, o decir lo mismo con otras palabras. En el GED, varias preguntas de Artes del Lenguaje y la respuesta extendida trabajan con <strong>dos textos a la vez</strong>, así que esta destreza es clave. Hoy aprenderás a ponerlos uno junto al otro y ver dónde coinciden y dónde se separan.</p>
-<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán.</p>
 
-<details open id="s-1-comparar">
-<summary>1. Comparar y contrastar <span class="caja-tiempo">10 min</span></summary>
+<p>En el Tema 3 estudiaste las oraciones, los sustantivos y los verbos, y en el Tema 4 aprendiste estrategias para entender lo que lees. Ahora vas a usar todas esas herramientas para leer <strong>historias</strong>. Y toda historia empieza con un elemento esencial: <span class="palabra-clave">los personajes</span>.</p>
+
+<p>Sin personajes no hay historia. Sin conflicto, los personajes no cambian. Por eso, entender a quién le pasan las cosas y qué problemas enfrenta es la base para comprender cualquier cuento, novela o relato. En esta lección vas a aprender a identificar y describir personajes con precisión.</p>
+
+<details open id="s-1-personajes">
+<summary>1. El papel de los personajes <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-<table class="tabla">
-  <caption class="sr-solo">Comparar y contrastar</caption>
-  <thead><tr><th scope="col">Verbo</th><th scope="col">Significa</th><th scope="col">Pregunta</th></tr></thead>
+
+<h3>¿Por qué importan los personajes?</h3>
+
+<p>Los <span class="palabra-clave">personajes</span> son las personas, animales o seres imaginarios que protagonizan los hechos de una historia. Analizar a un personaje significa observar tres cosas: el <strong>rol</strong> que cumple, sus <strong>rasgos</strong> (cómo es) y los <strong>conflictos</strong> que enfrenta.</p>
+
+<p>Sin personajes no habría acciones que narrar. Pero un personaje sin retos ni dificultades no produce una historia interesante: necesita enfrentarse a algo. Ese "algo" es lo que llamamos <strong>conflicto</strong>, y es el motor que pone en marcha la narración.</p>
+
+<div class="tip">
+  <strong>💡 Idea central:</strong> Toda historia se sostiene en una pregunta simple: <em>¿qué le pasa al personaje y cómo responde a lo que le pasa?</em>
+</div>
+
+</div>
+</details>
+
+<details id="s-2-roles">
+<summary>2. Roles, rasgos y conflictos <span class="caja-tiempo">25 min</span></summary>
+<div class="contenido-detalle">
+
+<h3>El rol del personaje</h3>
+
+<p>El <strong>rol</strong> es la función que cumple un personaje dentro de la historia. Los tres roles más frecuentes son los siguientes.</p>
+
+<div class="roles-grid">
+
+  <div class="tarjeta-rol rol-protag">
+    <h4>👤 Protagonista</h4>
+    <p>Es el personaje principal, alrededor del cual gira la historia. Es quien enfrenta el conflicto y, generalmente, quien cambia o aprende algo.</p>
+    <div class="ejemplo">Ejemplo: en <em>Caperucita Roja</em>, la protagonista es Caperucita.</div>
+  </div>
+
+  <div class="tarjeta-rol rol-antag">
+    <h4>⚔️ Antagonista</h4>
+    <p>Es el personaje (o fuerza) que se opone al protagonista. No siempre es "malvado": puede ser un rival, una autoridad rígida o incluso la naturaleza.</p>
+    <div class="ejemplo">Ejemplo: en <em>Caperucita Roja</em>, el antagonista es el lobo.</div>
+  </div>
+
+  <div class="tarjeta-rol rol-ment">
+    <h4>🦉 Mentor</h4>
+    <p>Es el personaje que guía, aconseja o ayuda al protagonista. Le entrega información, herramientas o sabiduría para enfrentar el conflicto.</p>
+    <div class="ejemplo">Ejemplo: en <em>Cenicienta</em>, el hada madrina es la mentora: le da a Cenicienta lo que necesita para ir al baile.</div>
+  </div>
+
+</div>
+
+<h3>Los rasgos del personaje</h3>
+
+<p>Los <strong>rasgos</strong> son las características que definen al personaje. Para analizarlos, observamos tres dimensiones.</p>
+
+<table class="tabla-rasgos">
+  <caption class="sr-solo">Las tres dimensiones de los rasgos de un personaje</caption>
+  <thead>
+    <tr>
+      <th scope="col">Dimensión</th>
+      <th scope="col">Pregunta clave</th>
+      <th scope="col">Ejemplo</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td><strong>Comparar</strong></td><td>Buscar las <strong>semejanzas</strong>: en qué se parecen.</td><td>¿Qué tienen en común?</td></tr>
-    <tr><td><strong>Contrastar</strong></td><td>Buscar las <strong>diferencias</strong>: en qué no se parecen.</td><td>¿En qué se distinguen?</td></tr>
+    <tr>
+      <td>Atributos físicos</td>
+      <td>¿Cómo se ve? ¿Qué edad tiene?</td>
+      <td>Alto, delgado, de cabello cano, con anteojos.</td>
+    </tr>
+    <tr>
+      <td>Rasgos de personalidad</td>
+      <td>¿Cómo es por dentro? ¿Cómo actúa?</td>
+      <td>Honesto, tímido, valiente, generoso.</td>
+    </tr>
+    <tr>
+      <td>Forma de hablar</td>
+      <td>¿Qué dice y cómo lo dice?</td>
+      <td>Habla con cortesía / usa palabras técnicas / grita siempre.</td>
+    </tr>
   </tbody>
 </table>
-<div class="tip"><strong>💡 En la vida diaria se dice «comparar» para las dos cosas.</strong> Cuando un examen pide «comparar y contrastar», espera que hables de las semejanzas <em>y</em> de las diferencias.</div>
-</div>
-</details>
 
-<details id="s-2-que">
-<summary>2. ¿Qué se compara? <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<p>Dos textos sobre el mismo tema pueden parecerse o diferenciarse en cinco aspectos:</p>
-<table class="tabla">
-  <caption class="sr-solo">Aspectos para comparar dos textos</caption>
-  <thead><tr><th scope="col">Aspecto</th><th scope="col">Pregunta</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Tema</strong></td><td>¿Hablan de lo mismo?</td></tr>
-    <tr><td><strong>Información</strong></td><td>¿Qué datos, ejemplos o razones da cada uno? ¿Cuáles da uno y no el otro?</td></tr>
-    <tr><td><strong>Punto de vista</strong></td><td>¿Qué piensa cada autor? ¿Está a favor, en contra o con dudas?</td></tr>
-    <tr><td><strong>Propósito</strong></td><td>¿Para qué escribió cada uno: informar, entretener o persuadir?</td></tr>
-    <tr><td><strong>Tipo de texto</strong></td><td>¿Es una noticia, una opinión, un cuento, una carta?</td></tr>
-  </tbody>
-</table>
-<div class="tip"><strong>💡 El punto de vista</strong> es la posición del autor frente al tema. Lo descubres en las palabras que muestran su opinión: <em>creo, pienso, debería, por desgracia, por suerte, lo mejor, el problema es…</em>. Dos autores pueden dar <strong>los mismos datos</strong> y llegar a <strong>opiniones distintas</strong>.</div>
-</div>
-</details>
+<h3>El conflicto: el motor de la historia</h3>
 
-<details id="s-3-conectores">
-<summary>3. Las palabras de la comparación <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<table class="tabla">
-  <caption class="sr-solo">Conectores para comparar y contrastar</caption>
-  <thead><tr><th scope="col">Para señalar semejanzas</th><th scope="col">Para señalar diferencias</th></tr></thead>
-  <tbody>
-    <tr><td><strong>ambos</strong>, <strong>los dos</strong>: <em>Ambos textos hablan del trabajo.</em></td><td><strong>en cambio</strong>: <em>Gloria está contenta; Raúl, en cambio, ve problemas.</em></td></tr>
-    <tr><td><strong>al igual que</strong>: <em>Al igual que Gloria, Raúl reconoce el ahorro de tiempo.</em></td><td><strong>mientras que</strong>: <em>Gloria lo ve fácil, mientras que Raúl ve dificultades.</em></td></tr>
-    <tr><td><strong>también</strong>: <em>Raúl también menciona el transporte.</em></td><td><strong>a diferencia de</strong>: <em>A diferencia de Gloria, Raúl es supervisor.</em></td></tr>
-    <tr><td><strong>tanto… como…</strong>: <em>Tanto Gloria como Raúl trabajan en oficinas.</em></td><td><strong>sin embargo</strong>, <strong>por el contrario</strong>: <em>Sin embargo, sus opiniones son distintas.</em></td></tr>
-  </tbody>
-</table>
-<div class="tip"><strong>💡 Repaso de concordancia:</strong> <em>tanto Gloria como Raúl</em> son dos personas, así que el verbo va en plural: <em>Tanto Gloria como Raúl <strong>trabajan</strong></em>. Y recuerda la coma después de <em>sin embargo</em> al comienzo.</div>
-<h3>¿Semejanza o diferencia?</h3>
-<div class="clasificador apilado" id="clasif-cx"></div>
-<div class="puntaje" id="puntaje-cx" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l5-1.html#conectores" target="_blank" rel="noopener noreferrer">🔗 Practica más: conectores de comparación
-  <span>Completa oraciones con el conector adecuado. Se abre en una pestaña nueva.</span></a>
-</div>
-</details>
+<p>El <span class="palabra-clave">conflicto</span> es el problema o desafío que enfrenta el protagonista. Sin conflicto no hay historia: nada cambia, nada se desarrolla. Existen dos grandes tipos.</p>
 
-<details id="s-4-lectura">
-<summary>4. Lectura paralela: trabajar desde casa <span class="caja-tiempo">20 min</span></summary>
-<div class="contenido-detalle">
-<div class="actividad">
-  <h4><span class="badge badge-lectura">Lectura</span> Individual · dos textos a la vez</h4>
-  <p style="margin:0">Lee los dos textos. Mientras lees, haz dos columnas en tu cuaderno, una para cada autor, y anota en una palabra o frase cada idea que encuentres. Después marca con una estrella las ideas que aparecen en los dos.</p>
-</div>
-<div class="dos">
-  <div>
-    <h3>Texto A · Trabajar desde casa: una bendición</h3>
-    <p class="autor">Gloria, asistente administrativa</p>
-    <div class="texto-lectura" id="texto-a"><p>Desde hace un año trabajo desde casa tres días por semana, y mi vida cambió. Antes pasaba casi dos horas al día en el tren; ahora uso ese tiempo para desayunar con mis hijos. Ahorro unos ochenta dólares al mes en transporte y en comida. Además, en casa me concentro mejor: no hay ruido ni interrupciones. Creo que todas las empresas que puedan deberían ofrecer esta opción.</p></div>
-    <div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="leer-a">🔊 Escuchar el texto A</button></div>
+<div class="roles-grid" style="grid-template-columns:1fr 1fr">
+
+  <div class="tarjeta-rol" style="border-color:var(--conflicto-interno);background:var(--conflicto-interno-claro)">
+    <h4 style="color:var(--conflicto-interno)">🧠 Conflicto interno</h4>
+    <p>Ocurre dentro del personaje. Es una lucha emocional, moral o psicológica: miedo, duda, culpa, indecisión.</p>
+    <div class="ejemplo" style="border-color:var(--conflicto-interno)">Ejemplo: Ana tiene miedo de hablar en público, pero debe dar un discurso.</div>
   </div>
-  <div>
-    <h3>Texto B · Trabajar desde casa: no es para todos</h3>
-    <p class="autor">Raúl, supervisor</p>
-    <div class="texto-lectura" id="texto-b"><p>En mi oficina, la mitad del equipo trabaja desde casa tres días por semana. Reconozco que así se ahorra tiempo de transporte. Pero he notado algunos problemas: varios empleados se sienten solos, y es más difícil resolver una duda rápida cuando no tienes a un compañero al lado. Además, no todos tienen en casa un espacio tranquilo para trabajar. Pienso que el trabajo desde casa funciona, pero solo si la empresa ayuda a cada empleado a organizarse.</p></div>
-    <div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="leer-b">🔊 Escuchar el texto B</button></div>
+
+  <div class="tarjeta-rol" style="border-color:var(--conflicto-externo);background:var(--conflicto-externo-claro)">
+    <h4 style="color:var(--conflicto-externo)">🌪️ Conflicto externo</h4>
+    <p>Ocurre fuera del personaje. Es una lucha contra otra persona, contra la naturaleza, contra la sociedad o contra una circunstancia.</p>
+    <div class="ejemplo" style="border-color:var(--conflicto-externo)">Ejemplo: Pedro pierde el trabajo y debe encontrar dinero para pagar la renta.</div>
   </div>
+
 </div>
-<div class="clasificador apilado" id="clasif-lectura"></div>
-<div class="puntaje" id="puntaje-lectura" role="status" aria-live="polite"></div>
+
+<div class="tip">
+  <strong>⚠️ Atención:</strong> Una misma historia puede tener varios conflictos a la vez. Por ejemplo, un personaje puede luchar contra una tormenta (externo) y al mismo tiempo contra su propio miedo (interno).
+</div>
+
 </div>
 </details>
 
-<details id="s-5-venn">
-<summary>5. El diagrama de Venn <span class="caja-tiempo">20 min</span></summary>
+<details id="s-3-practica">
+<summary>3. Práctica: el mapa de personaje <span class="caja-tiempo">25 min</span></summary>
 <div class="contenido-detalle">
-<p>Un <span class="palabra-clave">diagrama de Venn</span> son dos círculos que se cruzan. En cada círculo van las ideas de un solo texto; en el centro, donde se juntan, van las que comparten.</p>
-<div class="venn">
-<svg viewBox="0 0 420 220" width="420" height="220" role="img" aria-labelledby="venn-t venn-d">
-  <title id="venn-t">Diagrama de Venn</title>
-  <desc id="venn-d">Dos círculos que se cruzan. El izquierdo dice Solo el texto A, el derecho dice Solo el texto B y la zona del centro dice Los dos.</desc>
-  <circle cx="150" cy="110" r="95" fill="#e0f2f1" fill-opacity="0.85" stroke="#004d44" stroke-width="3"/>
-  <circle cx="270" cy="110" r="95" fill="#fff3e0" fill-opacity="0.85" stroke="#8a3d0c" stroke-width="3"/>
-  <text x="105" y="114" text-anchor="middle" font-size="14" font-family="Arial" fill="#004d44" font-weight="bold">Solo A</text>
-  <text x="315" y="114" text-anchor="middle" font-size="14" font-family="Arial" fill="#8a3d0c" font-weight="bold">Solo B</text>
-  <text x="210" y="114" text-anchor="middle" font-size="14" font-family="Arial" fill="#1a2332" font-weight="bold">Los dos</text>
-</svg>
-</div>
-<p>Coloca cada idea de la lectura en su lugar del diagrama:</p>
-<div class="clasificador apilado" id="clasif-venn"></div>
-<div class="puntaje" id="puntaje-venn" role="status" aria-live="polite"></div>
-<div class="tip"><strong>💡 Cuidado con lo parecido:</strong> los dos hablan del transporte, pero Gloria habla de <em>dinero</em> y de <em>tiempo</em>, y Raúl solo de <em>tiempo</em>. Por eso el ahorro de tiempo va en el centro y el ahorro de dinero, solo en A. Comparar bien exige leer con precisión.</div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l5-1.html#venn" target="_blank" rel="noopener noreferrer">⭕ Practica más: el diagrama de Venn
-  <span>Otros pares de textos para clasificar sus ideas.</span></a>
-</div>
-</details>
 
-<details id="s-6-escribir">
-<summary>6. Práctica: escribe la comparación <span class="caja-tiempo">20 min</span></summary>
-<div class="contenido-detalle">
-<div class="actividad">
-  <h4><span class="badge badge-actividad">Actividad</span> Individual · en tu cuaderno</h4>
-  <p>Usa tu diagrama de Venn para escribir un párrafo que compare los dos textos. Puedes seguir esta plantilla:</p>
-  <div class="plantilla">
-    Los dos textos hablan de <span class="hueco">tema</span>. Ambos <span class="hueco">semejanza</span>. Sin embargo, sus puntos de vista son distintos. <span class="hueco">Autor A</span> piensa que <span class="hueco">opinión A</span>, porque <span class="hueco">razón</span>. En cambio, <span class="hueco">autor B</span> <span class="hueco">opinión B</span>, ya que <span class="hueco">razón</span>.
+<h3>Lectura: "El día que Marta se atrevió"</h3>
+
+<div class="cuento">
+<h4>📖 Cuento corto</h4>
+<p>Marta vivía en un pueblo pequeño donde nadie hablaba inglés. Tenía cuarenta años y trabajaba limpiando casas. Era una mujer callada, trabajadora y muy educada con sus clientes, pero cuando llegaba a casa se sentía triste: quería estudiar y aprender, pero el miedo a equivocarse le cerraba la boca.</p>
+<p>Una vecina, doña Elena, era maestra jubilada. Ella le repetía cada semana: "Marta, tú puedes. No tienes que hablar perfecto, solo tienes que empezar."</p>
+<p>Un martes por la mañana, Marta caminó hasta el centro comunitario y se inscribió en la clase de inglés. Se sentó en la última fila, con el cuaderno temblando entre las manos. Cuando la maestra le pidió que se presentara, Marta respiró profundo y dijo: "My name is Marta." Tres palabras. Pero por primera vez en años, sonrió desde adentro.</p>
+</div>
+
+<h3>Completa el mapa de personaje de Marta</h3>
+
+<p>Lee de nuevo el cuento y llena los cuatro cuadros del mapa. Escribe con tus propias palabras. Lo que escribas aquí no se guarda: cópialo después en tu cuaderno.</p>
+
+<div class="mapa-personaje">
+  <h4>🗺️ Mapa de personaje: Marta</h4>
+  <div class="mapa-grid">
+    <div class="cuadro-mapa">
+      <label class="etiq" for="mapa-1">👤 Rasgos físicos y datos</label>
+      <textarea id="mapa-1" placeholder="Edad, oficio, descripción física..."></textarea>
+    </div>
+    <div class="cuadro-mapa">
+      <label class="etiq" for="mapa-2">💭 Rasgos de personalidad</label>
+      <textarea id="mapa-2" placeholder="¿Cómo es por dentro?"></textarea>
+    </div>
+    <div class="cuadro-mapa">
+      <label class="etiq" for="mapa-3">⚔️ Conflicto que enfrenta</label>
+      <textarea id="mapa-3" placeholder="¿Qué problema tiene? ¿Es interno o externo?"></textarea>
+    </div>
+    <div class="cuadro-mapa">
+      <label class="etiq" for="mapa-4">🌱 Cambio o resolución</label>
+      <textarea id="mapa-4" placeholder="¿Qué hizo Marta? ¿Cómo cambió al final?"></textarea>
+    </div>
   </div>
 </div>
-<details style="margin-top:10px"><summary>Ver un párrafo modelo</summary><div class="contenido-detalle">
-<em>Los dos textos hablan de trabajar desde casa tres días por semana, y ambos reconocen que así se ahorra tiempo de transporte. Sin embargo, sus puntos de vista son distintos. Gloria piensa que es una bendición, porque ahorra dinero, pasa más tiempo con sus hijos y se concentra mejor. En cambio, Raúl ve algunos problemas, como la soledad de los empleados y la falta de un espacio tranquilo en casa. Mientras que Gloria quiere que todas las empresas lo ofrezcan, Raúl cree que solo funciona si la empresa ayuda a cada persona a organizarse.</em>
-</div></details>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l5-1.html#semejanza-diferencia" target="_blank" rel="noopener noreferrer">⚖️ Practica más: ¿semejanza o diferencia?
-  <span>Decide si dos afirmaciones de dos textos se parecen o se oponen.</span></a>
-<div class="tip"><strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> pregúntale a alguien de tu casa qué piensa de trabajar desde casa. Compara su opinión con la de Gloria y la de Raúl: ¿a cuál se parece más?</div>
+
+<div class="botones">
+  <button type="button" class="btn btn-secundario" id="btn-limpiar-mapa">Limpiar mapa</button>
+</div>
+
+<details class="ver-modelo">
+  <summary>Ya llené mi mapa: ver un modelo</summary>
+  <ul class="lista-bonita">
+    <li><strong>Rasgos físicos y datos:</strong> tiene cuarenta años, trabaja limpiando casas y vive en un pueblo pequeño. El cuento no describe cómo es su cara ni su cuerpo.</li>
+    <li><strong>Personalidad:</strong> callada, trabajadora, educada; quiere aprender, pero es insegura.</li>
+    <li><strong>Conflicto:</strong> principalmente <em>interno</em>, el miedo a equivocarse. También hay un obstáculo <em>externo</em>: en su pueblo nadie habla inglés.</li>
+    <li><strong>Cambio:</strong> se inscribe en la clase de inglés y se presenta en voz alta. Vence su miedo, aunque sea con tres palabras.</li>
+  </ul>
+  <p style="margin-bottom:0">Tus palabras pueden ser distintas. Lo importante es que cada idea se pueda <strong>comprobar en el cuento</strong>. ¿Te fijaste en el papel de doña Elena? Es la <strong>mentora</strong> de Marta.</p>
+</details>
+
+<h3>Clasifica el conflicto: ¿interno o externo?</h3>
+
+<p>Lee cada situación y decide si el conflicto del personaje es <strong>interno</strong> (dentro de la mente o el corazón) o <strong>externo</strong> (contra algo o alguien afuera).</p>
+
+<div class="leyenda-colores">
+  <span><span class="punto" style="background:var(--conflicto-interno)"></span> Interno</span>
+  <span><span class="punto" style="background:var(--conflicto-externo)"></span> Externo</span>
+</div>
+
+<div class="clasificador-conf" id="clasif-conf"></div>
+<div class="puntaje" id="puntaje-clasif-conf" role="status">Aciertos: 0 / 8</div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l5-1.html#conflicto" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Conflicto interno o externo? ↗
+  <span>Veinte situaciones más para clasificar. En la misma página practicas también <strong>los roles</strong> y <strong>los rasgos</strong> de los personajes. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>7. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p><strong>El mapa de un personaje que conoces.</strong> Piensa en una película, una serie, una telenovela o un cuento que te guste. Elige a su <strong>protagonista</strong> y haz en tu cuaderno su mapa de personaje, con los mismos cuatro cuadros de la sección 3:</p>
 <ul class="lista-bonita">
-  <li><strong>Dos noticias.</strong> Busca la misma noticia en dos periódicos o sitios distintos. Haz un diagrama de Venn: ¿qué dicen los dos? ¿Qué dato da uno y el otro no?</li>
-  <li><strong>Dos lugares.</strong> Escribe un párrafo que compare tu país de origen (o el de tu familia) con la ciudad donde vives ahora. Usa al menos cuatro conectores de la sección 3.</li>
-  <li><strong>Dos opiniones.</strong> Escribe dos opiniones cortas sobre un mismo tema (por ejemplo, el uso del celular en la escuela): una a favor y otra con dudas. Luego compáralas en tres oraciones.</li>
+  <li><strong>Rasgos físicos y datos:</strong> cómo es, qué edad tiene, a qué se dedica.</li>
+  <li><strong>Rasgos de personalidad:</strong> al menos tres adjetivos, y una acción del personaje que demuestre cada uno.</li>
+  <li><strong>Conflicto:</strong> qué problema enfrenta y si es interno, externo o los dos.</li>
+  <li><strong>Cambio o resolución:</strong> qué hace al final y en qué cambió.</li>
 </ul>
+<p>Al final, escribe una oración que diga quién es el <strong>antagonista</strong> o qué fuerza se opone al protagonista.</p>
+<p>Si alguien de tu casa conoce la misma historia, cuéntale tu mapa y pregúntale si está de acuerdo con los rasgos que elegiste.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo del mapa de personaje</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Rasgos con pruebas</td><td class="nivel-4">Cada rasgo de personalidad tiene una acción que lo demuestra</td><td class="nivel-1">Solo puse adjetivos, sin ejemplos</td></tr>
+      <tr><td>Tipo de conflicto</td><td class="nivel-4">Dije si el conflicto es interno o externo y por qué</td><td class="nivel-1">Describí el problema sin clasificarlo</td></tr>
+      <tr><td>Cambio</td><td class="nivel-4">Expliqué qué hizo el personaje y en qué cambió</td><td class="nivel-1">No escribí cómo termina</td></tr>
+      <tr><td>Antagonista</td><td class="nivel-4">Nombré a la persona o fuerza que se opone</td><td class="nivel-1">No lo identifiqué</td></tr>
+    </tbody>
+  </table>
+</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Varias preguntas usan los dos textos sobre uniformes que aparecen en ellas. Al final pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -375,113 +433,125 @@
 </details>
 
 <details id="s-cierre">
-<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-<h3>Lo que aprendiste en esta lección</h3>
+
+<h3>Lo que aprendiste</h3>
+
 <ul class="lista-bonita">
-  <li><strong>Comparar</strong> es buscar semejanzas; <strong>contrastar</strong>, diferencias.</li>
-  <li>Dos textos se comparan por su tema, su información, su punto de vista, su propósito y su tipo.</li>
-  <li>El <strong>diagrama de Venn</strong> separa lo propio de cada texto y lo que comparten.</li>
-  <li>Conectores: <em>ambos, al igual que, también</em> · <em>en cambio, mientras que, a diferencia de, sin embargo</em>.</li>
+  <li>Los <strong>personajes</strong> se analizan según su <strong>rol</strong>, sus <strong>rasgos</strong> y sus <strong>conflictos</strong>.</li>
+  <li>Los roles principales son <strong>protagonista</strong>, <strong>antagonista</strong> y <strong>mentor</strong>.</li>
+  <li>Los rasgos se observan en tres dimensiones: físicos, de personalidad y forma de hablar.</li>
+  <li>El <strong>conflicto interno</strong> ocurre dentro del personaje; el <strong>externo</strong>, contra una fuerza exterior.</li>
+  <li>Sin conflicto, el personaje no cambia y no hay verdadera historia.</li>
 </ul>
+
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿En qué se parecen Gloria y Raúl, y en qué no?</li>
-    <li>¿Sabes qué es el punto de vista de un autor y cómo descubrirlo?</li>
-    <li>¿Puedes escribir una oración con <em>mientras que</em>?</li>
+    <li>¿Puedes nombrar tres roles que cumplen los personajes en una historia?</li>
+    <li>¿Cuál es la diferencia entre un conflicto interno y uno externo?</li>
+    <li>¿Puedes pensar en una película o serie donde el protagonista enfrente un conflicto interno?</li>
   </ul>
 </div>
-<div class="tip"><strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_5-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 5.2 · Vocabulario por contexto: pistas, afijos y raíces</a>. Aprenderás a descubrir el significado de una palabra desconocida sin salir del texto.</div>
+
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_5-2.html" style="color:var(--cp-oscuro);font-weight:700">Lección 5.2 · El escenario y su impacto en la historia</a>. Los personajes no flotan en el aire: viven en un <strong>escenario</strong>. Verás cómo el lugar, el tiempo y los detalles de los sentidos afectan la historia y las emociones de quien lee.
+</div>
+
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 5 · Lección 5.1</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 5 · Lección 5.1</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<script>
-/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
-(function(){
-  var voz=null, hay=('speechSynthesis' in window);
-  function elegir(){
-    if(!hay)return;
-    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
-    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
-    voz=null;
-    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
-    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
-  }
-  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
-  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
-  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
-  /* hablar(texto, velocidad, alTerminar) */
-  window.hablar=function(texto,vel,fin){
-    if(!hay||!texto){aviso();return;}
-    speechSynthesis.cancel();
-    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
-    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
-    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
-  };
-  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
-  window.hablarPalabras=function(texto){
-    if(!hay){aviso();return;}
-    speechSynthesis.cancel();
-    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
-  };
-  window.callar=function(){if(hay)speechSynthesis.cancel();};
-  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
-})();
 
-/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
-function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
-  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
-  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
-  items.forEach(function(it,i){
-    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
-    var ops=it.ops||opciones;
-    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
-      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
-      '<span class="item-fb" aria-live="polite"></span>';
-    caja.appendChild(d);
-    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
-    var fb=d.querySelector('.item-fb');
-    d.querySelectorAll('.btn-op').forEach(function(b){
+<script>
+(function(){
+  // Limpiar mapa
+  document.getElementById('btn-limpiar-mapa').addEventListener('click',function(){
+    document.querySelectorAll('.mapa-personaje textarea').forEach(function(t){t.value=''});
+  });
+
+  // Clasificador de conflictos
+  var conflictos=[
+    {frase:'Carlos quiere pedirle una cita a María, pero le tiembla la voz y no se atreve a llamarla.',tipo:'interno',pista:'La lucha está dentro de Carlos: su miedo y su timidez.'},
+    {frase:'Una tormenta atrapa a Luis y a su familia en la carretera, sin gasolina ni señal de teléfono.',tipo:'externo',pista:'La fuerza opositora es la naturaleza: una tormenta y la falta de recursos.'},
+    {frase:'Sofía siente culpa porque mintió a su madre y no sabe si confesar la verdad.',tipo:'interno',pista:'La culpa y la duda son emociones internas.'},
+    {frase:'El jefe de Roberto le exige que trabaje hasta tarde, pero su hija lo espera en la casa.',tipo:'externo',pista:'El conflicto es con otra persona (el jefe) y con una situación externa (el horario).'},
+    {frase:'Ana mira el examen final y se pregunta si realmente estudió lo suficiente para aprobar.',tipo:'interno',pista:'La duda sobre sí misma es un conflicto interno.'},
+    {frase:'Un perro grande persigue a Pedro mientras camina hacia su casa.',tipo:'externo',pista:'El opositor es algo de afuera: el perro.'},
+    {frase:'Miguel quiere dejar de fumar, pero cada vez que está nervioso siente la urgencia de prender un cigarro.',tipo:'interno',pista:'La lucha está dentro: deseo contra voluntad.'},
+    {frase:'Una ley nueva obliga a Lucía a mudarse del apartamento donde vivió veinte años.',tipo:'externo',pista:'La fuerza opositora es la sociedad / una ley.'}
+  ];
+
+  var aciertosConf=0;
+  var resueltasConf={};
+  var contConf=document.getElementById('clasif-conf');
+
+  conflictos.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-conf';
+    div.innerHTML=
+      '<div class="frase-conf">'+(idx+1)+'. '+item.frase+'</div>'+
+      '<div class="opciones-conf">'+
+        '<button type="button" class="btn-tipo-conf btn-int" data-tipo="interno">Interno</button>'+
+        '<button type="button" class="btn-tipo-conf btn-ext" data-tipo="externo">Externo</button>'+
+      '</div>'+
+      '<div class="feedback-item"></div>';
+    contConf.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-tipo-conf');
+    var feedback=div.querySelector('.feedback-item');
+    botones.forEach(function(b){
       b.addEventListener('click',function(){
-        if(hechas[i])return;
-        if(+b.getAttribute('data-j')===it.c){
-          b.classList.add('correcta'); hechas[i]=true; bien++;
-          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
-          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+        if(resueltasConf[idx])return;
+        var t=b.getAttribute('data-tipo');
+        if(t===item.tipo){
+          b.classList.add('correcta');
+          feedback.className='feedback-item correcto mostrar';
+          feedback.innerHTML='✅ Correcto. '+item.pista;
+          resueltasConf[idx]=true;
+          aciertosConf++;
+          actualizarPuntajeConf();
         }else{
-          b.classList.add('incorrecta'); b.disabled=true;
-          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+          b.classList.add('incorrecta');
+          feedback.className='feedback-item incorrecto mostrar';
+          feedback.innerHTML='❌ Inténtalo otra vez. Pregúntate: ¿la lucha ocurre dentro del personaje o contra algo de afuera?';
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
       });
     });
   });
-  marcador();
-}
 
-/* ===== Quiz de la lección =====
-   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
-        ae:audio entrecortado opcional, fijo:no barajar,
-        r:enlace de repaso que aparece si la respuesta es incorrecta}]
-   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
-function iniciarQuiz(P,cfg){
-  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  function actualizarPuntajeConf(){
+    var el=document.getElementById('puntaje-clasif-conf');
+    el.textContent='Aciertos: '+aciertosConf+' / '+conflictos.length;
+    if(aciertosConf===conflictos.length){
+      el.innerHTML='🎉 ¡Excelente trabajo! Aciertos: '+aciertosConf+' / '+conflictos.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué tres cosas se observan al analizar a un personaje?", "o": ["Su rol, sus rasgos y sus conflictos", "Su nombre, su edad y su ciudad", "El título, el autor y el final"], "c": 0}, {"t": "¿Quién es el <strong>protagonista</strong> de una historia?", "o": ["El personaje principal, el que enfrenta el conflicto", "El personaje que se opone al principal", "El personaje que da consejos"], "c": 0}, {"t": "¿Quién es el <strong>antagonista</strong>?", "o": ["El personaje o la fuerza que se opone al protagonista", "El personaje más bueno", "El que narra la historia"], "c": 0}, {"t": "¿Quién es el <strong>mentor</strong>?", "o": ["El personaje que guía y aconseja al protagonista", "El personaje más joven", "El enemigo del protagonista"], "c": 0}, {"t": "¿El antagonista tiene que ser una persona mala?", "o": ["No: puede ser un rival, una autoridad o incluso la naturaleza", "Sí, siempre es malvado", "Sí, y siempre es un animal"], "c": 0}, {"t": "«Honesto, tímido y generoso» son rasgos…", "o": ["de personalidad", "físicos", "de la forma de hablar"], "c": 0}, {"t": "«Alto, de cabello cano y con anteojos» son rasgos…", "o": ["físicos", "de personalidad", "del escenario"], "c": 0}, {"t": "Un <strong>conflicto interno</strong> ocurre…", "o": ["dentro del personaje: miedo, duda, culpa", "entre dos países", "siempre contra la naturaleza"], "c": 0}, {"t": "«Un huracán destruye la casa de la familia Pérez.» ¿Qué tipo de conflicto es?", "o": ["Externo", "Interno"], "c": 0, "fijo": true}, {"t": "«Rosa no sabe si aceptar un trabajo nuevo o quedarse donde está.» ¿Qué tipo de conflicto es?", "o": ["Externo", "Interno"], "c": 1, "fijo": true}, {"t": "En el cuento de Marta, ¿qué papel cumple doña Elena?", "o": ["Mentora", "Antagonista", "Protagonista"], "c": 0}, {"t": "¿Por qué es importante el conflicto en una historia?", "o": ["Porque pone en marcha la historia y hace que el personaje cambie", "Porque hace la historia más corta", "Porque presenta a todos los personajes"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a||p.ae){
+    if(p.x||p.a){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -489,7 +559,7 @@ function iniciarQuiz(P,cfg){
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -504,88 +574,37 @@ function iniciarQuiz(P,cfg){
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
-      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya sabes analizar a los personajes. Puedes continuar con la Lección 5.2.";fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a la sección 2, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
-    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-}
+})();
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-document.addEventListener('DOMContentLoaded',function(){
+(function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
-  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-});
-
-document.getElementById('leer-a').addEventListener('click',function(){hablar(document.getElementById('texto-a').textContent.trim(),0.85);});
-document.getElementById('leer-b').addEventListener('click',function(){hablar(document.getElementById('texto-b').textContent.trim(),0.85);});
-
-clasificador('clasif-cx','puntaje-cx',[
-  {p:'«Ambos autores viven en Chicago.»',c:0,n:'<em>Ambos</em> señala algo en común.'},
-  {p:'«Ana prefiere el tren; Luis, en cambio, maneja.»',c:1,n:'<em>en cambio</em> marca una diferencia.'},
-  {p:'«Al igual que su hermana, Marta estudia de noche.»',c:0,n:'<em>al igual que</em>: semejanza.'},
-  {p:'«El primer texto da datos, mientras que el segundo cuenta una historia.»',c:1,n:'<em>mientras que</em>: diferencia.'},
-  {p:'«A diferencia de la noticia, el anuncio quiere convencer.»',c:1,n:'<em>a diferencia de</em>: diferencia.'},
-  {p:'«Tanto la madre como el hijo terminaron el GED.»',c:0,n:'<em>tanto… como</em>: semejanza.'}
-],['Semejanza','Diferencia'],false);
-
-clasificador('clasif-lectura','puntaje-lectura',[
-  {p:'¿Cuál es el tema de los dos textos?',ops:['El tren de Chicago','Trabajar desde casa','Cómo ser un buen supervisor'],c:1,n:'Los dos títulos lo anuncian.'},
-  {p:'¿Cuál es el punto de vista de Gloria?',ops:['Está completamente a favor','Está en contra','No da su opinión'],c:0,n:'«Una bendición», «mi vida cambió», «todas las empresas deberían».'},
-  {p:'¿Cuál es el punto de vista de Raúl?',ops:['Está completamente en contra','Está a favor, pero con condiciones','Está completamente a favor'],c:1,n:'«Funciona, pero solo si la empresa ayuda».'},
-  {p:'¿Qué palabras muestran la opinión de Raúl?',ops:['«En mi oficina» y «tres días»','«Pienso que» y «solo si»','«La mitad del equipo»'],c:1,n:'<em>Pienso que</em> anuncia una opinión; <em>solo si</em> pone una condición.'},
-  {p:'¿Por qué los dos autores ven el tema de manera distinta?',ops:['Porque viven en ciudades diferentes','Porque uno es empleada y el otro supervisor del equipo','Porque Raúl no sabe usar la computadora'],c:1,n:'Gloria habla de su propia vida; Raúl, de lo que observa en todo su equipo.'}
-],null,false);
-
-clasificador('clasif-venn','puntaje-venn',[
-  {p:'Se trabaja desde casa tres días por semana.',c:1,n:'Lo dicen los dos.'},
-  {p:'Se ahorra tiempo de transporte.',c:1,n:'Gloria y Raúl lo reconocen.'},
-  {p:'Se ahorra dinero en transporte y en comida.',c:0,n:'Solo Gloria habla de dinero.'},
-  {p:'En casa hay menos ruido y uno se concentra mejor.',c:0,n:'Es la experiencia de Gloria.'},
-  {p:'Algunos empleados se sienten solos.',c:2,n:'Lo observa Raúl.'},
-  {p:'No todos tienen en casa un espacio tranquilo.',c:2,n:'Es un problema que señala Raúl.'},
-  {p:'Todas las empresas que puedan deberían ofrecerlo.',c:0,n:'Es la opinión de Gloria.'},
-  {p:'Funciona solo si la empresa ayuda a organizarse.',c:2,n:'Es la condición de Raúl.'}
-],['Solo A (Gloria)','Los dos','Solo B (Raúl)'],false);
-
-var U='<span class="pasaje"><strong>Texto 1:</strong> «Los uniformes escolares ahorran dinero a las familias: no hay que comprar tanta ropa. Además, los niños no compiten por quién tiene la ropa más cara. Las escuelas deberían exigirlos.»<br><strong>Texto 2:</strong> «Los uniformes escolares pueden ahorrar algo de dinero, pero no dejan que los niños expresen su personalidad. Prefiero que cada familia decida cómo vestir a sus hijos.»</span>';
-iniciarQuiz([
-  {t:'<strong>Contrastar</strong> dos textos es…',o:['Buscar sus diferencias','Buscar sus semejanzas','Resumir los dos en una oración'],c:0},
-  {t:'El <strong>punto de vista</strong> de un autor es…',o:['Su posición u opinión frente al tema','El lugar donde escribió el texto','La cantidad de datos que da'],c:0},
-  {t:'¿Qué palabras suelen mostrar la opinión del autor?',o:['creo, pienso, debería','ayer, hoy, mañana','aquí, allí, cerca'],c:0},
-  {t:'¿Qué conector señala una <strong>semejanza</strong>?',o:['al igual que','en cambio','mientras que'],c:0},
-  {t:'¿Qué conector señala una <strong>diferencia</strong>?',o:['a diferencia de','ambos','también'],c:0},
-  {t:'En un diagrama de Venn, en el centro van…',o:['Las ideas que comparten los dos textos','Las ideas que solo tiene el primer texto','Los títulos de los dos textos'],c:0},
-  {t:U+'¿En qué coinciden los dos textos?',o:['En que los uniformes pueden ahorrar dinero','En que los uniformes deben ser obligatorios','En que los niños compiten por la ropa'],c:0},
-  {t:U+'¿Cuál es el punto de vista del texto 1?',o:['A favor de exigir uniformes','En contra de los uniformes','No da ninguna opinión'],c:0},
-  {t:U+'¿Qué idea aparece solo en el texto 2?',o:['Los uniformes no dejan expresar la personalidad','Los uniformes ahorran algo de dinero','Las escuelas deberían exigirlos'],c:0},
-  {t:U+'¿Qué oración compara bien los dos textos?',o:['El texto 1 quiere uniformes obligatorios, mientras que el texto 2 prefiere que decida cada familia.','Los dos textos están completamente de acuerdo sobre los uniformes.','El texto 2 dice que los uniformes son demasiado caros para las familias.'],c:0},
-  {t:'Completa: «Tanto Gloria como Raúl ___ en una oficina.»',o:['trabajan','trabaja','trabajamos'],c:0},
-  {t:'Dos autores pueden dar los mismos datos y…',o:['Llegar a opiniones distintas','Tener siempre la misma opinión','No tener ningún punto de vista'],c:0}
-],{meta:10,
-   bien:'Ya sabes comparar y contrastar dos textos. Puedes continuar con la Lección 5.2.',
-   repaso:'Vuelve a las secciones 2, 3 y 5 y repite el quiz: con práctica sale.'});
+})();
 </script>
+
 </body>
 </html>

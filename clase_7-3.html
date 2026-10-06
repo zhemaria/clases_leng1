@@ -1,91 +1,155 @@
 <!DOCTYPE html>
-<!-- Lección 7.3 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
-     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
-     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
+<!-- Lección 7.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 7.3 · Narración con escenario y diálogo; proceso de revisión</title>
+<title>Lección 7.3 · Tres tipos de texto: narrativo e informativo</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
-    --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#555;--gris-claro:#eef1f4;
-    --dip:#1565c0;--dip-claro:#e3f2fd;
-    --hia:#ad1457;--hia-claro:#fce4ec;
-    --grp:#5c3900;--grp-claro:#fff3cd;
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
+    --acento:#7b3fbf;--acento-claro:#f3e8ff;--acento-oscuro:#5a2d8f;
+    --texto:#1a2332;--fondo:#fafbfc;
+    --gris:#6b7785;--gris-claro:#eef1f4;
     --exito:#2e7d32;--error:#c62828;
+    --advertencia:#f4c430;--advertencia-fondo:#fffbe6;
+    --naranja:#ff8c42;--naranja-oscuro:#b35316;--naranja-claro:#fff8ee;
+    --narrativo:#ef6c00;--narrativo-claro:#fff3e0;--narrativo-oscuro:#a04200;
+    --informativo:#0277bd;--informativo-claro:#e1f5fe;--informativo-oscuro:#01486d;
+    --opinion:#7b3fbf;--opinion-claro:#f3e8ff;--opinion-oscuro:#5a2d8f;
   }
   *{box-sizing:border-box}
   body{font-family:'Poppins','Segoe UI',Arial,sans-serif;line-height:1.7;color:var(--texto);background:var(--fondo);max-width:960px;margin:0 auto;padding:24px 18px}
   h1{color:var(--cp-oscuro);border-bottom:4px solid var(--cp);padding-bottom:14px;font-size:1.85rem;margin-bottom:8px}
   .subtitulo{color:var(--gris);font-style:italic;margin-top:0;margin-bottom:24px;font-size:1.05rem}
   h2{color:var(--cp-oscuro);border-left:6px solid var(--cp);padding-left:14px;margin-top:32px;font-size:1.4rem}
-  h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
+  h3{color:var(--acento-oscuro);margin-top:24px;font-size:1.15rem}
+  h4{color:var(--cp-oscuro);margin-top:18px;font-size:1.05rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-objetivos ul{margin:8px 0 0 0;padding-left:20px}
+  .caja-objetivos li{margin-bottom:6px}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
-  .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#6b5400}
-  .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
-  .btn-primario{background:var(--cp);color:#fff}
-  .btn-primario:hover{background:var(--cp-oscuro)}
-  .btn-secundario{background:var(--gris-claro);color:var(--texto)}
-  .btn-secundario:hover{background:#d6dde4}
-  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:var(--naranja-claro);border-color:var(--naranja)}
+  .presencial h4{color:var(--naranja-oscuro);margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
+  .tip{background:var(--advertencia-fondo);border-left:5px solid var(--advertencia);padding:12px 18px;border-radius:6px;margin:14px 0}
+  .tip strong{color:#8a6d00}
+  .clave-pedagogica{background:var(--acento-claro);border-left:5px solid var(--acento);padding:14px 18px;border-radius:6px;margin:14px 0}
+  .clave-pedagogica strong{color:var(--acento-oscuro)}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
   .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
-  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
-  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
-  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.tabla tr:last-child td{border-bottom:none}
-  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad h4{color:#8a3d0c;margin-top:0}
-  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-lectura{background:#e3f2fd;color:#0d47a1}
-  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
-  /* Clasificadores */
-  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
-  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
-  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
-  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
-  .item-fb:empty{display:none}
-  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
-  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
-  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
-  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
-  .btn-op:disabled{cursor:default}
-  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
-  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
-  /* Lectura con marcas */
-  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
-  .texto-lectura p{margin:0 0 10px}
-  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
-  .leyenda span{display:inline-flex;align-items:center;gap:6px}
-  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
-  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
-  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
-  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
-  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
-  /* Índice */
+
+  /* Tres tipos de texto: tarjetas de presentación */
+  .tres-tipos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .tipo-card{background:#fff;border-radius:10px;padding:16px 18px;border-top:5px solid;box-shadow:0 2px 8px rgba(0,0,0,0.07);text-align:center}
+  .tipo-card.narrativo{border-color:var(--narrativo)}
+  .tipo-card.informativo{border-color:var(--informativo)}
+  .tipo-card.opinion{border-color:var(--opinion)}
+  .tipo-card .icono-tipo{font-size:2.3rem;display:block;margin-bottom:6px}
+  .tipo-card h4{margin:0 0 6px 0;font-size:1.05rem}
+  .tipo-card.narrativo h4{color:var(--narrativo-oscuro)}
+  .tipo-card.informativo h4{color:var(--informativo-oscuro)}
+  .tipo-card.opinion h4{color:var(--opinion-oscuro)}
+  .tipo-card .preg-orient{font-size:0.86rem;color:var(--gris);font-style:italic;display:block;margin-top:4px}
+  .tipo-card .ejemplo-uso{font-size:0.85rem;background:var(--gris-claro);padding:6px 10px;border-radius:5px;margin-top:8px;display:block}
+
+  /* Tabla comparativa visual */
+  .tabla-tipos{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);font-size:0.92rem}
+  .tabla-tipos th{padding:12px 14px;color:#fff;text-align:center;font-size:0.95rem;font-weight:700}
+  .tabla-tipos th.h-narr{background:var(--narrativo)}
+  .tabla-tipos th.h-info{background:var(--informativo)}
+  .tabla-tipos th.h-opin{background:var(--opinion)}
+  .tabla-tipos th.h-fila{background:var(--gris);text-align:left}
+  .tabla-tipos td{padding:11px 13px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  .tabla-tipos td:first-child{font-weight:600;background:#f9fafb;color:var(--cp-oscuro)}
+  .tabla-tipos tr:last-child td{border-bottom:none}
+  @media(max-width:640px){.tabla-tipos{font-size:0.85rem}.tabla-tipos td,.tabla-tipos th{padding:8px 10px}}
+
+  /* Texto modelo con anotaciones */
+  .texto-modelo{background:#fff;border:2px solid;border-radius:10px;padding:16px 20px;margin:14px 0;line-height:1.85;font-size:0.95rem;position:relative}
+  .texto-modelo.t-narr{border-color:var(--narrativo)}
+  .texto-modelo.t-info{border-color:var(--informativo)}
+  .texto-modelo.t-opin{border-color:var(--opinion)}
+  .etiq-modelo{position:absolute;top:-13px;left:18px;padding:3px 12px;border-radius:14px;font-size:0.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px}
+  .etiq-modelo.e-narr{background:var(--narrativo)}
+  .etiq-modelo.e-info{background:var(--informativo)}
+  .etiq-modelo.e-opin{background:var(--opinion)}
+
+  /* Resaltado dentro de los modelos */
+  .secuencia{background:var(--narrativo-claro);padding:1px 5px;border-radius:3px;border-bottom:2px solid var(--narrativo);color:var(--narrativo-oscuro);font-weight:600}
+  .dato{background:var(--informativo-claro);padding:1px 5px;border-radius:3px;border-bottom:2px solid var(--informativo);color:var(--informativo-oscuro);font-weight:600}
+  .marca-opinion{background:var(--opinion-claro);padding:1px 5px;border-radius:3px;border-bottom:2px solid var(--opinion);color:var(--opinion-oscuro);font-weight:600}
+
+  /* Palabras temporales */
+  .palabras-temp-cont{background:#fff;border:2px solid var(--narrativo);border-radius:10px;padding:14px 18px;margin:14px 0}
+  .palabras-temp-cont h4{margin-top:0;color:var(--narrativo-oscuro)}
+  .palabras-temp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
+  .pal-temp{background:var(--narrativo-claro);border-radius:8px;padding:10px 8px;text-align:center;border-left:4px solid var(--narrativo)}
+  .pal-temp .pt-num{display:inline-flex;width:24px;height:24px;background:var(--narrativo);color:#fff;border-radius:50%;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;margin-bottom:4px}
+  .pal-temp .pt-pal{font-weight:700;color:var(--narrativo-oscuro);font-size:1rem;display:block}
+
+  /* Esquema visual: línea de tiempo */
+  .linea-tiempo{display:flex;justify-content:space-between;align-items:flex-start;margin:18px 0;position:relative;padding:0 10px;flex-wrap:wrap;gap:10px}
+  .linea-tiempo::before{content:'';position:absolute;top:18px;left:30px;right:30px;height:3px;background:var(--narrativo);z-index:0}
+  @media(max-width:640px){.linea-tiempo::before{display:none}}
+  .evento-tiempo{flex:1;min-width:120px;text-align:center;position:relative;z-index:1}
+  .evento-tiempo .punto-tiempo{width:36px;height:36px;background:var(--narrativo);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.15)}
+  .evento-tiempo .desc-evento{font-size:0.85rem;margin-top:6px;line-height:1.4;color:var(--texto);padding:6px 8px;background:var(--narrativo-claro);border-radius:6px}
+
+  /* Esquema visual: hechos del informativo */
+  .hechos-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0}
+  .hecho-info-card{background:var(--informativo-claro);border-left:4px solid var(--informativo);border-radius:8px;padding:10px 12px}
+  .hecho-info-card .hecho-num{display:inline-flex;width:24px;height:24px;background:var(--informativo);color:#fff;border-radius:50%;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;margin-bottom:4px}
+  .hecho-info-card .hecho-txt{font-size:0.88rem;line-height:1.5;display:block;color:var(--texto)}
+  .hecho-info-card .hecho-label{font-size:0.78rem;font-weight:700;color:var(--informativo-oscuro);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:3px}
+
+  /* Quiz */
+  .quiz-cont{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:18px;margin:18px 0;box-shadow:0 3px 10px rgba(0,137,205,0.08)}
+  .quiz-cont h4{margin-top:0;text-align:center;color:var(--cp-oscuro)}
+  .preguntas-quiz{margin:14px 0}
+  .preg-quiz{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .preg-quiz .num-preg{background:var(--acento);color:#fff;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:700;margin-right:10px;font-size:0.92rem;vertical-align:middle}
+  .preg-quiz .texto-preg{font-weight:600;color:var(--cp-oscuro);font-size:0.97rem;display:inline}
+  .contexto-preg{background:var(--gris-claro);padding:12px 14px;border-radius:6px;margin:10px 0;font-style:italic;font-size:0.95rem;line-height:1.6;color:var(--texto)}
+  .opciones-quiz{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .opt-quiz{padding:10px 14px;border:2px solid var(--gris-claro);background:#fff;border-radius:6px;cursor:pointer;font-family:inherit;font-size:0.92rem;transition:all 0.2s;font-weight:500;text-align:left}
+  .opt-quiz:hover{border-color:var(--cp);background:var(--cp-claro)}
+  .opt-quiz.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito);cursor:default;font-weight:600}
+  .opt-quiz.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .retro-quiz{margin-top:10px;padding:10px 14px;border-radius:6px;background:var(--cp-claro);color:var(--cp-oscuro);font-size:0.9rem;display:none;border-left:4px solid var(--cp)}
+  .retro-quiz.visible{display:block}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem;padding:10px;background:var(--cp-claro);border-radius:8px}
+
+  /* Leyenda de colores para los modelos */
+  .leyenda-modelo{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;font-size:0.82rem;justify-content:center}
+  .leyenda-modelo .ley-item{display:flex;align-items:center;gap:5px}
+  .leyenda-modelo .cuad{width:14px;height:14px;border-radius:3px;display:inline-block}
+  .leyenda-modelo .c-sec{background:var(--narrativo)}
+  .leyenda-modelo .c-dato{background:var(--informativo)}
+  .leyenda-modelo .c-opin{background:var(--opinion)}
+
+  /* ── Índice de la lección ── */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -95,13 +159,17 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
+  /* Un acordeón cerrado dentro de otro abierto se ve cerrado */
+  details:not([open])>summary{background:var(--gris-claro);border-bottom:none}
+  details:not([open])>summary::before{transform:none}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
-  .aviso-voz.visible{display:block}
-  /* Quiz */
+  /* ── Quiz de la lección ── */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -121,96 +189,51 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
+  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 
-  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
-  .qz-repaso a{color:#004d44;font-weight:700}
-  /* ── Comunes desde el Tema 4 ── */
-  .item-ops{flex-wrap:wrap}
-  .apilado .item{flex-direction:column;align-items:stretch}
-  .apilado .item-ops{flex-direction:column}
-  .apilado .btn-op{text-align:left;font-weight:400}
-  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
-  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
-  .pasaje p{margin:0 0 6px}
-  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
-  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
-  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
-  /* Taller de escritura (Tema 7) */
-  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
-  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
-  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
-  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
-  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
-  .tl-conect{font-size:.95rem;margin:4px 0 8px}
-  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
-  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
-  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
-  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
-  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
-  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
-  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
-  .rubrica{font-size:.92rem}
-  .rubrica td,.rubrica th{vertical-align:top}
-  .marca{border-radius:3px;padding:0 2px;font-weight:700}
-  .m-postura{background:#e3f2fd;color:#0d3c78}
-  .m-razon{background:#fff3e0;color:#7a3a00}
-  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
-  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
-  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
-  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
-  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
-  .oculta-marcas .marca::before{content:none}
-  @media(max-width:640px){
-    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
-    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
-    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
-    .rubrica td{border:none;border-top:1px solid #d5dde3}
-    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
-  }
-
-  .partes4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:12px 0}
-  .partes4 div{background:#fff;border:2px solid var(--cp);border-radius:10px;padding:10px 14px}
-  .partes4 strong{color:var(--cp-oscuro);font-size:1.05rem}
-  .dialogo p{margin:0 0 8px}
-  .dos-b{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  @media(max-width:640px){.dos-b{grid-template-columns:1fr}}
-  .dos-b .pasaje{margin:0}
-  .proceso{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:12px 0;padding:0;list-style:none}
-  .proceso li{background:var(--cp-oscuro);color:#fff;border-radius:20px;padding:8px 14px;font-weight:700}
-  .proceso .fl{background:none;color:var(--cp-oscuro);padding:0 2px}
+  /* ── Tarea y autoevaluación ── */
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#8a3d0c;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+  .badge-rubrica{background:#fff3e0;color:#8a3d0c}
+  table.rubrica{width:100%;border-collapse:collapse;margin:14px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06);font-size:0.9rem}
+  table.rubrica th{background:#8a3d0c;color:#fff;padding:10px;text-align:center;font-size:0.85rem}
+  table.rubrica td{padding:10px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
+  table.rubrica tr:last-child td{border-bottom:none}
+  table.rubrica td:first-child{font-weight:600;color:#8a3d0c;background:#fff3e0;text-align:center}
+  .nivel-4{background:#e8f5e9}
+  .nivel-1{background:#ffebee}
+  .ver-modelo{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:10px 16px;margin:10px 0}
+  .ver-modelo summary{background:none;padding:6px 0;font-weight:600}
+  .ver-modelo[open]>summary{background:none}
+  @media(max-width:640px){table.rubrica{font-size:0.82rem}table.rubrica td,table.rubrica th{padding:7px}}
 </style>
 </head>
 <body>
-<h1>Lección 7.3 · Narración con escenario y diálogo; proceso de revisión</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 7: Escribir con estructura · Unas 2 horas, a tu ritmo</p>
+
+<h1>Lección 7.3 · Tres tipos de texto: narrativo e informativo</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 7 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <ul class="lista-bonita" style="margin:0">
-    <li>Escribir una narración con un <strong>escenario</strong> definido y una <strong>secuencia</strong> en orden.</li>
-    <li>Incluir <strong>diálogo</strong> bien puntuado con raya.</li>
-    <li>Aplicar el <strong>proceso de revisión</strong>: escribir, leer en voz alta, recibir comentarios y revisar.</li>
-    <li>Dar y recibir <strong>sugerencias</strong> útiles y respetuosas.</li>
+  <ul>
+    <li>Distinguir los tres <strong>tipos de texto</strong> según su propósito comunicativo: narrativo, informativo y de opinión.</li>
+    <li>Reconocer las características del <strong>texto narrativo</strong> y las palabras de secuencia temporal.</li>
+    <li>Identificar el <strong>texto informativo</strong> y diferenciarlo de los otros tipos por su objetividad.</li>
   </ul>
-  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.W.TT.3 · 2.W.PD.2 · 2.W.PD.3 · WHST.6-8.4</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-partes">Los ingredientes de una narración</a></li>
-    <li><a href="#s-2-modelo">Narración modelo: el primer día</a></li>
-    <li><a href="#s-3-ordena">La secuencia y los conectores de tiempo</a></li>
-    <li><a href="#s-4-dialogo">El diálogo bien puntuado</a></li>
-    <li><a href="#s-5-borradores">Dos borradores: ¿qué mejoró?</a></li>
-    <li><a href="#s-6-comentar">Leer y comentar</a></li>
-    <li><a href="#s-7-taller">Taller: escribe y revisa tu narración</a></li>
+    <li><a href="#s-1-tipos">Los tres tipos de texto</a></li>
+    <li><a href="#s-2-narrativo">El texto narrativo</a></li>
+    <li><a href="#s-3-informativo">El texto informativo</a></li>
+    <li><a href="#s-4-practica">Práctica: ¿narrativo o informativo?</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -222,184 +245,291 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
-<p>Todos tenemos historias que contar: el día que llegamos a este país, el nacimiento de un hijo, el primer empleo. Contarlas en voz alta es fácil; escribirlas para que otra persona las <strong>vea</strong> y las <strong>oiga</strong> exige algunas herramientas. En esta lección aprenderás a situar tu historia en un lugar y un tiempo, a contarla en orden y a dar voz a tus personajes con el diálogo. Y aprenderás algo que hacen todos los escritores: <strong>revisar</strong>. Nadie escribe bien a la primera.</p>
-<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán.</p>
 
-<details open id="s-1-partes">
-<summary>1. Los ingredientes de una narración <span class="caja-tiempo">10 min</span></summary>
+<p>Ya conoces la estructura del párrafo y sabes que un buen párrafo tiene unidad, cohesión y coherencia. Pero no todos los párrafos tienen el mismo <span class="palabra-clave">propósito</span>: algunos cuentan una historia, otros explican un tema y otros expresan una opinión.</p>
+
+<p>En esta lección y en la siguiente vas a aprender a distinguir y escribir <strong>tres tipos de texto</strong>. Lo más interesante es que un mismo tema (por ejemplo, la comida cubana) puede dar lugar a tres textos muy distintos, según para qué se escriba. Aquí estudiarás los dos primeros: el <strong>narrativo</strong> y el <strong>informativo</strong>.</p>
+
+<details open id="s-1-tipos">
+<summary>1. Los tres tipos de texto <span class="caja-tiempo">10 min</span></summary>
 <div class="contenido-detalle">
-<div class="partes4">
-  <div><strong>Escenario</strong><br><strong>Dónde</strong> y <strong>cuándo</strong> pasa la historia: «un martes de septiembre, en el salón 214».</div>
-  <div><strong>Personajes</strong><br>Quiénes participan. Bastan unos detalles para verlos: «una mujer alta de voz tranquila».</div>
-  <div><strong>Secuencia</strong><br>Los hechos en orden: <strong>inicio, desarrollo y desenlace</strong>, como viste en la Lección 4.2.</div>
-  <div><strong>Diálogo</strong><br>Las palabras de los personajes, escritas con <strong>raya</strong>. Dan vida a la escena.</div>
+
+<h3>El propósito determina el tipo</h3>
+
+<p>Antes de escribir, lo primero es preguntarte: <em>¿para qué estoy escribiendo?</em> La respuesta decide el <strong>tipo</strong> de texto. Hay muchos tipos, pero en este nivel te vas a concentrar en tres muy importantes para el GED:</p>
+
+<div class="tres-tipos-grid">
+  <div class="tipo-card narrativo">
+    <span class="icono-tipo">📖</span>
+    <h4>Texto narrativo</h4>
+    <span class="preg-orient">¿Qué pasó?</span>
+    <span class="ejemplo-uso">Cuenta sucesos en orden cronológico.</span>
+  </div>
+  <div class="tipo-card informativo">
+    <span class="icono-tipo">📊</span>
+    <h4>Texto informativo</h4>
+    <span class="preg-orient">¿Qué es?</span>
+    <span class="ejemplo-uso">Da datos y hechos sobre un tema.</span>
+  </div>
+  <div class="tipo-card opinion">
+    <span class="icono-tipo">💭</span>
+    <h4>Texto de opinión</h4>
+    <span class="preg-orient">¿Qué pienso?</span>
+    <span class="ejemplo-uso">Expresa un punto de vista personal.</span>
+  </div>
 </div>
-<div class="tip"><strong>💡 Muestra, no solo digas:</strong> «Rosa estaba nerviosa» informa. «Rosa sintió que el corazón le golpeaba las costillas» hace que el lector lo <strong>sienta</strong>.</div>
+
+<h3>Un mismo tema, tres textos distintos</h3>
+
+<p>Para entenderlo bien, lee tres textos cortos sobre la <strong>comida cubana</strong>. Cada uno cumple un propósito diferente:</p>
+
+<div class="texto-modelo t-narr">
+  <span class="etiq-modelo e-narr">📖 Narrativo</span>
+  <p style="margin:8px 0 0 0"><strong>Ayer comí lechón.</strong> <span class="secuencia">Primero</span>, mi tía sacó el cerdo del horno. <span class="secuencia">Luego</span>, pusimos la mesa con arroz blanco, frijoles negros y yuca. <span class="secuencia">Finalmente</span>, todos nos sentamos a comer y disfrutamos un almuerzo familiar inolvidable.</p>
+</div>
+
+<div class="texto-modelo t-info">
+  <span class="etiq-modelo e-info">📊 Informativo</span>
+  <p style="margin:8px 0 0 0"><strong>La comida cubana es una mezcla de tradiciones.</strong> <span class="dato">Combina ingredientes españoles, africanos e indígenas</span>. Sus platos más conocidos son <span class="dato">el lechón asado, los frijoles negros y el arroz congrí</span>. Se acompaña casi siempre con plátano frito o yuca.</p>
+</div>
+
+<div class="texto-modelo t-opin">
+  <span class="etiq-modelo e-opin">💭 De opinión</span>
+  <p style="margin:8px 0 0 0"><strong>Me gusta mucho la comida cubana.</strong> <span class="marca-opinion">Creo que</span> es la más sabrosa del Caribe porque combina sabores fuertes y dulces a la vez. Además, los platos son abundantes y se comparten en familia. Por eso, siempre la elijo cuando salgo a comer.</p>
+</div>
+
+<div class="leyenda-modelo">
+  <div class="ley-item"><span class="cuad c-sec"></span> Palabras de secuencia</div>
+  <div class="ley-item"><span class="cuad c-dato"></span> Datos / hechos</div>
+  <div class="ley-item"><span class="cuad c-opin"></span> Marcas de opinión</div>
+</div>
+
+<div class="clave-pedagogica">
+  <strong>💡 Idea central:</strong> El <span class="palabra-clave">propósito</span> es lo que distingue un tipo de texto de otro. Antes de escribir, pregúntate: <em>¿quiero contar algo que pasó, informar sobre un tema o expresar mi opinión?</em>
+</div>
+
 </div>
 </details>
 
-<details id="s-2-modelo">
-<summary>2. Narración modelo: el primer día <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-narrativo">
+<summary>2. El texto narrativo <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-<div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="leer-dia">🔊 Escuchar la narración</button></div>
-<div class="texto-lectura dialogo" id="texto-dia">
-<p><strong>El primer día</strong></p>
-<p>Eran las seis menos cuarto de un martes de septiembre, y el salón 214 del centro comunitario todavía olía a pintura fresca. Rosa se sentó en la última fila, con el cuaderno nuevo apretado contra el pecho. Hacía veinte años que no pisaba una escuela.</p>
-<p>Primero llegó un muchacho con el uniforme de una cafetería; luego, dos señoras que se saludaron con un abrazo. A las seis en punto entró la maestra, una mujer alta de voz tranquila.</p>
-<p>—Buenas tardes a todos —dijo, y escribió su nombre en la pizarra—. Me llamo Elena. ¿Quién quiere empezar a presentarse?</p>
-<p>Nadie levantó la mano. Rosa sintió que el corazón le golpeaba las costillas. De repente, se oyó a sí misma:</p>
-<p>—Yo. Me llamo Rosa, tengo cuarenta y dos años y quiero sacar el GED antes de que mi hija termine la secundaria.</p>
-<p>Hubo un silencio corto. Después, el muchacho de la cafetería sonrió.</p>
-<p>—Pues yo quiero sacarlo antes que usted —dijo en broma.</p>
-<p>Todos se rieron, y Rosa también. Esa noche, en el autobús de vuelta a casa, abrió el cuaderno y escribió en la primera página: «Día 1. Lo logré».</p>
-</div>
-<p style="font-size:.9rem;color:#555">Textos escritos para esta lección.</p>
-<div class="clasificador apilado" id="clasif-dia"></div>
-<div class="puntaje" id="puntaje-dia" role="status" aria-live="polite"></div>
-</div>
-</details>
 
-<details id="s-3-ordena">
-<summary>3. La secuencia y los conectores de tiempo <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<p>Una narración avanza en el tiempo. Los <span class="palabra-clave">conectores de tiempo</span> le dicen al lector cuándo pasa cada cosa:</p>
-<table class="tabla">
-  <caption class="sr-solo">Conectores de tiempo para narrar</caption>
-  <thead><tr><th scope="col">Para…</th><th scope="col">Conectores</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Empezar</strong></td><td>al principio, primero, aquella mañana, hace años</td></tr>
-    <tr><td><strong>Continuar</strong></td><td>luego, después, más tarde, entonces</td></tr>
-    <tr><td><strong>Algo inesperado</strong></td><td>de repente, de pronto, en ese momento</td></tr>
-    <tr><td><strong>Al mismo tiempo</strong></td><td>mientras, mientras tanto</td></tr>
-    <tr><td><strong>Terminar</strong></td><td>al final, por fin, esa noche, desde entonces</td></tr>
-  </tbody>
-</table>
-<h3>¿En qué orden pasó? Narración «El primer día»</h3>
-<div class="clasificador" id="clasif-orden"></div>
-<div class="puntaje" id="puntaje-orden" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l7-3.html#ordena" target="_blank" rel="noopener noreferrer">🔢 Practica más: ordenar los eventos</a>
-</div>
-</details>
+<h3>¿Qué es un texto narrativo?</h3>
 
-<details id="s-4-dialogo">
-<summary>4. El diálogo bien puntuado <span class="caja-tiempo">20 min</span></summary>
-<div class="contenido-detalle">
-<p>Recuerda las tres reglas de la raya de la <a href="https://zhemaria.github.io/clases_leng2/clase_3-1.html#s-4-raya">Lección 3.1</a>:</p>
-<ol class="lista-bonita">
-  <li>Cada intervención empieza en una <strong>línea nueva</strong> con raya pegada a la primera palabra: <em>—Yo.</em></li>
-  <li>Las palabras del narrador van <strong>entre rayas</strong>; si empiezan con un verbo de decir, van en minúscula: <em>—Buenas tardes —dijo.</em></li>
-  <li>Si el personaje sigue hablando, el punto va <strong>después de la segunda raya</strong>: <em>—Buenas tardes —dijo—. Me llamo Elena.</em></li>
-</ol>
-<div class="tip"><strong>💡 Más allá de «dijo»:</strong> para que el diálogo tenga vida, varía los verbos: <em>preguntó, respondió, susurró, gritó, explicó, añadió</em>. Y cuida que cada personaje hable como él: el muchacho bromea, la maestra habla con calma.</div>
-<h3>¿Bien o mal puntuado?</h3>
-<div class="clasificador apilado" id="clasif-raya"></div>
-<div class="puntaje" id="puntaje-raya" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l7-3.html#dialogo" target="_blank" rel="noopener noreferrer">💬 Practica más: el diálogo</a>
-</div>
-</details>
+<p>Un <span class="palabra-clave">texto narrativo</span> cuenta algo que pasó. Puede ser una experiencia real (lo que hice ayer, un viaje, una anécdota familiar) o una historia inventada (un cuento). Lo que distingue a la narración es que presenta <strong>sucesos en orden cronológico</strong>: primero pasó esto, después lo otro, finalmente lo siguiente.</p>
 
-<details id="s-5-borradores">
-<summary>5. Dos borradores: ¿qué mejoró? <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<p>Los escritores siguen un <span class="palabra-clave">proceso de revisión</span>:</p>
-<ol class="proceso" aria-label="Pasos del proceso de revisión">
-  <li>1 · Escribir</li><li class="fl" aria-hidden="true">→</li>
-  <li>2 · Leer en voz alta</li><li class="fl" aria-hidden="true">→</li>
-  <li>3 · Recibir comentarios</li><li class="fl" aria-hidden="true">→</li>
-  <li>4 · Revisar</li>
-</ol>
-<p>Compara el primer borrador de Marta con su versión revisada, después de leerla en voz alta y escuchar a una compañera.</p>
-<div class="dos-b">
-  <div class="pasaje"><strong>Borrador inicial</strong><br>Fui al mercado. Había mucha gente. Compré cosas. Una señora me habló. me dijo que los mangos estaban baratos. Volví a casa.</div>
-  <div class="pasaje dialogo"><strong>Versión revisada</strong><br>El sábado por la mañana fui al mercado del barrio. Había tanta gente que casi no se podía caminar entre los puestos. Mientras escogía tomates, una señora mayor se acercó.<br>—Lleve mangos, señorita —me dijo—. Hoy están a dos por un dólar.<br>Le hice caso y compré seis. Al final, volví a casa cargada y contenta.</div>
-</div>
-<table class="tabla">
-  <caption class="sr-solo">Mejoras de la versión revisada</caption>
-  <thead><tr><th scope="col">Qué mejoró</th><th scope="col">Ejemplo</th></tr></thead>
-  <tbody>
-    <tr><td>Escenario</td><td>«El sábado por la mañana», «el mercado del barrio»</td></tr>
-    <tr><td>Detalles</td><td>«tanta gente que casi no se podía caminar»; «tomates» en lugar de «cosas»</td></tr>
-    <tr><td>Diálogo con raya</td><td>«—Lleve mangos, señorita —me dijo—.»</td></tr>
-    <tr><td>Conectores de tiempo</td><td>«mientras», «al final»</td></tr>
-    <tr><td>Corrección</td><td>La mayúscula olvidada en «me dijo» ya no aparece</td></tr>
-  </tbody>
-</table>
-<div class="clasificador apilado" id="clasif-borr"></div>
-<div class="puntaje" id="puntaje-borr" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l7-3.html#revision" target="_blank" rel="noopener noreferrer">✏️ Practica más: la revisión</a>
-</div>
-</details>
+<h3>Características principales</h3>
 
-<details id="s-6-comentar">
-<summary>6. Leer y comentar <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<p>Un buen comentario ayuda al escritor a mejorar sin desanimarlo. Debe ser <strong>amable</strong>, <strong>concreto</strong> y <strong>útil</strong>. Usa estas frases:</p>
 <ul class="lista-bonita">
-  <li><strong>Para lo positivo:</strong> «Me gustó cuando…», «La parte de… me hizo sentir…».</li>
-  <li><strong>Para sugerir:</strong> «¿Podrías añadir…?», «No entendí bien… ¿Podrías explicar…?», «¿Qué pasaría si…?».</li>
+  <li>Responde a la pregunta <strong>¿qué pasó?</strong></li>
+  <li>Tiene al menos <strong>dos eventos</strong> ordenados en el tiempo.</li>
+  <li>Usa <strong>palabras de secuencia</strong> (primero, luego, después, finalmente).</li>
+  <li>Suele estar en <strong>tiempo pasado</strong> (comí, fui, vi, hicimos).</li>
+  <li>Tiene un <strong>protagonista</strong>: quien hace las acciones. En las narraciones personales, es quien escribe («yo»).</li>
 </ul>
-<table class="tabla">
-  <caption class="sr-solo">Comentarios poco útiles y comentarios útiles</caption>
-  <thead><tr><th scope="col">Poco útil</th><th scope="col">Útil</th></tr></thead>
-  <tbody>
-    <tr><td>Está bien.</td><td>Me gustó cuando la señora te habla; se oye su voz.</td></tr>
-    <tr><td>No me gustó.</td><td>¿Podrías añadir cuándo pasó? No sé si era de día o de noche.</td></tr>
-    <tr><td>Está muy corto.</td><td>¿Qué pasó después de comprar los mangos? Me quedé con ganas de saberlo.</td></tr>
-  </tbody>
-</table>
-<h3>¿Cuál es el comentario más útil?</h3>
-<div class="clasificador apilado" id="clasif-coment"></div>
-<div class="puntaje" id="puntaje-coment" role="status" aria-live="polite"></div>
-<div class="tip"><strong>👨‍👩‍👧 «Lee y comenta»:</strong> si tienes con quién practicar, lee tu narración en voz alta. Tu compañero te da dos comentarios: uno con «Me gustó cuando…» y otro con «¿Podrías añadir…?». Después cambien los papeles.</div>
+
+<h3>Las palabras de secuencia: ordenan el tiempo</h3>
+
+<p>Las <strong>palabras de secuencia</strong>, que estudiaste en la Lección 5.3, son el motor del texto narrativo. Indican el orden en que ocurren los sucesos y guían a quien lee paso a paso:</p>
+
+<div class="palabras-temp-cont">
+  <h4>🕒 Las cuatro palabras esenciales</h4>
+  <div class="palabras-temp-grid">
+    <div class="pal-temp">
+      <span class="pt-num">1</span>
+      <span class="pt-pal">Primero</span>
+    </div>
+    <div class="pal-temp">
+      <span class="pt-num">2</span>
+      <span class="pt-pal">Luego</span>
+    </div>
+    <div class="pal-temp">
+      <span class="pt-num">3</span>
+      <span class="pt-pal">Después</span>
+    </div>
+    <div class="pal-temp">
+      <span class="pt-num">4</span>
+      <span class="pt-pal">Finalmente</span>
+    </div>
+  </div>
+  <p style="font-size:0.88rem;margin:12px 0 0 0;color:var(--gris);font-style:italic">Otras palabras útiles: <em>ayer, esa mañana, más tarde, al final, por último, entonces</em>.</p>
+</div>
+
+<h3>Un texto narrativo modelo</h3>
+
+<div class="texto-modelo t-narr">
+  <span class="etiq-modelo e-narr">📖 Mi mañana de domingo</span>
+  <p style="margin:8px 0 0 0">El domingo pasado fue un día muy tranquilo en mi casa. <span class="secuencia">Primero</span>, me levanté tarde y preparé café para todos. <span class="secuencia">Luego</span>, mi esposa y yo salimos a caminar por el parque del barrio. <span class="secuencia">Después</span>, almorzamos arroz con pollo en familia. <span class="secuencia">Finalmente</span>, vimos una película juntos antes de acostarnos.</p>
+</div>
+
+<h3>Los sucesos en una línea de tiempo</h3>
+
+<p>Una manera útil de planificar un texto narrativo es dibujar antes una línea de tiempo con los sucesos principales:</p>
+
+<div class="linea-tiempo">
+  <div class="evento-tiempo">
+    <div class="punto-tiempo">1</div>
+    <div class="desc-evento">Me levanté y preparé café</div>
+  </div>
+  <div class="evento-tiempo">
+    <div class="punto-tiempo">2</div>
+    <div class="desc-evento">Salimos a caminar por el parque</div>
+  </div>
+  <div class="evento-tiempo">
+    <div class="punto-tiempo">3</div>
+    <div class="desc-evento">Almorzamos en familia</div>
+  </div>
+  <div class="evento-tiempo">
+    <div class="punto-tiempo">4</div>
+    <div class="desc-evento">Vimos una película</div>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Consejo de escritura:</strong> antes de redactar una narración, anota en una lista los sucesos en el orden en que ocurrieron. Después, escribe una oración para cada uno y conéctalas con palabras de secuencia. Es la forma más segura de no perderte en el tiempo.
+</div>
+
 </div>
 </details>
 
-<details id="s-7-taller">
-<summary>7. Taller: escribe y revisa tu narración <span class="caja-tiempo">40 min</span></summary>
+<details id="s-3-informativo">
+<summary>3. El texto informativo <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-<p><strong>Elige un momento real o inventado</strong>: el día que llegaste a una ciudad nueva · tu primer empleo · una sorpresa · un viaje que no salió como esperabas · el día que conociste a alguien importante.</p>
-<h3>Paso 1 · Tu borrador</h3>
-<p>Escribe sin miedo: el borrador no tiene que ser perfecto. Incluye un escenario (cuándo y dónde), los hechos en orden y al menos dos líneas de diálogo.</p>
-<div class="taller" id="taller-73a"></div>
-<h3>Paso 2 · Léelo en voz alta y pide comentarios</h3>
-<p>Pulsa <strong>Escuchar mi texto</strong> o léelo tú en voz alta: oirás las partes que suenan raras. Si puedes, léeselo a alguien y pídele un «Me gustó cuando…» y un «¿Podrías añadir…?».</p>
-<h3>Paso 3 · Tu versión revisada</h3>
-<p>Copia aquí tu borrador y mejóralo con los comentarios que recibiste y con la lista de revisión.</p>
-<div class="botones" style="justify-content:flex-start"><button type="button" class="btn btn-secundario" id="pasar-borr">⬇️ Copiar el borrador aquí abajo</button></div>
-<div class="tl-aviso" id="pasar-aviso" role="status" aria-live="polite"></div>
-<div class="taller" id="taller-73b"></div>
-<h3>Rúbrica: así se evaluará tu narración</h3>
-<table class="tabla rubrica">
-  <caption class="sr-solo">Rúbrica de la narración y la revisión: cuatro criterios en cuatro niveles</caption>
-  <thead><tr><th scope="col">Criterio</th><th scope="col">4 · Excelente</th><th scope="col">3 · Bien</th><th scope="col">2 · En camino</th><th scope="col">1 · Inicial</th></tr></thead>
+
+<h3>¿Qué es un texto informativo?</h3>
+
+<p>Un <span class="palabra-clave">texto informativo</span> presenta hechos, datos o explicaciones sobre un tema. Su propósito no es contar algo que pasó ni opinar, sino <strong>informar</strong> sobre algo de manera <strong>objetiva</strong>. Lo encontramos en libros de texto, enciclopedias, periódicos, manuales y casi todos los materiales del examen GED de Ciencias y Estudios Sociales.</p>
+
+<h3>Características principales</h3>
+
+<ul class="lista-bonita">
+  <li>Responde a la pregunta <strong>¿qué es?</strong> o <strong>¿cómo es?</strong></li>
+  <li>Presenta <strong>datos verificables</strong> (cantidades, lugares, características).</li>
+  <li>Evita expresar <strong>opiniones personales</strong>.</li>
+  <li>Usa un <strong>tono neutro</strong> y objetivo.</li>
+  <li>Suele estar en <strong>tiempo presente</strong> (es, tiene, contiene, se encuentra).</li>
+</ul>
+
+<h3>La regla de oro: hechos, no opiniones</h3>
+
+<p>Esta es la diferencia más importante. Un <strong>hecho</strong> es algo que se puede comprobar; una <strong>opinión</strong> es lo que alguien piensa o siente:</p>
+
+<table class="tabla-tipos">
+  <thead>
+    <tr>
+      <th scope="col" class="h-fila" style="width:50%">Hecho (✅ va en un texto informativo)</th>
+      <th scope="col" class="h-info">Opinión (❌ NO va aquí)</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><th scope="row">Escenario y secuencia</th><td>Lugar y tiempo claros; hechos en orden con conectores</td><td>Escenario claro; algún salto en el orden</td><td>Falta el lugar o el tiempo</td><td>No se entiende qué pasó ni dónde</td></tr>
-    <tr><th scope="row">Diálogo puntuado</th><td>Dos o más intervenciones, todas con raya bien usada</td><td>Diálogo con algún error de raya</td><td>Diálogo con comillas o sin marcas</td><td>No hay diálogo</td></tr>
-    <tr><th scope="row">Aplica una sugerencia</th><td>Aplica la sugerencia y lo explica</td><td>Aplica una sugerencia</td><td>Menciona la sugerencia, pero no la aplica</td><td>No hay revisión</td></tr>
-    <tr><th scope="row">Mejora del borrador</th><td>Más detalles, mejor orden y menos errores</td><td>Mejora en dos aspectos</td><td>Mejora en un aspecto</td><td>Igual que el borrador</td></tr>
+    <tr>
+      <td>El plátano contiene potasio.</td>
+      <td>El plátano es la fruta más rica.</td>
+    </tr>
+    <tr>
+      <td>Cuba es la isla más grande del Caribe.</td>
+      <td>Cuba es un país hermoso.</td>
+    </tr>
+    <tr>
+      <td>El agua hierve a 100 grados Celsius al nivel del mar.</td>
+      <td>El agua caliente es más agradable que la fría.</td>
+    </tr>
   </tbody>
 </table>
-<p style="font-size:.92rem">Total: 16 puntos.</p>
+
+<h3>Un texto informativo modelo</h3>
+
+<div class="texto-modelo t-info">
+  <span class="etiq-modelo e-info">📊 La cocina cubana</span>
+  <p style="margin:8px 0 0 0">La cocina cubana es una mezcla de tres tradiciones culinarias. <span class="dato">Combina ingredientes españoles, africanos e indígenas</span>. Los platos más conocidos son <span class="dato">el lechón asado, el arroz congrí y los frijoles negros</span>. <span class="dato">Suele acompañarse con plátano frito o yuca</span>. Esta cocina se reconoce por sus sabores fuertes y sus porciones generosas.</p>
+</div>
+
+<h3>La información en una lista de hechos</h3>
+
+<p>Para planificar un texto informativo, haz antes una lista de los hechos que quieres incluir. Cada hecho será luego una oración:</p>
+
+<div class="hechos-info">
+  <div class="hecho-info-card">
+    <span class="hecho-num">1</span>
+    <span class="hecho-label">Origen</span>
+    <span class="hecho-txt">Mezcla de tradiciones españolas, africanas e indígenas.</span>
+  </div>
+  <div class="hecho-info-card">
+    <span class="hecho-num">2</span>
+    <span class="hecho-label">Platos principales</span>
+    <span class="hecho-txt">Lechón asado, arroz congrí y frijoles negros.</span>
+  </div>
+  <div class="hecho-info-card">
+    <span class="hecho-num">3</span>
+    <span class="hecho-label">Acompañamientos</span>
+    <span class="hecho-txt">Plátano frito o yuca.</span>
+  </div>
+  <div class="hecho-info-card">
+    <span class="hecho-num">4</span>
+    <span class="hecho-label">Características</span>
+    <span class="hecho-txt">Sabores fuertes y porciones generosas.</span>
+  </div>
+</div>
+
+<div class="tip">
+  <strong>📝 Prueba tus oraciones:</strong> antes de escribir una oración en un texto informativo, pregúntate: <em>¿esto se puede comprobar?</em> Si la respuesta es sí, es un hecho y puedes usarlo. Si la respuesta es «depende de quién» o «depende del gusto», es una opinión: guárdala para otro tipo de texto.
+</div>
+
+</div>
+</details>
+
+<details id="s-4-practica">
+<summary>4. Práctica: ¿narrativo o informativo? <span class="caja-tiempo">10 min</span></summary>
+<div class="contenido-detalle">
+
+<p>Aquí tienes textos cortos y oraciones para clasificar. En cada caso, decide qué tipo de texto es y fíjate en las palabras que lo demuestran.</p>
+
+<div class="quiz-cont">
+  <h4>📝 ¿Narrativo o informativo?</h4>
+  <div class="preguntas-quiz" id="preguntas-quiz3"></div>
+  <div class="puntaje" id="puntaje-quiz3" role="status">Aciertos: 0 / 5</div>
+</div>
+
+<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n1-l7-4.html#tipo-de-texto" target="_blank" rel="noopener">
+  ✍️ Práctica: ¿Qué tipo de texto es? ↗
+  <span>Veinte textos cortos para clasificar. En la misma página practicas también <strong>hecho u opinión</strong>. Los ejercicios salen al azar. Se abre en otra pestaña.</span>
+</a>
+
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>8. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>5. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p><strong>Un tema, dos textos.</strong> Elige un tema que conozcas bien: tu ciudad, tu trabajo, una fiesta de tu país o una comida típica. Escribe en tu cuaderno <strong>dos párrafos cortos</strong> sobre ese mismo tema:</p>
 <ul class="lista-bonita">
-  <li><strong>Para el foro.</strong> Publica tu narración revisada. Debajo, escribe una oración que diga qué cambiaste gracias a un comentario: «Gracias a la sugerencia de…, añadí…».</li>
-  <li><strong>Comenta dos narraciones.</strong> En el foro, deja a dos compañeros un «Me gustó cuando…» y un «¿Podrías añadir…?».</li>
-  <li><strong>Un recuerdo con diálogo.</strong> Escribe una escena corta (cinco o seis líneas) de una conversación que recuerdes con alguien de tu familia. Cuida la raya.</li>
+  <li>Un párrafo <strong>narrativo</strong>: cuenta algo que te pasó, en pasado, con al menos tres palabras de secuencia. Antes, dibuja su línea de tiempo.</li>
+  <li>Un párrafo <strong>informativo</strong>: da al menos tres hechos que se puedan comprobar, en presente y sin opiniones. Antes, haz la lista de hechos.</li>
 </ul>
+<p>Si alguien de tu casa quiere participar, léele los dos párrafos sin decirle cuál es cuál y pídele que adivine.</p>
+<div class="actividad-unidad">
+  <h4><span class="badge-tipo badge-rubrica">Autoevaluación</span> Revisa tu trabajo con esta lista</h4>
+  <table class="rubrica">
+    <caption class="sr-solo">Lista de cotejo de «Un tema, dos textos»</caption>
+    <thead><tr><th scope="col">Criterio</th><th scope="col" class="nivel-4">Cumple ✓</th><th scope="col" class="nivel-1">Todavía no ✗</th></tr></thead>
+    <tbody>
+      <tr><td>Narrativo</td><td class="nivel-4">Cuenta sucesos en orden, en pasado</td><td class="nivel-1">No se sabe en qué orden pasaron las cosas</td></tr>
+      <tr><td>Palabras de secuencia</td><td class="nivel-4">Usé al menos tres (primero, luego, después…)</td><td class="nivel-1">Usé menos de tres</td></tr>
+      <tr><td>Informativo</td><td class="nivel-4">Tiene al menos tres hechos comprobables</td><td class="nivel-1">Mezclé opiniones («me encanta», «es el mejor»)</td></tr>
+      <tr><td>Mismo tema</td><td class="nivel-4">Los dos párrafos hablan del mismo tema</td><td class="nivel-1">Cada párrafo habla de algo distinto</td></tr>
+    </tbody>
+  </table>
+</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>9. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>6. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Al final pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -411,114 +541,168 @@
 </details>
 
 <details id="s-cierre">
-<summary>10. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>7. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
-<h3>Lo que aprendiste en esta lección</h3>
+<h3>Lo que aprendiste</h3>
 <ul class="lista-bonita">
-  <li>Una narración necesita <strong>escenario, personajes, secuencia y diálogo</strong>.</li>
-  <li>Los <strong>conectores de tiempo</strong> (primero, luego, de repente, al final) ordenan la historia.</li>
-  <li>El diálogo se escribe con <strong>raya</strong>, en línea nueva para cada intervención.</li>
-  <li>Revisar es parte de escribir: <strong>escribir, leer en voz alta, recibir comentarios y revisar</strong>.</li>
-  <li>Un buen comentario es amable, concreto y útil.</li>
+  <li>Hay tres tipos básicos de texto según su <strong>propósito</strong>: narrativo, informativo y de opinión.</li>
+  <li>Un mismo tema puede dar lugar a textos distintos.</li>
+  <li>El <strong>texto narrativo</strong> cuenta sucesos en orden, con palabras de secuencia y verbos en pasado.</li>
+  <li>El <strong>texto informativo</strong> presenta hechos comprobables, con tono neutro y verbos en presente.</li>
+  <li>La diferencia clave: el narrativo cuenta <em>qué pasó</em>; el informativo explica <em>qué es</em>.</li>
 </ul>
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Dónde y cuándo pasa tu narración? ¿Lo dice el texto?</li>
-    <li>¿Cómo se puntúa: «Ya llegué», dijo Ana, «¿hay café?»? Escríbelo con raya.</li>
-    <li>¿Qué cambiaste de tu borrador a tu versión revisada?</li>
+    <li>¿Qué pregunta responde un texto narrativo? ¿Y uno informativo?</li>
+    <li>¿Cuál es la diferencia entre un hecho y una opinión?</li>
+    <li>¿Qué palabras te ayudan a reconocer una narración?</li>
   </ul>
 </div>
-<div class="tip"><strong>🎉 Terminaste el Tema 7.</strong> <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng2/clase_8-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 8.1 · Conversar con respeto: turnos, enlazar y aclarar</a>. Empieza el último tema: hablar, escuchar y trabajar en equipo.</div>
+<div class="clave-pedagogica">
+  <strong>🎯 Conexión con el examen:</strong> En Ciencias y en Estudios Sociales, la mayoría de los textos del GED son <strong>informativos</strong>. Saber distinguirlos de los de opinión te ayuda a responder las preguntas sobre el propósito del autor.
+</div>
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_7-4.html" style="color:var(--cp-oscuro);font-weight:700">Lección 7.4 · El texto de opinión y la comparación de los tres tipos</a>. Completarás el panorama con el tercer tipo: el <strong>texto de opinión</strong>, y compararás los tres.
+</div>
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 7 · Lección 7.3</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 7 · Lección 7.3</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<script>
-/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
-(function(){
-  var voz=null, hay=('speechSynthesis' in window);
-  function elegir(){
-    if(!hay)return;
-    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
-    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
-    voz=null;
-    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
-    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
-  }
-  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
-  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
-  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
-  /* hablar(texto, velocidad, alTerminar) */
-  window.hablar=function(texto,vel,fin){
-    if(!hay||!texto){aviso();return;}
-    speechSynthesis.cancel();
-    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
-    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
-    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
-  };
-  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
-  window.hablarPalabras=function(texto){
-    if(!hay){aviso();return;}
-    speechSynthesis.cancel();
-    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
-  };
-  window.callar=function(){if(hay)speechSynthesis.cancel();};
-  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
-})();
 
-/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
-function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
-  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
-  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
-  items.forEach(function(it,i){
-    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
-    var ops=it.ops||opciones;
-    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
-      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
-      '<span class="item-fb" aria-live="polite"></span>';
-    caja.appendChild(d);
-    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
-    var fb=d.querySelector('.item-fb');
-    d.querySelectorAll('.btn-op').forEach(function(b){
+<script>
+(function(){
+  'use strict';
+
+  var preguntas=[
+    {
+      contexto:'"Ayer fui al supermercado con mi esposa. Primero compramos frutas y verduras. Luego pasamos por la sección de carnes. Después pagamos en la caja. Finalmente regresamos a casa cargados de bolsas."',
+      texto:'¿Qué tipo de texto es?',
+      opciones:[
+        {t:'Narrativo',ok:true},
+        {t:'Informativo',ok:false},
+        {t:'De opinión',ok:false}
+      ],
+      explica:'Es narrativo porque cuenta sucesos en orden cronológico ("Ayer", "Primero", "Luego", "Después", "Finalmente") y está en tiempo pasado (fui, compramos, pasamos).'
+    },
+    {
+      contexto:'"La ciudad de Chicago se encuentra en el estado de Illinois. Tiene una población de aproximadamente 2.7 millones de habitantes. Está situada a orillas del lago Michigan. Su clima presenta cuatro estaciones bien marcadas."',
+      texto:'¿Qué tipo de texto es?',
+      opciones:[
+        {t:'Narrativo',ok:false},
+        {t:'Informativo',ok:true},
+        {t:'De opinión',ok:false}
+      ],
+      explica:'Es informativo porque presenta hechos verificables (ubicación, población, geografía, clima) con un tono neutro y en tiempo presente. No cuenta una historia ni expresa opiniones.'
+    },
+    {
+      texto:'¿Cuál de las siguientes oraciones pertenece a un texto INFORMATIVO?',
+      opciones:[
+        {t:'El año pasado visité La Habana y me enamoré de la ciudad.',ok:false},
+        {t:'Creo que La Habana es la ciudad más bonita del Caribe.',ok:false},
+        {t:'La Habana es la capital de Cuba y está en la costa norte de la isla.',ok:true},
+        {t:'Primero llegamos al aeropuerto, luego tomamos un taxi al hotel.',ok:false}
+      ],
+      explica:'La tercera oración da datos verificables (capital, ubicación). La primera y la cuarta son narrativas (cuentan una experiencia); la segunda es una opinión ("Creo que").'
+    },
+    {
+      texto:'¿Cuál de las siguientes oraciones pertenece a un texto NARRATIVO?',
+      opciones:[
+        {t:'El café contiene cafeína, una sustancia que estimula el sistema nervioso.',ok:false},
+        {t:'Esa mañana, mi abuela me sirvió una taza de café muy fuerte.',ok:true},
+        {t:'El café cubano es el mejor café del mundo en mi opinión.',ok:false},
+        {t:'El café se cultiva en zonas tropicales de montaña.',ok:false}
+      ],
+      explica:'La segunda oración cuenta un suceso ubicado en el tiempo ("Esa mañana") con una acción en pasado ("sirvió"). Es típica de un texto narrativo.'
+    },
+    {
+      texto:'¿Cuál palabra NO es una palabra de secuencia temporal (no se usa en textos narrativos para indicar orden)?',
+      opciones:[
+        {t:'Primero',ok:false},
+        {t:'Después',ok:false},
+        {t:'Porque',ok:true},
+        {t:'Finalmente',ok:false}
+      ],
+      explica:'"Porque" es un conector que indica causa o razón, no orden temporal. Las palabras de secuencia indican cuándo ocurre cada suceso en el tiempo (primero, luego, después, finalmente).'
+    }
+  ];
+
+  var resueltas={};
+  var aciertos=0;
+  var cont=document.getElementById('preguntas-quiz3');
+
+  preguntas.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='preg-quiz';
+
+    var opcHtml='';
+    item.opciones.forEach(function(op){
+      opcHtml+='<button type="button" class="opt-quiz" data-correcto="'+(op.ok?'1':'0')+'">'+op.t+'</button>';
+    });
+
+    var contextoHtml=item.contexto?'<div class="contexto-preg">'+item.contexto+'</div>':'';
+
+    div.innerHTML=
+      '<div><span class="num-preg">'+(idx+1)+'</span>'+
+      '<span class="texto-preg">'+item.texto+'</span></div>'+
+      contextoHtml+
+      '<div class="opciones-quiz">'+opcHtml+'</div>'+
+      '<div class="retro-quiz" id="retro-q3-'+idx+'" role="status"></div>';
+
+    cont.appendChild(div);
+
+    var botones=div.querySelectorAll('.opt-quiz');
+    botones.forEach(function(b){
       b.addEventListener('click',function(){
-        if(hechas[i])return;
-        if(+b.getAttribute('data-j')===it.c){
-          b.classList.add('correcta'); hechas[i]=true; bien++;
-          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
-          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+        if(resueltas[idx])return;
+        var correcto=(b.getAttribute('data-correcto')==='1');
+        if(correcto){
+          b.classList.add('correcta');
+          resueltas[idx]=true;
+          aciertos++;
+          actualizarPuntaje();
+          var retro=document.getElementById('retro-q3-'+idx);
+          retro.textContent='✅ '+item.explica;
+          retro.classList.add('visible');
         }else{
-          b.classList.add('incorrecta'); b.disabled=true;
-          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+          var r2=document.getElementById('retro-q3-'+idx); r2.textContent='❌ Pregúntate: ¿cuenta algo que pasó, o da datos que se pueden comprobar?'; r2.classList.add('visible');
+          b.classList.add('incorrecta');
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
       });
     });
   });
-  marcador();
-}
 
-/* ===== Quiz de la lección =====
-   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
-        ae:audio entrecortado opcional, fijo:no barajar,
-        r:enlace de repaso que aparece si la respuesta es incorrecta}]
-   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
-function iniciarQuiz(P,cfg){
-  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+  function actualizarPuntaje(){
+    var el=document.getElementById('puntaje-quiz3');
+    el.textContent='Aciertos: '+aciertos+' / '+preguntas.length;
+    if(aciertos===preguntas.length){
+      el.innerHTML='🎉 ¡Distinción de tipos dominada! Aciertos: '+aciertos+' / '+preguntas.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué decide el tipo de un texto?", "o": ["Su propósito: para qué se escribe", "Su largo", "El color del papel"], "c": 0}, {"t": "¿Qué pregunta responde un texto <strong>narrativo</strong>?", "o": ["¿Qué pasó?", "¿Qué es?", "¿Qué pienso?"], "c": 0}, {"t": "¿Qué pregunta responde un texto <strong>informativo</strong>?", "o": ["¿Qué es? o ¿cómo es?", "¿Qué pasó ayer?", "¿Qué me gusta?"], "c": 0}, {"t": "¿En qué tiempo verbal suele estar un texto narrativo?", "o": ["En pasado", "En futuro", "Siempre en presente"], "c": 0}, {"t": "¿En qué tiempo verbal suele estar un texto informativo?", "o": ["En presente", "En pasado", "En futuro"], "c": 0}, {"t": "¿Cuál es un <strong>hecho</strong>?", "o": ["El agua hierve a 100 °C al nivel del mar.", "El agua fría es más rica.", "El té es mejor que el café."], "c": 0}, {"t": "¿Cuál es una <strong>opinión</strong>?", "o": ["Cuba es el país más bonito del Caribe.", "Cuba es una isla.", "La capital de Cuba es La Habana."], "c": 0}, {"t": "«Ayer fui al mercado. Primero compré frutas. Luego volví a casa.» ¿Qué tipo de texto es?", "o": ["Narrativo", "Informativo", "De opinión"], "c": 0, "fijo": true}, {"t": "«El lago Michigan es uno de los cinco Grandes Lagos. Está entre cuatro estados.» ¿Qué tipo de texto es?", "o": ["Narrativo", "Informativo", "De opinión"], "c": 1, "fijo": true}, {"t": "¿Cuál de estas palabras <strong>no</strong> es de secuencia?", "o": ["porque", "primero", "después", "finalmente"], "c": 0}, {"t": "Para planificar un texto narrativo, conviene…", "o": ["dibujar una línea de tiempo con los sucesos", "hacer una lista de opiniones", "escribir solo el final"], "c": 0}, {"t": "Antes de poner una oración en un texto informativo, pregúntate…", "o": ["¿esto se puede comprobar?", "¿esto me gusta?", "¿esto es largo?"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a||p.ae){
+    if(p.x||p.a){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -526,7 +710,7 @@ function iniciarQuiz(P,cfg){
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -541,176 +725,37 @@ function iniciarQuiz(P,cfg){
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
-      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya distingues el texto narrativo del informativo. Puedes continuar con la Lección 7.4.";fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 2 y 3, practica con el interactivo y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
-    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-}
+})();
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-document.addEventListener('DOMContentLoaded',function(){
+(function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
-  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-});
-
-/* ===== Taller de escritura (Tema 7) =====
-   tallerEscritura('id-caja',{clave:'n2-7-1', conectores:[...], meta:{oraciones:6, palabras:60}, lista:['…','…']})
-   Arma: área de texto, contadores, conectores detectados, lista de revisión, escuchar, copiar y borrar.
-   El borrador se guarda en este navegador (si el navegador lo permite). */
-function tallerEscritura(id,o){
-  var caja=document.getElementById(id), k='gph-borrador-'+o.clave;
-  var h='<label class="tl-etq" for="'+id+'-txt">'+(o.etiqueta||'Escribe aquí tu texto')+'</label>'+
-    '<textarea class="tl-txt" id="'+id+'-txt" rows="10" spellcheck="true" lang="es"'+(o.guia?' placeholder="'+o.guia.replace(/"/g,'&quot;')+'"':'')+'></textarea>'+
-    '<div class="tl-cuenta" id="'+id+'-cuenta" aria-live="polite"></div>';
-  if(o.conectores)h+='<div class="tl-conect" id="'+id+'-con" aria-live="polite"></div>';
-  h+='<div class="botones" style="justify-content:flex-start">'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-oir">🔊 Escuchar mi texto</button>'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-copiar">📋 Copiar mi texto</button>'+
-    '<button type="button" class="btn btn-secundario" id="'+id+'-borrar">🗑️ Borrar</button></div>'+
-    '<div class="tl-aviso" id="'+id+'-aviso" role="status" aria-live="polite"></div>';
-  if(o.lista){
-    h+='<fieldset class="tl-lista"><legend>✅ Revisa tu texto antes de entregarlo</legend>'+
-      o.lista.map(function(t,i){return '<label><input type="checkbox" id="'+id+'-c'+i+'"> '+t+'</label>';}).join('')+
-      '<p class="tl-listo" id="'+id+'-listo" aria-live="polite"></p></fieldset>';
-  }
-  caja.innerHTML=h;
-  var ta=document.getElementById(id+'-txt'), cu=document.getElementById(id+'-cuenta'), co=document.getElementById(id+'-con'), av=document.getElementById(id+'-aviso');
-  try{var g=localStorage.getItem(k); if(g)ta.value=g;}catch(e){}
-  function avisar(t){av.textContent=t; clearTimeout(avisar.t); avisar.t=setTimeout(function(){av.textContent='';},4000);}
-  function contar(){
-    var t=ta.value.trim(), pal=t?t.split(/\s+/).length:0, ora=(t.match(/[^.!?…]+[.!?…]+/g)||[]).length;
-    var m=o.meta||{}, s='Palabras: '+pal+(m.palabras?' (meta: '+m.palabras+' o más)':'')+' · Oraciones: '+ora+(m.oraciones?' (meta: '+m.oraciones+' o más)':'');
-    if(m.oraciones&&ora>=m.oraciones&&(!m.palabras||pal>=m.palabras))s+=' · 🎯 ¡Llegaste a la meta de extensión!';
-    cu.textContent=s;
-    if(co){
-      var low=' '+t.toLowerCase().replace(/[.,;:¡!¿?«»"()—]/g,' ')+' ', us=o.conectores.filter(function(c){return low.indexOf(' '+c.toLowerCase()+' ')>=0;});
-      co.innerHTML=us.length?'Conectores que usaste: '+us.map(function(c){return '<span class="tl-chip">'+c+'</span>';}).join(' '):'Todavía no aparece ningún conector de la lista. Recuerda unir tus ideas con ellos.';
-    }
-    try{localStorage.setItem(k,ta.value);}catch(e){}
-  }
-  ta.addEventListener('input',contar); contar();
-  document.getElementById(id+'-oir').addEventListener('click',function(){
-    if(!ta.value.trim()){avisar('Primero escribe algo para poder escucharlo.');return;}
-    hablar(ta.value,0.9);
-  });
-  document.getElementById(id+'-copiar').addEventListener('click',function(){
-    if(!ta.value.trim()){avisar('Todavía no hay texto para copiar.');return;}
-    function ok(){avisar('✓ Texto copiado. Ya puedes pegarlo en el foro o en un correo.');}
-    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(ta.value).then(ok,function(){ta.select();document.execCommand('copy');ok();});
-    else{ta.select();document.execCommand('copy');ok();}
-  });
-  var borrarListo=false;
-  document.getElementById(id+'-borrar').addEventListener('click',function(){
-    if(!borrarListo){borrarListo=true;avisar('¿Seguro? Pulsa «Borrar» otra vez para borrar todo el texto.');setTimeout(function(){borrarListo=false;},4000);return;}
-    borrarListo=false; ta.value=''; contar(); avisar('Texto borrado.'); ta.focus();
-  });
-  if(o.lista){
-    var cbs=caja.querySelectorAll('.tl-lista input'), li=document.getElementById(id+'-listo');
-    function rev(){var n=Array.prototype.filter.call(cbs,function(c){return c.checked;}).length;var t=ta.value.trim(),m=o.meta||{},pal=t?t.split(/\s+/).length:0,ora=(t.match(/[^.!?…]+[.!?…]+/g)||[]).length,corto=(m.oraciones&&ora<m.oraciones)||(m.palabras&&pal<m.palabras);
-    li.textContent=n<cbs.length?'Revisado: '+n+' de '+cbs.length:(corto?'Marcaste toda la lista, pero tu texto todavía no llega a la meta de extensión. Añade algo más.':'🎉 ¡Todo revisado! Tu texto está listo para compartir.');}
-    ta.addEventListener('input',rev);
-    cbs.forEach(function(c){c.addEventListener('change',rev);}); rev();
-  }
-}
-/* Rúbricas: cada celda recibe el nombre de su nivel para mostrarlo en el móvil */
-document.querySelectorAll('table.rubrica').forEach(function(t){
-  var cab=Array.prototype.map.call(t.querySelectorAll('thead th'),function(th){return th.textContent;});
-  t.querySelectorAll('tbody tr').forEach(function(tr){Array.prototype.forEach.call(tr.children,function(c,i){if(c.tagName==='TD')c.setAttribute('data-et',cab[i]);});});
-});
-
-document.getElementById('leer-dia').addEventListener('click',function(){hablar(document.getElementById('texto-dia').textContent.trim(),0.85);});
-
-clasificador('clasif-dia','puntaje-dia',[
-  {p:'¿Dónde y cuándo pasa la historia?',ops:['En el salón 214, un martes de septiembre por la tarde','En un autobús, un sábado de septiembre por la noche','En una cafetería, un martes de septiembre por la mañana'],c:0,n:'Lo dice la primera oración: es el escenario.'},
-  {p:'¿Qué oración <strong>muestra</strong> que Rosa estaba nerviosa?',ops:['«Rosa se sentó en la última fila.»','«Rosa sintió que el corazón le golpeaba las costillas.»','«Hacía veinte años que no pisaba una escuela.»'],c:1,n:'No dice «nerviosa», pero lo hace sentir.'},
-  {p:'¿Qué hecho es el momento más importante, el de mayor tensión?',ops:['Rosa se presenta delante de todos','La maestra escribe su nombre','Llegan dos señoras y se abrazan'],c:0,n:'Nadie se atreve, y Rosa habla.'},
-  {p:'¿Cómo termina la historia?',ops:['Rosa decide no volver a la clase','El muchacho le pide perdón a Rosa','Rosa escribe en su cuaderno que lo logró'],c:2,n:'El desenlace: «Día 1. Lo logré».'}
-],null,false);
-
-clasificador('clasif-orden','puntaje-orden',[
-  {p:'Rosa escribe «Día 1. Lo logré».',c:3,n:'Es lo último: «Esa noche…».'},
-  {p:'Rosa se sienta en la última fila.',c:0,n:'Es lo primero.'},
-  {p:'Rosa se presenta delante de todos.',c:2,n:'Después de que la maestra pregunta.'},
-  {p:'La maestra escribe su nombre en la pizarra.',c:1,n:'A las seis en punto.'}
-],['1.º','2.º','3.º','4.º'],false);
-
-clasificador('clasif-raya','puntaje-raya',[
-  {p:'—¿Ya cenaste? —preguntó mi madre.',c:0,n:'Raya pegada, verbo en minúscula.'},
-  {p:'—Todavía no —respondí—. Llegué tarde del trabajo.',c:0,n:'El punto va después de la segunda raya.'},
-  {p:'"Ven a comer", dijo mi madre.',c:1,n:'Para el diálogo, el español usa raya: —Ven a comer —dijo mi madre.'},
-  {p:'—Ahora voy —Dije yo.',c:1,n:'«dije» va en minúscula: —Ahora voy —dije yo.'},
-  {p:'— Está rica la sopa —dijo mi hermano.',c:1,n:'La raya va pegada a la palabra: —Está rica…'}
-],['Bien puntuado','Mal puntuado'],false);
-
-clasificador('clasif-borr','puntaje-borr',[
-  {p:'¿Qué añadió Marta al principio de la versión revisada?',ops:['El escenario: cuándo y dónde','El nombre de la señora','El precio de los tomates'],c:0,n:'«El sábado por la mañana… el mercado del barrio».'},
-  {p:'¿Por qué es mejor «tomates» que «cosas»?',ops:['Porque es una palabra más corta','Porque es más concreto y se puede imaginar','Porque así hay más palabras en el texto'],c:1,n:'Los detalles concretos ayudan al lector a ver la escena.'},
-  {p:'¿Qué cambió en las palabras de la señora?',ops:['Se quitaron porque no eran necesarias','Ahora son diálogo, con raya y su propia voz','Ahora están entre comillas inglesas'],c:1,n:'«—Lleve mangos, señorita —me dijo—.»'},
-  {p:'¿Qué paso del proceso ayudó a Marta a notar que su texto sonaba cortado?',ops:['Leerlo en voz alta','Cambiar el título','Contar las palabras'],c:0,n:'Al oírlo se notan las frases cortadas y los errores.'}
-],null,false);
-
-clasificador('clasif-coment','puntaje-coment',[
-  {p:'Tu compañero escribió sobre su primer día de trabajo.',ops:['Está muy bien, me gustó mucho todo.','Me gustó cuando el jefe te da las llaves. ¿Podrías añadir cómo te sentiste?','No me gustó, es una historia aburrida.'],c:1,n:'Señala algo concreto y sugiere una mejora.'},
-  {p:'La narración de una compañera no dice dónde pasa.',ops:['¿Podrías añadir dónde estaban? Me costó imaginar el lugar.','Tu historia está mal escrita; tienes que hacerla otra vez.','Escribe como yo lo hago y seguro que quedará mucho mejor.'],c:0,n:'Amable, concreto y útil.'},
-  {p:'Un compañero escribió el diálogo con comillas.',ops:['Los diálogos así no sirven para nada.','Está perfecto, no cambies nada.','Me encanta lo que dice tu abuelo. ¿Probamos a escribirlo con raya?'],c:2,n:'Reconoce lo bueno y propone el cambio.'}
-],null,false);
-
-tallerEscritura('taller-73a',{clave:'7-3a',etiqueta:'Mi borrador',
-  guia:'Aquella mañana, en…  Primero…  De repente…  —…  Al final…',
-  meta:{oraciones:6,palabras:80},
-  conectores:['al principio','primero','aquella mañana','hace años','luego','después','más tarde','entonces','de repente','de pronto','en ese momento','mientras','mientras tanto','al final','por fin','esa noche','desde entonces']});
-
-tallerEscritura('taller-73b',{clave:'7-3b',etiqueta:'Mi versión revisada',
-  guia:'Copia tu borrador y mejóralo aquí.',
-  meta:{oraciones:8,palabras:120},
-  conectores:['al principio','primero','aquella mañana','hace años','luego','después','más tarde','entonces','de repente','de pronto','en ese momento','mientras','mientras tanto','al final','por fin','esa noche','desde entonces'],
-  lista:['El escenario dice cuándo y dónde pasa la historia.','Los hechos van en orden, con conectores de tiempo.','Hay al menos dos intervenciones de diálogo.','Cada intervención empieza en línea nueva con raya pegada a la palabra.','Los verbos de decir (dijo, preguntó…) van en minúscula.','Apliqué al menos una sugerencia que recibí.','Cambié palabras generales («cosas», «bien») por detalles concretos.','Escuché mi versión revisada en voz alta.']});
-
-document.getElementById('pasar-borr').addEventListener('click',function(){
-  var a=document.getElementById('taller-73a-txt'), b=document.getElementById('taller-73b-txt'), av=document.getElementById('pasar-aviso');
-  if(!a.value.trim()){av.textContent='Primero escribe tu borrador en el paso 1.';return;}
-  if(b.value.trim()&&b.value!==a.value&&!this.dataset.seguro){this.dataset.seguro='1';av.textContent='Ya tienes texto en la versión revisada. Pulsa otra vez para reemplazarlo por el borrador.';var s=this;setTimeout(function(){delete s.dataset.seguro;},4000);return;}
-  delete this.dataset.seguro; b.value=a.value; b.dispatchEvent(new Event('input')); av.textContent='✓ Borrador copiado. Ahora mejóralo.'; b.focus();
-});
-
-iniciarQuiz([
-  {t:'El <strong>escenario</strong> de una narración es…',o:['El lugar y el tiempo en que pasa','El personaje más importante','La última parte de la historia'],c:0,fijo:true,r:'<a href="#s-1-partes">1. Los ingredientes</a>'},
-  {t:'¿Qué oración presenta mejor un escenario?',o:['Una noche de enero, en la parada del autobús, nevaba sin parar.','De repente, alguien gritó mi nombre desde el otro lado.','Al final, todos volvimos a casa cansados pero felices.'],c:0,r:'<a href="#s-1-partes">1. Los ingredientes</a>'},
-  {t:'¿Qué conector indica algo <strong>inesperado</strong>?',o:['De repente','Al final','Primero'],c:0,r:'<a href="#s-3-ordena">3. La secuencia</a>'},
-  {t:'Ordena: (A) Llegó al hospital. (B) Sintió el dolor. (C) Nació su hija. ¿Cuál es el orden lógico?',o:['B, A, C','A, B, C','C, B, A'],c:0,r:'<a href="#s-3-ordena">3. La secuencia</a>'},
-  {t:'¿Cuál está <strong>bien puntuado</strong>?',o:['—¿Me ayudas? —preguntó Luis.','—¿Me ayudas? —Preguntó Luis.','"¿Me ayudas?", preguntó Luis.'],c:0,r:'<a href="#s-4-dialogo">4. El diálogo</a>'},
-  {t:'¿Cuál está <strong>bien puntuado</strong>?',o:['—Ya voy —dijo Ana—. Espérame un minuto.','—Ya voy —dijo Ana. —Espérame un minuto.','— Ya voy, dijo Ana, espérame un minuto.'],c:0,r:'<a href="#s-4-dialogo">4. El diálogo</a>'},
-  {t:'En un diálogo, cada vez que habla un personaje distinto…',o:['Se empieza una línea nueva con raya','Se sigue escribiendo en la misma línea','Se usan comillas inglesas o latinas'],c:0,r:'<a href="#s-4-dialogo">4. El diálogo</a>'},
-  {t:'¿Cuál es el orden del proceso de revisión?',o:['Escribir, leer en voz alta, recibir comentarios, revisar','Revisar, escribir, recibir comentarios, publicar','Recibir comentarios, escribir, publicar, leer'],c:0,r:'<a href="#s-5-borradores">5. Dos borradores</a>'},
-  {t:'Borrador: «Comimos cosas.» Revisado: «Comimos tamales de pollo y arroz con frijoles.» ¿Qué mejoró?',o:['Los detalles concretos','La puntuación del diálogo','El escenario de la historia'],c:0,r:'<a href="#s-5-borradores">5. Dos borradores</a>'},
-  {t:'¿Para qué sirve leer tu texto en voz alta?',o:['Para oír lo que suena raro o falta','Para que el texto sea más largo','Para no tener que revisarlo'],c:0,r:'<a href="#s-5-borradores">5. Dos borradores</a>'},
-  {t:'¿Cuál es la <strong>mejor sugerencia</strong> para un compañero?',o:['¿Podrías añadir qué dijo tu jefe? Así la escena tendría más vida.','Tu historia está bien así; no le cambies nada, de verdad, ni una coma.','Está muy aburrida; mejor escribe sobre otra cosa más interesante.'],c:0,r:'<a href="#s-6-comentar">6. Leer y comentar</a>'},
-  {t:'Un buen comentario debe ser…',o:['Amable, concreto y útil','Corto, general y rápido','Largo, duro y detallado'],c:0,r:'<a href="#s-6-comentar">6. Leer y comentar</a>'}
-],{meta:10,
-   bien:'¡Terminaste el Tema 7! Ya escribes narraciones con escenario y diálogo, y sabes revisar con ayuda de otros. Puedes continuar con el Tema 8.',
-   repaso:'Vuelve a las secciones que te indica cada pregunta y repite el quiz: con práctica sale.'});
+})();
 </script>
+
 </body>
 </html>

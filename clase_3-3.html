@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<!-- Lección 3.3 · Artes del Lenguaje Nivel 2 · GEDparaHispanos
-     José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago
-     Licencia CC BY-NC-SA 4.0 · https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es -->
+<!-- Lección 3.3 · Artes del Lenguaje Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 3.3 · Registro formal e informal: habla frente a escritura</title>
+<title>Lección 3.3 · El corazón de la oración: el verbo</title>
 <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago">
 <meta name="license" content="CC BY-NC-SA 4.0">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
 <style>
   :root{
-    --cp:#00796b;--cp-claro:#e0f2f1;--cp-oscuro:#004d44;
+    --cp:#0089cd;--cp-claro:#e3f2fd;--cp-oscuro:#005a8a;
     --acento:#ff8c42;--texto:#1a2332;--fondo:#fafbfc;
-    --gris:#555;--gris-claro:#eef1f4;
-    --dip:#1565c0;--dip-claro:#e3f2fd;
-    --hia:#ad1457;--hia-claro:#fce4ec;
-    --grp:#5c3900;--grp-claro:#fff3cd;
+    --gris:#6b7785;--gris-claro:#eef1f4;
+    --verbo-accion:#d32f2f;--verbo-accion-claro:#ffebee;
+    --verbo-enlace:#7b1fa2;--verbo-enlace-claro:#f3e5f5;
+    --sujeto:#1565c0;
     --exito:#2e7d32;--error:#c62828;
   }
   *{box-sizing:border-box}
@@ -28,64 +27,90 @@
   h3{color:var(--cp);margin-top:24px;font-size:1.15rem}
   .caja-objetivos{background:var(--cp-claro);border-left:6px solid var(--cp);padding:18px 22px;border-radius:8px;margin:18px 0 28px 0}
   .caja-objetivos h2{margin-top:0;color:var(--cp-oscuro);border-left:none;padding-left:0;font-size:1.2rem}
-  .caja-tiempo{display:inline-block;background:var(--acento);color:#1a2332;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
+  .caja-tiempo{display:inline-block;background:var(--acento);color:#fff;padding:4px 12px;border-radius:14px;font-size:0.85rem;font-weight:600;margin-left:10px;vertical-align:middle}
   details{background:#fff;border:1px solid #d6dde4;border-radius:10px;margin:14px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,121,107,0.12)}
+  details[open]{border-color:var(--cp);box-shadow:0 3px 10px rgba(0,137,205,0.12)}
   summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(--cp-oscuro);background:var(--gris-claro);list-style:none;user-select:none;font-size:1.05rem}
   summary::-webkit-details-marker{display:none}
   summary::before{content:'▶';display:inline-block;margin-right:10px;color:var(--cp);transition:transform 0.25s;font-size:0.85rem}
   details[open] summary::before{transform:rotate(90deg)}
   details[open] summary{background:var(--cp-claro);border-bottom:2px solid var(--cp)}
   .contenido-detalle{padding:18px 22px}
+  .modalidad{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+  @media(max-width:640px){.modalidad{grid-template-columns:1fr}}
+  .tarjeta-modalidad{border-radius:10px;padding:16px 18px;border:2px solid}
+  .presencial{background:#fff8ee;border-color:var(--acento)}
+  .presencial h4{color:#b35316;margin-top:0}
+  .online{background:#eef5fb;border-color:var(--cp)}
+  .online h4{color:var(--cp-oscuro);margin-top:0}
   .tip{background:#fffbe6;border-left:5px solid #f4c430;padding:12px 18px;border-radius:6px;margin:14px 0}
-  .tip strong{color:#6b5400}
+  .tip strong{color:#8a6d00}
   .botones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}
-  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:background 0.2s}
+  .btn{padding:10px 22px;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:0.95rem;transition:all 0.2s}
   .btn-primario{background:var(--cp);color:#fff}
   .btn-primario:hover{background:var(--cp-oscuro)}
   .btn-secundario{background:var(--gris-claro);color:var(--texto)}
   .btn-secundario:hover{background:#d6dde4}
-  .btn[aria-pressed="true"]{background:var(--cp-oscuro);color:#fff}
+  .firma{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:var(--gris);font-style:italic;font-size:0.9rem}
   ul.lista-bonita{list-style:none;padding-left:0}
   ul.lista-bonita li{padding:8px 0 8px 30px;position:relative}
   ul.lista-bonita li::before{content:'➜';position:absolute;left:0;color:var(--cp);font-weight:700}
   .palabra-clave{background:linear-gradient(transparent 60%,#ffeb3b 60%);padding:0 4px;font-weight:600}
-  .ejemplo{font-family:Georgia,serif;font-size:1.15rem}
-  .sil{font-family:Georgia,serif;letter-spacing:.5px;color:var(--cp-oscuro);font-weight:700}
-  table.tabla{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
-  table.tabla th{background:var(--cp-oscuro);color:#fff;padding:10px 12px;text-align:left}
-  table.tabla td{padding:10px 12px;border-bottom:1px solid var(--gris-claro);vertical-align:top}
-  table.tabla tr:last-child td{border-bottom:none}
-  .actividad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
-  .actividad h4{color:#8a3d0c;margin-top:0}
-  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
-  .badge-lectura{background:#e3f2fd;color:#0d47a1}
-  .badge-actividad{background:#f3e5f5;color:#6a1b9a}
-  /* Clasificadores */
-  .clasificador{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px 18px;margin:18px 0}
-  .item{border:2px solid var(--gris-claro);border-radius:8px;padding:10px 14px;margin:8px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  .item-pal{font-family:Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--cp-oscuro);display:flex;align-items:center;gap:10px}
-  .item-ops{display:flex;gap:8px;flex-wrap:wrap}
-  .item-fb{flex-basis:100%;font-size:.95rem;min-height:0}
-  .item-fb:empty{display:none}
-  .btn-op{padding:7px 14px;border:2px solid var(--cp);background:#fff;color:var(--cp-oscuro);border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:.92rem}
-  .btn-op:hover:not(:disabled){background:var(--cp-claro)}
-  .btn-op.correcta{background:#d4edda;border-color:var(--exito);color:#155724}
-  .btn-op.incorrecta{background:#f8d7da;border-color:var(--error);color:#721c24}
-  .btn-op:disabled{cursor:default}
-  .oir{background:var(--cp-claro);border:2px solid var(--cp);color:var(--cp-oscuro);border-radius:8px;padding:3px 10px;font-weight:600;cursor:pointer;font-family:inherit;font-size:.9rem}
-  .puntaje{text-align:center;margin-top:12px;font-weight:600;color:var(--cp-oscuro)}
-  /* Lectura con marcas */
-  .texto-lectura{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:Georgia,serif;font-size:1.12rem;line-height:2.1}
-  .texto-lectura p{margin:0 0 10px}
-  .leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.92rem;margin:8px 0}
-  .leyenda span{display:inline-flex;align-items:center;gap:6px}
-  .mk{width:14px;height:14px;border-radius:3px;display:inline-block}
-  .ver-dip .dip{background:var(--dip-claro);color:var(--dip);font-weight:700;box-shadow:0 -3px 0 var(--dip) inset;border-radius:3px}
-  .ver-dip .hia{background:var(--hia-claro);color:var(--hia);font-weight:700;box-shadow:0 -3px 0 var(--hia) inset;border-radius:3px}
-  .ver-dip .muda{color:#555;text-decoration:underline dotted 2px}
-  .ver-grp .grp{background:var(--grp-claro);color:var(--grp);font-weight:700;box-shadow:0 -3px 0 var(--grp) inset;border-radius:3px}
-  /* Índice */
+
+  .v-accion{background:var(--verbo-accion-claro);color:var(--verbo-accion);padding:2px 8px;border-radius:4px;font-weight:700;box-shadow:0 -3px 0 var(--verbo-accion) inset}
+  .v-enlace{background:var(--verbo-enlace-claro);color:var(--verbo-enlace);padding:2px 8px;border-radius:4px;font-weight:700;box-shadow:0 -3px 0 var(--verbo-enlace) inset}
+  .suj{color:var(--sujeto);font-weight:700}
+  .ejemplo-oracion{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0;font-family:'Georgia',serif;font-size:1.2rem;text-align:center}
+  .leyenda-colores{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0;font-size:0.95rem}
+  .leyenda-colores span{display:inline-flex;align-items:center;gap:6px}
+  .leyenda-colores .punto{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+  /* Subrayado clic */
+  .texto-subrayar{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:18px 22px;margin:14px 0;font-family:'Georgia',serif;font-size:1.15rem;line-height:2.1}
+  .palabra-verb{cursor:pointer;padding:1px 4px;border-radius:3px;transition:background 0.2s;display:inline-block}
+  .palabra-verb:hover{background:#fff3cd}
+  .palabra-verb.subrayado-doble{
+    background:#fff;
+    color:var(--cp-oscuro);
+    font-weight:700;
+    border-bottom:3px double var(--cp-oscuro);
+    padding-bottom:0;
+  }
+
+  /* Clasificar acción vs enlace */
+  .clasificador-verbos{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:18px;margin:18px 0}
+  .item-verbo{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:10px 0}
+  .frase-verbo{font-family:'Georgia',serif;font-size:1.15rem;margin-bottom:10px;text-align:center}
+  .verbo-target{background:#fff3cd;color:#856404;padding:2px 8px;border-radius:4px;font-weight:700}
+  .opciones-verbo{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .btn-tipo-verbo{padding:8px 14px;border:2px solid;background:#fff;border-radius:8px;cursor:pointer;font-weight:600;font-family:inherit;font-size:0.9rem;transition:all 0.2s}
+  .btn-acc{border-color:var(--verbo-accion);color:var(--verbo-accion)}
+  .btn-acc:hover{background:var(--verbo-accion-claro)}
+  .btn-enl{border-color:var(--verbo-enlace);color:var(--verbo-enlace)}
+  .btn-enl:hover{background:var(--verbo-enlace-claro)}
+  .btn-tipo-verbo.correcta{background:#d4edda;border-color:var(--exito);color:var(--exito)}
+  .btn-tipo-verbo.incorrecta{background:#f8d7da;border-color:var(--error);color:var(--error);animation:sacudir 0.4s}
+  @keyframes sacudir{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .puntaje{text-align:center;margin-top:14px;font-weight:600;color:var(--cp-oscuro);font-size:1.05rem}
+  .feedback-item{margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.9rem;display:none}
+  .feedback-item.mostrar{display:block}
+  .feedback-item.correcto{background:#d4edda;color:#155724}
+  .feedback-item.incorrecto{background:#f8d7da;color:#721c24}
+
+  /* Tabla acción vs enlace */
+  table.tabla-verbos{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+  table.tabla-verbos th{background:var(--cp-oscuro);color:#fff;padding:12px;text-align:left}
+  table.tabla-verbos td{padding:12px;border-bottom:1px solid var(--gris-claro);font-family:'Georgia',serif}
+  table.tabla-verbos tr:last-child td{border-bottom:none}
+  table.tabla-verbos td:first-child{font-weight:700;width:140px}
+
+  .actividad-unidad{background:#fff;border:2px solid var(--acento);border-radius:10px;padding:16px 20px;margin:14px 0}
+  .actividad-unidad h4{color:#b35316;margin-top:0}
+  .badge-tipo{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-right:6px}
+  .badge-lectura{background:#e3f2fd;color:#0277bd}
+  .badge-discusion{background:#f3e5f5;color:#6a1b9a}
+
+  /* ── Índice de la lección ── */
   .indice{background:#fff;border:1px solid #d6dde4;border-left:6px solid var(--cp);border-radius:10px;padding:16px 20px;margin:22px 0}
   .indice h2{font-size:1.1rem;margin:0 0 8px;border:none;padding:0}
   .indice ol{margin:0;padding-left:1.4em}
@@ -95,13 +120,14 @@
   .volver-indice{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--cp-oscuro);color:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.28)}
   .volver-indice:hover{background:var(--cp);color:#fff}
   a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid #b35316;outline-offset:2px}
+  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
+  .caja-tiempo{color:#1a2332!important}
   .sr-solo{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  /* ── Enlace a una práctica de gramatica ── */
   .enlace-practica{display:block;background:#fff;border:2px solid var(--cp);border-radius:10px;padding:14px 18px;margin:16px 0;text-decoration:none;color:var(--cp-oscuro);font-weight:600}
   .enlace-practica:hover{background:var(--cp-claro)}
   .enlace-practica span{display:block;font-weight:400;color:var(--texto);font-size:.95rem}
-  .aviso-voz{font-size:.9rem;color:#5c3900;background:#fff3cd;border-radius:6px;padding:6px 10px;display:none}
-  .aviso-voz.visible{display:block}
-  /* Quiz */
+  /* ── Quiz de la lección ── */
   .qz-intro{background:var(--cp-claro);border-radius:10px;padding:14px 18px;margin:0 0 14px}
   .qz-intro h4{margin:0 0 6px;color:var(--cp-oscuro)}
   .qz-preg{background:#fff;border:2px solid var(--gris-claro);border-radius:10px;padding:14px 18px;margin:12px 0}
@@ -121,96 +147,43 @@
   .qz-op:disabled{cursor:default}
   .qz-resultado{display:none;margin:16px 0;padding:16px;border-radius:10px;text-align:center;font-weight:600}
   .qz-resultado.visible{display:block}
+  /* ── Pie ── */
   footer.pie{margin-top:40px;padding-top:18px;border-top:2px solid var(--gris-claro);text-align:center;color:#555;font-size:.9rem}
   footer.pie p{margin:4px 0}
   footer.pie a{color:var(--cp-oscuro)}
-  @media print{.indice,.volver-indice,.abrir-cerrar{display:none}}
-  @media (prefers-reduced-motion:reduce){summary::before{transition:none}}
 
-  .qz-repaso{margin:10px 0 0;padding:8px 12px;background:#fff3cd;border-radius:6px;color:#3d2600;font-size:.95rem}
-  .qz-repaso a{color:#004d44;font-weight:700}
-  /* ── Comunes desde el Tema 4 ── */
-  .item-ops{flex-wrap:wrap}
-  .apilado .item{flex-direction:column;align-items:stretch}
-  .apilado .item-ops{flex-direction:column}
-  .apilado .btn-op{text-align:left;font-weight:400}
-  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#1a2332;font-weight:600}
-  .pasaje{display:block;background:#fff8ee;border-left:5px solid var(--acento);border-radius:6px;padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-weight:400;line-height:1.75}
-  .pasaje p{margin:0 0 6px}
-  .num-p{display:inline-block;background:var(--cp-oscuro);color:#fff;border-radius:50%;width:1.6em;height:1.6em;text-align:center;line-height:1.6em;font-size:.8rem;font-family:'Segoe UI',Arial,sans-serif;margin-right:6px;vertical-align:middle}
-  .idea{background:#e3f2fd;color:#0d3c78;font-weight:700;box-shadow:0 -3px 0 #1565c0 inset;border-radius:3px}
-  .oculta-idea .idea{background:none;color:inherit;font-weight:inherit;box-shadow:none}
-  /* Taller de escritura (Tema 7) */
-  .taller{background:#fff;border:2px solid var(--cp);border-radius:12px;padding:14px;margin:14px 0}
-  .tl-etq{display:block;font-weight:700;color:var(--cp-oscuro);margin-bottom:6px}
-  .tl-txt{width:100%;box-sizing:border-box;font:inherit;font-size:1.05rem;line-height:1.7;padding:10px 12px;border:2px solid #9aa9b7;border-radius:8px;resize:vertical;min-height:180px}
-  .tl-txt:focus{outline:3px solid var(--cp);outline-offset:1px;border-color:var(--cp-oscuro)}
-  .tl-cuenta{font-size:.92rem;color:#333;margin:6px 0}
-  .tl-conect{font-size:.95rem;margin:4px 0 8px}
-  .tl-chip{display:inline-block;background:var(--cp-claro,#e0f2f1);color:var(--cp-oscuro);border:1px solid var(--cp);border-radius:12px;padding:1px 10px;margin:2px 2px;font-weight:700}
-  .tl-aviso{min-height:1.4em;font-weight:700;color:var(--cp-oscuro)}
-  .tl-lista{border:2px dashed var(--cp);border-radius:10px;padding:8px 14px;margin-top:10px}
-  .tl-lista legend{font-weight:700;color:var(--cp-oscuro);padding:0 6px}
-  .tl-lista label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
-  .tl-lista input{width:22px;height:22px;flex-shrink:0;margin-top:2px;accent-color:var(--cp-oscuro)}
-  .tl-listo{font-weight:700;color:var(--cp-oscuro);margin:6px 0 0}
-  .rubrica{font-size:.92rem}
-  .rubrica td,.rubrica th{vertical-align:top}
-  .marca{border-radius:3px;padding:0 2px;font-weight:700}
-  .m-postura{background:#e3f2fd;color:#0d3c78}
-  .m-razon{background:#fff3e0;color:#7a3a00}
-  .m-conector{background:#e0f2f1;color:#004d44;text-decoration:underline}
-  .m-conclusion{background:#f3e5f5;color:#5a1a6b}
-  .leyenda-m{display:flex;flex-wrap:wrap;gap:8px;font-size:.92rem;margin:6px 0}
-  .marca::before{content:attr(data-et);font-size:.68em;font-family:'Segoe UI',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-right:4px;vertical-align:super}
-  .oculta-marcas .marca{background:none;color:inherit;font-weight:inherit;text-decoration:none;padding:0}
-  .oculta-marcas .marca::before{content:none}
-  @media(max-width:640px){
-    .rubrica thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
-    .rubrica,.rubrica tbody,.rubrica tr,.rubrica th,.rubrica td{display:block;width:auto}
-    .rubrica tr{border:2px solid var(--cp);border-radius:10px;margin:0 0 10px;overflow:hidden}
-    .rubrica tbody th{background:var(--cp-oscuro);color:#fff;border:none}
-    .rubrica td{border:none;border-top:1px solid #d5dde3}
-    .rubrica td::before{content:attr(data-et);display:block;font-weight:700;color:var(--cp-oscuro)}
-  }
-
-  .item-ops{flex-wrap:wrap}
-  .apilado .item{flex-direction:column;align-items:stretch}
-  .apilado .item-ops{flex-direction:column}
-  .apilado .btn-op{text-align:left;font-weight:400}
-  .apilado .item-pal{font-family:'Segoe UI',Arial,sans-serif;font-size:1rem;color:#333}
-  .dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:700px){.dos{grid-template-columns:1fr}}
-  .chat{background:#e8f5e9;border-radius:14px 14px 14px 2px;padding:12px 16px;font-size:1.02rem;margin:6px 0}
-  .chat .hora{display:block;text-align:right;font-size:.8rem;color:#555}
-  .correo{background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;font-family:Georgia,serif;font-size:1.02rem;line-height:1.8}
-  .correo p{margin:0 0 8px}
-  .correo .asunto{font-family:'Segoe UI',Arial,sans-serif;font-size:.9rem;color:#555;border-bottom:1px solid var(--gris-claro);padding-bottom:6px}
+  /* ── Tocar palabras: todas las palabras son botones; solo algunas son la respuesta ── */
+  .marcable{font-family:Georgia,serif;font-size:1.15rem;line-height:2.3;background:#fff;border:2px solid var(--gris-claro);border-radius:8px;padding:14px 18px;margin:12px 0}
+  .marcable p{margin:0 0 8px}
+  .pal-m{font:inherit;background:none;border:2px solid transparent;border-radius:6px;padding:0 3px;color:inherit;cursor:pointer}
+  .pal-m:hover{border-color:#b6dcf3}
+  .marcable .punt{margin-left:-4px}
+  .pal-m[aria-pressed="true"]{background:#fff3cd;border-color:#b35316}
+  .pal-m.bien{background:#d4edda;border-color:#2e7d32;color:#155724}
+  .pal-m.mal{background:#f8d7da;border-color:#c62828;color:#721c24;text-decoration:line-through}
+  .pal-m.falto{border-color:#b35316;border-style:dashed}
+  .resultado-marcar:not(:empty){margin:10px 0;padding:10px 14px;border-radius:8px;font-weight:600}
+  .resultado-marcar.correcto{background:#d4edda;color:#155724}
+  .resultado-marcar.incorrecto{background:#fff3cd;color:#5c3900}
+  .pal-m.bien{text-decoration:underline double;text-underline-offset:5px}
 </style>
 </head>
 <body>
-<h1>Lección 3.3 · Registro formal e informal: habla frente a escritura</h1>
-<p class="subtitulo">Artes del Lenguaje · Nivel 2 · Tema 3: Puntuación, ortografía y registro · Unas 2 horas, a tu ritmo</p>
+
+<h1>Lección 3.3 · El corazón de la oración: el verbo</h1>
+<p class="subtitulo">Artes del Lenguaje · Nivel 1 · Tema 3 · Unas 2 horas, a tu ritmo</p>
 
 <div class="caja-objetivos">
   <h2>🎯 Objetivos de la lección</h2>
-  <ul class="lista-bonita" style="margin:0">
-    <li>Distinguir el registro <strong>formal</strong> del <strong>informal</strong> por sus marcas: trato, saludo, vocabulario y forma de escribir.</li>
-    <li>Reconocer las diferencias entre <strong>hablar</strong> y <strong>escribir</strong>.</li>
-    <li>Elegir el registro adecuado según el <strong>destinatario</strong> y la situación, y pasar un mensaje de un registro a otro sin perder su sentido.</li>
-  </ul>
-  <p style="margin:8px 0 0;font-size:.92rem">Estándares: 2.W.KL.1 · 2.S.CC.1</p>
+  <p style="margin-bottom:0">Reconocer que el <strong>verbo</strong> es la acción o el enlace dentro del predicado de una oración, y distinguir entre <strong>verbos de acción</strong> y <strong>verbos de enlace</strong> (copulativos).</p>
 </div>
 
 <nav class="indice" id="indice" aria-labelledby="indice-titulo">
   <h2 id="indice-titulo">Contenido de la lección</h2>
   <ol>
-    <li><a href="#s-1-registro">¿Qué es el registro?</a></li>
-    <li><a href="#s-2-marcas">Las marcas de cada registro</a></li>
-    <li><a href="#s-3-habla">Hablar no es lo mismo que escribir</a></li>
-    <li><a href="#s-4-destinatario">¿A quién le escribes?</a></li>
-    <li><a href="#s-5-lectura">Lectura: el mismo mensaje, dos tonos</a></li>
-    <li><a href="#s-6-transforma">Práctica: de informal a formal</a></li>
+    <li><a href="#s-1-verbo">¿Qué es el verbo?</a></li>
+    <li><a href="#s-2-accion-enlace">Verbos de acción y verbos de enlace</a></li>
+    <li><a href="#s-3-subraya">Práctica: encuentra el verbo</a></li>
     <li><a href="#s-tarea">Tarea</a></li>
     <li><a href="#s-quiz">Quiz de la lección</a></li>
     <li><a href="#s-cierre">Cierre</a></li>
@@ -222,176 +195,159 @@
 </nav>
 
 <h2>📚 Para empezar</h2>
-<p>No hablas igual con tu mejor amiga que con el médico, ni le escribes igual a tu hermano que a la oficina del Seguro Social. Sin pensarlo, cambias las palabras, el trato y hasta la forma de las oraciones. Esa manera de usar la lengua según la situación se llama <strong>registro</strong>. Saber elegirlo es tan importante como la ortografía: un correo de trabajo escrito como un chat da una mala impresión, aunque no tenga ni un error.</p>
-<p class="aviso-voz" id="aviso-voz" role="status">Tu navegador no tiene una voz en español disponible, así que los botones 🔊 no sonarán.</p>
 
-<details open id="s-1-registro">
-<summary>1. ¿Qué es el registro? <span class="caja-tiempo">10 min</span></summary>
+<p>Ya sabes que el sustantivo es el protagonista de la oración. Pero un protagonista parado, sin hacer nada, no cuenta una historia. <strong>Aquí entra el verbo</strong>: la palabra que dice <em>qué hace</em> el protagonista, o <em>cómo es</em>.</p>
+
+<p>El verbo es el <span class="palabra-clave">corazón de la oración</span>. Sin verbo, no hay oración. Es así de simple. En esta lección vas a aprender a reconocerlo y a distinguir sus dos grandes tipos.</p>
+
+<details open id="s-1-verbo">
+<summary>1. ¿Qué es el verbo? <span class="caja-tiempo">15 min</span></summary>
 <div class="contenido-detalle">
-<table class="tabla">
-  <caption class="sr-solo">Registro formal e informal</caption>
-  <thead><tr><th scope="col">Registro</th><th scope="col">Cuándo se usa</th><th scope="col">Ejemplo</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Informal</strong></td><td>Con familia, amigos y personas de confianza, en situaciones relajadas.</td><td><em>¡Hola, Pati! ¿Vienes el sábado a la carne asada?</em></td></tr>
-    <tr><td><strong>Formal</strong></td><td>Con personas que no conoces o que tienen un cargo; en el trabajo, en oficinas, en la escuela, en exámenes.</td><td><em>Buenos días, señora Rivas. Le escribo para confirmar la reunión del sábado.</em></td></tr>
-  </tbody>
-</table>
-<div class="tip"><strong>💡 Ninguno es «mejor»:</strong> el registro informal no es incorrecto; es el adecuado para otra situación. Lo que no funciona es usar uno donde corresponde el otro: tratar de «mi amor» al cajero del banco, o escribirle a tu hijo «Estimado hijo: le informo que la cena está servida».</div>
-<div class="tip"><strong>🎓 En el GED:</strong> la respuesta extendida del examen de Artes del Lenguaje debe escribirse en <strong>registro formal</strong>. Es una de las cosas que se califican.</div>
+
+<h3>¿Qué hace el protagonista?</h3>
+
+<p>Recuerda: el <strong>sustantivo</strong> es el protagonista (el sujeto). El <span class="palabra-clave">verbo</span> es la palabra que muestra <strong>lo que el sujeto está haciendo</strong> o <strong>cómo es / cómo está</strong>.</p>
+
+<div class="leyenda-colores">
+  <span><span class="punto" style="background:var(--sujeto)" aria-hidden="true"></span> Sujeto</span>
+  <span><span class="punto" style="background:var(--verbo-accion)" aria-hidden="true"></span> Verbo de acción</span>
+  <span><span class="punto" style="background:var(--verbo-enlace)" aria-hidden="true"></span> Verbo de enlace</span>
+</div>
+
+<div class="ejemplo-oracion">
+  <span class="suj">María</span> <span class="v-accion">cocina</span> arroz.
+</div>
+
+<div class="ejemplo-oracion">
+  <span class="suj">El niño</span> <span class="v-accion">corre</span> en el parque.
+</div>
+
+<div class="ejemplo-oracion">
+  <span class="suj">Mi mamá</span> <span class="v-enlace">es</span> doctora.
+</div>
+
+<div class="ejemplo-oracion">
+  <span class="suj">El café</span> <span class="v-enlace">está</span> caliente.
+</div>
+
+<div class="tip">
+  <strong>💡 Pista de oro:</strong> Para encontrar el verbo en una oración, pregunta: <em>"¿Qué hace el sujeto?"</em> o <em>"¿Cómo es / cómo está?"</em>. La respuesta es el verbo.
+</div>
+
 </div>
 </details>
 
-<details id="s-2-marcas">
-<summary>2. Las marcas de cada registro <span class="caja-tiempo">20 min</span></summary>
+<details id="s-2-accion-enlace">
+<summary>2. Verbos de acción y verbos de enlace <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-<table class="tabla">
-  <caption class="sr-solo">Marcas del registro informal y del formal</caption>
-  <thead><tr><th scope="col">Aspecto</th><th scope="col">Informal</th><th scope="col">Formal</th></tr></thead>
+
+<h3>Verbos de acción</h3>
+
+<p>Los <span class="palabra-clave">verbos de acción</span> indican algo que el sujeto <strong>hace</strong>. Responden a la pregunta <em>"¿qué está haciendo el sujeto?"</em>.</p>
+
+<p>Ejemplos: <em>correr, comer, dar, escribir, cantar, leer, trabajar, estudiar</em>.</p>
+
+<div class="ejemplo-oracion">
+  <span class="suj">Nicolás</span> <span class="v-accion">trabaja</span> en una fábrica.
+</div>
+
+<div class="ejemplo-oracion">
+  <span class="suj">Los estudiantes</span> <span class="v-accion">escriben</span> en sus cuadernos.
+</div>
+
+<h3>Verbos de enlace (copulativos)</h3>
+
+<p>Los <span class="palabra-clave">verbos de enlace</span> o <span class="palabra-clave">copulativos</span> no muestran una acción. Solo conectan al sujeto con una descripción o característica. Los tres principales son: <strong>ser, estar, parecer</strong>.</p>
+
+<div class="ejemplo-oracion">
+  <span class="suj">La sopa</span> <span class="v-enlace">está</span> caliente.
+</div>
+
+<div class="ejemplo-oracion">
+  <span class="suj">Mi hermana</span> <span class="v-enlace">es</span> enfermera.
+</div>
+
+<div class="ejemplo-oracion">
+  <span class="suj">Tú</span> <span class="v-enlace">pareces</span> cansado.
+</div>
+
+<h3>Tabla de comparación</h3>
+
+<table class="tabla-verbos">
+  <caption class="sr-solo">Comparación de los verbos de acción y de enlace</caption>
+  <thead>
+    <tr>
+      <th scope="col">Tipo</th>
+      <th scope="col">Función</th>
+      <th scope="col">Ejemplos</th>
+    </tr>
+  </thead>
   <tbody>
-    <tr><td><strong>Trato</strong></td><td><em>tú</em> (o <em>vos</em> en varios países): <em>¿Cómo estás?</em></td><td><em>usted</em>: <em>¿Cómo está usted?</em></td></tr>
-    <tr><td><strong>Saludo</strong></td><td><em>Hola · ¿Qué tal? · Oye</em></td><td><em>Buenos días · Estimado señor:</em></td></tr>
-    <tr><td><strong>Despedida</strong></td><td><em>Chao · Nos vemos · Un abrazo</em></td><td><em>Atentamente · Saludos cordiales · Quedo a sus órdenes</em></td></tr>
-    <tr><td><strong>Vocabulario</strong></td><td>Palabras de todos los días y de cada país: <em>chamba, pega, chido, bacán</em></td><td>Palabras generales y precisas: <em>trabajo, empleo, excelente</em></td></tr>
-    <tr><td><strong>Verbos</strong></td><td><em>pedir, decir, arreglar, mandar</em></td><td><em>solicitar, informar, resolver, enviar</em></td></tr>
-    <tr><td><strong>Escritura</strong></td><td>Abreviaturas y emojis: <em>q, xq, tmb, 👍</em></td><td>Palabras completas, sin emojis: <em>que, porque, también</em></td></tr>
-    <tr><td><strong>Oraciones</strong></td><td>Cortas, a veces incompletas: <em>¿Mañana? Ok.</em></td><td>Completas y bien puntuadas: <em>De acuerdo, nos vemos mañana.</em></td></tr>
+    <tr>
+      <td style="color:var(--verbo-accion)">De acción</td>
+      <td>Muestra lo que hace el sujeto</td>
+      <td>correr, comer, hablar, escribir, dormir, trabajar, estudiar, cantar</td>
+    </tr>
+    <tr>
+      <td style="color:var(--verbo-enlace)">De enlace</td>
+      <td>Conecta al sujeto con una descripción</td>
+      <td>ser, estar, parecer</td>
+    </tr>
   </tbody>
 </table>
-<div class="tip"><strong>💡 Las palabras de cada país:</strong> <em>chamba</em> (México), <em>pega</em> (Chile), <em>curro</em> (España) o <em>camello</em> (Colombia) quieren decir lo mismo: <em>trabajo</em>. Son parte de la riqueza del español, pero en un texto formal conviene la palabra que se entiende en todos los países.</div>
-<h3>¿Formal o informal?</h3>
-<div class="clasificador apilado" id="clasif-reg"></div>
-<div class="puntaje" id="puntaje-reg" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-3.html#clasifica" target="_blank" rel="noopener noreferrer">🧩 Practica más: formal o informal
-  <span>Rondas con mensajes nuevos. Se abre en una pestaña nueva.</span></a>
+
+<div class="tip">
+  <strong>⚠️ Cuidado:</strong> El verbo <em>"estar"</em> casi siempre es de enlace, pero también puede indicar ubicación: "El libro <em>está</em> en la mesa". En esos casos sigue funcionando como verbo de enlace porque conecta al sujeto con una circunstancia, no es una acción.
+</div>
+
 </div>
 </details>
 
-<details id="s-3-habla">
-<summary>3. Hablar no es lo mismo que escribir <span class="caja-tiempo">15 min</span></summary>
+<details id="s-3-subraya">
+<summary>3. Práctica: encuentra el verbo <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
-<p>Cuando hablamos, tenemos la voz, los gestos y a la otra persona delante, que puede preguntarnos si no entiende. Cuando escribimos, el texto tiene que entenderse solo.</p>
-<table class="tabla">
-  <caption class="sr-solo">Diferencias entre la lengua hablada y la escrita</caption>
-  <thead><tr><th scope="col">Al hablar</th><th scope="col">Al escribir</th></tr></thead>
-  <tbody>
-    <tr><td>Repetimos y nos corregimos sobre la marcha: <em>«Fui al, este, al mercado…»</em></td><td>Revisamos antes de enviar: <em>Fui al mercado.</em></td></tr>
-    <tr><td>Usamos muletillas: <em>este, o sea, pues, tipo, ¿sabes?</em></td><td>Las quitamos: no aportan nada en el papel.</td></tr>
-    <tr><td>Acortamos palabras: <em>pa'l trabajo, 'tá bien, ¿pa' qué?</em></td><td>Las escribimos completas: <em>para el trabajo, está bien, ¿para qué?</em></td></tr>
-    <tr><td>Señalamos: <em>«Ponlo ahí, al lado de eso»</em></td><td>Nombramos: <em>Ponlo en la mesa, junto al teléfono.</em></td></tr>
-  </tbody>
-</table>
-<h3>Escucha la diferencia</h3>
-<p>La primera versión es como se diría hablando. La segunda es como se escribiría en una nota.</p>
+
+<h3>El doble subrayado</h3>
+
+<p>Cuando trabajas a mano, se acostumbra subrayar el sujeto con una raya y el verbo con doble raya. Aquí vas a <strong>tocar el verbo</strong> de cada oración. Puedes tocar cualquier palabra, así que piensa bien: solo una palabra de cada oración es el verbo.</p>
+
+<div class="marcable" id="texto-subrayar" data-texto="El maestro [explica] la lección.|Mi abuela [es] muy cariñosa.|Los niños [juegan] en el parque.|El agua [está] fría.|Mi hermano [estudia] matemáticas.|La comida [parece] deliciosa.|Mis vecinos [venden] tamales los domingos.|Tú [eres] muy paciente."></div>
+
 <div class="botones">
-  <button type="button" class="btn btn-secundario" data-hablar="Oye, este, ¿sabes qué? Que mañana no voy a poder ir, o sea, por lo del niño, que está malito, ¿sabes? Pues eso.">🔊 Hablando</button>
-  <button type="button" class="btn btn-primario" data-hablar="Mañana no podré ir porque mi hijo está enfermo.">🔊 Escrito</button>
+  <button type="button" class="btn btn-primario" id="btn-verificar-verb">Verificar</button>
+  <button type="button" class="btn btn-secundario" id="btn-reset-verb">Empezar de nuevo</button>
 </div>
-</div>
-</details>
+<div class="resultado-marcar" id="puntaje-verb" role="status" aria-live="polite"></div>
 
-<details id="s-4-destinatario">
-<summary>4. ¿A quién le escribes? <span class="caja-tiempo">20 min</span></summary>
-<div class="contenido-detalle">
-<p>Antes de escribir, hazte dos preguntas: <strong>¿a quién le escribo?</strong> y <strong>¿para qué?</strong> Con esas respuestas eliges el registro.</p>
-<table class="tabla">
-  <caption class="sr-solo">Situaciones y registro adecuado</caption>
-  <thead><tr><th scope="col">Situación</th><th scope="col">Registro</th></tr></thead>
-  <tbody>
-    <tr><td>Un mensaje a tu hermana para quedar el domingo</td><td>Informal</td></tr>
-    <tr><td>Un correo a la maestra de tu hijo</td><td>Formal</td></tr>
-    <tr><td>Una solicitud de empleo</td><td>Formal</td></tr>
-    <tr><td>Una nota a tu compañero de cuarto sobre la compra</td><td>Informal</td></tr>
-    <tr><td>Una queja a la compañía de luz</td><td>Formal</td></tr>
-    <tr><td>Un mensaje a un compañero de trabajo con el que tienes confianza</td><td>Informal, aunque más cuidado si el tema es de trabajo</td></tr>
-  </tbody>
-</table>
-<h3>Elige la expresión adecuada</h3>
-<div class="clasificador apilado" id="clasif-dest"></div>
-<div class="puntaje" id="puntaje-dest" role="status" aria-live="polite"></div>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-3.html#destinatario" target="_blank" rel="noopener noreferrer">📬 Practica más: el destinatario decide
-  <span>Para cada situación, eliges cómo empezar, pedir o despedirte.</span></a>
-</div>
-</details>
+<h3>Clasifica: ¿acción o enlace?</h3>
 
-<details id="s-5-lectura">
-<summary>5. Lectura: el mismo mensaje, dos tonos <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<div class="actividad">
-  <h4><span class="badge badge-lectura">Lectura</span> Individual · comparar</h4>
-  <p style="margin:0">Daniela necesita el viernes libre para acompañar a su madre al médico. Lee los dos mensajes. En tu cuaderno, haz una tabla de dos columnas y anota <strong>cinco diferencias</strong>: el trato, el saludo, el vocabulario, la escritura y la despedida.</p>
-</div>
-<div class="dos">
-  <div><h3>A su amiga Karla</h3>
-    <div class="chat">Hola Karla!! 😊 oye el viernes no puedo ir al gym xq tengo q llevar a mi mamá al doctor 😕 lo dejamos pa la otra semana?<span class="hora">8:15 p. m.</span></div>
-    <div class="chat">Bueno, me avisas. Besos!!<span class="hora">8:16 p. m.</span></div>
-  </div>
-  <div><h3>A su supervisora</h3>
-    <div class="correo">
-      <p class="asunto">Asunto: Solicitud de día libre el viernes 16 de octubre</p>
-      <p>Estimada señora Ortega:</p>
-      <p>Le escribo para solicitarle el viernes 16 de octubre como día libre. Ese día debo acompañar a mi madre a una cita médica que no se puede cambiar. Si es necesario, puedo recuperar las horas el sábado o la semana siguiente.</p>
-      <p>Quedo atenta a su respuesta. Muchas gracias por su comprensión.</p>
-      <p>Atentamente,<br>Daniela Castro</p>
-    </div>
-  </div>
-</div>
-<details><summary>Ver las respuestas</summary><div class="contenido-detalle">
-<table class="tabla" style="margin:0">
-  <caption class="sr-solo">Diferencias entre los dos mensajes</caption>
-  <thead><tr><th scope="col">Aspecto</th><th scope="col">A Karla</th><th scope="col">A la supervisora</th></tr></thead>
-  <tbody>
-    <tr><td>Trato</td><td>tú: <em>me avisas</em></td><td>usted: <em>Le escribo, su respuesta</em></td></tr>
-    <tr><td>Saludo</td><td><em>Hola Karla!!</em></td><td><em>Estimada señora Ortega:</em></td></tr>
-    <tr><td>Vocabulario</td><td><em>gym, doctor, pa la otra semana</em></td><td><em>solicitar, cita médica, la semana siguiente</em></td></tr>
-    <tr><td>Escritura</td><td><em>xq, q</em>, emojis, sin signos de apertura</td><td>Palabras completas, signos y puntuación correctos</td></tr>
-    <tr><td>Despedida</td><td><em>Besos!!</em></td><td><em>Atentamente, Daniela Castro</em></td></tr>
-  </tbody>
-</table>
-<p style="margin:8px 0 0">Fíjate además en que el correo explica el motivo, propone una solución (recuperar las horas) y lleva un asunto claro. En un mensaje formal, ser amable y concreto ayuda a obtener lo que pides.</p>
-</div></details>
-</div>
-</details>
+<p>Para cada oración, identifica si el verbo destacado es <strong>de acción</strong> (alguien hace algo) o <strong>de enlace</strong> (conecta sujeto con descripción).</p>
 
-<details id="s-6-transforma">
-<summary>6. Práctica: de informal a formal <span class="caja-tiempo">15 min</span></summary>
-<div class="contenido-detalle">
-<div class="actividad">
-  <h4><span class="badge badge-actividad">Actividad</span> Individual · en tu cuaderno</h4>
-  <p>Reescribe cada mensaje en registro formal, sin cambiar lo que se quiere decir.</p>
-  <ul class="lista-bonita" style="margin-bottom:0">
-    <li>A la oficina de la escuela: <em>«oye q onda, mi hijo no va a ir mañana xq tiene gripa, ok?»</em></li>
-    <li>Al dueño del apartamento: <em>«la llave del baño está rota otra vez, la puedes arreglar ya porfa?»</em></li>
-    <li>A una empresa donde quieres trabajar: <em>«hola, vi lo de la chamba de cocinero, me interesa, cuánto pagan?»</em></li>
-  </ul>
-</div>
-<details style="margin-top:10px"><summary>Ver versiones posibles</summary><div class="contenido-detalle">
-<p>«Buenos días. Les informo que mi hijo, [nombre], no asistirá a clases mañana porque tiene gripe. Gracias por su atención. Atentamente, [firma]».</p>
-<p>«Estimado señor [apellido]: Le escribo para informarle que la llave del baño está rota de nuevo. ¿Podría enviar a alguien a repararla lo antes posible? Muchas gracias. Saludos cordiales, [firma]».</p>
-<p style="margin:0">«Estimados señores: Vi su anuncio para el puesto de cocinero y me interesa mucho. ¿Podrían indicarme cuál es el salario y cómo puedo enviar mi solicitud? Quedo a sus órdenes. Atentamente, [firma]».</p>
-</div></details>
-<a class="enlace-practica" href="https://zhemaria.github.io/gramatica/n2-l3-3.html#transforma" target="_blank" rel="noopener noreferrer">🔁 Practica más: transforma el mensaje
-  <span>Eliges la mejor versión formal de mensajes escritos en tono de chat.</span></a>
-<div class="tip"><strong>👨‍👩‍👧 Si tienes con quién practicar:</strong> representen una llamada formal (por ejemplo, pedir una cita en una clínica) y luego una informal (invitar a un amigo a comer). Fíjense en qué cambia en sus voces y sus palabras.</div>
+<div class="clasificador-verbos" id="clasif-verbos"></div>
+<div class="puntaje" id="puntaje-clasif-verb">Aciertos: 0 / 8</div>
+
 </div>
 </details>
 
 <details id="s-tarea">
-<summary>7. Tarea <span class="caja-tiempo">30 min</span></summary>
+<summary>4. Tarea <span class="caja-tiempo">30 min</span></summary>
 <div class="contenido-detalle">
+<p>Esta parte la haces por tu cuenta, con el cuaderno abierto:</p>
 <ul class="lista-bonita">
-  <li><strong>Un mensaje, dos versiones.</strong> Elige una situación real (pedir un permiso, cambiar una cita, hacer una queja). Escribe la versión informal, para alguien de confianza, y la formal, por correo, con asunto, saludo, dos párrafos, despedida y firma.</li>
-  <li><strong>Mis muletillas.</strong> Grábate dos minutos contando qué hiciste ayer. Escúchate y anota las muletillas que repites (<em>este, o sea, pues…</em>). Luego escribe el mismo relato sin ellas.</li>
-  <li><strong>Revisión final.</strong> Revisa tu correo formal con lo aprendido en el tema: mayúsculas, comas, dos puntos del saludo, tildes y ortografía.</li>
+  <li><strong>Mi día en verbos.</strong> Escribe 5 oraciones con <strong>verbos de acción</strong> sobre lo que haces en un día normal (<em>Me levanto a las seis. Preparo el café.</em>). Subraya el verbo con doble raya.</li>
+  <li><strong>Cómo soy, cómo estoy.</strong> Escribe 3 oraciones con <strong>verbos de enlace</strong>: una con <em>ser</em>, una con <em>estar</em> y una con <em>parecer</em> (<em>Soy trabajador. Hoy estoy cansado. Mi jefe parece contento.</em>).</li>
+  <li><strong>Verbos en la cocina.</strong> Busca una receta (en un empaque, en un libro o en internet) y copia 5 verbos de acción que aparezcan en ella (<em>mezcle, corte, hierva…</em>).</li>
 </ul>
+<div class="tip"><strong>🎯 Antes del quiz:</strong> recuerda la pregunta clave. Para encontrar el verbo, pregúntate «¿qué hace el sujeto?» o «¿cómo es o cómo está?».</div>
 </div>
 </details>
 
 <details id="s-quiz">
-<summary>8. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
+<summary>5. Quiz de la lección <span class="caja-tiempo">20 min</span></summary>
 <div class="contenido-detalle">
 <div class="qz-intro">
   <h4>✅ Quiz · 12 preguntas · puedes repetirlo las veces que quieras</h4>
-  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. La meta es acertar al menos <strong>10 de 12</strong>.</p>
+  <p style="margin:0">Elige una respuesta en cada pregunta y, al final, pulsa <strong>Ver mi resultado</strong>. Verás en verde las respuestas correctas y en rojo las que debes repasar. Para dar la lección por aprendida, la meta es acertar al menos <strong>10 de 12</strong>.</p>
 </div>
 <div id="qz-cuerpo"></div>
 <div class="botones">
@@ -403,113 +359,162 @@
 </details>
 
 <details id="s-cierre">
-<summary>9. Cierre <span class="caja-tiempo">5 min</span></summary>
+<summary>6. Cierre <span class="caja-tiempo">5 min</span></summary>
 <div class="contenido-detalle">
+
 <h3>Lo que aprendiste en esta lección</h3>
+
 <ul class="lista-bonita">
-  <li>El <strong>registro</strong> es la manera de usar la lengua según la situación: formal o informal.</li>
-  <li>Las marcas del formal: <em>usted</em>, saludo y despedida de cortesía, vocabulario general y preciso, palabras completas.</li>
-  <li>Al escribir quitamos las muletillas, completamos las palabras y nombramos lo que al hablar señalamos.</li>
-  <li>El destinatario y el propósito deciden el registro. El GED pide registro formal.</li>
+  <li>Toda oración necesita un <strong>verbo</strong>.</li>
+  <li>Los <strong>verbos de acción</strong> muestran qué hace el sujeto (correr, comer, estudiar).</li>
+  <li>Los <strong>verbos de enlace</strong> conectan al sujeto con una descripción (ser, estar, parecer).</li>
+  <li>Para encontrar el verbo, pregunta: <em>"¿Qué hace?"</em> o <em>"¿Cómo es / está?"</em>.</li>
 </ul>
+
 <div class="caja-objetivos" style="background:#fff3e0;border-left-color:var(--acento)">
   <h2 style="color:#8a3d0c;border:none;padding:0;margin-top:0;font-size:1.2rem">✅ Antes de irte, revísate</h2>
   <ul class="lista-bonita">
-    <li>¿Sabes empezar y terminar un correo formal?</li>
-    <li>¿Puedes decir tres palabras informales de tu país y su equivalente general?</li>
-    <li>¿Puedes pasar «q onda, x fa mándame el papel» a registro formal?</li>
+    <li>¿Puedes encontrar el verbo en: "Mi vecino canta en la iglesia"?</li>
+    <li>¿Es "es" un verbo de acción o de enlace?</li>
+    <li>¿Puedes inventar una oración con un verbo de acción y otra con uno de enlace?</li>
   </ul>
 </div>
-<div class="tip"><strong>🏁 Terminaste el Tema 3.</strong> En el próximo tema empieza la comprensión de textos: <a href="https://zhemaria.github.io/clases_leng2/clase_4-1.html" style="color:var(--cp-oscuro);font-weight:700">Lección 4.1 · Idea principal en varios párrafos y detalles de apoyo</a>.</div>
+
+<div class="tip">
+  <strong>📅 En la próxima lección:</strong> <a href="https://zhemaria.github.io/clases_leng1/clase_3-4.html" style="color:var(--cp-oscuro);font-weight:700">Lección 3.4 · Los tiempos verbales: presente, pasado y futuro</a>. Los verbos también dicen <strong>cuándo</strong> pasa algo, y vas a aprender los tres tiempos básicos.
+</div>
+
 </div>
 </details>
 
 <footer class="pie">
-  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 2: Conectando Ideas y Textos · Tema 3 · Lección 3.3</strong></p>
+  <p><strong>GEDparaHispanos · Artes del Lenguaje · Nivel 1: Iniciación a la Lectura y la Escritura · Tema 3 · Lección 3.3</strong></p>
   <p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p>
   <p>© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license noopener noreferrer" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p>
 </footer>
 <a class="volver-indice" href="#indice" aria-label="Volver al contenido de la lección"><span aria-hidden="true">↑</span> Índice</a>
 
-<script>
-/* ===== Voz: todas las lecturas pasan por hablar(), para poder cambiarla después por audio grabado ===== */
-(function(){
-  var voz=null, hay=('speechSynthesis' in window);
-  function elegir(){
-    if(!hay)return;
-    var vs=speechSynthesis.getVoices().filter(function(v){return /^es/i.test(v.lang);});
-    var pref=['es-US','es-MX','es-419','es-CO','es-AR','es-CL','es-PE'];
-    voz=null;
-    for(var i=0;i<pref.length&&!voz;i++){voz=vs.find(function(v){return v.lang.replace('_','-').toLowerCase()===pref[i].toLowerCase();})||null;}
-    if(!voz)voz=vs.find(function(v){return !/es[-_]ES/i.test(v.lang);})||vs[0]||null;
-  }
-  function aviso(){var a=document.getElementById('aviso-voz');if(a)a.classList.add('visible');}
-  function frase(t,vel){var u=new SpeechSynthesisUtterance(t);u.lang=voz?voz.lang:'es-US';if(voz)u.voice=voz;u.rate=vel||0.9;return u;}
-  if(hay){elegir(); speechSynthesis.onvoiceschanged=elegir;}
-  /* hablar(texto, velocidad, alTerminar) */
-  window.hablar=function(texto,vel,fin){
-    if(!hay||!texto){aviso();return;}
-    speechSynthesis.cancel();
-    /* Se lee por oraciones: algunos navegadores cortan las lecturas largas a los 15 segundos */
-    var partes=texto.replace(/\s+/g,' ').match(/[^.!?…]+[.!?…]+[»"”)]*\s*|[^.!?…]+$/g)||[texto];
-    partes.forEach(function(t,i){var u=frase(t.trim(),vel); if(fin&&i===partes.length-1)u.onend=fin; speechSynthesis.speak(u);});
-  };
-  /* Lectura entrecortada: cada palabra suena por separado, para comparar con una lectura fluida */
-  window.hablarPalabras=function(texto){
-    if(!hay){aviso();return;}
-    speechSynthesis.cancel();
-    texto.replace(/[.,;:¿?¡!—«»]/g,' ').split(/\s+/).filter(Boolean).forEach(function(p){speechSynthesis.speak(frase(p,0.7));});
-  };
-  window.callar=function(){if(hay)speechSynthesis.cancel();};
-  if(!hay)document.addEventListener('DOMContentLoaded',aviso);
-})();
 
-/* ===== Clasificador: cada elemento con sus botones; al acertar muestra una nota ===== */
-function clasificador(idCaja,idPuntaje,items,opciones,conAudio){
-  var caja=document.getElementById(idCaja), pun=document.getElementById(idPuntaje), bien=0, hechas={};
-  function marcador(){pun.textContent=bien===items.length?(items.length===1?'🎉 ¡Muy bien!':'🎉 ¡Muy bien! Acertaste las '+bien+'.'):(items.length===1?'':'Aciertos: '+bien+' / '+items.length);}
-  items.forEach(function(it,i){
-    var d=document.createElement('div'); d.className='item'; d.setAttribute('role','group'); d.setAttribute('aria-label',it.p.replace(/<[^>]+>/g,''));
-    var ops=it.ops||opciones;
-    d.innerHTML='<span class="item-pal">'+it.p+(conAudio?' <button type="button" class="oir" aria-label="Escuchar">🔊</button>':'')+'</span>'+
-      '<span class="item-ops">'+ops.map(function(o,j){return '<button type="button" class="btn-op" data-j="'+j+'">'+o+'</button>';}).join('')+'</span>'+
-      '<span class="item-fb" aria-live="polite"></span>';
-    caja.appendChild(d);
-    if(conAudio)d.querySelector('.oir').addEventListener('click',function(){hablar(it.a||it.p.replace(/<[^>]+>/g,''),0.85);});
-    var fb=d.querySelector('.item-fb');
-    d.querySelectorAll('.btn-op').forEach(function(b){
+<script>
+(function(){
+  prepararMarcable('texto-subrayar','btn-verificar-verb','btn-reset-verb','puntaje-verb',['verbo','verbos']);
+
+  // Clasificar acción vs enlace
+  var fraseVerbos=[
+    {frase:'María',verbo:'cocina',resto:'arroz con pollo.',tipo:'accion'},
+    {frase:'El niño',verbo:'está',resto:'feliz.',tipo:'enlace'},
+    {frase:'Mi papá',verbo:'trabaja',resto:'en una fábrica.',tipo:'accion'},
+    {frase:'La maestra',verbo:'es',resto:'muy amable.',tipo:'enlace'},
+    {frase:'Los perros',verbo:'corren',resto:'en el patio.',tipo:'accion'},
+    {frase:'El café',verbo:'parece',resto:'amargo.',tipo:'enlace'},
+    {frase:'Mi hermana',verbo:'estudia',resto:'inglés.',tipo:'accion'},
+    {frase:'Tú',verbo:'eres',resto:'inteligente.',tipo:'enlace'}
+  ];
+
+  var aciertosVerb=0;
+  var resueltasVerb={};
+  var contVerb=document.getElementById('clasif-verbos');
+
+  fraseVerbos.forEach(function(item,idx){
+    var div=document.createElement('div');
+    div.className='item-verbo';
+    div.innerHTML=
+      '<div class="frase-verbo">'+item.frase+' <span class="verbo-target">'+item.verbo+'</span> '+item.resto+'</div>'+
+      '<div class="opciones-verbo">'+
+        '<button type="button" class="btn-tipo-verbo btn-acc" data-tipo="accion">De acción</button>'+
+        '<button type="button" class="btn-tipo-verbo btn-enl" data-tipo="enlace">De enlace</button>'+
+      '</div>'+
+      '<div class="feedback-item"></div>';
+    contVerb.appendChild(div);
+
+    var botones=div.querySelectorAll('.btn-tipo-verbo');
+    var feedback=div.querySelector('.feedback-item');
+    botones.forEach(function(b){
       b.addEventListener('click',function(){
-        if(hechas[i])return;
-        if(+b.getAttribute('data-j')===it.c){
-          b.classList.add('correcta'); hechas[i]=true; bien++;
-          d.querySelectorAll('.btn-op').forEach(function(x){x.disabled=true;});
-          fb.innerHTML='✓ '+(it.n||'Correcto.'); marcador();
+        if(resueltasVerb[idx])return;
+        var t=b.getAttribute('data-tipo');
+        if(t===item.tipo){
+          b.classList.add('correcta');
+          feedback.className='feedback-item correcto mostrar';
+          feedback.innerHTML='✅ Correcto. "'+item.verbo+'" es un verbo '+(t==='accion'?'de acción (muestra qué hace).':'de enlace (conecta con descripción).');
+          resueltasVerb[idx]=true;
+          aciertosVerb++;
+          actualizarPuntajeClasif();
         }else{
-          b.classList.add('incorrecta'); b.disabled=true;
-          fb.innerHTML='Todavía no. '+(it.pista||'Vuelve a mirar la regla e intenta otra vez.');
+          b.classList.add('incorrecta');
+          feedback.className='feedback-item incorrecto mostrar';
+          feedback.innerHTML='❌ Inténtalo de nuevo. Pista: ¿"'+item.verbo+'" muestra una acción o conecta con una descripción?';
+          setTimeout(function(){b.classList.remove('incorrecta')},500);
         }
       });
     });
   });
-  marcador();
+
+  function actualizarPuntajeClasif(){
+    var el=document.getElementById('puntaje-clasif-verb');
+    el.textContent='Aciertos: '+aciertosVerb+' / '+fraseVerbos.length;
+    if(aciertosVerb===fraseVerbos.length){
+      el.innerHTML='🎉 ¡Excelente! Aciertos: '+aciertosVerb+' / '+fraseVerbos.length;
+      el.style.color='var(--exito)';
+    }
+  }
+})();
+
+/* ===== Tocar palabras ===== */
+/* <div class="marcable" data-texto="Mi [familia] vive en una [casa] grande."> ;
+   cada línea del texto (separada por «|») es un párrafo. */
+function prepararMarcable(id, idRevisar, idLimpiar, idResultado, queBusca){
+  var caja=document.getElementById(id), res=document.getElementById(idResultado);
+  function pintar(){
+    caja.innerHTML='';
+    caja.getAttribute('data-texto').split('|').forEach(function(linea){
+      var p=document.createElement('p');
+      linea.trim().split(/\s+/).forEach(function(tok,k){
+        var m=tok.match(/^([¿¡«(]*)(\[?)([^\]\s.,;:!?»)]+)(\]?)([.,;:!?»)]*)$/);
+        if(k) p.appendChild(document.createTextNode(' '));
+        if(!m){ p.appendChild(document.createTextNode(tok)); return; }
+        if(m[1]) p.appendChild(document.createTextNode(m[1]));
+        var b=document.createElement('button'); b.type='button'; b.className='pal-m'; b.textContent=m[3];
+        b.setAttribute('aria-pressed','false'); if(m[2]==='[') b.dataset.ok='1';
+        b.addEventListener('click',function(){ if(b.disabled)return; b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true'); res.textContent=''; res.className='resultado-marcar'; });
+        p.appendChild(b);
+        if(m[5]){ var sg=document.createElement('span'); sg.className='punt'; sg.textContent=m[5]; p.appendChild(sg); }
+      });
+      caja.appendChild(p);
+    });
+    res.textContent=''; res.className='resultado-marcar';
+  }
+  document.getElementById(idRevisar).addEventListener('click',function(){
+    var bien=0,mal=0,falta=0,total=0;
+    caja.querySelectorAll('.pal-m').forEach(function(b){
+      var marcada=b.getAttribute('aria-pressed')==='true', obj=b.dataset.ok==='1';
+      if(obj) total++;
+      b.classList.remove('bien','mal','falto');
+      if(marcada&&obj){b.classList.add('bien');bien++;}
+      else if(marcada&&!obj){b.classList.add('mal');mal++;}
+      else if(!marcada&&obj){b.classList.add('falto');falta++;}
+    });
+    if(!mal&&!falta){ res.textContent='🎉 ¡Excelente! Encontraste '+(total===1?'el '+queBusca[0]:'los '+total+' '+queBusca[1])+'.'; res.className='resultado-marcar correcto'; }
+    else{ res.textContent='Encontraste '+bien+' de '+total+'.'+(mal?' Marcaste '+mal+' que no '+(mal===1?'es '+queBusca[0]:'son '+queBusca[1])+' (en rojo).':'')+(falta?' Te '+(falta===1?'faltó':'faltaron')+' '+falta+' (con borde naranja).':'')+' Puedes corregir y volver a revisar.'; res.className='resultado-marcar incorrecto'; }
+  });
+  document.getElementById(idLimpiar).addEventListener('click',pintar);
+  pintar();
 }
 
-/* ===== Quiz de la lección =====
-   P: [{t:enunciado, o:[opciones], c:índice correcto, x:texto grande opcional, a:audio opcional,
-        ae:audio entrecortado opcional, fijo:no barajar,
-        r:enlace de repaso que aparece si la respuesta es incorrecta}]
-   cfg: {meta, bien:mensaje si llega a la meta, repaso:mensaje si queda lejos} */
-function iniciarQuiz(P,cfg){
-  var META=cfg.meta, N=P.length, cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
+/* ===== Quiz de la lección ===== */
+(function(){
+  var P=[{"t": "¿Qué hace el <strong>verbo</strong> en una oración?", "o": ["Dice qué hace el sujeto, o cómo es o cómo está", "Nombra a una persona o una cosa", "Describe el color o el tamaño"], "c": 0}, {"t": "¿Cuál es el verbo?", "x": "María cocina arroz.", "o": ["María", "cocina", "arroz"], "c": 1, "fijo": true}, {"t": "¿Cuál es el verbo?", "x": "El niño corre en el parque.", "o": ["niño", "corre", "parque"], "c": 1, "fijo": true}, {"t": "¿Cuál es el verbo?", "x": "Mi vecino canta en la iglesia.", "o": ["vecino", "canta", "iglesia"], "c": 1, "fijo": true}, {"t": "¿Cuál es el verbo?", "x": "La sopa está caliente.", "o": ["sopa", "está", "caliente"], "c": 1, "fijo": true}, {"t": "Un verbo de <strong>acción</strong>…", "o": ["muestra algo que el sujeto hace", "conecta al sujeto con una descripción", "nombra un lugar"], "c": 0}, {"t": "Un verbo de <strong>enlace</strong>…", "o": ["conecta al sujeto con una descripción o un estado", "muestra un movimiento", "siempre está en futuro"], "c": 0}, {"t": "¿Cuáles son los tres verbos de enlace principales?", "o": ["ser, estar y parecer", "correr, comer y dormir", "hablar, escribir y leer"], "c": 0}, {"t": "En «Mi hermana es enfermera», el verbo es…", "o": ["de enlace", "de acción"], "c": 0, "fijo": true}, {"t": "En «Los perros corren en el patio», el verbo es…", "o": ["de acción", "de enlace"], "c": 0, "fijo": true}, {"t": "En «Tú pareces cansado», el verbo es…", "o": ["de enlace", "de acción"], "c": 0, "fijo": true}, {"t": "¿Puede haber una oración sin verbo?", "o": ["No: sin verbo no hay oración", "Sí, si tiene un sustantivo", "Sí, si es muy corta"], "c": 0}], META=10, N=P.length;
+  var cuerpo=document.getElementById('qz-cuerpo'), elegidas={};
   P.forEach(function(p,i){
     var d=document.createElement('div');
     d.className='qz-preg'; d.setAttribute('role','group'); d.setAttribute('aria-labelledby','qz-e'+i);
     var h='<p class="qz-enun" id="qz-e'+i+'"><span class="qz-num">'+(i+1)+'</span>'+p.t+'</p>';
-    if(p.x||p.a||p.ae){
+    if(p.x||p.a){
       h+='<span class="qz-extra">'+(p.x?'<span class="qz-grande">'+p.x+'</span> ':'')+
-         ((p.a||p.ae)?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
+         (p.a?'<button type="button" class="qz-oir" data-oir="'+i+'">🔊 Escuchar</button>':'')+'</span>';
     }
     h+='<div class="qz-ops">';
+    /* Las opciones se muestran en orden al azar; data-j guarda su número original. */
     var orden=p.o.map(function(_,j){return j;});
     if(!p.fijo){for(var k=orden.length-1;k>0;k--){var r=Math.floor(Math.random()*(k+1)),t=orden[k];orden[k]=orden[r];orden[r]=t;}}
     orden.forEach(function(j){h+='<button type="button" class="qz-op" data-i="'+i+'" data-j="'+j+'" aria-pressed="false">'+p.o[j]+'</button>';});
@@ -517,7 +522,7 @@ function iniciarQuiz(P,cfg){
   });
   cuerpo.addEventListener('click',function(ev){
     var oir=ev.target.closest('.qz-oir');
-    if(oir){var q=P[+oir.getAttribute('data-oir')]; if(q.ae)hablarPalabras(q.ae); else hablar(q.a,q.v||0.85); return;}
+    if(oir){ if(window.hablar) window.hablar(P[+oir.getAttribute('data-oir')].a); return; }
     var b=ev.target.closest('.qz-op'); if(!b||b.disabled)return;
     var i=b.getAttribute('data-i');
     cuerpo.querySelectorAll('.qz-op[data-i="'+i+'"]').forEach(function(x){x.classList.remove('elegida');x.setAttribute('aria-pressed','false');});
@@ -532,74 +537,37 @@ function iniciarQuiz(P,cfg){
         if(j===p.c)x.classList.add('correcta'); else if(elegidas[i]===j)x.classList.add('incorrecta');
       });
       if(elegidas[i]===p.c)bien++;
-      else if(p.r){var nota=document.createElement('p');nota.className='qz-repaso';nota.innerHTML='📘 Para repasar: '+p.r;cuerpo.children[i].appendChild(nota);}
     });
     var msg,fondo,color;
-    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+cfg.bien;fondo='#d4edda';color='#155724';}
+    if(bien>=META){msg='¡Excelente! '+bien+' de '+N+'. '+"Ya reconoces el verbo y sus dos tipos. Puedes continuar con la Lección 3.4.";fondo='#d4edda';color='#155724';}
     else if(bien>=Math.ceil(N*0.6)){msg='Buen trabajo: '+bien+' de '+N+'. Repasa las preguntas en rojo y vuelve a intentarlo.';fondo='#fff3cd';color='#5c3900';}
-    else{msg='Llevas '+bien+' de '+N+'. '+cfg.repaso;fondo='#f8d7da';color='#721c24';}
+    else{msg='Llevas '+bien+' de '+N+'. '+"Vuelve a las secciones 1 y 2 y repite el quiz: con práctica sale.";fondo='#f8d7da';color='#721c24';}
     res.textContent=msg; res.style.background=fondo; res.style.color=color; res.classList.add('visible');
     this.style.display='none'; document.getElementById('qz-reintentar').style.display='inline-block';
     res.scrollIntoView({behavior:'smooth',block:'center'});
   });
   document.getElementById('qz-reintentar').addEventListener('click',function(){
     cuerpo.querySelectorAll('.qz-op').forEach(function(x){x.disabled=false;x.classList.remove('correcta','incorrecta','elegida');x.setAttribute('aria-pressed','false');});
-    cuerpo.querySelectorAll('.qz-repaso').forEach(function(n){n.remove();});
     elegidas={}; res.classList.remove('visible'); res.textContent='';
     this.style.display='none'; document.getElementById('qz-calificar').style.display='inline-block';
     cuerpo.scrollIntoView({behavior:'smooth',block:'start'});
   });
-}
+})();
 
 /* ===== Navegación: el índice y la dirección (#ancla) abren su sección ===== */
-document.addEventListener('DOMContentLoaded',function(){
+(function(){
   function abrir(id){
     var el=id&&document.getElementById(id); if(!el)return;
     var d=el.tagName==='DETAILS'?el:el.closest('details');
     if(d){d.open=true; el.scrollIntoView({behavior:'smooth',block:'start'});}
   }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){abrir(a.getAttribute('href').slice(1));});});
-  var ab=document.getElementById('abrir-todo'), ce=document.getElementById('cerrar-todo');
-  if(ab)ab.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
-  if(ce)ce.addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
+  document.getElementById('abrir-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+  document.getElementById('cerrar-todo').addEventListener('click',function(){document.querySelectorAll('details').forEach(function(d){d.open=false;});});
   window.addEventListener('hashchange',function(){abrir(decodeURIComponent(location.hash.slice(1)));});
   abrir(decodeURIComponent(location.hash.slice(1)));
-});
-
-document.querySelectorAll('[data-hablar]').forEach(function(b){b.addEventListener('click',function(){hablar(b.getAttribute('data-hablar'),0.9);});});
-
-clasificador('clasif-reg','puntaje-reg',[
-  {p:'«Buenas tardes. Le escribo para solicitar información sobre las clases de inglés.»',c:0,n:'Saludo de cortesía, <em>usted</em> y el verbo <em>solicitar</em>.'},
-  {p:'«Oye, ¿me pasas el número de la profe?»',c:1,n:'<em>Oye</em>, <em>tú</em> y <em>profe</em>.'},
-  {p:'«Q bueno q vienes!! 🎉»',c:1,n:'Abreviaturas, emojis y sin signo de apertura.'},
-  {p:'«Le agradecería que me enviara el formulario por correo.»',c:0,n:'<em>usted</em>, cortesía y vocabulario preciso.'},
-  {p:'«La chamba está bien pesada esta semana.»',c:1,n:'<em>chamba</em> y <em>bien pesada</em> son coloquiales.'},
-  {p:'«Atentamente, Rosa Méndez, Departamento de Ventas»',c:0,n:'Despedida y firma formales.'}
-],['Formal','Informal'],false);
-
-clasificador('clasif-dest','puntaje-dest',[
-  {p:'Le escribes al director de la escuela de tus hijos. ¿Cómo empiezas?',ops:['Estimado señor director:','¡Hola, director! ¿Qué tal?','Oye, director,'],c:0,n:'Saludo formal con dos puntos.'},
-  {p:'Le pides a tu hermano que te preste su carro.',ops:['Le solicito amablemente su vehículo.','¿Me prestas tu carro el sábado?','Estimado hermano: solicito su carro.'],c:1,n:'Con tu hermano, el registro informal es el natural.'},
-  {p:'Pides información en una oficina del gobierno.',ops:['¿Me dices cómo saco el papel ese?','Quisiera saber qué documentos necesito para el trámite.','Oye, ¿qué papeles traigo?'],c:1,n:'Formal y preciso: <em>documentos</em>, <em>trámite</em>.'},
-  {p:'Terminas un correo a una empresa donde quieres trabajar.',ops:['Bye, gracias!!','Nos vemos 👋','Quedo a sus órdenes. Atentamente,'],c:2,n:'Despedida formal.'}
-],null,false);
-
-iniciarQuiz([
-  {t:'¿Qué es el registro?',o:['La manera de usar la lengua según la situación','Una lista de palabras difíciles','La letra con la que se escribe'],c:0},
-  {t:'¿Cuál es un saludo formal?',o:['Estimada señora Pérez:','¡Hola, señora Pérez!','Oye, señora Pérez,'],c:0},
-  {t:'¿Qué trato es propio del registro formal?',o:['usted','tú','vos'],c:0},
-  {t:'¿Cuál es una despedida formal?',o:['Atentamente,','Chao, nos vemos','Besos!!'],c:0},
-  {t:'¿Qué verbo es más propio de un texto formal?',o:['solicitar','pedir','mandar'],c:0},
-  {t:'¿En qué situación conviene el registro <strong>informal</strong>?',o:['Un mensaje a tu prima para invitarla a cenar','Un correo al banco por un error en la cuenta','Una solicitud de empleo'],c:0},
-  {t:'¿En qué situación conviene el registro <strong>formal</strong>?',o:['Una queja a la compañía de teléfono','Una nota a tu hijo para que saque la basura','Un chat con tu mejor amigo'],c:0},
-  {t:'¿Cuál de estas es una muletilla de la lengua hablada?',o:['o sea','sin embargo','por lo tanto'],c:0},
-  {t:'¿Cuál es la versión escrita de «\'Tá bien, voy pa\'llá»?',o:['Está bien, voy para allá.','Ta bien, voy pa allá.','Está bien, boy para aya.'],c:0},
-  {t:'¿Por qué conviene evitar <em>chamba</em> en un texto formal?',o:['Es una palabra coloquial de un país','Está mal escrita','Es una palabra en inglés'],c:0},
-  {t:'¿Qué registro pide la respuesta extendida del GED?',o:['Formal','Informal','Cualquiera de los dos'],c:0},
-  {t:'¿Cuál es la mejor versión formal de «xfa mándame el papel»?',o:['Le agradecería que me enviara el documento.','Porfa, mándame el papel.','Mándame el documento ya, por favor.'],c:0}
-],{meta:10,
-   bien:'Ya eliges el registro adecuado para cada situación. Terminaste el Tema 3: puedes continuar con la Lección 4.1.',
-   repaso:'Vuelve a las secciones 2 y 4 y repite el quiz: con práctica sale.'});
+})();
 </script>
+
 </body>
 </html>
